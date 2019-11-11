@@ -1,0 +1,14 @@
+redirect 301 /modelos-layouts
+https://amarcasar.com/modelos-templates
+
+redirect 301 /cadastrar
+https://amarcasar.com
+
+redirect 301 /empresa.shtml
+https://amarcasar.com
+
+redirect 301 /hospedagem-de-sites.php
+https://amarcasar.com
+
+redirect 301 /datacenter.shtml
+https://amarcasar.com

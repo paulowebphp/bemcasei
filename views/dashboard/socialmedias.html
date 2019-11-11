@@ -1,0 +1,502 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                {if="!validatePlan()"}
+
+                    {include="dashboard-menu-expirated"}
+               
+
+                {elseif="validatePlanFree()"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+                 
+
+                
+
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <div class="dash-title">
+                                <h1>Redes Sociais</h1>
+                            </div><!--dash-title-->
+
+                        </div><!--col-->
+                    </div><!--row-->
+
+
+
+
+
+
+                  
+
+
+                    {if="$success != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {$success}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+                    {if="$error != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {$error}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+                                          
+
+
+
+                    <div class="row dash-input-row centralizer">
+
+
+
+                        <div class="col-md-6 col-12 custom-style-row">
+
+
+
+                            <div class="row">
+                            
+                                <div class="col-md-12">
+                                
+                                    <div class="dash-title social-title">
+                                        <h3>Facebook</h3>
+                                        <hr>
+                                    </div><!--dash-title-->
+
+                                </div><!--col-->
+
+                            </div>
+
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+
+                                    <form id="dash-form" method="post" action="/dashboard/social">
+
+                                    <label for="desfacelink1">Casal</label>
+
+                                    <div>   
+
+                                        <input type="text" class="form-control" id="desfacelink1" name="desfacelink1" value="{$socialmedia.desfacelink1}">
+                                        
+                                    </div><!--nrddd-->
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="desfacelink2">{$user.desnick}</label>
+
+                                    <div>
+
+                                        <input type="text" class="form-control" id="desfacelink2" name="desfacelink2" value="{$socialmedia.desfacelink2}">
+                                        
+                                    </div><!--nrphone-->
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="desfacelink3">{$consort.desconsort}</label>
+
+                                    <div>
+
+                                        <input type="text" class="form-control" id="desfacelink3" name="desfacelink3" value="{$socialmedia.desfacelink3}">
+                                        
+                                    </div><!--nrphone-->
+
+                                </div>
+
+                            </div>
+                            
+
+                        </div><!--col-->
+
+
+
+
+
+
+                         <div class="col-md-6 col-12 custom-style-row">
+
+
+                            <div class="row">
+                            
+                                <div class="col-md-12">
+                                
+                                    <div class="dash-title social-title">
+                                        <h3>Instagram</h3>
+                                        <hr>
+                                    </div><!--dash-title-->
+
+                                </div><!--col-->
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+
+                                    <form id="dash-form" method="post" action="/dashboard/social">
+
+                                    <label for="desinstalink1">Casal</label>
+
+                                    <div>   
+
+                                        <input type="text" class="form-control" id="desinstalink1" name="desinstalink1" value="{$socialmedia.desinstalink1}">
+                                        
+                                    </div><!--nrddd-->
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="desinstalink2">{$user.desnick}</label>
+
+                                    <div>
+
+                                        <input type="text" class="form-control" id="desinstalink2" name="desinstalink2" value="{$socialmedia.desinstalink2}">
+                                        
+                                    </div><!--nrphone-->
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="desinstalink3">{$consort.desconsort}</label>
+
+                                    <div>
+
+                                        <input type="text" class="form-control" id="desinstalink3" name="desinstalink3" value="{$socialmedia.desinstalink3}">
+                                        
+                                    </div><!--nrphone-->
+
+                                </div>
+
+                            </div>
+                            
+
+                        </div><!--col-->
+
+
+
+
+                    </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="row dash-input-row centralizer">
+
+
+                        
+
+
+
+                        <div class="col-md-6 col-12 custom-style-row">
+
+
+
+                            <div class="row">
+                            
+                                <div class="col-md-12">
+                                
+                                    <div class="dash-title social-title">
+                                        <h3>YouTube</h3>
+                                        <hr>
+                                    </div><!--dash-title-->
+
+                                </div><!--col-->
+
+                            </div>
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+
+                                    <form id="dash-form" method="post" action="/dashboard/social">
+
+                                    <label for="desyoutubelink1">Casal</label>
+
+                                    <div>   
+
+                                        <input type="text" class="form-control" id="desyoutubelink1" name="desyoutubelink1" value="{$socialmedia.desyoutubelink1}">
+                                        
+                                    </div><!--nrddd-->
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="desyoutubelink2">{$user.desnick}</label>
+
+                                    <div>
+
+                                        <input type="text" class="form-control" id="desyoutubelink2" name="desyoutubelink2" value="{$socialmedia.desyoutubelink2}">
+                                        
+                                    </div><!--nrphone-->
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="desyoutubelink3">{$consort.desconsort}</label>
+
+                                    <div>
+
+                                        <input type="text" class="form-control" id="desyoutubelink3" name="desyoutubelink3" value="{$socialmedia.desyoutubelink3}">
+                                        
+                                    </div><!--nrphone-->
+
+                                </div>
+
+                            </div>
+                            
+
+                        </div><!--col-->
+
+
+
+
+
+
+                         <div class="col-md-6 col-12 custom-style-row">
+
+
+
+                            <div class="row">
+                            
+                                <div class="col-md-12">
+                                
+                                    <div class="dash-title social-title">
+                                        <h3>Twitter</h3>
+                                        <hr>
+                                    </div><!--dash-title-->
+
+                                </div><!--col-->
+
+                            </div>
+
+
+
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+
+                                    <form id="dash-form" method="post" action="/dashboard/social">
+
+                                    <label for="destwitterlink1">Casal</label>
+
+                                    <div>   
+
+                                        <input type="text" class="form-control" id="destwitterlink1" name="destwitterlink1" value="{$socialmedia.destwitterlink1}">
+                                        
+                                    </div><!--nrddd-->
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="destwitterlink2">{$user.desnick}</label>
+
+                                    <div>
+
+                                        <input type="text" class="form-control" id="destwitterlink2" name="destwitterlink2" value="{$socialmedia.destwitterlink2}">
+                                        
+                                    </div><!--nrphone-->
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="destwitterlink3">{$consort.desconsort}</label>
+
+                                    <div>
+
+                                        <input type="text" class="form-control" id="destwitterlink3" name="destwitterlink3" value="{$socialmedia.destwitterlink3}">
+                                        
+                                    </div><!--nrphone-->
+
+                                </div>
+
+                            </div>
+                            
+
+                        </div><!--col-->
+
+
+
+
+                    </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="row dash-input-row custom-style-row">
+
+                        <div class="col-12">
+ 
+                            <div class="dash-input-row input-footer">
+                                
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+
+                                <a href="/dashboard" class="btn btn-danger">Voltar</a>
+
+                            </div><!--dash-input-row-->
+                            
+                        </div><!--col-->
+
+                    </div><!--row-->
+
+
+
+                </form>
+
+
+
+            </div><!--col-->
+        
+
+
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

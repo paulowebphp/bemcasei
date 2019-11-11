@@ -1,0 +1,22 @@
+-var baseURL = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/544318'
+
+-var data = [{title: 'Forest', imgLeft: baseURL + '/forest-left.jpg', imgRight: baseURL + '/forest-right.jpg'},{title: 'Mountain', imgLeft: baseURL + '/mountain-left.jpg', imgRight: baseURL + '/mountain-right.jpg'},{title: 'Ocean', imgLeft: baseURL + '/ocean-left.jpg', imgRight: baseURL + '/ocean-right.jpg'},{title: 'Canyon', imgLeft: baseURL + '/canyon-left.jpg', imgRight: baseURL + '/canyon-right.jpg'},{title: 'Lake', imgLeft: baseURL + '/lake-left.jpg', imgRight: baseURL + '/lake-right.jpg'}]
+
+#container
+	ul#slides
+		each item in data
+			li.slide
+				.slide-partial.slide-left
+					img(src= item.imgLeft)
+				.slide-partial.slide-right
+					img(src= item.imgRight)
+				h1.title
+					span.title-text= item.title
+				
+	ul#slide-select
+		li.btn.prev.fa.fa-arrow-left
+		each item in data
+			li.selector
+		li.btn.next.fa.fa-arrow-right
+	
+a.codepen-link(href='http://www.codepen.io/seanfree' target='_blank')

@@ -1,0 +1,49 @@
+@page{
+	size: a4;
+	
+}/*@page*/
+
+@media print {
+	*{
+		margin:0;
+		padding:0;
+		color: #000;
+	}
+	html,body{
+		font-size: 10pt;
+
+	}
+	
+	header{
+		display: none;
+	}
+	footer{
+		display: none;
+		page-break-after: always;
+	}
+	a:link, a:visited{
+		color: #000; 
+		text-decoration: underline;
+	}
+	a[href]:after{
+		content: "(" attr(href) ")";
+	}
+	h1{
+		font-size: 16pt;
+	}
+	#print-wrapper{
+		display: none;
+	}
+	#terms {
+		padding: 3%;
+		margin: 0;
+	}	
+	.row{
+		width: 140mm;
+	}
+
+
+
+	
+
+}/*@media print*/

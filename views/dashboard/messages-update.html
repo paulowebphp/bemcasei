@@ -1,0 +1,233 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                {if="!validatePlan()"}
+
+                    {include="dashboard-menu-expirated"}
+               
+
+                {elseif="validatePlanFree()"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+                {if="$success != ''"}
+                <div class="alert alert-success">
+                    {$success}
+                </div>
+                {/if}
+                {if="$error != ''"}
+                <div class="alert alert-danger">
+                    {$error}
+                </div>
+                {/if} 
+
+               <form method="post" action='/dashboard/mensagens/{function="setHash($value.idmessage)"}'>
+
+                    <div class="row">
+                        
+                        <div class="col-md-6 dash-column">
+
+
+                            <div class="dash-input-row input-date">
+
+                                <label for="dtregister">Data</label>
+                                <input type="text" class="form-control" id="dtregister" name="dtregister" placeholder="Digite o nome aqui" value="{$message.dtregister}" disabled>
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+                        
+
+
+                            <div class="dash-input-row">
+
+
+                                <label for="desmessage">Nome</label>
+                                <input type="text" class="form-control" id="desmessage" name="desmessage" placeholder="Digite o nome aqui" value="{$message.desmessage}" disabled>
+
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+
+                                <label for="desemail">E-mail</label>
+                                <input type="text" class="form-control" id="desemail" name="desemail" placeholder="Digite o nome aqui" value="{$message.desemail}" disabled>
+
+
+                            </div><!--dash-input-row-->
+
+
+   
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <div>
+                                    <label for="desdescription">Descrição</label>
+                                    <!--<input type="text" class="form-control" id="desdescription" name="desdescription" placeholder="Digite o nome aqui" ">-->
+                                </div>
+                                
+                                <textarea rows="10" cols="90" maxlength="500" id="desdescription" name="desdescription" placeholder="Descrição">{$album.desdescription}</textarea>
+
+                            </div><!--dash-input-row-->
+
+
+                            <input type="hidden" class="form-control" id="idalbum" name="idalbum" placeholder="Digite o nome aqui" value="{$album.idalbum}">
+
+
+
+                           
+
+                            <div class="dash-input-row input-date">
+                                
+                                <div class="input-group mb-3">
+
+                                  <div class="input-group-prepend">
+
+                                    <label class="input-group-text" for="inmessagestatus">Visível</label>
+
+                                  </div><!--input-group-prepend-->
+
+                                  <select id="inmessagestatus" name="inmessagestatus" class="custom-select">
+
+                                    <option value="0" {if="$message.inmessagestatus == '0'"}selected{/if}>Não</option>
+                                    <option value="1" {if="$message.inmessagestatus == '1'"}selected{/if}>Sim</option>
+
+                                  </select>
+
+                                
+                                </div><!--mb-3-->
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <input type="hidden" class="form-control" id="idmessage" name="idmessage" placeholder="Digite o nome aqui" value='{function="setHash($value.idmessage)"}'>
+
+                            </div><!--dash-input-row-->
+
+
+                            
+
+                           
+
+
+
+
+
+                                
+
+                        </div><!--col-md-6-->
+
+
+
+
+
+                        <div class="col-md-6">
+                            
+                            
+                            
+                            &nbsp;
+
+                            
+                            
+                        </div><!--col-md-6-->
+
+
+                    </div><!--row-->
+
+
+
+
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <div class="dash-input-row input-footer">
+                                
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+
+                                <a href="/dashboard/mensagens" class="btn btn-danger">Voltar</a>
+
+                            </div><!--dash-input-row-->
+                            
+                        </div><!--col-->
+
+
+
+                        <div class="col-md-6">
+
+                            &nbsp;
+                            
+                        </div><!--col-->
+
+
+
+                    </div><!--row-->
+
+
+
+                </form>
+
+
+
+            </div><!--col-->
+        
+
+
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

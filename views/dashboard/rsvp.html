@@ -1,0 +1,563 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                {if="!validatePlan()"}
+
+                    {include="dashboard-menu-expirated"}
+               
+
+                {elseif="validatePlanFree()"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="row">
+                    
+                    <div class="col-12">
+
+                        <div class="dash-title">
+                            <h1>RSVP</h1>
+                        </div>
+
+                    </div>
+
+                </div>
+
+        
+
+                {if=" $maxRsvp > $numRsvp "}
+
+
+                    <div class="row">
+
+                        <div class="col-12">
+
+                            <div class="button-header">
+
+                                <a href="/dashboard/rsvp/adicionar">
+                                    <button>
+                                        Adicionar Convidado
+                                    </button>
+                                </a>
+
+
+                                <a href="/dashboard/rsvp/configurar">
+                                    <button>
+                                        Configurações
+                                    </button>
+                                </a>
+
+
+                                <a href="/dashboard/rsvp/confirmados">
+                                    <button>
+                                        Lista de Confirmados
+                                    </button>
+                                </a>
+                                
+                    
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {/if}
+
+            
+
+
+
+                {if="$success != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {$success}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+                    {if="$error != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {$error}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+
+
+                
+
+
+
+
+                {loop="$rsvp"}
+                <div class="row card-dash">
+
+                    <div class="col-md-10 col-12">
+                        
+
+
+                        <div class="row card-dash-row1">
+                            
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{$value.desguest}</span>
+                                    </div>
+
+
+                                    <div class="card-dash-header">
+                                        <hr>
+                                        <span>Nome</span>
+                                    </div>
+
+                                </div><!--card-dash-field-->
+
+
+                            </div><!--col-->
+                        
+
+
+
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{if="$value.inadultsconfirmed > 0"}{$value.inadultsconfirmed}{else}0{/if}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+
+                                        {if="$value.inconfirmed == '0'"}
+                                            <span>Adultos<br><small>(máx. {function="getMaxAdults($value.inmaxadults,$rsvpconfig.inadultsconfig,$rsvpconfig.inmaxadultsconfig)"})</small></span>
+                                        {else}
+                                            <span>Adultos</span>
+                                        {/if}
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{if="$value.inchildrenconfirmed > 0"}{$value.inchildrenconfirmed}{else}0{/if}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        
+
+                                        {if="$value.inconfirmed == '0'"}
+                                            <span>Crianças<br><small>(máx. {function="getMaxChildren($value.inmaxchildren,$rsvpconfig.inchildrenconfig,$rsvpconfig.inmaxchildrenconfig)"})</small></span>
+                                        {else}
+                                            <span>Crianças</span>
+                                        {/if}
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{if="$value.inconfirmed == 0"}Não{else}Sim{/if}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Confirmado?</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{if="$value.nrphone == '' or $value.nrphone == null"}-{else}{$value.nrphone}{/if}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Telefone</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{if="$value.dtconfirmed == '' or $value.dtconfirmed == null"}-{else}{function="formatDate($value.dtconfirmed)"}{/if}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Data da Confirmação</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+                        <div class="row card-dash-row2">
+                            
+                            
+
+                            <div class="col-md-8 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{if="$value.desguestaccompanies == '' or $value.desguestaccompanies == null"}-{else}{$value.desguestaccompanies}{/if}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Nomes dos Acompanhantes</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+                            
+
+
+
+
+
+
+                            <div class="col-md-4 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{if="$value.desemail == '' or $value.desemail == null"}-{else}{$value.desemail}{/if}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>E-mail</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+                    </div><!--col-->
+
+
+
+
+
+
+                    <div class="col-md-2 col-12 card-dash-row3">
+                        
+
+                        <div class="card-dash-field">
+
+
+                            {if="$value.inconfirmed == 0"}
+                                <a href='/dashboard/rsvp/{function="setHash($value.idrsvp)"}'>
+
+                                    <button>Editar</button>
+
+                                </a>
+                            {/if}
+
+
+                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/rsvp/{function="setHash($value.idrsvp)"}/deletar'>
+
+                                <button>Deletar</button>
+
+                            </a>
+
+
+                           
+                        </div><!--card-buttons-wrappe-->
+
+
+
+
+                    </div><!--col-->
+
+
+
+
+                </div><!--row-->
+                {else}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            Nenhum convidado foi encontrado
+                        </div>
+                    </div>
+                </div>
+                {/loop}
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="row">
+
+
+
+
+                        
+                        <div class="col-md-3 col-12">
+
+                            <div class="search">
+
+                                <form action="/dashboard/rsvp">
+
+                                    <div class="input-group input-group-sm">
+                                        
+                                        <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="{$search}">
+
+                                        <div class="input-group-btn">
+
+                                            <button type="submit" class="btn btn-default">
+
+                                                <i class="fa fa-search"></i>
+
+                                            </button>
+
+                                        </div><!--input-group-btn--->
+
+                                    </div><!--input-group-->
+
+                                </form>
+                                
+                            </div><!--search-->
+
+                        </div><!--col-->
+
+
+
+
+
+                        <div class="col-md-9 col-12">
+
+                            <div class="pagination">
+                                
+                                <ul>
+                                    {loop="$pages"}
+                                        <li><a href="{$value.href}">{$value.text}</a></li>                             
+                                                               
+                                    {/loop}
+                                </ul>
+
+                            </div>
+
+                        </div><!--col-->
+
+
+
+
+
+                        
+
+                    </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div><!--col-->
+        
+
+
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

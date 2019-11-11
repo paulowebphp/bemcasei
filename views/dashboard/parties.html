@@ -1,0 +1,362 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                {if="!validatePlan()"}
+
+                    {include="dashboard-menu-expirated"}
+               
+
+                {elseif="validatePlanFree()"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+                
+
+                <form method="post" action="/dashboard/festa-de-casamento" enctype="multipart/form-data">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <div class="dash-title">
+                                <h1>Festa de Casamento</h1>
+                            </div><!--dash-title-->
+
+                        </div><!--col-->
+                    </div><!--row-->
+
+
+
+
+                    {if="$success != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {$success}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+                    {if="$error != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {$error}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+
+
+
+
+                    
+
+                    <div class="row">
+                        
+                        <div class="col-md-6 dash-column">
+
+
+                         
+
+
+
+                            <div class="dash-input-row input-date">
+
+                                <label for="dtparty">Data da Festa</label>
+                                <input type="date" class="form-control" id="dtparty" name="dtparty" value="{$party.dtparty}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+                            <div class="dash-input-row input-date">
+
+                                <label for="tmparty">Horário da Festa</label>
+                                <input type="time" class="form-control" id="tmparty" name="tmparty" value="{$party.tmparty}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="descostume">Traje</label>
+                                <input type="text" class="form-control" id="descostume" name="descostume" value="{$party.descostume}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <div>
+                                    <label for="desdescription">Descrição</label>
+                                    <!--<input type="text" class="form-control" id="desdescription" name="desdescription" value="{$party.desdescription}">-->
+                                </div>
+                                
+                                <textarea rows="10" cols="90" maxlength="500" id="desdescription" name="desdescription">{$party.desdescription}</textarea>
+
+                            </div><!--dash-input-row-->
+
+
+                            
+
+
+
+
+
+
+                            
+
+
+
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <input type="hidden" class="form-control" id="idparty" name="idparty" value="{$party.idparty}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="dash-input-row input-photo">
+
+                            
+                                    <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                      </div>
+                                      <div class="custom-file">
+                                        <input type="file" name="file" class="custom-file-input" id="file" aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="inputGroupFile01"></label>
+
+                                      </div>
+                                    </div>
+                                    <div class="input-rows">
+                                        <img class="img-responsive" id="image-preview" src="/uploads/parties/{$party.desphoto}" alt="">
+                                    </div>
+
+                                
+                            </div><!--dash-input-row-->
+
+
+
+
+                            <!--   <label for="file">Foto</label>
+                                <input type="file" class="form-control" id="file" name="file">
+                                <div class="box box-widget">
+                                    <div class="box-body">
+                                        <img class="img-responsive" id="image-preview" src="/uploads/images/{$party.desphoto}" alt="Foto">
+                                    </div>
+                                </div>
+                            -->
+
+
+                                
+
+                        </div><!--col-md-6-->
+
+
+
+
+
+                        <div class="col-md-6">
+                            
+                            
+                            
+                            <div class="dash-input-row">
+
+
+                                <label for="desaddress">Logradouro</label>
+                                <input type="text" class="form-control" id="desaddress" name="desaddress" value="{$party.desaddress}">
+
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="desnumber">Número</label>
+                                <input type="text" class="form-control" id="desnumber" name="desnumber" value="{$party.desnumber}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+      
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="desdistrict">Bairro (opcional)</label>
+                                <input type="text" class="form-control" id="desdistrict" name="desdistrict" value="{$party.desdistrict}">
+
+                            </div><!--dash-input-row-->
+
+
+
+ 
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="descity">Cidade</label>
+                                <input type="text" class="form-control" id="descity" name="descity" value="{$party.descity}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="desstate">Estado</label>
+                                <input type="text" class="form-control" id="desstate" name="desstate" value="{$party.desstate}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="descountry">País (opcional)</label>
+                                <input type="text" class="form-control" id="descountry" name="descountry" value="{$party.descountry}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <div>
+                                    <label for="desdirections">Pontos de Referência</label>
+                                    <!--<input type="text" class="form-control" id="desdirections" name="desdirections" value="{$party.desdirections}">-->
+                                </div>
+                                
+                                <textarea rows="4" cols="90" maxlength="500" id="desdirections" name="desdirections">{$party.desdirections}</textarea>
+
+                            </div><!--dash-input-row-->
+
+
+                            
+                            
+                        </div><!--col-md-6-->
+
+
+                    </div><!--row-->
+
+
+
+
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <div class="dash-input-row input-footer">
+                                
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+
+                                <a href="/dashboard" class="btn btn-danger">Voltar</a>
+
+                            </div><!--dash-input-row-->
+                            
+                        </div><!--col-->
+
+                    </div><!--row-->
+
+
+
+                </form>
+
+
+
+            </div><!--col-->
+        
+
+
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

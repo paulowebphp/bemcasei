@@ -1,0 +1,356 @@
+<style type="text/css">
+
+
+
+
+    
+    section h1{
+        color: {if="$customstyle.descolor1 != ''"}#{$customstyle.descolor1}{else}#FFFFFF{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    section h2{
+        color: {if="$customstyle.descolordate != ''"}#{$customstyle.descolordate}{else}#FFFFFF{/if};
+        font-family: {if="$customstyle.desfontfamilydate != ''"}'{$customstyle.desfontfamilydate}'{else}'Norican'{/if};
+    }
+    section h3{
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    section h4{
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    section h5{
+        font-family: {if="$customstyle.desfontfamily2 != ''"}'{$customstyle.desfontfamily2}'{else}'OpenSans'{/if};
+    }
+    section h6{
+        font-family: {if="$customstyle.desfontfamily2 != ''"}'{$customstyle.desfontfamily2}'{else}'OpenSans'{/if};
+    }
+
+
+
+
+
+
+
+
+    /********************************HEADER*****************************************/
+    header .header-title h3{
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+
+    }
+    header #domain-dropdown-menu a:hover{
+        color: {if="$customstyle.descolortexthover != ''"}#{$customstyle.descolortexthover}{else}#DD716F{/if};
+    }
+    header .cart-amount {
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-weight: 700;
+    }
+    
+    header #shopping-item-mobile .shopping-item:hover .product-count {
+        background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+    }
+    header .product-count {
+        background: none repeat scroll 0 0 {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+    }
+    /********************************HEADER*****************************************/
+
+
+
+
+
+
+
+
+    /********************************FOOTER*****************************************/
+
+    footer{
+        padding: 5% 5% 2% 5%;
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+        {if="$customstyle.inbgcolorgradient == '0'"}
+        background-color: {if="$customstyle.desbgcolorfooter != ''"}#{$customstyle.desbgcolorfooter}{else}#DD716F{/if};
+        {else}
+        text-shadow: 4px 4px 4px rgba(0, 0, 0, .45);
+        background: radial-gradient(ellipse at center, {if="$customstyle.desbgcolorfooter != ''"}#{$customstyle.desbgcolorfooter}99{else}#F7D9E199{/if} 0%, {if="$customstyle.desbgcolorfooter != ''"}#{$customstyle.desbgcolorfooter}{else}#F7D9E1{/if} 60%);
+        {/if}
+    }
+    footer a{
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+    }
+    footer a:hover{
+        color: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if};
+    }
+    footer .bottom-footer p {
+      line-height: 24px;
+      font-size: 15px;
+      padding-top: 20px;
+      border-top: 1px solid {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+      color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+    }
+    footer .footer-title h3{
+        font-size: 3rem;
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    footer .list-group-item{
+        margin: 2% 0;
+        background: none;
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+    }
+    footer .list-group-item:hover{
+        background: none;
+        color: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if};
+    }
+    footer .list-socials a {
+      border: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if} 1px solid;
+    }
+    footer .list-socials a:hover {
+      border: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if} 1px solid;
+    }
+    /********************************FOOTER*****************************************/
+
+
+
+
+
+
+
+
+
+
+    /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
+    .alert-domain h1{
+        text-align: center;
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+
+    }
+    /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
+
+
+
+
+
+
+
+
+
+
+
+    /********************************DOMAIN*****************************************/
+    .dropdown a:hover{
+        color: {if="$customstyle.descolortexthover != ''"}#{$customstyle.descolortexthover}{else}#171F26{/if};
+
+    }
+    .section-title hr{
+        background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#171F26{/if};
+    }
+    /********************************DOMAIN*****************************************/
+
+
+
+
+
+
+
+    
+</style>
+
+
+
+
+
+
+
+
+<section class="domain">
+
+    <div class="container-fluid">            
+            
+            
+        <div class="row">
+            
+            <div class="col-12">
+
+
+                <div class="section-title">
+                        
+
+                    <h3>
+                        Listas de Fora
+                    </h3>
+
+                    <hr>
+
+
+                </div><!--section-title-->
+
+                     
+               
+            </div><!--col-->
+        
+        </div><!--row-->
+
+
+
+
+
+        {loop="$outerlist"}
+
+
+        <div class="row ">
+
+            <div class="col-12">
+
+
+                <div class="card-wrapper">
+
+
+                    <div class="card2">
+                        
+
+                       
+                            
+
+
+
+
+
+                        <div class="title row">
+                            
+                            <div class="col-12">
+                                
+                                <h5>{$value.desouterlist}</h5>
+
+                                <hr>
+
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="body-row row">
+
+                            <div class="col-12">
+                                
+                                <textarea readonly="readonly" class="description-area">{$value.desdescription}</textarea>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+
+
+
+
+
+
+
+
+
+                        <div class="body-footer centralizer row">
+                    
+
+
+                            <div class="col-md-4 col-12 inside-row">
+
+
+                                <h5>{$value.dessite}</h5>
+
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Site</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+
+
+
+
+
+                            <div class="col-md-4 col-12 inside-row">
+                                
+                                <h5>
+                                    {$value.nrphone}
+                                </h5>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Contato</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="col-md-4 col-12 inside-row">
+                                
+                                <h5>
+                                    {$value.deslocation}
+                                </h5>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Endereço</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+                                              
+                        
+                    </div><!--card-->
+
+                </div><!--wrapper-->    
+
+            </div><!--col-->
+    
+        </div><!--row-->
+
+
+        {/loop}
+
+
+
+
+
+    </div><!--container-->
+
+</section>
+
+
+
+
+
+
+

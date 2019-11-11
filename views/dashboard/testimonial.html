@@ -1,0 +1,245 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                {if="!validatePlan()"}
+
+                    {include="dashboard-menu-expirated"}
+               
+
+                {elseif="validatePlanFree()"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+               
+
+                <form method="post" action="/dashboard/testemunho" enctype="multipart/form-data">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <div class="dash-title">
+                                <h1>Testemunho</h1>
+                            </div><!--dash-title-->
+
+                        </div><!--col-->
+                    </div><!--row-->
+
+
+
+                    {if="$success != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {$success}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+                    {if="$error != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {$error}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+
+
+
+                    
+
+                    <div class="row">
+                        
+                        <div class="col-md-6 dash-column">
+
+
+
+                            <div class="dash-input-row">
+
+                                <div>
+                                    <label for="desdescription">Opinião do Casal</label>
+                                    <!--<input type="text" class="form-control" id="desdescription" name="desdescription" value="{$testimonial.desdescription}">-->
+                                </div>
+                                
+                                <textarea rows="10" cols="90" maxlength="500" id="desdescription" name="desdescription">{$testimonial.desdescription}</textarea>
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+                            <div class="dash-input-row input-date">
+                                
+                                <div class="input-group mb-3">
+
+                                  <div class="input-group-prepend">
+
+                                    <label class="input-group-text" for="instatus">Permissão</label>
+
+                                  </div><!--input-group-prepend-->
+
+                                  <select id="instatus" name="instatus" class="custom-select">
+
+                                    <option value="0" {if="$testimonial.instatus == '0'"}selected{/if}>Não</option>
+                                    <option value="1" {if="$testimonial.instatus == '1'"}selected{/if}>Sim</option>
+
+                                  </select>
+
+                                
+                                </div><!--mb-3-->
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+                            <div class="dash-input-row input-date">
+                                
+                                <div class="input-group mb-3">
+
+                                  <div class="input-group-prepend">
+
+                                    <label class="input-group-text" for="inrating">Avaliação</label>
+
+                                  </div><!--input-group-prepend-->
+
+                                  <select id="inrating" name="inrating" class="custom-select">
+
+                                    <option value="0" {if="$testimonial.inrating == '0'"}selected{/if}>0</option>
+                                    <option value="1" {if="$testimonial.inrating == '1'"}selected{/if}>1</option>
+                                    <option value="2" {if="$testimonial.inrating == '2'"}selected{/if}>2</option>
+                                    <option value="3" {if="$testimonial.inrating == '3'"}selected{/if}>3</option>
+                                    <option value="4" {if="$testimonial.inrating == '4'"}selected{/if}>4</option>
+                                    <option value="5" {if="$testimonial.inrating == '5'"}selected{/if}>5</option>
+                                    <option value="6" {if="$testimonial.inrating == '6'"}selected{/if}>6</option>
+                                    <option value="7" {if="$testimonial.inrating == '7'"}selected{/if}>7</option>
+                                    <option value="8" {if="$testimonial.inrating == '8'"}selected{/if}>8</option>
+                                    <option value="9" {if="$testimonial.inrating == '9'"}selected{/if}>9</option>
+                                    <option value="10" {if="$testimonial.inrating == '10'"}selected{/if}>10</option>
+                                
+
+                                  </select>
+
+                                
+                                </div><!--mb-3-->
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+
+
+
+                                
+
+                        </div><!--col-md-6-->
+
+
+
+
+
+                        <div class="col-md-6">
+
+
+
+
+
+
+                            
+                            
+                            
+                            &nbsp;
+
+
+
+
+
+                            
+                            
+                        </div><!--col-md-6-->
+
+
+                    </div><!--row-->
+
+
+
+
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <div class="dash-input-row input-footer">
+                                
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+
+                                <a href="/dashboard" class="btn btn-danger">Voltar</a>
+
+                            </div><!--dash-input-row-->
+                            
+                        </div><!--col-->
+
+                    </div><!--row-->
+
+
+
+                </form>
+
+
+
+            </div><!--col-->
+        
+
+
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

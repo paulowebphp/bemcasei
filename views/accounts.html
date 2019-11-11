@@ -1,0 +1,333 @@
+<section id="accounts" class="site">
+    
+    <div class="container">
+        
+
+
+
+
+
+
+    	<div class="row">
+    			
+    		<div class="col-12">
+    			
+    			<div class="payment-warn body-row width70">
+    				
+    				<h1>Olá, {$user.desperson}<h1>
+
+    			</div>
+
+    			<div class="payment-warn body-row">
+    				
+    				<h2>Preencha com seus dados pessoais</h2>
+
+    			</div>
+
+
+    			<div class="payment-warn body-row">
+    				
+    				<h3 id="desdocument-warn">O CPF utilizado aqui deve ser o mesmo da conta bancária que irá receber os valores<br><small>(<a target="_blank" href="/termos-lista#bancos">Ver bancos aceitos</a>)</small></h3>
+
+    			</div>
+
+
+    		</div><!--col-->
+
+    	</div><!--row-->
+
+
+
+
+
+
+
+        {if="$error != ''"}
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {$error}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row--> 
+        {/if}
+
+
+
+
+
+
+
+        <div class="row row1">
+            
+
+
+
+
+            <div class="col-md-6 col-12">
+
+                <div class="site-photo1">
+
+                	<img src="/res/images/banner/banner4.jpg">
+
+                </div>
+
+            </div><!--col-->
+
+
+
+
+
+
+            <div class="col-md-6 col-12">
+                
+
+                	
+
+
+
+            	<form id="register-form" action="/cadastrar/{$hash}" method="post" name="register">
+                
+
+          
+
+
+
+            	<div class="body-row">
+
+					<input class="disabled" type="text" value="{$user.desperson}" placeholder="Nome" name="desperson" class="input-text" disabled>
+
+				</div><!--body-row-->
+
+
+				<div class="body-row">
+
+					<input class="disabled" type="text" value="{$user.desemail}" placeholder="E-mail" name="desemail" class="input-text" disabled>
+
+				</div><!--body-row-->
+
+
+				<div class="body-row">
+
+					<input type="text" placeholder="CPF" name="desdocument" class="input-text" value="{$accountsValues.desdocument}">
+
+				</div><!--body-row-->
+
+
+
+
+
+				<div class="body-row row">
+
+					<div class="col-md-3 col-4 width40">
+
+						<input type="text" placeholder="DDD" name="nrddd" class="input-text" value="{$accountsValues.nrddd}">
+
+					</div><!--col-->
+
+
+
+					<div class="col-md-9 col-8 width60">
+
+						<input type="text" placeholder="Telefone" name="nrphone" class="input-text" value="{$accountsValues.nrphone}">
+
+					</div><!--col-->
+
+				</div><!--row-->
+
+
+
+
+
+
+
+				<div class="body-row row">
+
+					<div class="col-md-3 col-4 width30">
+						
+						<label for="payment_birth_1">Nascimento:</label>
+						
+					</div><!--col-->
+
+
+
+					<div class="col-md-9 col-8 width70">
+
+						<input type="date" placeholder="Nascimento" name="dtbirth" class="input-text" value="{$accountsValues.dtbirth}">
+
+					</div><!--col-->
+
+				</div><!--row-->
+
+
+
+
+
+
+
+
+                
+
+            </div><!--col-->
+
+        </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="row">
+            
+
+            <div class="col-md-6 col-12">
+
+
+
+
+            	<div class="body-row">
+            		
+            		<input type="text" placeholder="CEP apenas com números" name="zipcode" class="input-text" value="{$accountsValues.zipcode}">
+
+            	</div>
+
+
+            	<div class="body-row">
+            		
+            		<input type="text" placeholder="Logradouro, rua, avenida" name="desaddress" class="input-text" value="{$accountsValues.desaddress}">
+            		
+            	</div>
+
+
+            	<div class="body-row">
+            		
+            		<input type="text" placeholder="Número" name="desnumber" class="input-text" value="{$accountsValues.desnumber}">
+            		
+            	</div>
+
+
+            	<div class="body-row">
+            		
+            		<input type="text" placeholder="Complemento (opcional)" name="descomplement" class="input-text" value="{$accountsValues.descomplement}">
+            		
+            	</div>
+
+
+            	<div class="body-row">
+            		
+            		<input type="text" placeholder="Bairro" name="desdistrict" class="input-text" value="{$accountsValues.desdistrict}">
+            		
+            	</div>
+
+
+            	<div class="body-row state-city row">
+            		
+            		<div class="col-md-2 col-3">
+            			
+            			<label for="state">Estado</label>
+
+            		</div>
+
+            		<div class="col-md-10 col-9">
+            			
+            			<select id="state" form="register-form" name="desstate">
+
+		                    {loop="$state"}
+	                    	<option value="{$value.idstate}">{$value.desstate}</option> 
+		                    {/loop}
+
+		                </select>
+
+            		</div>
+            		
+            	</div>
+
+
+
+
+
+            	<div class="body-row state-city row">
+            		
+            		<div class="col-md-2 col-3">
+            			
+            			<label for="city">Cidade</label>
+
+            		</div>
+
+            		<div class="col-md-10 col-9">
+            			
+            			<select id="city" form="register-form" name="descity">
+
+		                    {loop="$city"}
+	                    	<option value="{$value.idcity}">{$value.descity}</option> 
+		                    {/loop}
+
+		                </select>
+
+            		</div>
+            		
+            	</div>
+
+
+
+            	
+
+
+            	<div class="body-footer flex">
+            		
+            		<input type="submit" id="site-accounts" name="site-accounts" class="button3" value="Continuar"><div class="load" id="load1"></div>
+            	</div>
+
+
+            	<div class="body-row buttons-wrapper1">
+						
+					<input type="checkbox" class="input-text" id="interms-check" name="interms" value="1">
+					<div id="interms-text" for="interms1">Li e Concordo com os <a href="/termos-uso">Termos de Uso</a>, os <a href="/termos-lista">Termos da Lista de Presentes Virtuais</a> e a <a href="/politica-privacidade">Política de Privacidade</a>.</div>
+
+				</div>
+	
+
+
+
+
+
+				</form>
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-6 col-12">
+                
+                 <div class="site-photo1" id="register-banner2">
+
+                	<img src="/res/images/banner/banner5.jpg">
+
+                </div>
+
+            </div><!--col-->
+
+
+
+
+
+        </div><!--row-->
+
+
+
+
+
+    </div><!--container-->
+    
+
+</section>

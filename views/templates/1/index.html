@@ -1,0 +1,1501 @@
+<style type="text/css">
+
+
+
+
+    
+    section h1{
+        color: {if="$customstyle.descolor1 != ''"}#{$customstyle.descolor1}{else}#FFFFFF{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    section h2{
+        color: {if="$customstyle.descolordate != ''"}#{$customstyle.descolordate}{else}#FFFFFF{/if};
+        font-family: {if="$customstyle.desfontfamilydate != ''"}'{$customstyle.desfontfamilydate}'{else}'Norican'{/if};
+    }
+    section h3{
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    section h4{
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    section h5{
+        font-family: {if="$customstyle.desfontfamily2 != ''"}'{$customstyle.desfontfamily2}'{else}'OpenSans'{/if};
+    }
+    section h6{
+        font-family: {if="$customstyle.desfontfamily2 != ''"}'{$customstyle.desfontfamily2}'{else}'OpenSans'{/if};
+    }
+
+
+
+
+
+
+
+
+    /********************************HEADER*****************************************/
+    header .header-title h3{
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+
+    }
+    header #domain-dropdown-menu a:hover{
+        color: {if="$customstyle.descolortexthover != ''"}#{$customstyle.descolortexthover}{else}#DD716F{/if};
+    }
+    header .cart-amount {
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-weight: 700;
+    }
+    
+    header #shopping-item-mobile .shopping-item:hover .product-count {
+        background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+    }
+    header .product-count {
+        background: none repeat scroll 0 0 {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+    }
+    /********************************HEADER*****************************************/
+
+
+
+
+
+
+
+
+    /********************************FOOTER*****************************************/
+
+    footer{
+        padding: 5% 5% 2% 5%;
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+        {if="$customstyle.inbgcolorgradient == '0'"}
+        background-color: {if="$customstyle.desbgcolorfooter != ''"}#{$customstyle.desbgcolorfooter}{else}#DD716F{/if};
+        {else}
+        text-shadow: 4px 4px 4px rgba(0, 0, 0, .45);
+        background: radial-gradient(ellipse at center, {if="$customstyle.desbgcolorfooter != ''"}#{$customstyle.desbgcolorfooter}99{else}#F7D9E199{/if} 0%, {if="$customstyle.desbgcolorfooter != ''"}#{$customstyle.desbgcolorfooter}{else}#F7D9E1{/if} 60%);
+        {/if}
+    }
+    footer a{
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+    }
+    footer a:hover{
+        color: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if};
+    }
+    footer .bottom-footer p {
+      line-height: 24px;
+      font-size: 15px;
+      padding-top: 20px;
+      border-top: 1px solid {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+      color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+    }
+    footer .footer-title h3{
+        font-size: 3rem;
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    footer .list-group-item{
+        margin: 2% 0;
+        background: none;
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+    }
+    footer .list-group-item:hover{
+        background: none;
+        color: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if};
+    }
+    footer .list-socials a {
+      border: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if} 1px solid;
+    }
+    footer .list-socials a:hover {
+      border: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if} 1px solid;
+    }
+    /********************************FOOTER*****************************************/
+
+
+
+
+
+
+
+
+
+    /********************************BANNER*****************************************/
+    #banner {
+        background: url("/res/images/template/banner/banner1.jpg") no-repeat center;
+        background-size: cover;
+        width: 100%;
+        position: relative;
+    }
+    #frame{
+        background: url("/res/images/frame/frame1.png") no-repeat center;
+        background-size: contain;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        margin: 0 auto;
+        height: 400px;
+    }
+    /********************************BANNER*****************************************/
+
+
+
+
+
+
+
+
+    /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
+    .alert-domain h1{
+        text-align: center;
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+
+    }
+    /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
+
+
+
+
+
+
+
+
+
+
+
+    /********************************DOMAIN*****************************************/
+    .dropdown a:hover{
+        color: {if="$customstyle.descolortexthover != ''"}#{$customstyle.descolortexthover}{else}#171F26{/if};
+
+    }
+    .section-title hr{
+        background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#171F26{/if};
+    }
+    /********************************DOMAIN*****************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /****************INDEX, WEDDING, PARTY , EVENTS , MESSAGE, STORE ********************/
+
+    .buttons-wrapper button{
+      padding: 10px 34px;
+      border-radius: {if="$customstyle.desborderradiusbutton != ''"}{$customstyle.desborderradiusbutton}px{else}20px{/if};
+      font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+
+      {if="$customstyle.inbgcolorbutton == '0'"}
+      background-color: transparent;
+      color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+      border: 1px solid {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+      {else}
+      background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};;
+      color: #FFFFFF;
+      border: none;
+      {/if}
+    }
+    /****************INDEX, WEDDING, PARTY , EVENTS , MESSAGE, STORE ********************/
+
+
+   
+
+
+
+    
+
+    /********************************WEDDING, PARTY*****************************************/
+    {if="$customstyle.inroundborderimage == '1'"}.main-image img{ border-radius: 50%; border: {$customstyle.desborderimagesize}px solid #{$customstyle.descolor2}DD;}{/if};
+    /********************************WEDDING, PARTY*****************************************/
+
+
+
+
+
+
+    
+</style>
+
+
+
+
+
+
+
+
+
+
+    
+<section id="banner">
+    
+    <div class="domain">
+        
+        <div class="container">
+        
+
+            <div class="row centralizer">
+                
+
+                <div class="col-md-6">
+
+
+
+
+                    <div id="frame" class="frame1">       
+
+                        <img alt="Amar Casar Site de Casamento" src="/uploads/banners/{$customstyle.desbanner}">
+
+                    </div><!--couple-->
+
+
+
+
+                </div><!--col-md-6-->
+
+           
+                
+
+                <div class="col-md-6 text-center">
+                    
+
+
+
+                    <div class="banner-title-wrapper">
+
+                        
+                        <div class="banner-title-box">
+                            
+                            <h1>{$user.desnick}</h1> 
+                            <h1>&</h1> 
+                            <h1>{$consort.desconsort}</h1>
+
+                        </div><!--banner-title-box-->
+                        
+
+                        <div class="banner-date-box">
+
+                            <h2>{function="getDateDiff($wedding.dtwedding)"}</h2>
+                            
+
+                        </div><!--banner-date-box-->
+
+
+                    </div><!--"banner-title-wrapper-->
+
+
+                </div><!--col-->
+
+
+            </div><!--row-->
+
+
+
+        </div><!--container-->
+
+    </div>
+    
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="domain">
+
+    <div class="container-fluid">            
+            
+            
+        <div class="row">
+            
+            <div class="col-12">
+
+
+                <div class="section-title">
+                        
+
+                    <h3>
+                        Casamento
+                    </h3>
+
+                    <hr>
+
+
+                </div><!--section-title-->
+
+                     
+               
+            </div><!--col-->
+        
+        </div><!--row-->
+
+
+
+      
+
+
+
+
+        <div class="row ">
+
+            <div class="col-12">
+
+
+                <div class="card-wrapper">
+
+
+                    <div class="card2 unshadow">
+                        
+
+                       
+                            
+                        <div class="body-header row">
+
+                            <div class="main-image">
+                            
+                                <img alt="Amar Casar Site de Casamento" src="/uploads/weddings/{$wedding.desphoto}">
+
+                            </div><!--card-photo-->
+
+                        </div><!--card-header-->
+
+
+
+
+
+
+
+
+
+
+                        <div class="body-row centralizer row">
+                    
+
+
+                            <div class="col-md-3 col-5">
+
+                                <h5>                           
+
+                                    {if="$wedding.dtwedding != ''"}                       
+                                        {function="formatDate($wedding.dtwedding)"}
+                                    {else}
+                                        -
+                                    {/if}
+
+                                </h5>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Data</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+
+
+
+
+
+                            <div class="col-md-3 col-5">
+                                
+                                <h5>
+                                    {if="$wedding.tmwedding != ''"}
+                                        {function="formatTime($wedding.tmwedding)"}
+                                    {else}
+                                        -
+                                    {/if}
+                                </h5>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Horário</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+                        </div><!--row-->
+
+
+
+
+
+
+
+
+                        <div class="body-row row">
+
+                            <div class="col-12">
+                                
+                                <textarea readonly="readonly" class="description-area">{$wedding.desdescription}</textarea>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="body-row centralizer row">
+                    
+
+                            <div class="col-md-3 col-12 inside-row">
+                                
+                                <h6>{if="$wedding.descostume != ''"}{$wedding.descostume}{else}-{/if}</h6>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Traje</h6>
+
+                                </div><!--card-label-->
+                               
+                            </div><!--col-->
+
+
+
+                            <div class="col-md-6 col-12 inside-row">
+
+                                <h6>
+
+                                    {if="$wedding.desaddress != ''"}
+
+                                        {$wedding.desaddress}, {$wedding.desnumber}
+                                        {if="$wedding.desdistrict != ''"} - Bairro {$wedding.desdistrict}{/if}
+
+                                        {if="$wedding.descity != ''"} - {$wedding.descity} / {$wedding.desstate}{/if}
+
+                                        {if="$wedding.descountry != ''"} / {$wedding.descountry}{/if}
+
+                                    {else}
+
+
+                                        -
+
+
+                                    {/if}
+
+                                </h6>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Local</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+                            
+
+
+                            <div class="col-md-3 col-12 inside-row">
+                                
+                                
+                                <h6>{if="$wedding.desdirections != ''"}{$wedding.desdirections}{else}-{/if}</h6>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Ponto de Referência</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+                        {if="$wedding.desaddress != ''"}
+
+                        
+                        <div class="body-footer row">
+
+
+                            <div class="buttons-wrapper">
+                                
+                                <a target="_blank" href='{function="setQueryString($wedding.desaddress,$wedding.desnumber,$wedding.desdistrict,$wedding.descity,$wedding.desstate,"bicycling")"}'>
+
+                                    <button>Bicicleta</button>
+
+                                </a>
+                                
+
+
+                                <a target="_blank" href='{function="setQueryString($wedding.desaddress,$wedding.desnumber,$wedding.desdistrict,$wedding.descity,$wedding.desstate,"transit")"}'>
+
+                                    <button>Transporte Público</button>
+
+                                </a>
+
+
+                                
+
+
+                                <a target="_blank" href='{function="setQueryString($wedding.desaddress,$wedding.desnumber,$wedding.desdistrict,$wedding.descity,$wedding.desstate,"driving")"}'>
+
+                                    <button>Carro</button>
+
+                                </a>
+
+                            </div><!--buttons-wrapper-->
+                                
+                               
+                        </div><!--body-footer-->
+
+                        {/if} 
+
+
+
+                        
+                    </div><!--card-->
+
+                </div><!--wrapper-->    
+
+            </div><!--col-->
+    
+        </div><!--row-->
+
+       
+
+
+                
+
+        <div class="row">
+            
+            <div class="col-12">
+
+
+                <div class="section-see-more">
+                        
+
+                    <a href="/{$user.desdomain}/casamento">
+                        
+                        <h4>
+                            Ver Mais...
+                        </h4>
+
+                    </a>
+
+
+                </div><!--section-see-more-->
+
+                     
+               
+            </div><!--col-->
+        
+        </div><!--row-->
+
+
+
+
+
+
+
+    </div><!--container-->
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{if="$menu.inparty != 0"}
+
+{if="$initialpage.inparty != 0"}
+
+<section class="domain">
+
+    <div class="container-fluid">            
+            
+            
+        <div class="row">
+            
+            <div class="col-12">
+
+
+                <div class="section-title">
+                        
+
+                    <h3>
+                        Festa de Casamento
+                    </h3>
+
+                    <hr>
+
+
+                </div><!--section-title-->
+
+                     
+               
+            </div><!--col-->
+        
+        </div><!--row-->
+
+
+             
+
+
+
+
+        <div class="row">
+
+            <div class="col-12">
+
+
+                <div class="card-wrapper">
+
+
+                    <div class="card2 unshadow">
+                        
+
+                       
+                            
+                        <div class="body-header row">
+
+                            <div class="main-image">
+                            
+                                <img alt="Amar Casar Site de Casamento" src="/uploads/parties/{$party.desphoto}">
+
+                            </div><!--card-photo-->
+
+                        </div><!--card-header-->
+
+
+
+
+
+
+
+
+
+
+                        <div class="body-row centralizer row">
+                    
+
+
+                            <div class="col-md-3 col-5">
+
+                                <h5>                           
+
+                                    {if="$party.dtparty != ''"}                       
+                                        {function="formatDate($party.dtparty)"}
+                                    {else}
+                                        -
+                                    {/if}
+
+                                </h5>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Data</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+
+
+
+
+
+                            <div class="col-md-3 col-5">
+                                
+                                <h5>
+                                    {if="$party.tmparty != ''"}
+                                        {function="formatTime($party.tmparty)"}
+                                    {else}
+                                        -
+                                    {/if}
+                                </h5>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Horário</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+                        </div><!--row-->
+
+
+
+
+
+
+
+
+                        <div class="body-row row">
+
+                            <div class="col-12">
+                                
+                                <textarea readonly="readonly" class="description-area">{$party.desdescription}</textarea>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="body-row centralizer row">
+                    
+
+                            <div class="col-md-3 col-12 inside-row">
+                                
+                                <h6>{if="$party.descostume != ''"}{$party.descostume}{else}-{/if}</h6>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Traje</h6>
+
+                                </div><!--card-label-->
+                               
+                            </div><!--col-->
+
+
+
+                            <div class="col-md-6 col-12 inside-row">
+
+                                <h6>
+
+                                    {if="$party.desaddress != ''"}
+
+                                        {$party.desaddress}, {$party.desnumber}
+                                        {if="$party.desdistrict != ''"} - Bairro {$party.desdistrict}{/if}
+
+                                        {if="$party.descity != ''"} - {$party.descity} / {$party.desstate}{/if}
+
+                                        {if="$party.descountry != ''"} / {$party.descountry}{/if}
+
+                                    {else}
+
+
+                                        -
+
+
+                                    {/if}
+
+                                </h6>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Local</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+                            
+
+
+                            <div class="col-md-3 col-12 inside-row">
+                                
+                                
+                                <h6>{if="$party.desdirections != ''"}{$party.desdirections}{else}-{/if}</h6>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Ponto de Referência</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+                        {if="$party.desaddress != ''"}
+
+                        
+                        <div class="body-footer row">
+
+
+                            <div class="buttons-wrapper">
+                                
+                                <a target="_blank" href='{function="setQueryString($party.desaddress,$party.desnumber,$party.desdistrict,$party.descity,$party.desstate,"bicycling")"}'>
+
+                                    <button>Bicicleta</button>
+
+                                </a>
+                                
+
+
+                                <a target="_blank" href='{function="setQueryString($party.desaddress,$party.desnumber,$party.desdistrict,$party.descity,$party.desstate,"transit")"}'>
+
+                                    <button>Transporte Público</button>
+
+                                </a>
+
+
+                                
+
+
+                                <a target="_blank" href='{function="setQueryString($party.desaddress,$party.desnumber,$party.desdistrict,$party.descity,$party.desstate,"driving")"}'>
+
+                                    <button>Carro</button>
+
+                                </a>
+
+                            </div><!--buttons-wrapper-->
+                                
+                               
+                        </div><!--body-footer-->
+
+                        {/if} 
+
+
+
+                        
+                    </div><!--card-->
+
+                </div><!--wrapper-->    
+
+            </div><!--col-->
+    
+        </div><!--row-->
+
+       
+
+
+                
+
+        <div class="row">
+            
+            <div class="col-12">
+
+
+                <div class="section-see-more">
+                        
+
+                    <a href="/{$user.desdomain}/festa-de-casamento">
+                        
+                        <h4>
+                            Ver Mais...
+                        </h4>
+
+                    </a>
+
+
+                </div><!--section-see-more-->
+
+                     
+               
+            </div><!--col-->
+        
+        </div><!--row-->
+
+
+
+
+
+
+
+    </div><!--container-->
+
+</section>
+
+
+{/if}
+
+{/if}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{if="$menu.inbestfriend != 0"}
+
+{if="$initialpage.inbestfriend != 0"}
+
+{if="!$bestfriend"}
+<section class="domain">
+
+    <div class="container-fluid">
+
+
+
+
+        <div class="row">
+            
+            <div class="col-12">
+
+
+                <div class="section-title">
+                        
+
+                    <h3>
+                        Padrinhos e Madrinhas
+                    </h3>
+
+                    <hr>
+
+                </div><!--section-title-->
+
+                     
+               
+            </div><!--col-->
+        
+        </div><!--row-->
+
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Ainda não há padrinhos ou madrinhas cadastradas</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+
+
+        
+
+    </div>
+
+</section>
+
+{else}
+
+<section class="domain">
+
+    <div class="container-fluid">            
+            
+            
+        <div class="row">
+            
+            <div class="col-12">
+
+
+                <div class="section-title">
+                        
+
+                    <h3>
+                        Padrinhos e Madrinhas
+                    </h3>
+
+                    <hr>
+
+                </div><!--section-title-->
+
+                     
+               
+            </div><!--col-->
+        
+        </div><!--row-->
+
+
+
+    
+
+
+
+        <div class="row">
+
+            <div class="col-12">
+                 
+
+                <div class="card-wrapper">
+
+
+
+
+
+
+
+
+
+                    {loop="$bestfriend"}
+
+
+                    <div class="card1 card-bestfriend">
+                        
+
+                       
+                            
+                        
+
+
+                        <div class="body-header">
+
+                            <div class="card-image">
+                            
+                                <img alt="Amar Casar Site de Casamento" src="/uploads/bestfriends/{$value.desphoto}">
+
+                            </div><!--card-photo-->
+
+                        </div><!--card-header-->
+
+
+
+
+
+                        <div class="card-body">
+                            
+
+
+                            <div class="title">
+
+
+                                <h5>{$value.desbestfriend}</h5>
+
+                                <hr>
+
+
+                            </div><!--body-title-->
+
+
+
+
+
+                            <div class="body-footer">
+
+                                <textarea readonly="readonly" class="description">{$value.desdescription}</textarea>
+
+                            </div><!--body-row-->
+
+
+
+
+
+
+
+                        </div><!--card-body-->
+
+
+                         
+
+                        
+                            
+                        
+                    </div><!--card1-->
+
+                                
+                    {/loop}
+
+
+                </div><!--wrapper-->
+
+            </div><!--col-->
+    
+        </div><!--row-->
+
+
+        
+
+
+
+        <div class="row">
+            
+            <div class="col-12">
+
+
+                <div class="section-see-more">
+                        
+
+                    <a href="/{$user.desdomain}/padrinhos-madrinhas">
+                        
+                        <h4>
+                            Ver Mais...
+                        </h4>
+
+                    </a>
+
+
+                </div><!--section-see-more-->
+
+                     
+               
+            </div><!--col-->
+        
+        </div><!--row-->
+        
+
+
+
+
+
+
+    </div><!--container-->
+
+</section>
+
+{/if} 
+
+{/if}
+
+{/if}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{if="$menu.inalbum != 0"}
+
+{if="$initialpage.inalbum != 0"}
+
+{if="!$album"}
+
+<section class="domain">
+
+    <div class="container-fluid">
+
+
+
+
+        <div class="row">
+            
+            <div class="col-12">
+
+
+                <div class="section-title">
+                        
+
+                    <h3>
+                        Album
+                    </h3>
+
+                    <hr>
+
+                </div><!--section-title-->
+
+                     
+               
+            </div><!--col-->
+        
+        </div><!--row-->
+
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Ainda não há imagens cadastradas</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+
+
+        
+
+    </div>
+
+</section>
+
+{else}
+
+
+<section class="domain">
+
+    <div class="container-fluid">            
+            
+            
+        <div class="row">
+            
+            <div class="col-12">
+
+
+                <div class="section-title">
+                        
+
+                    <h3>
+                        Album
+                    </h3>
+
+                    <hr>
+
+                </div><!--section-title-->
+
+                     
+               
+            </div><!--col-->
+        
+        </div><!--row-->
+
+
+
+    
+
+
+
+        <div class="row">
+
+            <div class="col-12">
+                 
+
+                <div class="card-wrapper">
+
+
+                    {loop="$album"}
+
+
+                    <div class="card1">
+                        
+
+                       
+                            
+                        
+
+
+                        <div class="body-header">
+
+                            <div class="card-image">
+                            
+                                <img alt="Amar Casar Site de Casamento" src="/uploads/albuns/{$value.desphoto}">
+
+                            </div><!--card-photo-->
+
+                        </div><!--card-header-->
+
+
+
+
+
+                        <div class="card-body">
+                            
+
+
+                            <div class="title">
+
+
+                                <h5>{$value.desalbum}</h5>
+
+                                <hr>
+
+
+                            </div><!--body-title-->
+
+
+
+
+
+                            <div class="body-row">
+
+                                <textarea readonly="readonly" class="description">{$value.desdescription}</textarea>
+
+                            </div><!--body-row-->
+
+
+
+
+
+
+                            <div class="body-footer buttons-wrapper">
+                                
+                                <a target="_blank" href="/uploads/albuns/{$value.desphoto}">
+                                
+                                    <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>Ver</span>
+
+                                </a>
+
+                            </div>
+
+
+
+
+
+                        </div><!--card-body-->
+
+
+                         
+
+                        
+                            
+                        
+                    </div><!--card1-->
+
+                                
+                    {/loop}
+
+
+
+
+
+
+                </div><!--wrapper-->
+
+            </div><!--col-->
+    
+        </div><!--row-->
+
+
+        
+
+
+        <div class="row">
+            
+            <div class="col-12">
+
+
+                <div class="section-see-more">
+                        
+
+                    <a href="/{$user.desdomain}/album">
+                        
+                        <h4>
+                            Ver Mais...
+                        </h4>
+
+                    </a>
+
+
+                </div><!--section-see-more-->
+
+                     
+               
+            </div><!--col-->
+        
+        </div><!--row-->
+
+        
+
+
+
+
+
+
+    </div><!--container-->
+
+</section>
+
+{/if} 
+
+{/if}
+
+{/if}
+
+

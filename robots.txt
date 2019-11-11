@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /dashboard/
+Disallow: /template/
+Disallow: /login/
+Disallow: /recuperar-senha/
+Disallow: /termos-uso/
+Disallow: /termos-lista/
+Disallow: /central-ajuda/
+Disallow: /cadastrar/
+Disallow: /carrinho/
+Disallow: /checkout/
+Disallow: /buscar/
+
+
+

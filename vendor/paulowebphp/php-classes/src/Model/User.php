@@ -1,0 +1,4743 @@
+<?php 
+
+namespace Core\Model;
+
+
+use \Core\Mailer;
+use \Core\MailerPasswordRecovery;
+use \Core\Maintenance;
+use \Core\Model;
+use \Core\Rule;
+use \Core\DB\Sql;
+use \Core\Model\Account;
+use \Core\Model\Bank;
+use \Core\Model\Consort;
+use \Core\Model\CustomStyle;
+use \Core\Model\InitialPage;
+use \Core\Model\Menu;
+use \Core\Model\Party;
+use \Core\Model\Plan;
+use \Core\Model\ProductConfig;
+use \Core\Model\RsvpConfig;
+use \Core\Model\SocialMedia;
+use \Core\Model\Testimonial;
+use \Core\Model\Wedding;
+
+
+
+class User extends Model
+{
+
+	const SESSION = "amarcasar-user";
+
+	# CHAVE DE ENCRIPTAÇÃO TEM QUE TER 16 CARACTERES
+	const SECRET = "Paulowebphp_Secret";
+
+	const ERROR = "amarcasar-user-error";
+
+	const ERROR_REGISTER = "amarcasar-user-register";
+
+	const SUCCESS = "amarcasar-user-success";
+
+
+
+
+
+
+
+	public static function getFromSession()
+	{
+
+		if( 
+
+			isset($_SESSION[User::SESSION])
+			&& 
+			(int)$_SESSION[User::SESSION]['iduser'] > 0
+		)
+		{
+	
+			$user = new User();
+
+			$user->setData($_SESSION[User::SESSION]);
+	
+			return $user;
+
+		}//end if
+		else
+		{
+
+			return false;
+
+			
+		}//end else
+
+
+	}//END getFromSession
+
+
+
+	
+
+
+	
+
+
+
+
+
+
+	/*public static function getFromSession()
+	{
+		$user = new User();
+
+		if( 
+
+			isset($_SESSION[User::SESSION])
+			&& 
+			(int)$_SESSION[User::SESSION]['iduser'] > 0
+		)
+		{
+
+			$user->setData($_SESSION[User::SESSION]);
+
+		}//end if
+
+		return $user;
+
+	}//END getFromSession*/
+
+
+
+
+
+
+
+
+
+	# Apenas verifica se está logado, nada mais
+	public static function checkLogin( $inadmin = true )
+	{
+		if(
+
+			!isset($_SESSION[User::SESSION])
+			|| 
+			!$_SESSION[User::SESSION]
+			|| 
+			!(int)$_SESSION[User::SESSION]["iduser"] > 0
+
+		)
+		{
+
+			# Em qualquer das condições acima, não está logado
+			return false;
+	
+		}//end if
+		else
+		{
+			if(
+
+				$inadmin === true 
+				&& 
+				(bool)$_SESSION[User::SESSION]['inadmin'] === true
+
+			)
+			{
+
+				# Está logado e é administrador
+				return true;
+
+			}//end if
+			else if( $inadmin === false )
+			{
+				
+				# Está logado, mas não é administrador
+				return true;
+
+			}//end else if
+			else
+			{
+				# Não é administrador, nem cliente, e não está logado
+				return false;
+
+			}//end else
+
+		}//end else
+
+	}//END checkLogin
+
+
+
+
+
+
+
+
+
+
+
+	/*
+	# ANTES DA AULA 117
+	public static function login($login, $password)
+	{
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT * FROM tb_users 
+			WHERE deslogin = :LOGIN
+
+			", array(
+
+			":LOGIN"=>$login
+		));
+
+		if(count($results) === 0)
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida");
+			
+		}#END if
+
+		$data = $results[0];
+
+		if(password_verify($password, $data["despassword"]) === true)
+		{
+			$user = new User();
+
+			$user->setData($data);
+
+			$_SESSION[User::SESSION] = $user->getValues();
+
+			return $user;
+
+		} else
+
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida");
+			
+		}
+
+	}//END login
+	*/
+
+
+
+
+
+
+
+	public function getFromHash( $hash )
+	{
+
+		$iduser = base64_decode($hash);
+
+
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT * FROM tb_users a
+			INNER JOIN tb_persons b ON a.idperson = b.idperson
+			WHERE a.iduser = :iduser
+			ORDER BY a.dtregister DESC
+			LIMIT 1;
+
+			",  
+			
+			array(
+
+				":iduser"=>$iduser
+
+			)//end array
+
+		);//end select
+
+
+
+		
+		
+
+		
+
+
+
+
+		if( count($results) > 0 )
+		{
+
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+				//$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
+				$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
+				
+			}//end if
+
+
+			$this->setData($results[0]);
+
+
+		}//end if
+
+
+	}//END getFromHash
+
+
+
+
+
+
+
+
+
+	# AULA 117
+	public static function login( $login, $password )
+	{	
+
+		
+		
+		
+
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT * FROM tb_users a
+			INNER JOIN tb_persons b ON a.idperson = b.idperson
+			WHERE a.deslogin = :LOGIN
+			ORDER BY a.dtregister DESC
+			LIMIT 1;
+
+			",  
+			
+			array(
+
+				":LOGIN"=>$login
+
+			)//end array
+
+		);//end select
+
+		
+			
+		
+		
+		
+
+		if( count($results) === 0 )
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida");
+			
+		}//end if
+
+		$data = $results[0];
+
+
+		
+		
+		
+
+		if( password_verify( $password, $data["despassword"] ) === true )
+		{
+
+
+			$user = new User();
+
+				
+				
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+				//$data['desperson'] = utf8_encode($data['desperson']);
+				$data['desnick'] = utf8_encode($data['desnick']);		
+				
+			}//end if
+
+			$user->setData($data);
+
+
+
+			if( 
+
+				(int)$user->getinadmin() == 0
+				&&
+				(int)$user->getinregister() == 0
+				&&
+				(int)$user->getinplancontext() == 0
+
+			)
+			{	
+
+				$user->setRegisterEntities();
+				$user->setinregister(1);
+				$user->update();
+
+			}//end if
+
+
+			
+			$_SESSION[User::SESSION] = $user->getValues();
+
+			return $user;
+			
+			
+
+		}//end if
+		else
+
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida");
+			
+		}//end else
+
+
+	}//END login
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*public static function login( $login, $password )
+	{	
+
+		
+		
+		
+
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT * FROM tb_users a
+			INNER JOIN tb_persons b ON a.idperson = b.idperson
+			WHERE a.deslogin = :LOGIN
+			ORDER BY a.dtregister DESC
+			LIMIT 1;
+
+			",  
+			
+			array(
+
+				":LOGIN"=>$login
+
+			)//end array
+
+		);//end select
+
+		
+			
+		
+		
+		
+
+		if( count($results) === 0 )
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida");
+			
+		}//end if
+
+		$data = $results[0];
+
+
+		
+		
+		
+
+		if( password_verify( $password, $data["despassword"] ) === true )
+		{
+			
+
+
+			if( 
+
+				(int)$data['inadmin'] == 0
+				&&
+				(int)$data['inaccount'] == 0
+				&&
+				(int)$data['inplancontext'] != 0
+
+			)
+			{	
+
+				$hash = base64_encode($data['iduser']);
+
+				Account::setError('Finalize o seu cadastro');
+				header('Location: /cadastrar/'.$hash);
+				exit;
+
+			}//end if
+			else
+			{
+
+
+				$user = new User();
+
+				
+				
+				if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+				{
+					
+					//$data['desperson'] = utf8_encode($data['desperson']);
+					$data['desnick'] = utf8_encode($data['desnick']);		
+					
+				}//end if
+
+				$user->setData($data);
+
+				
+				$_SESSION[User::SESSION] = $user->getValues();
+
+				return $user;
+
+			}//end if
+
+
+			
+
+		}//end if
+		else
+
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida");
+			
+		}//end else
+
+
+	}//END login*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*public static function login( $login, $password )
+	{	
+
+
+		
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT * FROM tb_users a
+			INNER JOIN tb_persons b ON a.idperson = b.idperson
+			WHERE a.deslogin = :LOGIN
+			ORDER BY a.dtregister DESC
+			LIMIT 1;
+
+			",  
+			
+			array(
+
+				":LOGIN"=>$login
+
+			)//end array
+
+		);//end select
+
+		
+			
+		
+		
+		
+
+		if( count($results) === 0 )
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida");
+			
+		}//end if
+
+		$data = $results[0];
+
+
+		
+		
+		
+
+		if( password_verify( $password, $data["despassword"] ) === true )
+		{
+
+
+
+			if( 
+
+				(int)$data['inadmin'] == 0
+				&&
+				(int)$data['inaccount'] == 0
+
+			)
+			{	
+
+				$hash = base64_encode($data['iduser']);
+
+				Account::setError('Finalize o seu cadastro');
+				header('Location: /cadastrar/'.$hash);
+				exit;
+
+			}//end if
+			else
+			{
+
+
+				$user = new User();
+
+				$data['desperson'] = utf8_encode($data['desperson']);
+				$data['desnick'] = utf8_encode($data['desnick']);
+				
+
+				$user->setData($data);
+
+				
+				$_SESSION[User::SESSION] = $user->getValues();
+
+				return $user;
+
+			}//end if
+
+
+			
+
+		}//end if
+		else
+
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida");
+			
+		}//end else
+
+
+	}//END login*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function loginAfterPlanPurchase( $login, $password )
+	{
+		
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT * FROM tb_users a
+			INNER JOIN tb_persons b ON a.idperson = b.idperson
+			WHERE a.deslogin = :LOGIN
+			ORDER BY a.dtregister DESC
+			LIMIT 1;
+
+			",  
+			
+			array(
+
+				":LOGIN"=>$login
+
+			)//end array
+
+		);//end select
+
+
+
+		
+
+		if( count($results) === 0 )
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida");
+			
+		}//end if
+
+		$data = $results[0];
+
+
+		
+
+
+
+		if( $password === $data["despassword"] )
+		{
+
+
+
+			$user = new User();
+
+			
+
+
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+				//$data['desperson'] = utf8_encode($data['desperson']);
+				$data['desnick'] = utf8_encode($data['desnick']);
+				
+			}//end if
+			
+
+			$user->setData($data);
+
+			$_SESSION[User::SESSION] = $user->getValues();
+
+			return $user;
+
+
+
+		}//end if
+		else
+
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida");
+			
+		}//end else
+
+	}//END login
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function getRecaptcha( $response )
+	{
+
+		
+		$ch = curl_init();
+
+
+
+		# CURLOPT_URL - Define a URL que será requisitada pelo cURL
+
+		# CURLOPT_RETURNTRANSFER - Define o tipo de retorno que ocorrerá da requisição. Se definirmos TRUE ou 1, o retorno será uma string
+
+		# CURLOPT_SSL_VERIFYPEER - Indica se ocorrerá a verificação dos peers durante a requisição. Se informarmos 0 ou FALSE, a verificação não ocorrerá
+
+		/*curl_setopt( $ch, CURLOPT_HTTPHEADER, array (
+	        "Content-Type: application/json",
+	        "secret: 6Lenr7EUAAAAAPkp5iZlX15I1wG9RDCAQmBG1w6E",
+	        "response: $response"
+	    ));*/
+
+	    
+
+	    curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+
+	    $fields = array(
+
+	    	'secret' => '6Lenr7EUAAAAAPkp5iZlX15I1wG9RDCAQmBG1w6E',
+	    	'response'=> $response
+
+		);
+
+	    curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+
+		
+
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+		# TRUE É PARA SERIALIZAR, PARA VIR COMO ARRAY E NÃO COMO OBJETO
+		$data = json_decode( curl_exec($ch), true );
+
+		# Necessito fechar com curl_close() por se tratar de um ponteiro de memória. Se não fechar, cada vez que der um REFRESH na página, no front ele irá criar mais um ponteiro e vai pesar na memória
+
+		curl_close($ch);
+
+		return $data;
+
+		
+
+	}//END getCEP
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+	/*public static function login( $login, $password )
+	{
+		
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT * FROM tb_users a
+			INNER JOIN tb_persons b
+			ON a.idperson = b.idperson
+			WHERE a.deslogin = :LOGIN
+			ORDER BY a.dtregister DESC
+			LIMIT 1;
+
+			",  
+			
+			array(
+
+				":LOGIN"=>$login
+
+			)//end array
+
+		);//end select
+
+		
+				
+
+		
+
+		if( count($results) === 0 )
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida");
+			
+		}//end if
+
+		$data = $results[0];
+
+
+		
+
+		if( password_verify( $password, $data["despassword"] ) === true )
+		{
+			$user = new User();
+
+			# DEBUG	
+
+			# $user->setiduser($data['iduser']);
+			# var_dump($user);
+			# exit;
+
+			$data['desperson'] = utf8_encode($data['desperson']);
+
+			$user->setData($data);
+
+			# echo "<pre>";
+			# var_dump($user);
+			# exit;
+
+			$_SESSION[User::SESSION] = $user->getValues();
+
+			return $user;
+
+		}//end if
+		else
+
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida");
+			
+		}//end else
+
+	}//END login*/
+
+
+
+
+
+
+
+	/* 
+	# Antes da aula 117
+	public static function verifyLogin($inadmin = true)
+	{
+		if(!User::checkLogin($inadmin))		
+		{
+			header("Location: /481738admin/login/");
+			exit;
+
+		}#END if verifyLogin
+
+	}//END loginAfterPlanPurchase
+	*/
+
+
+
+
+
+
+
+
+
+
+	# Aula 117
+	public static function verifyLogin( $inadmin = true )
+	{
+
+
+		if( !User::checkLogin($inadmin) )		
+		{
+			
+			
+			if( $inadmin )
+			{
+
+				header("Location: /481738admin/login");
+
+			}//end if
+			else
+			{
+
+				header("Location: /login");
+
+			}//end else
+
+			exit;
+
+		}//end if
+
+		
+
+	}//END verifyLogin
+
+
+
+
+
+
+
+
+
+
+	public static function logout()
+	{
+		$_SESSION[User::SESSION] = NULL;
+		
+	}//END logout
+
+
+
+
+
+
+
+
+	public function setToSession()
+	{
+
+		$_SESSION[User::SESSION] = $this->getValues();
+
+	}//END setToSession
+
+
+
+
+
+
+
+
+
+
+	public static function listAll()
+	{
+		$sql = new Sql();
+
+		return $sql->select("
+
+			SELECT * FROM tb_users a 
+			INNER JOIN tb_persons b ON a.idperson = b.idperson
+			ORDER BY b.desperson;
+
+		");//end select
+		
+	}//END listAll
+
+
+
+
+
+
+
+
+
+
+
+	/*public function save()
+	{
+		$sql = new Sql();
+		
+
+		$results = $sql->select("
+
+			CALL sp_users_save(
+				
+				:deslogin, 
+				:despassword, 
+				:desdomain, 
+				:inadmin, 
+				:inseller, 
+				:inaccount, 
+				:inplancontext, 
+				:inplan,  
+				:interms,
+				:desipterms,
+				:dtterms,
+				:dtplanbegin, 
+				:dtplanend,
+				:desperson,
+				:desnick,
+				:desemail, 
+				:nrcountryarea,
+				:nrddd,
+				:nrphone,
+				:intypedoc, 
+				:desdocument,
+				:desphoto, 
+				:desextension,
+				:dtbirth
+				
+			)", 
+			
+			array(
+
+				":deslogin"=>$this->getdeslogin(),
+				":despassword"=>User::getPasswordHash($this->getdespassword()),
+				":desdomain"=>$this->getdesdomain(),
+				":inadmin"=>$this->getinadmin(),
+				":inseller"=>$this->getinseller(),
+				":inaccount"=>$this->getinaccount(),
+				":inplancontext"=>$this->getinplancontext(),
+				":inplan"=>$this->getinplan(),
+				":interms"=>$this->getinterms(),
+				":desipterms"=>$this->getdesipterms(),
+				":dtterms"=>$this->getdtterms(),
+				":dtplanbegin"=>$this->getdtplanbegin(),
+				":dtplanend"=>$this->getdtplanend(),
+				":desperson"=>$this->getdesperson(),
+				":desnick"=>$this->getdesnick(),
+				":desemail"=>$this->getdesemail(),
+				":nrcountryarea"=>$this->getnrcountryarea(),
+				":nrddd"=>$this->getnrddd(),
+				":nrphone"=>$this->getnrphone(),
+				":intypedoc"=>$this->getintypedoc(),
+				":desdocument"=>$this->getdesdocument(),
+				":desphoto"=>$this->getdesphoto(),
+				":desextension"=>$this->getdesextension(),
+				":dtbirth"=>$this->getdtbirth()
+			
+			)//end array
+
+		);//end select
+
+
+		//$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
+		//$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
+		//$results[0]['desdomain'] = utf8_encode($results[0]['desdomain']);
+
+		
+		
+
+
+		if(count($results[0]) > 0)
+		{
+
+			$this->setData($results[0]);
+
+
+		}//end if
+
+	}//END save*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public function save()
+	{
+		$sql = new Sql();
+		
+
+
+
+
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+		{
+			# code...
+
+			$results = $sql->select("
+
+				CALL sp_users_save(
+					
+					:deslogin, 
+					:despassword, 
+					:desdomain, 
+					:inadmin, 
+					:inseller, 
+					:inregister, 
+					:inaccount, 
+					:inplancontext, 
+					:inplan,  
+					:interms,
+					:desipterms,
+					:dtterms,
+					:dtplanbegin, 
+					:dtplanend,
+					:desperson,
+					:desnick,
+					:desemail, 
+					:nrcountryarea,
+					:nrddd,
+					:nrphone,
+					:intypedoc, 
+					:desdocument,
+					:desphoto, 
+					:desextension,
+					:dtbirth
+					
+				)", 
+				
+				array(
+
+					":deslogin"=>$this->getdeslogin(),
+					":despassword"=>User::getPasswordHash($this->getdespassword()),
+					":desdomain"=>$this->getdesdomain(),
+					":inadmin"=>$this->getinadmin(),
+					":inseller"=>$this->getinseller(),
+					":inregister"=>$this->getinregister(),
+					":inaccount"=>$this->getinaccount(),
+					":inplancontext"=>$this->getinplancontext(),
+					":inplan"=>$this->getinplan(),
+					":interms"=>$this->getinterms(),
+					":desipterms"=>$this->getdesipterms(),
+					":dtterms"=>$this->getdtterms(),
+					":dtplanbegin"=>$this->getdtplanbegin(),
+					":dtplanend"=>$this->getdtplanend(),
+					":desperson"=>utf8_decode($this->getdesperson()),
+					":desnick"=>utf8_decode($this->getdesnick()),
+					":desemail"=>$this->getdesemail(),
+					":nrcountryarea"=>$this->getnrcountryarea(),
+					":nrddd"=>$this->getnrddd(),
+					":nrphone"=>$this->getnrphone(),
+					":intypedoc"=>$this->getintypedoc(),
+					":desdocument"=>$this->getdesdocument(),
+					":desphoto"=>$this->getdesphoto(),
+					":desextension"=>$this->getdesextension(),
+					":dtbirth"=>$this->getdtbirth()
+				
+				)//end array
+
+			);//end select
+
+
+			//$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
+			$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
+			//$results[0]['desdomain'] = utf8_encode($results[0]['desdomain']);
+			
+			
+			
+
+		}//end if
+		else
+		{
+
+
+			$results = $sql->select("
+
+				CALL sp_users_save(
+					
+					:deslogin, 
+					:despassword, 
+					:desdomain, 
+					:inadmin, 
+					:inseller, 
+					:inregister, 
+					:inaccount, 
+					:inplancontext, 
+					:inplan,  
+					:interms,
+					:desipterms,
+					:dtterms,
+					:dtplanbegin, 
+					:dtplanend,
+					:desperson,
+					:desnick,
+					:desemail, 
+					:nrcountryarea,
+					:nrddd,
+					:nrphone,
+					:intypedoc, 
+					:desdocument,
+					:desphoto, 
+					:desextension,
+					:dtbirth
+					
+				)", 
+				
+				array(
+
+					":deslogin"=>$this->getdeslogin(),
+					":despassword"=>User::getPasswordHash($this->getdespassword()),
+					":desdomain"=>$this->getdesdomain(),
+					":inadmin"=>$this->getinadmin(),
+					":inseller"=>$this->getinseller(),
+					":inregister"=>$this->getinregister(),
+					":inaccount"=>$this->getinaccount(),
+					":inplancontext"=>$this->getinplancontext(),
+					":inplan"=>$this->getinplan(),
+					":interms"=>$this->getinterms(),
+					":desipterms"=>$this->getdesipterms(),
+					":dtterms"=>$this->getdtterms(),
+					":dtplanbegin"=>$this->getdtplanbegin(),
+					":dtplanend"=>$this->getdtplanend(),
+					":desperson"=>$this->getdesperson(),
+					":desnick"=>$this->getdesnick(),
+					":desemail"=>$this->getdesemail(),
+					":nrcountryarea"=>$this->getnrcountryarea(),
+					":nrddd"=>$this->getnrddd(),
+					":nrphone"=>$this->getnrphone(),
+					":intypedoc"=>$this->getintypedoc(),
+					":desdocument"=>$this->getdesdocument(),
+					":desphoto"=>$this->getdesphoto(),
+					":desextension"=>$this->getdesextension(),
+					":dtbirth"=>$this->getdtbirth()
+				
+				)//end array
+
+			);//end select
+
+
+
+			
+	        
+
+
+		}//end else
+
+
+		
+		
+
+
+		if(count($results[0]) > 0)
+		{
+
+			$this->setData($results[0]);
+
+
+		}//end if
+
+	}//END save
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+	# Aula 117
+	public function get( $iduser )
+	{
+		$sql = new Sql();
+
+		$results = $sql->select("
+		
+			SELECT * FROM tb_users a 
+			INNER JOIN tb_persons b ON a.idperson = b.idperson
+			WHERE a.iduser = :iduser
+			ORDER BY a.dtregister DESC
+			LIMIT 1;
+
+
+			
+			", 
+		
+			array(
+
+				":iduser"=>$iduser
+
+			)//end array
+
+		);//end select
+
+				
+
+
+		if ( count($results) > 0 )
+		{
+			# code...
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+				//$data['desperson'] = utf8_encode($data['desperson']);
+				$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
+				
+			}//end if
+			
+
+			$this->setData($results[0]);
+
+
+		}//end if
+
+	}//END get
+
+
+
+
+
+
+
+
+
+	/*
+	# Antes da aula 117
+	public function get($iduser)
+	{
+		$sql = new Sql();
+
+		$results = $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) WHERE a.iduser = :iduser", array(
+
+			":iduser"=>$iduser
+
+		));
+
+		$this->setData($results[0]);
+
+	}//END get
+	*/
+
+
+
+
+
+
+
+
+
+	/*public function update()
+	{
+		$sql = new Sql();
+
+		$results = $sql->select("
+		
+			CALL sp_users_update(
+				
+				:iduser,
+				:deslogin, 
+				:despassword, 
+				:desdomain, 
+				:inadmin, 
+				:inseller, 
+				:inaccount,
+				:inplancontext, 
+				:inplan,  
+				:interms,
+				:desipterms,
+				:dtterms,
+				:dtplanbegin, 
+				:dtplanend,
+				:desperson,
+				:desnick,
+				:desemail, 
+				:nrcountryarea, 
+				:nrddd,
+				:nrphone,
+				:intypedoc, 
+				:desdocument,
+				:desphoto, 
+				:desextension,
+				:dtbirth
+			
+			)", 
+			
+			array(
+
+				":iduser"=>$this->getiduser(),
+				":deslogin"=>$this->getdeslogin(),
+				":despassword"=>$this->getdespassword(),
+				":desdomain"=>$this->getdesdomain(),
+				":inadmin"=>$this->getinadmin(),
+				":inseller"=>$this->getinseller(),
+				":inaccount"=>$this->getinaccount(),
+				":inplancontext"=>$this->getinplancontext(),
+				":inplan"=>$this->getinplan(),
+				":interms"=>$this->getinterms(),
+				":desipterms"=>$this->getdesipterms(),
+				":dtterms"=>$this->getdtterms(),
+				":dtplanbegin"=>$this->getdtplanbegin(),
+				":dtplanend"=>$this->getdtplanend(),
+				":desperson"=>$this->getdesperson(),
+				":desnick"=>$this->getdesnick(),
+				":desemail"=>$this->getdesemail(),
+				":nrcountryarea"=>$this->getnrcountryarea(),
+				":nrddd"=>$this->getnrddd(),
+				":nrphone"=>$this->getnrphone(),
+				":intypedoc"=>$this->getintypedoc(),
+				":desdocument"=>$this->getdesdocument(),
+				":desphoto"=>$this->getdesphoto(),
+				":desextension"=>$this->getdesextension(),
+				":dtbirth"=>$this->getdtbirth()
+
+			)//end array
+		
+		);//end select
+
+
+		//$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
+		//$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
+		//$results[0]['desdomain'] = utf8_encode($results[0]['desdomain']);
+
+		
+	
+		if(count($results[0]) > 0)
+		{
+
+			$this->setData($results[0]);
+
+
+		}//end if
+		
+
+
+
+	}//END update*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public function update()
+	{
+		$sql = new Sql();
+
+		
+
+
+
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+		{
+			# code...
+
+			$results = $sql->select("
+		
+				CALL sp_users_update(
+					
+					:iduser,
+					:deslogin,
+					:despassword, 
+					:desdomain, 
+					:inadmin, 
+					:inseller, 
+					:inregister,
+					:inaccount,
+					:inplancontext, 
+					:inplan,  
+					:interms,
+					:desipterms,
+					:dtterms,
+					:dtplanbegin, 
+					:dtplanend,
+					:desperson,
+					:desnick,
+					:desemail, 
+					:nrcountryarea, 
+					:nrddd,
+					:nrphone,
+					:intypedoc, 
+					:desdocument,
+					:desphoto, 
+					:desextension,
+					:dtbirth
+				
+				)", 
+				
+				array(
+
+					":iduser"=>$this->getiduser(),
+					":deslogin"=>$this->getdeslogin(),
+					":despassword"=>$this->getdespassword(),
+					":desdomain"=>$this->getdesdomain(),
+					":inadmin"=>$this->getinadmin(),
+					":inseller"=>$this->getinseller(),
+					":inregister"=>$this->getinregister(),
+					":inaccount"=>$this->getinaccount(),
+					":inplancontext"=>$this->getinplancontext(),
+					":inplan"=>$this->getinplan(),
+					":interms"=>$this->getinterms(),
+					":desipterms"=>$this->getdesipterms(),
+					":dtterms"=>$this->getdtterms(),
+					":dtplanbegin"=>$this->getdtplanbegin(),
+					":dtplanend"=>$this->getdtplanend(),
+					":desperson"=>utf8_decode($this->getdesperson()),
+					":desnick"=>utf8_decode($this->getdesnick()),
+					":desemail"=>$this->getdesemail(),
+					":nrcountryarea"=>$this->getnrcountryarea(),
+					":nrddd"=>$this->getnrddd(),
+					":nrphone"=>$this->getnrphone(),
+					":intypedoc"=>$this->getintypedoc(),
+					":desdocument"=>$this->getdesdocument(),
+					":desphoto"=>$this->getdesphoto(),
+					":desextension"=>$this->getdesextension(),
+					":dtbirth"=>$this->getdtbirth()
+
+				)//end array
+			
+			);//end select
+
+
+			//$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
+			$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
+			//$results[0]['desdomain'] = utf8_encode($results[0]['desdomain']);
+
+			
+			
+
+		}//end if
+		else
+		{
+
+
+			
+			$results = $sql->select("
+		
+				CALL sp_users_update(
+					
+					:iduser,
+					:deslogin, 
+					:despassword, 
+					:desdomain, 
+					:inadmin, 
+					:inseller, 
+					:inregister,
+					:inaccount,
+					:inplancontext, 
+					:inplan,  
+					:interms,
+					:desipterms,
+					:dtterms,
+					:dtplanbegin, 
+					:dtplanend,
+					:desperson,
+					:desnick,
+					:desemail, 
+					:nrcountryarea, 
+					:nrddd,
+					:nrphone,
+					:intypedoc, 
+					:desdocument,
+					:desphoto, 
+					:desextension,
+					:dtbirth
+				
+				)", 
+				
+				array(
+
+					":iduser"=>$this->getiduser(),
+					":deslogin"=>$this->getdeslogin(),
+					":despassword"=>$this->getdespassword(),
+					":desdomain"=>$this->getdesdomain(),
+					":inadmin"=>$this->getinadmin(),
+					":inseller"=>$this->getinseller(),
+					":inregister"=>$this->getinregister(),
+					":inaccount"=>$this->getinaccount(),
+					":inplancontext"=>$this->getinplancontext(),
+					":inplan"=>$this->getinplan(),
+					":interms"=>$this->getinterms(),
+					":desipterms"=>$this->getdesipterms(),
+					":dtterms"=>$this->getdtterms(),
+					":dtplanbegin"=>$this->getdtplanbegin(),
+					":dtplanend"=>$this->getdtplanend(),
+					":desperson"=>$this->getdesperson(),
+					":desnick"=>$this->getdesnick(),
+					":desemail"=>$this->getdesemail(),
+					":nrcountryarea"=>$this->getnrcountryarea(),
+					":nrddd"=>$this->getnrddd(),
+					":nrphone"=>$this->getnrphone(),
+					":intypedoc"=>$this->getintypedoc(),
+					":desdocument"=>$this->getdesdocument(),
+					":desphoto"=>$this->getdesphoto(),
+					":desextension"=>$this->getdesextension(),
+					":dtbirth"=>$this->getdtbirth()
+
+				)//end array
+			
+			);//end select
+
+	        
+
+
+		}//end else
+
+
+		
+	
+		if(count($results[0]) > 0)
+		{
+
+			$this->setData($results[0]);
+
+
+		}//end if
+		
+
+
+
+	}//END update
+
+
+
+
+
+
+
+
+
+
+
+
+	public function delete()
+	{
+		$sql = new Sql();
+
+		$sql->query("
+		
+			CALL sp_users_delete(:iduser)
+		
+			", 
+		
+			array(
+
+				":iduser"=>$this->getiduser()
+			
+			)//end array
+		
+		);//end query
+
+	}//END delete
+
+
+
+
+
+
+	/*
+	CREATE PROCEDURE `sp_users_delete`(
+	piduser INT
+	)
+	BEGIN
+	    
+	    DECLARE vidperson INT;
+	    
+	    SET FOREIGN_KEY_CHECKS = 0;
+	 
+	    SELECT idperson INTO vidperson
+	    FROM tb_users
+	    WHERE iduser = piduser;
+	 
+	    DELETE FROM tb_persons WHERE idperson = vidperson;
+	    
+	    DELETE FROM tb_userspasswordsrecoveries WHERE iduser = piduser;
+	    DELETE FROM tb_users WHERE iduser = piduser;
+	    
+	    SET FOREIGN_KEY_CHECKS = 1;
+	    
+	END
+	*/
+
+
+
+
+
+
+
+	public static function getForgot( $deslogin, $inadmin = true )
+	{
+
+
+
+		$sql = new Sql();
+
+
+		
+		$results = $sql->select("
+
+			SELECT * FROM tb_users a
+			INNER JOIN tb_persons b ON a.idperson = b.idperson
+			WHERE a.deslogin = :deslogin
+			ORDER BY a.dtregister DESC
+			LIMIT 1;
+
+			", 
+			
+			array(
+
+				":deslogin"=>$deslogin
+		
+			)//end array
+		
+		);//end select
+
+
+		
+		
+
+		if( count($results) === 0 )
+		{
+			
+			throw new \Exception("Não foi possível recuperar a senha");
+
+		}//end if
+		else
+		{
+
+			$data = $results[0];
+
+			
+
+
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+				$data['desnick'] = utf8_encode($data['desnick']);	
+				
+			}//end if
+
+
+
+
+			
+			$results2 = $sql->select("
+			
+				CALL sp_userspasswordsrecoveries_create(:iduser, :desip)
+				
+				", 
+				
+				array(
+					
+					":iduser"=>$data['iduser'],
+					":desip"=>$_SERVER['REMOTE_ADDR']
+
+				)//end array
+			
+			);//end select
+
+
+			
+
+			
+			
+			if ( count($results2) === 0 )
+			{
+
+				throw new \Exception("Não foi possível recuperar a senha.");
+
+			}//end if
+			else
+			{
+
+				$dataRecovery = $results2[0];
+
+			
+
+
+				$iv = random_bytes( openssl_cipher_iv_length('AES-256-CBC') );
+				
+				
+
+				
+
+				$code = openssl_encrypt(
+					
+					$dataRecovery['idrecovery'], 
+
+					'AES-256-CBC', 
+
+					User::SECRET, 
+
+					0, 
+
+					$iv
+				
+				);//end openssl_encrypt
+
+
+
+				
+				$result = base64_encode($iv.$code);
+
+	
+
+				
+				if( $inadmin === true ) 
+				{
+
+					$link = "https://amarcasar.com/481738admin/recuperar-senha/redefinir?code=$result";
+
+				}//end if
+				else
+				{
+
+					$link = "https://amarcasar.com/recuperar-senha/redefinir?code=$result";
+				
+				}//end else
+
+			
+				
+				$mailer = new MailerPasswordRecovery(
+					
+					
+					Rule::EMAIL_PASSWORD_RECOVERY,
+
+					"forgot", 
+					
+					array(
+
+						"name"=>$data['desperson'],
+						"link"=>$link
+
+					),
+
+					$data['deslogin'],
+
+					$data['desperson']
+				
+				);//end Mailer
+				
+				$mailer->send();
+				
+				# Aula 106 (28:16)
+				// return $link;
+				return $data;
+
+			}//end else
+
+		}//end else
+
+	}//END getForgot
+
+
+
+
+
+
+
+
+
+	/*public static function getForgot( $email, $inadmin = true )
+	{
+		$sql = new Sql();
+		
+		$results = $sql->select("
+
+			SELECT * FROM tb_persons a
+			INNER JOIN tb_users b USING(idperson)
+			WHERE a.desemail = :email;
+
+			", 
+			
+			array(
+
+				":email"=>$email
+		
+			)//end array
+		
+		);//end select
+
+		if( count($results) === 0 )
+		{
+			
+			throw new \Exception("Não foi possível recuperar a senha");
+
+		}//end if
+		else
+		{
+
+			$data = $results[0];
+			
+			$results2 = $sql->select("
+			
+				CALL sp_userspasswordsrecoveries_create(:iduser, :desip)
+				
+				", 
+				
+				array(
+					
+					":iduser"=>$data['iduser'],
+					":desip"=>$_SERVER['REMOTE_ADDR']
+
+				)//end array
+			
+			);//end select
+
+			if ( count($results2) === 0 )
+			{
+
+				throw new \Exception("Não foi possível recuperar a senha.");
+
+			}//end if
+			else
+			{
+
+				$dataRecovery = $results2[0];
+				
+				$iv = random_bytes( openssl_cipher_iv_length('aes-256-cbc') );
+				
+				$code = openssl_encrypt(
+					
+					$dataRecovery['idrecovery'], 
+
+					'aes-256-cbc', 
+
+					User::SECRET, 
+
+					0, 
+
+					$iv
+				
+				);//end openssl_encrypt
+				
+				$result = base64_encode($iv.$code);
+				
+				if( $inadmin === true ) 
+				{
+
+					$link = "http://ecommerce_full.com.br/481738admin/forgot/reset?code=$result";
+
+				}//end if
+				else
+				{
+
+					$link = "http://ecommerce_full.com.br/forgot/reset?code=$result";
+				
+				}//end else
+
+				$mailer = new Mailer(
+					
+					$data['desemail'], 
+					$data['desperson'], 
+					"Redefinir senha da Loja Virtual",
+					# template do e-mail em si na /views/email/ e não da administração
+					"forgot", 
+					
+					array(
+
+						"name"=>$data['desperson'],
+						"link"=>$link
+
+					)//end array
+				
+				);//end Mailer
+				
+				$mailer->send();
+				
+				# Aula 106 (28:16)
+				// return $link;
+				return $data;
+
+			}//end else
+
+		}//end else
+
+	}//END getForgot*/
+
+
+
+
+
+
+
+
+
+
+
+
+	/*
+	public static function getForgot($email, $inadmin = true)
+	{
+		$sql = new Sql();
+
+		$results = $sql->select("
+			SELECT * 
+			FROM tb_persons a
+			INNER JOIN tb_users b USING(idperson)
+			WHERE a.desemail = :email;
+			", array(
+				":email"=>$email
+			));
+
+		if(count($results) === 0)
+		{
+			throw new \Exception("Não foi possível recuperar a senha");
+			
+		}#end if
+		else
+		{
+			$data = $results[0];
+
+			$results2 = $sql->select("CALL sp_userspasswordsrecoveries_create(:iduser, :desip)", array(
+				":iduser"=>$data["iduser"],
+				":desip"=>$_SERVER["REMOTE_ADDR"],
+			));
+
+			if(count($results2) === 0)
+			{
+				throw new \Exception("Não foi possível recuperar a senha");
+				
+			}#end if
+			else
+			{
+				$dataRecovery = $results2[0];
+
+				/*	# DEPRECATED #
+					base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_128, User::SECRET, $dataRecovery["idrecovery"], MCRYPT_MODE_ECB));
+				
+
+					$link = "http://www.hcodecommerce.com.br/481738admin/forgot/reset?code=$code";
+
+					$mailer = new Mailer($data["desemail"], $data["desperson"], "Redefinir senha da Hcode Store", "forgot", array(
+						"name"=>$data["desperson"],
+						"link"=>$link
+					));
+
+					$mailer->send();
+
+					return $data;
+				
+
+				$iv = random_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+		        
+		        $code = openssl_encrypt($dataRecovery['idrecovery'], 'aes-256-cbc', User::SECRET, 0, $iv);
+		        
+		        $result = base64_encode($iv.$code);
+		        
+		        if($inadmin === true)
+		        {
+		        	$link = "http://www.hcodecommerce.com.br/481738admin/forgot/reset?code=$result";
+		        }#end if
+		        else
+		        {
+		        	$link = "http://www.hcodecommerce.com.br/forgot/reset?code=$result";
+		        }#end else
+		        
+		        $mailer = new Mailer($data['desemail'], $data['desperson'], "Redefinir senha da Hcode Store", "forgot", array(
+		        	"name"=>$data['desperson'],
+		            "link"=>$link
+		        )); 
+		        
+		        $mailer->send();
+		        
+		        return $link;
+
+			}#end else
+
+		}#end else
+
+	}//END getForgot
+	*/
+
+
+
+
+
+
+
+	public static function validForgotDecrypt( $code )
+	{
+
+
+	    $result = base64_decode($code);
+
+	    
+	    
+			
+	    
+	    $code = mb_substr(
+			
+			$result, 
+
+			openssl_cipher_iv_length('AES-256-CBC'),
+
+			null, 
+
+			'8bit'
+		
+		);//end mb_substr
+
+	
+		
+	    $iv = mb_substr(
+			
+			$result, 
+
+			0, 
+
+			openssl_cipher_iv_length('AES-256-CBC'),
+
+			'8bit'
+
+		);//end mb_substr
+
+	    	
+		
+	
+		
+	    $idrecovery = openssl_decrypt(
+			
+			$code, 
+
+			'AES-256-CBC', 
+			
+			User::SECRET, 
+			
+			0,
+			
+			$iv
+		
+		);//end openssl_decrypt
+
+
+    
+
+
+	    $sql = new Sql();
+	    
+		$results = $sql->select("
+		
+	        SELECT * FROM tb_userspasswordsrecoveries a
+	        INNER JOIN tb_users b ON a.iduser = b.iduser
+	        INNER JOIN tb_persons c ON b.idperson = c.idperson
+	        WHERE a.idrecovery = :idrecovery AND
+	        a.dtrecovery IS NULL AND
+			DATE_ADD(a.dtregister, INTERVAL 1 HOUR) >= NOW();
+			
+			", 
+			
+			array(
+
+	        	":idrecovery"=>$idrecovery
+
+			)//end array
+		
+		);//end select
+
+
+
+		
+		
+		
+
+		 
+
+	    if( count($results) === 0 )
+	    {
+
+			throw new \Exception("Não foi possível recuperar a senha");
+			
+	    }//end if
+	    else
+	    {
+
+	    	if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+				$results[0]['desnick'] = utf8_encode($results[0]['desnick']);	
+				
+			}//end if
+
+
+
+	    	return $results[0];
+
+	    }//end else
+
+	}//END validForgotDecrypt
+
+
+
+
+
+
+
+
+	public static function setForgotUsed( $idrecovery )
+	{
+		$sql = new Sql();
+
+		$sql->query("
+		
+			UPDATE tb_userspasswordsrecoveries 
+			SET dtrecovery = NOW()
+			WHERE idrecovery = :idrecovery
+			
+			", 
+			
+			array(
+
+				":idrecovery"=>$idrecovery
+
+			)//end array
+		
+		);//end query
+
+	}//END setForgotUsed
+
+
+
+
+
+
+
+
+
+
+	public function setPassword( $password )
+	{
+		$sql = new Sql();
+
+		$sql->query("
+		
+			UPDATE tb_users 
+			SET despassword = :password
+			WHERE iduser = :iduser
+			
+			", 
+			
+			array(
+
+				"password"=>$password,
+				":iduser"=>$this->getiduser()
+
+			)//end array
+		
+		);//end query
+
+	}//END setPassword
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public function setRegisterEntities()
+	{
+
+
+		try 
+		{
+
+
+			//$user = new User();
+
+			//$user->get((int)$iduser);
+
+
+
+
+			
+
+
+			/*$plan = new Plan();
+			$plan->getFreePlan((int)$this->getiduser());
+	
+
+			$inplan = Plan::getPlanArray(0);
+
+
+				
+
+			$plan->setData([
+
+				'idplan'=>$plan->getidplan(),
+				'iduser'=>$this->getiduser(),
+				'inplancode'=>$inplan['inplancode'],
+				'inmigration'=>0,
+				'inperiod'=>$inplan['inperiod'],
+				'desplan'=>$inplan['desplan'],
+				'vlprice'=>$inplan['vlprice'],
+				'dtbegin'=>$this->getdtplanbegin(),
+				'dtend'=>$this->getdtplanend()
+
+
+			]);//end setData
+
+
+			
+			
+		
+		
+			$plan->save();*/
+
+
+
+			if( (int)$this->getinplancontext() == 0 )
+			{
+
+
+				$timezone = new \DateTimeZone('America/Sao_Paulo');
+
+				$dt_now = new \DateTime("now");
+
+				$dt_now->setTimezone($timezone);
+				
+
+
+				$dt_free = new \DateTime("now + 10 day");
+
+				$dt_free->setTimezone($timezone);
+
+				
+
+				$inplan = Plan::getPlanArray(0);
+
+
+
+				$plan = new Plan();
+
+				$plan->getFreePlan((int)$this->getiduser());
+
+
+				$plan->setData([
+
+					'iduser'=>$this->getiduser(),
+					'inplancode'=>$inplan['inplancode'],
+					'inmigration'=>0,
+					'inperiod'=>$inplan['inperiod'],
+					'desplan'=>$inplan['desplan'],
+					'vlprice'=>$inplan['vlprice'],
+					'dtbegin'=>$dt_now->format('Y-m-d'),
+					'dtend'=>$dt_free->format('Y-m-d')
+
+
+				]);//end setData
+
+				
+				$plan->save();
+
+
+
+				
+				$this->setdtplanbegin($dt_now->format('Y-m-d'));
+				$this->setdtplanend($dt_free->format('Y-m-d'));
+
+		
+
+			}//end if
+
+			
+
+
+
+
+
+
+
+
+
+			$customstyle = new CustomStyle();
+
+			$customstyle->get((int)$this->getiduser());
+
+
+
+
+
+			$customstyle->setData([
+
+				'idcustomstyle'=>$customstyle->getidcustomstyle(),
+				'iduser'=>$this->getiduser(),
+				'idtemplate'=>1,
+				'desbanner'=>'0.jpg',
+				'desbannerextension'=>'jpg',
+
+				'desbgcolorbanner'=>'DD716F',
+				'desbgcolorfooter'=>'DD716F',
+				'descolorfooter'=>'FFFFFF',
+				'descolorfooterhover'=>'F7D9E1',
+
+				'descolor1'=>'FFFFFF',
+				'descolor2'=>'DD716F',
+				'descolortexthover'=>'DD716F',
+				'descolordate'=>'FFFFFF',
+				'desfontfamilydate'=>'Norican',
+				'desfontfamily1'=>'Norican',
+				'desfontfamily2'=>'OpenSans',
+
+				'inbgcolorgradient'=>0,
+				'inbgcolorbutton'=>0,
+				'inroundborderimage'=>1,
+				'inbordersocial'=>1,
+				'desborderimagesize'=>'12',
+				'desborderradiusbutton'=>'20'
+
+
+			]);//end setData
+
+			
+
+		
+
+			$customstyle->update();
+
+
+
+
+
+
+
+
+
+
+
+			
+			$consort = new Consort();
+
+			$consort->get((int)$this->getiduser());
+
+
+
+			$consort->setData([
+
+				'idconsort'=>$consort->getidconsort(),
+				'iduser'=>$this->getiduser(),
+				'desconsort'=>'Meu Amor',
+				'desconsortemail'=>'',
+				'desphoto'=>Rule::DEFAULT_PHOTO,
+				'desextension'=>Rule::DEFAULT_PHOTO_EXTENSION
+
+			]);//end setData
+
+
+
+		
+
+			$consort->update();
+			
+
+			
+
+
+
+
+
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			$timezone = new \DateTimeZone('America/Sao_Paulo');
+
+			$dtwedding = new \DateTime("now + 1 year");
+
+			$dtwedding->setTimezone($timezone);
+
+			$wedding = new Wedding();
+
+			$wedding->get((int)$this->getiduser());
+
+
+
+			$wedding->setData([
+
+				'idwedding'=>$wedding->getidwedding(),
+				'iduser'=>$this->getiduser(),
+				'dtwedding'=>$dtwedding->format('Y-m-d'),
+				'tmwedding'=>'19:00',
+				'desdescription'=>'',
+				'descostume'=>'',
+				'desdirections'=>'',
+				'desaddress'=>'',
+				'desnumber'=>'',
+				'desdistrict'=>'',
+				'descity'=>'',
+				'desstate'=>'',
+				'descountry'=>'',
+				'desphoto'=>Rule::DEFAULT_PHOTO,
+				'desextension'=>Rule::DEFAULT_PHOTO_EXTENSION
+				
+
+			]);//end setData
+
+
+
+		
+			$wedding->update();
+
+
+
+
+
+
+
+
+
+
+				
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+			$party = new Party();	
+
+			$party->get((int)$this->getiduser());
+
+
+
+			$party->setData([
+
+				'idparty'=>$party->getidparty(),
+				'iduser'=>$this->getiduser(),
+				'dtparty'=>$dtwedding->format('Y-m-d'),
+				'tmparty'=>'21:00',
+				'desdescription'=>'',
+				'descostume'=>'',
+				'desdirections'=>'',
+				'desaddress'=>'',
+				'desnumber'=>'',
+				'desdistrict'=>'',
+				'descity'=>'',
+				'desstate'=>'',
+				'descountry'=>'',
+				'desphoto'=>Rule::DEFAULT_PHOTO,
+				'desextension'=>Rule::DEFAULT_PHOTO_EXTENSION
+				
+
+			]);//end setData
+		
+			
+
+			$party->update();
+
+
+
+
+
+
+
+
+
+			
+
+			
+			
+
+
+
+			$initialpage = new InitialPage();
+
+			$initialpage->get((int)$this->getiduser());
+
+
+
+
+			$initialpage->setData([
+
+				'idinitialpage'=>$initialpage->getidinitialpage(),				
+				'iduser'=>$this->getiduser(),
+				'inparty'=>0,
+				'inbestfriend'=>0,
+				'inalbum'=>0
+
+			]);//end setData
+			
+
+		
+
+
+			$initialpage->update();
+
+			
+
+
+
+
+			
+
+
+
+			$menu = new Menu();
+
+			$menu->get((int)$this->getiduser());
+
+
+
+
+			$menu->setData([
+
+				'idmenu'=>$menu->getidmenu(),
+				'iduser'=>$this->getiduser(),
+				'inwedding'=>1,
+				'inparty'=>1,
+				'inbestfriend'=>1,
+				'inrsvp'=>1,
+				'inmessage'=>1,
+				'instore'=>1,
+				'inevent'=>1,
+				'inalbum'=>1,
+				'invideo'=>1,
+				'instakeholder'=>1,
+				'inouterlist'=>1
+
+			]);//end setData
+				
+
+			$menu->update();
+
+
+
+
+			
+
+			
+
+
+
+
+
+			$productconfig = new ProductConfig();
+
+
+			$productconfig->get((int)$this->getiduser());
+
+	
+
+
+
+			$productconfig->setData([
+
+				'idproductconfig'=>$productconfig->getidproductconfig(),
+				'iduser'=>$this->getiduser(),
+				'incharge'=>0
+
+
+			]);//end setData
+
+
+
+
+
+			$productconfig->update();
+
+
+
+
+
+
+			
+
+
+
+
+
+
+
+
+			$rsvpconfig = new RsvpConfig();
+
+
+
+			$rsvpconfig->get((int)$this->getiduser());
+
+
+
+
+			$rsvpconfig->setData([
+
+				'idrsvpconfig'=>$rsvpconfig->getidrsvpconfig(),
+				'iduser'=>$this->getiduser(),
+				'inclosed'=>0,
+				'inadultsconfig'=>0,
+				'inmaxadultsconfig'=>10,
+				'inchildrenconfig'=>0,
+				'inmaxchildrenconfig'=>10
+
+
+			]);//end setData
+
+				
+
+
+			$rsvpconfig->update();
+
+
+
+			
+
+
+
+
+
+
+			$socialmedia = new SocialMedia();
+
+
+
+
+			$socialmedia->get((int)$this->getiduser());
+
+
+
+
+			$socialmedia->setData([
+
+				'idsocialmedia'=>$socialmedia->getidsocialmedia(),
+
+				'iduser'=>$this->getiduser(),
+
+				'desfacelink1'=>'',
+				'desfacelink2'=>'',
+				'desfacelink3'=>'',
+
+				'desinstalink1'=>'',
+				'desinstalink2'=>'',
+				'desinstalink3'=>'',
+
+				'desyoutubelink1'=>'',
+				'desyoutubelink2'=>'',
+				'desyoutubelink3'=>'',
+
+				'destwitterlink1'=>'',
+				'destwitterlink2'=>'',
+				'destwitterlink3'=>''
+
+			]);//end setData
+
+
+
+
+
+			$socialmedia->update();
+
+
+
+
+
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			$testimonial = new Testimonial();
+
+			$testimonial->get((int)$this->getiduser());
+
+
+
+
+			$testimonial->setData([
+
+				'idtestimonial'=>$testimonial->getidtestimonial(),
+
+				'iduser'=>$this->getiduser(),
+
+				'instatus'=>1,
+				'insample'=>0,
+				'inrating'=>0,
+				'desdescription'=>''
+
+			]);//end setData
+
+
+
+
+
+			$testimonial->update();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			/*$account = new Account();
+
+
+
+
+			$account->get((int)$this->getiduser());
+
+
+
+
+			$account->setData([
+
+				'idaccount'=>$account->getidaccount(),
+				'iduser'=>$this->getiduser(),
+				'desaccountcode'=>null,
+				'desaccesstoken'=>null,
+				'deschannelid'=>null,
+				'desname'=>null,
+				'desemail'=>null,
+				'nrcountryarea'=>null,
+				'nrddd'=>null,
+				'nrphone'=>null,
+				'intypedoc'=>null,
+				'desdocument'=>null,
+			  	'deszipcode' =>null,
+				'desaddress'=>null,
+				'desnumber' =>null,
+			  	'descomplement'=>null,
+			  	'desdistrict'=>null,
+			  	'descity'=>null,
+			  	'desstate'=>null,
+			  	'descountry'=>null,
+			  	'dtbirth'=>null
+
+			]);//end setData
+
+
+
+			$account->save();
+
+
+
+
+
+			
+
+
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			$address = new Address();
+
+
+
+
+			$address->get((int)$this->getiduser());
+
+
+
+
+			$address->setData([
+
+				'idaddress'=>$address->getidaddress(),
+				'iduser'=>$this->getiduser(),
+				'deszipcode'=>null,
+				'desaddress'=>null,
+				'desnumber'=>null,
+				'descomplement'=>null,
+				'desdistrict'=>null,
+				'idcity'=>null,
+				'descity'=>null,
+				'idstate'=>null,
+				'desstate'=>null,
+				'desstatecode'=>null,
+				'descountry'=>null,
+				'descountrycode'=>null
+
+
+			]);//end setData
+
+
+
+
+			$address->update();
+
+*/
+
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			$bank = new Bank();
+
+
+
+
+			$bank->get((int)$this->getiduser());
+
+
+
+
+			$bank->setData([
+
+				'idbank'=>$bank->getidbank(),
+				'iduser'=>$this->getiduser(),
+				'desbankcode'=>null,
+				'desbanknumber'=>null,
+				'desagencynumber'=>null,
+				'desagencycheck'=>null,
+				'desaccounttype'=>null,
+				'desaccountnumber'=>null,
+				'desaccountcheck'=>null
+
+			]);//setData
+
+
+
+
+			$bank->update();
+
+
+
+			
+
+
+			
+
+
+
+		/*
+
+
+			$cart = new Cart();
+
+			$data = [
+
+				'dessessionid'=>session_id(),
+				'iduser'=>$this->getiduser(),
+				'incartstatus'=>0
+
+			];//end $data
+
+
+			$cart->setData($data);
+
+			$cart->update();
+
+
+			
+
+
+
+
+
+
+
+			$customer = new Customer();
+
+
+			$customer->getLast((int)$this->getiduser());
+
+
+
+			$customer->setData([
+
+				'idcustomer'=>$customer->getidcustomer(),
+				'iduser'=>$this->getiduser(),
+				'descustomercode'=>null,
+				'desname'=>null,
+				'desemail'=>null,
+				'nrcountryarea'=>null,
+				'nrddd'=>null,
+				'nrphone'=>null,
+				'intypedoc'=>null,
+				'desdocument'=>null,
+				'deszipcode'=>null,
+				'desaddress'=>null,
+				'desnumber'=>null,
+				'descomplement'=>null,
+				'desdistrict'=>null,
+				'descity'=>null,
+				'desstate'=>null,
+				'descountry'=>null,
+				'descardcode'=>null,
+				'desbrand'=>null,
+				'infirst6'=>null,
+				'inlast4'=>null,
+				'dtbirth'=>null
+
+
+			]);
+
+
+
+			$customer->save();
+
+
+			
+
+
+			
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+			$cart->addItem( $plan->getidplan(), 0);
+
+
+
+
+
+
+
+
+
+
+
+
+			$payment = new Payment();
+
+
+
+
+			$payment->getLast((int)$this->getiduser());
+
+
+
+
+			$payment->setData([
+					
+				'idpayment'=>$payment->getidpayment(),
+				'iduser'=>$this->getiduser(),
+				'despaymentcode'=>null,
+				'inpaymentmethod'=>null,
+				'nrinstallment'=>null,
+				'inpaymentstatus'=>null,
+				'incharge'=>null,
+				'inrefunded'=>null,
+				'deslinecode'=>null,
+				'desprinthref'=>null,
+				'desholdername'=>null,
+				'nrholdercountryarea'=>null,
+				'nrholderddd'=>null,
+				'nrholderphone'=>null,
+				'inholdertypedoc'=>null,
+				'desholderdocument'=>null,
+				'desholderzipcode'=>null,
+				'desholderaddress'=>null,
+				'desholdernumber'=>null,
+				'desholdercomplement'=>null,
+				'desholderdistrict'=>null,
+				'desholdercity'=>null,
+				'desholderstate'=>null,
+				'dtholderbirth'=>null
+
+
+
+			]);//end setData
+
+
+
+
+			$payment->update();
+
+
+
+
+
+			
+
+
+
+			
+
+
+
+
+
+
+
+			$fee = new Fee();
+
+			
+			$fee->getLast((int)$this->getiduser());
+
+
+
+
+			$fee->setData([
+
+				'idfee'=>$fee->getidfee(),
+				'iduser'=>$this->getiduser(),
+				'idpayment'=>$payment->getidpayment(),
+				'vlmktpercentage'=>null,
+				'vlmktfixed'=>null,
+				'vlpropercentage'=>null,
+				'vlprofixed'=>null,
+				'vlantecipation'=>null,
+				'nrantecipationperiod'=>null
+				
+
+			]);//end setData
+
+			
+
+			$fee->save();
+
+
+
+
+
+
+
+			$cart->setincartstatus('1');
+			$cart->update();
+			//Cart::removeFromSession();
+
+
+
+
+			
+
+
+
+
+
+
+			$order = new Order();
+
+
+			$order->getLast((int)$this->getiduser());
+
+
+			
+		
+
+
+			$order->setData([
+
+				'idorder'=>$order->getidorder(),
+				'iduser'=>$this->getiduser(),
+				'idcart'=>$cart->getidcart(),
+				'idcustomer'=>$customer->getidcustomer(),
+				'idpayment'=>$payment->getidpayment(),
+				'idfee'=>$fee->getidfee(),
+				'desordercode'=>null,
+				'vltotal'=>$plan->getvlprice(),
+				'vlseller'=>$plan->getvlprice(),
+				'vlmarketplace'=>$plan->getvlprice(),
+				'vlprocessor'=>$plan->getvlprice()
+
+			]);//end setData
+
+
+			
+
+
+			$order->save();
+		*/
+
+
+
+
+
+
+			return true;
+
+			//$user->setdtplanbegin($dt_now->format('Y-m-d'));
+			//$user->setdtplanend($dt_free->format('Y-m-d'));
+
+			//$user->setinregister('1');
+
+		
+			//$user->update();
+
+
+
+			
+		}//end try
+		catch ( \Exception $e )
+		{
+
+
+			/*if( 
+
+				isset($cart->getidcart())
+				&&
+				isset($plan->getidplan())
+
+
+			) 
+			{
+
+				$cart->removeItem($plan->idplan());
+				$cart->delete();
+				$plan->delete();
+
+			}//end if
+			elseif( $plan->getidplan() != null )
+			{
+
+				 $plan->delete();
+
+			}//end elseif
+
+			if( $customer->getidcustomer() != null ) $customer->delete();
+			if( $payment->getidpayment() != null ) $payment->delete();
+			if( $fee->getidfee() != null ) $fee->delete();
+			if( $order->getidorder() != null ) $order->delete();*/
+
+
+			if(isset($_SESSION[User::SESSION])) $_SESSION[User::SESSION] = NULL;
+
+
+			User::setError(Rule::ERROR_REGISTER);
+			header('Location: /login');
+			exit;
+
+			
+		}//end catch
+
+
+
+
+	}//END setRegisterEntities
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function setError( $msg )
+	{
+
+		$_SESSION[User::ERROR] = $msg;
+
+	}//END setError
+
+
+
+
+
+
+
+
+	public static function getError()
+	{
+
+		$msg = (isset($_SESSION[User::ERROR]) && $_SESSION[User::ERROR]) ? $_SESSION[User::ERROR] : '';
+
+		User::clearError();
+
+		return $msg;
+
+	}//END getError
+
+
+
+
+
+
+
+
+	public static function clearError()
+	{
+		$_SESSION[User::ERROR] = NULL;
+
+	}//END clearError
+	
+
+
+
+
+
+
+
+	public static function setSuccess( $msg )
+	{
+
+		$_SESSION[User::SUCCESS] = $msg;
+
+	}//END setSuccess
+
+
+
+
+
+
+
+
+
+
+	public static function getSuccess()
+	{
+
+		$msg = (isset($_SESSION[User::SUCCESS]) && $_SESSION[User::SUCCESS]) ? $_SESSION[User::SUCCESS] : '';
+
+		User::clearSuccess();
+
+		return $msg;
+
+	}//END getSuccess
+
+
+
+
+
+
+
+
+	public static function clearSuccess()
+	{
+		$_SESSION[User::SUCCESS] = NULL;
+
+	}//END clearSuccess
+
+
+
+
+
+
+
+
+
+
+	public static function setErrorRegister( $msg )
+	{
+		$_SESSION[User::ERROR_REGISTER] = $msg;
+		
+	}//END setErrorRegister
+
+
+
+
+
+
+
+
+	public static function getErrorRegister()
+	{
+		$msg = (isset($_SESSION[User::ERROR_REGISTER]) && $_SESSION[User::ERROR_REGISTER]) ? $_SESSION[User::ERROR_REGISTER] : '';
+
+		User::clearErrorRegister();
+
+		return $msg;
+
+	}//END getErrorRegister
+
+
+
+
+
+
+
+
+	public static function clearErrorRegister()
+	{
+		$_SESSION[User::ERROR_REGISTER] = NULL;
+		
+	}//END clearErrorRegister
+
+
+
+
+
+
+
+
+
+	/*public static function checkLoginExists( $login )
+	{
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT * FROM tb_users
+			WHERE deslogin = :deslogin;
+
+			", 
+			
+			[
+
+				':deslogin'=>$login
+
+			]
+		
+		);//end select
+
+		# Colocar o 'count' entre parênteses equivale a um if.
+		# If count count($results) > 0 , retorna TRUE
+		# If count count($results) = 0 , retorna FALSE
+		
+		return ( count($results) > 0 );
+
+	}//END checkLoginExists*/
+
+
+
+
+
+
+	public static function checkLoginExists( $login )
+	{
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT * FROM tb_users
+			WHERE deslogin = :deslogin;
+			ORDER BY dtregister DESC
+			LIMIT 1;
+
+			", 
+			
+			[
+
+				':deslogin'=>$login
+
+			]
+		
+		);//end select
+
+		
+
+		# Colocar o 'count' entre parênteses equivale a um if.
+		# If count count($results) > 0 , retorna TRUE
+		# If count count($results) = 0 , retorna FALSE
+
+
+		return ( count($results) > 0 );
+
+		
+		/*if ( count($results) > 0 ) 
+		{
+			# code...
+
+			return $results[0];
+
+		}//end if
+		else
+		{
+			return false;
+		}//end else*/
+
+	}//END checkLoginExists
+
+
+
+
+
+
+
+	public function getFromUrl( $desdomain )
+	{
+		$sql = new Sql();
+
+		$results = $sql->select("
+		
+			SELECT * FROM tb_users a 
+			INNER JOIN tb_persons b ON a.idperson = b.idperson
+			WHERE a.desdomain = :desdomain
+			ORDER BY a.dtregister DESC
+			LIMIT 1;
+			
+			", 
+		
+			array(
+
+				":desdomain"=>$desdomain
+
+			)//end array
+
+		);//end select
+
+		if( count($results) > 0 )
+		{
+
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+				$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
+					
+				
+			}//end if
+			
+		
+			$this->setData($results[0]);
+
+		}//end if
+
+		
+
+
+	}//END getFromUrl
+
+
+
+
+
+
+
+
+
+
+	public static function checkDesdomain( $desdomain )
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+		
+			SELECT * FROM tb_users
+			WHERE desdomain = :desdomain
+			ORDER BY dtregister
+			LIMIT 1;
+			
+			", 
+		
+			array(
+
+				":desdomain"=>$desdomain
+
+			)//end array
+
+		);//end select
+
+
+		
+
+		return ( count($results) > 0 );
+
+		
+	}//END getFromUrl
+
+
+
+
+
+
+
+
+
+
+
+	/*public function getFromUrl( $desdomain )
+	{
+		$sql = new Sql();
+
+		$results = $sql->select("
+		
+			SELECT * FROM tb_users a 
+			INNER JOIN tb_persons b USING(idperson)
+			INNER JOIN tb_customstyle d ON a.iduser = d.iduser
+			WHERE a.desdomain = :desdomain
+			
+			", 
+		
+			array(
+
+				":desdomain"=>$desdomain
+
+			)//end array
+
+		);//end select
+
+		if( count($results) > 0 )
+		{
+
+			$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
+		
+			$this->setData($results[0]);
+
+		}//end if
+
+		
+
+
+
+	}//END getFromUrl*/
+
+
+
+
+
+
+
+
+
+
+	/*public static function validatePlanEnd( $dtplanend )
+	{
+
+
+		if( $dtplanend != null )
+		{
+
+			//$timezone = new DateTimeZone('America/Sao_Paulo');
+
+			$dt_now = new \DateTime('now');
+
+			//$dt_now->setTimezone($timezone);
+
+			$dt_plan_end = new \DateTime($dtplanend);
+
+			//$dtplanend->setTimezone($timezone);
+
+			
+
+
+			if( $dt_plan_end > $dt_now )
+			{
+				return true;
+			}//end if
+			else
+			{
+				return false;
+			}
+
+			
+			
+		}//end if
+		else
+		{
+
+
+			return false;
+
+		}//end else
+
+
+		
+
+
+	}//validatePlanEnd*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*public static function validatePlan( $inpaymentstatus, $inpaymentmethod, $inplancontext, $dtplanend )
+	{
+
+
+	
+		//$timezone = new DateTimeZone('America/Sao_Paulo');
+
+		$dt_now = new \DateTime('now');
+
+		//$dt_now->setTimezone($timezone);
+
+		$dt_plan_end = new \DateTime($dtplanend);
+
+		//$dtplanend->setTimezone($timezone);
+
+		
+
+
+		if( $dt_plan_end < $dt_now )
+		{
+
+			return false;
+
+		}//end if
+		else
+		{
+
+			if ((int)$inplancontext == 0)
+			{
+				# code...
+				return false;
+
+			}//end if
+			else
+			{
+
+
+				//Pagamento com Cartão
+				if( 
+
+					in_array((int)$inpaymentmethod, [1,2])
+
+				)
+				{
+					if( 
+
+						(int)$inpaymentstatus == 1
+						||
+						(int)$inpaymentstatus == 2
+						||
+						(int)$inpaymentstatus == 3
+						||
+						(int)$inpaymentstatus == 4
+						||
+						(int)$inpaymentstatus == 5
+						||
+						(int)$inpaymentstatus == 9
+
+					)
+					{
+
+						return true;
+
+					}//end if
+					else
+					{
+
+						return false;
+
+					}//end else
+
+				}//end if
+				else
+				{
+
+					//Pagamento em Boleto
+					if( 
+		
+						(int)$inpaymentstatus == 9
+
+					)
+					{
+
+						return true;
+
+					}//end if
+					else
+					{
+
+						return false;
+
+					}//end else
+
+
+				}//end else
+
+
+			}//end else
+
+			
+		}//end else
+
+			
+			
+	
+		
+
+
+	}//validatePlanEnd*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function validatePlan( $inplancontext, $dtplanend, $plans )
+	{
+
+		/*echo '<pre>';
+var_dump($inplancontext);
+var_dump($dtplanend);
+var_dump((int)$plans == 0);
+var_dump($plans);*/
+		
+			
+		//$timezone = new DateTimeZone('America/Sao_Paulo');
+
+		$dt_now = new \DateTime('now');
+
+		//$dt_now->setTimezone($timezone);
+
+		$dt_plan_end = new \DateTime($dtplanend);
+
+		//$dtplanend->setTimezone($timezone);
+
+		
+
+
+		if( $dt_plan_end < $dt_now )
+		{
+
+			return false;
+
+		}//end if
+		elseif ( (int)$inplancontext == 0 ) 
+		{
+			# code...
+
+			return true;
+
+		}//end else
+		else
+		{
+
+			foreach ( $plans['results'] as $row ) 
+			{
+				# code...
+				
+
+
+				//Pagamento com Cartão
+				
+				if (
+
+					in_array((int)$row['inpaymentmethod'], [1,2,3])
+
+				)
+				{
+					if( 
+
+						(int)$row['inpaymentstatus'] == 1
+						||
+						(int)$row['inpaymentstatus'] == 2
+						||
+						(int)$row['inpaymentstatus'] == 3
+						||
+						(int)$row['inpaymentstatus'] == 4
+						||
+						(int)$row['inpaymentstatus'] == 5
+						||
+						(int)$row['inpaymentstatus'] == 9
+
+					)
+					{
+
+						return true;
+
+					}//end if
+					
+
+				}//end if
+				elseif( (int)$row['inpaymentmethod'] == 0 )
+				{
+
+					//Pagamento em Boleto
+					if( 
+		
+						(int)$row['inpaymentstatus'] == 5
+						||
+						(int)$row['inpaymentstatus'] == 9
+
+					)
+					{
+
+						return true;
+
+					}//end if
+
+				}//end else
+
+
+			}//end foreach
+
+
+			return false;
+
+
+		}//end else
+
+			
+			
+
+
+	}//validatePlanEnd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function validatePlanDashboard( $user )
+	{
+
+
+		//$user = User::getFromSession();
+
+		
+
+		$plans = [];
+
+
+		if( (int)$user->getinplancontext() != 0 )
+		{
+
+			$plan = new Plan();
+
+			$plans = $plan->get((int)$user->getiduser());
+
+		}//end if
+
+
+		return User::validatePlan( $user->getinplancontext(), $user->getdtplanend(), $plans );
+
+
+
+	}//end validatePlanEnd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+	/*public static function validatePlanFree( $inplancontext )
+	{
+
+
+		if( (int)$inplancontext != 0 )
+		{
+			
+			return false;
+							
+			
+		}//end if
+		else
+		{
+			
+			return true;
+
+		}//end else
+
+
+	}//validatePlanEnd*/
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+	public function getTemplate()
+	{
+		$template = '';
+
+		switch( $this->getidtemplate() ) 
+		{
+			case '1':
+				# code...
+				$template = '1';
+				break;
+		
+			case '2':
+				# code...
+				$template = '2';
+				break;
+			
+			default:
+				# code...
+				$template = '1';
+				break;
+
+		}//end switch
+
+		return $template;
+		
+	}//END getTemplate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function checkUrlExists( $desdomain )
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT * FROM tb_users
+			WHERE desdomain = :desdomain
+			ORDER BY dtregister
+			LIMIT 1;
+
+			", 
+			
+			[
+
+				':desdomain'=>$desdomain
+
+			]
+		
+		);//end select
+
+
+
+		
+
+		# Colocar o 'count' entre parênteses equivale a um if.
+		# If count count($results) > 0 , retorna TRUE
+		# If count count($results) = 0 , retorna FALSE
+		
+		return ( count($results) > 0 );
+
+	}//END checkDomainExists
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function getPasswordHash( $password )
+	{
+		return password_hash(
+			
+			$password, 
+			
+			PASSWORD_DEFAULT, 
+			
+			[
+
+				'cost'=>12
+
+			]
+		
+		);//end password_hash
+
+	}//END getPasswordHash
+
+
+
+
+
+
+
+
+	public function getOrders()
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT *
+			FROM tb_orders a
+			INNER JOIN tb_carts b ON a.idcart = b.idcart
+			INNER JOIN tb_users c ON a.iduser = d.iduser
+			INNER JOIN tb_persons b ON a.idperson = b.idperson
+			WHERE a.iduser = :iduser
+
+			", 
+			
+			[
+
+				':iduser'=>$this->getiduser()
+
+			]
+		
+		);//end select
+
+		
+
+
+		if ( count($results) > 0 ) 
+		{
+			# code...
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+				foreach( $results as &$row )
+				{
+					# code...		
+					//$row['desperson'] = utf8_encode($row['desperson']);
+					$row['desnick'] = utf8_encode($row['desnick']);
+					
+
+				}//end foreach
+				
+			}//end if
+
+
+			return $results;
+
+
+		}//end if
+
+	}//END getOrders
+
+
+
+
+
+
+
+
+	public static function getPage( $page = 1, $itensPerPage = 10 )
+	{
+
+
+		$start = ($page - 1) * $itensPerPage;
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT SQL_CALC_FOUND_ROWS *
+			FROM tb_users a 
+			INNER JOIN tb_persons b ON a.idperson = b.idperson
+			ORDER BY a.dtregister DESC
+			LIMIT $start, $itensPerPage;
+
+		");//end select
+
+
+
+		$resultTotal = $sql->select("
+		
+			SELECT FOUND_ROWS() AS nrtotal;
+		
+		");//end select
+
+
+		
+
+		if ( count($results) > 0 )
+		{
+			# code...
+
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+				$results[0]['desnick'] = utf8_encode($results[0]['desnick']);	
+				
+			}//end if
+
+		}//end if
+
+
+		return [
+
+			'data'=>$results,
+			'total'=>(int)$resultTotal[0]["nrtotal"],
+			'pages'=>ceil($resultTotal[0]["nrtotal"] / $itensPerPage),
+			'nrtotal'=>$resultTotal[0]["nrtotal"]
+
+		];//end return
+
+
+
+
+	}//END getPage
+
+
+
+
+
+
+
+
+	public static function getPageSearch( $search, $page = 1, $itensPerPage = 10 )
+	{
+
+		$start = ($page - 1) * $itensPerPage;
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT SQL_CALC_FOUND_ROWS *
+			FROM tb_users a 
+			INNER JOIN tb_persons b ON a.idperson = b.idperson
+			WHERE b.desemail = :search OR b.desperson LIKE :searchlike OR a.deslogin LIKE :searchlike
+			ORDER BY a.dtregister DESC
+			LIMIT $start, $itensPerPage;
+
+			", 
+			
+			[
+
+				':searchlike'=>'%'.$search.'%',
+				':search'=>$search
+
+			]
+		
+		);//end select
+
+
+
+		$resultTotal = $sql->select("
+		
+			SELECT FOUND_ROWS() AS nrtotal;
+			
+		");//end select
+
+
+
+
+		if ( count($results) > 0 )
+		{
+			# code...
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+				$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
+				
+			}//end if
+
+		}//end if
+
+
+		return [
+
+			'data'=>$results,
+			'total'=>(int)$resultTotal[0]["nrtotal"],
+			'pages'=>ceil($resultTotal[0]["nrtotal"] / $itensPerPage),
+			'nrtotal'=>$resultTotal[0]["nrtotal"]
+
+		];//end return
+
+
+	}//END getPageSearch
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function getPageMailingSearch( $search, $page = 1, $itensPerPage = 10 )
+	{
+
+		$start = ($page - 1) * $itensPerPage;
+
+		$sql = new Sql();
+
+
+		$results = $sql->select("
+
+			SELECT a.desdomain,
+			b.desnick,
+			c.desconsort,
+            d.dtwedding,
+            e.descity,
+            e.desstatecode,
+            e.descountry,
+            e.descountrycode,
+            f.desbanner
+			FROM tb_users a 
+			INNER JOIN tb_persons b ON a.idperson = b.idperson
+			INNER JOIN tb_consorts c ON a.iduser = c.iduser
+			INNER JOIN tb_weddings d ON a.iduser = d.iduser
+            INNER JOIN tb_addresses e ON a.iduser = e.iduser
+            INNER JOIN tb_customstyle f ON a.iduser = f.iduser
+			WHERE a.desdomain IS NOT NULL 
+			AND a.deslogin = :search
+			OR c.desconsortemail = :search
+			OR b.desperson LIKE :searchlike
+			OR b.desnick LIKE :searchlike
+			OR c.desconsort LIKE :searchlike
+			ORDER BY b.desperson,
+			a.dtregister DESC
+			LIMIT $start, $itensPerPage;
+
+
+			", 
+			
+			[
+
+				':searchlike'=>'%'.$search.'%',
+				':search'=>$search
+
+			]
+		
+		);//end select
+
+
+
+		$nrtotal = $sql->select("
+		
+			SELECT FOUND_ROWS() AS nrtotal;
+			
+		");//end select
+
+
+
+
+
+		if ( count($results) > 0 )
+		{
+			# code...
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+				foreach ($results as &$row)
+				{
+					# code...
+					$results[0]['desnick'] = utf8_encode($results[0]['desnick']);	
+					$results[0]['desconsort'] = utf8_encode($results[0]['desconsort']);
+
+				}//end foreach
+				
+			}//end if
+
+		}//end if
+
+
+		return [
+
+			'results'=>$results,
+			'total'=>(int)$nrtotal[0]["nrtotal"],
+			'pages'=>ceil($nrtotal[0]["nrtotal"] / $itensPerPage)
+
+		];//end return
+
+			
+
+	}//END getPageSearch
+
+
+
+
+
+
+
+
+
+
+
+}//END class User
+
+
+
+
+
+
+ ?>

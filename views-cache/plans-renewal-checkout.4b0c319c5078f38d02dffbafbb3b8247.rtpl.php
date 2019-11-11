@@ -1,0 +1,874 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                <?php if( !validatePlan() ){ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+               
+
+                <?php }elseif( validatePlanFree() ){ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+
+                <?php }else{ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu");?>
+
+                <?php } ?>
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div id="checkout" class="col-md-9 col-12 dash-panel">
+
+
+                
+
+
+            	<div id="checkout-box" class="checkout-accounts-rows row">
+            
+
+        
+		            <div class="col-md-5 purchase-resume">
+		               
+
+
+
+
+
+
+
+
+						<div class="row card-dash-header2">
+
+		              
+		                        
+
+
+			                <div class="col-4">
+
+
+			                        <div class="card-dash-content">
+			                            <span>Plano</span>
+			                        </div>
+
+
+			                    
+			                </div>
+
+
+
+
+
+
+			                 
+
+
+
+
+
+
+			                <div class="col-4">
+
+
+			                        <div class="card-dash-content">
+			                            <span>
+			                                Período
+			                            </span>
+			                        </div>
+
+			                    
+			                </div>
+
+
+
+			                       
+
+
+
+			                
+			          
+			                        
+
+			                
+
+			                <div class="col-4">
+
+
+			                        <div class="card-dash-content">
+			                            <span>Valor</span>
+			                        </div>
+
+			                    
+			                </div>
+
+
+
+
+			        
+			            </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			            <div class="row card-dash-product centralizer">
+
+		              
+		                        
+
+
+			                <div class="col-4">
+
+			                    <div class="card-dash-content">
+		                            <span><?php echo htmlspecialchars( $inplan["desplan"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+		                        </div>
+
+			                    
+			                </div>
+
+
+
+
+
+
+			                 
+
+
+
+
+
+
+			                <div class="col-4">
+
+
+			                        <div class="card-dash-content">
+			                            <span>
+			                                <?php echo htmlspecialchars( $inplan["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $inplan["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+			                            </span>
+			                        </div>
+
+			                    
+			                </div>
+
+
+
+			                       
+
+
+
+			          
+			                        
+
+			                
+
+			                <div class="col-4">
+
+
+			                        <div class="card-dash-content">
+			                            <span>R$<?php echo formatPrice($inplan["vlprice"]); ?></span>
+			                        </div>
+
+			                    
+			                </div>
+
+
+
+
+			        
+			            </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+			            <div id="nrinstallment">
+			            	
+			            	<div class="row checkout-dash-installment centralizer">
+
+		              
+		                        
+		                     
+
+
+
+				                <div class="col-6 text-right">
+
+
+			                        <div id="installment-title" class="card-dash-content">
+
+			                            <span>Parcelamento</span>
+
+			                        </div>
+
+
+				                </div>
+
+				          
+				                        
+
+				                
+
+				                <div class="col-6">
+
+
+				                        <div class="card-dash-content">
+				                            
+
+				                        	<select id="installment" form="checkout-form1" name="installment">
+							                    <option value="1" selected="selected">À vista - <?php echo formatPrice($inplan["vlprice"]); ?></option> 
+							                    <option value="2">2 x R$ <?php echo formatPrice($inplan["vlprice"]/2); ?></option> 
+							                    <option value="3">3 x R$ <?php echo formatPrice($inplan["vlprice"]/3); ?></option> 
+							                    <option value="4" >4 x R$ <?php echo formatPrice($inplan["vlprice"]/4); ?></option> 
+							                    <option value="5">5 x R$ <?php echo formatPrice($inplan["vlprice"]/5); ?></option>
+							                    <option value="6">6 x R$ <?php echo formatPrice($inplan["vlprice"]/6); ?></option>
+							                </select>
+
+
+
+				                    </div>
+				                    
+				                </div>
+
+
+				            </div><!--row-->
+			            
+			            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			            <div class="row checkout-dash-totals">
+
+		              
+		                        
+
+
+			                <div class="col-3">
+
+
+			                        <div class="card-dash-content">
+			                            &nbsp;
+			                        </div>
+
+
+			                    
+			                </div>
+
+
+
+
+
+
+			                 
+
+
+
+
+
+
+			                <div class="col-3">
+
+
+			                        <div class="card-dash-content">
+			                            <span>
+			                                &nbsp;
+			                            </span>
+			                        </div>
+
+			                    
+			                </div>
+
+
+
+			                       
+
+
+
+			                <div class="col-3">
+
+
+			                        <div class="card-dash-content">
+
+			                            <span>Total</span>
+
+			                        </div>
+
+
+			                </div>
+
+			          
+			                        
+
+			                
+
+			                <div class="col-3">
+
+
+			                        <div class="card-dash-content">
+			                            
+
+			                        	<span>
+			                        		R$ <?php echo formatPrice($inplan["vlprice"]); ?>
+			                        	</span>
+
+
+
+			                        </div>
+
+			                    
+			                </div>
+
+
+			            </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+		            </div><!--col-->
+
+
+
+
+
+
+		            <div class="col-md-7">
+
+
+		          			
+
+		            			
+		    			<div class="row">
+		    				
+		    				<ul class="nav domain-checkout-buttons">
+
+								<li id="options-payments1" class="nav-item options-button options-selected"><button>Cartão de Crédito Próprio</button></li>
+								<li id="options-payments2" class="nav-item options-button"><button>Boleto</button></li>
+								<li id="options-payments3" class="nav-item options-button"><button>Cartão de Crédito de Terceiro</button></li>
+								
+							</ul>
+
+		    			</div><!--row-->
+
+		            		
+
+
+
+
+
+
+	                    <?php if( $error != '' ){ ?>
+	                        <div class="row">
+	                            <div class="col-12">
+	                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+	                                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+	                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	                                        <span aria-hidden="true">&times;</span>
+	                                    </button>
+	                                </div>
+	                            </div> 
+	                        </div>  
+	                    <?php } ?>
+		               
+
+
+
+
+
+
+
+
+
+
+
+
+
+		    			<div id="payment-inputs1" style="display:block;">
+    				
+
+
+							<div class="row">
+								
+								<div class="col-md-8 col-12 payment-block card-info">
+
+									<form id="checkout-form1" action="/dashboard/renovar/checkout" class="checkout" method="post" name="checkout">
+
+				    					<input type="hidden" value="<?php echo htmlspecialchars( $inplan["inplancode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" name="inplancode">
+
+
+				    					<input type="hidden" name="checkout-own-card" value="checkout-own-card">
+
+										<div class='card-wrapper'></div>
+
+
+					          					
+										<div class="row2">
+											<input type="text" placeholder="Número do Cartão" name="descardcode_number" class="input-text cc-number">
+										</div>
+
+										<div class="row2">
+											<input type="text" placeholder="Nome como está no cartão" name="desholdername" class="input-text ">
+										</div>
+
+
+										<div class="row2 row">
+
+											<div class="col-md-6">
+												<input type="text" placeholder="Mês" name="descardcode_month" class="input-text ">
+											</div>
+
+
+
+											<div class="col-md-6">
+												<input type="text" placeholder="Ano" name="descardcode_year" class="input-text ">
+											</div>
+
+										</div>
+
+
+
+										<div class="row2">
+											<input type="text" placeholder="Código de Segurança" name="descardcode_cvc" class="input-text ">
+										</div>
+
+
+
+										
+
+
+										<div>
+											<input id="checkout-button1" class="checkout-button" type="submit" value="Efetuar Pagamento" name="checkout-own-card2">
+										</div><!--payment-->
+
+
+									</form>
+
+								</div><!--payment-block-->
+
+
+							</div>
+
+		    			</div><!--payment-inputs-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+		    			<div id="payment-inputs2" style="display:none;">
+
+		    				<div class="row">
+		    					<div class="col">
+		    						<form id="checkout-form2" action="/dashboard/renovar/checkout" class="checkout" method="post" name="checkout">
+
+										<input type="hidden" value="<?php echo htmlspecialchars( $inplan["inplancode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" name="inplancode">
+
+										<input type="hidden" name="checkout-boleto" value="checkout-boleto">
+					    				
+					    				<div class="row centralizer">
+
+											<div class="col-8">
+
+												<div class="payment-block">
+										
+
+
+													<input id="checkout-boleto-button" type="submit" value="Gerar Boleto" name="checkout-boleto2">
+													
+													
+												</div>
+
+											</div>
+
+										</div>
+									</form>
+		    					</div>
+		    				</div>
+		    			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						<div id="payment-inputs3" style="display:none;">
+
+		    				<div class="row">
+		    				
+			    				<div class="col-12">
+			    					
+			    					<div class="payment-warn payment-block">
+
+												    				
+										<p>Preencha com os dados do titular do cartão!</p>
+
+
+										<p id="desdocument-warn">Sabemos que é chato, mas pedimos que nos ajude a nos proteger de compras fraudulentas, e preencha com os dados exatos do <strong>Titular</strong> do cartão de crédito, inclusive o endereço!</p>
+
+									</div>
+
+			    				</div>
+
+							</div>
+
+
+							<div class="row">
+
+								<div class="col-md-6">
+
+									<div class="payment-block">
+								                				
+										
+														
+											
+																			
+										<form id="checkout-form3" action="/dashboard/renovar/checkout" class="checkout" method="post" name="checkout">
+
+			    							<input type="hidden" value="<?php echo htmlspecialchars( $inplan["inplancode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" name="inplancode">
+
+
+											<input type="hidden" name="checkout-third-part-card" value="checkout-third-part-card">
+
+
+											<div class="row2">
+												<input type="text" placeholder="Número do CPF" name="desholderdocument" class="input-text" value="<?php echo htmlspecialchars( $planRenewalValues["desholderdocument"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+											</div>
+
+												
+											
+
+
+
+
+
+
+											<div class="row2 row">
+
+												<div class="col-md-5">
+													<input type="text" placeholder="DDD" name="nrholderddd" class="input-text" value="<?php echo htmlspecialchars( $planRenewalValues["nrholderddd"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+												</div>
+
+
+
+												<div class="col-md-7">
+													<input type="text" placeholder="Telefone" name="nrholderphone" class="input-text" value="<?php echo htmlspecialchars( $planRenewalValues["nrholderphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+												</div>
+
+											</div>
+
+
+
+
+
+
+
+
+
+											<div class="row2 row">
+
+												<div id="birth-field-text" class="col-md-4">
+													
+													<label for="payment_birth_1">Nascimento:</label>
+													
+												</div>
+
+
+
+												<div class="col-md-8">
+													<input type="date" placeholder="Nascimento" name="dtholderbirth" class="input-text" value="<?php echo htmlspecialchars( $planRenewalValues["dtholderbirth"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+													
+												</div>
+
+											</div>
+
+
+										</div><!--payment-block-->
+
+
+										<div class="payment-block">
+
+
+
+									
+											<div class="row2">
+												<input type="text" placeholder="CEP do Titular" name="zipcode" class="input-text" value="<?php echo htmlspecialchars( $planRenewalValues["zipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+												<!--<input type="submit" Atualizar CEP" id="place_order" class="button alt" formaction="/checkout" formmethod="get">-->
+											</div>
+
+											<div class="row2">
+												<input type="text" placeholder="Logradouro, rua, avenida" name="desholderaddress" class="input-text" value="<?php echo htmlspecialchars( $planRenewalValues["desholderaddress"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+											</div>
+
+											<div class="row2">
+												<input type="text" placeholder="Número" name="desholdernumber" class="input-text" value="<?php echo htmlspecialchars( $planRenewalValues["desholdernumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+											</div>
+
+											<div class="row2">
+												<input type="text" placeholder="Complemento (opcional)" name="desholdercomplement" class="input-text" value="<?php echo htmlspecialchars( $planRenewalValues["desholdercomplement"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+							                </div>
+
+							                <div class="row2">
+												<input type="text" placeholder="Bairro" name="desholderdistrict" class="input-text" value="<?php echo htmlspecialchars( $planRenewalValues["desholderdistrict"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+											</div>
+
+
+
+
+											
+
+
+											<div class="state-city">
+												
+												<label for="state">Estado</label>
+												<select id="state" form="checkout-form3" name="desholderstate">
+							                    	<option value="1">Acre</option> 
+							                    	<option value="2">Alagoas</option> 
+							                    	<option value="3">Amazonas</option> 
+							                    	<option value="4">Amapá</option> 
+							                    	<option value="5">Bahia</option> 
+							                    	<option value="6">Ceará</option> 
+							                    	<option value="7">Distrito Federal</option> 
+							                    	<option value="8">Espírito Santo</option> 
+							                    	<option value="9">Goiás</option> 
+							                    	<option value="10">Maranhão</option> 
+							                    	<option value="11">Minas Gerais</option> 
+							                    	<option value="12">Mato Grosso do Sul</option> 
+							                    	<option value="13">Mato Grosso</option> 
+							                    	<option value="14">Pará</option> 
+							                    	<option value="15">Paraíba</option> 
+							                    	<option value="16">Pernambuco</option> 
+							                    	<option value="17">Piauí</option> 
+							                    	<option value="18">Paraná</option> 
+							                    	<option value="19">Rio de Janeiro</option> 
+							                    	<option value="20">Rio Grande do Norte</option> 
+							                    	<option value="21">Rondônia</option> 
+							                    	<option value="22">Roraima</option> 
+							                    	<option value="23">Rio Grande do Sul</option> 
+							                    	<option value="24">Santa Catarina</option> 
+							                    	<option value="25">Sergipe</option> 
+							                    	<option value="26">São Paulo</option> 
+							                    	<option value="27">Tocantins</option> 
+							                	</select>
+
+											</div>
+
+
+
+
+
+											<div class="state-city">
+												
+												<label for="city">Cidade</label>
+												<select id="city" form="checkout-form3" name="desholdercity">
+							                    	<option value="79">Acrelândia</option> 
+							                    	<option value="80">Assis Brasil</option> 
+							                    	<option value="81">Brasiléia</option> 
+							                    	<option value="82">Bujari</option> 
+							                    	<option value="83">Capixaba</option> 
+							                    	<option value="84">Cruzeiro do Sul</option> 
+							                    	<option value="85">Epitaciolândia</option> 
+							                    	<option value="86">Feijó</option> 
+							                    	<option value="87">Jordão</option> 
+							                    	<option value="88">Mâncio Lima</option> 
+							                    	<option value="89">Manoel Urbano</option> 
+							                    	<option value="90">Marechal Thaumaturgo</option> 
+							                    	<option value="91">Plácido de Castro</option> 
+							                    	<option value="92">Porto Acre</option> 
+							                    	<option value="93">Porto Walter</option> 
+							                    	<option value="94">Rio Branco</option> 
+							                    	<option value="95">Rodrigues Alves</option> 
+							                    	<option value="96">Santa Rosa do Purus</option> 
+							                    	<option value="97">Sena Madureira</option> 
+							                    	<option value="98">Senador Guiomard</option> 
+							                    	<option value="99">Tarauacá</option> 
+							                    	<option value="100">Xapuri</option> 
+							                </select>
+
+											</div>
+
+										</div>
+
+									</div>
+
+									<div class="col-md-6">
+
+
+										<div class="col-12 payment-block card-info">
+
+
+											<div class='card-wrapper'></div>
+														          					
+											<div class="row2">
+												<input type="text" placeholder="Número do Cartão" name="descardcode_number" class="input-text cc-number">
+											</div>
+
+											<div class="row2">
+												<input type="text" placeholder="Nome como está no cartão" name="desholdername" class="input-text ">
+											</div>
+
+
+											<div class="row2 row">
+
+												<div class="col-md-6">
+													<input type="text" placeholder="Mês" name="descardcode_month" class="input-text ">
+														
+												</div>
+
+
+
+												<div class="col-md-6">
+													<input type="text" placeholder="Ano" id="payment_cardyear_1" name="descardcode_year" class="input-text ">
+														
+												</div>
+
+											</div>
+
+
+
+											<div class="row2">
+												<input type="text" placeholder="Código de Segurança" name="descardcode_cvc" class="input-text ">
+											</div>		
+
+
+											<div>
+												<input id="checkout-button3" class="checkout-button" type="submit" value="Efetuar Pagamento" name="checkout-third-part-card2">
+											</div>
+
+										</form>
+
+									</div>
+
+								</div>
+
+		    				</div>
+
+		    			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		                    	
+		            </div><!--col-->
+
+		        </div><!--row-->
+
+
+
+
+
+            </div><!--checkout-->
+        
+
+
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+
+
+
+

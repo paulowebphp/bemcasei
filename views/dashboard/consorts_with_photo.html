@@ -1,0 +1,217 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                {if="!validatePlan()"}
+
+                    {include="dashboard-menu-expirated"}
+               
+
+                {elseif="validatePlanFree()"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+                
+                <form method="post" action="/dashboard/meu-amor" enctype="multipart/form-data">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <div class="dash-title">
+                                <h1>Meu Amor</h1>
+                            </div><!--dash-title-->
+
+                        </div><!--col-->
+                    </div><!--row-->
+
+
+
+
+
+                    {if="$success != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {$success}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+                    {if="$error != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {$error}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+
+
+
+                    <div class="row">
+                        
+                        <div class="col-md-6 dash-column">
+
+
+                            <div class="dash-input-row">
+
+                                <label for="desconsort">Nome</label>
+                                <input type="text" class="form-control" id="desconsort" name="desconsort" value="{$consort.desconsort}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="consort">E-mail (opcional)</label>
+                                <input type="text" class="form-control" id="consort" name="consort" value="{$consort.consort}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <input type="hidden" class="form-control" id="idconsort" name="idconsort" value="{$consort.idconsort}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+
+
+                                <div class="dash-input-row input-photo">
+
+                            
+                                    <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                      </div>
+                                      <div class="custom-file">
+                                        <input type="file" name="file" class="custom-file-input" id="file" name="file" aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="file"></label>
+
+                                      </div>
+                                    </div>
+                                    <div class="input-rows">
+                                        <img class="img-responsive" id="image-preview" src="/uploads/consorts/{$consort.desphoto}" alt="">
+                                    </div>
+
+                                
+                            </div><!--dash-input-row-->
+
+                            <!--<label for="file">Foto</label>
+                                <input type="file" class="form-control" id="file" name="file">
+                                <div class="box box-widget">
+                                    <div class="box-body">
+                                        <img class="img-responsive" id="image-preview" src="/uploads/images/{$consort.desphoto}" alt="Foto">
+                                    </div>
+                                </div>
+                            -->
+
+
+                                
+
+                        </div><!--col-md-6-->
+
+
+
+
+
+                        <div class="col-md-6">
+                            
+                            
+                            
+                            &nbsp;
+
+                            
+                            
+                        </div><!--col-md-6-->
+
+
+                    </div><!--row-->
+
+
+
+
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <div class="dash-input-row input-footer">
+                                
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+
+                                <a href="/dashboard" class="btn btn-danger">Voltar</a>
+
+                            </div><!--dash-input-row-->
+                            
+                        </div><!--col-->
+
+                    </div><!--row-->
+
+
+
+                </form>
+
+
+
+            </div><!--col-->
+        
+
+
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

@@ -1,0 +1,305 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                {if="!validatePlan()"}
+
+                    {include="dashboard-menu-expirated"}
+               
+
+                {elseif="validatePlanFree()"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+
+
+
+
+
+
+                <div class="row">
+                    
+                    <div class="col-12">
+
+                        <div class="dash-title">
+                            <h1>Padrinhos e Madrinhas</h1>
+                        </div>
+
+                    </div>
+
+                </div>
+
+        
+
+                {if=" $maxBestFriends > $nrtotal "}
+
+
+                    <div class="row">
+
+                        <div class="col-12">
+
+                            <div class="button-header">
+
+                                <a href="/dashboard/padrinhos-madrinhas/adicionar">
+                                    <button>
+                                        Criar Padrinho ou Madrinha
+                                    </button>
+                                </a>
+                         
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {/if}
+
+            
+
+
+
+                {if="$success != ''"}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {$success}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div> 
+                    </div>  
+                {/if}
+
+                {if="$error != ''"}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {$error}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div> 
+                    </div>  
+                {/if}
+ 
+
+
+
+                
+
+
+
+
+                {loop="$bestfriend"}
+                <div class="row card-dash centralizer">
+
+                        
+                    <div class="col-md-2 col-12">
+
+                        <div class="card-dash-field">
+
+
+                             <div class="card-dash-content">
+                                <span>{$value.inposition}</span>
+                            </div>
+
+
+                            <div class="card-dash-header">
+                                <hr>
+                                <span>Posição</span>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                        
+                            
+                    <div class="col-md-2 col-12">
+
+                        <div class="card-dash-field">
+
+
+                            <div class="card-dash-content">
+                                <span>{$value.desbestfriend}</span>
+                            </div>
+
+
+                            <div class="card-dash-header">
+                                <hr>
+                                <span>Nome</span>
+                                
+                            </div>
+
+
+                        </div>
+
+                        
+                    </div>
+                             
+                            
+
+
+                    <div class="col-md-2 col-12">
+
+                        <div class="card-dash-field">
+
+
+                            <div class="card-dash-content">
+                                <span>{$value.desdescription}</span>
+                            </div>
+
+                            <div class="card-dash-header">
+
+                                <hr>
+                                <span>Descrição</span>
+                                
+                            </div>
+
+
+                        </div>
+
+                        
+                    </div>
+                            
+
+
+
+                     <div class="col-md-2 col-12">
+
+                        <div class="card-dash-field">
+
+                            <div class="card-dash-content">
+                                <span>{if="$value.instatus == 1"}Visível{else}Não-visível{/if}</span>
+                            </div>
+
+                            <div class="card-dash-header">
+
+                                <hr>
+                                <span>Status</span>
+                                
+                            </div>
+
+
+                        </div>
+
+                        
+                    </div>
+                           
+
+
+              
+                            
+
+                    
+
+                    <div class="col-md-2 col-12">
+
+                        <div class="card-dash-field">
+                            
+                            <div class="card-photo">
+                                
+                                <img src="/uploads/bestfriends/{$value.desphoto}">
+
+                            </div>
+                        </div>
+                        
+
+
+                    </div>
+
+
+                    <div class="col-md-2 col-12">
+                        
+                        <div class="card-dash-field">
+
+
+
+
+                                <a href='/dashboard/padrinhos-madrinhas/{function="setHash($value.idbestfriend)"}'>
+
+                                    <button>Editar</button>
+
+                                </a>
+                                
+
+
+                                <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/padrinhos-madrinhas/{function="setHash($value.idbestfriend)"}/deletar'>
+
+                                    <button>Deletar</button>
+
+                                </a>
+
+
+                               
+                            </div><!--card-buttons-wrappe-->
+
+                    </div>
+
+
+
+
+
+
+
+       
+                </div>
+                {else}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            Nenhum padrinho ou madrinha foi encontrado
+                        </div>
+                    </div>
+                </div>
+                {/loop}
+
+
+
+
+
+
+
+
+
+
+
+            </div><!--col-->
+        
+
+
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

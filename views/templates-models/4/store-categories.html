@@ -1,0 +1,581 @@
+<style type="text/css">
+
+
+
+
+    
+    section h1{
+        color: {if="$customstyle.descolor1 != ''"}#{$customstyle.descolor1}{else}#FFFFFF{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    section h2{
+        color: {if="$customstyle.descolordate != ''"}#{$customstyle.descolordate}{else}#FFFFFF{/if};
+        font-family: {if="$customstyle.desfontfamilydate != ''"}'{$customstyle.desfontfamilydate}'{else}'Norican'{/if};
+    }
+    section h3{
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    section h4{
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    section h5{
+        font-family: {if="$customstyle.desfontfamily2 != ''"}'{$customstyle.desfontfamily2}'{else}'OpenSans'{/if};
+    }
+    section h6{
+        font-family: {if="$customstyle.desfontfamily2 != ''"}'{$customstyle.desfontfamily2}'{else}'OpenSans'{/if};
+    }
+
+
+
+
+
+
+
+
+    /********************************HEADER*****************************************/
+    header .header-title h3{
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+
+    }
+    header #domain-dropdown-menu a:hover{
+        color: {if="$customstyle.descolortexthover != ''"}#{$customstyle.descolortexthover}{else}#DD716F{/if};
+    }
+    header .cart-amount {
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-weight: 700;
+    }
+    
+    header #shopping-item-mobile .shopping-item:hover .product-count {
+        background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+    }
+    header .product-count {
+        background: none repeat scroll 0 0 {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+    }
+    /********************************HEADER*****************************************/
+
+
+
+
+
+
+
+
+    /********************************FOOTER*****************************************/
+
+    footer{
+        padding: 5% 5% 2% 5%;
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+        {if="$customstyle.inbgcolorgradient == '0'"}
+        background-color: {if="$customstyle.desbgcolorfooter != ''"}#{$customstyle.desbgcolorfooter}{else}#DD716F{/if};
+        {else}
+        text-shadow: 4px 4px 4px rgba(0, 0, 0, .45);
+        background: radial-gradient(ellipse at center, {if="$customstyle.desbgcolorfooter != ''"}#{$customstyle.desbgcolorfooter}99{else}#F7D9E199{/if} 0%, {if="$customstyle.desbgcolorfooter != ''"}#{$customstyle.desbgcolorfooter}{else}#F7D9E1{/if} 60%);
+        {/if}
+    }
+    footer a{
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+    }
+    footer a:hover{
+        color: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if};
+    }
+    footer .bottom-footer p {
+      line-height: 24px;
+      font-size: 15px;
+      padding-top: 20px;
+      border-top: 1px solid {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+      color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+    }
+    footer .footer-title h3{
+        font-size: 3rem;
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    footer .list-group-item{
+        margin: 2% 0;
+        background: none;
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+    }
+    footer .list-group-item:hover{
+        background: none;
+        color: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if};
+    }
+    footer .list-socials a {
+      border: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if} 1px solid;
+    }
+    footer .list-socials a:hover {
+      border: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if} 1px solid;
+    }
+    /********************************FOOTER*****************************************/
+
+
+
+
+
+
+
+    /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
+    .alert-domain h1{
+        text-align: center;
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+
+    }
+    /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
+
+
+
+
+
+
+
+
+
+
+
+    /********************************DOMAIN*****************************************/
+    .dropdown a:hover{
+        color: {if="$customstyle.descolortexthover != ''"}#{$customstyle.descolortexthover}{else}#171F26{/if};
+
+    }
+    .section-title hr{
+        background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#171F26{/if};
+    }
+    /********************************DOMAIN*****************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /****************INDEX, WEDDING, PARTY , EVENTS , MESSAGE, STORE ********************/
+
+    .buttons-wrapper button{
+      padding: 10px 34px;
+      border-radius: {if="$customstyle.desborderradiusbutton != ''"}{$customstyle.desborderradiusbutton}px{else}20px{/if};
+      font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+
+      {if="$customstyle.inbgcolorbutton == '0'"}
+      background-color: transparent;
+      color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+      border: 1px solid {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+      {else}
+      background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};;
+      color: #FFFFFF;
+      border: none;
+      {/if}
+    }
+    /****************INDEX, WEDDING, PARTY , EVENTS , MESSAGE, STORE ********************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /********************************STORE 2*****************************************/
+    .card-add-cart button{
+        font-family: 'OpenSans'!important;
+        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
+        border: 0;
+        border-radius: 12px;
+        padding: 10px 34px;
+        color: #fff;
+        background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#333333{/if};
+    }
+    .card-add-cart button:hover{
+        color: #fff;
+        background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}DD{else}#333333{/if};
+    }
+    .card-add-continue button{
+        font-family: 'OpenSans'!important;
+        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
+        background: #e6e6e6;
+        border: 0;
+        border-radius: 12px;
+        padding: 10px 34px;
+        font-size: 0.9rem;
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#333333{/if};
+    }
+    .card-add-continue button:hover{
+      background: #e1e1e1;
+      color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#333333{/if};
+      
+    }
+    /********************************STORE 2*****************************************/
+
+
+
+
+
+
+    
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="domain">
+
+    <div class="container-fluid">            
+            
+            
+        <div class="row">
+
+
+
+
+            
+            <div class="col-md-10 col-12">
+
+
+                <div class="section-title">
+                        
+
+                    <a href='/template/{function="getTemplate()"}/loja'>
+                        
+                        <h3>
+                            {$category_name}
+                        </h3>
+
+                    </a>
+
+                    <hr>
+
+                </div><!--section-title-->
+
+                     
+               
+            </div><!--col-->
+
+
+
+
+
+
+
+
+
+            <div class="col-md-2 col-12">
+                
+
+                <div class="row">
+                    
+                    <div class="col-12">
+                        
+                        <div class="sort-by">
+                    
+                            <form action='/template/{function="getTemplate()"}/loja/{$category}'>
+
+
+                                <select id="sort-by" name="ordenar" class="custom-select">
+
+                                    <option value="valor-menor" {if="$orderby == ''"}selected="selected"{elseif="$orderby == 'valor-menor'"}selected="selected"{/if}>Menor Preço</option>
+                                    <option value="valor-maior" {if="$orderby == 'valor-maior'"}selected="selected"{/if}>Maior Preço</option>
+                                    <option value="nome-a-z" {if="$orderby == 'nome-a-z'"}selected="selected"{/if}>Nome A > Z</option>
+                                    <option value="nome-z-a" {if="$orderby == 'nome-z-a'"}selected="selected"{/if}>Nome Z > A</option>
+                        
+                                </select>
+
+
+                            </form>
+
+
+                        </div><!--sort-by-->
+
+                    </div><!--col-->
+
+                </div><!--row-->
+
+
+
+                <div class="row">
+                    
+                    <div class="col-12">
+                
+
+                        <div class="categories">
+                            
+                            
+                            <div id="categories" class="dropdown">
+                              <button id="categories-button" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Categorias
+                              </button>
+                              <div id="categories-menu" class="dropdown-menu" aria-labelledby="domain-dropdown-button">
+
+                                {loop="$categories"}
+                                    <a href='/template/{function="getTemplate()"}/loja/{$categories.$counter.desurl}' class="list-group-item list-group-item-action">{$categories.$counter.descategory}</a>
+                                {/loop}
+                                    
+
+                              </div><!--domain-dropdown-menu-->
+
+                            </div><!--domain-dropdown-->
+
+
+                        </div><!--categories-->
+                            
+
+                    </div><!--col-->
+
+                </div><!--row-->
+
+
+
+
+
+                
+
+            </div><!--col-->
+
+
+
+
+
+        
+        </div><!--row-->
+
+
+
+        {if="$success != ''"}
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {$success}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div> 
+        </div>  
+        {/if}
+
+
+        {if="$error != ''"}
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {$error}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div><!--balert-->
+            </div><!--col-->
+        </div><!--row--> 
+        {/if} 
+    
+
+
+
+        <div class="row">
+
+            <div class="col-12">
+                 
+
+                <div class="card-wrapper">
+
+
+
+                    {if="$nrtotal == 0"}
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-info alert-domain" role="alert">
+                                <h1>Ainda não há presentes cadastrados</h1>
+                            </div><!--alert-->
+                        </div><!--col-->
+                    </div><!--row-->
+
+                            
+                    {else}
+
+                    {loop="$gift"}
+
+
+                    <div class="card1 card-store">
+                        
+
+                       
+                            
+                        
+
+
+                        <div class="body-header">
+
+                            <div class="card-image">
+                            
+                                <img alt="Amar Casar Site de Casamento" src="/uploads/gifts/{$value.desphoto}">
+
+                            </div><!--card-photo-->
+
+                        </div><!--card-header-->
+
+
+
+
+
+                        <div class="card-body">
+                            
+
+
+                            <div class="title">
+
+
+                                <h5>{$value.desgift}</h5>
+
+                                <hr>
+
+
+                            </div><!--body-title-->
+
+
+
+
+
+                            <div class="description body-row">
+
+                                <h5>{function="getCategoryName($value.incategory)"}</h5>
+
+                            </div><!--body-row-->
+
+
+
+
+
+
+                            <div class="card-price-wrapper">
+
+                                <div class="card-currency"> 
+
+                                    <span class="card-coin">R$</span> 
+
+
+                                </div><!--currency-->
+
+
+                                
+                                <span class="card-price">{function="getValuePartial($value.vlprice,1)"}</span>
+
+                                <span>,{function="getValuePartial($value.vlprice,0)"}</span>
+
+
+                            </div>
+
+
+
+
+
+
+                            <div class="body-footer buttons-wrapper2">
+                                
+                                <a class="btn card-add-cart">
+                                    
+                                        
+                                    <button class="card-buttons-cart">Comprar</button>
+
+
+                                </a>
+
+
+                                <a class="btn card-add-continue">
+                                    
+                                    <button>
+                                        Adicionar e Continuar Comprando
+
+                                    </button>
+
+                                </a>
+
+                            </div>
+
+
+
+
+
+                        </div><!--card-body-->
+
+
+                         
+
+                        
+                            
+                        
+                    </div><!--card1-->
+
+                                
+                    {/loop}
+
+                    {/if} 
+
+
+                </div><!--wrapper-->
+
+            </div><!--col-->
+    
+        </div><!--row-->
+
+
+        
+
+
+
+
+        <div class="row justify-content-center">
+                
+            <div class="col-6 centralizer">
+
+                    <div class="pagination">
+                        
+                        <ul>
+                            {loop="$pages"}
+                                <li><a href="{$value.href}">{$value.text}</a></li>                             
+                            {/loop}
+                        </ul>
+
+                    </div>
+
+            </div><!--col-->
+
+        </div><!--row-->
+
+
+
+
+
+
+    </div><!--container-->
+
+</section>
+
+
+

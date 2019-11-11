@@ -1,0 +1,411 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                {if="!validatePlan()"}
+
+                    {include="dashboard-menu-expirated"}
+               
+
+                {elseif="validatePlanFree()"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+
+
+
+
+
+
+
+
+
+                <div class="row">
+                    
+                    <div class="col-12">
+
+                        <div class="dash-title">
+                            <h1>Presente Recebido</h1>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+                {if="$success != ''"}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {$success}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                {/if}
+
+                {if="$error != ''"}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {$error}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                {/if}
+
+
+
+
+
+
+                <div class="row">
+                    
+                    <div class="col-md-10 col-12">
+                        
+                        <div class="table-header row">
+
+                            
+                            <div class="col-1">
+                                
+                                <span>#</span>
+                                                                
+                            </div>
+
+
+                            <div class="col-7">
+                                
+                                <span>Presente</span>
+                                                                
+                            </div> 
+
+
+                            <div class="col-4">
+                                
+                                <span>Valor</span>
+                                                                
+                            </div> 
+
+
+                            
+                            
+
+                        </div><!--body-row-->
+
+
+
+
+
+                        {loop="$product"}
+                        <div class="table-row row">
+
+                             <div class="col-1">
+                                
+                                <span>{$counter+1}.</span>
+                                                                
+                            </div>
+
+
+                            <div class="col-7">
+                                
+                                <span>{$value.desproduct}</span>
+                                                                
+                            </div> 
+
+
+                            <div class="col-4">
+                                
+                                <span>R$ {function="formatPrice(getInterest($value.vltotal,'1','1',$order.incharge))"}</span>
+                                                                
+                            </div> 
+
+                            
+
+                        </div><!--body-row-->
+                        {/loop}
+
+
+
+
+                        <div class="table-totals row">
+
+                            
+
+
+                            
+
+
+                            <div class="col-9 text-right">
+                                
+                                <span>Total</span>
+                                                                
+                            </div> 
+
+
+                            <div class="col-3 text-center">
+                                
+                                <span>R$ {function="formatPrice(getInterest($cart.vlprice,'1','1',$order.incharge))"}</span>
+                                                              
+                            </div> 
+                            
+
+                        </div><!--tabe-totals-->
+
+
+
+
+
+
+
+                        {if="$order.nrinstallment > 1"}
+                        <div class="table-footer row">
+
+                             
+
+                            <div class="col-md-6 col-5 text-center">
+                                
+                                <span>Parcelado em {$order.nrinstallment} vezes de R$ {function="formatPrice($order.vltotal/$order.nrinstallment)"}</span>
+                                                                
+                            </div> 
+
+
+                            <div class="col-md-3 col-4 text-right">
+                                
+                                <span>Total Parcelado</span>
+                                                                
+                            </div> 
+
+
+                            <div class="col-md-3 col-3 bold text-center">
+                                
+                                <span>R$ {function="formatPrice($order.vltotal)"}</span>
+                                                              
+                            </div> 
+                            
+
+                        </div><!--tabe-totals-->
+                        {/if}
+
+
+
+
+                    </div><!--col-10-->
+
+                </div><!--row-->
+
+
+
+
+
+
+
+                <div class="row">
+                    
+                    <div class="col-md-6 col-12">
+
+                        
+                        <div class="card-payment-reverse">
+                            
+                            <div class="body-row order-info row">
+
+                            <div class="col-12">
+                                
+                                <h5><span>Data da Compra:</span> {function="formatDate($order.dtregister)"}</h5>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+
+
+
+                        <div class="body-row order-info row">
+
+                            <div class="col-12">
+                                
+                                <h5><span>ID Pagamento:</span>  {$order.despaymentcode}</h5>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+
+
+                        <div class="body-row order-info row">
+
+                            <div class="col-12">
+                                
+                                <h5><span>Comprador:</span>  {$order.desname}</h5>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+
+
+                        <div class="body-row order-info row">
+
+                            <div class="col-12">
+                                
+                                <h5><span>Telefone:</span>  {$order.nrddd}-{$order.nrphone}</h5>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+
+
+                        <div class="body-row order-info row">
+
+                            <div class="col-12">
+                                
+                                <h5><span>E-mail:</span>  {$order.desemail}</h5>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+                        </div>
+
+                    </div><!--col-->
+
+
+
+                    <div class="col-md-6 col-12">
+
+                        
+                        <div class="card-payment">
+                            
+                            <div class="body-row order-info row">
+
+                                <div class="col-12 value1">
+                                    
+                                    <h5><span>Valor do Presente: </span>R$ {function="formatPrice($order.vltotal)"} {if="$order.nrinstallment > 1"} <small>(parcelado em {$order.nrinstallment} vezes)</small> {/if}</h5>
+
+                                </div>
+
+                            </div><!--big-body-row-->
+
+
+
+
+                            
+
+
+
+                            <div class="body-row order-info value2 row">
+
+                                <div class="col-12">
+                                    
+                                    <h5><span>Taxas Totais: </span> - R$ {function="formatPrice($order.vlprocessor+$order.vlmarketplace)"}</h5>
+
+                                </div>
+
+                            </div><!--big-body-row-->
+
+                            
+
+
+                            <div class="body-row order-info value3 row">
+
+                                <div class="col-12">
+                                    
+                                    <h5><span>Valor Recebido: </span> R$ {function="formatPrice($order.vlseller)"}</h5>
+
+                                </div>
+
+                            </div><!--big-body-row-->
+
+
+                            {if="$order.nrinstallment > 1"}
+                            <div class="body-row order-info obs row">
+
+                                <div class="col-12">
+                                    
+                                    <h6><span>Observação: </span> Para esta transação foi cobrado uma taxa total de {function="formatTax($order.vlmktpercentage+$order.vlantecipation+$order.vlpropercentage)"}%; sendo {function="formatTax($order.vlmktpercentage+$order.vlpropercentage)"}% de Tarifas Bancárias + Taxa Amar Casar; e {function="formatTax($order.vlantecipation)"}% de Tarifa de Antecipação relativa ao parcelamento em {$order.nrinstallment} vezes</h6>
+
+                                </div>
+
+                            </div><!--big-body-row-->
+                            {/if}
+
+                            
+
+
+                        </div><!--card-payment-->
+
+                    </div><!--col-->
+
+
+
+                </div><!--row-->
+
+
+
+
+                <div class="body-footer order-info row">
+
+                    <div class="col-12">
+                        
+                        <div id="payment">
+                            <button type="submit" value="Imprimir" class="btn btn-secondary" onclick="window.print()">Imprimir</button>
+                            <a href="/dashboard/painel-financeiro" class="btn btn-danger">Voltar</a>
+
+
+                        </div>
+
+                    </div>
+
+                </div><!--big-body-row-->
+                          
+
+                
+
+
+
+
+            </div><!--col-->
+        
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

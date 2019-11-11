@@ -1,0 +1,107 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Lista de Descontos
+  </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+  <div class="row">
+
+
+
+
+
+    <div class="col-md-6 col-12">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Criar Desconto</h3>
+        </div>
+        <!-- /.box-header -->
+        {if="$success != ''"}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {$success}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+            {/if}
+
+            {if="$error != ''"}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {$error}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+            {/if}
+        <!-- form start -->
+        <form role="form" action="/481738admin/descontos/{$discount.iddiscount}" method="post">
+          <div class="box-body">
+
+            <div class="form-group">
+              <label for="inscope">Contexto</label>
+              <input type="text" class="form-control" id="inscope" name="inscope" value="{$discount.inscope}">
+            </div>
+            
+            <div class="form-group">
+              <label for="instatus">Status</label>
+              <input type="text" class="form-control" id="instatus" name="instatus" value="{$discount.instatus}">
+            </div>
+            
+             <div class="form-group">
+              <label for="intype">Tipo</label>
+              <input type="text" class="form-control" id="intype" name="intype" value="{$discount.intype}">
+            </div>
+            <div class="form-group">
+              <label for="vlpercentage">Valor Percentual</label>
+              <input type="number" class="form-control" id="vlpercentage" name="vlpercentage" value="{$discount.vlinverse*100}">
+            </div>
+            <div class="form-group">
+              <label for="vlfixed">Valor Fixo</label>
+              <input type="number" class="form-control" id="vlfixed" name="vlfixed" value="{$discount.vlfixed}">
+            </div>
+            
+            <div class="form-group">
+              <label for="dtexpire">Expira Em (Dias)</label>
+              <input type="number" min="1" max="180" step="1" class="form-control" id="dtexpire" name="dtexpire">
+            </div>
+            <div class="form-group">
+              <input type="hidden" class="form-control" id="iddiscount" name="iddiscount" value="{$discount.iddiscount}">
+            </div>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer">
+            <button type="submit" class="btn btn-success">Salvar</button>
+            <a href="/481738admin/descontos">
+              
+              <button type="button" class="btn btn-danger">Voltar</button>
+
+            </a>
+          </div>
+        </form>
+      </div>
+    </div><!--col-->
+
+
+
+
+
+  </div><!--row-->
+
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

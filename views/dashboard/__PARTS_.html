@@ -1,0 +1,176 @@
+<!-----------------------------SELECT----------------------------------->
+
+<div class="dash-input-row input-date">
+                                
+    <div class="input-group mb-3">
+
+      <div class="input-group-prepend">
+
+        <label class="input-group-text" for="inputGroupSelect01">Visível</label>
+
+      </div><!--input-group-prepend-->
+
+      <select id="inpartystatus" name="inpartystatus" class="custom-select">
+
+        <option value="1" {if="$party.inpartystatus == '1'"}selected{/if}>Sim</option>
+        <option value="0" {if="$party.inpartystatus == '0'"}selected{/if}>Não</option>
+
+      </select>
+
+    
+    </div><!--mb-3-->
+
+</div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+
+
+
+<!-----------------------------PHOTO----------------------------------->
+<div class="dash-input-row input-photo">
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+      </div>
+      <div class="custom-file">
+        <input type="file" name="file" class="custom-file-input" id="file" aria-describedby="inputGroupFileAddon01">
+        <label class="custom-file-label" for="file">Selecionar imagem</label>
+
+      </div>
+    </div>
+    <div class="input-rows">
+        <img class="img-responsive" id="image-preview" src="/uploads/weddings/0.jpg" alt="">
+    </div>
+
+
+</div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+<!-----------------------------TEXTAREA----------------------------------->
+<div class="dash-input-row">
+
+    <div>
+        <label for="desdescription">História do Casal</label>
+        <!--<input type="text" class="form-control" id="desdescription" name="desdescription" placeholder="Digite o nome aqui" value="{$wedding.desdescription}">-->
+    </div>
+    
+    <textarea rows="10" cols="90" maxlength="500" id="desdescription" name="desdescription">{$wedding.desdescription}</textarea>
+
+</div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-----------------------------PHONE----------------------------------->
+
+<div class="row dash-input-row">
+
+
+    <div class="col-md-2">
+
+        <label for="nrddd">DDD</label>
+
+        <div id="nrddd">
+
+            <input type="text" placeholder="Mês" id="nrddd" name="nrddd" value="{$user.nrddd}" class="form-control">
+            
+        </div><!--nrddd-->
+
+    </div><!--col-->
+
+
+
+    <div class="col-md-10">
+
+        <label for="nrphone">Telefone</label>
+
+        <div id="nrphone">
+
+            <input type="text" placeholder="Ano" id="nrphone" name="nrphone" value="{$user.nrphone}" class="form-control">
+            
+        </div><!--nrphone-->
+
+    </div><!--col-->
+
+
+
+</div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-----------------------------STATE-CITY----------------------------------->
+
+<div class="dash-input-row">
+                                
+    <div class="dash-state-city">
+    
+        <label for="state">Estado</label>
+    
+        <select id="state" form="dash-form" name="desstate">
+
+            {loop="$state"}
+                <option value="{$value.idstate}" {if="$value.desstatecode == $address.desstate"}selected="selected"{/if}>{$value.desstate}</option>
+            {/loop}
+            
+        </select>
+
+    </div><!--dash-state-city-->
+
+</div><!--dash-input-row-->
+
+
+
+
+
+<div class="dash-input-row">
+    
+    <div class="dash-state-city">
+
+        <label for="city">Cidade</label>
+    
+        <select id="city" form="dash-form" name="descity">
+
+            {loop="$city"}
+                <option value="{$value.descity}" {if="$value.descity == $address.descity"}selected="selected"{/if}>{$value.descity}</option>
+            {/loop}
+
+        </select>
+
+    </div><!--dash-state-city-->
+
+</div><!--dash-input-row-->

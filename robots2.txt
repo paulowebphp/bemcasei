@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /$
+Disallow: /
+Allow: /quem-somos
+Allow: /site-casamento
+Allow: /criar-site-de-casamento
+Allow: /planos
+Allow: /lista-presentes
+Allow: /tarifas-condicoes
+Allow: /modelos-templates

@@ -1,0 +1,392 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                {if="!validatePlan()"}
+
+                    {include="dashboard-menu-expirated"}
+               
+
+                {elseif="validatePlanFree()"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+                
+
+                <form id="dash-form" method="post" action="/dashboard/meus-dados">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <div class="dash-title">
+                                <h1>Meus Dados</h1>
+                            </div><!--dash-title-->
+
+                        </div><!--col-->
+                    </div><!--row-->
+
+
+
+
+
+                    {if="$success != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {$success}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+                    {if="$error != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {$error}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+
+
+
+                    
+                    {if="$user.inaccount != 0"}
+                    <div class="row">
+                        
+                        <div class="col-md-6 dash-column">
+                            
+
+                            <div class="dash-input-row">
+
+                                <label for="desemail">E-mail</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Digite o e-mail aqui" value="{$user.desemail}" disabled>
+
+                            </div><!--dash-input-row-->
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="desperson">Nome completo</label>
+                                <input type="text" class="form-control" id="desperson" name="desperson" placeholder="Digite o nome aqui" value="{$user.desperson}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="desnick">Escolha um apelido</label>
+                                <input type="text" class="form-control" id="desnick" name="desnick" placeholder="Digite o nome aqui" value="{$user.desnick}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+                            <div class="dash-input-row input-date">
+
+                                <label for="dtbirth">Nascimento</label>
+                                <input type="date" class="form-control" id="dtbirth" name="dtbirth" placeholder="Digite o nome aqui" value="{$user.dtbirth}" disabled>
+
+                            </div><!--dash-input-row-->
+
+
+                            
+
+
+                            <div class="row dash-input-row row-2-columns">
+
+
+
+                                <div class="col-md-3">
+
+                                    <label for="nrddd">DDD</label>
+
+                                    <div id="nrddd">
+
+                                        <input type="text" placeholder="Mês" id="nrddd" name="nrddd" value="{$user.nrddd}" class="form-control">
+                                        
+                                    </div><!--nrddd-->
+
+                                </div><!--col-->
+
+
+
+                                <div class="col-md-9">
+
+                                    <label for="nrphone">Telefone</label>
+
+                                    <div id="nrphone">
+
+                                        <input type="text" placeholder="Ano" id="nrphone" name="nrphone" value="{$user.nrphone}" class="form-control">
+                                        
+                                    </div><!--nrphone-->
+
+                                </div><!--col-->
+
+
+
+                            </div><!--row-->
+
+
+                            
+                            
+
+
+
+
+
+                        </div><!--col-md-6-->
+
+
+
+
+
+                        <div class="col-md-6">
+                            
+                            
+
+                            <div class="dash-input-row">
+
+                                <label for="deszipcode">CEP</label>
+
+                                <input type="text" class="form-control" id="deszipcode" name="deszipcode" placeholder="Digite o nome aqui" value="{$address.deszipcode}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="desaddress">Endereço</label>
+
+                                <input type="text" class="form-control" id="desaddress" name="desaddress" placeholder="Digite o nome aqui" value="{$address.desaddress}">
+
+                            </div><!--dash-input-row-->
+
+
+
+                            
+                            <div class="dash-input-row">
+
+                                <label for="desnumber">Número</label>
+
+                                <input type="tel" class="form-control" id="desnumber" name="desnumber" placeholder="Digite o telefone aqui" value="{$address.desnumber}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="descomplement">Complemento (opcional)</label>
+
+                                <input type="text" class="form-control" id="descomplement" name="descomplement" value="{$address.descomplement}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="desdistrict">Bairro</label>
+
+                                <input type="text" class="form-control" id="desdistrict" name="desdistrict" value="{$address.desdistrict}">
+
+                            </div><!--dash-input-row-->
+
+                                
+
+
+
+                            <div class="dash-input-row">
+                                
+                                <div class="dash-state-city">
+                                
+                                    <label for="state">Estado</label>
+                                
+                                    <select id="state" form="dash-form" name="desstate">
+
+                                        {loop="$state"} 
+                                            <option value="{$value.idstate}" {if="$value.idstate == $address.idstate"}selected="selected"{/if}>{$value.desstate}</option>
+                                        {/loop}
+
+                                        
+                                    </select>
+
+                                </div><!--dash-state-city-->
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+                            <div class="dash-input-row">
+                                
+                                <div class="dash-state-city">
+
+                                    <label for="city">Cidade</label>
+                                
+                                    <select id="city" form="dash-form" name="descity">
+
+                                        {loop="$city"}
+                                            <option value="{$value.idcity}" {if="$value.idcity == $address.idcity"}selected="selected"{/if}>{$value.descity}</option>
+                                        {/loop}
+
+                                    </select>
+
+                                </div><!--dash-state-city-->
+
+                            </div><!--dash-input-row-->
+
+                            
+
+
+                            
+                            
+                        </div><!--col-md-6-->
+
+
+                    </div><!--row-->
+                    {else}
+                    <div class="row">
+                        
+                        <div class="col-md-6 dash-column">
+                            
+
+                            <div class="dash-input-row">
+
+                                <label for="desemail">E-mail</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Digite o e-mail aqui" value="{$user.desemail}" disabled>
+
+                            </div><!--dash-input-row-->
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="desperson">Nome completo</label>
+                                <input type="text" class="form-control" id="desperson" name="desperson" placeholder="Digite o nome aqui" value="{$user.desperson}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="desnick">Escolha um apelido</label>
+                                <input type="text" class="form-control" id="desnick" name="desnick" placeholder="Digite o nome aqui" value="{$user.desnick}">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+                          
+                            
+
+
+
+
+
+                        </div><!--col-md-6-->
+
+
+
+
+
+                        <div class="col-md-6">
+                            
+                           
+                            &nbsp;
+
+                            
+                            
+                        </div><!--col-md-6-->
+
+
+                    </div><!--row-->
+                    {/if}
+
+
+
+
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <div class="dash-input-row input-footer">
+                                
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+
+                                <a href="/dashboard" class="btn btn-danger">Voltar</a>
+
+                            </div><!--dash-input-row-->
+                            
+                        </div><!--col-->
+
+                    </div><!--row-->
+
+
+
+                </form>
+
+
+
+            </div><!--col-->
+        
+
+
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

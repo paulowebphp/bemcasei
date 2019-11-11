@@ -1,0 +1,99 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Manutenção
+  </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+  <div class="row">
+
+
+
+
+
+    <div class="col-md-6 col-12">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Editar Manutenção</h3>
+        </div>
+        <!-- /.box-header -->
+        {if="$success != ''"}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {$success}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+            {/if}
+
+            {if="$error != ''"}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {$error}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+            {/if}
+        <!-- form start -->
+        <form role="form" action="/481738admin/manutencao/{$maintenance.idmaintenance}" method="post">
+          <div class="box-body">
+
+                        
+            <div class="form-group">
+              <label for="instatus">Status</label>
+              <!--<input type="text" class="form-control" id="instatus" name="instatus" value="{$maintenance.instatus}">-->
+
+              <select id="instatus" name="instatus" class="custom-select">
+                <option value="0" {if="$maintenance.instatus == 0"}selected{/if}>Aberto</option>
+                <option value="1" {if="$maintenance.instatus == 1"}selected{/if}>Fechado</option>
+              </select>
+            </div>
+
+
+            
+             <div class="form-group">
+              <label for="desdescription">Descrição</label>
+              <input type="text" class="form-control" id="desdescription" name="desdescription" value="{$maintenance.desdescription}">
+            </div>
+
+            
+            <div class="form-group">
+              <input type="hidden" class="form-control" id="idmaintenance" name="idmaintenance" value="{$maintenance.idmaintenance}">
+            </div>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer">
+            <button type="submit" class="btn btn-success">Salvar</button>
+            <a href="/481738admin/manutencao">
+              
+              <button type="button" class="btn btn-danger">Voltar</button>
+
+            </a>
+          </div>
+        </form>
+      </div>
+    </div><!--col-->
+
+
+
+
+
+  </div><!--row-->
+
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

@@ -1,0 +1,242 @@
+/* ======== CRÉDITOS =========
+Du-Art Desenvolvimento
+
+>> criado por: Vilker Duarte
+>> Projeto: Amar Casar
+
+http://designer.du-art.tk
+============================*/ 
+
+.animate-left{position:relative;animation:animateleft 3s infinite}@keyframes animateleft{0%{ background-position:0 0 ;} 100%{background-position:100% 0 ;}}
+
+
+.register-container1{
+	min-height:740px; position:absolute; left:0; top:0; bottom:0; z-index:100;
+}
+
+.register-container2{
+	height:100%; box-shadow:none !important; padding-top:5px !important;
+}
+
+
+
+
+
+
+
+
+::-webkit-input-placeholder {       /* Chrome/Opera/Safari */
+	font-size:13px !important;
+}
+::-moz-placeholder {                      /* Firefox 19+ */
+	font-size:13px !important;
+}
+:-ms-input-placeholder {                         /* IE 10+ */
+	font-size:13px !important;
+}
+:-moz-placeholder {                                     /* Firefox 18- */
+	font-size:13px !important;
+}
+
+
+
+
+
+
+
+.bg-cadastro{
+	background-color:#ffffff !important;
+	padding:40px 20% !important;
+}
+
+#frase2::before{
+	content:'Em poucos instantes você terá acesso a um dos sites mais completos e modernos do Brasil';
+}
+
+
+
+@media (max-width: 768px) {
+	.bg-cadastro{
+	  padding:40px 3% !important;
+	}
+	#frase2::before{
+		content:'';
+	}
+}
+
+.bg-branco-gelo{
+	background-color: #eee !important;
+}
+.border-radius-5px{
+	border-radius:5px;
+}
+input:focus{
+	border: 1px solid #aaa !important;
+	outline:none !important;
+}
+
+input#nome {
+    border: 1px solid #eee;
+    font-size: 13px;
+    background-color: white;
+    background-image: url('img/logos/personal.svg');
+    background-position: 13px 12px; 
+    background-repeat: no-repeat;
+    padding: 10px 20px 10px 40px;
+    -webkit-transition: border 0.4s ease-in-out;
+    transition: border 0.4s ease-in-out;
+	border-radius:3px !important;
+	-moz-border-radius:3px !important;
+	-webkit-border-radius:3px !important;
+}
+
+input#email {
+    border: 1px solid #eee;
+    font-size: 13px;
+    background-color: white;
+    background-image: url('img/logos/mail.svg');
+    background-position: 13px 12px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: border 0.4s ease-in-out;
+    transition: border 0.4s ease-in-out;
+	border-radius:3px !important;
+	-moz-border-radius:3px !important;
+	-webkit-border-radius:3px !important;
+}
+
+input#confirma-senha, input#senha {
+    border: 1px solid #eee;
+    font-size: 13px;
+    background-color: white;
+    background-image: url('img/logos/pass.svg');
+    background-position: 13px 12px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: border 0.4s ease-in-out;
+    transition: border 0.4s ease-in-out;
+	margin-bottom: 10px !important;
+	border-radius:3px !important;
+	-moz-border-radius:3px !important;
+	-webkit-border-radius:3px !important;
+}
+.texto-sombra{
+	text-shadow:1px 1px 2px #000;
+}
+.btn-facebook-login {
+	background-color: white;
+    background-image: url('img/logos/fb.png');
+	background-size:25px;
+    background-position: 10px 4px; 
+    background-repeat: no-repeat;
+    padding: 10px 20px 10px 40px;
+	border:1px solid #3b5998;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	background-color:#374B9B;
+	color:#fff;
+	font-size:14px;
+	font-family: 'Open Sans';
+	width:100%;
+	margin-bottom:13px;
+	transition: background-color 0.4s ease-in-out;
+}
+.btn-facebook-login:hover{
+	background-color:#3b5998;
+	transition: background-color 0.4s ease-in-out;
+}
+
+
+
+
+
+.btn-cadastrar{
+	background-color:#dd716f!important;
+	margin-top:20px !important;
+	font-size:14px !important;
+	opacity:1;
+	border-radius:3px !important;
+	-moz-border-radius:3px !important;
+}
+.btn-cadastrar:hover{
+	opacity:0.9;
+}
+.status-forca-senha-1{
+padding-left:25%; background-color:#C00;
+}
+.status-forca-senha-2{
+padding-left:50%; background-color:#C90;
+}
+.status-forca-senha-3{
+padding-left:75%; background-color:#0C0;
+}
+.status-forca-senha-4{
+padding-left:98%; background-color:#060;
+}
+.div-forca-senha{
+	width:100%; margin-bottom:10px; font-size:12px;
+}
+
+.forca-senha{
+font-size:8px; border-radius: 5px;
+height:1px;
+background-image:url(img/logos/arrow.png);
+background-repeat:repeat;
+background-size:contain;
+box-shadow:inset 0px 0px 10px 1px rgba(51,51,51,1.0), 1px 1px 2px 1px rgba(51,51,51,0.3);
+}
+
+
+
+.center-text{
+	text-align:center;
+}
+.font-12{
+	font-size:12px;	
+}
+.font-14{
+	font-size:14px;	
+}
+.font-16{
+	font-size:16px;	
+}
+.font-18{
+	font-size:18px;	
+}
+.font-20{
+	font-size:20px;	
+}
+.font-22{
+	font-size:22px;	
+}
+.font-24{
+	font-size:24px;	
+}
+.font-26{
+	font-size:26px;	
+}
+.font-28{
+	font-size:28px;	
+}
+.font-32{
+	font-size:32px;	
+}
+.font-36{
+	font-size:36px;	
+}
+.font-40{
+	font-size:40px;	
+}
+.font-type-color-1{
+	color:#62007a;
+}
+.font-type-color-2{
+	color:#ed166c;
+}
+.font-type-color-3{
+	color:#dd716f;
+}
+.iframe-slide{
+	height:100%; border:none; min-height:695px; color:#fff; overflow:hidden; z-index:0; position:absolute; right:0; top:0; bottom:0;
+}

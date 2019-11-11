@@ -1,0 +1,260 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                {if="!validatePlan()"}
+
+                    {include="dashboard-menu-expirated"}
+               
+
+                {elseif="validatePlanFree()"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+
+
+
+
+
+
+
+
+
+                <div class="row">
+                    
+                    <div class="col-12">
+
+                        <div class="dash-title">
+                            <h1>Detalhes do Plano</h1>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+                {if="$success != ''"}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {$success}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                {/if}
+
+                {if="$error != ''"}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {$error}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                {/if}
+
+
+
+
+
+
+                <div class="row">
+                    
+                    <div class="col-md-10 col-12">
+                        
+                        
+
+
+
+                        <div class="row1 order-info row">
+
+                            <div class="col-12">
+                                
+                                <h5><span>Plano:</span>  {$plan.desplan}</h5>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+
+                        <div class="row1 order-info row">
+
+                            <div class="col-12">
+                                
+                                <h5><span>Período:</span>  {if="$plan.inperiod > 1"} {$plan.inperiod} meses {else} {$plan.inperiod} mês {/if}</h5>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+
+                        <div class="row1 order-info row">
+
+                            <div class="col-12">
+                                
+                                <h5><span>Valor:</span>  R$ {function="formatPrice($plan.vltotal)"}</h5>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+                        <div class="row1 order-info row">
+
+                            <div class="col-12">
+                                
+                                <h5><span>Meio de Pagamento:</span>  {if="$plan.inpaymentmethod == 0"}Boleto{else}Cartão{/if}</h5>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+                        <div class="row1 order-info row">
+
+                            <div class="col-12">
+                                
+                                <h5><span>Valor:</span>  R$ {function="formatPrice($order.vltotal)"}</h5>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+
+                          
+
+
+                          <div class="email-row detail">
+                           
+                            <span class="email-label1">Meio de Pagamento: &nbsp;&nbsp;</span><span class="email-label2">Cartão</span>
+
+                          </div><!--col-->
+
+
+                          {if="$order.nrinstallment > 1"}
+
+                              <div class="email-row detail">
+                           
+                                <span class="email-label2">Parcelado em {$order.nrinstallment} vezes de R$ {function="formatPrice($order.vltotal/$order.nrinstallment)"}</span>
+
+                              </div><!--col-->         
+
+                          {/if}
+
+
+
+                          <div class="email-row2 detail">
+                           
+                            <span class="email-label1">Data da Compra: &nbsp;&nbsp;</span><span class="email-label2">{function="formatDate($order.dtregister)"}</span>
+
+                          </div><!--col-->
+                      
+
+
+
+
+
+
+
+
+
+                    </div><!--col-10-->
+
+                </div><!--row-->
+
+
+
+
+
+
+
+                <div class="row">
+                    
+                    <div class="col-md-6 col-12">
+
+                        
+                        
+
+                    </div><!--col-->
+
+
+
+                    <div class="col-md-6 col-12">
+
+                        
+                       
+
+                    </div><!--col-->
+
+
+
+                </div><!--row-->
+
+
+
+
+                <div class="body-footer order-info row">
+
+                    <div class="col-12">
+                        
+                        <div id="payment">
+                            <button type="submit" value="Imprimir" class="btn btn-secondary" onclick="window.print()">Imprimir</button>
+                            <a href="/dashboard/painel-financeiro" class="btn btn-danger">Voltar</a>
+
+
+                        </div>
+
+                    </div>
+
+                </div><!--big-body-row-->
+                          
+
+                
+
+
+
+
+            </div><!--col-->
+        
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

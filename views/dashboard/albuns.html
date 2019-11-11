@@ -1,0 +1,454 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                {if="!validatePlan()"}
+
+                    {include="dashboard-menu-expirated"}
+               
+
+                {elseif="validatePlanFree()"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+         
+
+
+
+
+                <div class="row">
+                    
+                    <div class="col-12">
+
+                        <div class="dash-title">
+                            <h1>Album</h1>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                
+
+        
+
+                {if=" $maxalbuns > $numalbuns "}
+
+                <div class="row">
+
+                    <div class="col-12">
+
+
+                        <div class="button-header">
+
+                            <a href="/dashboard/album/adicionar">
+                                <button>
+                                    Adicionar Imagem
+                                </button>
+                            </a>
+                     
+                            
+                
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {/if}
+
+            
+
+                {if="$success != ''"}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {$success}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div> 
+                    </div>  
+                {/if}
+
+                {if="$error != ''"}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {$error}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div> 
+                    </div>  
+                {/if}
+
+               
+
+
+
+
+                {loop="$album"}
+                <div class="row card-dash">
+
+
+
+                    <div class="col-md-7 col-12">
+                        
+
+
+                        <div class="row card-dash-row1">
+                            
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{$value.inposition}</span>
+                                    </div>
+
+
+                                    <div class="card-dash-header">
+                                        <hr>
+                                        <span>Posição</span>
+                                    </div>
+
+                                </div><!--card-dash-field-->
+
+
+                            </div><!--col-->
+                        
+
+
+
+
+
+
+                            <div class="col-md-6 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{$value.desalbum}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Título</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+
+
+                            <div class="col-md-4 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        {if="$value.instatus == 0"}
+                                            <span>Não-visível</span>
+                                        {elseif="$value.instatus == 1"}
+                                            <span>Visível</span>
+                                        {/if}
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Status</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+                            
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+                        <div class="row card-dash-row2">
+
+
+
+
+
+                            
+                            
+                            
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{$value.desdescription}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Descrição</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+                    
+
+
+
+                        </div><!--row-->
+
+
+
+
+                    </div><!--col-->
+
+
+
+
+
+
+
+
+
+
+                    <div class="col-md-3 col-12 card-dash-row3">
+                        
+
+                        <div class="card-dash-field">
+
+
+                            <div class="card-photo">
+                                
+                                <img src="/uploads/albuns/{$value.desphoto}">
+
+                            </div>
+
+
+                           
+                        </div><!--card-buttons-wrappe-->
+
+
+
+
+                    </div><!--col-->
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="col-md-2 col-12 card-dash-row3">
+                        
+
+                        <div class="card-dash-field">
+
+
+                            <a href='/dashboard/album/{function="setHash($value.idalbum)"}'>
+
+                                <button>Editar</button>
+
+                            </a>
+                            
+
+
+                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/album/{function="setHash($value.idalbum)"}/deletar'>
+
+                                <button>Deletar</button>
+
+                            </a>
+
+
+                           
+                        </div><!--card-buttons-wrappe-->
+
+
+
+
+                    </div><!--col-->
+
+
+
+
+                </div><!--row-->
+                {else}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            Nenhuma imagem foi encontrada
+                        </div>
+                    </div>
+                </div>
+                {/loop}
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="row">
+
+
+
+
+                        
+                        <div class="col-md-3 col-12">
+
+                            <div class="search">
+
+                                <form action="/dashboard/album">
+
+                                    <div class="input-group input-group-sm">
+                                        
+                                        <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="{$search}">
+
+                                        <div class="input-group-btn">
+
+                                            <button type="submit" class="btn btn-default">
+
+                                                <i class="fa fa-search"></i>
+
+                                            </button>
+
+                                        </div><!--input-group-btn--->
+
+                                    </div><!--input-group-->
+
+                                </form>
+                                
+                            </div><!--search-->
+
+                        </div><!--col-->
+
+
+
+
+
+                        <div class="col-md-9 col-12">
+
+                            <div class="pagination">
+                                
+                                <ul>
+                                    {loop="$pages"}
+                                        <li><a href="{$value.href}">{$value.text}</a></li>                             
+                                                               
+                                    {/loop}
+                                </ul>
+
+                            </div>
+
+                        </div><!--col-->
+
+
+
+
+
+                        
+
+                    </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+            </div><!--col-->
+        
+
+
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

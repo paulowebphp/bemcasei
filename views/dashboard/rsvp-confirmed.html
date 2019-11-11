@@ -1,0 +1,469 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                {if="!validatePlan()"}
+
+                    {include="dashboard-menu-expirated"}
+               
+
+                {elseif="validatePlanFree()"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="row">
+                    
+                    <div class="col-12">
+
+                        <div class="dash-title">
+                            <h1>Lista de Confirmados</h1>
+                        </div>
+
+                    </div>
+
+                </div>
+
+        
+
+                <div class="row">
+
+                   <div class="col-12">
+
+
+                        <div class="account-box-wrapper">
+                            <div class="account-box">
+                                <div class="account-box-main">
+                                    <span>{$numConfirmed}</span>
+                                </div>
+
+                                <div class="account-box-title">
+                                    {if="$numConfirmed == 1"}
+                                        <span>Confirmado</span>
+                                    {else}
+                                        <span>Confirmados</span>
+                                    {/if}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+               </div>
+
+        
+
+                
+
+                <div class="row">
+
+                    <div class="col-12">
+
+                        <div class="button-header">
+                            {if=" $numConfirmed > 0 "}
+                                <a href="/dashboard/rsvp/download">
+                                    <button>
+                                        Baixar Lista de Confirmados em CSV
+                                    </button>
+                                </a>
+                            {/if}
+
+                            <a href="/dashboard/rsvp">
+                                <button>
+                                    Voltar
+                                </button>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            
+
+
+
+                {if="$success != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {$success}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+                    {if="$error != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {$error}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+
+
+                
+
+
+
+
+                {loop="$rsvp"}
+                <div class="row card-dash">
+
+                    <div class="col-md-12 col-12">
+                        
+
+
+                        <div class="row card-dash-row1">
+                            
+
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{$value.desguest}</span>
+                                    </div>
+
+
+                                    <div class="card-dash-header">
+                                        <hr>
+                                        <span>Nome</span>
+                                    </div>
+
+                                </div><!--card-dash-field-->
+
+
+                            </div><!--col-->
+                        
+
+
+
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{if="$value.inadultsconfirmed > 0"}{$value.inadultsconfirmed}{else}0{/if}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Adultos</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{if="$value.inchildrenconfirmed > 0"}{$value.inchildrenconfirmed}{else}0{/if}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Crianças</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{if="$value.nrphone == '' or $value.nrphone == null"}-{else}{$value.nrphone}{/if}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Telefone</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{if="$value.dtconfirmed == '' or $value.dtconfirmed == null"}-{else}{function="formatDate($value.dtconfirmed)"}{/if}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Data da Confirmação</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+                        <div class="row card-dash-row2">
+                            
+                            
+
+                            <div class="col-md-8 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{if="$value.desguestaccompanies == '' or $value.desguestaccompanies == null"}-{else}{$value.desguestaccompanies}{/if}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Nomes dos Acompanhantes</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+                            
+
+
+
+
+
+
+                            <div class="col-md-4 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{if="$value.desemail == '' or $value.desemail == null"}-{else}{$value.desemail}{/if}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>E-mail</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+                    </div><!--col-->
+
+
+
+
+
+
+                    
+
+
+
+
+                </div><!--row-->
+                {else}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            Nenhuma confirmação foi encontrada
+                        </div>
+                    </div>
+                </div>
+                {/loop}
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="row">
+                        
+
+                        <div class="col-12">
+                            <div class="dash-search pull-right">
+                                <form action="/dashboard/rsvp/confirmados">
+                                    <div class="input-group input-group-sm">
+                                        
+                                            <input type="text" name="search" class="form-control pull-right" placeholder="Buscar..." value="{$search}">
+                                            <div class="input-group-btn">
+                                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                            </div>
+                                    </div>
+                                </form>
+                                
+                            </div>
+
+
+
+                            <div class="dash-pagination clearfix">
+                                <ul class="pagination pagination-sm no-margin">
+                                    {loop="$pages"}
+                                        <a href="{$value.href}"><li>{$value.text}</li></a>
+                                    {/loop}
+                                </ul>
+                            </div>
+
+
+                        </div>  
+                    </div>
+
+
+
+
+
+
+
+
+            </div><!--col-->
+        
+
+
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

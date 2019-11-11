@@ -1,0 +1,595 @@
+@font-face {
+	font-family: 'OpenSans';
+	src: url("/res/site/fonts/Open_Sans/OpenSans-Regular.ttf");
+	font-size: 1em;
+}
+
+@font-face {
+	font-family: 'Norican';
+	src: url("/res/site/fonts/Norican/Norican-Regular.ttf");
+	font-size: 1em;
+}
+
+
+
+
+
+
+
+/********************************* HEADER *****************************************/
+
+body
+{
+	font-size: 18px;
+	font-family: "OpenSans";
+}
+
+
+header {
+	height: 130px;
+	z-index: 2;
+  	position: relative;
+	box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
+  		-webkit-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
+		-moz-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
+}
+
+
+header .container-fluid {
+	width: 100%;
+	padding: 1%	 5%;
+	position: relative;
+}
+
+
+#menu ul{
+	padding: 1%;
+	list-style: none;
+}
+
+
+#menu li {
+	/*display: inline-block;*/
+	margin-right: 2%;	
+	float:left;
+}
+
+
+#menu li a {
+	padding: 8px 12px;
+	font-weight: 400;
+	text-decoration: none;
+	color: #000;
+}
+
+
+#nav-free{
+	background: none;
+	border:	1px solid #dd716f;
+	border-radius: 8px;
+	padding: 15px 25px;
+	color: #dd716f;
+}
+
+
+#nav-login{
+	background: #dd716f;
+	border:	none;
+	border-radius: 8px;
+	padding: 15px 25px;
+	color: #fff;
+}
+
+
+
+
+
+header #menu-mobile{
+	display: none;
+}
+
+header #menu-mobile-mask
+{
+	display: none;
+}
+header #menu-condensed
+{
+	display: none;
+}
+
+
+
+
+
+
+.fa-search:before {
+}
+
+
+#banner h1.efeito {
+	color:#2ecc71 ;
+	font-size:12em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********************************* BANNER *****************************************/
+
+#banner {
+	padding: 15%;
+	width: 100%;
+	height: 960px;
+	position: relative;
+	background: url("/res/site/images/banner.jpg") no-repeat;
+	background-size: cover;
+	/*top: -100px;	*/
+}
+
+
+#banner h1 {
+	color: #fff;
+	position: relative;
+	font-size: 82px;
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .45);
+}
+
+#banner h3 {
+	color: #fff;
+	position: relative;
+	font-size: 36px;
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .45);
+}
+
+
+.banner-button{
+	margin-top: 5%;
+	font-size: 42px;
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .45);
+	border-radius: 8px;
+	padding: 25px 30px;
+	color: #fff;
+	border: 1px solid #fff;
+	background: #ffffff66;
+	text-shadow: #7e7e7e 0.1em 0.1em 0.2em;
+	font-family: 'Norican';
+}
+
+
+.banner-button:hover{
+	color: pink;
+}
+
+
+
+
+
+
+
+
+
+
+
+/********************************* FEATURES *****************************************/
+
+#features{
+	height: 1000px;
+	color: #6a0378;
+	font-size: 22px;
+
+}
+#features .media{
+	padding: 0 10%;
+
+}
+
+#features .feature-title h2{
+
+	color: #6a0378;
+	font-size: 56px;
+	margin-bottom: 10%;
+	margin-top: 2%;
+
+}
+
+
+#features .container-fluid {
+	width: 100%;
+	padding: 5% 10%;
+	position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/********************************* CREATE LIST *****************************************/
+
+#create-list {
+	color: #fff;
+	padding: 5% 15% 5% 15%;
+	width: 100%;
+	height: 600px;
+	position: relative;
+	background: url("/res/site/images/create-list.jpg") no-repeat;
+	background-size: cover;
+
+}
+
+
+#create-list .col-md-6{
+	display: grid;
+	align-items: center;
+}
+
+
+#create-list p{
+
+	font-size: 32px;
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .45);
+}
+
+
+
+
+.button-create-list1 {
+	font-size: 42px;
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .45);
+	border-radius: 8px;
+	padding: 25px 30px;
+	color: #fff;
+	border: 1px solid #fff;
+	background: #ffffff66;
+	text-shadow: #7e7e7e 0.1em 0.1em 0.2em;
+	font-family: 'Norican';
+	margin-bottom: 5%;
+
+}
+
+.button-create-list1:hover {
+  color: pink;
+
+}
+
+
+.button-create-list2 {
+	font-size: 42px;
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .45);
+	border-radius: 8px;
+	padding: 25px 30px;
+	color: #fff;
+	border: 1px solid #fff;
+	background: #ffffff66;
+	text-shadow: #7e7e7e 0.1em 0.1em 0.2em;
+	font-family: 'Norican';
+	margin-bottom: 5%;
+
+}
+
+
+.button-create-list2:hover {
+  color: pink;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/********************************* ADVANTAGES *****************************************/
+
+
+#advantages {
+	padding: 5% 15% 5% 15%;
+	width: 100%;
+	height: 960px;
+	position: relative;
+	background: url("/res/site/images/advantages.jpg") no-repeat;
+	background-color: #f2f2f2;
+	background-size: cover;
+	/*top: -100px;	*/
+}
+
+.btn-advantage1 {
+  color: #fff;
+  /* background-color: rgba(217, 83, 79, 0.77); */
+  background-color: #dd716f;
+  border: 2px solid #dd716f;
+  /* text-shadow: #7e7e7e 0.1em 0.1em 0.2em; */
+}
+
+
+.advantage-title h2{
+  color: #dd716f;
+  font-weight: 700;
+  font-size: 56px;
+  margin-bottom: 10%;
+}
+
+
+#advantage .container {
+	width: 100%;
+	padding: 5% 5%;
+	position: relative;
+}
+
+#box-price {
+    text-align: center;
+    color: #fff;
+    list-style-type: none;
+    transition: all 0.25s;
+    position: relative;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border: 5px solid #dd716f;
+    width: 460px;
+  	background-color: #dd716f;
+  	margin-top: 10px;
+}
+
+#box-header {
+  color: #000000 !important;
+  font-size: 24px;
+
+}
+
+
+#advantages-features {
+    background: #fff;
+    color: #2a2a2a;
+    margin: 0;
+    padding: 0;
+}
+#advantages-features li {
+    padding: 12px 0;
+    border-bottom: 1px solid #c6c6c6;
+    font-size: 20px;
+    list-style-type: none;
+    color: #8a8a8a;
+    font-weight: 300;
+  	margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+#box-price-logo{
+	padding:5%;
+}
+
+
+#box-footer{
+
+    background: #fff;
+    padding: 5%;
+}
+
+
+#box-footer a{
+
+    color: #dd716f;
+}
+
+
+
+
+
+
+
+
+
+
+
+/********************************* CONFIRMATION *****************************************/
+
+#confirmation {
+	padding: 5% 15% 5% 15%;
+	width: 100%;
+	height: 500px;
+	position: relative;
+	background: url("/res/site/images/banner3.jpg") no-repeat center center fixed;
+	background-size: cover;
+	display: -webkit-flex;
+	display: flex;
+		-webkit-align-items: center;
+	align-items: center;
+		-webkit-justify-content: center;
+	justify-content: center;
+}
+
+
+.confirmation-button1 {
+	font-size: 42px;
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .45);
+	border-radius: 8px;
+	padding: 25px 30px;
+	color: #fff;
+	border: 1px solid #fff;
+	background: #ffffff66;
+	text-shadow: #7e7e7e 0.1em 0.1em 0.2em;
+	font-family: 'Norican';
+}
+
+
+.confirmation-button2 {
+	font-size: 42px;
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .45);
+	border-radius: 8px;
+	padding: 25px 30px;
+	color: #fff;
+	border: 1px solid #fff;
+	background: #ffffff66;
+	text-shadow: #7e7e7e 0.1em 0.1em 0.2em;
+	font-family: 'Norican';
+
+}
+
+.confirmation-button1:hover{
+	color: pink;
+}
+
+
+.confirmation-button2:hover{
+	color: pink;
+}
+
+
+
+
+
+/********************************* CONFIRMATION *****************************************/
+
+footer{
+	padding: 5% 15% 5% 15%;
+	background: #dd716f;
+	font-size: 24px;
+	color: #fff;
+
+}
+
+
+footer .container{ 
+	width: 100%	
+	
+}
+
+footer a{
+	color: #fff;
+	
+}
+
+
+
+footer .bottom-footer p {
+  color: #fff;
+  line-height: 24px;
+  font-size: 15px;
+  padding-top: 20px;
+  border-top: 1px solid #fff;
+}
+
+
+footer .bottom-footer {
+    background: #dd716f;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+    text-transform: capitalize;
+}
+
+
+
+
+.btn-trans {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: #fff;
+}
+
+
+
+#footer-logo{
+	width: 370px;
+    margin-left: -20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/********************************* FOOTER *****************************************/
+
+.list-group-item {
+    background: none;
+    border: none;
+}
+
+footer #footer-logo{
+	margin-bottom: 12%;
+}
+
+
+#footer-first-row .caption{
+	margin: 0 1% 18% 1%;
+}
+
+#footer-first-row .caption h2{
+	margin-bottom: 10%;
+}
+
+.list-group-item{
+	padding: 0;
+	margin-right: 5%!important;
+
+}
+
+
+footer a:hover {
+    color: pink;
+    text-decoration: none;
+}
+
+
+
+.btn-send {
+    color: #fff;
+    background-color: #dd716f;
+    border: none;
+    border-radius: 8px;
+    border: 1px solid #fff;
+    padding: 7px 25px;
+    margin-top: 7%;
+}
+
+
+/********************************* SITE WEDDING *****************************************/
+
+
+.site-wedding-title h2{
+  color: #d10b6d;
+  font-weight: 700;
+  /*font-family: 'Encode Sans Condensed', sans-serif;*/
+    font-family: 'Open Sans';
+  font-size: 35px;
+  padding: 20px;
+  padding-top: 30px;
+}
+.site-wedding-title p{
+  color: #d10b6d;
+  font-weight: 700;
+  /*font-family: 'Encode Sans Condensed', sans-serif;*/
+    font-family: 'Open Sans';
+  font-size: 15px;
+}

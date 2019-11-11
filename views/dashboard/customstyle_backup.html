@@ -1,0 +1,1220 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 dash-menu">
+
+
+                {if="!validatePlan($plan.inpaymentstatus, $plan.inpaymentmethod, $user.inplancontext, $user.dtplanend)"}
+
+                    {include="dashboard-menu-expirated"}
+               
+
+                {elseif="validatePlanFree($user.inplancontext)"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 dash-panel">
+
+
+                 
+
+                
+
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <div class="dash-title">
+                                <h1>Personalizar Site</h1>
+                            </div><!--dash-title-->
+
+                        </div><!--col-->
+                    </div><!--row-->
+
+
+
+
+
+
+                    <div class="row">
+
+                        <div class="col-12">
+
+
+                              
+
+                            <div class="button-header">
+
+
+                                <a onclick="return confirm('Deseja realmente voltar às configurações padrão do template? (Atenção: Não é possível reverter esta ação)')"  href="/dashboard/personalizar-site/resetar">
+
+                                    <button>Restaurar Configurações Padrão do Template Atual</button>
+
+                                </a>
+                                
+
+
+                            </div>
+
+                                
+                                
+                    
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    {if="$success != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {$success}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+                    {if="$error != ''"}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {$error}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    {/if}
+
+                                          
+
+
+
+                    <div class="row dash-input-row centralizer">
+
+
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+
+                                    <form id="dash-form" method="post" action="/dashboard/personalizar-site" enctype="multipart/form-data">
+
+                                    <label for="descolorheader">Fonte do Header</label>
+
+                                    <div>   
+
+                                        <input type="text" class="jscolor form-control" id="descolorheader" name="descolorheader" value="{$customstyle.descolorheader}">
+                                        
+                                    </div><!--nrddd-->
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="descolorheaderhover">Fonte do Header | <strong>Efeito Hover</strong></label>
+
+                                    <div>
+
+                                        <input type="text" class="jscolor form-control" id="descolorheaderhover" name="descolorheaderhover" value="{$customstyle.descolorheaderhover}">
+                                        
+                                    </div><!--nrphone-->
+
+                                </div>
+
+                            </div>
+                            
+
+                        </div><!--col-->
+
+
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+                                    
+                                    <label for="descolorfooter">Fonte do Footer</label>
+                                    <input type="text" class="jscolor form-control" id="descolorfooter" name="descolorfooter" value="{$customstyle.descolorfooter}">
+                                
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="descolorfooterhover">Fonte do Footer | <strong>Efeito Hover</strong></label>
+
+
+                                    <input type="text" class="jscolor form-control" id="descolorfooterhover" name="descolorfooterhover" value="{$customstyle.descolorfooterhover}">
+
+                                </div>
+
+                            </div>
+
+                            
+
+
+
+
+                        </div><!--col-->
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+                            
+                            
+                            
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+                                    
+                                    <label for="desbgcolorfooter">Cor de Fundo do Footer</label>
+                                    <input type="text" class="jscolor form-control" id="desbgcolorfooter" name="desbgcolorfooter" value="{$customstyle.desbgcolorfooter}">
+                                
+
+                                </div>
+
+                            </div> 
+
+                        </div><!--col-->
+
+
+
+
+                    </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="row dash-input-row centralizer">
+
+
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+
+                                    <label for="descolorh1">Nome do Casal</label>
+
+
+                                    <input type="text" class="jscolor form-control" id="descolorh1" name="descolorh1" placeholder="Digite o nome aqui" value="{$customstyle.descolorh1}">
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="desfontfamilyh1">Fonte do Nome do Casal</label>
+
+                                    <select style="font-family: '{$customstyle.desfontfamilyh1}'" id="desfontfamilyh1" name="desfontfamilyh1" class="custom-select">
+
+                                        <option value="Arial" data-fontfamily="Arial" style="font-family: 'Arial'" {if="$customstyle.desfontfamilyh1 == 'Arial'"}selected{/if}>Arial</option>
+
+                                        <option value="Heebo" data-fontfamily="Heebo" style="font-family: 'Heebo'" {if="$customstyle.desfontfamilyh1 == 'Heebo'"}selected{/if}>Heebo</option>
+
+                                        <option value="OpenSans" data-fontfamily="OpenSans" style="font-family: 'OpenSans'" {if="$customstyle.desfontfamilyh1 == 'OpenSans'"}selected{/if}>OpenSans</option>
+         
+                                        <option value="Poppins" data-fontfamily="Poppins" style="font-family: 'Poppins'" {if="$customstyle.desfontfamilyh1 == 'Poppins'"}selected{/if}>Poppins</option>
+
+                                        <option value="Roboto" data-fontfamily="Roboto" style="font-family: 'Roboto'" {if="$customstyle.desfontfamilyh1 == 'Roboto'"}selected{/if}>Roboto</option>
+
+                                        <option value="Euphoria" data-fontfamily="Euphoria" style="font-family: 'Euphoria'" {if="$customstyle.desfontfamilyh1 == 'Euphoria'"}selected{/if}>Euphoria</option>
+
+                                        <option value="KaushanScript" data-fontfamily="KaushanScript" style="font-family: 'KaushanScript'" {if="$customstyle.desfontfamilyh1 == 'KaushanScript'"}selected{/if}>KaushanScript</option>
+
+                                        <option value="Norican" data-fontfamily="Norican" style="font-family: 'Norican'" {if="$customstyle.desfontfamilyh1 == 'Norican'"}selected{/if}>Norican</option>
+
+                                        <option value="Pacifico" data-fontfamily="Pacifico" style="font-family: 'Pacifico'" {if="$customstyle.desfontfamilyh1 == 'Pacifico'"}selected{/if}>Pacifico</option>
+
+                                        <option value="Satisfy" data-fontfamily="Satisfy" style="font-family: 'Satisfy'" {if="$customstyle.desfontfamilyh1 == 'Satisfy'"}selected{/if}>Satisfy</option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+                            
+
+                        </div><!--col-->
+
+
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+                                    
+                                    <label for="descolorh2">Contagem Regressiva</label>
+
+
+                                    <input type="text" class="jscolor form-control" id="descolorh2" name="descolorh2" placeholder="Digite o nome aqui" value="{$customstyle.descolorh2}">
+                                
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="desfontfamilyh2">Fonte da Contagem Regressiva</label>
+
+                                    <select style="font-family: '{$customstyle.desfontfamilyh2}'" id="desfontfamilyh2" name="desfontfamilyh2" class="custom-select">
+
+                                        <option data-fontfamily="Arial" value="Arial" style="font-family: 'Arial'" {if="$customstyle.desfontfamilyh2 == 'Arial'"}selected{/if}>Arial</option>
+
+                                        <option data-fontfamily="Heebo" value="Heebo" style="font-family: 'Heebo'" {if="$customstyle.desfontfamilyh2 == 'Heebo'"}selected{/if}>Heebo</option>
+
+                                        <option data-fontfamily="OpenSans" value="OpenSans" style="font-family: 'OpenSans'" {if="$customstyle.desfontfamilyh2 == 'OpenSans'"}selected{/if}>OpenSans</option>
+         
+                                        <option data-fontfamily="Poppins" value="Poppins" style="font-family: 'Poppins'" {if="$customstyle.desfontfamilyh2 == 'Poppins'"}selected{/if}>Poppins</option>
+
+                                        <option data-fontfamily="Roboto" value="Roboto" style="font-family: 'Roboto'" {if="$customstyle.desfontfamilyh2 == 'Roboto'"}selected{/if}>Roboto</option>
+
+                                        <option data-fontfamily="Euphoria" value="Euphoria" style="font-family: 'Euphoria'" {if="$customstyle.desfontfamilyh2 == 'Euphoria'"}selected{/if}>Euphoria</option>
+
+                                        <option data-fontfamily="KaushanScript" value="KaushanScript" style="font-family: 'KaushanScript'" {if="$customstyle.desfontfamilyh2 == 'KaushanScript'"}selected{/if}>KaushanScript</option>
+
+                                        <option data-fontfamily="Norican" value="Norican" style="font-family: 'Norican'" {if="$customstyle.desfontfamilyh2 == 'Norican'"}selected{/if}>Norican</option>
+
+                                        <option data-fontfamily="Pacifico" value="Pacifico" style="font-family: 'Pacifico'" {if="$customstyle.desfontfamilyh2 == 'Pacifico'"}selected{/if}>Pacifico</option>
+
+                                        <option data-fontfamily="Satisfy" value="Satisfy" style="font-family: 'Satisfy'" {if="$customstyle.desfontfamilyh2 == 'Satisfy'"}selected{/if}>Satisfy</option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                            
+
+
+
+
+                        </div><!--col-->
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+
+                            
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+
+
+
+
+                                    <label for="inroundborder">Imagem Arredondada | <small>Para imagens da Cerimônia e Festa</small></label>
+
+
+                                    <select id="inroundborder" name="inroundborder" class="custom-select">
+
+                                        <option value="0" {if="$customstyle.inroundborder == '0'"}selected{/if}>Não</option>
+                                        <option value="1" {if="$customstyle.inroundborder == '1'"}selected{/if}>Sim</option>
+
+                                    </select>
+
+                                    
+                                    
+                                    
+                                
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    
+                                    <label for="desroundbordersize">Espessura da Borda das Imagens Arredondadas: <strong id="border-size">{$customstyle.desroundbordersize}</strong></label>
+
+
+                                    <input type="range"  min="1" max="12" class="form-control" id="desroundbordersize" name="desroundbordersize" value="{$customstyle.desroundbordersize}">
+
+
+                                </div>
+
+                            </div>
+                                
+
+                        </div><!--col-->
+
+
+
+
+                    </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="row dash-input-row centralizer">
+
+
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+
+                                     <label for="descolorh3">Cor Principal e dos Títulos das Páginas</label>
+
+
+                                    <input type="text" class="jscolor form-control" id="descolorh3" name="descolorh3" placeholder="Digite o nome aqui" value="{$customstyle.descolorh3}">
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+
+                                    <label for="desfontfamilyh3">Fonte do Título das Páginas</label>
+
+                                    <select style="font-family: '{$customstyle.desfontfamilyh3}'" id="desfontfamilyh3" name="desfontfamilyh3" class="custom-select">
+
+                                        <option value="Arial" data-fontfamily="Arial" style="font-family: 'Arial'" {if="$customstyle.desfontfamilyh3 == 'Arial'"}selected{/if}>Arial</option>
+
+                                        <option value="Heebo" data-fontfamily="Heebo" style="font-family: 'Heebo'" {if="$customstyle.desfontfamilyh3 == 'Heebo'"}selected{/if}>Heebo</option>
+
+                                        <option value="OpenSans" data-fontfamily="OpenSans" style="font-family: 'OpenSans'" {if="$customstyle.desfontfamilyh3 == 'OpenSans'"}selected{/if}>OpenSans</option>
+         
+                                        <option value="Poppins" data-fontfamily="Poppins" style="font-family: 'Poppins'" {if="$customstyle.desfontfamilyh3 == 'Poppins'"}selected{/if}>Poppins</option>
+
+                                        <option value="Roboto" data-fontfamily="Roboto" style="font-family: 'Roboto'" {if="$customstyle.desfontfamilyh3 == 'Roboto'"}selected{/if}>Roboto</option>
+
+                                        <option value="Euphoria" data-fontfamily="Euphoria" style="font-family: 'Euphoria'" {if="$customstyle.desfontfamilyh3 == 'Euphoria'"}selected{/if}>Euphoria</option>
+
+                                        <option value="KaushanScript" data-fontfamily="KaushanScript" style="font-family: 'KaushanScript'" {if="$customstyle.desfontfamilyh3 == 'KaushanScript'"}selected{/if}>KaushanScript</option>
+
+                                        <option value="Norican" data-fontfamily="Norican" style="font-family: 'Norican'" {if="$customstyle.desfontfamilyh3 == 'Norican'"}selected{/if}>Norican</option>
+
+                                        <option value="Pacifico" data-fontfamily="Pacifico" style="font-family: 'Pacifico'" {if="$customstyle.desfontfamilyh3 == 'Pacifico'"}selected{/if}>Pacifico</option>
+
+                                        <option value="Satisfy" data-fontfamily="Satisfy" style="font-family: 'Satisfy'" {if="$customstyle.desfontfamilyh3 == 'Satisfy'"}selected{/if}>Satisfy</option>
+
+                                    </select>
+
+
+                                    
+                                </div>
+
+                            </div>
+                            
+
+                        </div><!--col-->
+
+
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+                                    
+                                    <label for="descolorh4">Título dos Elementos</label>
+
+
+                                    <input type="text" class="jscolor form-control" id="descolorh4" name="descolorh4" placeholder="Digite o nome aqui" value="{$customstyle.descolorh4}">
+                                
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="desfontfamilyh4"><span>Fonte do Título dos Elementos</span></label>
+
+                                    <select style="font-family: '{$customstyle.desfontfamilyh4}'" id="desfontfamilyh4" name="desfontfamilyh4" class="custom-select">
+
+                                        <option value="Arial" data-fontfamily="Arial" style="font-family: 'Arial'" {if="$customstyle.desfontfamilyh4 == 'Arial'"}selected{/if}>Arial</option>
+
+                                        <option value="Heebo" data-fontfamily="Heebo" style="font-family: 'Heebo'" {if="$customstyle.desfontfamilyh4 == 'Heebo'"}selected{/if}>Heebo</option>
+
+                                        <option value="OpenSans" data-fontfamily="OpenSans" style="font-family: 'OpenSans'" {if="$customstyle.desfontfamilyh4 == 'OpenSans'"}selected{/if}>OpenSans</option>
+         
+                                        <option value="Poppins" data-fontfamily="Poppins" style="font-family: 'Poppins'" {if="$customstyle.desfontfamilyh4 == 'Poppins'"}selected{/if}>Poppins</option>
+
+                                        <option value="Roboto" data-fontfamily="Roboto" style="font-family: 'Roboto'" {if="$customstyle.desfontfamilyh4 == 'Roboto'"}selected{/if}>Roboto</option>
+
+                                        <option value="Euphoria" data-fontfamily="Euphoria" style="font-family: 'Euphoria'" {if="$customstyle.desfontfamilyh4 == 'Euphoria'"}selected{/if}>Euphoria</option>
+
+                                        <option value="KaushanScript" data-fontfamily="KaushanScript" style="font-family: 'KaushanScript'" {if="$customstyle.desfontfamilyh4 == 'KaushanScript'"}selected{/if}>KaushanScript</option>
+
+                                        <option value="Norican" data-fontfamily="Norican" style="font-family: 'Norican'" {if="$customstyle.desfontfamilyh4 == 'Norican'"}selected{/if}>Norican</option>
+
+                                        <option value="Pacifico" data-fontfamily="Pacifico" style="font-family: 'Pacifico'" {if="$customstyle.desfontfamilyh4 == 'Pacifico'"}selected{/if}>Pacifico</option>
+
+                                        <option value="Satisfy" data-fontfamily="Satisfy" style="font-family: 'Satisfy'" {if="$customstyle.desfontfamilyh4 == 'Satisfy'"}selected{/if}>Satisfy</option>
+
+                                    </select>
+
+
+                                </div>
+
+                            </div>
+
+                            
+
+
+
+
+                        </div><!--col-->
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+
+                            
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+                                    
+                                    
+                                    <label for="descolortext">Legendas</label>
+
+
+                                    <input type="text" class="jscolor form-control" id="descolortext" name="descolortext" placeholder="Digite o nome aqui" value="{$customstyle.descolortext}">
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="desfontfamilytext">Fonte das Legendas</label>
+
+                                    <select style="font-family: '{$customstyle.desfontfamilytext}'" id="desfontfamilytext" name="desfontfamilytext" class="custom-select">
+
+                                        <option value="Arial" data-fontfamily="Arial" style="font-family: 'Arial'" {if="$customstyle.desfontfamilytext == 'Arial'"}selected{/if}>Arial</option>
+
+                                        <option value="Heebo" data-fontfamily="Heebo" style="font-family: 'Heebo'" {if="$customstyle.desfontfamilytext == 'Heebo'"}selected{/if}>Heebo</option>
+
+                                        <option value="OpenSans" data-fontfamily="OpenSans" style="font-family: 'OpenSans'" {if="$customstyle.desfontfamilytext == 'OpenSans'"}selected{/if}>OpenSans</option>
+         
+                                        <option value="Poppins" data-fontfamily="Poppins" style="font-family: 'Poppins'" {if="$customstyle.desfontfamilytext == 'Poppins'"}selected{/if}>Poppins</option>
+
+                                        <option value="Roboto" data-fontfamily="Roboto" style="font-family: 'Roboto'" {if="$customstyle.desfontfamilytext == 'Roboto'"}selected{/if}>Roboto</option>
+
+                                        <option value="Euphoria" data-fontfamily="Euphoria" style="font-family: 'Euphoria'" {if="$customstyle.desfontfamilytext == 'Euphoria'"}selected{/if}>Euphoria</option>
+
+                                        <option value="KaushanScript" data-fontfamily="KaushanScript" style="font-family: 'KaushanScript'" {if="$customstyle.desfontfamilytext == 'KaushanScript'"}selected{/if}>KaushanScript</option>
+
+                                        <option value="Norican" data-fontfamily="Norican" style="font-family: 'Norican'" {if="$customstyle.desfontfamilytext == 'Norican'"}selected{/if}>Norican</option>
+
+                                        <option value="Pacifico" data-fontfamily="Pacifico" style="font-family: 'Pacifico'" {if="$customstyle.desfontfamilytext == 'Pacifico'"}selected{/if}>Pacifico</option>
+
+                                        <option value="Satisfy" data-fontfamily="Satisfy" style="font-family: 'Satisfy'" {if="$customstyle.desfontfamilytext == 'Satisfy'"}selected{/if}>Satisfy</option>
+
+                                    </select>
+
+
+                                </div>
+
+                            </div>
+                                
+
+                        </div><!--col-->
+
+
+
+
+                    </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="row dash-input-row centralizer">
+
+
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+
+                                     <label for="descolorh5">Texto Comum</label>
+
+
+                                    <input type="text" class="jscolor form-control" id="descolorh5" name="descolorh5" placeholder="Digite o nome aqui" value="{$customstyle.descolorh5}">
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    <label for="desfontfamilyh5"><span>Fonte do Texto Comum</span></label>
+
+                                    <select style="font-family: '{$customstyle.desfontfamilyh5}'" id="desfontfamilyh5" name="desfontfamilyh5" class="custom-select">
+
+                                        <option value="Arial" data-fontfamily="Arial" style="font-family: 'Arial'" {if="$customstyle.desfontfamilyh5 == 'Arial'"}selected{/if}>Arial</option>
+
+                                        <option value="Heebo" data-fontfamily="Heebo" style="font-family: 'Heebo'" {if="$customstyle.desfontfamilyh5 == 'Heebo'"}selected{/if}>Heebo</option>
+
+                                        <option value="OpenSans" data-fontfamily="OpenSans" style="font-family: 'OpenSans'" {if="$customstyle.desfontfamilyh5 == 'OpenSans'"}selected{/if}>OpenSans</option>
+         
+                                        <option value="Poppins" data-fontfamily="Poppins" style="font-family: 'Poppins'" {if="$customstyle.desfontfamilyh5 == 'Poppins'"}selected{/if}>Poppins</option>
+
+                                        <option value="Roboto" data-fontfamily="Roboto" style="font-family: 'Roboto'" {if="$customstyle.desfontfamilyh5 == 'Roboto'"}selected{/if}>Roboto</option>
+
+                                        <option value="Euphoria" data-fontfamily="Euphoria" style="font-family: 'Euphoria'" {if="$customstyle.desfontfamilyh5 == 'Euphoria'"}selected{/if}>Euphoria</option>
+
+                                        <option value="KaushanScript" data-fontfamily="KaushanScript" style="font-family: 'KaushanScript'" {if="$customstyle.desfontfamilyh5 == 'KaushanScript'"}selected{/if}>KaushanScript</option>
+
+                                        <option value="Norican" data-fontfamily="Norican" style="font-family: 'Norican'" {if="$customstyle.desfontfamilyh5 == 'Norican'"}selected{/if}>Norican</option>
+
+                                        <option value="Pacifico" data-fontfamily="Pacifico" style="font-family: 'Pacifico'" {if="$customstyle.desfontfamilyh5 == 'Pacifico'"}selected{/if}>Pacifico</option>
+
+                                        <option value="Satisfy" data-fontfamily="Satisfy" style="font-family: 'Satisfy'" {if="$customstyle.desfontfamilyh5 == 'Satisfy'"}selected{/if}>Satisfy</option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+                            
+
+                        </div><!--col-->
+
+
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+                                    
+                                    <label for="descolorlinkhover">Texto Comum | <strong>Links</strong></label>
+
+
+                                    <input type="text" class="jscolor form-control" id="descolorlinkhover" name="descolorlinkhover" placeholder="Digite o nome aqui" value="{$customstyle.descolorlinkhover}">
+                                
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    &nbsp;
+
+                                </div>
+
+                            </div>
+
+                            
+
+
+
+
+                        </div><!--col-->
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+
+                            
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+                                    
+                                    
+                                    &nbsp;
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+                                    
+                                    &nbsp;
+
+
+                                </div>
+
+                            </div>
+                                
+
+                        </div><!--col-->
+
+
+
+
+                    </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="row dash-input-row centralizer">
+
+
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+
+                                    <label for="desbgcolorbutton">Cor de Fundo dos Botões</label>
+
+
+                                    <input type="text" class="jscolor form-control" id="desbgcolorbutton" name="desbgcolorbutton" placeholder="Digite o nome aqui" value="{$customstyle.desbgcolorbutton}">
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+
+                                    <label for="descolorbutton">Texto dos Botões</label>
+
+
+                                    <input type="text" class="jscolor form-control" id="descolorbutton" name="descolorbutton" placeholder="Digite o nome aqui" value="{$customstyle.descolorbutton}">
+
+                                </div>
+
+
+                            </div>
+                            
+
+                        </div><!--col-->
+
+
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+
+
+                            
+
+
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+
+                                    <label for="desborderradiusbutton">Arredondamento dos Botões: <strong id="border-radius">{$customstyle.desborderradiusbutton}</strong></label>
+
+
+                                    <input type="range"  min="0" max="20" class="form-control" id="desborderradiusbutton" name="desborderradiusbutton" value="{$customstyle.desborderradiusbutton}">
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+
+                                    
+
+
+
+                                    <label for="desfontfamilyh1">Fonte dos Botões</label>
+
+                                    <select style="font-family: '{$customstyle.desfontfamilybutton}'" id="desfontfamilybutton" name="desfontfamilybutton" class="custom-select">
+
+                                        <option value="Arial" data-fontfamily="Arial" style="font-family: 'Arial'" {if="$customstyle.desfontfamilybutton == 'Arial'"}selected{/if}>Arial</option>
+
+                                        <option value="Heebo" data-fontfamily="Heebo" style="font-family: 'Heebo'" {if="$customstyle.desfontfamilybutton == 'Heebo'"}selected{/if}>Heebo</option>
+
+                                        <option value="OpenSans" data-fontfamily="OpenSans" style="font-family: 'OpenSans'" {if="$customstyle.desfontfamilybutton == 'OpenSans'"}selected{/if}>OpenSans</option>
+         
+                                        <option value="Poppins" data-fontfamily="Poppins" style="font-family: 'Poppins'" {if="$customstyle.desfontfamilybutton == 'Poppins'"}selected{/if}>Poppins</option>
+
+                                        <option value="Roboto" data-fontfamily="Roboto" style="font-family: 'Roboto'" {if="$customstyle.desfontfamilybutton == 'Roboto'"}selected{/if}>Roboto</option>
+
+                                        <option value="Euphoria" data-fontfamily="Euphoria" style="font-family: 'Euphoria'" {if="$customstyle.desfontfamilybutton == 'Euphoria'"}selected{/if}>Euphoria</option>
+
+                                        <option value="KaushanScript" data-fontfamily="KaushanScript" style="font-family: 'KaushanScript'" {if="$customstyle.desfontfamilybutton == 'KaushanScript'"}selected{/if}>KaushanScript</option>
+
+                                        <option value="Norican" data-fontfamily="Norican" style="font-family: 'Norican'" {if="$customstyle.desfontfamilybutton == 'Norican'"}selected{/if}>Norican</option>
+
+                                        <option value="Pacifico" data-fontfamily="Pacifico" style="font-family: 'Pacifico'" {if="$customstyle.desfontfamilybutton == 'Pacifico'"}selected{/if}>Pacifico</option>
+
+                                        <option value="Satisfy" data-fontfamily="Satisfy" style="font-family: 'Satisfy'" {if="$customstyle.desfontfamilybutton == 'Satisfy'"}selected{/if}>Satisfy</option>
+
+                                    </select>
+
+
+
+                                </div>
+
+
+                            </div>
+                            
+
+
+                        </div><!--col-->
+
+
+
+
+                        <div class="col-md-4 col-12 custom-style-row">
+
+                            
+                            <div class="row row-item">
+                                
+                                <div class="col-12">
+
+                                    &nbsp;
+
+                                    <div class="dash-input-row">
+                                        <input type="hidden" class="form-control" id="idcustomstyle" name="idcustomstyle" value="{$customstyle.idcustomstyle}">
+                                    </div>
+
+
+
+
+                                    <div class="dash-input-row">
+                                        <input type="hidden" class="form-control" id="idtemplate" name="idtemplate" value="{$customstyle.idtemplate}">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row row-item">
+
+                                <div class="col-12">
+
+                                    
+
+
+                                    <div class="dash-input-row input-photo">
+
+                    
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input type="file" name="file" class="custom-file-input" id="file" aria-describedby="inputGroupFileAddon01">
+                                            <label class="custom-file-label" for="file"></label>
+
+                                            </div>
+                                        </div>
+                                        <div class="input-rows">
+                                            <img class="img-responsive" id="image-preview" src="/uploads/banners/{$customstyle.desbanner}">
+                                        </div>
+
+                                        
+                                    </div><!--dash-input-row-->
+
+                                </div>
+
+
+                            </div>
+                                
+
+                        </div><!--col-->
+
+
+
+
+                    </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="row dash-input-row custom-style-row">
+
+                        <div class="col-12">
+ 
+                            <div class="dash-input-row input-footer">
+                                
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+
+                                <a href="/dashboard" class="btn btn-danger">Voltar</a>
+
+                            </div><!--dash-input-row-->
+                            
+                        </div><!--col-->
+
+                    </div><!--row-->
+
+
+
+                </form>
+
+
+
+            </div><!--col-->
+        
+
+
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

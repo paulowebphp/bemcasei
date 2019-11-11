@@ -1,0 +1,235 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                {if="!validatePlan()"}
+
+                    {include="dashboard-menu-expirated"}
+               
+
+                {elseif="validatePlanFree()"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel tablersw conteudo-upgrade">
+
+              
+
+              {if="$success != ''"}
+                  <div class="row">
+                      <div class="col-12">
+                          <div class="alert alert-success alert-dismissible fade show" role="alert">
+                              {$success}
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                      </div> 
+                  </div>  
+              {/if}
+
+              {if="$error != ''"}
+                  <div class="row">
+                      <div class="col-12">
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                              {$error}
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                      </div> 
+                  </div>  
+              {/if} 
+
+              <div class="row">
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 planos plano-basico">
+                <table class="table table-bordered" plano="2">
+                  <thead>
+                    <th>Basic</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="description_rsw">Perfeito para quem quer um site com as funcionalidades básicas, mas com funcionalidades importantes como:</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-check" style="color:green"></i> Presentes virtuais</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-check" style="color:green"></i> Confirmação de presença</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-times" style="color:red"></i> Músicas de fundo</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-times" style="color:red"></i> Introdução animada</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-times" style="color:red"></i> Domínio personalizado</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        {if="$user.inplancontext == 1 "} 
+
+                          <span class="seu-plano-atual">Seu plano Atual</span> 
+
+                        {elseif="$user.inplancontext == 2"} 
+
+                          <span class="seu-plano-atual">Plano Indisponível</span>
+
+                        {/if}
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 planos plano-classico">
+                <table class="table table-bordered" plano="3">
+                  <thead>
+                    <th>Classic</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="description_rsw">Funcionalidades clássicas para divulgar seu casamento, todos os recursos do Plano Basic e mais alguns como:</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-check" style="color:green"></i> Presentes virtuais</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-check" style="color:green"></i> Confirmação de presença</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-check" style="color:green"></i> Músicas de fundo</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-times" style="color:red"></i> Introdução animada</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-times" style="color:red"></i> Domínio personalizado</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                    </tr>
+                    
+                    
+                      
+                      {if="$user.inplancontext == 1 "}
+                        <tr>
+                          <td>Por Apenas</td>
+                        </tr>
+                        <tr>
+                          <td><span class="upgrade-price">R$ {function="formatPrice($inplan.0.vlprice)"}</span></td>
+                        </tr>
+                        
+                        <tr> 
+                          <td>
+                            <form action="/dashboard/upgrade/checkout" id="2">
+                                <input type="hidden" name="plano" value="2{$sufix}">
+                                <button class="plan-upgrade-button" type="submit">Plano Classic</button>
+                            </form>
+                          </td>
+                        </tr>
+                      {elseif="$user.inplancontext == 2"}
+                        <tr>
+                          <td>
+                            <span class="seu-plano-atual">Seu Plano Atual</span>
+                          </td>
+                        </tr>
+                      {/if}
+                      
+
+
+
+
+                    
+                               
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 planos plano-gold">
+                <table class="table table-bordered" plano="4">
+                  <thead>
+                    <th>Gold</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="description_rsw">Plano completo e avançado com todos os recursos e vantagens que o Amar Casar oferece ao Casal</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-check" style="color:green"></i> Presentes virtuais</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-check" style="color:green"></i> Confirmação de presença</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-check" style="color:green"></i> Músicas de fundo</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-check" style="color:green"></i> Introdução animada</td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa fa-check" style="color:green"></i> Domínio personalizado</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                    </tr>
+                    
+                    {if="($user.inplancontext == 1) or ($user.inplancontext == 2)"}
+                      <tr>
+                        <td>Por Apenas</td>
+                      </tr>
+                      <tr>
+                        <td><span class="upgrade-price">R$ {function="formatPrice($inplan.1.vlprice)"}</span></td>
+                      </tr>
+                        
+                      <tr>
+                        <td> 
+                          <form action="/dashboard/upgrade/checkout"id="3">
+                              <input type="hidden" name="plano" value="3{$sufix}">
+                              <button class="plan-upgrade-button" type="submit">Plano Gold</button>
+                          </form>
+                        </td>
+                      </tr>
+                    {/if} 
+                      
+                    
+                  </tbody>
+                </table>
+              </div>
+
+              </div><!--row-->
+
+            </div><!--col-->
+    
+    </div><!--container-->
+
+</section>
+

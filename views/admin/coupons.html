@@ -1,0 +1,107 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Lista de Coupons
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/481738admin"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active"><a href="/481738admin/cupons">Cupons</a></li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+  <div class="row">
+  	<div class="col-md-12">
+  		<div class="box box-primary">
+            
+            <div class="box-header">
+              <a href="/481738admin/cupons/adicionar" class="btn btn-success">Criar Cupom</a>
+
+              <div class="box-tools">
+                <form action="/481738admin/cupons">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="search" class="form-control pull-right" placeholder="Search" value="{$search}">
+                    <div class="input-group-btn">
+                      <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+            {if="$success != ''"}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {$success}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+            {/if}
+
+            {if="$error != ''"}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {$error}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+            {/if}
+            
+            <div class="box-body no-padding">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">Data</th>
+                    <th>Código</th>
+                    <th>Descrição</th>
+                    <th>Valor Percentual</th>
+                    <th>Uso</th>
+                    <th>Válido até:</th>
+                    <th style="width: 60px">&nbsp;</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {loop="$coupon"}
+                  <tr>
+                    <td>{function="formatDate($value.dtregister)"}</td>
+                    <td>{$value.descouponcode}</td>
+                    <td>{$value.desdescription}</td>
+                    <td>{$value.vlinverse*100}%</td>
+                    <td>{if="$value.inusage == 0"}<strong>Ilimitado</strong>{else}Exclusivo{/if}</td>
+                    <td>{function="formatDate($value.dtexpire)"}</td>
+                    <td>
+                      <a href="/481738admin/cupons/{$value.idcoupon}/deletar" onclick="return confirm('Deseja excluir este ítem?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
+                    </td>
+                  </tr>
+                  {/loop}
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <ul class="pagination pagination-sm no-margin pull-right">
+                {loop="$pages"}
+                <li><a href="{$value.href}">{$value.text}</a></li>
+                {/loop}
+              </ul>
+            </div>
+          </div>
+  	</div>
+  </div>
+
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
