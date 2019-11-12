@@ -19,7 +19,7 @@
                     <p><a href="/quem-somos">Quem Somos</a></p>
                     <p><a href="/termos-uso">Termos de Uso</a></p>
                     <p><a href="/politica-privacidade">Politica de Privacidade</a></p>
-                    <p><a target="_blank" href="https://blog.amarcasar.com/">Blog</a></p>
+                    <!--<p><a target="_blank" href="https://blog.amarcasar.com/">Blog</a></p>-->
 
                 </div><!--caption-->
 

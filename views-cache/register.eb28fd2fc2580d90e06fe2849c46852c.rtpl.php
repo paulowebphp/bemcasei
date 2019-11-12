@@ -47,7 +47,7 @@
                         <input type="hidden" name="plano" class="input-text" value="<?php echo htmlspecialchars( $inplancode, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                     </div>
 
-                    <div class="g-recaptcha" data-sitekey="6Lenr7EUAAAAAEkU4sdxExYgJmEKhPYCgzXbeecd"></div>
+                    <div class="g-recaptcha" data-sitekey="6LeBVMIUAAAAAAyDl6xPCkFSSQlDL2QXpkbRnWpM"></div>
 
 
                     <div class="form-row top3 bottom1">

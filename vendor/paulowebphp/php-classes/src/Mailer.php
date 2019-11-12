@@ -12,9 +12,9 @@ class Mailer
 {
 
 
-	const USERNAME = "seu-gerente@amarcasar.com";
+	const USERNAME = "seu-gerente@bemcasei.com.br";
 	const PASSWORD = "c4s[=}pSHD!%";
-	const NAME_FROM = "Amar Casar";
+	const NAME_FROM = "Bem Casei";
 
 
 	

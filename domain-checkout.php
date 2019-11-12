@@ -825,8 +825,8 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 			$descardcode_year = null;
 			$descardcode_cvc = null;
 
-			$payment->setinpaymentmethod('0');
-			$payment->setnrinstallment('1');
+			$payment->setinpaymentmethod(0);
+			$payment->setnrinstallment(1);
 
 
 
@@ -1396,7 +1396,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 			$stateArray = Address::getState($_POST['desholderstate']);
 			$desholderstate = $stateArray['desstatecode'];
 
-			$payment->setinpaymentmethod('1');
+			$payment->setinpaymentmethod(1);
 			$payment->setnrinstallment($_POST['installment']);
 
 
@@ -1472,7 +1472,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 		);//end createCustomer
 
 		
-			
+		
 
 
 
@@ -1574,7 +1574,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 		);//end payOrder
 
-
+		
 
 		
 
@@ -1624,7 +1624,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 		}//end catch
 
 
-
+		
 
 
 
@@ -1677,7 +1677,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 		$fee->save();
 
 
-
+		
 
 
 
@@ -1703,7 +1703,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 		$order->save();
 
 
-
+		
 
 
 		$consort = new Consort();
@@ -1841,7 +1841,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-		$cart->setincartstatus('1');
+		$cart->setincartstatus(1);
 
 		$cart->update();
 
