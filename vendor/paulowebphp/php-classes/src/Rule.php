@@ -17,61 +17,32 @@ class Rule extends Model
 
 
 
-	
+	/*
 	# BEM CASEI SANDBOX PJ
 	#####################################################################
-	const WIRECARD_ACCESS_TOKEN = 'a4d83a30a4394825b5ea0df350785949_v2';
-	const WIRECARD_APP = 'APP-YZYH82HWD36D';
+	const WIRECARD_ACCESS_TOKEN = 'd53f289e62344cd88ac90b20077f2513_v2';
+	const WIRECARD_APP = 'APP-335B0VPAUCEH';
 	const WIRECARD_API_TOKEN = 'GS8GYYWFHSZGTLW3TG1B008BV4QZONVA';
 	const WIRECARD_API_KEY = '6G31U9JXDTUQSNZAL1KVDRX9BPUVHP984DD0SS0G';
 
 	const WIRECARD_PRIMARY_RECEIVER = 'MPA-89DC0863B0D3';
 	#####################################################################
-	
+	*/
 
-	/*
-	# PRODUCTION PJ
+	
+	# BEM CASEI PRODUCTION PJ
 	#####################################################################
-	const WIRECARD_ACCESS_TOKEN = '6c3f50d51ea84161ab01ca96e0965c87_v2';
-	const WIRECARD_APP = 'APP-9QI4DVF6A702';
+	const WIRECARD_ACCESS_TOKEN = '75ea4315ea064f88a361fa3d0eaaf5e2_v2';
+	const WIRECARD_APP = 'APP-SOJRLP26BSJK';
 	const WIRECARD_API_TOKEN = 'DIEIVAFFUZJAW1A9I4Q3TJSQA2VEFYHW';
 	const WIRECARD_API_KEY = 'AUOJOJGTTAVUXTF7WY9W5SDIQ14LFPOOXOSS3MHD';
 
 	const WIRECARD_PRIMARY_RECEIVER = 'MPA-8E6DB57A5738';
 	#####################################################################
-	*/
-
-
-
-
-
-
-
-
-	/*
-	# SANDBOX PF
-	#####################################################################
-	const WIRECARD_ACCESS_TOKEN = '4632c0e6e7a14598a1533ce207d307f5_v2';
-	const WIRECARD_APP = 'APP-MSL2111M3D69';
-	const WIRECARD_API_TOKEN = '6PAOYPC0B4AUCM3VFALVQX3ZLOKALJTV';
-	const WIRECARD_API_KEY = 'BSF67OFMNPGC8TKKULSCBZ3LNPZWH3205RJN59VT';
-
-	const WIRECARD_PRIMARY_RECEIVER = 'MPA-3064B2D26F42';
-	#####################################################################
 	
 
 
-	
-	# PRODUCTION PF
-	#####################################################################
-	const WIRECARD_ACCESS_TOKEN = '7b31699079344d418fa1d3a961927f63_v2';
-	const WIRECARD_APP = 'APP-0PNRIHCTY0JZ';
-	const WIRECARD_API_TOKEN = 'IRGMSD2HYKSPCSTOMEIUI7IPDFNW4IDX';
-	const WIRECARD_API_KEY = 'UWOJOC2CZT0YUZYVZJKQ3TOYFUNFFLQGKMYHG3ZP';
 
-	const WIRECARD_PRIMARY_RECEIVER = 'MPA-235E5F22B509';
-	#####################################################################
-	*/
 
 
 

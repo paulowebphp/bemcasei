@@ -28,7 +28,7 @@
 
 
 				<div class="bottom2">
-					<p>A Lista de Presentes do Amar Casar é super prática, além de ser uma das mais bonitas e elegantes:</p>
+					<p>A Lista de Presentes do Bem Casei é super prática, além de ser uma das mais bonitas e elegantes:</p>
 				</div>
 
 
@@ -274,7 +274,7 @@
 
 				<div class="gifts-title3 purple">
 
-					<p>Segurança e Credibilidade especialmente desenvolvidas pelo Amar Casar, para fazer do seu casamento e da sua lua de mel um sucesso, de forma simples e prática:</p>
+					<p>Segurança e Credibilidade especialmente desenvolvidas pelo Bem Casei, para fazer do seu casamento e da sua lua de mel um sucesso, de forma simples e prática:</p>
 
 
 				</div><!--gifts-section1-->
