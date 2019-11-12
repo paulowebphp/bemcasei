@@ -807,7 +807,7 @@ class User extends Model
 
 	    $fields = array(
 
-	    	'secret' => '6Lenr7EUAAAAAPkp5iZlX15I1wG9RDCAQmBG1w6E',
+	    	'secret' => '6LeBVMIUAAAAAGHZB5oHoT7S901nrW7DKf1pp5jx',
 	    	'response'=> $response
 
 		);
