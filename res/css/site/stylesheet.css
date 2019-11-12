@@ -631,6 +631,7 @@ label{
 	background: url("/res/images/banner/banner1.jpg") no-repeat;
 	background-size: cover;
 	padding: 10% 0;
+	background-position-y: center;
 }
 #banner h1 {
 	font-family: 'TheHeartOfEverything';
@@ -1517,8 +1518,10 @@ label{
 }
 #templates-models img{
 	width: 100%;
-	box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
 	border-radius: 10px;
+	/*
+	box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
+	*/
 }
 
 /********************* TEMPLATES MODELS  ********************************/

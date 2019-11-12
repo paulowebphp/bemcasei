@@ -148,23 +148,23 @@ Basic R1M4R1lZV0ZIU1pHVExXM1RHMUIwMDhCVjRRWk9OVkE6NkczMVU5SlhEVFVRU05aQUwxS1ZEUl
 
 REQUEST
 {  
-   "name":"AmarCasarPJAppSandbox",
+   "name":"BemCaseiAppSandbox",
    "description":"Marketplace de serviços e produtos virtuais",
-   "site":"https://amarcasar.com",
-   "redirectUri":"https://amarcasar.com/retorno"
+   "site":"https://bemcasei.com",
+   "redirectUri":"https://bemcasei.com/retorno"
 }
 
 RESPONSE
 {
-    "id": "APP-ONH6LKITVFQK",
-    "website": "https://amarcasar.com",
-    "accessToken": "5e9b43c6e0f34eab8ba4b836e342e498_v2",
+    "id": "APP-YZYH82HWD36D",
+    "website": "https://bemcasei.com",
+    "accessToken": "a4d83a30a4394825b5ea0df350785949_v2",
     "description": "Marketplace de serviços e produtos virtuais",
-    "name": "AmarCasarPJAppSandbox",
-    "secret": "a79c1869eaa944509b38d4c69b96d700",
-    "redirectUri": "https://amarcasar.com/retorno",
-    "createdAt": "2019-09-02T14:25:01.489Z",
-    "updatedAt": "2019-09-02T14:25:01.489Z"
+    "name": "BemCaseiAppSandbox",
+    "secret": "86669c0304d9461ca1254060a70a2ea1",
+    "redirectUri": "https://bemcasei.com/retorno",
+    "createdAt": "2019-11-12T03:33:20.831Z",
+    "updatedAt": "2019-11-12T03:33:20.831Z"
 }
 
 
@@ -175,11 +175,18 @@ NPR SANBOX PJ
         "TRANSFER.*",
         "REFUND.*"
     ],
-    "target": "https://amarcasar.com/d4c69b96d700/webhook",
+    "target": "https://bemcasei.com/4060a70a2ea1/webhook",
     "media": "WEBHOOK",
-    "token": "9438859f6eae441d82f6a8abb32e91f0",
-    "id": "NPR-AX4OW7DQS4QB"
+    "token": "68465c98ca4f4d7e94633f55fcce7c14",
+    "id": "NPR-NNZ225D7Q9Y9"
 }
+
+
+
+
+
+
+
 
 
 

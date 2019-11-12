@@ -16,8 +16,8 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 
 RewriteEngine on
-RewriteCond %{HTTP_HOST} ^mail.amarcasar.com$
-RewriteRule (.*) https://blog.amarcasar.com/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^mail.bemcasei.com$
+RewriteRule (.*) https://blog.bemcasei.com/$1 [R=301,L]
 
 
 RewriteEngine On

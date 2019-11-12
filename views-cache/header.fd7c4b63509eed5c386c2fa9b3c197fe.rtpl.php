@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
 <html lang="pt-br">
 
 
@@ -11,7 +11,7 @@
     <meta name="robots" content="noindex">
 
 
-    <title>{function="getDashPageConfig('pagetitle')"}</title>
+    <title><?php echo getDashPageConfig('pagetitle'); ?></title>
     <link rel="icon" type="image/png" href="/res/images/favicon/dashboard/favicon.png"/>
     <link rel="stylesheet" media="screen" type="text/css" href="/res/colorpicker/css/colorpicker.css" />
     <link rel="stylesheet" type="text/css" href="/res/css/bootstrap.min.css">
@@ -63,16 +63,16 @@
                     <div id="menu-header">
                         <ul>
 
-                                {if="checkDesdomain()"}
-                                <li><a target="_blank" href='/{function="view()"}'><i class="fa fa-eye"></i> Ver Site</a></li>
-                                {else}
+                                <?php if( checkDesdomain() ){ ?>
+                                <li><a target="_blank" href='/<?php echo view(); ?>'><i class="fa fa-eye"></i> Ver Site</a></li>
+                                <?php }else{ ?>
                                 <li><a class="pointer" data-toggle="modal" data-target="#ModalCheckDesdomain"><i class="fa fa-eye"></i>Ver Site</a></li>
-                                {/if}
+                                <?php } ?>
 
 
 
 
-                                <li><a href="/dashboard"><i class="fa fa-user"></i> {function="getUserNick()"}</a></li>
+                                <li><a href="/dashboard"><i class="fa fa-user"></i> <?php echo getUserNick(); ?></a></li>
 
                                 <li><a href="/logout"><i class="fa fa-sign-out"></i> Sair</a></li>
 
@@ -121,14 +121,14 @@
 
 
 
-                            {if="checkDesdomain()"}
-                            <li><a target="_blank" href='/{function="view()"}'><i class="fa fa-eye"></i> Ver Site</a></li>
-                            {else}
+                            <?php if( checkDesdomain() ){ ?>
+                            <li><a target="_blank" href='/<?php echo view(); ?>'><i class="fa fa-eye"></i> Ver Site</a></li>
+                            <?php }else{ ?>
                             <li><a class="pointer" data-toggle="modal" data-target="#ModalCheckDesdomain"><i class="fa fa-eye"></i>Ver Site</a></li>
-                            {/if}
+                            <?php } ?>
 
 
-                            <li><a href="/dashboard"><i class="fa fa-user"></i> {function="getUserNick()"}</a></li>
+                            <li><a href="/dashboard"><i class="fa fa-user"></i> <?php echo getUserNick(); ?></a></li>
 
                             
 
@@ -137,7 +137,7 @@
 
 
 
-                            {if="!validatePlan()"}
+                            <?php if( !validatePlan() ){ ?>
 
                                 <div class="list-group">
 
@@ -170,7 +170,7 @@
 
                                             </div><!--card-header-->
 
-                                            <div id="collapseFive" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['termos-uso','politica-privacidade','termos-lista'])"} show{/if}" aria-labelledby="headingFive" data-parent="#accordion3">
+                                            <div id="collapseFive" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['termos-uso','politica-privacidade','termos-lista']) ){ ?> show<?php } ?>" aria-labelledby="headingFive" data-parent="#accordion3">
                                                 <div class="card-body card-body-text">
                                                 
                                                         <a href="/dashboard/termos-uso" class="list-group-item list-group-item-action">Termos de Uso</a>
@@ -215,7 +215,7 @@
                                 </div><!--list-group-->
                            
 
-                            {elseif="validatePlanFree()"}
+                            <?php }elseif( validatePlanFree() ){ ?>
 
                                 <div class="list-group">
 
@@ -254,7 +254,7 @@
 
                                             </div><!--card-hader-->
 
-                                            <div id="collapseSeven" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['dominio','meu-template','personalizar-site','menu','pagina-inicial'])"} show{/if}" aria-labelledby="headingSeven" data-parent="#accordion4">
+                                            <div id="collapseSeven" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['dominio','meu-template','personalizar-site','menu','pagina-inicial']) ){ ?> show<?php } ?>" aria-labelledby="headingSeven" data-parent="#accordion4">
 
                                                 <div class="card-body card-body-text">
 
@@ -295,7 +295,7 @@
 
                                             </div><!--card-header-->
 
-                                            <div id="collapseSix" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['painel-financeiro','presentes-virtuais'])"} show{/if}" aria-labelledby="headingSix" data-parent="#accordion4">
+                                            <div id="collapseSix" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['painel-financeiro','presentes-virtuais']) ){ ?> show<?php } ?>" aria-labelledby="headingSix" data-parent="#accordion4">
                                                 <div class="card-body card-body-text">
                                                 
 
@@ -331,7 +331,7 @@
 
                                             </div><!--card-header-->
 
-                                            <div id="collapseEight" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['meu-casamento','meu-amor','festa-de-casamento','padrinhos-madrinhas'])"} show{/if}" aria-labelledby="headingEight" data-parent="#accordion4">
+                                            <div id="collapseEight" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['meu-casamento','meu-amor','festa-de-casamento','padrinhos-madrinhas']) ){ ?> show<?php } ?>" aria-labelledby="headingEight" data-parent="#accordion4">
 
                                                 <div class="card-body card-body-text">
 
@@ -367,7 +367,7 @@
 
                                             </div><!--card-header-->
 
-                                            <div id="collapse-guide1" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['guia-de-casamento'])"} show{/if}" aria-labelledby="heading-guide1" data-parent="#accordion4">
+                                            <div id="collapse-guide1" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['guia-de-casamento']) ){ ?> show<?php } ?>" aria-labelledby="heading-guide1" data-parent="#accordion4">
 
                                                 <div class="card-body card-body-text">
 
@@ -467,7 +467,7 @@
 
                                             </div><!--card-header-->
 
-                                            <div id="collapseNine" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']), ['termos-uso','politica-privacidade','termos-lista'])"} show{/if}" aria-labelledby="headingNine" data-parent="#accordion5">
+                                            <div id="collapseNine" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']), ['termos-uso','politica-privacidade','termos-lista']) ){ ?> show<?php } ?>" aria-labelledby="headingNine" data-parent="#accordion5">
 
 
                                                 <div class="card-body card-body-text">
@@ -509,7 +509,7 @@
 
                                 </div><!--list-group-->
 
-                            {else}
+                            <?php }else{ ?>
 
                                 <div class="list-group">
 
@@ -549,7 +549,7 @@
 
                                             </div><!--card-hader-->
 
-                                            <div id="collapseEleven" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['dominio','meu-template','personalizar-site','menu','pagina-inicial'])"} show{/if}" aria-labelledby="headingEleven" data-parent="#accordion6">
+                                            <div id="collapseEleven" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['dominio','meu-template','personalizar-site','menu','pagina-inicial']) ){ ?> show<?php } ?>" aria-labelledby="headingEleven" data-parent="#accordion6">
 
                                                 <div class="card-body card-body-text">
 
@@ -596,7 +596,7 @@
 
                                             </div><!--card-header-->
 
-                                            <div id="collapseTen" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['painel-financeiro','presentes-virtuais','conta-bancaria','transferencias'])"} show{/if}" aria-labelledby="headingTen" data-parent="#accordion6">
+                                            <div id="collapseTen" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['painel-financeiro','presentes-virtuais','conta-bancaria','transferencias']) ){ ?> show<?php } ?>" aria-labelledby="headingTen" data-parent="#accordion6">
                                                 
                                                 <div class="card-body card-body-text">
 
@@ -635,7 +635,7 @@
 
                                             </div><!--card-header-->
 
-                                            <div id="collapseTwelve" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']), ['meu-casamento','meu-amor','festa-de-casamento','padrinhos-madrinhas'])"} show{/if}" aria-labelledby="headingTwelve" data-parent="#accordion6">
+                                            <div id="collapseTwelve" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']), ['meu-casamento','meu-amor','festa-de-casamento','padrinhos-madrinhas']) ){ ?> show<?php } ?>" aria-labelledby="headingTwelve" data-parent="#accordion6">
 
                                                 <div class="card-body card-body-text">
 
@@ -669,7 +669,7 @@
 
                                             </div><!--card-header-->
 
-                                            <div id="collapse-guide2" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['guia-de-casamento'])"} show{/if}" aria-labelledby="heading-guide2" data-parent="#accordion6">
+                                            <div id="collapse-guide2" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['guia-de-casamento']) ){ ?> show<?php } ?>" aria-labelledby="heading-guide2" data-parent="#accordion6">
 
                                                 <div class="card-body card-body-text">
 
@@ -762,7 +762,7 @@
 
                                             </div><!--card-header-->
 
-                                            <div id="collapseThirteen" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']), ['termos-uso','politica-privacidade','termos-lista'])"} show{/if}" aria-labelledby="headingThirteen" data-parent="#accordion7">
+                                            <div id="collapseThirteen" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']), ['termos-uso','politica-privacidade','termos-lista']) ){ ?> show<?php } ?>" aria-labelledby="headingThirteen" data-parent="#accordion7">
                                                 
                                                 <div class="card-body card-body-text">
                                                 
@@ -801,7 +801,7 @@
 
                                 </div><!--list-group-->
 
-                            {/if}
+                            <?php } ?>
 
                         
 

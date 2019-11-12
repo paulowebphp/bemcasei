@@ -27,10 +27,10 @@ class PageConfig extends Model
 
 
 
-	const METADESCRIPTION_MAIN = 'Bem Casei, o site mais elegante do Brasil! Ajudamos você a promover este evento máximo em sua vida! Faça um teste 10 dias grátis!';
+	const METADESCRIPTION_MAIN = 'Bem Casei, o site de casamento mais elegante do Brasil! Ajudamos você a promover este evento máximo em sua vida! Teste 10 dias grátis!';
 
 
-	const PAGETITLE_MAIN = 'Bem Casei | O site mais elegante do Brasil!';
+	const PAGETITLE_MAIN = 'Bem Casei | O site de casamento mais elegante do Brasil!';
 
 
 
@@ -58,7 +58,7 @@ class PageConfig extends Model
 			'site-casamento'=>[
 
 				'pagetitle'=>'Site de Casamento | Bem Casei',
-				'metadescription'=>'Funcionalidades incríveis para criar o seu site de casamento | Bem Casei, o site mais elegante do Brasil!',
+				'metadescription'=>'Funcionalidades incríveis para criar o seu site de casamento | Bem Casei, o site de casamento mais elegante do Brasil!',
 				'noindex'=>0
 
 
