@@ -48,7 +48,7 @@ header #menu-mobile ul{
 }
 header #menu-condensed i{
 	font-size: 30px;
-	color: #dd716f99;
+	color: #03a9f499;
 }
 header 	#menu-condensed {
 	background-color: #fff;
@@ -100,7 +100,7 @@ header #menu-mobile li:last-child {
 }
 header #menu-mobile li a {
 	color: #11171D;
-	font-family: 'OpenSans';
+	font-family: 'Poppins';
 	font-weight: bold;
 	font-size: 0.8rem;
 	padding: 18px;
@@ -116,7 +116,7 @@ header .bar-close {
 header .bar-close .btn-close {
 	background:none;
 	border: none;
-	color: #dd716f;
+	color: #03a9f4;
 	font-size: 22px;
 }
 header.open-search #logotipo {
