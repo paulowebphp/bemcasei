@@ -22,7 +22,15 @@
     <link rel="stylesheet" type="text/css" href="/res/css/dashboard/stylesheet-mobile.css">
     <link rel="stylesheet" type="text/css" href="/res/css/dashboard/print.css" media="print">
 
-    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152061464-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-152061464-1');
+    </script>
 
 </head>
 
