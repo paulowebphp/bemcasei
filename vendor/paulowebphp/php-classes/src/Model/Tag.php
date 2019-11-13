@@ -36,66 +36,86 @@ class Tag extends Model
 					'0'=>
 					[
 
-						'thumb'=>'Casal_1.png',
-						'file'=>'Casal_1.pdf'
+						'thumb'=>'casal1.png',
+						'file'=>'casal1.pdf'
 
 					],
 
 					'1'=>
 					[
 
-						'thumb'=>'Casal_2.png',
-						'file'=>'Casal_2.pdf'
+						'thumb'=>'casal2.png',
+						'file'=>'casal2.pdf'
 
 					],
+
 
 					'3'=>
 					[
 
-						'thumb'=>'Familia_1.png',
-						'file'=>'Familia_1.pdf'
+						'thumb'=>'familia-noivo.png',
+						'file'=>'familia-noivo.pdf'
 
 					],
 
 					'4'=>
 					[
 
-						'thumb'=>'Familia_2.png',
-						'file'=>'Familia_2.pdf'
+						'thumb'=>'familia-noiva.png',
+						'file'=>'familia-noiva.pdf'
 
 					],
 
 					'5'=>
 					[
 
-						'thumb'=>'Familia_3.png',
-						'file'=>'Familia_3.pdf'
+						'thumb'=>'familia1.png',
+						'file'=>'familia1.pdf'
 
 					],
 
 					'6'=>
 					[
 
-						'thumb'=>'Mesa_Reservada.png',
-						'file'=>'Mesa_Reservada.pdf'
+						'thumb'=>'familia2.png',
+						'file'=>'familia2.pdf'
 
 					],
 
 					'7'=>
 					[
 
-						'thumb'=>'Numeros.png',
-						'file'=>'Numeros.pdf'
+						'thumb'=>'familia3.png',
+						'file'=>'familia3.pdf'
 
 					],
 
 					'8'=>
 					[
 
-						'thumb'=>'Padrinhos.png',
-						'file'=>'Padrinhos.pdf'
+						'thumb'=>'padrinhos.png',
+						'file'=>'padrinhos.pdf'
+
+					],
+
+					'9'=>
+					[
+
+						'thumb'=>'numeros.png',
+						'file'=>'numeros.pdf'
+
+					],
+
+					'10'=>
+					[
+
+						'thumb'=>'reservado.png',
+						'file'=>'reservado.pdf'
 
 					]
+			
+
+					
 
 
 				],//end freedom
@@ -109,64 +129,81 @@ class Tag extends Model
 					'0'=>
 					[
 
-						'thumb'=>'Casal_1.png',
-						'file'=>'Casal_1.pdf'
+						'thumb'=>'casal1.png',
+						'file'=>'casal1.pdf'
 
 					],
 
 					'1'=>
 					[
 
-						'thumb'=>'Casal_2.png',
-						'file'=>'Casal_2.pdf'
+						'thumb'=>'casal2.png',
+						'file'=>'casal2.pdf'
 
 					],
+
 
 					'3'=>
 					[
 
-						'thumb'=>'Familia_1.png',
-						'file'=>'Familia_1.pdf'
+						'thumb'=>'familia-noivo.png',
+						'file'=>'familia-noivo.pdf'
 
 					],
 
 					'4'=>
 					[
 
-						'thumb'=>'Familia_2.png',
-						'file'=>'Familia_2.pdf'
+						'thumb'=>'familia-noiva.png',
+						'file'=>'familia-noiva.pdf'
 
 					],
 
 					'5'=>
 					[
 
-						'thumb'=>'Familia_3.png',
-						'file'=>'Familia_3.pdf'
+						'thumb'=>'familia1.png',
+						'file'=>'familia1.pdf'
 
 					],
 
 					'6'=>
 					[
 
-						'thumb'=>'Mesa_Reservada.png',
-						'file'=>'Mesa_Reservada.pdf'
+						'thumb'=>'familia2.png',
+						'file'=>'familia2.pdf'
 
 					],
 
 					'7'=>
 					[
 
-						'thumb'=>'Numeros.png',
-						'file'=>'Numeros.pdf'
+						'thumb'=>'familia3.png',
+						'file'=>'familia3.pdf'
 
 					],
 
 					'8'=>
 					[
 
-						'thumb'=>'Padrinhos.png',
-						'file'=>'Padrinhos.pdf'
+						'thumb'=>'padrinhos.png',
+						'file'=>'padrinhos.pdf'
+
+					],
+
+					'9'=>
+					[
+
+						'thumb'=>'numeros.png',
+						'file'=>'numeros.pdf'
+
+					],
+
+					'10'=>
+					[
+
+						'thumb'=>'reservado.png',
+						'file'=>'reservado.pdf'
 
 					]
 
@@ -183,64 +220,81 @@ class Tag extends Model
 					'0'=>
 					[
 
-						'thumb'=>'Casal_1.png',
-						'file'=>'Casal_1.pdf'
+						'thumb'=>'casal1.png',
+						'file'=>'casal1.pdf'
 
 					],
 
 					'1'=>
 					[
 
-						'thumb'=>'Casal_2.png',
-						'file'=>'Casal_2.pdf'
+						'thumb'=>'casal2.png',
+						'file'=>'casal2.pdf'
 
 					],
+
 
 					'3'=>
 					[
 
-						'thumb'=>'Familia_1.png',
-						'file'=>'Familia_1.pdf'
+						'thumb'=>'familia-noivo.png',
+						'file'=>'familia-noivo.pdf'
 
 					],
 
 					'4'=>
 					[
 
-						'thumb'=>'Familia_2.png',
-						'file'=>'Familia_2.pdf'
+						'thumb'=>'familia-noiva.png',
+						'file'=>'familia-noiva.pdf'
 
 					],
 
 					'5'=>
 					[
 
-						'thumb'=>'Familia_3.png',
-						'file'=>'Familia_3.pdf'
+						'thumb'=>'familia1.png',
+						'file'=>'familia1.pdf'
 
 					],
 
 					'6'=>
 					[
 
-						'thumb'=>'Mesa_Reservada.png',
-						'file'=>'Mesa_Reservada.pdf'
+						'thumb'=>'familia2.png',
+						'file'=>'familia2.pdf'
 
 					],
 
 					'7'=>
 					[
 
-						'thumb'=>'Numeros.png',
-						'file'=>'Numeros.pdf'
+						'thumb'=>'familia3.png',
+						'file'=>'familia3.pdf'
 
 					],
 
 					'8'=>
 					[
 
-						'thumb'=>'Padrinhos.png',
-						'file'=>'Padrinhos.pdf'
+						'thumb'=>'padrinhos.png',
+						'file'=>'padrinhos.pdf'
+
+					],
+
+					'9'=>
+					[
+
+						'thumb'=>'numeros.png',
+						'file'=>'numeros.pdf'
+
+					],
+
+					'10'=>
+					[
+
+						'thumb'=>'reservado.png',
+						'file'=>'reservado.pdf'
 
 					]
 
@@ -255,207 +309,86 @@ class Tag extends Model
 					'0'=>
 					[
 
-						'thumb'=>'Casal_1.png',
-						'file'=>'Casal_1.pdf'
+						'thumb'=>'casal1.png',
+						'file'=>'casal1.pdf'
 
 					],
 
 					'1'=>
 					[
 
-						'thumb'=>'Casal_2.png',
-						'file'=>'Casal_2.pdf'
+						'thumb'=>'casal2.png',
+						'file'=>'casal2.pdf'
 
 					],
+
 
 					'3'=>
 					[
 
-						'thumb'=>'Familia_1.png',
-						'file'=>'Familia_1.pdf'
+						'thumb'=>'familia-noivo.png',
+						'file'=>'familia-noivo.pdf'
 
 					],
 
 					'4'=>
 					[
 
-						'thumb'=>'Familia_2.png',
-						'file'=>'Familia_2.pdf'
+						'thumb'=>'familia-noiva.png',
+						'file'=>'familia-noiva.pdf'
 
 					],
 
 					'5'=>
 					[
 
-						'thumb'=>'Familia_3.png',
-						'file'=>'Familia_3.pdf'
+						'thumb'=>'familia1.png',
+						'file'=>'familia1.pdf'
 
 					],
 
 					'6'=>
 					[
 
-						'thumb'=>'Mesa_Reservada.png',
-						'file'=>'Mesa_Reservada.pdf'
+						'thumb'=>'familia2.png',
+						'file'=>'familia2.pdf'
 
 					],
 
 					'7'=>
 					[
 
-						'thumb'=>'Numeros.png',
-						'file'=>'Numeros.pdf'
+						'thumb'=>'familia3.png',
+						'file'=>'familia3.pdf'
 
 					],
 
 					'8'=>
 					[
 
-						'thumb'=>'Padrinhos.png',
-						'file'=>'Padrinhos.pdf'
-
-					]
-
-
-				],//end gold
-
-
-
-
-				'convite'=>
-				[
-
-					'0'=>
-					[
-
-						'thumb'=>'Cha_Bar_1.png',
-						'file'=>'Cha_Bar_1.pdf'
-
-					],
-
-					'1'=>
-					[
-
-						'thumb'=>'Cha_Bar_2.png',
-						'file'=>'Cha_Bar_2.pdf'
-
-					],
-
-					'3'=>
-					[
-
-						'thumb'=>'Cha_da_Casa_Nova_1.png',
-						'file'=>'Cha_da_Casa_Nova_1.pdf'
-
-					],
-
-					'4'=>
-					[
-
-						'thumb'=>'Cha_da_Casa_Nova_2.png',
-						'file'=>'Cha_da_Casa_Nova_2.pdf'
-
-					],
-
-					'5'=>
-					[
-
-						'thumb'=>'Cha_da_Casa_Nova_3.png',
-						'file'=>'Cha_da_Casa_Nova_3.pdf'
-
-					],
-
-					'6'=>
-					[
-
-						'thumb'=>'Cha_de_Barnela_1.png',
-						'file'=>'Cha_de_Barnela_1.pdf'
-
-					],
-
-					'7'=>
-					[
-
-						'thumb'=>'Cha_de_Barnela_2.png',
-						'file'=>'Cha_de_Barnela_2.pdf'
-
-					],
-
-					'8'=>
-					[
-
-						'thumb'=>'Save_the_Date_1.png',
-						'file'=>'Save_the_Date_1.pdf'
+						'thumb'=>'padrinhos.png',
+						'file'=>'padrinhos.pdf'
 
 					],
 
 					'9'=>
 					[
 
-						'thumb'=>'Save_the_Date_2.png',
-						'file'=>'Save_the_Date_2.pdf'
+						'thumb'=>'numeros.png',
+						'file'=>'numeros.pdf'
 
 					],
 
 					'10'=>
 					[
 
-						'thumb'=>'Save_the_Date_3.png',
-						'file'=>'Save_the_Date_3.pdf'
+						'thumb'=>'reservado.png',
+						'file'=>'reservado.pdf'
 
 					]
 
 
-				],//end convite
-
-
-
-
-				'plaquinha'=>
-				[
-
-					'0'=>
-					[
-
-						'thumb'=>'Plaquinha_1.png',
-						'file'=>'Plaquinha_1.pdf'
-
-					],
-
-					'1'=>
-					[
-
-						'thumb'=>'Plaquinha_2.png',
-						'file'=>'Plaquinha_2.pdf'
-
-					],
-
-					'3'=>
-					[
-
-						'thumb'=>'Plaquinha_3.png',
-						'file'=>'Plaquinha_3.pdf'
-
-					],
-
-					'4'=>
-					[
-
-						'thumb'=>'Plaquinha_4.png',
-						'file'=>'Plaquinha_4.pdf'
-
-					],
-
-					'5'=>
-					[
-
-						'thumb'=>'Plaquinha_5.png',
-						'file'=>'Plaquinha_5.pdf'
-
-					]
-
-
-				]//end plaquinha
+				]//end gold
 
 
 
