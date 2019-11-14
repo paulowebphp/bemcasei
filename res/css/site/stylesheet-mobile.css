@@ -659,15 +659,14 @@ footer {
 }
 #banner {
 	padding: 25% 1%!important;
-    background-position-x: -200px;
-    background-position-y: 54px;
+    background-position-x: center;
+    background-position-y: 50px;
 }
 #create-list {
-	background-position-x: -212px;
 	padding: 10% 3%;
 }
 #confirmation {
-    background-position-x: -212px;
+    background-position-x: center;
 	padding: 25% 3%!important;
 }
 #advantages{
