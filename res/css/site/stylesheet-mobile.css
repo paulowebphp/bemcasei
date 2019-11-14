@@ -666,6 +666,7 @@ footer {
 }
 #create-list {
 	padding: 10% 3%;
+    background-position-x: center;
 }
 #confirmation {
     background-position-x: center;
@@ -747,10 +748,12 @@ footer {
 	margin-bottom: 15%;
 }
 .about-image img{
-	width: 90%;
+	width: 100%;
 	margin: 0 auto;
 }
-
+.about-text p {
+	margin-bottom: 5%;
+}
 .about-details{
 	padding: 5% 5% 20% 5%;
 }

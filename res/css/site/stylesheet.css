@@ -1438,20 +1438,24 @@ label{
 }
 #about p {
 	font-size: 1.2rem;
-	margin-bottom: 2%;
 	text-align: justify;
+}
+.about-text p {
+	margin-bottom: 5%;
 }
 .about-image{
 	width: 400px;
+	display: block;
 }
 
 .about-image img{
+	margin: 0 auto;
 	width: 100%;
 	border-radius: 50%;
     border: 10px solid #03a9f4d8;
     float: left;
-    margin-right: 40px;
-    margin-bottom: 40px;
+    margin-right: 40px!important;
+    margin-bottom: 40px!important;
 }
 .about-features p{
 	padding: 3%;
