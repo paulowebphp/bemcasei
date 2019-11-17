@@ -524,6 +524,19 @@ label{
 .button4:hover{
 	opacity:0.8;
 }
+.button5{
+	border-radius: 10px;
+	font-weight: bolder;
+	background: #ddd;
+	color: #03a9f4;
+	padding: 12px 24px;
+	box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
+	  -webkit-box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
+	  -moz-box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
+  }
+  .button5:hover{
+	  opacity:0.8;
+  }
 .width100{
 	width: 100%!important;
 }
@@ -2297,6 +2310,11 @@ label{
 	padding: 1% 5%;
 	margin-bottom: 2%;
 }
+.card-details hr{
+	width: 20%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
 #site-404{
 	width: 100%;
 	padding: 8% 5%;
@@ -2321,26 +2339,27 @@ label{
 	color: #5e299a;
 }
 #site-search img{
-	width: 100%;
+	width: 50%;
 	border-radius: 50%;
+	border: 6px solid #03a9f499;
 }
 #site-search h3{
 	font-size: 1.3rem;
 }
-.card {
+#site-search .card {
   display: inline-block;
   vertical-align: top;
   margin: 0 2% 10% 2%;
+  padding: 3%;
   width: 360px;
   background-color: #fff;
   position: relative;
   border: none;
-  box-shadow: none;
   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
 
 }
-#site-search .card{
-	margin-bottom: 10%!important;
+#site-search .card-photo{
+	margin-bottom: 5%!important;
 }
 
 

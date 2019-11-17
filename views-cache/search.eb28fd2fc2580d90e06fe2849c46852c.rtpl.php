@@ -133,7 +133,7 @@
 
                 
                 
-                    <div class="card-title">
+                    <div class="card-title bottom3">
                         <h3>
                     
                             <?php echo htmlspecialchars( $value1["desnick"], ENT_COMPAT, 'UTF-8', FALSE ); ?> 
@@ -165,7 +165,7 @@
 
                         
 
-                        <div class="card-detail-date">
+                        <div class="card-detail-date bottom3">
 
                             <h5><?php echo formatDate($value1["dtwedding"]); ?></h5>
 
@@ -177,7 +177,7 @@
 
 
 
-                        <div class="card-detail">
+                        <div class="card-detail bottom3">
 
                             <h5><?php echo htmlspecialchars( $value1["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?> / <?php echo htmlspecialchars( $value1["desstatecode"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php if( $value1["descountrycode"] != 'BRA' ){ ?> <?php echo htmlspecialchars( $value1["descountry"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php } ?></h5>
 
@@ -202,10 +202,10 @@
                         
                         <div class="col-12">
                             
-                            <a class="card-add-cart" target="_blank" href="/<?php echo htmlspecialchars( $value1["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" role="button">
+                            <a target="_blank" href="/<?php echo htmlspecialchars( $value1["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" role="button">
                         
                             
-                                <button class="card-buttons-cart">Site do Casal</button>
+                                <button class="button3">Site do Casal</button>
 
 
                             </a>
@@ -218,9 +218,9 @@
 
                         <div class="col-12">
                             
-                            <a class="card-add-continue" target="_blank" href="/<?php echo htmlspecialchars( $value1["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/rsvp" role="button">
+                            <a target="_blank" href="/<?php echo htmlspecialchars( $value1["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/rsvp">
                             
-                                <button>
+                                <button class="button5">
                                     Confirmar Presença
 
                                 </button>
@@ -231,9 +231,9 @@
 
                         <div class="col-12">
                             
-                            <a class="card-add-store" target="_blank" href="/<?php echo htmlspecialchars( $value1["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/loja" role="button">
+                            <a target="_blank" href="/<?php echo htmlspecialchars( $value1["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/loja" role="button">
                             
-                                <button>
+                                <button class="button4">
                                     Presentear
 
                                 </button>
