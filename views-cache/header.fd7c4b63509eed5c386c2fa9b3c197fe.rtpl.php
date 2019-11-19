@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Bem Casei, o site de casamento mais elegante do Brasil! Ajudamos você a promover este evento máximo em sua vida!">
+    <meta name="description" content="Bem Casei, o site de casamento mais lindo do Brasil! Ajudamos você a promover este evento máximo em sua vida!">
     <meta name="robots" content="noindex">
 
 
@@ -23,13 +23,13 @@
     <link rel="stylesheet" type="text/css" href="/res/css/dashboard/print.css" media="print">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152061464-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144014663-1"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-        gtag('config', 'UA-152061464-1');
+      gtag('config', 'UA-144014663-1');
     </script>
 
 </head>
@@ -53,7 +53,7 @@
 
                     <div id="logo">
 
-                        <img id="logotipo" src="/res/images/logo/logo-white.png" width="233" height="50" alt="Logotipo">
+                        <img id="logotipo" src="/res/images/logo/logo-white.png" alt="Logotipo">
 
                     </div>
          
@@ -74,7 +74,7 @@
                                 <?php if( checkDesdomain() ){ ?>
                                 <li><a target="_blank" href='/<?php echo view(); ?>'><i class="fa fa-eye"></i> Ver Site</a></li>
                                 <?php }else{ ?>
-                                <li><a class="pointer" data-toggle="modal" data-target="#ModalCheckDesdomain"><i class="fa fa-eye"></i>Ver Site</a></li>
+                                <li><a class="pointer" data-toggle="modal" data-target="#ModalCheckDesdomain"><i class="fa fa-eye"></i> Ver Site</a></li>
                                 <?php } ?>
 
 
@@ -132,7 +132,7 @@
                             <?php if( checkDesdomain() ){ ?>
                             <li><a target="_blank" href='/<?php echo view(); ?>'><i class="fa fa-eye"></i> Ver Site</a></li>
                             <?php }else{ ?>
-                            <li><a class="pointer" data-toggle="modal" data-target="#ModalCheckDesdomain"><i class="fa fa-eye"></i>Ver Site</a></li>
+                            <li><a class="pointer" data-toggle="modal" data-target="#ModalCheckDesdomain"><i class="fa fa-eye"></i> Ver Site</a></li>
                             <?php } ?>
 
 

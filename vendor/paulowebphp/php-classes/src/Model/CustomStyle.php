@@ -376,35 +376,35 @@ class CustomStyle extends Model
 			'1'=>[
 
 				'name'=>'Rainbow',
-				'thumb'=>'tpl1.jpg'
+				'thumb'=>'tpl1.png'
 
 			],
 
 			'2'=>[
 
 				'name'=>'Freedom',
-				'thumb'=>'tpl2.jpg'
+				'thumb'=>'tpl2.png'
 
 			],
 
 			'3'=>[
 
 				'name'=>'Gold',
-				'thumb'=>'tpl3.jpg'
+				'thumb'=>'tpl3.png'
 
 			],
 
 			'4'=>[
 
 				'name'=>'Hot',
-				'thumb'=>'tpl4.jpg'
+				'thumb'=>'tpl4.png'
 
 			],
 
 			'5'=>[
 
 				'name'=>'Lovers',
-				'thumb'=>'tpl5.jpg'
+				'thumb'=>'tpl5.png'
 
 			]
 
@@ -512,7 +512,7 @@ class CustomStyle extends Model
 				'desbgcolorbanner'=>'03A9F4',
 				'desbgcolorfooter'=>'03A9F4',
 				'descolorfooter'=>'FFFFFF',
-				'descolorfooterhover'=>'F7D9E1',
+				'descolorfooterhover'=>'c7e8f7',
 
 				'descolor1'=>'FFFFFF',
 				'descolor2'=>'03A9F4',

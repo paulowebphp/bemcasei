@@ -924,7 +924,7 @@ $(document).on('click', '#thumb1', function(){
 
 
 
-	$('#preview').html('<img src="/res/images/template/thumb/tpl1.jpg">');
+	$('#preview').html('<img src="/res/images/template/thumb/tpl1.png">');
 	$('#preview-button').html('<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#ModalTemplate">Template Rainbow</button>');
 
 	$(".alert").alert('close');
@@ -955,7 +955,7 @@ $(document).on('click', '#thumb2', function(){
 	$('#thumb5').removeClass('checked');
 	$('#template5').attr('checked',false);
 
-	$('#preview').html('<img src="/res/images/template/thumb/tpl2.jpg">');
+	$('#preview').html('<img src="/res/images/template/thumb/tpl2.png">');
 	$('#preview-button').html('<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#ModalTemplate">Template Freedom</button>');
 
 	$(".alert").alert('close');
@@ -987,7 +987,7 @@ $(document).on('click', '#thumb3', function(){
 	$('#thumb5').removeClass('checked');
 	$('#template5').attr('checked',false);
 
-	$('#preview').html('<img src="/res/images/template/thumb/tpl3.jpg">');
+	$('#preview').html('<img src="/res/images/template/thumb/tpl3.png">');
 	$('#preview-button').html('<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#ModalTemplate">Template Gold</button>');
 
 	$(".alert").alert('close');
@@ -1018,7 +1018,7 @@ $(document).on('click', '#thumb4', function(){
 	$('#thumb5').removeClass('checked');
 	$('#template5').attr('checked',false);
 
-	$('#preview').html('<img src="/res/images/template/thumb/tpl4.jpg">');
+	$('#preview').html('<img src="/res/images/template/thumb/tpl4.png">');
 	$('#preview-button').html('<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#ModalTemplate">Template Hot</button>');
 
 	$(".alert").alert('close');
@@ -1048,7 +1048,7 @@ $(document).on('click', '#thumb5', function(){
 	$('#thumb2').removeClass('checked');
 	$('#template2').attr('checked',false);
 
-	$('#preview').html('<img src="/res/images/template/thumb/tpl5.jpg">');
+	$('#preview').html('<img src="/res/images/template/thumb/tpl5.png">');
 	$('#preview-button').html('<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#ModalTemplate">Template Lovers</button>');
 
 	$(".alert").alert('close');

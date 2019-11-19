@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Amar Casar, o primeiro site de Casamento Gay do Brasil! Ajudamos você a promover este evento máximo em sua vida!">
+    <meta name="description" content="Bem Casei, o site de casamento mais elegante do Brasil! Ajudamos você a promover este evento máximo em sua vida!">
     <meta name="robots" content="noindex">
 
 
@@ -49,7 +49,7 @@
             <div class="row">
                 
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     
 
 
@@ -65,7 +65,7 @@
 
 
 
-                <div class="col-md-9">
+                <div class="col-md-8">
 
 
                     

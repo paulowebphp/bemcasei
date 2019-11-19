@@ -53,6 +53,16 @@
     header .product-count {
         background: none repeat scroll 0 0 {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
     }
+    header #menu-condensed i{
+        font-size: 30px;
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}99{else}#DD716F{/if};
+    }
+    header .bar-close .btn-close {
+        background:none;
+        border: none;
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-size: 22px;
+    }
     /********************************HEADER*****************************************/
 
 
@@ -253,7 +263,7 @@
 
 
 
-                    <div id="frame" class="frame1">       
+                    <div id="frame">       
 
                         <img alt="Amar Casar Site de Casamento" src="/uploads/banners/{$customstyle.desbanner}">
 

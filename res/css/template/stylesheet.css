@@ -148,18 +148,14 @@ ul{
 
 /********************************* HEADER *****************************************/
 header {
-  height: 130px;
+  padding: 2%	 2%;
   z-index: 2;
   position: relative;
   box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
       -webkit-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
       -moz-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
 }
-header .container-fluid {
-  width: 100%;
-  padding: 2%  5%;
-  position: relative;
-}
+
 header #menu-mobile{
   display: none;
 }
