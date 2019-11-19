@@ -183,7 +183,7 @@
 				</div>
 
 
-				<p>O valor  estará disponível para o casal transferir para sua conta bancária em 2 dias, no  caso pagamentos com Boleto Bancário, e 14 dias, no caso de pagamentos com  cartão de crédito à vista ou parcelado.</p>
+				<p>O valor  estará disponível para o casal transferir para sua conta bancária em 3 dias, no  caso pagamentos com Boleto Bancário, e 15 dias, no caso de pagamentos com  cartão de crédito à vista ou parcelado.</p>
 
 				<p>Os saques  são gratuitos e podem ser realizados quantas vezes o casal desejar.</p>
 
@@ -242,7 +242,7 @@
 
 				<ul>
 
-					<li>Um dos menores tempos de repasse para compras com cartão <span style="color:#6f007c"><strong>(14 dias)</strong></span> e boleto bancário <span style="color:#6f007c"><strong>(2 dias)</strong></span></li>
+					<li>Um dos menores tempos de repasse para compras com cartão <span style="color:#6f007c"><strong>(15 dias)</strong></span> e boleto bancário <span style="color:#6f007c"><strong>(3 dias)</strong></span></li>
 
 					<li>Transferências gratuitas para sua conta bancária</li>
 

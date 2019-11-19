@@ -181,7 +181,7 @@
 
           <p>    
 
-            B) Da aprovação do pagamento, em até 2 dias corridos, quando realizado por Cartão de Crédito.
+            B) Da aprovação do pagamento, em até 3 dias corridos, quando realizado por Cartão de Crédito.
 
           </p>
 
@@ -2459,7 +2459,7 @@
 
           <p>
             
-            A) 2 dias corridos, após a confirmação da transação, quando do pagamento por Boleto Bancário;
+            A) 3 dias corridos, após a confirmação da transação, quando do pagamento por Boleto Bancário;
 
           </p>
 
@@ -2468,7 +2468,7 @@
 
           <p>
             
-            B) 14 dias corridos, após a confirmação da transação, quando do pagamento por Cartão de Crédito à vista ou parcelado;
+            B) 15 dias corridos, após a confirmação da transação, quando do pagamento por Cartão de Crédito à vista ou parcelado;
 
           </p>
 
@@ -2486,7 +2486,7 @@
 
           <p>
             
-            8.2. Mesmo que o CONVIDADO opte por pagar com cartão de crédito parcelado, o valor líquido integral do presente é disponibilizado para o CASAL após 14 dias;
+            8.2. Mesmo que o CONVIDADO opte por pagar com cartão de crédito parcelado, o valor líquido integral do presente é disponibilizado para o CASAL após 15 dias;
 
           </p>
 
@@ -2519,7 +2519,7 @@
 
           <p>
             
-            8.7.  O Bem Casei viabilizará os valores líquidos para transferência para a conta bancária do CASAL no prazo de 14 dias corridos se, até o momento do fim do período contratado:
+            8.7.  O Bem Casei viabilizará os valores líquidos para transferência para a conta bancária do CASAL no prazo de 15 dias corridos se, até o momento do fim do período contratado:
 
           </p>
 
@@ -2628,7 +2628,7 @@
 
             <div class="col-md-5 col-6">
              
-              <span>2 dias corridos</span>
+              <span>3 dias corridos</span>
 
             </div><!--col-->
 
@@ -2657,7 +2657,7 @@
 
             <div class="col-md-5 col-6">
              
-              <span>14 dias corridos</span>
+              <span>15 dias corridos</span>
 
             </div><!--col-->
 
@@ -3024,7 +3024,7 @@
           <p>
             
             
-            9.5.  Caso o Bem Casei constate haver dados incorretos ou inverídicos, ou ainda, caso o CASAL se furte ou se negue a enviar os documentos requeridos, o Bem Casei poderá excluir a Lista de Presentes Virtuais do CASAL e desativar seu acesso ao site  Bem Casei, sem prejuízo de outras medidas que entender necessárias e oportunas, caso em que a transferência gratuita dos valores líquidos que porventura tenham sido arrecadados será viabilizada para o CASAL no prazo de 14 dias corridos.
+            9.5.  Caso o Bem Casei constate haver dados incorretos ou inverídicos, ou ainda, caso o CASAL se furte ou se negue a enviar os documentos requeridos, o Bem Casei poderá excluir a Lista de Presentes Virtuais do CASAL e desativar seu acesso ao site  Bem Casei, sem prejuízo de outras medidas que entender necessárias e oportunas, caso em que a transferência gratuita dos valores líquidos que porventura tenham sido arrecadados será viabilizada para o CASAL no prazo de 15 dias corridos.
 
           </p>
 
@@ -3082,7 +3082,7 @@
 
           <p>
             
-            10.3. Se o CASAL, por qualquer motivo, não realizar a transferência dos valores líquidos para sua conta bancária antes de encerrar sua conta de usuário, o Bem Casei a viabilizará para o mesmo em até 14 dias corridos;
+            10.3. Se o CASAL, por qualquer motivo, não realizar a transferência dos valores líquidos para sua conta bancária antes de encerrar sua conta de usuário, o Bem Casei a viabilizará para o mesmo em até 15 dias corridos;
 
           </p>
   
@@ -3097,7 +3097,7 @@
 
           <p>
             
-            10.5. Com o encerramento da conta, a Lista de Presentes Virtuais será desativada e o acesso ao Painel de Controle e ao site Bem Casei bloqueado; caso em que o Bem Casei viabilizará a transferência dos valores para a conta bancária do CASAL no prazo de 14 dias corridos;
+            10.5. Com o encerramento da conta, a Lista de Presentes Virtuais será desativada e o acesso ao Painel de Controle e ao site Bem Casei bloqueado; caso em que o Bem Casei viabilizará a transferência dos valores para a conta bancária do CASAL no prazo de 15 dias corridos;
 
           </p>
 

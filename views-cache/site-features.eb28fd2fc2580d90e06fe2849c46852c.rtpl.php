@@ -14,7 +14,7 @@
                 
                 <div class="bottom4">
                     <p>
-                        O Amar Casar é um dos sites de casamento mais lindos e atuais que existem.
+                        O Bem Casei é um dos sites de casamento mais lindos e atuais que existem.
                     </p>
                     <p>
                         Explore todos os recursos disponíveis: crie seu site em templates elegantes, publique fotos num lindo album, faça uma lista de 

@@ -218,7 +218,7 @@
 
                         <div class="col-12">
                             
-                            <a target="_blank" href="/<?php echo htmlspecialchars( $value1["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/rsvp">
+                            <a target="_blank" href="/<?php echo htmlspecialchars( $value1["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/rsvp" role="button">
                             
                                 <button class="button5">
                                     Confirmar Presença

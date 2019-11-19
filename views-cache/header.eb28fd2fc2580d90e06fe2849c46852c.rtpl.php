@@ -19,7 +19,8 @@
     <meta property="og:url" content='https://<?php echo getHttpHost(); ?>'>
     <meta property="og:site_name" content="Bem Casei">
     <meta property="og:type" content="website">
-    <meta property="og:image" content='https://<?php echo getHttpHost(); ?>/res/images/logo/bem-casei-logo-round-white.png'>
+    <meta property="og:image"
+        content='https://<?php echo getHttpHost(); ?>/res/images/logo/bem-casei-logo-round-white.png'>
 
 
     <title><?php echo getSitePageConfig('pagetitle'); ?></title>
@@ -97,7 +98,7 @@
                 <div class="row centralizer">
 
 
-                    <div class="col-3">
+                    <div class="col-2 text-center">
 
 
 
@@ -119,7 +120,7 @@
 
 
 
-                    <div class="col-9">
+                    <div class="col-10 text-center">
 
 
                         <div id="menu">

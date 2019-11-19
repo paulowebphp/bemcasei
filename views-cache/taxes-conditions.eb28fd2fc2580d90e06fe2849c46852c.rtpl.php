@@ -1,4 +1,4 @@
-<section id="taxes-conditions" class="site">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section id="taxes-conditions" class="site">
 
 
   <div class="container text-center">
@@ -169,7 +169,7 @@
 
         <p>As transferências para conta bancária são <span class="purple"><strong>gratuitas</strong></span></p>
 
-        <p>O valor estará disponível para o casal transferir para sua conta bancária em 3 dias corridos, no caso de pagamentos com Boleto Bancário, e 15 dias corridos, no caso de pagamentos com cartão de crédito à vista ou parcelado</p>
+        <p>O valor estará disponível para o casal transferir para sua conta bancária em 2 dias corridos, no caso de pagamentos com Boleto Bancário, e 14 dias corridos, no caso de pagamentos com cartão de crédito à vista ou parcelado</p>
 
       </div><!--col-->
 
@@ -198,7 +198,7 @@
         
           Os convidados têm até 6 dias para efetuar o pagamento. Os boletos podem ser pagos em qualquer agência bancária, casa lotérica ou pela internet utilizando o código de barras.
         
-          O histórico de presentes é automaticamente atualizado, e os valores são disponibilizados para transferência em <span class="purple"><strong>3 dias corridos</strong></span> após a confirmação da transação.</p>
+          O histórico de presentes é automaticamente atualizado, e os valores são disponibilizados para transferência em <span class="purple"><strong>2 dias corridos</strong></span> após a confirmação da transação.</p>
 
         </div>
           
@@ -245,7 +245,7 @@
             Nesta opção o convidado pode escolher entre várias bandeiras disponíveis aquela de sua preferência, e pode parcelar em até 6 vezes.
            
 
-            O histórico de presentes é automaticamente atualizado, e os valores são disponibilizados para transferência em <span class="purple"><strong>15 dias corridos</strong></span> após a confirmação da transação.</p>
+            O histórico de presentes é automaticamente atualizado, e os valores são disponibilizados para transferência em <span class="purple"><strong>14 dias corridos</strong></span> após a confirmação da transação.</p>
 
           </div>
 

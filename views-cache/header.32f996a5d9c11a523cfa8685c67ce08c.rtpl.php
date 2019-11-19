@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
 <html lang="pt-br">
 
 
@@ -7,31 +7,28 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{function=" getSitePageConfig('metadescription')"}">
-    {if="getSitePageConfig('noindex') == 1"}
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="description"
+        content="Pesquise por suas dúvidas ou inicie um chat na nossa Central de Ajuda. Bem Casei, o site de casamento mais elegante do Brasil!">
     <meta name="robots" content="noindex">
-    {/if}
-
 
 
     <meta property="og:title" content="{function=" getSitePageConfig('pagetitle')"}">
     <meta property="og:description" content="{function=" getSitePageConfig('metadescription')"}">
-    <meta property="og:url" content='https://{function="getHttpHost()"}'>
+    <meta property="og:url" content='https://<?php echo getHttpHost(); ?>'>
     <meta property="og:site_name" content="Bem Casei">
     <meta property="og:type" content="website">
-    <meta property="og:image"
-        content='https://{function="getHttpHost()"}/res/images/logo/bem-casei-logo-round-white.png'>
+    <meta property="og:image" content='https://<?php echo getHttpHost(); ?>/res/images/logo/logo-square.png'>
 
 
-    <title>{function="getSitePageConfig('pagetitle')"}</title>
-    <link rel="stylesheet" type="text/css" href="/res/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/res/css/font-awesome.min.css">
-
-    <link rel="stylesheet" type="text/css" href="/res/css/site/stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="/res/css/site/stylesheet-mobile.css">
-    <link rel="stylesheet" type="text/css" href="/res/css/site/print.css" media="print">
-
+    <title>Central de Ajuda | Bem Casei</title>
     <link rel="icon" type="image/png" href="/res/images/favicon/site/favicon.png" />
+    <link rel="stylesheet" href="/res/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/res/css/font-awesome.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/res/css/site/stylesheet.css">
+    <link rel="stylesheet" href="/res/css/site/stylesheet-mobile.css">
 
 
 
@@ -66,7 +63,13 @@
     </script>
 
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+
+    <!-- Start of bemcasei Zendesk Widget script -->
+    <script id="ze-snippet"
+        src="https://static.zdassets.com/ekr/snippet.js?key=565637ed-1709-4f89-b406-1ce62941de4b"> </script>
+    <!-- End of bemcasei Zendesk Widget script -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152061464-1"></script>
@@ -77,8 +80,6 @@
 
         gtag('config', 'UA-152061464-1');
     </script>
-
-
 
 </head>
 
@@ -98,7 +99,7 @@
                 <div class="row centralizer">
 
 
-                    <div class="col-2 text-center">
+                    <div class="col-3">
 
 
 
@@ -120,7 +121,7 @@
 
 
 
-                    <div class="col-10 text-center">
+                    <div class="col-9">
 
 
                         <div id="menu">
@@ -128,11 +129,11 @@
                                 <li><a href="/site-casamento">SITE DE CASAMENTO</a></li>
                                 <li><a href="/lista-presentes">LISTA DE PRESENTES</a></li>
                                 <li><a href="/planos">PLANOS</a></li>
-                                <li><a href="/modelos-templates">TEMPLATES</a></li>
-                                <!--<li><a href="https://blog.amarcasar.com/" target="_blank">BLOG</a></li> -->
+                                <!--<li><a href="https://blog.amarcasar.com/" target="_blank">BLOG</a></li>-->
                                 <!--<li><a href="/buscar">BUSCAR CASAL</a></li>-->
 
-                                <li><a href="/criar-site"><button id="nav-free">TESTE GRÁTIS</button></a></li>
+                                <li><a href="/criar-site-de-casamento"><button id="nav-free">TESTE GRÁTIS</button></a>
+                                </li>
 
                                 <li><a href="/login"><button id="nav-login">LOGIN</button></a></li>
                             </ul>
@@ -182,11 +183,11 @@
                                 <li><a href="/site-casamento">SITE DE CASAMENTO</a></li>
                                 <li><a href="/lista-presentes">LISTA DE PRESENTES</a></li>
                                 <li><a href="/planos">PLANOS</a></li>
-                                <li><a href="/modelos-templates">TEMPLATES</a></li>
-                                <!--<li><a href="https://blog.amarcasar.com/" target="_blank">BLOG</a></li>  -->
+                                <!--<li><a href="https://blog.amarcasar.com/" target="_blank">BLOG</a></li>-->
                                 <!--<li><a href="/buscar">BUSCAR CASAL</a></li>-->
 
-                                <li><a href="/criar-site"><button id="nav-free">TESTE GRÁTIS</button></a></li>
+                                <li><a href="/criar-site-de-casamento"><button id="nav-free">TESTE GRÁTIS</button></a>
+                                </li>
 
                                 <li><a href="/login"><button id="nav-login">LOGIN</button></a></li>
                             </ul>
