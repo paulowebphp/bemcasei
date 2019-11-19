@@ -56,11 +56,11 @@
       },
       "brand": {
         "@type": "Organization",
-        "name": "Bem Casei Site de Casamentos"
+        "name": "Bem Casei Site de Casamento"
       },
       "provider": {
         "@type": "Organization",
-        "name": "Bem Casei Site de Casamentos"
+        "name": "Bem Casei Site de Casamento"
       }
     }
     </script>
@@ -98,7 +98,7 @@
         src="https://www.facebook.com/tr?id=1435256953296529&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Facebook Pixel Code -->
-    
+
 
 
 </head>
