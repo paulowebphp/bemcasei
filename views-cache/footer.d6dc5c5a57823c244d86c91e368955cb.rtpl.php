@@ -81,6 +81,8 @@
                     <a href='/template/<?php echo getTemplate(); ?>/listas-de-fora' class="list-group-item list-group-item-action">Listas de Fora</a>
 
                     <a href='/modelos-templates' class="list-group-item list-group-item-action"><i class="fa fa-sign-out"></i> Voltar para o Bem Casei</a>
+
+                    <a data-toggle="modal" data-target="#ModalTemplate1" class="list-group-item list-group-item-action pointer"><i class="fa fa-eye"></i> Ver Outro Template</a>
                     
 
                 </div><!--caption-->                
@@ -241,6 +243,267 @@
         </div><!--col-xs-12-->
 
     </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="ModalTemplate1" tabindex="-1" role="dialog" aria-labelledby="TituloCentralizado" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="TituloCentralizado">Escolha seu Template</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="row">
+                
+                <div class="col-md-6 col-12">
+
+
+
+                    <div class="thumb row2">
+                        
+
+
+                        <a href="/template/1">
+                            <img id="thumb1" data-idtemplate="1" <?php if( getTemplate() == '1' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl1.png">
+                        </a>
+
+                        <span>Rainbow</span>
+
+
+                    </div><!--thumb row2-->
+
+
+                    
+                        
+
+                </div><!--col-md-6-->
+
+
+
+
+                <div class="col-md-6 col-12">
+
+
+
+
+                    <div class="thumb row2">
+
+
+                        <a href="/template/2">
+                            <img id="thumb2" data-idtemplate="2" <?php if( getTemplate() == '2' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl2.png">
+                        </a>
+
+                        
+                        <span>Freedom</span>
+
+                    </div><!--thumb row2-->
+
+                        
+
+                </div><!--col-md-6-->
+
+
+
+            </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="row">
+                
+                <div class="col-md-6 col-12">
+
+                    
+
+                    <div class="thumb row2">
+
+
+                        <a href="/template/3">
+                            <img id="thumb3" data-idtemplate="3" <?php if( getTemplate() == '3' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl3.png">
+                        </a>
+                        
+                        <span>Gold</span>
+                    </div><!--thumb row2-->
+
+
+
+
+
+                        
+
+                </div><!--col-md-6-->
+
+
+
+
+                <div class="col-md-6 col-12">
+
+
+
+
+                    <div class="thumb row2">
+
+
+                        <a href="/template/4">
+                            <img id="thumb4" data-idtemplate="4" <?php if( getTemplate() == '4' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl4.png">
+                        </a>
+                        
+                        <span>Hot</span>
+
+                    </div><!--thumb row2-->
+
+                        
+
+                </div><!--col-md-6-->
+
+
+
+            </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="row">
+                
+                <div class="col-md-6 col-12">
+
+
+
+                    <div class="thumb row2">
+                            
+                            <a href="/template/5">
+                                <img id="thumb5" data-idtemplate="5" <?php if( getTemplate() == '5' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl5.png">
+                            </a>
+
+                            <span>Lovers</span>
+
+                        </div><!--thumb row2-->
+
+                            
+
+                    </div><!--col-md-6-->
+
+
+
+
+                <div class="col-md-6 col-12">
+
+
+
+
+                    &nbsp;
+
+                        
+
+                </div><!--col-md-6-->
+
+
+
+            </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--End Modal-->
+
+
+
+
+
+
 
 
 

@@ -361,6 +361,58 @@ footer .social-icon-border:hover {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+/********************************* MODAL *****************************************/
+
+.thumb{
+	width:90%;
+	text-align: center;
+	margin:0 auto;
+}
+.thumb img{
+	width:100%;
+}
+.thumb span{
+	font-size: 1.2rem;
+	font-family: 'Norican', Arial;
+	color: #171f26;
+}
+.checked{
+	border: 4px solid #ccc!important;
+	border-radius: 4px!important;
+	box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12)!important;
+}
+.pointer{
+  cursor: pointer;
+}
+/********************************* MODAL *****************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /********************************* SHOPPING ITEM *****************************************/
 .shopping-item {
     border: 1px solid #DDD;
@@ -1098,7 +1150,7 @@ label{
     -moz-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
 }
 .dropdown-menu a{
-  margin-bottom: 8%;
+  margin-bottom: 5%;
 }
 
 .card-price-wrapper {

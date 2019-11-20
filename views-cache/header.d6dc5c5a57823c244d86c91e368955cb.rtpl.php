@@ -32,6 +32,12 @@
 
         gtag('config', 'UA-152061464-1');
     </script>
+
+
+    <!-- Start of bemcasei Zendesk Widget script -->
+    <script id="ze-snippet"
+    src="https://static.zdassets.com/ekr/snippet.js?key=565637ed-1709-4f89-b406-1ce62941de4b"> </script>
+    <!-- End of bemcasei Zendesk Widget script -->
     
 
 </head>
@@ -128,8 +134,9 @@
 
                                 <a href='/template/<?php echo getTemplate(); ?>/listas-de-fora' class="list-group-item list-group-item-action">Listas de Fora</a>
 
-
                                 <a href='/modelos-templates' class="list-group-item list-group-item-action"><i class="fa fa-sign-out"></i> Voltar para o Bem Casei</a>
+
+                                <a data-toggle="modal" data-target="#ModalTemplate1" class="list-group-item list-group-item-action pointer"><i class="fa fa-eye"></i> Ver Outro Template</a>
 
                           </div>
 
@@ -234,6 +241,8 @@
                         <li><a href='/template/<?php echo getTemplate(); ?>/listas-de-fora' class="list-group-item list-group-item-action">Listas de Fora</a></li>
 
                         <li><a href='/modelos-templates' class="list-group-item list-group-item-action"><i class="fa fa-sign-out"></i> Voltar para o Bem Casei</a></li>
+
+                        <li><a data-toggle="modal" data-target="#ModalTemplate1" class="list-group-item list-group-item-action pointer"><i class="fa fa-eye"></i> Ver Outro Template</a></li>
 
                     </ul>
 

@@ -123,6 +123,7 @@ $app->get( '/template/:idtemplate/festa-de-casamento', function( $idtemplate )
 
 
 
+
 		$page = new PageTemplate();
 
 		
