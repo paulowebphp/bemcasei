@@ -140,6 +140,9 @@ class Photo extends Model
 
 	)
 	{
+
+
+		
 	
 		$extension = explode('.', $file['name']);
 
@@ -157,8 +160,21 @@ class Photo extends Model
 		$entity_directory = $this->getDirectoryName($entity_code);
 
 
-		
+	/*
+	
+	echo '<pre>';
+var_dump($file);
+var_dump($iduser);
+var_dump($entity_code);
+var_dump($id_entity);
+var_dump($shape);
+var_dump($extension);
+var_dump($basename);
+var_dump($entity_directory);
+var_dump(!in_array($file['type'], Rule::UPLOAD_MIME_TYPE));
+exit;
 
+*/
 
 		if( !in_array($file['type'], Rule::UPLOAD_MIME_TYPE) )
 		{
@@ -182,7 +198,23 @@ class Photo extends Model
 		)
 		{
 
-
+			/*
+			
+			echo '<pre>';
+			var_dump('1');
+var_dump($file);
+var_dump($iduser);
+var_dump($entity_code);
+var_dump($id_entity);
+var_dump($shape);
+var_dump($extension);
+var_dump($basename);
+var_dump($entity_directory);
+var_dump(!in_array($file['type'], Rule::UPLOAD_MIME_TYPE));
+var_dump((int)$shape == 1);
+var_dump((int)$shape == 2);
+exit;
+*/
 
 
 			if( 
@@ -272,9 +304,18 @@ class Photo extends Model
 
 
 			//code...
-			header("Content-type: image/".$extension);
+			//header("Content-type: image/".$extension);
 
-
+			/*
+			echo '<pre>';
+var_dump($basename);
+var_dump($iduser);
+var_dump($entity_code);
+var_dump($id_entity);
+var_dump($extension);
+var_dump($shape);
+exit;
+*/
 			
 			$entity_directory = $this->getDirectoryName($entity_code);
 
@@ -291,7 +332,21 @@ class Photo extends Model
 			list($sourceWidth, $sourceHeight) = getimagesize($filename);
 
 
-			
+			/*
+			echo '<pre>';
+var_dump($basename);
+var_dump($iduser);
+var_dump($entity_code);
+var_dump($id_entity);
+var_dump($extension);
+var_dump($shape);
+var_dump($entity_directory);
+var_dump($filename);
+var_dump($sourceWidth);
+var_dump($sourceHeight);
+var_dump($sourceWidth === $sourceHeight);
+exit;
+*/
 						
 
 			if( $sourceWidth === $sourceHeight )
@@ -305,6 +360,8 @@ class Photo extends Model
 					$extension
 
 				);//end setThumbnail
+
+				return $basename;
 
 			}//end if
 			else if( $sourceWidth > $sourceHeight )
@@ -497,12 +554,22 @@ class Photo extends Model
 	)
 	{
 
+		/*
 		
+		echo '<pre>';
+var_dump($basename);
+var_dump($iduser);
+var_dump($entity_code);
+var_dump($id_entity);
+var_dump($extension);
+exit;
+
+*/
 
 		try 
 		{
 			//code...
-			header("Content-type: image/".$extension);
+			//header("Content-type: image/".$extension);
 			
 			$entity_directory = $this->getDirectoryName($entity_code);
 
@@ -523,7 +590,24 @@ class Photo extends Model
 			$canvasHeight = $sourceHeight;
 
 
+			/*
+			
+			echo '<pre>';
+var_dump($basename);
+var_dump($iduser);
+var_dump($entity_code);
+var_dump($id_entity);
+var_dump($extension);
 
+var_dump($entity_directory);
+var_dump($filename);
+var_dump($sourceWidth);
+var_dump($sourceHeight);
+var_dump($canvasWidth);
+var_dump($canvasHeight);
+exit;
+
+*/
 			
 
 			if( $canvasWidth > 7000 )
@@ -575,6 +659,25 @@ class Photo extends Model
 			}//end if */
 
 			$canvas = imagecreatetruecolor($canvasWidth, $canvasHeight);
+
+			/*
+			
+			echo '<pre>';
+var_dump($basename);
+var_dump($iduser);
+var_dump($entity_code);
+var_dump($id_entity);
+var_dump($extension);
+
+var_dump($entity_directory);
+var_dump($filename);
+var_dump($sourceWidth);
+var_dump($sourceHeight);
+var_dump($canvasWidth);
+var_dump($canvasHeight);
+var_dump($canvas);
+exit;
+*/
 
 			switch($extension)
 			{
@@ -634,7 +737,24 @@ class Photo extends Model
 			
 			imagedestroy($canvas);
 
-			
+			/*
+			echo '<pre>';
+var_dump($basename);
+var_dump($iduser);
+var_dump($entity_code);
+var_dump($id_entity);
+var_dump($extension);
+
+var_dump($entity_directory);
+var_dump($filename);
+var_dump($sourceWidth);
+var_dump($sourceHeight);
+var_dump($canvasWidth);
+var_dump($canvasHeight);
+var_dump($canvas);
+var_dump($basename);
+exit;*/
+
 
 			return $basename;
 

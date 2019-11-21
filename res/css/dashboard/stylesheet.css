@@ -244,7 +244,7 @@ footer{
 	padding: 3%;
 	background: #03a9f4;
 	color: #fff;
-
+  min-height: 250px;
 }
 footer .container{ 
 	width: 100%	
@@ -403,7 +403,9 @@ label{
 .rsvpconfig-input-row2{
   margin-bottom: 20%;
 }
-
+.rsvp h1 small{
+  font-weight: lighter;
+}
 .row-item{
   margin-bottom: 5%;
 }
@@ -515,6 +517,9 @@ label{
 }
 
 .disabled-links {
+  color: #999!important;
+}
+.disabled-links button {
   color: #999!important;
 }
 
@@ -1915,7 +1920,6 @@ label{
   color: rgba(0, 0, 0, 0.54);
   font-weight: 300;
   margin-bottom: 24px;
-  z-index: 2;
 }
 #plans .plan .pricing {
   display: table;

@@ -145,7 +145,7 @@
 
         <div class="card">
 
-            <div data-toggle="collapse" data-target="#collapse-guide4" class="card-header btn collapsed" id="heading-guide">
+                <div data-toggle="modal" data-target="#ExemploModalCentralizado" class="card-header btn collapsed disabled-links" id="heading-guide4">
 
 
                     <button>Guia de Casamento</button>

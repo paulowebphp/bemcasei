@@ -57,8 +57,8 @@
                     
                     <div class="col-12">
 
-                        <div class="dash-title rsvp">
-                            <h1>RSVP <small>Confirmação de Presença</small></h1>
+                        <div class="dash-title">
+                            <h1>Lista de Confirmados</h1>
                         </div>
 
                     </div>
@@ -67,43 +67,59 @@
 
         
 
-                <?php if(  $maxRsvp > $numRsvp  ){ ?>
+                <div class="row">
+
+                   <div class="col-12">
 
 
-                    <div class="row">
+                        <div class="account-box-wrapper">
+                            <div class="account-box">
+                                <div class="account-box-main">
+                                    <span><?php echo htmlspecialchars( $numConfirmed, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                </div>
 
-                        <div class="col-12">
-
-                            <div class="button-header">
-
-                                <a href="/dashboard/rsvp/adicionar">
-                                    <button>
-                                        Adicionar Convidado
-                                    </button>
-                                </a>
-
-
-                                <a href="/dashboard/rsvp/configurar">
-                                    <button>
-                                        Configurações
-                                    </button>
-                                </a>
-
-
-                                <a href="/dashboard/rsvp/confirmados">
-                                    <button>
-                                        Lista de Confirmados
-                                    </button>
-                                </a>
-                                
-                    
+                                <div class="account-box-title">
+                                    <?php if( $numConfirmed == 1 ){ ?>
+                                        <span>Confirmado</span>
+                                    <?php }else{ ?>
+                                        <span>Confirmados</span>
+                                    <?php } ?>
+                                </div>
                             </div>
+                        </div>
+
+                    </div>
+
+               </div>
+
+        
+
+                
+
+                <div class="row">
+
+                    <div class="col-12">
+
+                        <div class="button-header">
+                            <?php if(  $numConfirmed > 0  ){ ?>
+                                <a href="/dashboard/rsvp/download">
+                                    <button>
+                                        Baixar Lista de Confirmados em CSV
+                                    </button>
+                                </a>
+                            <?php } ?>
+
+                            <a href="/dashboard/rsvp">
+                                <button>
+                                    Voltar
+                                </button>
+                            </a>
 
                         </div>
 
                     </div>
 
-                <?php } ?>
+                </div>
 
             
 
@@ -145,7 +161,7 @@
                 <?php $counter1=-1;  if( isset($rsvp) && ( is_array($rsvp) || $rsvp instanceof Traversable ) && sizeof($rsvp) ) foreach( $rsvp as $key1 => $value1 ){ $counter1++; ?>
                 <div class="row card-dash">
 
-                    <div class="col-md-10 col-12">
+                    <div class="col-md-12 col-12">
                         
 
 
@@ -154,7 +170,7 @@
 
 
 
-                            <div class="col-md-2 col-12">
+                            <div class="col-md-3 col-12">
 
                                 <div class="card-dash-field">
 
@@ -192,12 +208,7 @@
                                     <div class="card-dash-header">
 
                                         <hr>
-
-                                        <?php if( $value1["inconfirmed"] == '0' ){ ?>
-                                            <span>Adultos<br><small>(máx. <?php echo getMaxAdults($value1["inmaxadults"],$rsvpconfig["inadultsconfig"],$rsvpconfig["inmaxadultsconfig"]); ?>)</small></span>
-                                        <?php }else{ ?>
-                                            <span>Adultos</span>
-                                        <?php } ?>
+                                        <span>Adultos</span>
                                         
                                     </div>
 
@@ -227,13 +238,7 @@
                                     <div class="card-dash-header">
 
                                         <hr>
-                                        
-
-                                        <?php if( $value1["inconfirmed"] == '0' ){ ?>
-                                            <span>Crianças<br><small>(máx. <?php echo getMaxChildren($value1["inmaxchildren"],$rsvpconfig["inchildrenconfig"],$rsvpconfig["inmaxchildrenconfig"]); ?>)</small></span>
-                                        <?php }else{ ?>
-                                            <span>Crianças</span>
-                                        <?php } ?>
+                                        <span>Crianças</span>
                                         
                                     </div>
 
@@ -249,34 +254,9 @@
 
 
 
-                            <div class="col-md-2 col-12">
-
-                                <div class="card-dash-field">
 
 
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["inconfirmed"] == 0 ){ ?>Não<?php }else{ ?>Sim<?php } ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Confirmado?</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-                            <div class="col-md-2 col-12">
+                            <div class="col-md-3 col-12">
 
                                 <div class="card-dash-field">
 
@@ -410,35 +390,7 @@
 
 
 
-                    <div class="col-md-2 col-12 card-dash-row3">
-                        
-
-                        <div class="card-dash-field">
-
-
-                            <?php if( $value1["inconfirmed"] == 0 ){ ?>
-                                <a href='/dashboard/rsvp/<?php echo setHash($value1["idrsvp"]); ?>'>
-
-                                    <button>Editar</button>
-
-                                </a>
-                            <?php } ?>
-
-
-                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/rsvp/<?php echo setHash($value1["idrsvp"]); ?>/deletar'>
-
-                                <button>Deletar</button>
-
-                            </a>
-
-
-                           
-                        </div><!--card-buttons-wrappe-->
-
-
-
-
-                    </div><!--col-->
+                    
 
 
 
@@ -448,7 +400,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-info">
-                            Nenhum convidado foi encontrado
+                            Nenhuma confirmação foi encontrada
                         </div>
                     </div>
                 </div>
@@ -466,81 +418,35 @@
 
 
                     <div class="row">
-
-
-
-
                         
-                        <div class="col-md-3 col-12">
 
-                            <div class="search">
-
-                                <form action="/dashboard/rsvp">
-
+                        <div class="col-12">
+                            <div class="dash-search pull-right">
+                                <form action="/dashboard/rsvp/confirmados">
                                     <div class="input-group input-group-sm">
                                         
-                                        <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-                                        <div class="input-group-btn">
-
-                                            <button type="submit" class="btn btn-default">
-
-                                                <i class="fa fa-search"></i>
-
-                                            </button>
-
-                                        </div><!--input-group-btn--->
-
-                                    </div><!--input-group-->
-
+                                            <input type="text" name="search" class="form-control pull-right" placeholder="Buscar..." value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                            <div class="input-group-btn">
+                                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                            </div>
+                                    </div>
                                 </form>
                                 
-                            </div><!--search-->
-
-                        </div><!--col-->
-
-
-
-
-
-                        <div class="col-md-9 col-12">
-
-                            <div class="pagination">
-                                
-                                <ul>
-                                    <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
-                                        <li><a href="<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>                             
-                                                               
-                                    <?php } ?>
-                                </ul>
-
                             </div>
 
-                        </div><!--col-->
 
 
+                            <div class="dash-pagination clearfix">
+                                <ul class="pagination pagination-sm no-margin">
+                                    <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
+                                        <a href="<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><li><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></li></a>
+                                    <?php } ?>
+                                </ul>
+                            </div>
 
 
-
-                        
-
-                    </div><!--row-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        </div>  
+                    </div>
 
 
 

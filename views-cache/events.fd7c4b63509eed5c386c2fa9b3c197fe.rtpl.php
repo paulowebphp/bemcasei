@@ -42,23 +42,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
                 <div class="row">
                     
                     <div class="col-12">
 
-                        <div class="dash-title rsvp">
-                            <h1>RSVP <small>Confirmação de Presença</small></h1>
+                        <div class="dash-title">
+                            <h1>Eventos</h1>
                         </div>
 
                     </div>
@@ -67,41 +56,28 @@
 
         
 
-                <?php if(  $maxRsvp > $numRsvp  ){ ?>
+                <?php if(  $maxEvents > $nrtotal  ){ ?>
+
+                <div class="row">
+
+                    <div class="col-12">
 
 
-                    <div class="row">
+                        <div class="button-header">
 
-                        <div class="col-12">
-
-                            <div class="button-header">
-
-                                <a href="/dashboard/rsvp/adicionar">
-                                    <button>
-                                        Adicionar Convidado
-                                    </button>
-                                </a>
-
-
-                                <a href="/dashboard/rsvp/configurar">
-                                    <button>
-                                        Configurações
-                                    </button>
-                                </a>
-
-
-                                <a href="/dashboard/rsvp/confirmados">
-                                    <button>
-                                        Lista de Confirmados
-                                    </button>
-                                </a>
-                                
-                    
-                            </div>
-
+                            <a href="/dashboard/eventos/adicionar">
+                                <button>
+                                    Criar Evento
+                                </button>
+                            </a>
+                     
+                            
+                
                         </div>
 
                     </div>
+
+                </div>
 
                 <?php } ?>
 
@@ -133,7 +109,7 @@
                                 </div>
                             </div> 
                         </div>  
-                    <?php } ?>
+                    <?php } ?> 
 
 
 
@@ -142,10 +118,12 @@
 
 
 
-                <?php $counter1=-1;  if( isset($rsvp) && ( is_array($rsvp) || $rsvp instanceof Traversable ) && sizeof($rsvp) ) foreach( $rsvp as $key1 => $value1 ){ $counter1++; ?>
+                <?php $counter1=-1;  if( isset($event) && ( is_array($event) || $event instanceof Traversable ) && sizeof($event) ) foreach( $event as $key1 => $value1 ){ $counter1++; ?>
                 <div class="row card-dash">
 
-                    <div class="col-md-10 col-12">
+
+
+                    <div class="col-md-7 col-12">
                         
 
 
@@ -160,13 +138,36 @@
 
 
                                     <div class="card-dash-content">
-                                        <span><?php echo htmlspecialchars( $value1["desguest"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                        <span><?php echo formatDate($value1["dtevent"]); ?></span>
                                     </div>
 
 
                                     <div class="card-dash-header">
                                         <hr>
-                                        <span>Nome</span>
+                                        <span>Data</span>
+                                    </div>
+
+                                </div><!--card-dash-field-->
+
+
+                            </div><!--col-->
+
+
+
+
+                            <div class="col-md-1 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo formatTime($value1["tmevent"]); ?></span>
+                                    </div>
+
+
+                                    <div class="card-dash-header">
+                                        <hr>
+                                        <span>Horário</span>
                                     </div>
 
                                 </div><!--card-dash-field-->
@@ -180,24 +181,19 @@
 
 
 
-                            <div class="col-md-2 col-12">
+                            <div class="col-md-4 col-12">
 
                                 <div class="card-dash-field">
 
 
                                     <div class="card-dash-content">
-                                        <span><?php if( $value1["inadultsconfirmed"] > 0 ){ ?><?php echo htmlspecialchars( $value1["inadultsconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>0<?php } ?></span>
+                                        <span><?php echo htmlspecialchars( $value1["desevent"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
 
                                         <hr>
-
-                                        <?php if( $value1["inconfirmed"] == '0' ){ ?>
-                                            <span>Adultos<br><small>(máx. <?php echo getMaxAdults($value1["inmaxadults"],$rsvpconfig["inadultsconfig"],$rsvpconfig["inmaxadultsconfig"]); ?>)</small></span>
-                                        <?php }else{ ?>
-                                            <span>Adultos</span>
-                                        <?php } ?>
+                                        <span>Evento</span>
                                         
                                     </div>
 
@@ -212,77 +208,13 @@
 
 
 
-
-
-
-                            <div class="col-md-2 col-12">
+                            <div class="col-md-3 col-12">
 
                                 <div class="card-dash-field">
 
 
                                     <div class="card-dash-content">
-                                        <span><?php if( $value1["inchildrenconfirmed"] > 0 ){ ?><?php echo htmlspecialchars( $value1["inchildrenconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>0<?php } ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        
-
-                                        <?php if( $value1["inconfirmed"] == '0' ){ ?>
-                                            <span>Crianças<br><small>(máx. <?php echo getMaxChildren($value1["inmaxchildren"],$rsvpconfig["inchildrenconfig"],$rsvpconfig["inmaxchildrenconfig"]); ?>)</small></span>
-                                        <?php }else{ ?>
-                                            <span>Crianças</span>
-                                        <?php } ?>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-
-                            <div class="col-md-2 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["inconfirmed"] == 0 ){ ?>Não<?php }else{ ?>Sim<?php } ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Confirmado?</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-                            <div class="col-md-2 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["nrphone"] == '' or $value1["nrphone"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
+                                        <span><?php echo htmlspecialchars( $value1["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -304,19 +236,25 @@
 
 
 
+
+
                             <div class="col-md-2 col-12">
 
                                 <div class="card-dash-field">
 
 
                                     <div class="card-dash-content">
-                                        <span><?php if( $value1["dtconfirmed"] == '' or $value1["dtconfirmed"] == null ){ ?>-<?php }else{ ?><?php echo formatDate($value1["dtconfirmed"]); ?><?php } ?></span>
+                                        <?php if( $value1["instatus"] == 0 ){ ?>
+                                            <span>Não-visível</span>
+                                        <?php }elseif( $value1["instatus"] == 1 ){ ?>
+                                            <span>Visível</span>
+                                        <?php } ?>
                                     </div>
 
                                     <div class="card-dash-header">
 
                                         <hr>
-                                        <span>Data da Confirmação</span>
+                                        <span>Status</span>
                                         
                                     </div>
 
@@ -326,6 +264,12 @@
                                 
                             </div><!--col-->
 
+
+
+
+
+
+                            
 
 
 
@@ -337,6 +281,9 @@
 
 
                         <div class="row card-dash-row2">
+
+
+
                             
                             
 
@@ -346,13 +293,16 @@
 
 
                                     <div class="card-dash-content">
-                                        <span><?php if( $value1["desguestaccompanies"] == '' or $value1["desguestaccompanies"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["desguestaccompanies"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
+                                        <span><?php echo htmlspecialchars( $value1["desaddress"], ENT_COMPAT, 'UTF-8', FALSE ); ?>, <?php echo htmlspecialchars( $value1["desnumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                        <?php echo htmlspecialchars( $value1["desdistrict"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                        <?php echo htmlspecialchars( $value1["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                        <?php echo htmlspecialchars( $value1["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
 
                                         <hr>
-                                        <span>Nomes dos Acompanhantes</span>
+                                        <span>Endereço</span>
                                         
                                     </div>
 
@@ -361,9 +311,6 @@
 
                                 
                             </div><!--col-->
-
-
-                            
 
 
 
@@ -376,13 +323,13 @@
 
 
                                     <div class="card-dash-content">
-                                        <span><?php if( $value1["desemail"] == '' or $value1["desemail"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
+                                        <span><?php echo htmlspecialchars( $value1["desdirections"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
 
                                         <hr>
-                                        <span>E-mail</span>
+                                        <span>Pontos de Referência</span>
                                         
                                     </div>
 
@@ -395,6 +342,7 @@
 
 
 
+                    
 
 
 
@@ -410,22 +358,56 @@
 
 
 
+
+
+
+
+                    <div class="col-md-3 col-12 card-dash-row3">
+                        
+
+                        <div class="card-dash-field">
+
+
+                            <div class="card-photo">
+                                
+                                <img src="/uploads/events/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+
+                            </div>
+
+
+                           
+                        </div><!--card-buttons-wrappe-->
+
+
+
+
+                    </div><!--col-->
+
+
+
+
+
+
+
+
+
+
+
                     <div class="col-md-2 col-12 card-dash-row3">
                         
 
                         <div class="card-dash-field">
 
 
-                            <?php if( $value1["inconfirmed"] == 0 ){ ?>
-                                <a href='/dashboard/rsvp/<?php echo setHash($value1["idrsvp"]); ?>'>
+                            <a href='/dashboard/eventos/<?php echo setHash($value1["idevent"]); ?>'>
 
-                                    <button>Editar</button>
+                                <button>Editar</button>
 
-                                </a>
-                            <?php } ?>
+                            </a>
+                            
 
 
-                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/rsvp/<?php echo setHash($value1["idrsvp"]); ?>/deletar'>
+                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/eventos/<?php echo setHash($value1["idevent"]); ?>/deletar'>
 
                                 <button>Deletar</button>
 
@@ -448,7 +430,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-info">
-                            Nenhum convidado foi encontrado
+                            Nenhuma imagem foi encontrada
                         </div>
                     </div>
                 </div>
@@ -475,7 +457,7 @@
 
                             <div class="search">
 
-                                <form action="/dashboard/rsvp">
+                                <form action="/dashboard/eventos">
 
                                     <div class="input-group input-group-sm">
                                         
@@ -525,22 +507,6 @@
                         
 
                     </div><!--row-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

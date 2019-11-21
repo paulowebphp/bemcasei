@@ -137,7 +137,7 @@ $app->post( "/dashboard/meu-casamento", function()
 
 
 
-
+	
 
 
 
@@ -341,7 +341,7 @@ $app->post( "/dashboard/meu-casamento", function()
 
 
 
-
+	
 
 
 
@@ -364,9 +364,21 @@ $app->post( "/dashboard/meu-casamento", function()
 
 
 
+	/*
+	
+	echo '<pre>';
+	var_dump($_POST);
+	var_dump($desdescription);
+	var_dump($desdistrict);
+	var_dump($descountry);
+	var_dump($descostume);
+	var_dump($desdirections);
+	var_dump($_FILES);
+	exit;
+	
+	*/
 
-
-
+	
 
 
 
@@ -382,7 +394,16 @@ $app->post( "/dashboard/meu-casamento", function()
 	$wedding->get((int)$user->getiduser());
 
 	
-
+	/*
+	
+	echo '<pre>';
+	var_dump($_POST);
+	var_dump($_FILES);
+	var_dump($wedding);
+	var_dump($_FILES["file"]["name"] !== "");
+	exit;
+	
+	*/
 
 
 

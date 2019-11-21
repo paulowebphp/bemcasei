@@ -36,20 +36,6 @@
             <div class="col-md-9 col-12 dash-panel">
 
 
-         
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -57,56 +43,15 @@
                     
                     <div class="col-12">
 
-                        <div class="dash-title rsvp">
-                            <h1>RSVP <small>Confirmação de Presença</small></h1>
+                        <div class="dash-title">
+                            <h1>Mensagens</h1>
                         </div>
 
                     </div>
 
                 </div>
 
-        
-
-                <?php if(  $maxRsvp > $numRsvp  ){ ?>
-
-
-                    <div class="row">
-
-                        <div class="col-12">
-
-                            <div class="button-header">
-
-                                <a href="/dashboard/rsvp/adicionar">
-                                    <button>
-                                        Adicionar Convidado
-                                    </button>
-                                </a>
-
-
-                                <a href="/dashboard/rsvp/configurar">
-                                    <button>
-                                        Configurações
-                                    </button>
-                                </a>
-
-
-                                <a href="/dashboard/rsvp/confirmados">
-                                    <button>
-                                        Lista de Confirmados
-                                    </button>
-                                </a>
-                                
-                    
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                <?php } ?>
-
-            
-
+                
 
 
                 <?php if( $success != '' ){ ?>
@@ -137,12 +82,49 @@
 
 
 
+
+                <div class="row">
+
+                   <div class="col-12">
+
+
+                        <div class="account-box-wrapper">
+                            <div class="account-box">
+                                <div class="account-box-main">
+                                    <span><?php echo htmlspecialchars( $numMessages, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                </div>
+
+                                <div class="account-box-title">
+                                    <?php if( $numMessages > 1 ){ ?>
+                                        <span>Mensagens</span>
+                                            <br>
+                                        <span>Recebidas</span>
+                                    <?php }else{ ?>
+                                        <span>Mensagem</span>
+                                            <br>
+                                        <span>Recebida</span>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+               </div>
+
+            
+
+
+
+                
+
+
                 
 
 
 
 
-                <?php $counter1=-1;  if( isset($rsvp) && ( is_array($rsvp) || $rsvp instanceof Traversable ) && sizeof($rsvp) ) foreach( $rsvp as $key1 => $value1 ){ $counter1++; ?>
+                <?php $counter1=-1;  if( isset($message) && ( is_array($message) || $message instanceof Traversable ) && sizeof($message) ) foreach( $message as $key1 => $value1 ){ $counter1++; ?>
                 <div class="row card-dash">
 
                     <div class="col-md-10 col-12">
@@ -160,13 +142,13 @@
 
 
                                     <div class="card-dash-content">
-                                        <span><?php echo htmlspecialchars( $value1["desguest"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                        <span><?php echo formatDate($value1["dtregister"]); ?></span>
                                     </div>
 
 
                                     <div class="card-dash-header">
                                         <hr>
-                                        <span>Nome</span>
+                                        <span>Data</span>
                                     </div>
 
                                 </div><!--card-dash-field-->
@@ -180,60 +162,53 @@
 
 
 
-                            <div class="col-md-2 col-12">
+                            <div class="col-md-6 col-12">
 
                                 <div class="card-dash-field">
 
 
                                     <div class="card-dash-content">
-                                        <span><?php if( $value1["inadultsconfirmed"] > 0 ){ ?><?php echo htmlspecialchars( $value1["inadultsconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>0<?php } ?></span>
+                                        <span><?php echo htmlspecialchars( $value1["desmessage"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
 
                                         <hr>
+                                        <span>Nome</span>
+                                        
+                                    </div>
 
-                                        <?php if( $value1["inconfirmed"] == '0' ){ ?>
-                                            <span>Adultos<br><small>(máx. <?php echo getMaxAdults($value1["inmaxadults"],$rsvpconfig["inadultsconfig"],$rsvpconfig["inmaxadultsconfig"]); ?>)</small></span>
-                                        <?php }else{ ?>
-                                            <span>Adultos</span>
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+
+
+                            <div class="col-md-4 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <?php if( $value1["instatus"] == 0 ){ ?>
+                                            <span class="message-moderate">Não-visível</span>
+                                        <?php }elseif( $value1["instatus"] == 1 ){ ?>
+                                            <span class="message-approve">Visível</span>
                                         <?php } ?>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-
-
-
-                            <div class="col-md-2 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["inchildrenconfirmed"] > 0 ){ ?><?php echo htmlspecialchars( $value1["inchildrenconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>0<?php } ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
 
                                         <hr>
-                                        
-
-                                        <?php if( $value1["inconfirmed"] == '0' ){ ?>
-                                            <span>Crianças<br><small>(máx. <?php echo getMaxChildren($value1["inmaxchildren"],$rsvpconfig["inchildrenconfig"],$rsvpconfig["inmaxchildrenconfig"]); ?>)</small></span>
-                                        <?php }else{ ?>
-                                            <span>Crianças</span>
-                                        <?php } ?>
+                                        <span>Status</span>
                                         
                                     </div>
 
@@ -248,84 +223,7 @@
 
 
 
-
-                            <div class="col-md-2 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["inconfirmed"] == 0 ){ ?>Não<?php }else{ ?>Sim<?php } ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Confirmado?</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-                            <div class="col-md-2 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["nrphone"] == '' or $value1["nrphone"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Telefone</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-
-                            <div class="col-md-2 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["dtconfirmed"] == '' or $value1["dtconfirmed"] == null ){ ?>-<?php }else{ ?><?php echo formatDate($value1["dtconfirmed"]); ?><?php } ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Data da Confirmação</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
+                            
 
 
 
@@ -346,13 +244,13 @@
 
 
                                     <div class="card-dash-content">
-                                        <span><?php if( $value1["desguestaccompanies"] == '' or $value1["desguestaccompanies"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["desguestaccompanies"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
+                                        <span><?php echo htmlspecialchars( $value1["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
 
                                         <hr>
-                                        <span>Nomes dos Acompanhantes</span>
+                                        <span>Mensagem</span>
                                         
                                     </div>
 
@@ -361,10 +259,6 @@
 
                                 
                             </div><!--col-->
-
-
-                            
-
 
 
 
@@ -376,7 +270,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span><?php if( $value1["desemail"] == '' or $value1["desemail"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
+                                        <span><?php echo htmlspecialchars( $value1["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -393,8 +287,9 @@
                             </div><!--col-->
 
 
+                            
 
-
+                    
 
 
 
@@ -416,16 +311,22 @@
                         <div class="card-dash-field">
 
 
-                            <?php if( $value1["inconfirmed"] == 0 ){ ?>
-                                <a href='/dashboard/rsvp/<?php echo setHash($value1["idrsvp"]); ?>'>
+                            <?php if( $value1["instatus"] == 0 ){ ?>
+                                <a class="message-approve" href='/dashboard/mensagens/<?php echo setHash($value1["idmessage"]); ?>/aprovar'>
 
-                                    <button>Editar</button>
+                                    <button>Aprovar</button>
+
+                                </a>
+                            <?php }elseif( $value1["instatus"] == 1 ){ ?>
+                                <a class="message-moderate" href='/dashboard/mensagens/<?php echo setHash($value1["idmessage"]); ?>/moderar'>
+
+                                    <button>Moderar</button>
 
                                 </a>
                             <?php } ?>
 
 
-                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/rsvp/<?php echo setHash($value1["idrsvp"]); ?>/deletar'>
+                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/mensagens/<?php echo setHash($value1["idmessage"]); ?>/deletar'>
 
                                 <button>Deletar</button>
 
@@ -448,7 +349,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-info">
-                            Nenhum convidado foi encontrado
+                            Nenhuma mensagem foi recebida
                         </div>
                     </div>
                 </div>
@@ -475,7 +376,7 @@
 
                             <div class="search">
 
-                                <form action="/dashboard/rsvp">
+                                <form action="/dashboard/mensagens">
 
                                     <div class="input-group input-group-sm">
                                         
