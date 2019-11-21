@@ -1,4 +1,4 @@
-<section id="dash-forgot">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section id="dash-forgot">
     
     <div class="container">
         
@@ -47,11 +47,11 @@
 
                         <div class="error-login-row">
                             
-                            {if="$error != ''"}
+                            <?php if( $error != '' ){ ?>
                             <div class="alert alert-danger">
-                                {$error}
+                                <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                             </div>
-                            {/if}
+                            <?php } ?>
                             
                         </div>
 

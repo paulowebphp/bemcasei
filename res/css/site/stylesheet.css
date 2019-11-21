@@ -1828,7 +1828,7 @@ label{
 }
 
 
-#dash-login .dash-login-pass-recovery a{
+.dash-login-pass-recovery a{
 	color: #03a9f4;
 	text-decoration: none;
 }

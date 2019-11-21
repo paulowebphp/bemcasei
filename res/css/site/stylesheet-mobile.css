@@ -302,6 +302,10 @@ footer .bottom-footer h6 {
 	#site-search {
 		padding: 8% 1%;
 	}
+	.button2 a{
+		padding: 8px 20px;
+		font-size: 1.5rem;
+	}
 	
 	}/*breakpoint*/
 	/**********************************1200px***********************************/
@@ -636,8 +640,10 @@ footer {
 	font-size: 1rem;
 }
 .button2 a {
-    padding: 10px 20px;
+	padding: 10px 20px;
+	font-size: 1.5rem;
 }
+
 
 #banner h3 {
 	font-size: 1.4rem;
@@ -756,13 +762,13 @@ footer {
 #about-features p{
 	font-size: 14px;
 }
-#about a{
-	font-size: 16px;
-}
-#taxes-conditions{
-    font-size: 0.8rem;
-}
 
+#taxes-conditions{
+    font-size: 1rem;
+}
+.table1{
+    font-size: 0.9rem;
+}
 #taxes-conditions table td{
     padding: 3px;
 }
