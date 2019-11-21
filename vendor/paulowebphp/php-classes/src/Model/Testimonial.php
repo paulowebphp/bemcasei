@@ -215,6 +215,115 @@ class Testimonial extends Model
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public function getSiteSamples( $limit = 15 )
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT a.idtestimonial,
+			a.instatus, 
+			a.insample, 
+			a.inrating, 
+			a.desdescription,
+			b.desdomain,
+			c.desnick,
+			d.desconsort,
+			e.desbanner,
+			f.dtwedding
+			FROM tb_testimonials a
+			INNER JOIN tb_users b ON a.iduser = b.iduser
+			INNER JOIN tb_persons c ON b.idperson = c.idperson
+			INNER JOIN tb_consorts d ON b.iduser = d.iduser
+			INNER JOIN tb_customstyle e ON b.iduser = e.iduser
+			INNER JOIN tb_weddings f ON b.iduser = f.iduser
+			WHERE a.desdescription <> ''
+			AND b.desdomain IS NOT NULL
+			AND a.instatus = 1
+			AND a.insample = 1
+			ORDER BY a.inrating DESC,
+			a.dtregister DESC
+			LIMIT $limit;
+		
+			", 
+			
+			[
+
+				':iduser'=>$iduser
+
+			]
+		
+		);//end select
+
+
+
+
+
+		
+
+		if(count($results) > 0)
+		{
+
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  )
+			{
+
+				foreach( $results as &$row )
+				{
+					$row['desnick'] = utf8_encode($row['desnick']);
+					$row['desconsort'] = utf8_encode($row['desconsort']);
+					$row['desdescription'] = utf8_encode($row['desdescription']);
+
+				}//end foreach
+
+
+			}//end if
+
+			$this->setData($results[0]);
+
+		}//end if
+
+
+	}//END get
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public static function setError( $msg )
 	{
 

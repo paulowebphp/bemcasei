@@ -4660,10 +4660,10 @@ var_dump($plans);*/
             INNER JOIN tb_customstyle f ON a.iduser = f.iduser
 			WHERE a.desdomain IS NOT NULL 
 			AND a.deslogin = :search
-			OR c.desconsortemail = :search
-			OR b.desperson LIKE :searchlike
-			OR b.desnick LIKE :searchlike
-			OR c.desconsort LIKE :searchlike
+			OR a.desdomain IS NOT NULL AND c.desconsortemail = :search
+			OR a.desdomain IS NOT NULL AND b.desperson LIKE :searchlike
+			OR a.desdomain IS NOT NULL AND b.desnick LIKE :searchlike
+			OR a.desdomain IS NOT NULL AND c.desconsort LIKE :searchlike
 			ORDER BY b.desperson,
 			a.dtregister DESC
 			LIMIT $start, $itensPerPage;
@@ -4701,8 +4701,9 @@ var_dump($plans);*/
 				foreach ($results as &$row)
 				{
 					# code...
-					$results[0]['desnick'] = utf8_encode($results[0]['desnick']);	
-					$results[0]['desconsort'] = utf8_encode($results[0]['desconsort']);
+					$row['desnick'] = utf8_encode($row['desnick']);	
+					$row['desconsort'] = utf8_encode($row['desconsort']);
+					$row['descity'] = utf8_encode($row['descity']);
 
 				}//end foreach
 				

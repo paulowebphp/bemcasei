@@ -1,4 +1,4 @@
-<section id="site-search">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section id="site-search">
     
     <div class="container">
 
@@ -73,18 +73,18 @@
 
 
  
-        {if="$error != ''"}
+        <?php if( $error != '' ){ ?>
             <div class="row">
                 <div class="col-12">
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        {$error}
+                        <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                 </div> 
             </div>  
-        {/if}
+        <?php } ?>
 
 
 
@@ -95,14 +95,14 @@
             
             <div class="col-12 text-center">
 
-                {if="$results_handler == 0"}
+                <?php if( $results_handler == 0 ){ ?>
                 <div class="row centralizer">
                     <div class="col-md-8 col-10">
                         &nbsp;
                     </div><!--col-->
                 </div><!--row-->
 
-                {elseif="$results_handler == 1"}
+                <?php }elseif( $results_handler == 1 ){ ?>
                 <div class="row centralizer">
                     <div class="col-md-8 col-10">
                         <div class="alert alert-info alert-domain" role="alert">
@@ -110,10 +110,10 @@
                         </div><!--alert-->
                     </div><!--col-->
                 </div><!--row-->
-                {else}
+                <?php }else{ ?>
 
 
-                {loop="$user"}
+                <?php $counter1=-1;  if( isset($user) && ( is_array($user) || $user instanceof Traversable ) && sizeof($user) ) foreach( $user as $key1 => $value1 ){ $counter1++; ?>
 
                 
                 <div class="card">
@@ -124,7 +124,7 @@
                                                 
                     <div class="card-photo">
                 
-                        <img src="/uploads/banners/{$value.desbanner}">
+                        <img src="/uploads/banners/<?php echo htmlspecialchars( $value1["desbanner"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                     </div>
 
@@ -136,7 +136,7 @@
                     <div class="card-title bottom3">
                         <h3>
                     
-                            {$value.desnick} 
+                            <?php echo htmlspecialchars( $value1["desnick"], ENT_COMPAT, 'UTF-8', FALSE ); ?> 
 
                         </h3>
 
@@ -144,7 +144,7 @@
 
                         <h3>
                             
-                            {$value.desconsort} 
+                            <?php echo htmlspecialchars( $value1["desconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?> 
 
                         </h3>
                            
@@ -167,7 +167,7 @@
 
                         <div class="card-detail-date bottom3">
 
-                            <h5>{function="formatDate($value.dtwedding)"}</h5>
+                            <h5><?php echo formatDate($value1["dtwedding"]); ?></h5>
 
                             <hr>
 
@@ -177,17 +177,17 @@
 
 
 
-                        {if="$value.descity != ''"}
+                        <?php if( $value1["descity"] != '' ){ ?>
                         <div class="card-detail bottom3">
 
-                            <h5>{$value.descity} / {$value.desstatecode} {if="$value.descountrycode != 'BRA'"} {$value.descountry} {/if}</h5>
+                            <h5><?php echo htmlspecialchars( $value1["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?> / <?php echo htmlspecialchars( $value1["desstatecode"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php if( $value1["descountrycode"] != 'BRA' ){ ?> <?php echo htmlspecialchars( $value1["descountry"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php } ?></h5>
 
                             <hr>
 
                             <span>Localização</span>
 
                         </div>
-                        {/if}
+                        <?php } ?>
 
 
                         
@@ -204,7 +204,7 @@
                         
                         <div class="col-12">
                             
-                            <a target="_blank" href="/{$value.desdomain}" role="button">
+                            <a target="_blank" href="/<?php echo htmlspecialchars( $value1["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" role="button">
                         
                             
                                 <button class="button3">Site do Casal</button>
@@ -220,7 +220,7 @@
 
                         <div class="col-12">
                             
-                            <a target="_blank" href="/{$value.desdomain}/rsvp" role="button">
+                            <a target="_blank" href="/<?php echo htmlspecialchars( $value1["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/rsvp" role="button">
                             
                                 <button class="button5">
                                     Confirmar Presença
@@ -233,7 +233,7 @@
 
                         <div class="col-12">
                             
-                            <a target="_blank" href="/{$value.desdomain}/loja" role="button">
+                            <a target="_blank" href="/<?php echo htmlspecialchars( $value1["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/loja" role="button">
                             
                                 <button class="button4">
                                     Presentear
@@ -256,7 +256,7 @@
 
 
                 </div><!--card-->
-                {/loop}
+                <?php } ?>
 
                 <div class="row">
                         
@@ -265,9 +265,9 @@
                         
                         <div class="dash-pagination clearfix">
                             <ul class="pagination pagination-sm no-margin">
-                                {loop="$pages"}
-                                    <a href="{$value.href}"><li>{$value.text}</li></a>
-                                {/loop}
+                                <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
+                                    <a href="<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><li><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></li></a>
+                                <?php } ?>
                             </ul>
                         </div>
 
@@ -276,7 +276,7 @@
 
                 </div><!--row-->
 
-                {/if}
+                <?php } ?>
                 
 
                 

@@ -578,7 +578,10 @@ label{
 	font-weight:lighter;
 	background:#ddd;
 }
-
+.site-subtitle{
+	width: 50%;
+	margin: 0 auto;
+}
 
 
 
@@ -2353,7 +2356,7 @@ label{
   display: inline-block;
   vertical-align: top;
   margin: 0 2% 10% 2%;
-  padding: 3%;
+  padding: 3% 3%;
   width: 360px;
   background-color: #fff;
   position: relative;

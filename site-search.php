@@ -45,7 +45,7 @@ $app->get( '/buscar', function()
 
 		$results = $user->getPageMailingSearch($search,$currentPage,Rule::ITENS_PER_PAGE);
 
-
+		
 		
 
 
@@ -99,7 +99,7 @@ $app->get( '/buscar', function()
 
 
 		
-
+	
 
 
 	$page = new Page();

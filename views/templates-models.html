@@ -14,7 +14,9 @@
 
                 <h1>Modelos de Templates</h1>
 
-                <h3>Clique em um template para ver <br> como ficaria o seu site on-line!</h3>
+                <div class="site-subtitle">
+                    <h3>Clique em um template para ver como ficaria o seu site on-line!</h3>
+                </div>
 
 
                 <!--<img alt="Template" id="templates-models-banner" src="/res/images/banner-templates-models.png">-->
