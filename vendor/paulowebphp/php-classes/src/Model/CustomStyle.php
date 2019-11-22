@@ -376,35 +376,35 @@ class CustomStyle extends Model
 			'1'=>[
 
 				'name'=>'Rainbow',
-				'thumb'=>'tpl1.png'
+				'thumb'=>'tpl1.jpg'
 
 			],
 
 			'2'=>[
 
 				'name'=>'Freedom',
-				'thumb'=>'tpl2.png'
+				'thumb'=>'tpl2.jpg'
 
 			],
 
 			'3'=>[
 
 				'name'=>'Gold',
-				'thumb'=>'tpl3.png'
+				'thumb'=>'tpl3.jpg'
 
 			],
 
 			'4'=>[
 
 				'name'=>'Hot',
-				'thumb'=>'tpl4.png'
+				'thumb'=>'tpl4.jpg'
 
 			],
 
 			'5'=>[
 
 				'name'=>'Lovers',
-				'thumb'=>'tpl5.png'
+				'thumb'=>'tpl5.jpg'
 
 			]
 

@@ -31,40 +31,40 @@ class Template extends Model
 
 			'1'=>[
 
-				'0'=>'Estevão',
-				'1'=>'Sabrina'
+				'0'=>'Sabrina',
+				'1'=>'Estevão'
 
 			],
 
 
 			'2'=>[
 
-				'0'=>'Henrique',
-				'1'=>'Letícia'
+				'0'=>'Ludmila',
+				'1'=>'Paulo'
 
 			],
 
 
 			'3'=>[
 
-				'0'=>'Gustavo',
-				'1'=>'Vera'
+				'0'=>'Eliza',
+				'1'=>'Norberto'
 
 			],
 
 
 			'4'=>[
 
-				'0'=>'Paulo',
-				'1'=>'Rebeca'
+				'0'=>'Ana Lúcia',
+				'1'=>'Paulo'
 
 			],
 
 
 			'5'=>[
 
-				'0'=>'Diego',
-				'1'=>'Karine'
+				'0'=>'Karine',
+				'1'=>'Diego'
 
 			]
 
@@ -108,7 +108,7 @@ class Template extends Model
 
 			'1'=>'photo32.jpg',
 			'2'=>'photo33.jpg',
-			'3'=>'photo29.jpg',
+			'3'=>'photo34.jpg',
 			'4'=>'photo31.jpg',
 			'5'=>'photo30.jpg'
 

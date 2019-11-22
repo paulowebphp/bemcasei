@@ -293,7 +293,7 @@
 
 
                         <a href="/template/1">
-                            <img id="thumb1" data-idtemplate="1" <?php if( getTemplate() == '1' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl1.png">
+                            <img id="thumb1" data-idtemplate="1" <?php if( getTemplate() == '1' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl1.jpg">
                         </a>
 
                         <span>Rainbow</span>
@@ -319,7 +319,7 @@
 
 
                         <a href="/template/2">
-                            <img id="thumb2" data-idtemplate="2" <?php if( getTemplate() == '2' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl2.png">
+                            <img id="thumb2" data-idtemplate="2" <?php if( getTemplate() == '2' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl2.jpg">
                         </a>
 
                         
@@ -375,7 +375,7 @@
 
 
                         <a href="/template/3">
-                            <img id="thumb3" data-idtemplate="3" <?php if( getTemplate() == '3' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl3.png">
+                            <img id="thumb3" data-idtemplate="3" <?php if( getTemplate() == '3' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl3.jpg">
                         </a>
                         
                         <span>Gold</span>
@@ -401,7 +401,7 @@
 
 
                         <a href="/template/4">
-                            <img id="thumb4" data-idtemplate="4" <?php if( getTemplate() == '4' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl4.png">
+                            <img id="thumb4" data-idtemplate="4" <?php if( getTemplate() == '4' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl4.jpg">
                         </a>
                         
                         <span>Hot</span>
@@ -446,7 +446,7 @@
                     <div class="thumb row2">
                             
                             <a href="/template/5">
-                                <img id="thumb5" data-idtemplate="5" <?php if( getTemplate() == '5' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl5.png">
+                                <img id="thumb5" data-idtemplate="5" <?php if( getTemplate() == '5' ){ ?>class="checked"<?php } ?> src="/res/images/template/thumb/tpl5.jpg">
                             </a>
 
                             <span>Lovers</span>

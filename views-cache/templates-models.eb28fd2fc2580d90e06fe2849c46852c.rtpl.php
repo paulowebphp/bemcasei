@@ -41,7 +41,7 @@
                 </div>
 
                 <a target="_blank" href="/template/1">
-                    <img alt="Template Rainbow" src="/res/images/template/thumb/tpl1.png">
+                    <img alt="Template Rainbow" src="/res/images/template/thumb/tpl1.jpg">
                 </a>
 
                 <div class="button2"><a target="_blank" href="/template/1">Ver Template</a></div>
@@ -60,7 +60,7 @@
                     <h2>Freedom</h2>
                 </div>
                 <a target="_blank" href="/template/2">
-                    <img alt="Template Freedom" src="/res/images/template/thumb/tpl2.png">
+                    <img alt="Template Freedom" src="/res/images/template/thumb/tpl2.jpg">
                 </a>
                 <div class="button2"><a target="_blank" href="/template/2">Ver Template</a></div>
                 <!--<div class="button2"><a href="">Criar meu site com este Template</a></div>-->
@@ -90,7 +90,7 @@
                 </div>
 
                 <a target="_blank" href="/template/3">
-                    <img alt="Template Gold" src="/res/images/template/thumb/tpl3.png">
+                    <img alt="Template Gold" src="/res/images/template/thumb/tpl3.jpg">
                 </a>
 
                 <div class="button2"><a target="_blank" href="/template/3">Ver Template</a></div>
@@ -109,7 +109,7 @@
                     <h2>Hot</h2>
                 </div>
                 <a target="_blank" href="/template/4">
-                    <img alt="Template Hot" src="/res/images/template/thumb/tpl4.png">
+                    <img alt="Template Hot" src="/res/images/template/thumb/tpl4.jpg">
                 </a>
                 <div class="button2"><a target="_blank" href="/template/4">Ver Template</a></div>
                 <!--<div class="button2"><a href="">Criar meu site com este Template</a></div>-->
@@ -135,7 +135,7 @@
                     <h2>Lovers</h2>
                 </div>
                 <a target="_blank" href="/template/5">
-                    <img alt="Template Lovers" src="/res/images/template/thumb/tpl5.png">
+                    <img alt="Template Lovers" src="/res/images/template/thumb/tpl5.jpg">
                 </a>
                 <div class="button2"><a target="_blank" href="/template/5">Ver Template</a></div>
 

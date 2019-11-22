@@ -58,7 +58,7 @@ class PageConfig extends Model
 			'site-casamento'=>[
 
 				'pagetitle'=>'Site de Casamento | Bem Casei',
-				'metadescription'=>'Funcionalidades incríveis para criar o seu site de casamento | Bem Casei, o site de casamento mais elegante do Brasil!',
+				'metadescription'=>'Funcionalidades incríveis para criar o seu site de casamento e ter acesso a todas as suas comodidades! Confira já!',
 				'noindex'=>0
 
 
@@ -67,7 +67,7 @@ class PageConfig extends Model
 			'lista-presentes'=>[
 
 				'pagetitle'=>'Lista de Presentes | Bem Casei',
-				'metadescription'=>'Crie sua Lista de Presentes Virtuais, envie para seus convidados e receba os valores em dinheiro para transferir para sua conta bancária',
+				'metadescription'=>'Crie sua Lista de Presentes Virtuais, envie para seus convidados, receba os valores em dinheiro e transfira gratuitamente para sua conta bancária!',
 				'noindex'=>0
 
 
