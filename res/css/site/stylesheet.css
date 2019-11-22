@@ -1249,8 +1249,12 @@ label{
     color: #c7e8f7;
     text-decoration: none;
 }
-
-
+.template-banner-image{
+	width: 250px;
+}
+.template-banner-image img{
+	width: 100%;
+}
 
 
 
@@ -1355,7 +1359,6 @@ label{
 #confirmation h2{
 	color: #fff;
 	text-shadow:4px 4px 4px rgba(0, 0, 0, .45);
-	text-shadow: #7e7e7e 0.1em 0.1em 0.2em;
 	margin-bottom: 60px;
 	font-family: 'TheHeartOfEverything';
 	font-size: 4rem;
@@ -1364,7 +1367,6 @@ label{
 #confirmation h3{
 	color: #fff;
 	text-shadow:4px 4px 4px rgba(0, 0, 0, .45);
-	text-shadow: #7e7e7e 0.1em 0.1em 0.2em;
 	font-family: 'TheHeartOfEverything';
 	font-size: 3rem;
 }

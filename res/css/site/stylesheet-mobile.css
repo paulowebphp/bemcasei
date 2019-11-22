@@ -190,6 +190,10 @@ footer .bottom-footer h6 {
 #box-price-logo img{
 	width: 100%;
 }
+.template-banner-image{
+	width: 200px;
+	margin:0 auto
+}
 #footer-first-row .caption h2 {
     font-size: 1.6rem;
 }

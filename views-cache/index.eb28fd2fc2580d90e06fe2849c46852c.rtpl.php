@@ -296,6 +296,14 @@
 
                 <p>&nbsp;</p>
 
+                <div class="template-banner-image">
+                    <a href="/modelos-templates">
+                        <img src="/res/images/banner-templates.png" alt="Miniaturas dos Banners">
+                    </a>
+                </div>
+
+                <p>&nbsp;</p>
+
                 <a href="/modelos-templates"><button type="button" class="btn btn-md btn-advantage btn-advantage1">
                         VER TEMPLATES
                     </button></a>
