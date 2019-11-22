@@ -39,8 +39,8 @@ class Template extends Model
 
 			'2'=>[
 
-				'0'=>'Ludmila',
-				'1'=>'Paulo'
+				'0'=>'Vera',
+				'1'=>'Gustavo'
 
 			],
 
