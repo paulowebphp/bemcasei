@@ -254,7 +254,7 @@
 
                        
                             
-                        <div class="body-header row">
+                        <div class="body-header">
 
                             <div class="card-image">
                             
@@ -272,7 +272,7 @@
 
 
 
-                        <div class="title row">
+                        <div class="title">
                             
                             <div class="col-12">
                                 
@@ -350,7 +350,7 @@
 
 
 
-                        <div class="body-row row">
+                        <div class="body-row">
 
                             <div class="col-12">
                                 
@@ -371,67 +371,71 @@
 
 
 
-                        <div class="body-row centralizer row">
+                        <div class="body-row body1 centralizer">
                     
 
-                            <div class="col-md-3 col-12 inside-row">
-                                
-                                <h6>{if="$value.nrphone != ''"}{$value.nrphone}{else}-{/if}</h6>
-                                <hr>
+                            <div class="row">
 
-                                <div class="card-label">
-
-                                    <h6>Contato</h6>
-
-                                </div><!--card-label-->
-                               
-                            </div><!--col-->
-
-
-
-                            <div class="col-md-6 col-12 inside-row">
-
-                                <h6>
-
-                                    {if="$value.desaddress != ''"}
-                                        {$value.desaddress}, {$value.desnumber}
-                                        
-                                        {if="$value.desdistrict != ''"} - Bairro {$value.desdistrict}{/if}
-
-                                        {if="$value.descity != ''"} - {$value.descity} / {$value.desstate}{/if}
-
-                                        {if="$value.descountry != ''"} / {$value.descountry}{/if}
-                                    {else}
-                                        -
-                                    {/if}
-
-                                </h6>
-                                <hr>
-
-                                <div class="card-label">
-
-                                    <h6>Endereço</h6>
-
-                                </div><!--card-label-->
-
-                            </div><!--col-->
-
+                                <div class="col-md-3 col-12 inside-row">
                             
-
-
-                            <div class="col-md-3 col-12 inside-row">
+                                    <h6>{if="$value.nrphone != ''"}{$value.nrphone}{else}-{/if}</h6>
+                                    <hr>
+    
+                                    <div class="card-label">
+    
+                                        <h6>Contato</h6>
+    
+                                    </div><!--card-label-->
+                                    
+                                </div><!--col-->
+    
+    
+    
+                                <div class="col-md-6 col-12 inside-row">
+    
+                                    <h6>
+    
+                                        {if="$value.desaddress != ''"}
+                                            {$value.desaddress}, {$value.desnumber}
+                                            
+                                            {if="$value.desdistrict != ''"} - Bairro {$value.desdistrict}{/if}
+    
+                                            {if="$value.descity != ''"} - {$value.descity} / {$value.desstate}{/if}
+    
+                                            {if="$value.descountry != ''"} / {$value.descountry}{/if}
+                                        {else}
+                                            -
+                                        {/if}
+    
+                                    </h6>
+                                    <hr>
+    
+                                    <div class="card-label">
+    
+                                        <h6>Endereço</h6>
+    
+                                    </div><!--card-label-->
+    
+                                </div><!--col-->
+    
                                 
-                                
-                                <h6>{if="$value.desdirections != ''"}{$value.desdirections}{else}-{/if}</h6>
-                                <hr>
+    
+    
+                                <div class="col-md-3 col-12 inside-row">
+                                    
+                                    
+                                    <h6>{if="$value.desdirections != ''"}{$value.desdirections}{else}-{/if}</h6>
+                                    <hr>
+    
+                                    <div class="card-label">
+    
+                                        <h6>Ponto de Referência</h6>
+    
+                                    </div><!--card-label-->
+    
+                                </div><!--col-->
 
-                                <div class="card-label">
-
-                                    <h6>Ponto de Referência</h6>
-
-                                </div><!--card-label-->
-
-                            </div><!--col-->
+                            </div><!--row-->
 
 
 
@@ -445,7 +449,7 @@
                         {if="$value.desaddress != ''"}
 
 
-                        <div class="body-footer row">
+                        <div class="body-footer body1">
 
 
                             <div class="buttons-wrapper">

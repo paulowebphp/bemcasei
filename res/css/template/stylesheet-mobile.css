@@ -149,7 +149,7 @@ header #menu-mobile li a {
 }
 header .bar-close {
     position: relative;
-    margin-top: 20%;
+    margin-top: 10%;
     background-color: #ddd;
     width: 100%;
 }
@@ -159,7 +159,9 @@ header.open-search #logotipo {
 }
 
 
-
+.domain {
+    padding: 10% 1% 10% 1%;
+}
 #footer-logo{
     width: 100%;
 }
@@ -621,9 +623,7 @@ footer .social-icon-border {
 
 
 /*************************DOMAIN******************************/
-.domain {
-    padding: 20% 1% 10% 1%;
-}
+
 body span{
     font-size: 0.8rem;
 }
@@ -692,9 +692,7 @@ textarea{
     margin-top: 5%;
     margin-bottom: 20%;
 }
-.section-title hr {
-    margin-top: -3%;
-}
+
 .section-header .section-title{
     margin-bottom: 10%;
 }
@@ -742,16 +740,16 @@ textarea{
 .card2 .card-image{
     width: 100%;
     margin: auto;
-    padding: 5% 0;
+    padding: 0 0 5% 0;
 }
 .card2 .title{
-    margin-bottom: 10%;
+    margin-bottom: 15%;
 }
 .card2 .body-row{
     margin-bottom: 15%;
 }
 .card2 .body-header {
-    margin-bottom: 25%;
+    margin-bottom: 10%;
 }
 .card2 .inside-row{
     margin-bottom: 15%;

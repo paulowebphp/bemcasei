@@ -597,10 +597,7 @@ body span{
 .body-footer i{
   color: #171F26;
 }
-.card2 .card-image img{
-  border: 8px solid #171F2633;
-    
-}
+
 .sort-by select{
   color: #171F26;
 }
@@ -644,7 +641,7 @@ body span{
 
 /********************************* DOMAIN *****************************************/
 .domain{
-  padding: 10% 2%;
+  padding: 5% 2%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -764,6 +761,9 @@ label{
 }
 .flex{
   display: flex;
+}
+.body1{
+  padding: 0 3%;
 }
 /********************************* DOMAIN *****************************************/
 
@@ -976,7 +976,6 @@ label{
   border: 8px solid #171F2633;
   border-radius: 4px;
 }
-
 .card2{
   margin-bottom: 5%!important;
 }
