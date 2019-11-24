@@ -563,13 +563,13 @@ class Rule extends Model
 	/************************* SET ERROR WIRECAR ***************************/
 	/************************* SET ERROR WIRECAR ***************************/
 
-	const CUSTOMER_UNAUTHORIZED = 'Houve uma falha de autenticação na geração do perfil da conta | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const CUSTOMER_UNAUTHORIZED = 'Houve uma falha de autenticação na geração do perfil da conta | Não se preocupe, nenhum valor foi cobrado do seu cartão | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
-	const CUSTOMER_VALIDATION = 'Houve uma falha de validação na geração do perfil da conta | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const CUSTOMER_VALIDATION = 'Houve uma falha de validação na geração do perfil da conta | Não se preocupe, nenhum valor foi cobrado do seu cartão | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
-	const CUSTOMER_UNEXPECTED = 'Houve uma falha inesperada na geração do perfil da conta | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const CUSTOMER_UNEXPECTED = 'Houve uma falha inesperada na geração do perfil da conta | Não se preocupe, nenhum valor foi cobrado do seu cartão | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
 
@@ -580,13 +580,13 @@ class Rule extends Model
 
 
 
-	const ACCOUNT_UNAUTHORIZED = 'Houve uma falha de autenticação na abertura da conta | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const ACCOUNT_UNAUTHORIZED = 'Houve uma falha de autenticação na abertura da conta | Não se preocupe, nenhum dado foi enviado | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
-	const ACCOUNT_VALIDATION = 'Houve uma falha de validação na abertura da conta | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const ACCOUNT_VALIDATION = 'Houve uma falha de validação na abertura da conta | Não se preocupe, nenhum dado foi enviado | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
-	const ACCOUNT_UNEXPECTED = 'Houve uma falha inesperada na abertura da conta | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const ACCOUNT_UNEXPECTED = 'Houve uma falha inesperada na abertura da conta | Não se preocupe, nenhum dado foi enviado | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
 
@@ -601,13 +601,13 @@ class Rule extends Model
 
 
 
-	const PLAN_UNAUTHORIZED = 'Houve uma falha de autenticação na geração do plano da conta | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const PLAN_UNAUTHORIZED = 'Houve uma falha de autenticação na geração do plano da conta | Não se preocupe, nenhum valor foi cobrado do seu cartão | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
-	const PLAN_VALIDATION = 'Houve uma falha de validação na geração do plano da conta | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const PLAN_VALIDATION = 'Houve uma falha de validação na geração do plano da conta | Não se preocupe, nenhum valor foi cobrado do seu cartão | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
-	const PLAN_UNEXPECTED = 'Houve uma falha inesperada na geração do plano da conta | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const PLAN_UNEXPECTED = 'Houve uma falha inesperada na geração do plano da conta | Não se preocupe, nenhum valor foi cobrado do seu cartão | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
 
@@ -627,13 +627,13 @@ class Rule extends Model
 
 
 
-	const PRODUCT_UNAUTHORIZED = 'Houve uma falha de autenticação da conta do casal no pagamento do pedido | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const PRODUCT_UNAUTHORIZED = 'Houve uma falha de autenticação da conta do casal no pagamento do pedido | Não se preocupe, nenhum valor foi cobrado do seu cartão | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
-	const PRODUCT_VALIDATION = 'Houve uma falha de validação da conta do casal no pagamento do pedido | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const PRODUCT_VALIDATION = 'Houve uma falha de validação da conta do casal no pagamento do pedido | Não se preocupe, nenhum valor foi cobrado do seu cartão | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
-	const PRODUCT_UNEXPECTED = 'Houve uma falha inesperada no pagamento do pedido | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const PRODUCT_UNEXPECTED = 'Houve uma falha inesperada no pagamento do pedido | Não se preocupe, nenhum valor foi cobrado do seu cartão | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
 
@@ -653,13 +653,13 @@ class Rule extends Model
 
 
 
-	const GENERAL_UNAUTHORIZED = 'Houve uma falha de autenticação da conta do casal na configuração da conta bancária | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const GENERAL_UNAUTHORIZED = 'Houve uma falha de autenticação da conta do casal, provavelmente devido a alguma instabilidade | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
-	const GENERAL_VALIDATION = 'Houve uma falha de autenticação da conta do casal na configuração da conta bancária | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const GENERAL_VALIDATION = 'Houve uma falha de autenticação da conta do casal, provavelmente devido a alguma instabilidade | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
-	const GENERAL_UNEXPECTED = 'Houve uma falha inesperada na configuração da conta bancária | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const GENERAL_UNEXPECTED = 'Houve uma falha inesperada, provavelmente devido a alguma instabilidade | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
 
@@ -682,13 +682,13 @@ class Rule extends Model
 
 
 
-	const BANK_UNAUTHORIZED = 'Houve uma falha de autenticação da conta do casal na configuração da conta bancária | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const BANK_UNAUTHORIZED = 'Houve uma falha de autenticação da conta do casal na configuração da conta bancária | Não se preocupe, nenhum dado foi enviado | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
-	const BANK_VALIDATION = 'Houve uma  falha de autenticação da conta do casal na configuração da conta bancária | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const BANK_VALIDATION = 'Houve uma  falha de autenticação da conta do casal na configuração da conta bancária | Não se preocupe, nenhum dado foi enviado | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
-	const BANK_UNEXPECTED = 'Houve uma falha inesperada na configuração da conta bancária | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const BANK_UNEXPECTED = 'Houve uma falha inesperada na configuração da conta bancária | Não se preocupe, nenhum dado foi enviado | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
 
@@ -708,13 +708,13 @@ class Rule extends Model
 
 
 
-	const TRANSFER_UNAUTHORIZED = 'Houve uma falha de autenticação da conta do casal na configuração da conta bancária | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const TRANSFER_UNAUTHORIZED = 'Houve uma falha de autenticação da conta do casal na configuração da conta bancária | Não se preocupe, nenhum dado foi enviado | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
-	const TRANSFER_VALIDATION = 'Houve uma  falha de autenticação da conta do casal na configuração da conta bancária | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const TRANSFER_VALIDATION = 'Houve uma  falha de autenticação da conta do casal na configuração da conta bancária | Não se preocupe, nenhum dado foi enviado | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
-	const TRANSFER_UNEXPECTED = 'Houve uma falha inesperada na configuração da conta bancária | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
+	const TRANSFER_UNEXPECTED = 'Houve uma falha inesperada na configuração da conta bancária | Não se preocupe, nenhum dado foi enviado | Por favor, tente novamente, se a falha persistir entre em contato com o suporte';
 
 
 

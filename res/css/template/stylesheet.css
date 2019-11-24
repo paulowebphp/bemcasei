@@ -1109,10 +1109,10 @@ label{
 
 /**********************************STORE*************************************************************/
 .card-store{
-  width: 360px;
+  width: 280px;
 }
 .card-store .card-body{
-  padding: 10% 5% 0 5%;
+  padding: 10% 5% 5% 5%;
 }
 .card-store .body-row{
   margin-bottom:15%;
