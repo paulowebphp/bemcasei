@@ -28,16 +28,16 @@ use \Core\Model\Wedding;
 class User extends Model
 {
 
-	const SESSION = "amarcasar-user";
+	const SESSION = "bemcasei-user";
 
 	# CHAVE DE ENCRIPTAÇÃO TEM QUE TER 16 CARACTERES
 	const SECRET = "Paulowebphp_Secret";
 
-	const ERROR = "amarcasar-user-error";
+	const ERROR = "bemcasei-user-error";
 
-	const ERROR_REGISTER = "amarcasar-user-register";
+	const ERROR_REGISTER = "bemcasei-user-register";
 
-	const SUCCESS = "amarcasar-user-success";
+	const SUCCESS = "bemcasei-user-success";
 
 
 
@@ -1921,13 +1921,13 @@ class User extends Model
 				if( $inadmin === true ) 
 				{
 
-					$link = "https://amarcasar.com/481738admin/recuperar-senha/redefinir?code=$result";
+					$link = "https://bemcasei.com.br/481738admin/recuperar-senha/redefinir?code=$result";
 
 				}//end if
 				else
 				{
 
-					$link = "https://amarcasar.com/recuperar-senha/redefinir?code=$result";
+					$link = "https://bemcasei.com.br/recuperar-senha/redefinir?code=$result";
 				
 				}//end else
 
@@ -2246,7 +2246,7 @@ class User extends Model
 		);//end openssl_decrypt
 
 
-    
+		
 
 
 	    $sql = new Sql();
@@ -2275,7 +2275,6 @@ class User extends Model
 		
 		
 		
-
 		 
 
 	    if( count($results) === 0 )

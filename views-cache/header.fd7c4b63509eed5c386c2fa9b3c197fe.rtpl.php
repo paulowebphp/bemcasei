@@ -510,7 +510,7 @@
 
                                     <div class="menu-main-pages">
 
-                                        <a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Testemunho</a>
+                                        <a href="/dashboard/central-ajuda" class="list-group-item list-group-item-action">Central de Ajuda</a>
                                           
                                         <a href="/dashboard/mudar-senha" class="list-group-item list-group-item-action">Alterar Senha</a>
                                           
@@ -801,6 +801,8 @@
 
 
                                     <div class="menu-main-pages">
+
+                                        <a href="/dashboard/central-ajuda" class="list-group-item list-group-item-action">Central de Ajuda</a>
 
                                         <a href="/dashboard/testemunho" class="list-group-item list-group-item-action">Testemunho</a> 
 
