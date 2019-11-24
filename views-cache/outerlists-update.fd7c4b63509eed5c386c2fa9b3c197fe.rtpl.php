@@ -1,4 +1,4 @@
-<section class="dashboard">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
 
     <div class="container-fluid">            
             
@@ -12,20 +12,20 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                {if="!validatePlan()"}
+                <?php if( !validatePlan() ){ ?>
 
-                    {include="dashboard-menu-expirated"}
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
                
 
-                {elseif="validatePlanFree()"}
+                <?php }elseif( validatePlanFree() ){ ?>
 
-                    {include="dashboard-menu-free"}
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
 
-                {else}
+                <?php }else{ ?>
 
-                    {include="dashboard-menu"}
+                    <?php require $this->checkTemplate("dashboard-menu");?>
 
-                {/if}
+                <?php } ?>
                     
 
             </div><!--col-->
@@ -38,7 +38,7 @@
 
                 
 
-               <form method="post" action='/dashboard/listas-de-fora/{function="setHash($outerlist.idouterlist)"}'>
+               <form method="post" action='/dashboard/listas-de-fora/<?php echo setHash($outerlist["idouterlist"]); ?>'>
 
                     <div class="row">
                         <div class="col-md-12">
@@ -53,31 +53,31 @@
 
 
 
-                    {if="$success != ''"}
+                    <?php if( $success != '' ){ ?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {$success}
+                                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div> 
                         </div>  
-                    {/if}
+                    <?php } ?>
 
-                    {if="$error != ''"}
+                    <?php if( $error != '' ){ ?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    {$error}
+                                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div> 
                         </div>  
-                    {/if}
+                    <?php } ?>
 
 
 
@@ -105,8 +105,8 @@
 
                                   <select id="instatus" name="instatus" class="custom-select">
 
-                                    <option value="0" {if="$outerlist.instatus == '0'"}selected{/if}>Não</option>
-                                    <option value="1" {if="$outerlist.instatus == '1'"}selected{/if}>Sim</option>
+                                    <option value="0" <?php if( $outerlist["instatus"] == '0' ){ ?>selected<?php } ?>>Não</option>
+                                    <option value="1" <?php if( $outerlist["instatus"] == '1' ){ ?>selected<?php } ?>>Sim</option>
 
                                   </select>
 
@@ -125,7 +125,7 @@
                             <div class="dash-input-row input-inposition">
 
                                 <label for="inposition">Posição</label>
-                                <input type="text" class="form-control" id="inposition" name="inposition" value="{$outerlist.inposition}">
+                                <input type="text" class="form-control" id="inposition" name="inposition" value="<?php echo htmlspecialchars( $outerlist["inposition"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
 
@@ -139,8 +139,8 @@
                             <div class="dash-input-row input-date">
 
 
-                                <label for="desouterlist">Título da Sua Lista</label>
-                                <input type="text" class="form-control" id="desouterlist" name="desouterlist" value="{$outerlist.desouterlist}">
+                                <label for="desouterlist">Título</label>
+                                <input type="text" class="form-control" id="desouterlist" name="desouterlist" value="<?php echo htmlspecialchars( $outerlist["desouterlist"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
                             </div><!--dash-input-row-->
@@ -156,8 +156,8 @@
                             <div class="dash-input-row">
 
 
-                                <label for="nrphone">Telefone <br><small><i>(Da própria loja ou do vendedor responsável pela lista)</i></small></label>
-                                <input type="text" class="form-control" id="nrphone" name="nrphone" value="{$outerlist.nrphone}">
+                                <label for="nrphone">Telefone</label>
+                                <input type="text" class="form-control" id="nrphone" name="nrphone" value="<?php echo htmlspecialchars( $outerlist["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
                             </div><!--dash-input-row-->
@@ -172,8 +172,8 @@
                             <div class="dash-input-row">
 
 
-                                <label for="dessite">Site <br><small><i>(Exemplo: https://www.loja.com.br/sua-lista ou https://sua-lista.loja.com.br)</i></small></label>
-                                <input type="text" class="form-control" id="dessite" name="dessite" value="{$outerlist.dessite}">
+                                <label for="dessite">Site</label>
+                                <input type="text" class="form-control" id="dessite" name="dessite" value="<?php echo htmlspecialchars( $outerlist["dessite"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
                             </div><!--dash-input-row-->
@@ -192,8 +192,8 @@
                             <div class="dash-input-row">
 
 
-                                <label for="deslocation">Endereço <br><small><i>(Coloque aqui o endereço físico da lista, caso haja)</i></small></label>
-                                <input type="text" class="form-control" id="deslocation" name="deslocation" value="{$outerlist.deslocation}">
+                                <label for="deslocation">Endereço</label>
+                                <input type="text" class="form-control" id="deslocation" name="deslocation" value="<?php echo htmlspecialchars( $outerlist["deslocation"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
                             </div><!--dash-input-row-->
@@ -213,7 +213,7 @@
                                     <label for="desdescription">Descrição</label>
                                 </div>
                                 
-                                <textarea rows="10" cols="90" maxlength="500" id="desdescription" name="desdescription">{$outerlist.desdescription}</textarea>
+                                <textarea rows="10" cols="90" maxlength="500" id="desdescription" name="desdescription"><?php echo htmlspecialchars( $outerlist["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
 
                             </div><!--dash-input-row-->
 
