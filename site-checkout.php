@@ -381,7 +381,7 @@ $app->post( "/criar-site", function()
 
 
 
-	/*if( User::checkLoginExists($_POST['email']) === true )
+	if( User::checkLoginExists($_POST['email']) === true )
 	{
 
 		User::setErrorRegister(Rule::CHECK_LOGIN_EXISTS);

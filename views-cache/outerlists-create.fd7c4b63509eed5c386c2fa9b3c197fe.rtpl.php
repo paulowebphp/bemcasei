@@ -1,4 +1,4 @@
-<section class="dashboard">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
 
     <div class="container-fluid">            
             
@@ -12,20 +12,20 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                {if="!validatePlan()"}
+                <?php if( !validatePlan() ){ ?>
 
-                    {include="dashboard-menu-expirated"}
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
                
 
-                {elseif="validatePlanFree()"}
+                <?php }elseif( validatePlanFree() ){ ?>
 
-                    {include="dashboard-menu-free"}
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
 
-                {else}
+                <?php }else{ ?>
 
-                    {include="dashboard-menu"}
+                    <?php require $this->checkTemplate("dashboard-menu");?>
 
-                {/if}
+                <?php } ?>
                     
 
             </div><!--col-->
@@ -53,31 +53,31 @@
 
 
 
-                    {if="$success != ''"}
+                    <?php if( $success != '' ){ ?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {$success}
+                                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div> 
                         </div>  
-                    {/if}
+                    <?php } ?>
 
-                    {if="$error != ''"}
+                    <?php if( $error != '' ){ ?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    {$error}
+                                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div> 
                         </div>  
-                    {/if}
+                    <?php } ?>
 
 
 
