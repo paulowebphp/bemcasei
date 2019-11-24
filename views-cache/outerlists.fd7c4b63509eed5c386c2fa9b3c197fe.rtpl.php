@@ -189,7 +189,7 @@
 
 
 
-                            <div class="col-md-3 col-12">
+                            <div class="col-md-2 col-12">
 
                                 <div class="card-dash-field">
 
@@ -216,7 +216,7 @@
 
 
 
-                            <div class="col-md-3 col-12">
+                            <div class="col-md-4 col-12">
 
                                 <div class="card-dash-field">
 

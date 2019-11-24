@@ -139,7 +139,7 @@
                             <div class="dash-input-row input-date">
 
 
-                                <label for="desouterlist">Título</label>
+                                <label for="desouterlist">Título da Sua Lista</label>
                                 <input type="text" class="form-control" id="desouterlist" name="desouterlist" value="<?php echo htmlspecialchars( $outerlist["desouterlist"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
@@ -156,7 +156,7 @@
                             <div class="dash-input-row">
 
 
-                                <label for="nrphone">Telefone</label>
+                                <label for="nrphone">Telefone <br><small><i>(Da própria loja ou do vendedor responsável pela lista)</i></small></label>
                                 <input type="text" class="form-control" id="nrphone" name="nrphone" value="<?php echo htmlspecialchars( $outerlist["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
@@ -172,7 +172,7 @@
                             <div class="dash-input-row">
 
 
-                                <label for="dessite">Site</label>
+                                <label for="dessite">Site <br><small><i>(Exemplo: https://www.loja.com.br/sua-lista ou https://sua-lista.loja.com.br)</i></small></label>
                                 <input type="text" class="form-control" id="dessite" name="dessite" value="<?php echo htmlspecialchars( $outerlist["dessite"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
@@ -192,7 +192,7 @@
                             <div class="dash-input-row">
 
 
-                                <label for="deslocation">Endereço</label>
+                                <label for="deslocation">Endereço <br><small><i>(Coloque aqui o endereço físico da lista, caso haja)</i></small></label>
                                 <input type="text" class="form-control" id="deslocation" name="deslocation" value="<?php echo htmlspecialchars( $outerlist["deslocation"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
