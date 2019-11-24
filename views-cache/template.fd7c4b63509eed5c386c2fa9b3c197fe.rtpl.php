@@ -99,6 +99,16 @@
                         <div class="col-12">
                             
                            <div class="preview">
+
+
+                                <div id="preview-button">
+                                    
+                                    <!-- Botão para acionar modal -->
+                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#ModalTemplate">
+                                        Template <?php echo htmlspecialchars( $preview["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                    </button>
+
+                                </div>
                                
 
                                 <div id="preview">
@@ -107,14 +117,7 @@
 
                                 </div><!-- #preview -->
 
-                                <div id="preview-button">
-                                    
-                                    <!-- Botão para acionar modal -->
-                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#ModalTemplate">
-                                      Template <?php echo htmlspecialchars( $preview["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                    </button>
-
-                                </div>
+                                
 
 
                            </div><!-- .preview -->
