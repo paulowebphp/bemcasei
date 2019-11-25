@@ -512,7 +512,7 @@ class CustomStyle extends Model
 				'desbgcolorbanner'=>'03A9F4',
 				'desbgcolorfooter'=>'03A9F4',
 				'descolorfooter'=>'FFFFFF',
-				'descolorfooterhover'=>'c7e8f7',
+				'descolorfooterhover'=>'C7E8F7',
 
 				'descolor1'=>'FFFFFF',
 				'descolor2'=>'03A9F4',

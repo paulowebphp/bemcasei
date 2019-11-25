@@ -133,7 +133,7 @@
                     <div class="text-center thumbnail-center">
 
 
-                        <img src="/res/images/feature2.jpg" class="media-object">
+                        <img src="/res/images/feature1.jpg" class="media-object">
 
                         <div class="media-body">
 
@@ -213,7 +213,7 @@
 
                 <p>
                     Crie sua Lista e receba seus presentes em dinheiro de maneira prática e fácil, com a moderna Lista
-                    de Presentes do bem casei.<br>
+                    de Presentes do Bem Casei.<br>
                     Comodidade para o casal, segurança e confiabilidade para os convidados
                 </p>
 
