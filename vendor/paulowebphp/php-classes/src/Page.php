@@ -154,6 +154,153 @@ class Page
 
 
 
+	public static function getDomainPages()
+	{
+
+		return [
+			
+			'casamento',
+			'festa-de-casamento',
+			'padrinhos-madrinhas',
+			'rsvp',
+			'mural-mensagens',
+			'loja',
+			'eventos',
+			'album',
+			'videos',
+			'listas-de-fora',
+			'fornecedores'
+		
+		];
+
+
+	}//END getDomainPages
+
+
+
+
+	public static function checkDomainPage( $value )
+	{
+
+		$array = Page::getDomainPages();
+
+		if ( isset( $array[$value] ) ) 
+		{
+			# code...
+			return true;
+
+		}//end if
+		else
+		{
+			# code...
+
+			return false;
+
+		}//end else
+
+
+	}//END checkDomainPage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function getDashboardPages()
+	{
+
+		return [
+			
+			'meus-dados',
+			'meu-plano',
+			'renovar',
+			'upgrade',
+			'comprar-plano',
+			'dominio',
+			'meu-template',
+			'personalizar-site',
+			'menu',
+			'pagina-inicial',
+			'presentes-virtuais',
+			'lista-pronta',
+			'painel-financeiro',
+			'conta-bancaria',
+			'transferencias',
+			'meu-amor',
+			'meu-casamento',
+			'guia-casamento',
+			'guia-de-casamento',
+			'festa-de-casamento',
+			'padrinhos-madrinhas',
+			'rsvp',
+			'mensagens',
+			'eventos',
+			'album',
+			'videos',
+			'listas-de-fora',
+			'fornecedores',
+			'tags-papelaria',
+			'termos-uso',
+			'termos-lista',
+			'politica-privacidade',
+			'central-ajuda',
+			'testemunho',
+			'mudar-senha'
+		
+		];
+
+
+	}//END getDashboardPages
+
+
+
+
+	public static function checkDashboardPage( $value )
+	{
+
+		$array = Page::getDashboardPages();
+
+		if ( isset( $array[$value] ) ) 
+		{
+			# code...
+			return true;
+
+		}//end if
+		else
+		{
+			# code...
+
+			return false;
+
+		}//end else
+
+
+	}//END checkDashboardPage
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
 }#END class Page
 
 

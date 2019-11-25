@@ -1257,6 +1257,41 @@ class Product extends Model
 
 
 
+
+
+
+
+
+	public static function checkCategory( $value )
+	{
+
+		$array = Product::getCategoryFullArray();
+
+		foreach ($array as $row)
+		{
+		
+			# code...
+			if( $row['desurl'] == $value )
+			{
+				return true;
+				
+			}//end if
+
+		}//end foreach
+
+		return false;
+	
+
+	}//END checkCategory
+
+
+
+
+
+
+
+
+
 	public static function getCategory( $value )
 	{
 

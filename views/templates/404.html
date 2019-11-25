@@ -1,0 +1,263 @@
+<style type="text/css">
+
+
+
+
+    
+    section h1{
+        color: {if="$customstyle.descolor1 != ''"}#{$customstyle.descolor1}{else}#FFFFFF{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    section h2{
+        color: {if="$customstyle.descolordate != ''"}#{$customstyle.descolordate}{else}#FFFFFF{/if};
+        font-family: {if="$customstyle.desfontfamilydate != ''"}'{$customstyle.desfontfamilydate}'{else}'Norican'{/if};
+    }
+    section h3{
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    section h4{
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    section h5{
+        font-family: {if="$customstyle.desfontfamily2 != ''"}'{$customstyle.desfontfamily2}'{else}'OpenSans'{/if};
+    }
+    section h6{
+        font-family: {if="$customstyle.desfontfamily2 != ''"}'{$customstyle.desfontfamily2}'{else}'OpenSans'{/if};
+    }
+
+
+
+
+
+
+
+
+    /********************************HEADER*****************************************/
+    header .header-title h3{
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+
+    }
+    header #domain-dropdown-menu a:hover{
+        color: {if="$customstyle.descolortexthover != ''"}#{$customstyle.descolortexthover}{else}#DD716F{/if};
+    }
+    header .cart-amount {
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-weight: 700;
+    }
+    
+    header #shopping-item-mobile .shopping-item:hover .product-count {
+        background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+    }
+    header .product-count {
+        background: none repeat scroll 0 0 {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+    }
+    header #menu-condensed i{
+        font-size: 30px;
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}99{else}#DD716F{/if};
+    }
+    header .bar-close .btn-close {
+        background:none;
+        border: none;
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-size: 22px;
+    }
+    /********************************HEADER*****************************************/
+
+
+
+
+
+
+
+
+    /********************************FOOTER*****************************************/
+
+    footer{
+        padding: 5% 5% 2% 5%;
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+        background-color: {if="$customstyle.desbgcolorfooter != ''"}#{$customstyle.desbgcolorfooter}{else}#DD716F{/if};
+    }
+    footer a{
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+    }
+    footer a:hover{
+        color: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if};
+    }
+    footer .bottom-footer p {
+      line-height: 24px;
+      font-size: 15px;
+      padding-top: 20px;
+      border-top: 1px solid {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+      color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+    }
+    footer .footer-title h3{
+        font-size: 3rem;
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+    }
+    footer .list-group-item{
+        margin: 2% 0;
+        background: none;
+        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+    }
+    footer .list-group-item:hover{
+        background: none;
+        color: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if};
+    }
+    footer .list-socials a {
+      border: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if} 1px solid;
+    }
+    footer .list-socials a:hover {
+      border: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if} 1px solid;
+    }
+    /********************************FOOTER*****************************************/
+
+
+
+
+
+
+
+
+
+    /********************************BANNER*****************************************/
+    #banner {
+        background: url("/res/images/template/banner/banner1.jpg") no-repeat center;
+        background-size: cover;
+        width: 100%;
+        position: relative;
+    }
+    #frame{
+        background: url("/res/images/frame/frame1.png") no-repeat center;
+        background-size: contain;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        margin: 0 auto;
+        height: 400px;
+    }
+    /********************************BANNER*****************************************/
+
+
+
+
+
+
+
+
+    /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
+    .alert-domain h1{
+        text-align: center;
+        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+
+    }
+    /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
+
+
+
+
+
+
+
+
+
+
+
+    /********************************DOMAIN*****************************************/
+    .dropdown a:hover{
+        color: {if="$customstyle.descolortexthover != ''"}#{$customstyle.descolortexthover}{else}#171F26{/if};
+
+    }
+    .section-title hr{
+        background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#171F26{/if};
+    }
+    /********************************DOMAIN*****************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /****************INDEX, WEDDING, PARTY , EVENTS , MESSAGE, STORE ********************/
+
+    .buttons-wrapper button{
+      padding: 10px 34px;
+      border-radius: {if="$customstyle.desborderradiusbutton != ''"}{$customstyle.desborderradiusbutton}px{else}20px{/if};
+      font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+
+      {if="$customstyle.inbgcolorbutton == '0'"}
+      background-color: transparent;
+      color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+      border: 1px solid {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+      {else}
+      background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};;
+      color: #FFFFFF;
+      border: none;
+      {/if}
+    }
+    /****************INDEX, WEDDING, PARTY , EVENTS , MESSAGE, STORE ********************/
+
+
+   
+
+
+
+    
+
+    /********************************WEDDING, PARTY*****************************************/
+    {if="$customstyle.inroundborderimage == '1'"}.main-image img{ border-radius: 50%; border: {$customstyle.desborderimagesize}px solid #{$customstyle.descolor2}DD;}{/if};
+    /********************************WEDDING, PARTY*****************************************/
+
+
+
+
+
+
+    
+</style>
+
+
+<section id="domain-404">
+    
+    <div class="container">
+        
+        <div class="row centralizer">
+            
+
+            <div class="col-md-10 col-12 text-center">
+                    
+                <h3>404 - Infelizmente não foi encontrado nenhum conteúdo :(</h3>
+
+                <h5>Por favor, verifique como digitou e tente novamente</h5>
+                
+                <img alt="404 - Infelizmente não foi encontrado nenhum conteúdo" src="/res/images/banner/404.jpg">  
+
+            </div>
+
+
+        </div>
+
+                    
+
+    </div><!--container-->
+
+
+</section>
+

@@ -11,7 +11,7 @@
 
                 <h5>Por favor, verifique como digitou e tente novamente</h5>
                 
-                <img alt="404 - Infelizmente não foi encontrado nenhum conteúdo" src="/res/images/banner/404.png">  
+                <img alt="404 - Infelizmente não foi encontrado nenhum conteúdo" src="/res/images/banner/404.jpg">  
 
             </div>
 

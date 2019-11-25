@@ -765,6 +765,29 @@ label{
 .body1{
   padding: 0 3%;
 }
+#domain-404{
+	width: 100%;
+	padding: 8% 5%;
+	color:#666;
+	background-color: #fff;
+	font-size: 1rem;
+	min-height: 780px;
+}
+#domain-404 h3{
+	font-weight: lighter;
+	margin-bottom: 5%;
+	font-size: 1.8rem;
+}
+#domain-404 img{
+	width: 100%;
+}
+#domain-404 h5{
+	letter-spacing: 0.2rem;
+	font-weight: lighter;
+	font-size: 1.4rem;
+	margin-bottom: 5%;
+	color: #171f26;
+}
 /********************************* DOMAIN *****************************************/
 
 

@@ -23,12 +23,15 @@ use Core\Model\Menu;
 $app->get( "/:desdomain/loja/:category", function( $desdomain, $category )
 {
 
-	/*echo '<pre>';
+	/*
+	echo '<pre>';
 var_dump($desdomain);
 var_dump($category);
 var_dump(Maintenance::checkMaintenance());
 var_dump(User::checkDesdomain($desdomain));
+var_dump(Product::checkCategory($category));
 exit;*/
+
 
 	
 	if( Maintenance::checkMaintenance() )
@@ -63,7 +66,11 @@ exit;*/
 		
 		
 	}//end if
-	elseif( User::checkDesdomain($desdomain) )
+	elseif( 
+		
+		User::checkDesdomain($desdomain)
+
+	)
 	{
 
 		
@@ -72,7 +79,39 @@ exit;*/
 		$user->getFromUrl($desdomain);
 
 
-		
+		$customstyle = new CustomStyle();
+
+		$customstyle->get((int)$user->getiduser());
+
+
+
+		if ( !Product::checkCategory($category) ) 
+		{
+			# code...
+			header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+
+
+
+			$page = new PageDomain();
+			
+			$page->setTpl(
+
+					
+				"404",
+
+				[
+
+					'customstyle'=>$customstyle->getValues(),
+					'user'=>$user->getValues()
+
+				]
+			
+			);//end setTpl
+
+			exit;
+			
+		}//end if
+
 
 		$menu = new Menu();
 
@@ -180,10 +219,7 @@ exit;
 
 
 
-		$customstyle = new CustomStyle();
-
-		$customstyle->get((int)$user->getiduser());
-
+		
 
 
 		$categories = Product::getCategoryFullArray();
@@ -349,8 +385,8 @@ exit;
 
 		header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
 
+		
 		$page = new Page();
-
 		
 		$page->setTpl(
 

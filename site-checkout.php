@@ -439,6 +439,46 @@ $app->post( "/criar-site", function()
 
 	}//end if*/
 
+
+
+
+
+	if ( $_SERVER['HTTP_HOST'] != Rule::CANONICAL_NAME )
+	{
+		# code...
+		if (
+
+			!isset($_POST['g-recaptcha-response'])
+			||
+			$_POST['g-recaptcha-response'] == ''
+	
+		)
+		{
+			# code...
+			User::setErrorRegister(Rule::ERROR_RECAPTCHA);
+			header("Location: /criar-site?plano=".$inplancode);
+			exit;
+	
+		}//end if
+		
+	
+	
+		$recaptcha = User::getRecaptcha($_POST['g-recaptcha-response']);
+	
+	
+		if ($recaptcha['success'] == false)
+		{
+			# code...
+			User::setErrorRegister(Rule::VALIDATE_RECAPTCHA);
+			header("Location: /criar-site?plano=".$inplancode);
+			exit;
+	
+		}//end if
+
+
+
+	}//end if
+
 	
 	
 

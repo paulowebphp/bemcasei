@@ -44,6 +44,7 @@ require_once("dashboard-terms.php");
 require_once("dashboard-guide.php");
 require_once("dashboard-testimonials.php");
 require_once("dashboard-support.php");
+require_once("dashboard-garbage.php");
 
 
 

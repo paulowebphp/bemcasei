@@ -1,20 +1,20 @@
- <section id="site-404">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section id="site-404">
     
     <div class="container">
         
         <div class="row centralizer">
             
 
-        	{if="$error != ''"}
+        	<?php if( $error != '' ){ ?>
             <div class="col-md-10 col-12 text-center">
                     
-                <h3>{$error}</h3>
+                <h3><?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?></h3>
 
                 
-                <img alt="Olá! Estamos fazendo uma manutenção momentânea no nosso sistema" src="/res/images/banner/404.jpg">  
+                <img alt="Olá! Estamos fazendo uma manutenção momentânea no nosso sistema" src="/res/images/banner/404.png">  
 
             </div>
-            {else}
+            <?php }else{ ?>
             <div class="col-md-10 col-12 text-center">
                     
                 <h3>Olá! Estamos fazendo uma manutenção momentânea no nosso sistema :(</h3>
@@ -24,7 +24,7 @@
                 <img alt="Olá! Estamos fazendo uma manutenção momentânea no nosso sistema" src="/res/images/banner/404.png">  
 
             </div>
-            {/if}
+            <?php } ?>
 
 
          

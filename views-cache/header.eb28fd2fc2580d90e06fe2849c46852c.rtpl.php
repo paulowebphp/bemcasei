@@ -7,20 +7,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{function=" getSitePageConfig('metadescription')"}">
+    <meta name="description" content="<?php echo getSitePageConfig('metadescription'); ?>">
     <?php if( getSitePageConfig('noindex') == 1 ){ ?>
     <meta name="robots" content="noindex">
     <?php } ?>
 
 
 
-    <meta property="og:title" content="{function=" getSitePageConfig('pagetitle')"}">
-    <meta property="og:description" content="{function=" getSitePageConfig('metadescription')"}">
+    <meta property="og:title" content="<?php echo getSitePageConfig('pagetitle'); ?>">
+    <meta property="og:description" content="<?php echo getSitePageConfig('metadescription'); ?>">
     <meta property="og:url" content='https://<?php echo getHttpHost(); ?>'>
     <meta property="og:site_name" content="Bem Casei">
     <meta property="og:type" content="website">
     <meta property="og:image"
-        content='https://<?php echo getHttpHost(); ?>/res/images/logo/bem-casei-logo-round-white.png'>
+        content='https://<?php echo getHttpHost(); ?>/res/images/logo/bem-casei-logo-square.jpg'>
 
 
     <title><?php echo getSitePageConfig('pagetitle'); ?></title>
