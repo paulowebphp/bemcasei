@@ -1176,6 +1176,9 @@ label{
 #advantages h3{
 	color: #555;
 }
+#advantages p{
+	font-size: 1.1rem;
+}
 .btn-advantage{
 	padding: 12px 24px;
 }

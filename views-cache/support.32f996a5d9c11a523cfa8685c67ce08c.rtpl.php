@@ -33,16 +33,19 @@
                 <!--<p>Muitas dúvidas já estão resolvidas na Central de Ajuda. Visite-a  para obter sua resposta!<br><br>
                 <a href="#" class="btn-amarcasar4">Central de Ajuda</a>-->
                 
-                <h3>O Amar Casar está à sua inteira disposição para críticas, sugestões e comentários!</h3> 
+                <h3>O Bem Casei está à sua inteira disposição para críticas, sugestões e comentários!</h3> 
                 <!--Para críticas, sugestões e comentários, use o formulário ao lado:</p>-->
 
             </div><!--col-->
 
 
 
+        </div><!--row-->
+
+
+
+
     </div><!--container-->
-
-
 
 
 </section>

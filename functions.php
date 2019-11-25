@@ -2032,9 +2032,10 @@ function formatPrice( $vlprice )
 function formatDate( $date )
 {
 
-	return date( 'd/m/y', strtotime($date) );
+	return date( 'd/m/Y', strtotime($date) );
 	
 }//END formatDate
+
 
 
 
@@ -2067,6 +2068,25 @@ function formatDateTimeWithSeconds($timestamp)
 	return $dt->format('d/m/y H:i:s');
 
 }//end formatTime
+
+
+
+
+
+
+
+
+
+
+function formatDateSmall( $date )
+{
+
+	return date( 'd/m/y', strtotime($date) );
+	
+}//END formatDate
+
+
+
 
 
 

@@ -101,7 +101,13 @@ $app->get( "/:desdomain/:param1", function( $desdomain, $param1 )
 		exit;
 		
 	}//end if
-	elseif( User::checkDesdomain($desdomain) )
+	elseif( 
+		
+		User::checkDesdomain($desdomain) 
+		/*&&
+		in_array($param1, ['casamento','festa-de-casamento','padrinhos-madrinhas','rsvp','mural-mensagens','loja','eventos','album','album','videos','listas-de-fora','fornecedores'])*/
+		
+	)
 	{
 
 		$user = new User();

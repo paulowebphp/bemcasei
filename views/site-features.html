@@ -30,8 +30,8 @@
                 </div>
 
                 <div class="button2 bottom3">
-                    <a href="/planos">
-                        Comece Já!
+                    <a href="/criar-site">
+                        Teste Grátis Por 10 Dias
                     </a>
                 </div>
 
@@ -181,15 +181,18 @@
 
             <div class="col-md-12 text-center">
             
-                <div class="button2 bottom3">
-                    <a href="/criar-site">
-                        Teste Grátis Por 10 Dias
-                    </a>
-                </div>
+                               
 
                 <div class="button2 bottom3">
                     <a href="/lista-presentes">
                         Lista de Presentes
+                    </a>
+                </div>
+
+
+                <div class="button2 bottom3">
+                    <a href="/planos">
+                        Comece Já!
                     </a>
                 </div>
 

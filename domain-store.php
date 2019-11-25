@@ -23,6 +23,13 @@ use Core\Model\Menu;
 $app->get( "/:desdomain/loja/:category", function( $desdomain, $category )
 {
 
+	/*echo '<pre>';
+var_dump($desdomain);
+var_dump($category);
+var_dump(Maintenance::checkMaintenance());
+var_dump(User::checkDesdomain($desdomain));
+exit;*/
+
 	
 	if( Maintenance::checkMaintenance() )
 	{	
@@ -71,6 +78,18 @@ $app->get( "/:desdomain/loja/:category", function( $desdomain, $category )
 
 		$menu->get((int)$user->getiduser());
 		
+
+		/*
+		echo '<pre>';
+var_dump($desdomain);
+var_dump($category);
+var_dump(Maintenance::checkMaintenance());
+var_dump(User::checkDesdomain($desdomain));
+var_dump($user);
+var_dump((int)$menu->getinstore() == 0);
+var_dump((int)$user->getinplancontext() == 0);
+exit;
+*/
 
 		if ( (int)$menu->getinstore() == 0 )
 		{
@@ -146,7 +165,7 @@ $app->get( "/:desdomain/loja/:category", function( $desdomain, $category )
 		$product->setData($results['results']);
 
 
-
+		
 
 
 
@@ -274,12 +293,29 @@ $app->get( "/:desdomain/loja/:category", function( $desdomain, $category )
 	*/
 
 
+	/*
+	echo '<pre>';
+var_dump($categories);
+var_dump($category);
+var_dump($currentPage);
+var_dump($category_name);
+var_dump($orderby);
+var_dump($customstyle);
+var_dump($productconfig);
+var_dump($results['nrtotal']);
+var_dump($pages);
+var_dump($product);
+
+exit;
+*/
+
+
 
 		$page = new PageDomain();	
 		
 		$page->setTpl(
 			
-			$user->getidtemplate() . 
+			$customstyle->getidtemplate() . 
 			DIRECTORY_SEPARATOR . "store-categories", 
 			
 			[

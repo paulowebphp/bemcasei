@@ -137,7 +137,7 @@
 
                         <div class="media-body">
 
-                            <h3 class="media-heading feature-box">CONFIRMAÇÃO DE PRESENÇA</h3>
+                            <h3 class="media-heading feature-box">CONFIRMAÇÃO DE PRESENÇA ON-LINE</h3>
 
                             <p>Organize e receba de forma prática e confortável as confirmações de presença</p>
 
@@ -213,8 +213,8 @@
 
                 <p>
                     Crie sua Lista e receba seus presentes em dinheiro de maneira prática e fácil, com a moderna Lista
-                    de Presentes do Bem Casei.<br>
-                    Comodidade para o casal, segurança e confiabilidade para os convidados
+                    de Presentes do Bem Casei!<br>
+                    Comodidade para o casal, segurança e confiabilidade para os convidados.
                 </p>
 
             </div>
@@ -238,7 +238,7 @@
 
                     <div class="col-md-12">
 
-                        <a href="/criar-site"><button type="button" class="button1">Criar Lista</button></a>
+                        <a href="/planos"><button type="button" class="button1">Criar Lista</button></a>
 
                     </div>
 
@@ -272,7 +272,7 @@
 
             <div class="col-md-12 text-center">
 
-                <h2>FUNCIONALIDADES</h2>
+                <h2>VANTAGENS</h2>
 
             </div>
             <!--col-lg-12-->
@@ -328,16 +328,20 @@
 
                     <ul id="advantages-features">
 
-                        <li id="box-header">Tenha acesso a um sistema on-line que irá lhe auxiliar a divulgar seu
+                        <li id="box-header">Tenha acesso a um sistema on-line que irá lhe auxiliar a promover seu
                             casamento</li>
 
                         <li><i class="fa fa-check"></i>&nbsp;&nbsp;Receba Presentes em Dinheiro</li>
 
-                        <li><i class="fa fa-check"></i>&nbsp;&nbsp;Confirmação de Presença on-line</li>
+                        <li><i class="fa fa-check"></i>&nbsp;&nbsp;Saques Gratuitos</li>
 
                         <li><i class="fa fa-check"></i>&nbsp;&nbsp;Templates Modernos</li>
 
-                        <li><i class="fa fa-check"></i>&nbsp;&nbsp;Saques Gratuitos</li>
+                        <li><i class="fa fa-check"></i>&nbsp;&nbsp;Confirmação de Presença On-line</li>
+
+                        
+
+                        
 
                         <li>&nbsp;&nbsp;<b>E muito mais!</b></li>
 

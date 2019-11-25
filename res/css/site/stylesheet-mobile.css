@@ -676,6 +676,9 @@ footer {
     font-size: 1.6rem;
     font-weight: bolder;
 }
+#advantages p{
+	font-size: 1rem;
+}
 #features h2 {
     font-size: 1.6rem;
     font-weight: bolder;

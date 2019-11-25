@@ -77,12 +77,7 @@
     footer{
         padding: 5% 5% 2% 5%;
         color: <?php if( $customstyle["descolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#FFFFFF<?php } ?>;
-        <?php if( $customstyle["inbgcolorgradient"] == '0' ){ ?>
         background-color: <?php if( $customstyle["desbgcolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["desbgcolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
-        <?php }else{ ?>
-        text-shadow: 4px 4px 4px rgba(0, 0, 0, .45);
-        background: radial-gradient(ellipse at center, <?php if( $customstyle["desbgcolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["desbgcolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?>99<?php }else{ ?>#F7D9E199<?php } ?> 0%, <?php if( $customstyle["desbgcolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["desbgcolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#F7D9E1<?php } ?> 60%);
-        <?php } ?>
     }
     footer a{
         color: <?php if( $customstyle["descolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#FFFFFF<?php } ?>;
@@ -266,7 +261,7 @@
 
                     <div id="frame" class="frame1">       
 
-                        <img alt="Amar Casar Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $customstyle["desbanner"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                        <img alt="Bem Casei Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $customstyle["desbanner"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                     </div><!--couple-->
 
@@ -383,7 +378,7 @@
 
                             <div class="main-image">
                             
-                                <img alt="Amar Casar Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $wedding["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <img alt="Bem Casei Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $wedding["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--card-photo-->
 
@@ -729,7 +724,7 @@
 
                             <div class="main-image">
                             
-                                <img alt="Amar Casar Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $party["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <img alt="Bem Casei Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $party["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--card-photo-->
 
@@ -1106,7 +1101,7 @@
 
                             <div class="card-image">
                             
-                                <img alt="Amar Casar Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <img alt="Bem Casei Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--card-photo-->
 
@@ -1285,7 +1280,7 @@
 
                             <div class="card-image">
                             
-                                <img alt="Amar Casar Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <img alt="Bem Casei Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--card-photo-->
 

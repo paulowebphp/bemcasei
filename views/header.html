@@ -40,7 +40,7 @@
       "@context": "http://schema.org/",
       "@type": "Service",
       "serviceType": "Software as a Service",
-      "logo": "https://bemcasei.com.br/res/images/logo/bem-casei-logo-round-white.png",
+      "logo": "https://bemcasei.com.br/res/images/logo/bem-casei-logo-square.jpg",
       "termsOfService": "https://bemcasei.com.br/termos-uso",
       "category": "Service",
       "areaServed": {

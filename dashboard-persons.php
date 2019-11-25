@@ -264,7 +264,7 @@ $app->post( "/dashboard/meus-dados", function()
 
 
 
-	/*if(
+	if(
 			
 			!isset($_POST['dtbirth']) 
 			|| 
@@ -286,7 +286,7 @@ $app->post( "/dashboard/meus-dados", function()
 			header('Location: /dashboard/meus-dados');
 			exit;
 
-		}//end if*/
+		}//end if
 
 
 
@@ -584,7 +584,7 @@ $app->post( "/dashboard/meus-dados", function()
 	$user->setdesperson( $desperson );
 	$user->setdesnick( $desnick );
 	
-	//$user->setdtbirth( $dtbirth );
+	$user->setdtbirth( $dtbirth );
 
 
 	

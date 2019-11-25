@@ -124,7 +124,7 @@
                             <div class="dash-input-row input-date">
 
                                 <label for="dtbirth">Nascimento</label>
-                                <input type="date" class="form-control" id="dtbirth" name="dtbirth" placeholder="Digite o nome aqui" value="<?php echo htmlspecialchars( $user["dtbirth"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" disabled>
+                                <input type="date" class="form-control" id="dtbirth" name="dtbirth" placeholder="Digite o nome aqui" value="<?php echo htmlspecialchars( $user["dtbirth"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
 

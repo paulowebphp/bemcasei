@@ -122,15 +122,15 @@
 
 
 
-    /********************************BANNER*****************************************/
+     /********************************BANNER*****************************************/
     #banner {
-        background: url("/res/images/template/banner/banner3.jpg") no-repeat center;
+        background: url("/res/images/template/banner/banner2.jpg") no-repeat center;
         background-size: cover;
         width: 100%;
         position: relative;
     }
     #frame{
-        background: url("/res/images/frame/frame3.png") no-repeat center;
+        background: url("/res/images/frame/frame2.png") no-repeat center;
         background-size: contain;
         display: -webkit-flex;
         display: flex;
@@ -215,15 +215,14 @@
     /****************INDEX, WEDDING, PARTY , EVENTS , MESSAGE, STORE ********************/
 
 
-
-  
+   
 
 
 
     
 
     /********************************WEDDING, PARTY*****************************************/
-    <?php if( $customstyle["inroundborderimage"] == '1' ){ ?>.main-image img{ border-radius: 50%; border: <?php echo htmlspecialchars( $customstyle["desborderimagesize"], ENT_COMPAT, 'UTF-8', FALSE ); ?>px solid #<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>99;}<?php } ?>;
+    <?php if( $customstyle["inroundborderimage"] == '1' ){ ?>.main-image img{ border-radius: 50%; border: <?php echo htmlspecialchars( $customstyle["desborderimagesize"], ENT_COMPAT, 'UTF-8', FALSE ); ?>px solid #<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>DD;}<?php } ?>;
     /********************************WEDDING, PARTY*****************************************/
 
 
@@ -261,7 +260,7 @@
 
                     <div id="frame">       
 
-                        <img alt="Bem Casei Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $customstyle["desbanner"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                        <img alt="Bem Casei Site de Casamento" src="/uploads/banners/<?php echo htmlspecialchars( $customstyle["desbanner"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                     </div><!--couple-->
 
@@ -283,9 +282,9 @@
                         
                         <div class="banner-title-box">
                             
-                            <h1><?php echo getTemplateNames(1); ?></h1> 
+                            <h1><?php echo htmlspecialchars( $user["desnick"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h1> 
                             <h1>&</h1> 
-                            <h1><?php echo getTemplateNames(2); ?></h1>
+                            <h1><?php echo htmlspecialchars( $consort["desconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h1>
 
                         </div><!--banner-title-box-->
                         
@@ -314,6 +313,7 @@
     
 
 </section>
+
 
 
 
@@ -377,7 +377,7 @@
 
                             <div class="main-image">
                             
-                                <img alt="Bem Casei Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $wedding["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <img alt="Bem Casei Site de Casamento" src="/uploads/weddings/<?php echo htmlspecialchars( $wedding["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--card-photo-->
 
@@ -618,7 +618,7 @@
                 <div class="section-see-more">
                         
 
-                    <a href='/template/<?php echo getTemplate(); ?>/casamento'>
+                    <a href="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/casamento">
                         
                         <h4>
                             Ver Mais...
@@ -668,9 +668,9 @@
 
 
 
+<?php if( $menu["inparty"] != 0 ){ ?>
 
-
-
+<?php if( $initialpage["inparty"] != 0 ){ ?>
 
 <section class="domain">
 
@@ -723,7 +723,7 @@
 
                             <div class="main-image">
                             
-                                <img alt="Bem Casei Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $party["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <img alt="Bem Casei Site de Casamento" src="/uploads/parties/<?php echo htmlspecialchars( $party["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--card-photo-->
 
@@ -964,7 +964,7 @@
                 <div class="section-see-more">
                         
 
-                    <a href='/template/<?php echo getTemplate(); ?>/festa-de-casamento'>
+                    <a href="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/festa-de-casamento">
                         
                         <h4>
                             Ver Mais...
@@ -992,6 +992,9 @@
 </section>
 
 
+<?php } ?>
+
+<?php } ?>
 
 
 
@@ -1029,9 +1032,58 @@
 
 
 
+<?php if( $menu["inbestfriend"] != 0 ){ ?>
+
+<?php if( $initialpage["inbestfriend"] != 0 ){ ?>
+
+<?php if( !$bestfriend ){ ?>
+<section class="domain">
+
+    <div class="container-fluid">
 
 
 
+
+        <div class="row">
+            
+            <div class="col-12">
+
+
+                <div class="section-title">
+                        
+
+                    <h3>
+                        Padrinhos e Madrinhas
+                    </h3>
+
+                    <hr>
+
+                </div><!--section-title-->
+
+                     
+               
+            </div><!--col-->
+        
+        </div><!--row-->
+
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Ainda não há padrinhos ou madrinhas cadastradas</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+
+
+        
+
+    </div>
+
+</section>
+
+<?php }else{ ?>
 
 <section class="domain">
 
@@ -1096,7 +1148,7 @@
 
                             <div class="card-image">
                             
-                                <img alt="Bem Casei Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <img alt="Bem Casei Site de Casamento" src="/uploads/bestfriends/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--card-photo-->
 
@@ -1169,7 +1221,7 @@
                 <div class="section-see-more">
                         
 
-                    <a href='/template/<?php echo getTemplate(); ?>/padrinhos-madrinhas'>
+                    <a href="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/padrinhos-madrinhas">
                         
                         <h4>
                             Ver Mais...
@@ -1196,6 +1248,11 @@
 
 </section>
 
+<?php } ?> 
+
+<?php } ?>
+
+<?php } ?>
 
 
 
@@ -1212,11 +1269,59 @@
 
 
 
+<?php if( $menu["inalbum"] != 0 ){ ?>
+
+<?php if( $initialpage["inalbum"] != 0 ){ ?>
+
+<?php if( !$album ){ ?>
+
+<section class="domain">
+
+    <div class="container-fluid">
 
 
 
 
+        <div class="row">
+            
+            <div class="col-12">
 
+
+                <div class="section-title">
+                        
+
+                    <h3>
+                        Album
+                    </h3>
+
+                    <hr>
+
+                </div><!--section-title-->
+
+                     
+               
+            </div><!--col-->
+        
+        </div><!--row-->
+
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Ainda não há imagens cadastradas</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+
+
+        
+
+    </div>
+
+</section>
+
+<?php }else{ ?>
 
 
 <section class="domain">
@@ -1275,7 +1380,7 @@
 
                             <div class="card-image">
                             
-                                <img alt="Bem Casei Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <img alt="Bem Casei Site de Casamento" src="/uploads/albuns/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--card-photo-->
 
@@ -1316,7 +1421,7 @@
 
                             <div class="body-footer buttons-wrapper">
                                 
-                                <a target="_blank" href="/res/images/template/photo/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <a target="_blank" href="/uploads/albuns/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                                 
                                     <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>Ver</span>
 
@@ -1364,7 +1469,7 @@
                 <div class="section-see-more">
                         
 
-                    <a href='/template/<?php echo getTemplate(); ?>/album'>
+                    <a href="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/album">
                         
                         <h4>
                             Ver Mais...
@@ -1391,5 +1496,11 @@
     </div><!--container-->
 
 </section>
+
+<?php } ?> 
+
+<?php } ?>
+
+<?php } ?>
 
 
