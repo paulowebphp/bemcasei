@@ -19,7 +19,7 @@
 
 				</div>
 
-				<div class="bottom2 blue">
+				<div class="bottom2 color1">
 
 					<h2>Sua Lista de Casamento convertida em dinheiro!</h2>
 
@@ -186,9 +186,13 @@
 				</div>
 
 
-				<p>Os valores recebidos ficarão disponíveis em <span class="color1 weight1">15 dias</span>, no caso de pagamentos com Cartão, e <span class="color1 weight1">3 dias</span>, no caso de pagamentos em Boleto!</p>
+				<div class="block-center">
 
-				<p>Os saques são gratuitos e podem ser realizados quantas vezes o casal desejar.</p>
+					<p>Os valores recebidos ficarão disponíveis em <span class="color1 weight1">15 dias</span>, no caso de pagamentos com Cartão, e <span class="color1 weight1">3 dias</span>, no caso de pagamentos em Boleto!</p>
+
+					<p>Os saques são gratuitos e podem ser realizados quantas vezes o casal desejar.</p>
+
+				</div>
 
 			</div><!--col-->
 
@@ -269,18 +273,16 @@
 
 
 
-		<div class="row centralizer bottom3">
+		<div class="row bottom3">
 
 
-			<div class="col-md-8 col-10">
+			<div class="block-center gifts-title3 color2">
 
 
-				<div class="gifts-title3 purple">
 
-					<p>Segurança e Credibilidade especialmente desenvolvidas pelo Bem Casei, para fazer do seu casamento e da sua lua de mel um sucesso</p>
+				<p>Segurança e Credibilidade especialmente desenvolvidas pelo Bem Casei, para fazer do seu casamento e da sua lua de mel um sucesso</p>
 
 
-				</div><!--gifts-section1-->
 
 
 			</div><!--col-->

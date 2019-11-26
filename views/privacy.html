@@ -905,7 +905,7 @@
       
         <div class="col-12 bottom1">
          
-          h28. CONFIDENCIALIDADE E SIGILO DOS DADOS
+          <h2>8. CONFIDENCIALIDADE E SIGILO DOS DADOS</h2>
         </div><!--col-->
 
         <div class="col-12 blockquote">

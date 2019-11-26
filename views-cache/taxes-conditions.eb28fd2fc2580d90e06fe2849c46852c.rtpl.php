@@ -167,9 +167,13 @@
         </div>
 
 
-        <p>As transferências para conta bancária são <span class="color1 weight1"><strong>gratuitas</strong></span></p>
+        <div class="block-center">
 
-        <p>O valor estará disponível para o casal transferir para sua conta bancária em <span class="color1 weight1">3 dias corridos</span> (Boleto Bancário), e <span class="color1 weight1">15 dias corridos</span> (Cartão de Crédito)</p>
+          <p>As transferências para conta bancária são <span class="color1 weight1"><strong>gratuitas</strong></span></p>
+
+          <p>O valor estará disponível para o casal transferir para sua conta bancária em <span class="color1 weight1">3 dias corridos</span> (Boleto Bancário), e <span class="color1 weight1">15 dias corridos</span> (Cartão de Crédito)</p>
+
+        </div>
 
       </div><!--col-->
 
@@ -194,11 +198,13 @@
 
         <div class="bottom2">
           
-          <p> Para pagamento por boleto bancário é cobrada uma tarifa <span class="color1 weight"><strong>4,99%</strong></span> por transação efetuada.</p>
+          <div class="block-center">
+              <p> Para pagamento por boleto bancário é cobrada uma tarifa <span class="color1 weight"><strong>4,99%</strong></span> por transação efetuada.</p>
         
-          <p>Os convidados têm até 5 dias para efetuar o pagamento. Os boletos podem ser pagos em qualquer agência bancária, casa lotérica ou pela internet utilizando o código de barras.</p>
-        
-          <p>O histórico de presentes é automaticamente atualizado, e os valores são disponibilizados para transferência em <span class="color1 weight"><strong>3 dias corridos</strong></span> após a confirmação da transação.</p>
+              <p>Os convidados têm até 5 dias para efetuar o pagamento. Os boletos podem ser pagos em qualquer agência bancária, casa lotérica ou pela internet utilizando o código de barras.</p>
+            
+              <p>O histórico de presentes é automaticamente atualizado, e os valores são disponibilizados para transferência em <span class="color1 weight"><strong>3 dias corridos</strong></span> após a confirmação da transação.</p>
+          </div>
 
         </div>
           
@@ -239,13 +245,15 @@
 
           <div class="bottom2">
             
-            <p>Quando o convidado utiliza o cartão de crédito para efetuar o pagamento, é cobrada uma tarifa de <span class="color1 weight1"><strong>4,99%</strong></span> por transação efetuada.</p>
+            <div class="block-center">
+                <p>Quando o convidado utiliza o cartão de crédito para efetuar o pagamento, é cobrada uma tarifa de <span class="color1 weight1"><strong>4,99%</strong></span> por transação efetuada.</p>
          
 
-            <p>Nesta opção o convidado pode escolher entre várias bandeiras disponíveis aquela de sua preferência, e pode parcelar em até 6 vezes.</p>
-           
-
-            <p>O histórico de presentes é automaticamente atualizado, e os valores são disponibilizados para transferência em <span class="color1 weight1"><strong>15 dias corridos</strong></span> após a confirmação da transação.</p>
+                <p>Nesta opção o convidado pode escolher entre várias bandeiras disponíveis aquela de sua preferência, e pode parcelar em até 6 vezes.</p>
+               
+    
+                <p>O histórico de presentes é automaticamente atualizado, e os valores são disponibilizados para transferência em <span class="color1 weight1"><strong>15 dias corridos</strong></span> após a confirmação da transação.</p>
+            </div>
 
           </div>
 

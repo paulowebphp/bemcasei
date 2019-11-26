@@ -445,9 +445,7 @@ label{
 	justify-content: center;
 	text-align: justify;
 }
-.site i{
-	color: #03a9f4;
-}
+
 .flex{
 	display: flex;
 }
@@ -474,6 +472,9 @@ label{
 }
 .color1{
 	color: #03a9f4;
+}
+.color2{
+	color: #5e299a;
 }
 .weight1{
 	font-weight: bolder;
@@ -590,7 +591,10 @@ label{
 	width: 50%;
 	margin: 0 auto;
 }
-
+.block-center{
+	width: 70%;
+	margin: 0 auto;
+}
 
 
 
@@ -709,14 +713,16 @@ label{
 /********************************* GIFTS-LIST *****************************************/
 /********************************* GIFTS-LIST *****************************************/
 /********************************* GIFTS-LIST *****************************************/
-.gifts-title3{
-	font-size: 1.5rem;
-}
+
 #gifts-list ul li{
 	list-style: none;
 }
 #gifts-list i{
+	color: #03a9f4;
 	font-weight: bolder;
+}
+.gifts-title3{
+	font-size: 1.5rem;
 }
 /********************************* GIFTS-LIST *****************************************/
 /********************************* GIFTS-LIST *****************************************/
