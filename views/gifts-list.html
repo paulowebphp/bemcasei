@@ -36,13 +36,13 @@
 
 					<ul> 
 
-						<li>Personalize seus presentes</li> 
+						<li><i class="fa fa-angle-right"></i>&nbsp; Personalize seus presentes</li> 
 
-					    <li>Lista de Presentes Pronta com dezenas de itens cadastrados</li> 
+					    <li><i class="fa fa-angle-right"></i>&nbsp; Lista de Presentes Pronta com dezenas de itens cadastrados</li> 
 
-					    <li>Acompanhe as transações por um painel de controle</li>
+					    <li><i class="fa fa-angle-right"></i>&nbsp; Acompanhe as transações por um painel de controle</li>
 
-					    <li>Transferências gratuitas pra sua conta bancária</li>
+					    <li><i class="fa fa-angle-right"></i>&nbsp; Transferências gratuitas pra sua conta bancária</li>
 
 					</ul>
 
@@ -223,11 +223,11 @@
 
 				<ul>
 
-					<li>Uma das menores tarifas bancárias do mercado para compras com Boleto ou Cartão <span style="color:#6f007c"><strong>(4,29%)</strong></span></li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Uma das menores tarifas bancárias do mercado para compras com Boleto ou Cartão <span style="color:#6f007c"><strong>(4,29%)</strong></span></li>
 
-					<li>Uma das menores taxas administrativas <span style="color:#6f007c"><strong>(0,70%)</strong></span></li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Uma das menores taxas administrativas <span style="color:#6f007c"><strong>(0,70%)</strong></span></li>
 
-					<li>Mesmo que o presente seja parcelado você recebe o valor integral</li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Mesmo que o presente seja parcelado você recebe o valor integral</li>
 
 				</ul> 
 
@@ -242,9 +242,9 @@
 
 				<ul>
 
-					<li>Um dos menores tempos de repasse para compras com cartão <span style="color:#6f007c"><strong>(15 dias)</strong></span> e boleto bancário <span style="color:#6f007c"><strong>(3 dias)</strong></span></li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Um dos menores tempos de repasse para compras com cartão <span style="color:#6f007c"><strong>(15 dias)</strong></span> e boleto bancário <span style="color:#6f007c"><strong>(3 dias)</strong></span></li>
 
-					<li>Transferências gratuitas para sua conta bancária</li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Transferências gratuitas para sua conta bancária</li>
 
 				</ul>
 
@@ -313,11 +313,11 @@
 
 				<ul class="gifts-list2">    
 
-					<li>Várias bandeiras de cartão de crédito disponíveis</li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Várias bandeiras de cartão de crédito disponíveis</li>
 
-					<li>Pagamento com Boleto Bancário</li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Pagamento com Boleto Bancário</li>
 
-					<li>Podem parcelar o presente em até 6 vezes</li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Podem parcelar o presente em até 6 vezes</li>
 
 				</ul> 
 
@@ -334,13 +334,13 @@
 
 				<ul class="gifts-list2">
 
-					<li>Compra em poucos cliques</li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Compra em poucos cliques</li>
 
-					<li>Ambiente com páginas criptografadas</li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Ambiente com páginas criptografadas</li>
 
-					<li>Segurança total, os dados de cartões são criptografados e não são armazenados</li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Segurança total, os dados de cartões são criptografados e não são armazenados</li>
 
-					<li>Suporte total de nossa equipe para qualquer dúvida ou orientação</li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Suporte total de nossa equipe para qualquer dúvida ou orientação</li>
 
 				</ul>
 

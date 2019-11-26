@@ -445,6 +445,9 @@ label{
 	justify-content: center;
 	text-align: justify;
 }
+.site i{
+	color: #03a9f4;
+}
 .flex{
 	display: flex;
 }
@@ -703,6 +706,12 @@ label{
 /********************************* GIFTS-LIST *****************************************/
 .gifts-title3{
 	font-size: 1.5rem;
+}
+#gifts-list ul li{
+	list-style: none;
+}
+#gifts-list i{
+	font-weight: bolder;
 }
 /********************************* GIFTS-LIST *****************************************/
 /********************************* GIFTS-LIST *****************************************/
