@@ -28,7 +28,7 @@
 
 
 				<div class="bottom2">
-					<p>A Lista de Presentes do Bem Casei é super prática, além de ser uma das mais bonitas e elegantes:</p>
+					<p>A Lista de Presentes do Bem Casei é super prática, moderna e elegante:</p>
 				</div>
 
 
@@ -38,11 +38,11 @@
 
 						<li><i class="fa fa-angle-right"></i>&nbsp; Personalize seus presentes</li> 
 
-					    <li><i class="fa fa-angle-right"></i>&nbsp; Lista de Presentes Pronta com dezenas de itens cadastrados</li> 
+					    <li><i class="fa fa-angle-right"></i>&nbsp; Dezenas de itens pré-cadastrados</li> 
 
-					    <li><i class="fa fa-angle-right"></i>&nbsp; Acompanhe as transações por um painel de controle</li>
-
-					    <li><i class="fa fa-angle-right"></i>&nbsp; Transferências gratuitas pra sua conta bancária</li>
+						<li><i class="fa fa-angle-right"></i>&nbsp; Painel Financeiro para acompanhar as transações</li>
+						
+						<li><i class="fa fa-angle-right"></i>&nbsp; Você decide quem arca com as tarifas: você ou o convidado</li>
 
 					</ul>
 
@@ -56,6 +56,9 @@
 
 
 
+
+
+		
 
 
 
@@ -183,9 +186,9 @@
 				</div>
 
 
-				<p>O valor  estará disponível para o casal transferir para sua conta bancária em 3 dias, no  caso pagamentos com Boleto Bancário, e 15 dias, no caso de pagamentos com  cartão de crédito à vista ou parcelado.</p>
+				<p>Os valores recebidos ficarão disponíveis em <span class="color1 weight1">15 dias</span>, no caso de pagamentos com Cartão, e <span class="color1 weight1">3 dias</span>, no caso de pagamentos em Boleto!</p>
 
-				<p>Os saques  são gratuitos e podem ser realizados quantas vezes o casal desejar.</p>
+				<p>Os saques são gratuitos e podem ser realizados quantas vezes o casal desejar.</p>
 
 			</div><!--col-->
 
@@ -202,7 +205,7 @@
 			<div class="col-md-12">
 
 				
-				<h3>Vantagens da Lista de Presentes para o Casal</h3>
+				<h3>Vantagens para o Casal</h3>
 
 
 			</div><!--col-->
@@ -223,11 +226,11 @@
 
 				<ul>
 
-					<li><i class="fa fa-angle-right"></i>&nbsp; Uma das menores tarifas bancárias do mercado para compras com Boleto ou Cartão <span style="color:#6f007c"><strong>(4,29%)</strong></span></li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Transferências <span class="color1 weight1">gratuitas</span> pra sua conta bancária</li>
 
-					<li><i class="fa fa-angle-right"></i>&nbsp; Uma das menores taxas administrativas <span style="color:#6f007c"><strong>(0,70%)</strong></span></li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Mesmo que o presente seja parcelado você recebe o valor integralmente!</li>
 
-					<li><i class="fa fa-angle-right"></i>&nbsp; Mesmo que o presente seja parcelado você recebe o valor integral</li>
+									
 
 				</ul> 
 
@@ -242,9 +245,9 @@
 
 				<ul>
 
-					<li><i class="fa fa-angle-right"></i>&nbsp; Um dos menores tempos de repasse para compras com cartão <span style="color:#6f007c"><strong>(15 dias)</strong></span> e boleto bancário <span style="color:#6f007c"><strong>(3 dias)</strong></span></li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Um dos menores tempos de repasse para compras com cartão <span class="color1 weight1"><strong>(15 dias)</strong></span> e boleto bancário <span class="color1 weight1"><strong>(3 dias)</strong></span></li>
 
-					<li><i class="fa fa-angle-right"></i>&nbsp; Transferências gratuitas para sua conta bancária</li>
+					
 
 				</ul>
 
@@ -274,7 +277,7 @@
 
 				<div class="gifts-title3 purple">
 
-					<p>Segurança e Credibilidade especialmente desenvolvidas pelo Bem Casei, para fazer do seu casamento e da sua lua de mel um sucesso, de forma simples e prática:</p>
+					<p>Segurança e Credibilidade especialmente desenvolvidas pelo Bem Casei, para fazer do seu casamento e da sua lua de mel um sucesso</p>
 
 
 				</div><!--gifts-section1-->
@@ -296,7 +299,7 @@
 			<div class="col-md-12">
 
 				
-				<h3>Vantagens da Lista de Presentes para os Convidados</h3> 
+				<h3>Vantagens para os Convidados</h3> 
 
 
 			</div><!--col-->
@@ -317,7 +320,7 @@
 
 					<li><i class="fa fa-angle-right"></i>&nbsp; Pagamento com Boleto Bancário</li>
 
-					<li><i class="fa fa-angle-right"></i>&nbsp; Podem parcelar o presente em até 6 vezes</li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Podem parcelar em até 6 vezes</li>
 
 				</ul> 
 
@@ -336,9 +339,7 @@
 
 					<li><i class="fa fa-angle-right"></i>&nbsp; Compra em poucos cliques</li>
 
-					<li><i class="fa fa-angle-right"></i>&nbsp; Ambiente com páginas criptografadas</li>
-
-					<li><i class="fa fa-angle-right"></i>&nbsp; Segurança total, os dados de cartões são criptografados e não são armazenados</li>
+					<li><i class="fa fa-angle-right"></i>&nbsp; Segurança total, ambiente com páginas criptografadas</li>
 
 					<li><i class="fa fa-angle-right"></i>&nbsp; Suporte total de nossa equipe para qualquer dúvida ou orientação</li>
 

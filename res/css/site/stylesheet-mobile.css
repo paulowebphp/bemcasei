@@ -779,7 +779,9 @@ footer {
 #taxes-conditions table td{
     padding: 3px;
 }
-
+#taxes-conditions .brands{
+	width: 70%;
+}
 #taxes-conditions .boleto{
 	width: 30%;
 }

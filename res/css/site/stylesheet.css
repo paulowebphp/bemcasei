@@ -472,7 +472,12 @@ label{
 .bottom4{
 	margin-bottom: 15%;
 }
-
+.color1{
+	color: #03a9f4;
+}
+.weight1{
+	font-weight: bolder;
+}
 .blue{
 	color: #03a9f4;
 }
@@ -765,11 +770,11 @@ label{
 /********************** TAXES-CONDITIONS *************************************/
 /********************** TAXES-CONDITIONS *************************************/
 .brands{
-	width: 70%;
+	width: 50%;
 	margin: 0 auto;
 }
 .boleto{
-	width:200px;
+	width:150px;
 	margin: 0 auto;
 }
 .brands img{
