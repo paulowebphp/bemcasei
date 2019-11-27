@@ -550,71 +550,168 @@ $app->post( "/dashboard/rsvp/configurar", function()
 
 
 
+
 	if( 
 		
-		!isset($_POST['inchildrenconfig']) 
+		!isset($_POST['inchildren']) 
 		|| 
-		$_POST['inchildrenconfig'] === ''
+		$_POST['inchildren'] === ''
 		
 	)
 	{
 
-		RsvpConfig::setError("Digite o Nome do Convidado");
+		RsvpConfig::setError("Informe se permitirá crianças no evento");
 		header("Location: /dashboard/rsvp/configurar");
 		exit;
 
 	}//end if
 
-	if( ($inchildrenconfig = Validate::validateBoolean($_POST['inchildrenconfig'])) === false )
+	if( ($inchildren = Validate::validateBoolean($_POST['inchildren'])) === false )
 	{	
 		
-		RsvpConfig::setError("O status da lista deve conter apenas 0 ou 1 e não pode ser formado apenas com caracteres especiais, tente novamente");
+		RsvpConfig::setError("O status de se será permitido crianças no evento deve conter apenas 0 ou 1 e não pode ser formado apenas com caracteres especiais, tente novamente");
 		header("Location: /dashboard/rsvp/configurar");
 		exit;
 
 	}//end if
-
-
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['inmaxchildrenconfig'])
-		|| 
-		$_POST['inmaxchildrenconfig'] === ''
-		
-	)
-	{
-
-		RsvpConfig::setError("Digite a Quantidade Máxima de Crianças");
-		header("Location: /dashboard/rsvp/configurar");
-		exit;
-
-	}//end if
-
-	if( ($inmaxchildrenconfig = Validate::validateMaxRsvp($_POST['inmaxchildrenconfig'])) === false )
-	{	
-		
-
-		RsvpConfig::setError("A quantidade deve estar entre 0 e 99");
-		header("Location: /dashboard/rsvp/configurar");
-		exit;
-
-	}//end if
-
-
-
-
-
-
 
 
 
 	$rsvpconfig = new RsvpConfig();
+
+	$rsvpconfig->get((int)$user->getiduser());
+
+	
+	/*echo '<pre>';
+	var_dump($_POST);
+	var_dump($inchildren);
+	var_dump($rsvpconfig);
+	var_dump((int)$inchildren == 1);
+	exit;
+	*/
+
+	if (
+		
+		(int)$inchildren == 1
+		&&
+		(int)$rsvpconfig->getinchildren() == 1
+	
+	)
+	{
+
+		# code...
+		if( 
+		
+			!isset($_POST['inchildrenconfig']) 
+			|| 
+			$_POST['inchildrenconfig'] === ''
+			
+		)
+		{
+	
+			RsvpConfig::setError("Digite o Nome do Convidado");
+			header("Location: /dashboard/rsvp/configurar");
+			exit;
+	
+		}//end if
+	
+		if( ($inchildrenconfig = Validate::validateBoolean($_POST['inchildrenconfig'])) === false )
+		{	
+			
+			RsvpConfig::setError("O status da lista deve conter apenas 0 ou 1 e não pode ser formado apenas com caracteres especiais, tente novamente");
+			header("Location: /dashboard/rsvp/configurar");
+			exit;
+	
+		}//end if
+	
+	
+	
+	
+	
+	
+	
+	
+		if(
+			
+			!isset($_POST['inmaxchildrenconfig'])
+			|| 
+			$_POST['inmaxchildrenconfig'] === ''
+			
+		)
+		{
+	
+			RsvpConfig::setError("Digite a Quantidade Máxima de Crianças");
+			header("Location: /dashboard/rsvp/configurar");
+			exit;
+	
+		}//end if
+	
+		if( ($inmaxchildrenconfig = Validate::validateMaxRsvp($_POST['inmaxchildrenconfig'])) === false )
+		{	
+			
+	
+			RsvpConfig::setError("A quantidade deve estar entre 0 e 99");
+			header("Location: /dashboard/rsvp/configurar");
+			exit;
+	
+		}//end if
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		if(
+			
+			!isset($_POST['inchildrenage'])
+			|| 
+			$_POST['inchildrenage'] === ''
+			
+		)
+		{
+	
+			RsvpConfig::setError("Digite a idade Máxima Considerado Criança para o Buffet");
+			header("Location: /dashboard/rsvp/configurar");
+			exit;
+	
+		}//end if
+	
+		if( ($inchildrenage = Validate::validateChildrenAge($_POST['inchildrenage'])) === false )
+		{	
+			
+	
+			RsvpConfig::setError("A idade deve estar entre 0 e 21");
+			header("Location: /dashboard/rsvp/configurar");
+			exit;
+	
+		}//end if
+
+
+	}//end if
+	else
+	{
+
+		
+
+		$inchildrenconfig = $rsvpconfig->getinchildrenconfig();
+		$inmaxchildrenconfig = $rsvpconfig->getinmaxchildrenconfig();
+		$inchildrenage = $rsvpconfig->getinchildrenage();
+
+
+	}//end else
+
+
+
+
+
+
+
+
+
+	
 
 
 	$rsvpconfig->setData([
@@ -624,8 +721,10 @@ $app->post( "/dashboard/rsvp/configurar", function()
 		'inclosed'=>$inclosed,
 		'inadultsconfig'=>$inadultsconfig,
 		'inmaxadultsconfig'=>$inmaxadultsconfig,
+		'inchildren'=>$inchildren,
 		'inchildrenconfig'=>$inchildrenconfig,
-		'inmaxchildrenconfig'=>$inmaxchildrenconfig
+		'inmaxchildrenconfig'=>$inmaxchildrenconfig,
+		'inchildrenage'=>$inchildrenage
 
 	]);//setData
 
@@ -733,6 +832,9 @@ $app->get( "/dashboard/rsvp/adicionar", function()
 	}//end else*/
 
 
+	$rsvpconfig = new RsvpConfig();
+
+	$rsvpconfig->get((int)$user->getiduser());
 
 	
 	$page = new PageDashboard();
@@ -745,6 +847,7 @@ $app->get( "/dashboard/rsvp/adicionar", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'rsvpconfig'=>$rsvpconfig->getValues(),
 			'success'=>Rsvp::getSuccess(),
 			'error'=>Rsvp::getError()
 			
@@ -878,43 +981,69 @@ $app->post( "/dashboard/rsvp/adicionar", function()
 
 
 
+	
+
+	
+
+
+
+	$rsvpconfig = new RsvpConfig();
+
+	$rsvpconfig->get((int)$user->getiduser());
 
 
 
 
-	if(
-		
-		!isset($_POST['inmaxchildren']) 
-		|| 
-		$_POST['inmaxchildren'] === ''
-		
-	)
+
+
+	if ( (int)$rsvpconfig->getinchildren() == 1 )
 	{
+		# code...
+		if(
+		
+			!isset($_POST['inmaxchildren']) 
+			|| 
+			$_POST['inmaxchildren'] === ''
+			
+		)
+		{
+	
+			Rsvp::setError("Preencha quantas crianças no máximo o convidado poderá levar");
+			header('Location: /dashboard/rsvp/adicionar');
+			exit;
+	
+		}//end if
+	
+		if( ($inmaxchildren = Validate::validateMaxRsvp($_POST['inmaxchildren'])) === false )
+		{	
+			
+	
+			Rsvp::setError("A quantidade deve ser entre 0 e 99");
+			header('Location: /dashboard/rsvp/adicionar');
+			exit;
+	
+		}//end if
 
-		Rsvp::setError("Preencha quantas crianças no máximo o convidado poderá levar");
-		header('Location: /dashboard/rsvp/adicionar');
-		exit;
 
-	}//end if
-
-	if( ($inmaxchildren = Validate::validateMaxRsvp($_POST['inmaxchildren'])) === false )
-	{	
+	} else {
+		# code...
 		
 
-		Rsvp::setError("A quantidade deve ser entre 0 e 99");
-		header('Location: /dashboard/rsvp/adicionar');
-		exit;
+		$inmaxchildren = 0;
 
-	}//end if
-
-
-
-
-
+	}//end else
+	
 
 
 
 	
+
+
+
+
+
+
+
 
 	$rsvp = new Rsvp();
 
@@ -933,12 +1062,15 @@ $app->post( "/dashboard/rsvp/adicionar", function()
     	'inadultsconfirmed'=>NULL,
     	'inmaxchildren'=>$inmaxchildren,
     	'inchildrenconfirmed'=>NULL,
-    	'desguestaccompanies'=>NULL,
-    	'dtconfirmed'=>NULL
+    	'inchildrenageconfirmed'=>NULL,
+    	'desadultsaccompanies'=>NULL,
+    	'deschildrenaccompanies'=>NULL,
+		'dtconfirmed'=>NULL
 
     ]);
 
    
+	
 
     
 	# Core colocou $user->save(); Aula 120
@@ -1038,10 +1170,13 @@ $app->get( "/dashboard/rsvp/:hash", function( $hash )
 
     
 
+	$rsvpconfig = new RsvpConfig();
+
+	$rsvpconfig->get((int)$user->getiduser());
 
 
+	
 
-   
 	$page = new PageDashboard();
 
 	$page->setTpl(
@@ -1053,6 +1188,7 @@ $app->get( "/dashboard/rsvp/:hash", function( $hash )
 		[
 			'user'=>$user->getValues(),
 			'rsvp'=>$rsvp->getValues(),
+			'rsvpconfig'=>$rsvpconfig->getValues(),
 			'success'=>Rsvp::getSuccess(),
 			'error'=>Rsvp::getError()
 			
@@ -1191,41 +1327,67 @@ $app->post( "/dashboard/rsvp/:hash", function( $hash )
 
 
 
+	$rsvp = new Rsvp();
+
+	
+
+
+	$rsvpconfig = new RsvpConfig();
+
+	$rsvpconfig->get((int)$user->getiduser());
 
 
 
 
-	if(
-		
-		!isset($_POST['inmaxchildren']) 
-		|| 
-		$_POST['inmaxchildren'] === ''
-		
-	)
+
+
+	if ( (int)$rsvpconfig->getinchildren() == 1 )
 	{
 
-		Rsvp::setError("Preencha quantas crianças no máximo o convidado poderá levar");
-		header('Location: /dashboard/rsvp/'.$hash);
-		exit;
-
-	}//end if
-
-	if( ($inmaxchildren = Validate::validateMaxRsvp($_POST['inmaxchildren'])) === false )
-	{	
+		if(
 		
-
-		Rsvp::setError("A quantidade deve ser entre 0 e 99");
-		header('Location: /dashboard/rsvp/'.$hash);
-		exit;
+			!isset($_POST['inmaxchildren']) 
+			|| 
+			$_POST['inmaxchildren'] === ''
+			
+		)
+		{
+	
+			Rsvp::setError("Preencha quantas crianças no máximo o convidado poderá levar");
+			header('Location: /dashboard/rsvp/'.$hash);
+			exit;
+	
+		}//end if
+	
+		if( ($inmaxchildren = Validate::validateMaxRsvp($_POST['inmaxchildren'])) === false )
+		{	
+			
+	
+			Rsvp::setError("A quantidade deve ser entre 0 e 99");
+			header('Location: /dashboard/rsvp/'.$hash);
+			exit;
+	
+		}//end if
 
 	}//end if
+	else
+	{
+
+		$rsvp->getRsvp((int)$idrsvp);
+
+
+		$inmaxchildren = $rsvp->getinmaxchildren();
+
+	}//end else
+
 
 
 	
 
-	$rsvp = new Rsvp();
 
-	//$rsvp->getRsvp((int)$idrsvp());
+	
+
+	
 
 	//$_POST['iduser'] = $user->getiduser();
 
@@ -1241,8 +1403,11 @@ $app->post( "/dashboard/rsvp/:hash", function( $hash )
     	'inadultsconfirmed'=>NULL,
     	'inmaxchildren'=>$inmaxchildren,
     	'inchildrenconfirmed'=>NULL,
-    	'desguestaccompanies'=>NULL,
-    	'dtconfirmed'=>NULL
+    	'inchildrenageconfirmed'=>NULL,
+    	'desadultsaccompanies'=>NULL,
+    	'deschildrenaccompanies'=>NULL,
+		'dtconfirmed'=>NULL
+		
 
     ]);//end setData
 

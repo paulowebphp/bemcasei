@@ -705,8 +705,31 @@ textarea{
 .table-footer {
     margin: -10% 0 20% 0;
 }
-
-
+#domain-404 {
+    padding: 25% 5% 15% 5%;
+     min-height: auto;
+ 
+ }
+ #domain-404 h3 {
+     font-size: 1.4rem;
+ 
+ }
+ #domain-404 h5{
+     font-size: 1.2rem;
+ 
+ }
+ .bottom1{
+	margin-bottom: 10%;
+}
+.bottom2{
+	margin-bottom: 13%;
+}
+.bottom3{
+	margin-bottom: 18%;
+}
+.bottom4{
+	margin-bottom: 23%;
+}
 
 
 

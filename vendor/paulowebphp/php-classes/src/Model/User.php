@@ -4634,6 +4634,16 @@ var_dump($plans);*/
 
 	public static function getPageMailingSearch( $search, $page = 1, $itensPerPage = 10 )
 	{
+		
+
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  )
+		{
+
+			$search = utf8_decode($search);
+
+		}//end if
+
+
 
 		$start = ($page - 1) * $itensPerPage;
 

@@ -450,7 +450,7 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 			# code...
 			if ( (int)$inadultsconfirmed > (int)$rsvp->getinmaxadults() ) {
 				# code...
-				Rsvp::setError("A quantidade de adultos deve ser menor que ".$rsvp->getinmaxadults());
+				Rsvp::setError("A quantidade de adultos deve ser menor ou igual a ".$rsvp->getinmaxadults());
 				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
 				exit;
 			}//end if
@@ -462,7 +462,7 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 
 			if ( (int)$inadultsconfirmed > (int)$rsvpconfig->getinmaxadultsconfig() ) {
 				# code...
-				Rsvp::setError("A quantidade de adultos deve ser menor que ".$rsvpconfig->getinmaxadultsconfig());
+				Rsvp::setError("A quantidade de adultos deve ser menor ou igual a ".$rsvpconfig->getinmaxadultsconfig());
 				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
 				exit;
 			}//end if
@@ -482,7 +482,7 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 			# code...
 			if ( (int)$inchildrenconfirmed > (int)$rsvp->getinmaxchildren() ) {
 				# code...
-				Rsvp::setError("A quantidade de crianças deve ser menor que ".$rsvp->getinmaxchildren());
+				Rsvp::setError("A quantidade de crianças deve ser menor ou igual a ".$rsvp->getinmaxchildren());
 				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
 				exit;
 			}//end if
@@ -494,7 +494,7 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 
 			if ( (int)$inchildrenconfirmed > (int)$rsvpconfig->getinmaxchildrenconfig() ) {
 				# code...
-				Rsvp::setError("A quantidade de crianças deve ser menor que ".$rsvpconfig->getinmaxchildrenconfig());
+				Rsvp::setError("A quantidade de crianças deve ser menor ou igual a ".$rsvpconfig->getinmaxchildrenconfig());
 				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
 				exit;
 			}//end if
@@ -537,6 +537,8 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 				exit;
 
 			}//end if
+
+			
 
 
 			if ( ( $desguestaccompanies = Validate::validateStringWithAccent($_POST['desguestaccompanies']) ) === false ) 
@@ -867,7 +869,7 @@ $app->get( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 
 
 
-
+		
 
 
 

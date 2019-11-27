@@ -814,7 +814,8 @@
                                 
                                 <div class="col-12">
                                     
-                                    
+                                    <label for="file">Imagem do Casal | <small><strong>Aparece no Banner Principal</strong></small></label>
+
                                     <div class="dash-input-row input-photo">
 
                     

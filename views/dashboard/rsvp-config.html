@@ -125,7 +125,7 @@
                                 
 
 
-                                <label for="inadultsconfig">Configurar Quantidade Máxima de Adultos para Todos os Convidados</label>
+                                <label for="inadultsconfig">Configurar Quantidade Máxima de Adultos para Todos os Convidados<br><small>(Esta opção abrengerá os seus convidados de maneira global)</label>
 
 
                                 <select id="inadultsconfig" name="inadultsconfig" class="custom-select">
@@ -157,11 +157,46 @@
 
 
 
+
+
                             <div class="rsvpconfig-input-row">
                                 
 
 
-                                <label for="inadultsconfig">Configurar Quantidade Máxima de Crianças para Todos os Convidados</label>
+                                    <label for="inchildren">Permitir Crianças? <br><small>(Se marcar esta opção como "Não", mostraremos uma mensagem aos convidados avisando-os de que não serão permitidas crianças no casamento)</small></label>
+    
+    
+                                    <select id="inchildren" name="inchildren" class="custom-select">
+    
+                                        <option value="1" {if="$rsvpconfig.inchildren == '1'"}selected{/if}>Sim</option>
+                                        <option value="0" {if="$rsvpconfig.inchildren == '0'"}selected{/if}>Não</option>
+    
+                                    </select>
+    
+                                    
+    
+                                </div><!--rsvpconfig-input-row-->
+
+
+
+
+                            {if="$rsvpconfig.inchildren == 1"}
+                            <div class="rsvpconfig-input-row">
+
+                                <label for="inchildrenage">Idade Máxima considerado Criança para o seu Buffet</label>
+                                <input type="text" class="form-control input-inposition2" id="inchildrenage" name="inchildrenage" value="{$rsvpconfig.inchildrenage}">
+
+                            </div><!--rsvpconfig-input-row-->
+
+
+
+
+
+                            <div class="rsvpconfig-input-row">
+                                
+
+
+                                <label for="inchildrenconfig">Configurar Quantidade Máxima de Crianças para Todos os Convidados <br><small>(Esta opção abrengerá os seus convidados de maneira global)</small> </label>
 
 
                                 <select id="inchildrenconfig" name="inchildrenconfig" class="custom-select">
@@ -181,12 +216,23 @@
 
 
 
+
                             <div class="rsvpconfig-input-row2">
 
                                 <label for="inmaxchildrenconfig">Quantidade Máxima de Crianças</label>
                                 <input type="text" class="form-control input-inposition2" id="inmaxchildrenconfig" name="inmaxchildrenconfig" value="{$rsvpconfig.inmaxchildrenconfig}">
 
                             </div><!--rsvpconfig-input-row-->
+
+                            {else}
+                            <div class="rsvpconfig-input-row2">
+
+                                <label for="desadultsdescription">Mensagem que aparecerá para os convidados</label>
+                                
+                                <textarea rows="10" cols="90" maxlength="300" id="desadultsdescription" name="desadultsdescription">{$rsvpconfig.desadultsdescription}</textarea>
+
+                            </div><!--rsvpconfig-input-row-->
+                            {/if}
 
 
 

@@ -55,7 +55,7 @@ class Rsvp extends Model
                 :inadultsconfirmed,
                 :inmaxchildren,
                 :inchildrenconfirmed,
-                :desguestaccompanies,
+                :desadultsaccompanies,
                 :dtconfirmed
 
 
@@ -75,7 +75,7 @@ class Rsvp extends Model
 				':inadultsconfirmed'=>$this->getinadultsconfirmed(),
 				':inmaxchildren'=>$this->getinmaxchildren(),
 				':inchildrenconfirmed'=>$this->getinchildrenconfirmed(),
-				':desguestaccompanies'=>$this->getdesguestaccompanies(),
+				':desadultsaccompanies'=>$this->getdesadultsaccompanies(),
 				':dtconfirmed'=>$this->getdtconfirmed()
 				
 			]
@@ -85,7 +85,7 @@ class Rsvp extends Model
 
 
 		////$results[0]['desguest'] = utf8_encode($results[0]['desguest']);
-		//$results[0]['desguestaccompanies'] = utf8_encode($results[0]['desguestaccompanies']);
+		//$results[0]['desadultsaccompanies'] = utf8_encode($results[0]['desadultsaccompanies']);
 	  
 		
 	
@@ -154,7 +154,9 @@ class Rsvp extends Model
 	                :inadultsconfirmed,
 	                :inmaxchildren,
 	                :inchildrenconfirmed,
-	                :desguestaccompanies,
+	                :inchildrenageconfirmed,
+	                :desadultsaccompanies,
+	                :deschildrenaccompanies,
 	                :dtconfirmed
 
 
@@ -174,7 +176,9 @@ class Rsvp extends Model
 					':inadultsconfirmed'=>$this->getinadultsconfirmed(),
 					':inmaxchildren'=>$this->getinmaxchildren(),
 					':inchildrenconfirmed'=>$this->getinchildrenconfirmed(),
-					':desguestaccompanies'=>utf8_decode($this->getdesguestaccompanies()),
+					':inchildrenageconfirmed'=>$this->getinchildrenageconfirmed(),
+					':desadultsaccompanies'=>utf8_decode($this->getdesadultsaccompanies()),
+					':deschildrenaccompanies'=>utf8_decode($this->getdeschildrenaccompanies()),
 					':dtconfirmed'=>$this->getdtconfirmed()
 					
 				]
@@ -184,7 +188,8 @@ class Rsvp extends Model
 
 
 			$results[0]['desguest'] = utf8_encode($results[0]['desguest']);
-			$results[0]['desguestaccompanies'] = utf8_encode($results[0]['desguestaccompanies']);
+			$results[0]['desadultsaccompanies'] = utf8_encode($results[0]['desadultsaccompanies']);
+			$results[0]['deschildrenaccompanies'] = utf8_encode($results[0]['deschildrenaccompanies']);
 
 			
 			
@@ -210,7 +215,9 @@ class Rsvp extends Model
 	                :inadultsconfirmed,
 	                :inmaxchildren,
 	                :inchildrenconfirmed,
-	                :desguestaccompanies,
+	                :inchildrenageconfirmed,
+	                :desadultsaccompanies,
+	                :deschildrenaccompanies,
 	                :dtconfirmed
 
 
@@ -230,7 +237,9 @@ class Rsvp extends Model
 					':inadultsconfirmed'=>$this->getinadultsconfirmed(),
 					':inmaxchildren'=>$this->getinmaxchildren(),
 					':inchildrenconfirmed'=>$this->getinchildrenconfirmed(),
-					':desguestaccompanies'=>$this->getdesguestaccompanies(),
+					':inchildrenageconfirmed'=>$this->getinchildrenageconfirmed(),
+					':desadultsaccompanies'=>$this->getdesadultsaccompanies(),
+					':deschildrenaccompanies'=>$this->getdeschildrenaccompanies(),
 					':dtconfirmed'=>$this->getdtconfirmed()
 					
 				]
@@ -302,7 +311,8 @@ class Rsvp extends Model
 			{
 				
 				$results[0]['desguest'] = utf8_encode($results[0]['desguest']);
-				$results[0]['desguestaccompanies'] = utf8_encode($results[0]['desguestaccompanies']);
+				$results[0]['desadultsaccompanies'] = utf8_encode($results[0]['desadultsaccompanies']);
+				$results[0]['deschildrenaccompanies'] = utf8_encode($results[0]['deschildrenaccompanies']);
 				
 			}//end if
 
@@ -372,7 +382,8 @@ class Rsvp extends Model
 				{
 					# code...		
 		            $row['desguest'] = utf8_encode($row['desguest']);
-		            $row['desguestaccompanies'] = utf8_encode($row['desguestaccompanies']);
+		            $row['desadultsaccompanies'] = utf8_encode($row['desadultsaccompanies']);
+		            $row['deschildrenaccompanies'] = utf8_encode($row['deschildrenaccompanies']);
 
 				}//end foreach
 					
@@ -507,7 +518,8 @@ class Rsvp extends Model
 				{
 					# code...		
 		            $row['desguest'] = utf8_encode($row['desguest']);
-		            $row['desguestaccompanies'] = utf8_encode($row['desguestaccompanies']);
+		            $row['desadultsaccompanies'] = utf8_encode($row['desadultsaccompanies']);
+		            $row['deschildrenaccompanies'] = utf8_encode($row['deschildrenaccompanies']);
 
 				}//end foreach
 					
@@ -590,7 +602,8 @@ class Rsvp extends Model
 				{
 					# code...		
 		            $row['desguest'] = utf8_encode($row['desguest']);
-		            $row['desguestaccompanies'] = utf8_encode($row['desguestaccompanies']);
+		            $row['desadultsaccompanies'] = utf8_encode($row['desadultsaccompanies']);
+		            $row['deschildrenaccompanies'] = utf8_encode($row['deschildrenaccompanies']);
 
 				}//end foreach
 					
@@ -629,9 +642,18 @@ class Rsvp extends Model
 
 
 
-    public static function checkDesguestExists( $iduser, $desguest )
+    public static function checkDesguestExists( $iduser, $search )
 	{
 
+		
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  )
+		{
+
+			$search = utf8_decode($search);
+
+		}//end if
+
+		
 		
 		$sql = new Sql();
 
@@ -639,19 +661,20 @@ class Rsvp extends Model
 
 			SELECT * FROM tb_rsvp
             WHERE iduser = :iduser 
-            AND desguest LIKE :search
-            LIMIT 1;
+            AND desguest = :search
 
 			", 
 			
 			[
 
 				':iduser'=>$iduser,
-				':search'=>'%'.$desguest.'%'
+				':search'=>$search
 
 			]
 		
 		);//end select
+
+		
 
 		# Colocar o 'count' entre parênteses equivale a um if.
 		# If count count($results) > 0 , retorna TRUE
@@ -665,7 +688,8 @@ class Rsvp extends Model
 			{
 				
 				$results[0]['desguest'] = utf8_encode($results[0]['desguest']);
-				$results[0]['desguestaccompanies'] = utf8_encode($results[0]['desguestaccompanies']);
+				$results[0]['desadultsaccompanies'] = utf8_encode($results[0]['desadultsaccompanies']);
+				$results[0]['deschildrenaccompanies'] = utf8_encode($results[0]['deschildrenaccompanies']);
 				
 			}//end if
 
@@ -730,7 +754,7 @@ class Rsvp extends Model
 			{
 				
 				$results[0]['desguest'] = utf8_encode($results[0]['desguest']);
-				$results[0]['desguestaccompanies'] = utf8_encode($results[0]['desguestaccompanies']);
+				$results[0]['desadultsaccompanies'] = utf8_encode($results[0]['desadultsaccompanies']);
 				
 			}//end if
 
@@ -770,7 +794,7 @@ class Rsvp extends Model
         $results = $sql->select("
 
 
-        	SELECT a.desguest, a.desemail, a.nrphone, a.inadultsconfirmed, a.inchildrenconfirmed, a.desguestaccompanies, a.dtconfirmed 
+        	SELECT a.desguest, a.desemail, a.nrphone, a.inadultsconfirmed, a.inchildrenconfirmed, a.desadultsaccompanies, a.dtconfirmed 
 
         	FROM tb_rsvp a
         	INNER JOIN tb_users b ON a.iduser = b.iduser
@@ -801,7 +825,8 @@ class Rsvp extends Model
 				{
 					# code...		
 		            $row['desguest'] = utf8_encode($row['desguest']);
-		            $row['desguestaccompanies'] = utf8_encode($row['desguestaccompanies']);
+		            $row['desadultsaccompanies'] = utf8_encode($row['desadultsaccompanies']);
+		            $row['deschildrenaccompanies'] = utf8_encode($row['deschildrenaccompanies']);
 
 				}//end foreach
 					
@@ -898,7 +923,8 @@ class Rsvp extends Model
 				{
 					# code...		
 		            $row['desguest'] = utf8_encode($row['desguest']);
-		            $row['desguestaccompanies'] = utf8_encode($row['desguestaccompanies']);
+		            $row['desadultsaccompanies'] = utf8_encode($row['desadultsaccompanies']);
+		            $row['deschildrenaccompanies'] = utf8_encode($row['deschildrenaccompanies']);
 
 				}//end foreach
 					
@@ -997,7 +1023,8 @@ class Rsvp extends Model
 				{
 					# code...		
 		            $row['desguest'] = utf8_encode($row['desguest']);
-		            $row['desguestaccompanies'] = utf8_encode($row['desguestaccompanies']);
+		            $row['desadultsaccompanies'] = utf8_encode($row['desadultsaccompanies']);
+		            $row['deschildrenaccompanies'] = utf8_encode($row['deschildrenaccompanies']);
 
 				}//end foreach
 					

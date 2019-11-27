@@ -17,7 +17,7 @@ class Rule extends Model
 
 
 
-	/*
+	
 	# BEM CASEI SANDBOX PJ
 	#####################################################################
 	const WIRECARD_ACCESS_TOKEN = 'd53f289e62344cd88ac90b20077f2513_v2';
@@ -27,9 +27,9 @@ class Rule extends Model
 
 	const WIRECARD_PRIMARY_RECEIVER = 'MPA-89DC0863B0D3';
 	#####################################################################
-	*/
-
 	
+
+	/*
 	# BEM CASEI PRODUCTION PJ
 	#####################################################################
 	const WIRECARD_ACCESS_TOKEN = '75ea4315ea064f88a361fa3d0eaaf5e2_v2';
@@ -39,7 +39,7 @@ class Rule extends Model
 
 	const WIRECARD_PRIMARY_RECEIVER = 'MPA-8E6DB57A5738';
 	#####################################################################
-	
+	*/
 
 
 

@@ -40,8 +40,11 @@ class RsvpConfig extends Model
                 :inclosed,
                 :inadultsconfig,
                 :inmaxadultsconfig,
+                :inchildren,
                 :inchildrenconfig,
-                :inmaxchildrenconfig
+				:inmaxchildrenconfig,
+				:inchildrenage,
+				:desadultsdescription
 
 
 			)", 
@@ -53,8 +56,11 @@ class RsvpConfig extends Model
 				':inclosed'=>$this->getinclosed(),
 				':inadultsconfig'=>$this->getinadultsconfig(),
 				':inmaxadultsconfig'=>$this->getinmaxadultsconfig(),
+				':inchildren'=>$this->getinchildren(),
 				':inchildrenconfig'=>$this->getinchildrenconfig(),
-				':inmaxchildrenconfig'=>$this->getinmaxchildrenconfig()
+				':inmaxchildrenconfig'=>$this->getinmaxchildrenconfig(),
+				':inchildrenage'=>$this->getinchildrenage(),
+				':desadultsdescription'=>$this->getdesadultsdescription()
 				
 			]
         
@@ -96,7 +102,9 @@ class RsvpConfig extends Model
 
 			SELECT  *
 			FROM tb_rsvpconfig
-            WHERE iduser = :iduser
+			WHERE iduser = :iduser
+			ORDER BY dtregister DESC
+			LIMIT 1;
 
 			", 
 			

@@ -1,4 +1,4 @@
-<section class="dashboard">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
 
     <div class="container-fluid">            
             
@@ -12,20 +12,20 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                {if="!validatePlan()"}
+                <?php if( !validatePlan() ){ ?>
 
-                    {include="dashboard-menu-expirated"}
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
                
 
-                {elseif="validatePlanFree()"}
+                <?php }elseif( validatePlanFree() ){ ?>
 
-                    {include="dashboard-menu-free"}
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
 
-                {else}
+                <?php }else{ ?>
 
-                    {include="dashboard-menu"}
+                    <?php require $this->checkTemplate("dashboard-menu");?>
 
-                {/if}
+                <?php } ?>
                     
 
             </div><!--col-->
@@ -38,7 +38,7 @@
 
                 
 
-               <form method="post" action='/dashboard/rsvp/{function="setHash($rsvp.idrsvp)"}'>
+               <form method="post" action='/dashboard/rsvp/<?php echo setHash($rsvp["idrsvp"]); ?>'>
 
                     <div class="row">
                         <div class="col-md-12">
@@ -52,31 +52,31 @@
 
 
 
-                    {if="$success != ''"}
+                    <?php if( $success != '' ){ ?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {$success}
+                                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div> 
                         </div>  
-                    {/if}
+                    <?php } ?>
 
-                    {if="$error != ''"}
+                    <?php if( $error != '' ){ ?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    {$error}
+                                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div> 
                         </div>  
-                    {/if}
+                    <?php } ?>
 
 
 
@@ -91,7 +91,7 @@
                             <div class="dash-input-row">
 
                                 <label for="desguest">Convidado</label>
-                                <input type="text" class="form-control" id="desguest" name="desguest" value="{$rsvp.desguest}">
+                                <input type="text" class="form-control" id="desguest" name="desguest" value="<?php echo htmlspecialchars( $rsvp["desguest"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
 
@@ -106,7 +106,7 @@
 
 
                                 <label for="inmaxadults">Quantidade Máxima de Adultos</label>
-                                <input type="text" class="form-control" id="inmaxadults" name="inmaxadults" value="{$rsvp.inmaxadults}">
+                                <input type="text" class="form-control" id="inmaxadults" name="inmaxadults" value="<?php echo htmlspecialchars( $rsvp["inmaxadults"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
                             </div><!--dash-input-row-->
@@ -119,16 +119,16 @@
 
 
 
-                            {if="$rsvpconfig.inchildren == 1"}
+                            <?php if( $rsvpconfig["inchildren"] == 1 ){ ?>
                             <div class="dash-input-row input-inposition">
 
 
                                 <label for="inmaxchildren">Quantidade Máxima de Crianças</label>
-                                <input type="text" class="form-control" id="inmaxchildren" name="inmaxchildren" value="{$rsvp.inmaxchildren}">
+                                <input type="text" class="form-control" id="inmaxchildren" name="inmaxchildren" value="<?php echo htmlspecialchars( $rsvp["inmaxchildren"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
                             </div><!--dash-input-row-->
-                            {/if}
+                            <?php } ?>
 
 
 
@@ -136,7 +136,7 @@
                             <div class="dash-input-row">
 
 
-                                <input type="hidden" class="form-control" id="idrsvp" name="idrsvp" value='{function="setHash($rsvp.idrsvp)"}'>
+                                <input type="hidden" class="form-control" id="idrsvp" name="idrsvp" value='<?php echo setHash($rsvp["idrsvp"]); ?>'>
 
 
                             </div><!--dash-input-row-->

@@ -120,36 +120,6 @@
 
 
 
-
-
-    /********************************BANNER*****************************************/
-    #banner {
-        background: url("/res/images/template/banner/banner1.jpg") no-repeat center;
-        background-size: cover;
-        width: 100%;
-        position: relative;
-    }
-    #frame{
-        background: url("/res/images/frame/frame1.png") no-repeat center;
-        background-size: contain;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        margin: 0 auto;
-        height: 400px;
-    }
-    /********************************BANNER*****************************************/
-
-
-
-
-
-
-
-
     /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
     .alert-domain h1{
         text-align: center;
@@ -215,15 +185,49 @@
     /****************INDEX, WEDDING, PARTY , EVENTS , MESSAGE, STORE ********************/
 
 
-   
 
 
 
-    
 
-    /********************************WEDDING, PARTY*****************************************/
-    <?php if( $customstyle["inroundborderimage"] == '1' ){ ?>.main-image img{ border-radius: 50%; border: <?php echo htmlspecialchars( $customstyle["desborderimagesize"], ENT_COMPAT, 'UTF-8', FALSE ); ?>px solid #<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>DD;}<?php } ?>;
-    /********************************WEDDING, PARTY*****************************************/
+
+
+
+
+
+
+
+
+
+    /********************************STORE 2*****************************************/
+    .card-add-cart button{
+        font-family: 'OpenSans'!important;
+        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
+        border: 0;
+        border-radius: 12px;
+        padding: 10px 34px;
+        color: #fff;
+        background-color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#333333<?php } ?>;
+    }
+    .card-add-cart button:hover{
+        color: #fff;
+        background-color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>DD<?php }else{ ?>#333333<?php } ?>;
+    }
+    .card-add-continue button{
+        font-family: 'OpenSans'!important;
+        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
+        background: #e6e6e6;
+        border: 0;
+        border-radius: 12px;
+        padding: 10px 34px;
+        font-size: 0.9rem;
+        color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#333333<?php } ?>;
+    }
+    .card-add-continue button:hover{
+      background: #e1e1e1;
+      color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#333333<?php } ?>;
+      
+    }
+    /********************************STORE 2*****************************************/
 
 
 
@@ -233,31 +237,221 @@
     
 </style>
 
+<?php if( !validatePlanDomain() ){ ?>
+<section class="domain">
+    <div class="container-fluid">
 
-<section id="domain-404">
-    
-    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Mural de Mensagens Desabilitado</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+    </div>
+</section>
+
+<?php }elseif( $user["inplancontext"] == 0 ){ ?>
+<section class="domain">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Para liberar as funcionalidades do Mural é necessário adquirir um plano</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+    </div>
+</section>
+
+<?php }else{ ?>
+
+
+
+
+
+<section class="domain">
+
+    <div class="container-fluid">
+
         
-        <div class="row centralizer">
+            
             
 
-            <div class="col-md-10 col-12 text-center">
-                    
-                <h3>404 - Infelizmente não foi encontrado nenhum conteúdo :(</h3>
 
-                <h5>Por favor, verifique como digitou e tente novamente</h5>
+
+        <div class="row">
+            
+            <div class="col-12">
+
+
+                <div class="section-title">
+                        
+
+                    <h3>
+                        Enviar Mensagem
+                    </h3>
+
+                    <hr>
+
+
+                </div><!--section-title-->
+
+                     
+               
+            </div><!--col-->
+
+        
+        </div><!--row-->
+
+
+
+
+        <?php if( $success != '' ){ ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div> 
+        </div>  
+        <?php } ?>
+
+
+        <?php if( $error != '' ){ ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row--> 
+        <?php } ?> 
+    
+
+
+    
+        
+
+
+        <div class="row">
+
+            <div class="col-12">
+
+
+                <div class="card-wrapper">
+
+
+                    <div class="card3 text-left">
+                        
+
+          
+
+
+                            
+                        <form action="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/mural-mensagens/enviar" method="post">
+
+
+                            <div class="body-row">
+
+                                    
+                                <label for="desmessage"><h5>Nome</h5>
+                                </label>
+                                <input type="text" id="desmessage" name="desmessage" class="input-text">
+
+
+                            </div><!--big-body-row-->
+
+
+                            <div class="body-row">
+
+                                    
+                                <label for="desemail"><h5>E-mail</h5>
+                                </label>
+                                <input type="email" id="desemail" name="desemail" class="input-text">
+
+
+                            </div><!--big-body-row-->
+
+
+
+                            <div class="body-row">
+
+                                    
+                                <div>
+                                <label for="desdescription"><h5>Mensagem</h5></label>
+                                
+                                </div>
+                                
+                                <textarea rows="10" maxlength="500" id="desdescription" name="desdescription"></textarea>
+
+
+                            </div><!--big-body-row-->
+
+                            <div class="body-footer text-right">
+
+
+                                <button type="submit" value="Enviar Mensagem"><h4>Enviar</h4></button>
+
+
+                            </div><!--big-body-row-->
+
+
+
+                        </form>
+
+
+
+
+
+
+
+
+
+
+
+                                              
+                        
+                    </div><!--card-->
+
+                </div><!--wrapper-->    
+
+            </div><!--col-->
+    
+        </div><!--row-->
+
+
+     
+
                 
-                <img alt="404 - Infelizmente não foi encontrado nenhum conteúdo" src="/res/images/banner/404.jpg">  
-
-            </div>
 
 
-        </div>
 
-                    
+
+
 
     </div><!--container-->
 
-
 </section>
+<?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 

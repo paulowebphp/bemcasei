@@ -77,12 +77,7 @@
     footer{
         padding: 5% 5% 2% 5%;
         color: <?php if( $customstyle["descolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#FFFFFF<?php } ?>;
-        <?php if( $customstyle["inbgcolorgradient"] == '0' ){ ?>
         background-color: <?php if( $customstyle["desbgcolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["desbgcolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
-        <?php }else{ ?>
-        text-shadow: 4px 4px 4px rgba(0, 0, 0, .45);
-        background: radial-gradient(ellipse at center, <?php if( $customstyle["desbgcolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["desbgcolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?>99<?php }else{ ?>#F7D9E199<?php } ?> 0%, <?php if( $customstyle["desbgcolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["desbgcolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#F7D9E1<?php } ?> 60%);
-        <?php } ?>
     }
     footer a{
         color: <?php if( $customstyle["descolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#FFFFFF<?php } ?>;
@@ -314,32 +309,7 @@
         </div><!--row-->
 
 
-        <?php if( $success != '' ){ ?>
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div> 
-        </div>  
-        <?php } ?>
-
-
-        <?php if( $error != '' ){ ?>
-            <div class="row">
-                <div class="col-12">
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                </div> 
-            </div>  
-        <?php } ?>
+        
 
 
 
@@ -362,7 +332,24 @@
                     <div class="card3 text-left">
                         
 
-          
+                        <?php if( $success != '' ){ ?>
+                        <div class="bottom3 alert alert-success alert-dismissible fade show" role="alert">
+                            <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div> 
+                        <?php } ?>
+
+
+                        <?php if( $error != '' ){ ?>
+                        <div class="bottom3 alert alert-danger alert-dismissible fade show" role="alert">
+                            <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div> 
+                        <?php } ?>
 
 
                             

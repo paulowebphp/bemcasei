@@ -174,13 +174,13 @@ header  #menu-header li a {
 }
 header #nav-free{
 	background: none;
-	border:	1px solid #ed166c;
+	border:	1px solid #03A9F4;
 	border-radius: 8px;
 	padding: 15px 25px;
-	color: #ed166c;
+	color: #03A9F4;
 }
 header 	#nav-login{
-	background: #ed166c;
+	background: #03A9F4;
 	border:	none;
 	border-radius: 8px;
 	padding: 15px 25px;
@@ -859,15 +859,15 @@ label{
 .card-dash button{
   padding: 8% 12%;
   background-color: transparent;
-  border: 1px solid #ed166c;
+  border: 1px solid #03A9F4;
   border-radius: 20px;
-  color: #ed166c;
+  color: #03A9F4;
   margin-bottom: 8%;
   width: 100%;
 }
 
 .del-button button{
-  background-color: #ed166c;
+  background-color: #03A9F4;
   color: #fff;
 }
 
@@ -979,10 +979,10 @@ label{
 .card-plan button{
   padding: 10px 34px;
   background-color: transparent;
-  border: 1px solid #ed166c;
+  border: 1px solid #03A9F4;
   border-radius: 20px;
   margin: 0 1%;
-  color: #ed166c;
+  color: #03A9F4;
   margin-bottom: 8%;
 }
 .card-plan-header2{
@@ -1397,6 +1397,7 @@ label{
   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);
   border: 2px solid #f9f9f9;
   border-radius: 4px;
+  padding: 10% 10%;
 }
 .account-box1{
   padding: 18px 18px 0 18px;
@@ -1606,7 +1607,7 @@ label{
 }
 
 .checkout-warn{
-  color: #ed166c;
+  color: #03A9F4;
   text-align: center;
   height: 350px;
   width: 65%;
@@ -1642,7 +1643,7 @@ label{
   display: inline;
 }
 #checkout-accounts-button{
-  background: #ed166c;
+  background: #03A9F4;
   color: #fff;
   margin-top: 25%;
 }

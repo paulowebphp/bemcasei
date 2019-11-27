@@ -2229,6 +2229,79 @@ class Validate extends Model
 
 
 
+	public static function validateChildrenAge( $value )
+	{
+
+		$value = trim($value);
+
+		$value = preg_replace('/[^0-9]/', '', $value);
+
+		if( 
+			
+			$value != ''
+			&&
+			(int)$value <= 21
+			
+		)
+		{
+
+			return $value;
+
+		}//end if
+		else
+		{
+			return false;
+
+		}//end else
+
+
+
+
+
+		/*if( $value != ''
+			&&
+			strlen($value) < 3 )
+		{
+
+			return $value;
+
+		}//end if
+		else
+		{
+			return false;
+
+		}//end else
+*/
+
+
+		
+
+
+	}//end validateMaxRsvp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

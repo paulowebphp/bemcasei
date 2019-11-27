@@ -154,7 +154,7 @@
 
 
 
-                            <div class="col-md-2 col-12">
+                            <div class="col-md-5 col-12">
 
                                 <div class="card-dash-field">
 
@@ -180,103 +180,7 @@
 
 
 
-                            <div class="col-md-2 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["inadultsconfirmed"] > 0 ){ ?><?php echo htmlspecialchars( $value1["inadultsconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>0<?php } ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-
-                                        <?php if( $value1["inconfirmed"] == '0' ){ ?>
-                                            <span>Adultos<br><small>(máx. <?php echo getMaxAdults($value1["inmaxadults"],$rsvpconfig["inadultsconfig"],$rsvpconfig["inmaxadultsconfig"]); ?>)</small></span>
-                                        <?php }else{ ?>
-                                            <span>Adultos</span>
-                                        <?php } ?>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-
-
-
-                            <div class="col-md-2 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["inchildrenconfirmed"] > 0 ){ ?><?php echo htmlspecialchars( $value1["inchildrenconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>0<?php } ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        
-
-                                        <?php if( $value1["inconfirmed"] == '0' ){ ?>
-                                            <span>Crianças<br><small>(máx. <?php echo getMaxChildren($value1["inmaxchildren"],$rsvpconfig["inchildrenconfig"],$rsvpconfig["inmaxchildrenconfig"]); ?>)</small></span>
-                                        <?php }else{ ?>
-                                            <span>Crianças</span>
-                                        <?php } ?>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-
-                            <div class="col-md-2 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["inconfirmed"] == 0 ){ ?>Não<?php }else{ ?>Sim<?php } ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Confirmado?</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-                            <div class="col-md-2 col-12">
+                            <div class="col-md-3 col-12">
 
                                 <div class="card-dash-field">
 
@@ -289,70 +193,6 @@
 
                                         <hr>
                                         <span>Telefone</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-
-                            <div class="col-md-2 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["dtconfirmed"] == '' or $value1["dtconfirmed"] == null ){ ?>-<?php }else{ ?><?php echo formatDate($value1["dtconfirmed"]); ?><?php } ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Data da Confirmação</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-                        </div><!--row-->
-
-
-
-
-                        <div class="row card-dash-row2">
-                            
-                            
-
-                            <div class="col-md-8 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["desguestaccompanies"] == '' or $value1["desguestaccompanies"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["desguestaccompanies"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Nomes dos Acompanhantes</span>
                                         
                                     </div>
 
@@ -397,9 +237,280 @@
 
 
 
+                        </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="row card-dash-row2">
+                            
+                
+
+
+
+
+
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php if( $value1["inadultsconfirmed"] > 0 ){ ?><?php echo htmlspecialchars( $value1["inadultsconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>0<?php } ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+
+                                        <?php if( $value1["inconfirmed"] == '0' ){ ?>
+                                            <span>Adultos<br><small>(máx. <?php echo getMaxAdults($value1["inmaxadults"],$rsvpconfig["inadultsconfig"],$rsvpconfig["inmaxadultsconfig"]); ?>)</small></span>
+                                        <?php }else{ ?>
+                                            <span>Adultos</span>
+                                        <?php } ?>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+                            <div class="col-md-5 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php if( $value1["desadultsaccompanies"] == '' or $value1["desadultsaccompanies"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["desadultsaccompanies"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Nomes dos Acompanhantes Adultos</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php if( $value1["inconfirmed"] == 0 ){ ?>Não<?php }else{ ?>Sim<?php } ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Confirmado?</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+                            
+
+
+
+
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php if( $value1["dtconfirmed"] == '' or $value1["dtconfirmed"] == null ){ ?>-<?php }else{ ?><?php echo formatDate($value1["dtconfirmed"]); ?><?php } ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Data da Confirmação</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
 
                         </div><!--row-->
 
+
+
+
+
+                        <?php if( $rsvpconfig["inchildren"] == 1 ){ ?>
+                        <div class="row card-dash-row2">
+                            
+                            
+
+                                <div class="col-md-3 col-12">
+
+                                        <div class="card-dash-field">
+        
+        
+                                            <div class="card-dash-content">
+                                                <span><?php if( $value1["inchildrenconfirmed"] > 0 ){ ?><?php echo htmlspecialchars( $value1["inchildrenconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>0<?php } ?></span>
+                                            </div>
+        
+                                            <div class="card-dash-header">
+        
+                                                <hr>
+                                                
+        
+                                                <?php if( $value1["inconfirmed"] == '0' ){ ?>
+                                                    <span>Crianças<br><small>(máx. <?php echo getMaxChildren($value1["inmaxchildren"],$rsvpconfig["inchildrenconfig"],$rsvpconfig["inmaxchildrenconfig"]); ?>)</small></span>
+                                                <?php }else{ ?>
+                                                    <span>Crianças</span>
+                                                <?php } ?>
+                                                
+                                            </div>
+        
+        
+                                        </div><!--card-dash-field-->
+        
+                                        
+                                    </div><!--col-->
+        
+        
+        
+        
+                                    <div class="col-md-3 col-12">
+        
+                                        <div class="card-dash-field">
+        
+                                            <?php if( $value1["inconfirmed"] == '0' ){ ?>
+                                            <div class="card-dash-content">
+                                               
+                                                <span><?php echo htmlspecialchars( $rsvpconfig["inchildrenage"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                                
+                                            </div>
+        
+                                            <div class="card-dash-header">
+        
+                                                <hr>
+                                                <span>Idade Considerado Criança</span>
+                                                
+                                            </div>
+                                            <?php }else{ ?>
+                                                
+        
+        
+        
+        
+                                            <div class="card-dash-content">
+                                            
+                                                <span><?php echo htmlspecialchars( $rsvp["inchildrenageconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                                
+                                            </div>
+        
+                                            <div class="card-dash-header">
+        
+                                                <hr>
+                                                <span>Idade Considerado Criança (Confirmado)</span>
+                                                
+                                            </div>
+                                            <?php } ?>
+        
+        
+                                        </div><!--card-dash-field-->
+        
+                                        
+                                    </div><!--col-->
+
+
+
+
+
+                            <div class="col-md-6 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php if( $value1["deschildrenaccompanies"] == '' or $value1["deschildrenaccompanies"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["deschildrenaccompanies"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Nomes dos Acompanhantes Crianças</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+                        </div><!--row-->
+                        <?php } ?>
 
 
 

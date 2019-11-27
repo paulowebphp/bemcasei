@@ -170,7 +170,7 @@
 
 
 
-                            <div class="col-md-3 col-12">
+                            <div class="col-md-4 col-12">
 
                                 <div class="card-dash-field">
 
@@ -256,19 +256,19 @@
 
 
 
-                            <div class="col-md-3 col-12">
+                            <div class="col-md-2 col-12">
 
                                 <div class="card-dash-field">
 
 
                                     <div class="card-dash-content">
-                                        <span>{if="$value.nrphone == '' or $value.nrphone == null"}-{else}{$value.nrphone}{/if}</span>
+                                        <span>{if="$value.inchildrenageconfirmed > 0"}{$value.inchildrenageconfirmed}{else}0{/if}</span>
                                     </div>
 
                                     <div class="card-dash-header">
 
                                         <hr>
-                                        <span>Telefone</span>
+                                        <span>Idade Considerado Criança</span>
                                         
                                     </div>
 
@@ -320,19 +320,19 @@
                             
                             
 
-                            <div class="col-md-8 col-12">
+                            <div class="col-md-3 col-12">
 
                                 <div class="card-dash-field">
 
 
                                     <div class="card-dash-content">
-                                        <span>{if="$value.desguestaccompanies == '' or $value.desguestaccompanies == null"}-{else}{$value.desguestaccompanies}{/if}</span>
+                                        <span>{if="$value.desadultsaccompanies == '' or $value.desadultsaccompanies == null"}-{else}{$value.desadultsaccompanies}{/if}</span>
                                     </div>
 
                                     <div class="card-dash-header">
 
                                         <hr>
-                                        <span>Nomes dos Acompanhantes</span>
+                                        <span>Nomes dos Acompanhantes Adultos</span>
                                         
                                     </div>
 
@@ -343,6 +343,55 @@
                             </div><!--col-->
 
 
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{if="$value.deschildrenaccompanies == '' or $value.deschildrenaccompanies == null"}-{else}{$value.deschildrenaccompanies}{/if}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Nomes dos Acompanhantes Crianças</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+                            <div class="col-md-3 col-12">
+
+                                    <div class="card-dash-field">
+    
+    
+                                        <div class="card-dash-content">
+                                            <span>{if="$value.nrphone == '' or $value.nrphone == null"}-{else}{$value.nrphone}{/if}</span>
+                                        </div>
+    
+                                        <div class="card-dash-header">
+    
+                                            <hr>
+                                            <span>Telefone</span>
+                                            
+                                        </div>
+    
+    
+                                    </div><!--card-dash-field-->
+    
+                                    
+                                </div><!--col-->
+
+
                             
 
 
@@ -350,7 +399,7 @@
 
 
 
-                            <div class="col-md-4 col-12">
+                            <div class="col-md-3 col-12">
 
                                 <div class="card-dash-field">
 

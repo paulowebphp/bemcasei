@@ -116,7 +116,7 @@
 
 
 
-
+                            <?php if( $rsvpconfig["inchildren"] == 1 ){ ?>
                             <div class="dash-input-row input-inposition">
 
 
@@ -125,7 +125,7 @@
 
 
                             </div><!--dash-input-row-->
-
+                            <?php } ?>
 
 
 

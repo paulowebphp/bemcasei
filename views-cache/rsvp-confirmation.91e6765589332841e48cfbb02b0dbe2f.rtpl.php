@@ -1,29 +1,29 @@
-<style type="text/css">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><style type="text/css">
 
 
 
 
     
     section h1{
-        color: {if="$customstyle.descolor1 != ''"}#{$customstyle.descolor1}{else}#FFFFFF{/if};
-        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+        color: <?php if( $customstyle["descolor1"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor1"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#FFFFFF<?php } ?>;
+        font-family: <?php if( $customstyle["desfontfamily1"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamily1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'Norican'<?php } ?>;
     }
     section h2{
-        color: {if="$customstyle.descolordate != ''"}#{$customstyle.descolordate}{else}#FFFFFF{/if};
-        font-family: {if="$customstyle.desfontfamilydate != ''"}'{$customstyle.desfontfamilydate}'{else}'Norican'{/if};
+        color: <?php if( $customstyle["descolordate"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolordate"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#FFFFFF<?php } ?>;
+        font-family: <?php if( $customstyle["desfontfamilydate"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamilydate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'Norican'<?php } ?>;
     }
     section h3{
-        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
-        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+        color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
+        font-family: <?php if( $customstyle["desfontfamily1"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamily1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'Norican'<?php } ?>;
     }
     section h4{
-        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+        font-family: <?php if( $customstyle["desfontfamily1"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamily1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'Norican'<?php } ?>;
     }
     section h5{
-        font-family: {if="$customstyle.desfontfamily2 != ''"}'{$customstyle.desfontfamily2}'{else}'OpenSans'{/if};
+        font-family: <?php if( $customstyle["desfontfamily2"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamily2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'OpenSans'<?php } ?>;
     }
     section h6{
-        font-family: {if="$customstyle.desfontfamily2 != ''"}'{$customstyle.desfontfamily2}'{else}'OpenSans'{/if};
+        font-family: <?php if( $customstyle["desfontfamily2"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamily2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'OpenSans'<?php } ?>;
     }
 
 
@@ -35,32 +35,32 @@
 
     /********************************HEADER*****************************************/
     header .header-title h3{
-        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
-        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+        color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
+        font-family: <?php if( $customstyle["desfontfamily1"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamily1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'Norican'<?php } ?>;
 
     }
     header #domain-dropdown-menu a:hover{
-        color: {if="$customstyle.descolortexthover != ''"}#{$customstyle.descolortexthover}{else}#DD716F{/if};
+        color: <?php if( $customstyle["descolortexthover"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolortexthover"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
     }
     header .cart-amount {
-        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
         font-weight: 700;
     }
     
     header #shopping-item-mobile .shopping-item:hover .product-count {
-        background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        background-color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
     }
     header .product-count {
-        background: none repeat scroll 0 0 {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        background: none repeat scroll 0 0 <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
     }
     header #menu-condensed i{
         font-size: 30px;
-        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}99{else}#DD716F{/if};
+        color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>99<?php }else{ ?>#DD716F<?php } ?>;
     }
     header .bar-close .btn-close {
         background:none;
         border: none;
-        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
+        color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
         font-size: 22px;
     }
     /********************************HEADER*****************************************/
@@ -76,41 +76,41 @@
 
     footer{
         padding: 5% 5% 2% 5%;
-        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
-        background-color: {if="$customstyle.desbgcolorfooter != ''"}#{$customstyle.desbgcolorfooter}{else}#DD716F{/if};
+        color: <?php if( $customstyle["descolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#FFFFFF<?php } ?>;
+        background-color: <?php if( $customstyle["desbgcolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["desbgcolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
     }
     footer a{
-        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+        color: <?php if( $customstyle["descolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#FFFFFF<?php } ?>;
     }
     footer a:hover{
-        color: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if};
+        color: <?php if( $customstyle["descolorfooterhover"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolorfooterhover"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#F7D9E1<?php } ?>;
     }
     footer .bottom-footer p {
       line-height: 24px;
       font-size: 15px;
       padding-top: 20px;
-      border-top: 1px solid {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
-      color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+      border-top: 1px solid <?php if( $customstyle["descolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#FFFFFF<?php } ?>;
+      color: <?php if( $customstyle["descolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#FFFFFF<?php } ?>;
     }
     footer .footer-title h3{
         font-size: 3rem;
-        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
-        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+        color: <?php if( $customstyle["descolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#FFFFFF<?php } ?>;
+        font-family: <?php if( $customstyle["desfontfamily1"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamily1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'Norican'<?php } ?>;
     }
     footer .list-group-item{
         margin: 2% 0;
         background: none;
-        color: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if};
+        color: <?php if( $customstyle["descolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#FFFFFF<?php } ?>;
     }
     footer .list-group-item:hover{
         background: none;
-        color: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if};
+        color: <?php if( $customstyle["descolorfooterhover"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolorfooterhover"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#F7D9E1<?php } ?>;
     }
     footer .list-socials a {
-      border: {if="$customstyle.descolorfooter != ''"}#{$customstyle.descolorfooter}{else}#FFFFFF{/if} 1px solid;
+      border: <?php if( $customstyle["descolorfooter"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolorfooter"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#FFFFFF<?php } ?> 1px solid;
     }
     footer .list-socials a:hover {
-      border: {if="$customstyle.descolorfooterhover != ''"}#{$customstyle.descolorfooterhover}{else}#F7D9E1{/if} 1px solid;
+      border: <?php if( $customstyle["descolorfooterhover"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolorfooterhover"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#F7D9E1<?php } ?> 1px solid;
     }
     /********************************FOOTER*****************************************/
 
@@ -123,8 +123,8 @@
     /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
     .alert-domain h1{
         text-align: center;
-        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
-        font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+        color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
+        font-family: <?php if( $customstyle["desfontfamily1"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamily1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'Norican'<?php } ?>;
 
     }
     /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
@@ -141,11 +141,11 @@
 
     /********************************DOMAIN*****************************************/
     .dropdown a:hover{
-        color: {if="$customstyle.descolortexthover != ''"}#{$customstyle.descolortexthover}{else}#171F26{/if};
+        color: <?php if( $customstyle["descolortexthover"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolortexthover"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#171F26<?php } ?>;
 
     }
     .section-title hr{
-        background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#171F26{/if};
+        background-color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#171F26<?php } ?>;
     }
     /********************************DOMAIN*****************************************/
 
@@ -169,18 +169,18 @@
 
     .buttons-wrapper button{
       padding: 10px 34px;
-      border-radius: {if="$customstyle.desborderradiusbutton != ''"}{$customstyle.desborderradiusbutton}px{else}20px{/if};
-      font-family: {if="$customstyle.desfontfamily1 != ''"}'{$customstyle.desfontfamily1}'{else}'Norican'{/if};
+      border-radius: <?php if( $customstyle["desborderradiusbutton"] != '' ){ ?><?php echo htmlspecialchars( $customstyle["desborderradiusbutton"], ENT_COMPAT, 'UTF-8', FALSE ); ?>px<?php }else{ ?>20px<?php } ?>;
+      font-family: <?php if( $customstyle["desfontfamily1"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamily1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'Norican'<?php } ?>;
 
-      {if="$customstyle.inbgcolorbutton == '0'"}
+      <?php if( $customstyle["inbgcolorbutton"] == '0' ){ ?>
       background-color: transparent;
-      color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
-      border: 1px solid {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};
-      {else}
-      background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#DD716F{/if};;
+      color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
+      border: 1px solid <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
+      <?php }else{ ?>
+      background-color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;;
       color: #FFFFFF;
       border: none;
-      {/if}
+      <?php } ?>
     }
     /****************INDEX, WEDDING, PARTY , EVENTS , MESSAGE, STORE ********************/
 
@@ -206,11 +206,11 @@
         border-radius: 12px;
         padding: 10px 34px;
         color: #fff;
-        background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#333333{/if};
+        background-color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#333333<?php } ?>;
     }
     .card-add-cart button:hover{
         color: #fff;
-        background-color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}DD{else}#333333{/if};
+        background-color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>DD<?php }else{ ?>#333333<?php } ?>;
     }
     .card-add-continue button{
         font-family: 'OpenSans'!important;
@@ -220,11 +220,11 @@
         border-radius: 12px;
         padding: 10px 34px;
         font-size: 0.9rem;
-        color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#333333{/if};
+        color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#333333<?php } ?>;
     }
     .card-add-continue button:hover{
       background: #e1e1e1;
-      color: {if="$customstyle.descolor2 != ''"}#{$customstyle.descolor2}{else}#333333{/if};
+      color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#333333<?php } ?>;
       
     }
     /********************************STORE 2*****************************************/
@@ -236,7 +236,7 @@
 
     
 </style>
-{if="!validatePlanDomain()"}
+<?php if( !validatePlanDomain() ){ ?>
 <section class="domain">
     <div class="container-fluid">
 
@@ -250,7 +250,7 @@
     </div>
 </section>
 
-{elseif="$user.inplancontext == 0"}
+<?php }elseif( $user["inplancontext"] == 0 ){ ?>
 <section class="domain">
     <div class="container-fluid">
 
@@ -265,7 +265,7 @@
 </section>
 
 
-{else}
+<?php }else{ ?>
 
 
 
@@ -313,7 +313,7 @@
 
 
 
-        {if="$rsvpconfig.inclosed == 0"}
+        <?php if( $rsvpconfig["inclosed"] == 0 ){ ?>
 
         
 
@@ -330,27 +330,27 @@
                         
 
           
-                        {if="$success != ''"}
+                        <?php if( $success != '' ){ ?>
                         <div class="bottom3 alert alert-success alert-dismissible fade show" role="alert">
-                            {$success}
+                            <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div> 
-                        {/if}
+                        <?php } ?>
 
 
-                        {if="$error != ''"}
+                        <?php if( $error != '' ){ ?>
                         <div class="bottom3 alert alert-danger alert-dismissible fade show" role="alert">
-                            {$error}
+                            <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div> 
-                        {/if}
+                        <?php } ?>
 
                             
-                        <form action="/{$user.desdomain}/rsvp/confirmacao/{$hash}" method="post">
+                        <form action="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/rsvp/confirmacao/<?php echo htmlspecialchars( $hash, ENT_COMPAT, 'UTF-8', FALSE ); ?>" method="post">
 
 
 
@@ -361,7 +361,7 @@
                                     
                                 <div class="col-12">
                                     
-                                    <h5>Olá, <strong>{$rsvp.desguest}</strong>, faça a sua confirmação de presença:</h5>
+                                    <h5>Olá, <strong><?php echo htmlspecialchars( $rsvp["desguest"], ENT_COMPAT, 'UTF-8', FALSE ); ?></strong>, faça a sua confirmação de presença:</h5>
 
                                 </div><!--col-->
 
@@ -415,7 +415,7 @@
 
 
 
-                            {if="$rsvpconfig.inchildren == 1"}
+                            <?php if( $rsvpconfig["inchildren"] == 1 ){ ?>
                             <div class="body-row centralizer row">
 
 
@@ -426,7 +426,7 @@
 
                                     <label for="inadultsconfirmed">
 
-                                        <span>Número de Adultos <br><small>(Máximo Permitido:&nbsp; {if="$rsvpconfig.inadultsconfig == 0"}{$rsvp.inmaxadults}{else}{$rsvpconfig.inmaxadultsconfig}{/if})</small></span>
+                                        <span>Número de Adultos <br><small>(Máximo Permitido:&nbsp; <?php if( $rsvpconfig["inadultsconfig"] == 0 ){ ?><?php echo htmlspecialchars( $rsvp["inmaxadults"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?><?php echo htmlspecialchars( $rsvpconfig["inmaxadultsconfig"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>)</small></span>
 
                                     </label>
                                     
@@ -448,7 +448,7 @@
 
                                     <label for="inchildrenconfirmed">
                                         
-                                        <span>Número de Crianças <br>com menos de <strong>{$rsvpconfig.inchildrenage} anos</strong> <br><small>(Máximo Permitido:&nbsp; {if="$rsvpconfig.inchildrenconfig == 0"}{$rsvp.inmaxchildren}{else}{$rsvpconfig.inmaxchildrenconfig}{/if})</small></span>
+                                        <span>Número de Crianças <br>com menos de <strong><?php echo htmlspecialchars( $rsvpconfig["inchildrenage"], ENT_COMPAT, 'UTF-8', FALSE ); ?> anos</strong> <br><small>(Máximo Permitido:&nbsp; <?php if( $rsvpconfig["inchildrenconfig"] == 0 ){ ?><?php echo htmlspecialchars( $rsvp["inmaxchildren"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?><?php echo htmlspecialchars( $rsvpconfig["inmaxchildrenconfig"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>)</small></span>
 
                                     </label>
                                     
@@ -510,7 +510,7 @@
                                 </div><!--col-->   
                                 
                             </div><!--big-body-row-->
-                            {else}
+                            <?php }else{ ?>
                             <div class="body-row row">
 
 
@@ -521,7 +521,7 @@
 
                                     <label for="inadultsconfirmed">
 
-                                        <span>Número de Adultos <br><small>(Máximo Permitido:&nbsp; {if="$rsvpconfig.inadultsconfig == 0"}{$rsvp.inmaxadults}{else}{$rsvpconfig.inmaxadultsconfig}{/if})</small></span>
+                                        <span>Número de Adultos <br><small>(Máximo Permitido:&nbsp; <?php if( $rsvpconfig["inadultsconfig"] == 0 ){ ?><?php echo htmlspecialchars( $rsvp["inmaxadults"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?><?php echo htmlspecialchars( $rsvpconfig["inmaxadultsconfig"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>)</small></span>
 
                                     </label>
                                     
@@ -576,7 +576,7 @@
                                 </div><!--col-->   
                                 
                             </div><!--big-body-row-->
-                            {/if}
+                            <?php } ?>
 
 
                       
@@ -615,7 +615,7 @@
 
         
 
-        {else}
+        <?php }else{ ?>
 
         <div class="row">
             <div class="col-12">
@@ -625,7 +625,7 @@
             </div><!--col-->
         </div><!--row-->
 
-        {/if}
+        <?php } ?>
 
         
             
@@ -639,7 +639,7 @@
     </div><!--container-->
 
 </section>
-{/if}
+<?php } ?>
 
 
 

@@ -120,55 +120,6 @@
 
 
 
-
-
-    /********************************BANNER*****************************************/
-    #banner {
-        background: url("/res/images/template/banner/banner1.jpg") no-repeat center;
-        background-size: cover;
-        width: 100%;
-        position: relative;
-    }
-    #frame{
-        background: url("/res/images/frame/frame1.png") no-repeat center;
-        background-size: contain;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        margin: 0 auto;
-        height: 400px;
-    }
-    /********************************BANNER*****************************************/
-
-
-
-
-
-
-
-
-    /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
-    .alert-domain h1{
-        text-align: center;
-        color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
-        font-family: <?php if( $customstyle["desfontfamily1"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamily1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'Norican'<?php } ?>;
-
-    }
-    /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
-
-
-
-
-
-
-
-
-
-
-
     /********************************DOMAIN*****************************************/
     .dropdown a:hover{
         color: <?php if( $customstyle["descolortexthover"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolortexthover"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#171F26<?php } ?>;
@@ -184,80 +135,224 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    /****************INDEX, WEDDING, PARTY , EVENTS , MESSAGE, STORE ********************/
-
-    .buttons-wrapper button{
-      padding: 10px 34px;
-      border-radius: <?php if( $customstyle["desborderradiusbutton"] != '' ){ ?><?php echo htmlspecialchars( $customstyle["desborderradiusbutton"], ENT_COMPAT, 'UTF-8', FALSE ); ?>px<?php }else{ ?>20px<?php } ?>;
-      font-family: <?php if( $customstyle["desfontfamily1"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamily1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'Norican'<?php } ?>;
-
-      <?php if( $customstyle["inbgcolorbutton"] == '0' ){ ?>
-      background-color: transparent;
-      color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
-      border: 1px solid <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
-      <?php }else{ ?>
-      background-color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;;
-      color: #FFFFFF;
-      border: none;
-      <?php } ?>
-    }
-    /****************INDEX, WEDDING, PARTY , EVENTS , MESSAGE, STORE ********************/
-
-
-   
-
-
-
-    
-
-    /********************************WEDDING, PARTY*****************************************/
-    <?php if( $customstyle["inroundborderimage"] == '1' ){ ?>.main-image img{ border-radius: 50%; border: <?php echo htmlspecialchars( $customstyle["desborderimagesize"], ENT_COMPAT, 'UTF-8', FALSE ); ?>px solid #<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>DD;}<?php } ?>;
-    /********************************WEDDING, PARTY*****************************************/
-
-
-
-
-
-
     
 </style>
 
+<?php if( !validatePlanDomain() ){ ?>
+<section class="domain">
+    <div class="container-fluid">
 
-<section id="domain-404">
-    
-    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Mural de Mensagens Desabilitado</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+    </div>
+</section>
+
+<?php }elseif( $user["inplancontext"] == 0 ){ ?>
+<section class="domain">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Para liberar as funcionalidades do Mural é necessário adquirir um plano</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+    </div>
+</section>
+
+<?php }else{ ?>
+
+
+
+
+
+
+
+
+
+
+
+<section class="domain">
+
+    <div class="container-fluid">
+
         
-        <div class="row centralizer">
+            
             
 
-            <div class="col-md-10 col-12 text-center">
-                    
-                <h3>404 - Infelizmente não foi encontrado nenhum conteúdo :(</h3>
 
-                <h5>Por favor, verifique como digitou e tente novamente</h5>
+
+        <div class="row">
+            
+            <div class="col-12">
+
+
+                <div class="section-title">
+                        
+
+                    <h3>
+                        Mensagem Enviada!
+                    </h3>
+
+                    <hr>
+
+
+                </div><!--section-title-->
+
+                     
+               
+            </div><!--col-->
+
+        
+        </div><!--row-->
+
+
+
+
+        <?php if( $success != '' ){ ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div> 
+        </div>  
+        <?php } ?>
+
+
+        <?php if( $error != '' ){ ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row--> 
+        <?php } ?> 
+    
+
+
+    
+        
+
+
+        <div class="row">
+
+            <div class="col-12">
+
+
+                <div class="card-wrapper">
+
+
+                    <div class="card3">
+                        
+
+        
+                            
+
+
+                        <div class="title">
+
+                                
+                            <span>Parabéns, <strong><?php echo htmlspecialchars( $message["desmessage"], ENT_COMPAT, 'UTF-8', FALSE ); ?></strong>, você enviou uma mensagem para <?php echo htmlspecialchars( $user["desnick"], ENT_COMPAT, 'UTF-8', FALSE ); ?> e <?php echo htmlspecialchars( $consort["desconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?> e ela ficará visível no Mural assim que o casal a aceitar.</span>
+
+
+                        </div><!--big-body-row-->
+
+
+                        <div class="body-row">
+
+                                
+                            <span><strong>Seu e-mail: </strong><?php echo htmlspecialchars( $message["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+
+
+                        </div><!--big-body-row-->
+
+
+
+                        <div class="body-row description-area">
+
+                                
+                            <span><strong>Mensagem: </strong><?php echo htmlspecialchars( $message["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+
+
+                        </div><!--big-body-row-->
+
+                        <div class="body-footer">
+
+
+                            <span><strong>Data da Mensagem: </strong><?php echo formatDate($message["dtregister"]); ?></span>
+
+
+                        </div><!--big-body-row-->
+
+
+
+
+
+
+
+
+
+                                              
+                        
+                    </div><!--card-->
+
+                </div><!--wrapper-->    
+
+            </div><!--col-->
+    
+        </div><!--row-->
+
+
+     
+
                 
-                <img alt="404 - Infelizmente não foi encontrado nenhum conteúdo" src="/res/images/banner/404.jpg">  
-
-            </div>
 
 
-        </div>
 
-                    
+
+
 
     </div><!--container-->
 
-
 </section>
+<?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
