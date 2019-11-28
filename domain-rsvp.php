@@ -415,42 +415,6 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 		}//end if
 
 
-
-
-
-
-
-		if( 
-			
-			!isset($_POST['inchildrenconfirmed']) 
-			|| 
-			$_POST['inchildrenconfirmed'] == ''
-		)
-		{
-
-			Rsvp::setError("Confirme o número de acompanhantes crianças");
-			header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
-			exit;
-
-		}//end if
-
-		if( ($inchildrenconfirmed = Validate::validateMaxRsvp($_POST['inchildrenconfirmed'])) === false )
-		{	
-			
-
-			Rsvp::setError("A quantidade deve ser formada apenas por números e não pode conter caracteres especiais | Tente novamente");
-			header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
-			exit;
-
-		}//end if
-
-
-
-
-		
-
-
-
 		
 
 
@@ -505,40 +469,6 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 
 
 
-		if ( (int)$rsvpconfig->getinchildrenconfig() == 0 ) 
-		{
-			# code...
-			if ( (int)$inchildrenconfirmed > (int)$rsvp->getinmaxchildren() ) {
-				# code...
-				Rsvp::setError("A quantidade de crianças deve ser menor ou igual a ".$rsvp->getinmaxchildren());
-				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
-				exit;
-			}//end if
-			
-
-		}//end if
-		else
-		{
-
-			if ( (int)$inchildrenconfirmed > (int)$rsvpconfig->getinmaxchildrenconfig() ) {
-				# code...
-				Rsvp::setError("A quantidade de crianças deve ser menor ou igual a ".$rsvpconfig->getinmaxchildrenconfig());
-				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
-				exit;
-			}//end if
-			
-
-
-		}//end else
-
-
-
-
-
-
-
-
-
 
 
 		if( (int)$inadultsconfirmed != 0 )
@@ -560,7 +490,9 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 			}//end if
 
 
-			if ( ( $desadultsaccompanies = Validate::validateRsvpAccompanies($_POST['desadultsaccompanies']) ) === false ) 
+			$adults_handler = Validate::validateRsvpAccompanies($_POST['desadultsaccompanies']);
+
+			if ( $adults_handler === false ) 
 			{
 				# code...
 				Rsvp::setError("Preencha o nome dos acompanhantes adultos | O nome dos acompanhantes adultos não pode conter apenas caracteres especiais | Por favor, tente novamente");
@@ -569,28 +501,31 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 
 			}//end if
 
+			$desadultsaccompanies = $adults_handler['desaccompanies'];
 
-			$adultsArray = explode(';', $desadultsaccompanies);
+			$accompaniesQuantity = $adults_handler['accompaniesQuantity'];
 
-			echo '<pre>';
+			//$adultsArray = explode(';', $desadultsaccompanies);
+
+			
+			/*echo '<pre>';
 var_dump($_POST);
-
+var_dump($adults_handler);
+var_dump($accompaniesQuantity);
 var_dump($desadultsaccompanies);
-var_dump($adultsArray);
 var_dump($inadultsconfirmed);
-var_dump((int)$inadultsconfirmed);
-var_dump(count($adultsArray));
-var_dump(count($adultsArray) < (int)$inadultsconfirmed);
-exit;
 
-			if( count($adultsArray) < (int)$inadultsconfirmed )
+exit;*/
+
+
+			if( (int)$accompaniesQuantity < (int)$inadultsconfirmed )
 			{
 				Rsvp::setError("A quantidade de nomes de adultos informados foi menor do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
 				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
 				exit;
 
 			}//end if
-			elseif( count($adultsArray) > (int)$inadultsconfirmed )
+			elseif( (int)$accompaniesQuantity > (int)$inadultsconfirmed )
 			{	
 
 				Rsvp::setError("A quantidade de nomes de adultos informados foi maior do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
@@ -635,97 +570,172 @@ exit;
 
 
 
-
-
-
-
-
-
-
-		if( (int)$inchildrenconfirmed != 0 )
+		if( (int)$rsvpconfig->getinchildren() == 1 )
 		{
+
 
 
 			if( 
 			
-				!isset($_POST['deschildrenaccompanies']) 
+				!isset($_POST['inchildrenconfirmed']) 
 				|| 
-				$_POST['deschildrenaccompanies'] == ''
+				$_POST['inchildrenconfirmed'] == ''
 			)
 			{
-
-				Rsvp::setError("Preencha o nome dos acompanhantes adultos");
+	
+				Rsvp::setError("Confirme o número de acompanhantes crianças");
 				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
 				exit;
-
+	
 			}//end if
-
+	
+			if( ($inchildrenconfirmed = Validate::validateMaxRsvp($_POST['inchildrenconfirmed'])) === false )
+			{	
+				
+	
+				Rsvp::setError("A quantidade deve ser formada apenas por números e não pode conter caracteres especiais | Tente novamente");
+				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+				exit;
+	
+			}//end if
+	
+	
 			
-
-
-			if ( ( $deschildrenaccompanies = Validate::validateRsvpAccompanies($_POST['deschildrenaccompanies']) ) === false ) 
+	
+	
+	
+	
+			if ( (int)$rsvpconfig->getinchildrenconfig() == 0 ) 
 			{
 				# code...
-				Rsvp::setError("Preencha o nome dos acompanhantes adultos | O nome dos acompanhantes adultos não pode conter apenas caracteres especiais | Por favor, tente novamente");
-				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
-				exit;
-
+				if ( (int)$inchildrenconfirmed > (int)$rsvp->getinmaxchildren() ) {
+					# code...
+					Rsvp::setError("A quantidade de crianças deve ser menor ou igual a ".$rsvp->getinmaxchildren());
+					header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+					exit;
+				}//end if
+				
+	
 			}//end if
-
-
-			$childrenArray = explode(';', $deschildrenaccompanies);
-
-			/*echo '<pre>';
-var_dump($_POST);
-var_dump($childrenArray);
-var_dump($deschildrenaccompanies);
-
-var_dump($inchildrenconfirmed);
-var_dump((int)$inchildrenconfirmed);
-var_dump(count($childrenArray));
-var_dump(count($childrenArray) < (int)$inchildrenconfirmed);
-exit;*/
-
-			if( count($childrenArray) < (int)$inadultsconfirmed )
+			else
 			{
-				Rsvp::setError("A quantidade de nomes de adultos informados foi menor do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
-				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
-				exit;
-
+	
+				if ( (int)$inchildrenconfirmed > (int)$rsvpconfig->getinmaxchildrenconfig() ) {
+					# code...
+					Rsvp::setError("A quantidade de crianças deve ser menor ou igual a ".$rsvpconfig->getinmaxchildrenconfig());
+					header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+					exit;
+				}//end if
+				
+	
+	
+			}//end else
+	
+			
+	
+	
+	
+	
+			if( (int)$inchildrenconfirmed != 0 )
+			{
+	
+	
+				if( 
+				
+					!isset($_POST['deschildrenaccompanies']) 
+					|| 
+					$_POST['deschildrenaccompanies'] == ''
+				)
+				{
+	
+					Rsvp::setError("Preencha o nome dos acompanhantes crianças");
+					header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+					exit;
+	
+				}//end if
+	
+				
+	
+				$children_handler = Validate::validateRsvpAccompanies($_POST['deschildrenaccompanies']);
+	
+				if ( $children_handler === false ) 
+				{
+					# code...
+					Rsvp::setError("Preencha o nome dos acompanhantes crianças | O nome dos acompanhantes crianças não pode conter apenas caracteres especiais | Por favor, tente novamente");
+					header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+					exit;
+	
+				}//end if
+	
+				$deschildrenaccompanies = $children_handler['desaccompanies'];
+	
+				$accompaniesQuantity = $children_handler['accompaniesQuantity'];
+	
+	
+				
+	
+				//$childrenArray = explode(';', $deschildrenaccompanies);
+	/*echo '<pre>';
+				var_dump($_POST);
+var_dump($children_handler);
+var_dump($accompaniesQuantity);
+var_dump($deschildrenaccompanies);
+var_dump($inchildrenconfirmed);
+exit;*/
+	
+				if( (int)$accompaniesQuantity < (int)$inchildrenconfirmed )
+				{
+					Rsvp::setError("A quantidade de nomes de crianças informadas foi menor do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
+					header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+					exit;
+	
+				}//end if
+				elseif( (int)$accompaniesQuantity > (int)$inchildrenconfirmed )
+				{	
+	
+					Rsvp::setError("A quantidade de nomes de crianças informadas foi maior do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
+					header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+					exit;
+	
+				}//end if
+	
+	
+	
+	
 			}//end if
-			elseif( count($childrenArray) > (int)$inadultsconfirmed )
-			{	
-
-				Rsvp::setError("A quantidade de nomes de adultos informados foi maior do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
-				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
-				exit;
-
-			}//end if
-
-
-
+			else
+			{
+	
+	
+				if( 
+				
+					isset($_POST['deschildrenaccompanies']) 
+					|| 
+					$_POST['deschildrenaccompanies'] != ''
+				)
+				{
+	
+					Rsvp::setError("Você informou que não haverá acompanhantes crianças, mas preencheu seus nomes | Verifique novamente, e informe a quantidade correta de acompanhantes crianças");
+					header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+					exit;
+	
+				}//end if
+	
+	
+				$deschildrenaccompanies = '';
+	
+			}//end else
 
 		}//end if
 		else
-		{
+		{	
 
-
-			if( 
-			
-				isset($_POST['deschildrenaccompanies']) 
-				|| 
-				$_POST['deschildrenaccompanies'] != ''
-			)
-			{
-
-				Rsvp::setError("Você informou que não haverá acompanhantes crianças, mas preencheu seus nomes | Verifique novamente, e informe a quantidade correta de acompanhantes crianças");
-				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
-				exit;
-
-			}//end if
-
-
+			$inchildrenconfirmed = 0;
 			$deschildrenaccompanies = '';
+
+			$rsvp->setinmaxchildren(0);
+
+			$rsvpconfig->setinchildrenage(0);
 
 		}//end else
 

@@ -269,26 +269,77 @@ class Validate extends Model
 
 		/*$string = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $string);*/
 		
-
-		$string = preg_replace('/[^A-Za-z0-9\ç\Ç\s_\-\í\Í\á\Á\à\À\ã\Ã\â\Â\é\É\ê\Ê\ó\Ó\ú\Ú\ñ\Ñ\!\?\@\#\$\%\&\*\+\,\;]/', '', $string);
-
-		$string = preg_replace('/[\\n]/', '', $string);
-
-		$string = preg_replace('/[\,]/', ';', $string);
-
 		$string = trim($string);
 
-		
+		$string = preg_replace('/[^A-Za-z0-9\ç\Ç\s_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\!\?\@\#\$\%\&\*\+\,\;]/', '', $string);
 
+		$accompaniesQuantity = 0;
+
+		if ( !empty($string) )
+		{
+			# code...
+			//StackOverflow - regexp_replace(sua_coluna, E'[\\n\\r]+', ' - ', 'g' )
+			//StackOverflow - regexp_replace(sua_coluna, '[\n\r]+', ' - ', 'g' )
+			$string = preg_replace('/[\\n\\r]/', '', $string);
+
+			//$string = preg_replace('/[\;]/', ';', $string);
+
+			$string = preg_replace('/[\,]/', ';', $string);
+
+			$array = explode(';', $string);
+
+			$array_handler = [];
+			
+			$accompaniesQuantity = 0;
+
+			foreach ($array as &$term)
+			{
+				# code...
+				if( $term == '' ) continue;
+
+				$term = trim($term);
+				
+				$term = strtolower($term);
+
+				$term = ucwords($term);
+
+				array_push($array_handler, $term);
+
+				$accompaniesQuantity++;
+
+			}//end foreach
+
+			$string = implode('; ', $array_handler);
+
+			//$string = strtolower($string);
+
+			//$string = ucfirst($string);
+
+
+		}//end if
+
+
+
+		/*echo '<pre>';
+var_dump($string);
+var_dump($array);
+var_dump($accompaniesQuantity);
+exit;*/
+		
 
 
 		if( !$may_be_empty )
 		{
 
 
-			if( $string != '')
+			if( (int)$accompaniesQuantity > 0)
 			{
-				return $string;
+				return [
+
+					'accompaniesQuantity'=>$accompaniesQuantity,
+					'desaccompanies'=>$string
+
+				];
 
 			}//end if
 			else
@@ -303,7 +354,12 @@ class Validate extends Model
 		else
 		{
 
-			return $string;
+			return [
+
+				'accompaniesQuantity'=>$accompaniesQuantity,
+				'desaccompanies'=>$string
+
+			];
 
 		}//end else
 
