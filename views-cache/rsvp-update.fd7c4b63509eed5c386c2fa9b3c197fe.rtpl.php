@@ -100,12 +100,12 @@
 
 
                         
-
+                            <label for="inmaxadults">Quantidade Máxima de Adultos<br><small>(Esta opção é válida apenas para este convidado)</small></label>
 
                             <div class="dash-input-row input-inposition">
 
 
-                                <label for="inmaxadults">Quantidade Máxima de Adultos</label>
+                                
                                 <input type="text" class="form-control" id="inmaxadults" name="inmaxadults" value="<?php echo htmlspecialchars( $rsvp["inmaxadults"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
@@ -120,10 +120,12 @@
 
 
                             <?php if( $rsvpconfig["inchildren"] == 1 ){ ?>
+                            <label for="inmaxchildren">Quantidade Máxima de Crianças<br><small>(Esta opção é válida apenas para este convidado)</small></label>
+
                             <div class="dash-input-row input-inposition">
 
 
-                                <label for="inmaxchildren">Quantidade Máxima de Crianças</label>
+                                
                                 <input type="text" class="form-control" id="inmaxchildren" name="inmaxchildren" value="<?php echo htmlspecialchars( $rsvp["inmaxchildren"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 

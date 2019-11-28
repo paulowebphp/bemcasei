@@ -587,8 +587,8 @@ $app->post( "/dashboard/rsvp/configurar", function()
 	var_dump($inchildren);
 	var_dump($rsvpconfig);
 	var_dump((int)$inchildren == 1);
-	exit;
-	*/
+	exit;*/
+	
 
 	if (
 		
@@ -690,11 +690,57 @@ $app->post( "/dashboard/rsvp/configurar", function()
 		}//end if
 
 
+
+
+		$desadultstitle = $rsvpconfig->getdesadultstitle();
+		$desadultsdescription = $rsvpconfig->getdesadultsdescription();
+
+
 	}//end if
-	else
+	elseif(
+
+		(int)$inchildren == 0
+		&&
+		(int)$rsvpconfig->getinchildren() == 1
+
+	)
 	{
 
+
+		$inchildrenconfig = $rsvpconfig->getinchildrenconfig();
+		$inmaxchildrenconfig = $rsvpconfig->getinmaxchildrenconfig();
+		$inchildrenage = $rsvpconfig->getinchildrenage();
+		$desadultstitle = $rsvpconfig->getdesadultstitle();
+		$desadultsdescription = $rsvpconfig->getdesadultsdescription();
+
+	}//end elseif
+	elseif(
+
+		(int)$inchildren == 0
+		&&
+		(int)$rsvpconfig->getinchildren() == 0
+	)
+	{
+
+		/*if(
+			
+			!isset($_POST['desadultsdescription'])
+			|| 
+			$_POST['desadultsdescription'] === ''
+			
+		)
+		{
+	
+			RsvpConfig::setError("Preencha uma mensagem para os convidados, avisando-os de que não é indicado/permitido levar menores de ".Rule::MIN_ADULTS_AGE." anos de idade");
+			header("Location: /dashboard/rsvp/configurar");
+			exit;
+	
+		}//end if*/
 		
+
+		
+		$desadultstitle = Validate::validateDescription($_POST['desadultstitle'],true);
+		$desadultsdescription = Validate::validateDescription($_POST['desadultsdescription'],true);
 
 		$inchildrenconfig = $rsvpconfig->getinchildrenconfig();
 		$inmaxchildrenconfig = $rsvpconfig->getinmaxchildrenconfig();
@@ -702,6 +748,24 @@ $app->post( "/dashboard/rsvp/configurar", function()
 
 
 	}//end else
+	elseif(
+
+		(int)$inchildren == 1
+		&&
+		(int)$rsvpconfig->getinchildren() == 0
+
+	)
+	{
+
+		
+
+		$inchildrenconfig = $rsvpconfig->getinchildrenconfig();
+		$inmaxchildrenconfig = $rsvpconfig->getinmaxchildrenconfig();
+		$inchildrenage = $rsvpconfig->getinchildrenage();
+		$desadultstitle = $rsvpconfig->getdesadultstitle();
+		$desadultsdescription = $rsvpconfig->getdesadultsdescription();
+
+	}//end elseif
 
 
 
@@ -724,7 +788,9 @@ $app->post( "/dashboard/rsvp/configurar", function()
 		'inchildren'=>$inchildren,
 		'inchildrenconfig'=>$inchildrenconfig,
 		'inmaxchildrenconfig'=>$inmaxchildrenconfig,
-		'inchildrenage'=>$inchildrenage
+		'inchildrenage'=>$inchildrenage,
+		'desadultstitle'=>$desadultstitle,
+		'desadultsdescription'=>$desadultsdescription
 
 	]);//setData
 
@@ -1166,7 +1232,17 @@ $app->get( "/dashboard/rsvp/:hash", function( $hash )
 
     $rsvp = new Rsvp();
     
-    $rsvp->getRsvp((int)$idrsvp);
+	$rsvp->getRsvp((int)$idrsvp);
+	
+
+	if( (int)$rsvp->getinconfirmed() == 1 )
+	{
+
+		Rsvp::setError(Rule::VALIDATE_RSVP_CONFIRMED);
+		header('Location: /dashboard/rsvp');
+		exit;
+
+	}//end if
 
     
 
@@ -1269,6 +1345,28 @@ $app->post( "/dashboard/rsvp/:hash", function( $hash )
 
 
 
+	$rsvp = new Rsvp();
+
+	$rsvp->getRsvp((int)$idrsvp);
+
+
+	if( (int)$rsvp->getinconfirmed() == 1 )
+	{
+
+		Rsvp::setError(Rule::VALIDATE_RSVP_CONFIRMED);
+		header('Location: /dashboard/rsvp');
+		exit;
+
+	}//end if
+
+
+
+	
+
+
+
+
+
 	if(
 		
 		!isset($_POST['desguest']) 
@@ -1327,9 +1425,8 @@ $app->post( "/dashboard/rsvp/:hash", function( $hash )
 
 
 
-	$rsvp = new Rsvp();
-
 	
+
 
 
 	$rsvpconfig = new RsvpConfig();
@@ -1372,9 +1469,6 @@ $app->post( "/dashboard/rsvp/:hash", function( $hash )
 	}//end if
 	else
 	{
-
-		$rsvp->getRsvp((int)$idrsvp);
-
 
 		$inmaxchildren = $rsvp->getinmaxchildren();
 

@@ -125,7 +125,7 @@
                                 
 
 
-                                <label for="inadultsconfig">Configurar Quantidade Máxima de Adultos para Todos os Convidados<br><small>(Esta opção abrengerá os seus convidados de maneira global)</label>
+                                <label for="inadultsconfig">Configurar Quantidade Máxima de Adultos para Todos os Convidados<br><small>(Esta opção abrangerá os seus convidados de maneira global)</label>
 
 
                                 <select id="inadultsconfig" name="inadultsconfig" class="custom-select">
@@ -196,7 +196,7 @@
                                 
 
 
-                                <label for="inchildrenconfig">Configurar Quantidade Máxima de Crianças para Todos os Convidados <br><small>(Esta opção abrengerá os seus convidados de maneira global)</small> </label>
+                                <label for="inchildrenconfig">Configurar Quantidade Máxima de Crianças para Todos os Convidados <br><small>(Esta opção abrangerá os seus convidados de maneira global)</small> </label>
 
 
                                 <select id="inchildrenconfig" name="inchildrenconfig" class="custom-select">
@@ -225,6 +225,14 @@
                             </div><!--rsvpconfig-input-row-->
 
                             <?php }else{ ?>
+                            <div class="rsvpconfig-input-row">
+
+                                <label for="desadultstitle">Título da Mensagem</label>
+                                <input type="text" class="form-control" id="desadultstitle" name="desadultstitle" value="<?php echo htmlspecialchars( $rsvpconfig["desadultstitle"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+
+                            </div><!--rsvpconfig-input-row-->
+
+
                             <div class="rsvpconfig-input-row2">
 
                                 <label for="desadultsdescription">Mensagem que aparecerá para os convidados</label>

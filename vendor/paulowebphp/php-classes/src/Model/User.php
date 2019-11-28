@@ -2862,8 +2862,7 @@ class User extends Model
 
 			$rsvpconfig->get((int)$this->getiduser());
 
-
-
+			$desadultsdescription = 'Lembramos que nosso casamento é um evento apenas para adultos e, portanto, os convidados não deverão levar menores de '.Rule::MIN_ADULTS_AGE.' anos de idade';
 
 			$rsvpconfig->setData([
 
@@ -2872,13 +2871,17 @@ class User extends Model
 				'inclosed'=>0,
 				'inadultsconfig'=>0,
 				'inmaxadultsconfig'=>10,
+				'inchildren'=>1,
 				'inchildrenconfig'=>0,
-				'inmaxchildrenconfig'=>10
-
+				'inmaxchildrenconfig'=>10,
+				'inchildrenage'=>7,
+				'desadultstitle'=>'Lembrete:',
+				'desadultsdescription'=>$desadultsdescription
 
 			]);//end setData
 
-				
+
+
 
 
 			$rsvpconfig->update();

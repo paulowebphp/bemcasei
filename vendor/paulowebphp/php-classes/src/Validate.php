@@ -264,6 +264,77 @@ class Validate extends Model
 
 
 
+	public static function validateRsvpAccompanies( $string, $may_be_empty = false )
+	{
+
+		/*$string = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $string);*/
+		
+
+		$string = preg_replace('/[^A-Za-z0-9\ç\Ç\s_\-\í\Í\á\Á\à\À\ã\Ã\â\Â\é\É\ê\Ê\ó\Ó\ú\Ú\ñ\Ñ\!\?\@\#\$\%\&\*\+\,\;]/', '', $string);
+
+		$string = preg_replace('/[\\n]/', '', $string);
+
+		$string = preg_replace('/[\,]/', ';', $string);
+
+		$string = trim($string);
+
+		
+
+
+
+		if( !$may_be_empty )
+		{
+
+
+			if( $string != '')
+			{
+				return $string;
+
+			}//end if
+			else
+			{
+				return false;
+
+			}//end else
+
+
+
+		}//end
+		else
+		{
+
+			return $string;
+
+		}//end else
+
+
+		
+
+
+	}//end validateString
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

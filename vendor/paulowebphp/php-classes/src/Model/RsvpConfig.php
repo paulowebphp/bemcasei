@@ -31,41 +31,95 @@ class RsvpConfig extends Model
 		$sql = new Sql();
 
 		
-		$results = $sql->select("
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+			$results = $sql->select("
 
-			CALL sp_rsvpconfig_update(
-			               
-                :idrsvpconfig,
-                :iduser,
-                :inclosed,
-                :inadultsconfig,
-                :inmaxadultsconfig,
-                :inchildren,
-                :inchildrenconfig,
-				:inmaxchildrenconfig,
-				:inchildrenage,
-				:desadultsdescription
+				CALL sp_rsvpconfig_update(
+							
+					:idrsvpconfig,
+					:iduser,
+					:inclosed,
+					:inadultsconfig,
+					:inmaxadultsconfig,
+					:inchildren,
+					:inchildrenconfig,
+					:inmaxchildrenconfig,
+					:inchildrenage,
+					:desadultstitle,
+					:desadultsdescription
 
 
-			)", 
-			
-			[
-
-				':idrsvpconfig'=>$this->getidrsvpconfig(),
-				':iduser'=>$this->getiduser(),
-				':inclosed'=>$this->getinclosed(),
-				':inadultsconfig'=>$this->getinadultsconfig(),
-				':inmaxadultsconfig'=>$this->getinmaxadultsconfig(),
-				':inchildren'=>$this->getinchildren(),
-				':inchildrenconfig'=>$this->getinchildrenconfig(),
-				':inmaxchildrenconfig'=>$this->getinmaxchildrenconfig(),
-				':inchildrenage'=>$this->getinchildrenage(),
-				':desadultsdescription'=>$this->getdesadultsdescription()
+				)", 
 				
-			]
-        
-            
-        );//end select
+				[
+
+					':idrsvpconfig'=>$this->getidrsvpconfig(),
+					':iduser'=>$this->getiduser(),
+					':inclosed'=>$this->getinclosed(),
+					':inadultsconfig'=>$this->getinadultsconfig(),
+					':inmaxadultsconfig'=>$this->getinmaxadultsconfig(),
+					':inchildren'=>$this->getinchildren(),
+					':inchildrenconfig'=>$this->getinchildrenconfig(),
+					':inmaxchildrenconfig'=>$this->getinmaxchildrenconfig(),
+					':inchildrenage'=>$this->getinchildrenage(),
+					':desadultstitle'=>utf8_decode($this->getdesadultstitle()),
+					':desadultsdescription'=>utf8_decode($this->getdesadultsdescription())
+					
+				]
+			
+				
+			);//end select
+
+			$results[0]['desadultstitle'] = utf8_encode($results[0]['desadultstitle']);
+			$results[0]['desadultsdescription'] = utf8_encode($results[0]['desadultsdescription']);
+
+		
+		}//end if
+		else
+		{
+
+			$results = $sql->select("
+
+				CALL sp_rsvpconfig_update(
+							
+					:idrsvpconfig,
+					:iduser,
+					:inclosed,
+					:inadultsconfig,
+					:inmaxadultsconfig,
+					:inchildren,
+					:inchildrenconfig,
+					:inmaxchildrenconfig,
+					:inchildrenage,
+					:desadultstitle,
+					:desadultsdescription
+
+
+				)", 
+				
+				[
+
+					':idrsvpconfig'=>$this->getidrsvpconfig(),
+					':iduser'=>$this->getiduser(),
+					':inclosed'=>$this->getinclosed(),
+					':inadultsconfig'=>$this->getinadultsconfig(),
+					':inmaxadultsconfig'=>$this->getinmaxadultsconfig(),
+					':inchildren'=>$this->getinchildren(),
+					':inchildrenconfig'=>$this->getinchildrenconfig(),
+					':inmaxchildrenconfig'=>$this->getinmaxchildrenconfig(),
+					':inchildrenage'=>$this->getinchildrenage(),
+					':desadultstitle'=>$this->getdesadultstitle(),
+					':desadultsdescription'=>$this->getdesadultsdescription()
+					
+				]
+			
+				
+			);//end select
+		
+
+		}//end else
 
 
 		
@@ -117,7 +171,13 @@ class RsvpConfig extends Model
 		);//end select
 
 
-	
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+			$results[0]['desadultstitle'] = utf8_encode($results[0]['desadultstitle']);
+			$results[0]['desadultsdescription'] = utf8_encode($results[0]['desadultsdescription']);
+			
+		}//end if
 			
 
 		if( count($results) > 0 )

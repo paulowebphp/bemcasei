@@ -303,6 +303,36 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 
 
 
+
+
+		$rsvp = new Rsvp();
+
+		$rsvp->getRsvp((int)$idrsvp);
+
+
+		if ( (int)$rsvp->getinconfirmed() == 1 ) 
+		{
+			# code...
+			$timezone = new \DateTimeZone('America/Sao_Paulo');
+
+			$dtconfirmed = new \DateTime($rsvp->getdtconfirmed());
+			
+			$dtconfirmed->setTimezone($timezone);
+
+
+
+			Rsvp::setError("Você já realizou sua confirmação de presença em ".$dtconfirmed->format('d/m/Y')." | Entre em contato com o casal, pois somente o mesmo pode corrigir uma confirmação já realizada");
+			header("Location: /".$user->getdesdomain()."/rsvp");
+			exit;
+
+
+		}//end if
+
+
+
+
+
+
 		if( 
 			
 			!isset($_POST['nrphone']) 
@@ -421,9 +451,7 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 
 
 
-		$rsvp = new Rsvp();
-
-		$rsvp->getRsvp((int)$idrsvp);
+		
 
 
 
@@ -513,26 +541,120 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 
 
 
-		if( 
-
-
-			(int)$inadultsconfirmed != 0
-			||
-			(int)$inchildrenconfirmed != 0
-			
-		)
+		if( (int)$inadultsconfirmed != 0 )
 		{
 
 
 			if( 
 			
-				!isset($_POST['desguestaccompanies']) 
+				!isset($_POST['desadultsaccompanies']) 
 				|| 
-				$_POST['desguestaccompanies'] == ''
+				$_POST['desadultsaccompanies'] == ''
 			)
 			{
 
-				Rsvp::setError("Preencha o nome dos acompanhantes");
+				Rsvp::setError("Preencha o nome dos acompanhantes adultos");
+				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+				exit;
+
+			}//end if
+
+
+			if ( ( $desadultsaccompanies = Validate::validateRsvpAccompanies($_POST['desadultsaccompanies']) ) === false ) 
+			{
+				# code...
+				Rsvp::setError("Preencha o nome dos acompanhantes adultos | O nome dos acompanhantes adultos não pode conter apenas caracteres especiais | Por favor, tente novamente");
+				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+				exit;
+
+			}//end if
+
+
+			$adultsArray = explode(';', $desadultsaccompanies);
+
+			echo '<pre>';
+var_dump($_POST);
+
+var_dump($desadultsaccompanies);
+var_dump($adultsArray);
+var_dump($inadultsconfirmed);
+var_dump((int)$inadultsconfirmed);
+var_dump(count($adultsArray));
+var_dump(count($adultsArray) < (int)$inadultsconfirmed);
+exit;
+
+			if( count($adultsArray) < (int)$inadultsconfirmed )
+			{
+				Rsvp::setError("A quantidade de nomes de adultos informados foi menor do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
+				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+				exit;
+
+			}//end if
+			elseif( count($adultsArray) > (int)$inadultsconfirmed )
+			{	
+
+				Rsvp::setError("A quantidade de nomes de adultos informados foi maior do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
+				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+				exit;
+
+			}//end if
+
+
+
+		}//end if
+		else
+		{
+
+
+			if( 
+			
+				isset($_POST['desadultsaccompanies']) 
+				|| 
+				$_POST['desadultsaccompanies'] != ''
+			)
+			{
+
+				Rsvp::setError("Você informou que não haverá acompanhantes adultos, mas preencheu seus nomes | Verifique novamente, e informe a quantidade correta de acompanhantes adults");
+				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+				exit;
+
+			}//end if
+
+
+			$desadultsaccompanies = '';
+
+		}//end else
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if( (int)$inchildrenconfirmed != 0 )
+		{
+
+
+			if( 
+			
+				!isset($_POST['deschildrenaccompanies']) 
+				|| 
+				$_POST['deschildrenaccompanies'] == ''
+			)
+			{
+
+				Rsvp::setError("Preencha o nome dos acompanhantes adultos");
 				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
 				exit;
 
@@ -541,10 +663,40 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 			
 
 
-			if ( ( $desguestaccompanies = Validate::validateStringWithAccent($_POST['desguestaccompanies']) ) === false ) 
+			if ( ( $deschildrenaccompanies = Validate::validateRsvpAccompanies($_POST['deschildrenaccompanies']) ) === false ) 
 			{
 				# code...
-				Rsvp::setError("Preencha o nome dos acompanhantes | O nome dos acompanhantes não pode conter apenas caracteres especiais | Por favor, tente novamente");
+				Rsvp::setError("Preencha o nome dos acompanhantes adultos | O nome dos acompanhantes adultos não pode conter apenas caracteres especiais | Por favor, tente novamente");
+				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+				exit;
+
+			}//end if
+
+
+			$childrenArray = explode(';', $deschildrenaccompanies);
+
+			/*echo '<pre>';
+var_dump($_POST);
+var_dump($childrenArray);
+var_dump($deschildrenaccompanies);
+
+var_dump($inchildrenconfirmed);
+var_dump((int)$inchildrenconfirmed);
+var_dump(count($childrenArray));
+var_dump(count($childrenArray) < (int)$inchildrenconfirmed);
+exit;*/
+
+			if( count($childrenArray) < (int)$inadultsconfirmed )
+			{
+				Rsvp::setError("A quantidade de nomes de adultos informados foi menor do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
+				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+				exit;
+
+			}//end if
+			elseif( count($childrenArray) > (int)$inadultsconfirmed )
+			{	
+
+				Rsvp::setError("A quantidade de nomes de adultos informados foi maior do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
 				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
 				exit;
 
@@ -557,9 +709,31 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 		else
 		{
 
-			$desguestaccompanies = Validate::validateStringWithAccent($_POST['desguestaccompanies'], true);
+
+			if( 
+			
+				isset($_POST['deschildrenaccompanies']) 
+				|| 
+				$_POST['deschildrenaccompanies'] != ''
+			)
+			{
+
+				Rsvp::setError("Você informou que não haverá acompanhantes crianças, mas preencheu seus nomes | Verifique novamente, e informe a quantidade correta de acompanhantes crianças");
+				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
+				exit;
+
+			}//end if
+
+
+			$deschildrenaccompanies = '';
 
 		}//end else
+
+
+
+
+
+
 
 
 
@@ -594,7 +768,9 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 			'inadultsconfirmed'=>$inadultsconfirmed,
 			'inmaxchildren'=>$rsvp->getinmaxchildren(),
 			'inchildrenconfirmed'=>$inchildrenconfirmed,
-			'desguestaccompanies'=>$desguestaccompanies,
+			'inchildrenageconfirmed'=>$rsvpconfig->getinchildrenage(),
+			'desadultsaccompanies'=>$desadultsaccompanies,
+			'deschildrenaccompanies'=>$deschildrenaccompanies,
 			'dtconfirmed'=>$dtconfirmed->format('Y-m-d')
 
 		]);
@@ -842,6 +1018,27 @@ $app->get( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 		$rsvp = new Rsvp();
 
 		$rsvp->getRsvp((int)$idrsvp);
+
+
+
+
+		if ( (int)$rsvp->getinconfirmed() == 1 ) 
+		{
+			# code...
+			$timezone = new \DateTimeZone('America/Sao_Paulo');
+
+			$dtconfirmed = new \DateTime($rsvp->getdtconfirmed());
+			
+			$dtconfirmed->setTimezone($timezone);
+
+
+
+			Rsvp::setError("Você já realizou sua confirmação de presença em ".$dtconfirmed->format('d/m/Y')." | Entre em contato com o casal, pois somente o mesmo pode corrigir uma confirmação já realizada");
+			header("Location: /".$user->getdesdomain()."/rsvp");
+			exit;
+
+
+		}//end if
 		
 		
 

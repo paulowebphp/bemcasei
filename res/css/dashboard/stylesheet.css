@@ -766,11 +766,11 @@ label{
 }
 
 .templates-models .dash-input-row{
-  margin-bottom: 5%;
+  margin: 0 0 5% 0;
   display: flex;
 }
 .dash-input-row{
-  margin-bottom: 5%;
+  margin: 0 0 5% 0;
 }
 /************************** DUMP *********************************/
 /************************** DUMP *********************************/

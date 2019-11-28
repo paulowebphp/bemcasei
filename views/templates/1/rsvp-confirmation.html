@@ -426,16 +426,21 @@
 
                                     <label for="inadultsconfirmed">
 
-                                        <span>Número de Adultos <br><small>(Máximo Permitido:&nbsp; {if="$rsvpconfig.inadultsconfig == 0"}{$rsvp.inmaxadults}{else}{$rsvpconfig.inmaxadultsconfig}{/if})</small></span>
+                                        <span>Número de Adultos<br><small>(Máximo Permitido:&nbsp; {if="$rsvpconfig.inadultsconfig == 0"}{$rsvp.inmaxadults}{else}{$rsvpconfig.inmaxadultsconfig}{/if})</small></span>
 
                                     </label>
                                     
+                                    
 
-                                    <div class="input-short">
+                                    <div class="input-short bottom1">
                                         
                                         <input type="text" id="inadultsconfirmed" name="inadultsconfirmed">
 
                                     </div><!--input-short-->
+
+
+                                    
+                                    <span><small>(Considera-se adultos os maiores de <strong>{$rsvpconfig.inchildrenage} anos</strong> de idade)</small></span>
 
 
                                 </div><!--col-->
@@ -448,15 +453,18 @@
 
                                     <label for="inchildrenconfirmed">
                                         
-                                        <span>Número de Crianças <br>com menos de <strong>{$rsvpconfig.inchildrenage} anos</strong> <br><small>(Máximo Permitido:&nbsp; {if="$rsvpconfig.inchildrenconfig == 0"}{$rsvp.inmaxchildren}{else}{$rsvpconfig.inmaxchildrenconfig}{/if})</small></span>
+                                        <span>Número de Crianças<br><small>(Máximo Permitido:&nbsp; {if="$rsvpconfig.inchildrenconfig == 0"}{$rsvp.inmaxchildren}{else}{$rsvpconfig.inmaxchildrenconfig}{/if})</small></span>
 
                                     </label>
+
                                     
-                                    <div class="input-short">
+                                    <div class="input-short bottom1">
                                 
                                         <input type="text" id="inchildrenconfirmed" name="inchildrenconfirmed">
 
                                     </div><!--input-short-->
+
+                                    <span><small>(Considera-se crianças os menores de <strong>{$rsvpconfig.inchildrenage} anos</strong> de idade)</small></span>
 
                                 </div><!--col-->
                                 
@@ -516,7 +524,7 @@
 
 
 
-                                <div class="col-md-5 col-12 inside-row">
+                                <div class="col-md-6 col-12 inside-row">
 
 
                                     <label for="inadultsconfirmed">
@@ -537,10 +545,16 @@
 
 
 
-                                <div class="col-md-7 col-12 inside-row">
+                                <div class="col-md-6 col-12 inside-row">
 
 
-                                    <span>Lembramos que nosso casamento é um evento apenas para adultos e, portanto, os convidados não deverão levar menores de idade.</span>
+                                    <label for="inadultsconfirmed">
+
+                                        <span>{$rsvpconfig.desadultstitle}</span>
+
+                                    </label>
+                                    <br>
+                                    <span><small>{$rsvpconfig.desadultsdescription}</small></span>
 
 
                                 </div><!--col-->

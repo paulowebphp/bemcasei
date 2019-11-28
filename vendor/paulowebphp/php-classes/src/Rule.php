@@ -361,6 +361,7 @@ class Rule extends Model
 	const VALIDATE_PASSWORD = 'A senha deve ter de 6 e 20 caracteres | Por favor, tente novamente';
 
 
+
 	const VALIDATE_PLAN = 'Para ter acesso a esta página, você precisa ter um plano ativo | Vá no menu "Meu Plano" para adquirir um plano';
 
 	const VALIDATE_PLAN_FREE = 'Usuáris do Plano Free não têm acesso a esta rota';
@@ -384,7 +385,7 @@ class Rule extends Model
 	const VALIDATE_ID_HASH = 'O endereço da página que você tentou acessar está incorreto | Por favor, volte à página anterior e tente acessar a página novamente';
 
 
-
+	const VALIDATE_RSVP_CONFIRMED = 'Este convidado já fez sua confirmação e, portanto, você não pode editá-lo | Se precisar alterar os seus dados recomendamos o seguinte procedimento: delete o convidado, recrie-o e peça para o mesmo fazer a confirmação de presença novamente no seu site';	
 
 
 	const ERROR_NAME = 'Informe o seu nome completo';
@@ -804,7 +805,7 @@ class Rule extends Model
 	const MAX_RSVP_BASIC = "500";
 	const MAX_RSVP_INTERMEDIATE = "1000";
 	const MAX_RSVP_ADVANCED = "1000";
-	
+	const MIN_ADULTS_AGE = '15';
 
 
 

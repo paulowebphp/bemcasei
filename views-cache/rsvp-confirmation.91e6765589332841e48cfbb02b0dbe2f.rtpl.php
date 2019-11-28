@@ -426,16 +426,21 @@
 
                                     <label for="inadultsconfirmed">
 
-                                        <span>Número de Adultos <br><small>(Máximo Permitido:&nbsp; <?php if( $rsvpconfig["inadultsconfig"] == 0 ){ ?><?php echo htmlspecialchars( $rsvp["inmaxadults"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?><?php echo htmlspecialchars( $rsvpconfig["inmaxadultsconfig"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>)</small></span>
+                                        <span>Número de Adultos<br><small>(Máximo Permitido:&nbsp; <?php if( $rsvpconfig["inadultsconfig"] == 0 ){ ?><?php echo htmlspecialchars( $rsvp["inmaxadults"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?><?php echo htmlspecialchars( $rsvpconfig["inmaxadultsconfig"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>)</small></span>
 
                                     </label>
                                     
+                                    
 
-                                    <div class="input-short">
+                                    <div class="input-short bottom1">
                                         
                                         <input type="text" id="inadultsconfirmed" name="inadultsconfirmed">
 
                                     </div><!--input-short-->
+
+
+                                    
+                                    <span><small>(Considera-se adultos os maiores de <strong><?php echo htmlspecialchars( $rsvpconfig["inchildrenage"], ENT_COMPAT, 'UTF-8', FALSE ); ?> anos</strong> de idade)</small></span>
 
 
                                 </div><!--col-->
@@ -448,15 +453,18 @@
 
                                     <label for="inchildrenconfirmed">
                                         
-                                        <span>Número de Crianças <br>com menos de <strong><?php echo htmlspecialchars( $rsvpconfig["inchildrenage"], ENT_COMPAT, 'UTF-8', FALSE ); ?> anos</strong> <br><small>(Máximo Permitido:&nbsp; <?php if( $rsvpconfig["inchildrenconfig"] == 0 ){ ?><?php echo htmlspecialchars( $rsvp["inmaxchildren"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?><?php echo htmlspecialchars( $rsvpconfig["inmaxchildrenconfig"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>)</small></span>
+                                        <span>Número de Crianças<br><small>(Máximo Permitido:&nbsp; <?php if( $rsvpconfig["inchildrenconfig"] == 0 ){ ?><?php echo htmlspecialchars( $rsvp["inmaxchildren"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?><?php echo htmlspecialchars( $rsvpconfig["inmaxchildrenconfig"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>)</small></span>
 
                                     </label>
+
                                     
-                                    <div class="input-short">
+                                    <div class="input-short bottom1">
                                 
                                         <input type="text" id="inchildrenconfirmed" name="inchildrenconfirmed">
 
                                     </div><!--input-short-->
+
+                                    <span><small>(Considera-se crianças os menores de <strong><?php echo htmlspecialchars( $rsvpconfig["inchildrenage"], ENT_COMPAT, 'UTF-8', FALSE ); ?> anos</strong> de idade)</small></span>
 
                                 </div><!--col-->
                                 
@@ -516,7 +524,7 @@
 
 
 
-                                <div class="col-md-5 col-12 inside-row">
+                                <div class="col-md-6 col-12 inside-row">
 
 
                                     <label for="inadultsconfirmed">
@@ -537,10 +545,16 @@
 
 
 
-                                <div class="col-md-7 col-12 inside-row">
+                                <div class="col-md-6 col-12 inside-row">
 
 
-                                    <span>Lembramos que nosso casamento é um evento apenas para adultos e, portanto, os convidados não deverão levar menores de idade.</span>
+                                    <label for="inadultsconfirmed">
+
+                                        <span><?php echo htmlspecialchars( $rsvpconfig["desadultstitle"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+
+                                    </label>
+                                    <br>
+                                    <span><small><?php echo htmlspecialchars( $rsvpconfig["desadultsdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></small></span>
 
 
                                 </div><!--col-->
