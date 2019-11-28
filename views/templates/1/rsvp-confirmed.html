@@ -395,60 +395,95 @@
                         </div><!--big-body-row-->
 
 
+                        {if="$rsvp.inchildrenconfigconfirmed == 1"}
+
+
+
+
+
+      
+
+                        {if="$rsvp.inadultsconfirmed > 0"}
                         <div class="body-row">
-
-                                
-                            <span><strong>Quantidade de Adultos: </strong>{$rsvp.inadultsconfirmed}</span>
-
-
-                        </div><!--big-body-row-->
-
-
-
+                      
+                          <span><strong>Adultos: &nbsp;&nbsp;</strong>{$rsvp.inadultsconfirmed}</span>
+                
+                        </div><!--col-->
+                
                         <div class="body-row">
-
-                                
-                            <span><strong>Nome dos Acompanhantes Adultos: </strong>{$rsvp.desadultsaccompanies}</span>
-
-
-                        </div><!--big-body-row-->
-
-
-
-
-
+                          
+                          <span><strong>Nomes dos Adultos: &nbsp;&nbsp;</strong>{$rsvp.desadultsaccompanies}</span>
+                
+                        </div><!--col-->
+                        {else}
                         <div class="body-row">
-
-                                
-                            <span><strong>Quantidade de Crianças: </strong>{$rsvp.inchildrenconfirmed}</span>
-
-
-                        </div><!--big-body-row-->
-
-
+                      
+                          <span><strong>Adultos: &nbsp;&nbsp;</strong> 0</span>
+                
+                        </div><!--col-->
+                        {/if}
+                
+                
+                
+                        {if="$rsvp.inchildrenconfirmed > 0"}
                         <div class="body-row">
+                        
+                          <span><strong>Crianças menores que {$rsvp.inchildrenconfigconfirmed} anos de idade: &nbsp;&nbsp;</strong>{$rsvp.inchildrenconfirmed}</span>
+                
+                        </div><!--col-->
+                
+                        <div class="body-row">
+                          
+                          <span><strong>Nomes das Crianças: &nbsp;&nbsp;</strong>{$rsvp.deschildrenaccompanies}</span>
+                
+                        </div><!--col-->
+                        {else}
+                        <div class="body-row">
+                        
+                          <span><strong>Crianças menores que {$rsvp.inchildrenconfigconfirmed} anos de idade: &nbsp;&nbsp;</strong>0</span>
+                
+                        </div><!--col-->
+                        {/if}
+                
+                
+                
+                
+                
+                
+                
+                
+                      {else}
+                
+                        {if="$rsvp.inadultsconfirmed > 0"}
+                        <div class="body-row">
+                       
+                          <span><strong>Acompanhantes: &nbsp;&nbsp;</strong>{$rsvp.inadultsconfirmed}</span>
+                  
+                        </div><!--col-->
+                  
+                        <div class="body-row">
+                          
+                          <span><strong>Nomes dos Acompanhantes: &nbsp;&nbsp;</strong>{$rsvp.desadultsaccompanies}</span>
+                  
+                        </div><!--col-->
+                        {else}
+                        <div class="body-row">
+                       
+                          <span><strong>Acompanhantes: &nbsp;&nbsp;</strong> 0</span>
+                  
+                        </div><!--col-->
+                        {/if}
+                
+                      {/if}
 
-                                
-                            <span><strong>Nome dos Acompanhantes Crianças: </strong>{$rsvp.deschildrenaccompanies}</span>
 
-
-                        </div><!--big-body-row-->
-
-
-
-
-
-                        <div class="body-footer">
+                      <div class="body-footer">
 
 
                             <span><strong>Data da Confirmação: </strong>{function="formatDate($rsvp.dtconfirmed)"}</span>
 
 
                         </div><!--big-body-row-->
-
-
-
-                      
 
            
 

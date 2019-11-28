@@ -264,35 +264,34 @@ class Validate extends Model
 
 
 
-	public static function validateRsvpAccompanies( $string, $may_be_empty = false )
+	public static function validateRsvpAccompanies( $desaccompanies, $may_be_empty = false )
 	{
 
-		/*$string = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $string);*/
+		/*$desaccompanies = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $desaccompanies);*/
 		
-		$string = trim($string);
+		$desaccompanies = trim($desaccompanies);
 
-		$string = preg_replace('/[^A-Za-z0-9\ç\Ç\s_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\!\?\@\#\$\%\&\*\+\,\;]/', '', $string);
+		$desaccompanies = preg_replace('/[^A-Za-z0-9\ç\Ç\s_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\!\?\@\#\$\%\&\*\+\,\;]/', '', $desaccompanies);
 
-		$accompaniesQuantity = 0;
+		$accompaniesArrayCount = 0;
 
-		if ( !empty($string) )
+		if ( !empty($desaccompanies) )
 		{
 			# code...
 			//StackOverflow - regexp_replace(sua_coluna, E'[\\n\\r]+', ' - ', 'g' )
 			//StackOverflow - regexp_replace(sua_coluna, '[\n\r]+', ' - ', 'g' )
-			$string = preg_replace('/[\\n\\r]/', '', $string);
+			$desaccompanies = preg_replace('/[\\n\\r]/', '', $desaccompanies);
 
-			//$string = preg_replace('/[\;]/', ';', $string);
+			//$desaccompanies = preg_replace('/[\;]/', ';', $desaccompanies);
 
-			$string = preg_replace('/[\,]/', ';', $string);
+			$desaccompanies = preg_replace('/[\,]/', ';', $desaccompanies);
 
-			$array = explode(';', $string);
+			$accompaniesArray = explode(';', $desaccompanies);
 
 			$array_handler = [];
-			
-			$accompaniesQuantity = 0;
+		
 
-			foreach ($array as &$term)
+			foreach ($accompaniesArray as &$term)
 			{
 				# code...
 				if( $term == '' ) continue;
@@ -305,15 +304,15 @@ class Validate extends Model
 
 				array_push($array_handler, $term);
 
-				$accompaniesQuantity++;
+				$accompaniesArrayCount++;
 
 			}//end foreach
 
-			$string = implode('; ', $array_handler);
+			$desaccompanies = implode('; ', $array_handler);
 
-			//$string = strtolower($string);
+			//$desaccompanies = strtolower($desaccompanies);
 
-			//$string = ucfirst($string);
+			//$desaccompanies = ucfirst($desaccompanies);
 
 
 		}//end if
@@ -321,7 +320,7 @@ class Validate extends Model
 
 
 		/*echo '<pre>';
-var_dump($string);
+var_dump($desaccompanies);
 var_dump($array);
 var_dump($accompaniesQuantity);
 exit;*/
@@ -332,12 +331,12 @@ exit;*/
 		{
 
 
-			if( (int)$accompaniesQuantity > 0)
+			if( (int)$accompaniesArrayCount > 0)
 			{
 				return [
 
-					'accompaniesQuantity'=>$accompaniesQuantity,
-					'desaccompanies'=>$string
+					'accompaniesArrayCount'=>$accompaniesArrayCount,
+					'desaccompanies'=>$desaccompanies
 
 				];
 
@@ -357,7 +356,7 @@ exit;*/
 			return [
 
 				'accompaniesQuantity'=>$accompaniesQuantity,
-				'desaccompanies'=>$string
+				'desaccompanies'=>$desaccompanies
 
 			];
 

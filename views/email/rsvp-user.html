@@ -211,26 +211,86 @@
 
 
 
-      <div class="email-row detail">
+      {if="$rsvp.inchildrenconfigconfirmed == 1"}
+
+
+
+
+
+      
+
+        {if="$rsvp.inadultsconfirmed > 0"}
+        <div class="email-row detail">
+      
+          <span class="email-label1">Adultos: &nbsp;&nbsp;</span><span class="email-label2">{$rsvp.inadultsconfirmed} em {$rsvp.inmaxadults} permitidos</span>
+
+        </div><!--col-->
+
+        <div class="email-row2 detail">
+          
+          <span class="email-label1">Nomes dos Adultos: &nbsp;&nbsp;</span><span class="email-label2">{$rsvp.desadultsaccompanies}</span>
+
+        </div><!--col-->
+        {else}
+        <div class="email-row detail">
+      
+          <span class="email-label1">Adultos: &nbsp;&nbsp;</span><span class="email-label2">0</span>
+
+        </div><!--col-->
+        {/if}
+
+
+
+        {if="$rsvp.inchildrenconfirmed > 0"}
+        <div class="email-row detail">
+        
+          <span class="email-label1">Crianças menores que {$rsvp.inchildrenconfigconfirmed} anos de idade: &nbsp;&nbsp;</span><span class="email-label2">{$rsvp.inchildrenconfirmed} em {$rsvp.inmaxchildren} permitidos</span>
+
+        </div><!--col-->
+
+        <div class="email-row2 detail">
+          
+          <span class="email-label1">Nomes das Crianças: &nbsp;&nbsp;</span><span class="email-label2">{$rsvp.deschildrenaccompanies}</span>
+
+        </div><!--col-->
+        {else}
+        <div class="email-row detail">
+        
+          <span class="email-label1">Crianças menores que {$rsvp.inchildrenconfigconfirmed} anos de idade: &nbsp;&nbsp;</span><span class="email-label2">0</span>
+
+        </div><!--col-->
+        {/if}
+
+
+
+
+
+
+
+
+      {else}
+
+        {if="$rsvp.inadultsconfirmed > 0"}
+        <div class="email-row detail">
        
-        <span class="email-label1">Adultos: &nbsp;&nbsp;</span><span class="email-label2">{if="$rsvp.inadultsconfirmed > 0"}{$rsvp.inadultsconfirmed} em {function="getMaxAdults($rsvp.inmaxadults,$rsvpconfig.inadultsconfig,$rsvpconfig.inmaxadultsconfig)"} permitidos{else}0{/if}</span>
-
-      </div><!--col-->
-
-
-      <div class="email-row detail">
+          <span class="email-label1">Acompanhantes: &nbsp;&nbsp;</span><span class="email-label2">{$rsvp.inadultsconfirmed} em {$rsvp.inmaxadults} permitidos</span>
+  
+        </div><!--col-->
+  
+        <div class="email-row2 detail">
+          
+          <span class="email-label1">Nomes dos Acompanhantes: &nbsp;&nbsp;</span><span class="email-label2">{$rsvp.desadultsaccompanies}</span>
+  
+        </div><!--col-->
+        {else}
+        <div class="email-row detail">
        
-        <span class="email-label1">Crianças: &nbsp;&nbsp;</span><span class="email-label2">{if="$rsvp.inchildrenconfirmed > 0"}{$rsvp.inchildrenconfirmed} em {function="getMaxChildren($rsvp.inmaxchildren,$rsvpconfig.inchildrenconfig,$rsvpconfig.inmaxchildrenconfig)"} permitidos{else}0{/if}</span>
+          <span class="email-label1">Acompanhantes: &nbsp;&nbsp;</span><span class="email-label2">0</span>
+  
+        </div><!--col-->
+        {/if}
 
-      </div><!--col-->
-
-
-
-      <div class="email-row2 detail">
-       
-        <span class="email-label1">Nomes dos Acompanhantes: &nbsp;&nbsp;</span><span class="email-label2">{$rsvp.desguestaccompanies}</span>
-
-      </div><!--col-->
+      {/if}
 
 
 

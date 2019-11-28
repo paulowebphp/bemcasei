@@ -163,7 +163,7 @@
                                 
 
 
-                                    <label for="inchildren">Permitir Crianças? <br><small>(Se marcar esta opção como "Não", mostraremos uma mensagem aos convidados avisando-os de que não serão permitidas crianças no casamento)</small></label>
+                                    <label for="inchildren">Permitir Crianças? <br><small>(Se marcar esta opção como "Não", será mostrada uma mensagem aos convidados avisando-os de que não serão permitidas crianças no casamento)</small></label>
     
     
                                     <select id="inchildren" name="inchildren" class="custom-select">

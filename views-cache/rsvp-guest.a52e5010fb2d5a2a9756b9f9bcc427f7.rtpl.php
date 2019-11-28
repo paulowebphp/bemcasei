@@ -1,4 +1,4 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?>﻿<!DOCTYPE html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
@@ -144,7 +144,7 @@
 
       <div class="title">
             
-        <h1>Confirmação de Presença Recebida</h1>
+        <h1>Confirmação de Presença Enviada</h1>
 
       </div>
 
@@ -154,14 +154,15 @@
 
       <div class="email-row">
             
-        <span>Olá, <strong><?php echo htmlspecialchars( $user["desnick"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php if( $consort["desconsortemail"] != '' ){ ?> & <?php echo htmlspecialchars( $consort["desconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>!</strong></span>
+        <span>Olá, <strong><?php echo htmlspecialchars( $rsvp["desguest"], ENT_COMPAT, 'UTF-8', FALSE ); ?>!</strong></span>
 
       </div>
 
 
       <div class="email-row">
       
-         <span><strong><?php echo htmlspecialchars( $rsvp["desguest"], ENT_COMPAT, 'UTF-8', FALSE ); ?></strong> confirmou presença no seu casamento. Confira os dados abaixo:</span>
+
+         <span>Muito obrigado! Você confirmou presença no casamento de <strong><?php echo htmlspecialchars( $user["desnick"], ENT_COMPAT, 'UTF-8', FALSE ); ?> e <?php echo htmlspecialchars( $consort["desconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?>!</strong></span>
 
       </div>
       
@@ -301,7 +302,7 @@
       <div class="email-row">
             
         <span>
-          Faça login no <strong>Bem Casei</strong> para gerenciar suas confirmações de presença
+          Busque o nome do casal no <strong>Bem Casei</strong> para presenteá-los e encantar-se com histórias, fotos, vídeos e muito mais!
         </span>
 
 
@@ -310,8 +311,8 @@
 
       <div class="email-row email-button">
         
-        <a target="_blank" href="https://bemcasei.com.br/login">
-          <span>Login</span>
+        <a target="_blank" href="https://bemcasei.com.br/buscar">
+          <span>Buscar Casal</span>
         </a>
 
         

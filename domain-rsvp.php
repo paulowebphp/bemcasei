@@ -23,7 +23,7 @@ use Core\Model\CustomStyle;
 
 $app->get( "/:desdomain/rsvp/confirmacao/:hash/presenca-confirmada", function( $desdomain, $hash )
 {
-
+	
 
 	if( Maintenance::checkMaintenance() )
 	{	
@@ -116,6 +116,7 @@ $app->get( "/:desdomain/rsvp/confirmacao/:hash/presenca-confirmada", function( $
 		$rsvpconfig->get((int)$user->getiduser());
 
 
+		
 
 
 		$consort = new Consort();
@@ -446,7 +447,9 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
 				exit;
 			}//end if
-			
+
+
+		
 
 		}//end if
 		else
@@ -459,7 +462,7 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 				exit;
 			}//end if
 			
-
+			$rsvp->setinmaxadults((int)$rsvpconfig->getinmaxadultsconfig());
 
 		}//end else
 
@@ -503,7 +506,7 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 
 			$desadultsaccompanies = $adults_handler['desaccompanies'];
 
-			$accompaniesQuantity = $adults_handler['accompaniesQuantity'];
+			$adultsArrayCount = $adults_handler['accompaniesArrayCount'];
 
 			//$adultsArray = explode(';', $desadultsaccompanies);
 
@@ -511,21 +514,21 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 			/*echo '<pre>';
 var_dump($_POST);
 var_dump($adults_handler);
-var_dump($accompaniesQuantity);
+var_dump($adultsArrayCount);
 var_dump($desadultsaccompanies);
 var_dump($inadultsconfirmed);
 
 exit;*/
 
 
-			if( (int)$accompaniesQuantity < (int)$inadultsconfirmed )
+			if( (int)$adultsArrayCount < (int)$inadultsconfirmed )
 			{
 				Rsvp::setError("A quantidade de nomes de adultos informados foi menor do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
 				header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
 				exit;
 
 			}//end if
-			elseif( (int)$accompaniesQuantity > (int)$inadultsconfirmed )
+			elseif( (int)$adultsArrayCount > (int)$inadultsconfirmed )
 			{	
 
 				Rsvp::setError("A quantidade de nomes de adultos informados foi maior do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
@@ -564,7 +567,7 @@ exit;*/
 
 
 
-
+		
 
 
 
@@ -627,14 +630,13 @@ exit;*/
 					exit;
 				}//end if
 				
-	
+				$rsvp->setinmaxchildren((int)$rsvpconfig->getinmaxchildrenconfig());
 	
 			}//end else
 	
 			
-	
-	
-	
+			
+			
 	
 			if( (int)$inchildrenconfirmed != 0 )
 			{
@@ -669,7 +671,7 @@ exit;*/
 	
 				$deschildrenaccompanies = $children_handler['desaccompanies'];
 	
-				$accompaniesQuantity = $children_handler['accompaniesQuantity'];
+				$childrenArrayCount = $children_handler['accompaniesArrayCount'];
 	
 	
 				
@@ -678,19 +680,19 @@ exit;*/
 	/*echo '<pre>';
 				var_dump($_POST);
 var_dump($children_handler);
-var_dump($accompaniesQuantity);
+var_dump($childrenArrayCount);
 var_dump($deschildrenaccompanies);
 var_dump($inchildrenconfirmed);
 exit;*/
 	
-				if( (int)$accompaniesQuantity < (int)$inchildrenconfirmed )
+				if( (int)$childrenArrayCount < (int)$inchildrenconfirmed )
 				{
 					Rsvp::setError("A quantidade de nomes de crianças informadas foi menor do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
 					header("Location: /".$user->getdesdomain()."/rsvp/confirmacao/".$hash);
 					exit;
 	
 				}//end if
-				elseif( (int)$accompaniesQuantity > (int)$inchildrenconfirmed )
+				elseif( (int)$childrenArrayCount > (int)$inchildrenconfirmed )
 				{	
 	
 					Rsvp::setError("A quantidade de nomes de crianças informadas foi maior do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
@@ -779,6 +781,7 @@ exit;*/
 			'inmaxchildren'=>$rsvp->getinmaxchildren(),
 			'inchildrenconfirmed'=>$inchildrenconfirmed,
 			'inchildrenageconfirmed'=>$rsvpconfig->getinchildrenage(),
+			'inchildrenconfigconfirmed'=>$rsvpconfig->getinchildren(),
 			'desadultsaccompanies'=>$desadultsaccompanies,
 			'deschildrenaccompanies'=>$deschildrenaccompanies,
 			'dtconfirmed'=>$dtconfirmed->format('Y-m-d')

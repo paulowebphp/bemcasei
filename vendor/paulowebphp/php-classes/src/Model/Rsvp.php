@@ -155,6 +155,7 @@ class Rsvp extends Model
 	                :inmaxchildren,
 	                :inchildrenconfirmed,
 	                :inchildrenageconfirmed,
+	                :inchildrenconfigconfirmed,
 	                :desadultsaccompanies,
 	                :deschildrenaccompanies,
 	                :dtconfirmed
@@ -177,6 +178,7 @@ class Rsvp extends Model
 					':inmaxchildren'=>$this->getinmaxchildren(),
 					':inchildrenconfirmed'=>$this->getinchildrenconfirmed(),
 					':inchildrenageconfirmed'=>$this->getinchildrenageconfirmed(),
+					':inchildrenconfigconfirmed'=>$this->getinchildrenconfigconfirmed(),
 					':desadultsaccompanies'=>utf8_decode($this->getdesadultsaccompanies()),
 					':deschildrenaccompanies'=>utf8_decode($this->getdeschildrenaccompanies()),
 					':dtconfirmed'=>$this->getdtconfirmed()
@@ -216,6 +218,7 @@ class Rsvp extends Model
 	                :inmaxchildren,
 	                :inchildrenconfirmed,
 	                :inchildrenageconfirmed,
+	                :inchildrenconfigconfirmed,
 	                :desadultsaccompanies,
 	                :deschildrenaccompanies,
 	                :dtconfirmed
@@ -238,6 +241,7 @@ class Rsvp extends Model
 					':inmaxchildren'=>$this->getinmaxchildren(),
 					':inchildrenconfirmed'=>$this->getinchildrenconfirmed(),
 					':inchildrenageconfirmed'=>$this->getinchildrenageconfirmed(),
+					':inchildrenconfigconfirmed'=>$this->getinchildrenconfigconfirmed(),
 					':desadultsaccompanies'=>$this->getdesadultsaccompanies(),
 					':deschildrenaccompanies'=>$this->getdeschildrenaccompanies(),
 					':dtconfirmed'=>$this->getdtconfirmed()
@@ -787,37 +791,55 @@ class Rsvp extends Model
         header("Pragma: no-cache"); 
 
 
+		//$rsvpconfig = new RsvpConfig();
+
+		//$rsvpconfig->get((int)$iduser);
+
+		
+
+		$sql = new Sql();
+
+		$results = $sql->select("
 
 
-        $sql = new Sql();
+				SELECT a.desguest as 'Convidado',
+				a.desemail as 'Email', 
+				a.nrphone as 'Telefone', 
+				a.inadultsconfirmed as 'Qtd_Adultos',
+				a.desadultsaccompanies as 'Nomes_Adultos',
+				a.inchildrenconfigconfirmed as 'Permitido_Criancas',
+				a.inchildrenageconfirmed as 'Idade_Limite_Crianca',
+				a.inchildrenconfirmed as 'Qtd_Criancas',
+				a.deschildrenaccompanies as 'Nomes_Criancas',
+				a.dtconfirmed as 'Data_Confirmacao'
+				FROM tb_rsvp a
+				INNER JOIN tb_users b ON a.iduser = b.iduser
+				WHERE a.inconfirmed = 1
+				AND a.iduser = :iduser
+				ORDER BY a.desguest ASC
 
-        $results = $sql->select("
 
+				",
 
-        	SELECT a.desguest, a.desemail, a.nrphone, a.inadultsconfirmed, a.inchildrenconfirmed, a.desadultsaccompanies, a.dtconfirmed 
+				[
 
-        	FROM tb_rsvp a
-        	INNER JOIN tb_users b ON a.iduser = b.iduser
-        	WHERE a.inconfirmed = 1
-        	AND a.iduser = :iduser
-        	ORDER BY a.desguest ASC
+					'iduser'=>$iduser
+				]
 
+			);//end select
 
-	    	",
+        
 
-    		[
-
-    			'iduser'=>$iduser
-    		]
-
-    	);//end select
+		
 
 
 
         if ( count($results) > 0 )
         {
         	# code...
-        	if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			/*
+			
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
 			{
 				
 
@@ -832,6 +854,8 @@ class Rsvp extends Model
 					
 				
 			}//end if
+			
+			*/
 
 
 			$out = fopen( 'php://output', 'w' );
@@ -839,8 +863,15 @@ class Rsvp extends Model
 	        if( $out )
 	        {
 
+
+				$head = array_keys($results[0]);
+				
+				fputcsv( $out, $head, ';' );
+				
+
 	            foreach ( $results as $row ) 
 	            {
+					$row['Permitido_Criancas'] = $row['Permitido_Criancas'] == 1 ? 'Sim' : 'Não';
 	                fputcsv( $out, $row, ';' );
 
 	            }//end foreach

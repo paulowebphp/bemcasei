@@ -1,8 +1,8 @@
-BASIC PRODUCTION PJ
+//BASIC PRODUCTION PJ
 
-Basic RElFSVZBRkZVWkpBVzFBOUk0UTNUSlNRQTJWRUZZSFc6QVVPSk9KR1RUQVZVWFRGN1dZOVc1U0RJUTE0TEZQT09YT1NTM01IRA==
+//Basic RElFSVZBRkZVWkpBVzFBOUk0UTNUSlNRQTJWRUZZSFc6QVVPSk9KR1RUQVZVWFRGN1dZOVc1U0RJUTE0TEZQT09YT1NTM01IRA==
 
-REQUEST
+//REQUEST
 {  
    "name":"BemCaseiProduction1",
    "description":"Marketplace de serviços e produtos virtuais",
@@ -10,7 +10,7 @@ REQUEST
    "redirectUri":"https://bemcasei.com.br/retorno"
 }
 
-RESPONSE
+//RESPONSE
 {
     "id": "APP-SOJRLP26BSJK",
     "website": "https://bemcasei.com.br",
@@ -23,7 +23,7 @@ RESPONSE
     "updatedAt": "2019-11-12T13:55:27.255Z"
 }
 
-NPR PRODUCTION PJ
+//NPR PRODUCTION PJ
 {
     "events": [
         "PAYMENT.*",
@@ -38,7 +38,7 @@ NPR PRODUCTION PJ
 
 
 
-MPA PRODUCTION PJ
+//MPA PRODUCTION PJ
 {
     "limited": false,
     "_links": {
@@ -128,10 +128,10 @@ MPA PRODUCTION PJ
 
 
 
-MPA-1F94AD2BB2EE
-275b53b3101548fdb340846be154eace_v2
-APP-9QI4DVF6A702
-Maria Aparecida Seabra de Carvalho Cambraia
+//MPA-1F94AD2BB2EE
+//275b53b3101548fdb340846be154eace_v2
+//APP-9QI4DVF6A702
+//Maria Aparecida Seabra de Carvalho Cambraia
 
 
 
@@ -141,11 +141,11 @@ Maria Aparecida Seabra de Carvalho Cambraia
 
 
 
-BASIC SANDBOX PJ
+//BASIC SANDBOX PJ
 
-Basic R1M4R1lZV0ZIU1pHVExXM1RHMUIwMDhCVjRRWk9OVkE6NkczMVU5SlhEVFVRU05aQUwxS1ZEUlg5QlBVVkhQOTg0REQwU1MwRw==
+//Basic R1M4R1lZV0ZIU1pHVExXM1RHMUIwMDhCVjRRWk9OVkE6NkczMVU5SlhEVFVRU05aQUwxS1ZEUlg5QlBVVkhQOTg0REQwU1MwRw==
 
-REQUEST
+//REQUEST
 {  
    "name":"BemCaseiSandboxApp",
    "description":"Marketplace de serviços e produtos virtuais",
@@ -153,7 +153,7 @@ REQUEST
    "redirectUri":"https://bemcasei.com.br/retorno"
 }
 
-RESPONSE
+//RESPONSE
 {
     "id": "APP-335B0VPAUCEH",
     "website": "https://bemcasei.com.br",
@@ -188,7 +188,7 @@ RESPONSE
 
 
 
-MPA SANDBOX PJ
+//MPA SANDBOX PJ
 {
     "site": "https://amarcasar.com",
     "limited": false,
@@ -285,12 +285,12 @@ MPA SANDBOX PJ
 
 
 
-BASIC SANDBOX PF
+//BASIC SANDBOX PF
 
-Basic VFRNUk5aU01QM0RONjFETEY2VE5EUTZMVEU5WU82QVI6VEdPQVdTSFo2MDEzWlUyUFBKV0hPQ0dNOUU5QkxDUjVVSERMTkI5NA
+//Basic VFRNUk5aU01QM0RONjFETEY2VE5EUTZMVEU5WU82QVI6VEdPQVdTSFo2MDEzWlUyUFBKV0hPQ0dNOUU5QkxDUjVVSERMTkI5NA
 
 
-APP SANDBOX PF
+//APP SANDBOX PF
 
 {
     "id": "APP-MSL2111M3D69",
@@ -305,8 +305,8 @@ APP SANDBOX PF
 }
 
 
-NPR AMAR CASAR SANDBOX PF
-RESPONSE
+//NPR AMAR CASAR SANDBOX PF
+//RESPONSE
 {
     "events": [
         "PAYMENT.*",
@@ -319,7 +319,7 @@ RESPONSE
     "id": "NPR-TEU7V5JJWAQ6"
 }
 
-POST
+//POST
 {
     "events": [
         "PAYMENT.*",
@@ -333,7 +333,7 @@ POST
 
 
 
-MPA SANDBOX PF
+//MPA SANDBOX PF
 
 {
     "site": "https://www.amarcasar.com/",
@@ -406,12 +406,12 @@ MPA SANDBOX PF
 
 
 
-PRODUCTION PF
+//PRODUCTION PF
 
-Basic SVJHTVNEMkhZS1NQQ1NUT01FSVVJN0lQREZOVzRJRFg6VVdPSk9DMkNaVDBZVVpZVlpKS1EzVE9ZRlVORkZMUUdLTVlIRzNaUA==
+//Basic SVJHTVNEMkhZS1NQQ1NUT01FSVVJN0lQREZOVzRJRFg6VVdPSk9DMkNaVDBZVVpZVlpKS1EzVE9ZRlVORkZMUUdLTVlIRzNaUA==
 
 
-APP PRODUCTION PF
+//APP PRODUCTION PF
 
 {
     "id": "APP-0PNRIHCTY0JZ",
@@ -426,7 +426,7 @@ APP PRODUCTION PF
 }
 
 
-NPR PRODUCTION PF
+//NPR PRODUCTION PF
 
 {
     "events": [
@@ -444,8 +444,8 @@ NPR PRODUCTION PF
 
 
 
-MPA PRODUCITON PF jpccambraia@gmail.com
-GET https://api.moip.com.br/v2/accounts
+//MPA PRODUCITON PF jpccambraia@gmail.com
+//GET https://api.moip.com.br/v2/accounts
 
 
 {
@@ -520,7 +520,7 @@ GET https://api.moip.com.br/v2/accounts
 
 
 
-    
+/*   
 Iandro 
 
 
@@ -680,3 +680,5 @@ Nome do Cliente
 
 mas existe prazo menor?
 Escreva aqui sua mensagem
+*/
+

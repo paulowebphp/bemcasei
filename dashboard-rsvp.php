@@ -56,8 +56,7 @@ $app->get("/dashboard/rsvp/download", function(){
 	}//end if
 
 	
-
-	Rsvp::generateCsv( $user->getiduser() );
+	Rsvp::generateCsv( (int)$user->getiduser() );
 
 });//END route
 
@@ -1631,7 +1630,7 @@ $app->get( "/dashboard/rsvp", function()
     $rsvpconfig->get((int)$user->getiduser());
 
 
-
+	
 
     /*$plan = new Plan();
 

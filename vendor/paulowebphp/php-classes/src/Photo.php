@@ -304,7 +304,7 @@ exit;
 
 
 			//code...
-			//header("Content-type: image/".$extension);
+			header("Content-type: image/".$extension);
 
 			/*
 			echo '<pre>';
@@ -569,7 +569,7 @@ exit;
 		try 
 		{
 			//code...
-			//header("Content-type: image/".$extension);
+			header("Content-type: image/".$extension);
 			
 			$entity_directory = $this->getDirectoryName($entity_code);
 

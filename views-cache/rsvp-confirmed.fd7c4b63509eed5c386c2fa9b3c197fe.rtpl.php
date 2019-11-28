@@ -170,7 +170,7 @@
 
 
 
-                            <div class="col-md-4 col-12">
+                            <div class="col-md-5 col-12">
 
                                 <div class="card-dash-field">
 
@@ -196,19 +196,49 @@
 
 
 
-                            <div class="col-md-2 col-12">
+                            <div class="col-md-3 col-12">
+
+                                    <div class="card-dash-field">
+    
+    
+                                        <div class="card-dash-content">
+                                            <span><?php if( $value1["nrphone"] == '' or $value1["nrphone"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
+                                        </div>
+    
+                                        <div class="card-dash-header">
+    
+                                            <hr>
+                                            <span>Telefone</span>
+                                            
+                                        </div>
+    
+    
+                                    </div><!--card-dash-field-->
+    
+                                    
+                                </div><!--col-->
+
+
+                            
+
+
+
+
+
+
+                            <div class="col-md-4 col-12">
 
                                 <div class="card-dash-field">
 
 
                                     <div class="card-dash-content">
-                                        <span><?php if( $value1["inadultsconfirmed"] > 0 ){ ?><?php echo htmlspecialchars( $value1["inadultsconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>0<?php } ?></span>
+                                        <span><?php if( $value1["desemail"] == '' or $value1["desemail"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
 
                                         <hr>
-                                        <span>Adultos</span>
+                                        <span>E-mail</span>
                                         
                                     </div>
 
@@ -220,9 +250,110 @@
 
 
 
+                           
 
 
 
+
+
+
+                        </div><!--row-->
+
+
+
+
+                        <div class="row card-dash-row2">
+
+
+
+
+
+                                <div class="col-md-2 col-12">
+
+                                        <div class="card-dash-field">
+        
+        
+                                            <div class="card-dash-content">
+                                                <span><?php echo htmlspecialchars( $value1["inadultsconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                            </div>
+        
+                                            <div class="card-dash-header">
+        
+                                                <hr>
+                                                <span>Adultos</span>
+                                                
+                                            </div>
+        
+        
+                                        </div><!--card-dash-field-->
+        
+                                        
+                                    </div><!--col-->
+                            
+                            
+
+                            <div class="col-md-8 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php if( $value1["desadultsaccompanies"] == '' or $value1["desadultsaccompanies"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["desadultsaccompanies"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Nomes dos Acompanhantes Adultos</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                    <div class="card-dash-field">
+    
+    
+                                        <div class="card-dash-content">
+                                            <span><?php if( $value1["dtconfirmed"] == '' or $value1["dtconfirmed"] == null ){ ?>-<?php }else{ ?><?php echo formatDate($value1["dtconfirmed"]); ?><?php } ?></span>
+                                        </div>
+    
+                                        <div class="card-dash-header">
+    
+                                            <hr>
+                                            <span>Data da Confirmação</span>
+                                            
+                                        </div>
+    
+    
+                                    </div><!--card-dash-field-->
+    
+                                    
+                                </div><!--col-->
+                           
+
+
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+
+
+                        <?php if( $value1["inchildrenconfigconfirmed"] == 1 ){ ?>
+                        <div class="row card-dash-row2">
 
 
 
@@ -279,71 +410,7 @@
                             </div><!--col-->
 
 
-
-
-
-
-
-                            <div class="col-md-2 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["dtconfirmed"] == '' or $value1["dtconfirmed"] == null ){ ?>-<?php }else{ ?><?php echo formatDate($value1["dtconfirmed"]); ?><?php } ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Data da Confirmação</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-                        </div><!--row-->
-
-
-
-
-                        <div class="row card-dash-row2">
-                            
-                            
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["desadultsaccompanies"] == '' or $value1["desadultsaccompanies"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["desadultsaccompanies"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Nomes dos Acompanhantes Adultos</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-                            <div class="col-md-3 col-12">
+                            <div class="col-md-8 col-12">
 
                                 <div class="card-dash-field">
 
@@ -369,57 +436,7 @@
 
 
 
-                            <div class="col-md-3 col-12">
-
-                                    <div class="card-dash-field">
-    
-    
-                                        <div class="card-dash-content">
-                                            <span><?php if( $value1["nrphone"] == '' or $value1["nrphone"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
-                                        </div>
-    
-                                        <div class="card-dash-header">
-    
-                                            <hr>
-                                            <span>Telefone</span>
-                                            
-                                        </div>
-    
-    
-                                    </div><!--card-dash-field-->
-    
-                                    
-                                </div><!--col-->
-
-
                             
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php if( $value1["desemail"] == '' or $value1["desemail"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>E-mail</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
 
 
 
@@ -428,6 +445,7 @@
 
 
                         </div><!--row-->
+                        <?php } ?>
 
 
 

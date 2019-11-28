@@ -400,7 +400,7 @@
 
 
 
-                        <?php if( $rsvpconfig["inchildren"] == 1 ){ ?>
+                        <?php if( $value1["inchildrenconfigconfirmed"] == 1 or $rsvpconfig["inchildren"] == 1 ){ ?>
                         <div class="row card-dash-row2">
                             
                             
@@ -461,7 +461,7 @@
         
                                             <div class="card-dash-content">
                                             
-                                                <span><?php echo htmlspecialchars( $rsvp["inchildrenageconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                                <span><?php echo htmlspecialchars( $value1["inchildrenageconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                                 
                                             </div>
         
@@ -511,6 +511,8 @@
 
                         </div><!--row-->
                         <?php } ?>
+
+                        
 
 
 

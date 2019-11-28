@@ -307,33 +307,7 @@
         </div><!--row-->
 
 
-        {if="$success != ''"}
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {$success}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div> 
-        </div>  
-        {/if}
-
-
-        {if="$error != ''"}
-            <div class="row">
-                <div class="col-12">
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        {$error}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                </div> 
-            </div>  
-        {/if}
-
+     
 
 
 
@@ -356,7 +330,24 @@
                         
 
           
+                        {if="$success != ''"}
+                        <div class="bottom3 alert alert-success alert-dismissible fade show" role="alert">
+                            {$success}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div> 
+                        {/if}
 
+
+                        {if="$error != ''"}
+                        <div class="bottom3 alert alert-danger alert-dismissible fade show" role="alert">
+                            {$error}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div> 
+                        {/if}
 
                             
                         <form action="/{$user.desdomain}/rsvp/confirmacao/{$hash}" method="post">
@@ -424,7 +415,7 @@
 
 
 
-
+                            {if="$rsvpconfig.inchildren == 1"}
                             <div class="body-row centralizer row">
 
 
@@ -435,16 +426,21 @@
 
                                     <label for="inadultsconfirmed">
 
-                                        <span>Número de Adultos</span>
+                                        <span>Número de Adultos<br><small>(Máximo Permitido:&nbsp; {if="$rsvpconfig.inadultsconfig == 0"}{$rsvp.inmaxadults}{else}{$rsvpconfig.inmaxadultsconfig}{/if})</small></span>
 
                                     </label>
                                     
+                                    
 
-                                    <div class="input-short">
+                                    <div class="input-short bottom1">
                                         
                                         <input type="text" id="inadultsconfirmed" name="inadultsconfirmed">
 
                                     </div><!--input-short-->
+
+
+                                    
+                                    <span><small>(Considera-se adultos os maiores de <strong>{$rsvpconfig.inchildrenage} anos</strong> de idade)</small></span>
 
 
                                 </div><!--col-->
@@ -457,15 +453,18 @@
 
                                     <label for="inchildrenconfirmed">
                                         
-                                        <span>Número de Crianças</span>
+                                        <span>Número de Crianças<br><small>(Máximo Permitido:&nbsp; {if="$rsvpconfig.inchildrenconfig == 0"}{$rsvp.inmaxchildren}{else}{$rsvpconfig.inmaxchildrenconfig}{/if})</small></span>
 
                                     </label>
+
                                     
-                                    <div class="input-short">
+                                    <div class="input-short bottom1">
                                 
                                         <input type="text" id="inchildrenconfirmed" name="inchildrenconfirmed">
 
                                     </div><!--input-short-->
+
+                                    <span><small>(Considera-se crianças os menores de <strong>{$rsvpconfig.inchildrenage} anos</strong> de idade)</small></span>
 
                                 </div><!--col-->
                                 
@@ -487,16 +486,111 @@
 
 
                                     <div>
-                                    <label for="desguestaccompanies"><span>Nome dos Acompanhantes</span></label>
+                                    <label for="desadultsaccompanies"><span>Nome dos Acompanhantes Adultos<br><small>(Coloque o nome completo e separe os nomes por vírgula ou ponto e vírgula)</small></span></label>
                                     
                                     </div>
                                     
-                                    <textarea rows="10" maxlength="500" id="desguestaccompanies" name="desguestaccompanies"></textarea>
+                                    <textarea rows="5" maxlength="500" id="desadultsaccompanies" name="desadultsaccompanies"></textarea>
 
                                 </div><!--col-->   
                                 
                             </div><!--big-body-row-->
 
+
+
+
+
+
+
+                            <div class="body-row row">
+
+
+                                <div class="col-12">
+
+
+                                    <div>
+                                    <label for="deschildrenaccompanies"><span>Nome dos Acompanhantes Crianças<br><small>(Coloque o nome completo e separe os nomes por vírgula ou ponto e vírgula)</small></span></label>
+                                    
+                                    </div>
+                                    
+                                    <textarea rows="5" maxlength="500" id="deschildrenaccompanies" name="deschildrenaccompanies"></textarea>
+
+                                </div><!--col-->   
+                                
+                            </div><!--big-body-row-->
+                            {else}
+                            <div class="body-row row">
+
+
+
+
+                                <div class="col-md-6 col-12 inside-row">
+
+
+                                    <label for="inadultsconfirmed">
+
+                                        <span>Número de Adultos <br><small>(Máximo Permitido:&nbsp; {if="$rsvpconfig.inadultsconfig == 0"}{$rsvp.inmaxadults}{else}{$rsvpconfig.inmaxadultsconfig}{/if})</small></span>
+
+                                    </label>
+                                    
+
+                                    <div class="input-short">
+                                        
+                                        <input type="text" id="inadultsconfirmed" name="inadultsconfirmed">
+
+                                    </div><!--input-short-->
+
+
+                                </div><!--col-->
+
+
+
+                                <div class="col-md-6 col-12 inside-row">
+
+
+                                    <label for="inadultsconfirmed">
+
+                                        <span>{$rsvpconfig.desadultstitle}</span>
+
+                                    </label>
+                                    <br>
+                                    <span><small>{$rsvpconfig.desadultsdescription}</small></span>
+
+
+                                </div><!--col-->
+
+
+
+
+
+                                
+                
+
+                            </div><!--row-->
+
+
+
+
+
+
+
+                            <div class="body-row row">
+
+
+                                <div class="col-12">
+
+
+                                    <div>
+                                    <label for="desadultsaccompanies"><span>Nome dos Acompanhantes Adultos<br><small>(Coloque o nome completo e separe os nomes por vírgula ou ponto e vírgula)</small></span></label>
+                                    
+                                    </div>
+                                    
+                                    <textarea rows="5" maxlength="500" id="desadultsaccompanies" name="desadultsaccompanies"></textarea>
+
+                                </div><!--col-->   
+                                
+                            </div><!--big-body-row-->
+                            {/if}
 
 
                       
