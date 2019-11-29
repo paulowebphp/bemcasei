@@ -871,7 +871,7 @@ class Rsvp extends Model
 
 	            foreach ( $results as $row ) 
 	            {
-					$row['Permitido_Criancas'] = $row['Permitido_Criancas'] == 1 ? 'Sim' : 'Não';
+					$row['Permitido_Criancas'] = $row['Permitido_Criancas'] == 1 ? 'Sim' : 'Nao';
 	                fputcsv( $out, $row, ';' );
 
 	            }//end foreach
