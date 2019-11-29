@@ -120,27 +120,6 @@
 
 
 
-
-
-    /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
-    .alert-domain h1{
-        text-align: center;
-        color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
-        font-family: <?php if( $customstyle["desfontfamily1"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamily1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'Norican'<?php } ?>;
-
-    }
-    /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
-
-
-
-
-
-
-
-
-
-
-
     /********************************DOMAIN*****************************************/
     .dropdown a:hover{
         color: <?php if( $customstyle["descolortexthover"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolortexthover"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#171F26<?php } ?>;
@@ -154,8 +133,45 @@
 
 
 
+
+
     
 </style>
+
+<?php if( !validatePlanDomain() ){ ?>
+<section class="domain">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Mural de Mensagens Desabilitado</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+    </div>
+</section>
+
+<?php }elseif( $user["inplancontext"] == 0 ){ ?>
+<section class="domain">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Para liberar as funcionalidades do Mural é necessário adquirir um plano</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+    </div>
+</section>
+
+<?php }else{ ?>
+
+
+
+
+
 
 
 
@@ -164,9 +180,14 @@
 
 <section class="domain">
 
-    <div class="container-fluid">            
+    <div class="container-fluid">
+
+        
             
             
+
+
+
         <div class="row">
             
             <div class="col-12">
@@ -175,25 +196,37 @@
                 <div class="section-title">
                         
 
-                    <a href="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/videos">
-                        
-                        <h3>
-                            Vídeos
-                        </h3>
-
-                    </a>
+                    <h3>
+                        Mensagem Enviada!
+                    </h3>
 
                     <hr>
+
 
                 </div><!--section-title-->
 
                      
                
             </div><!--col-->
+
         
         </div><!--row-->
 
 
+
+
+        <?php if( $success != '' ){ ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div> 
+        </div>  
+        <?php } ?>
 
 
         <?php if( $error != '' ){ ?>
@@ -204,149 +237,89 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div><!--balert-->
+                </div><!--alert-->
             </div><!--col-->
         </div><!--row--> 
         <?php } ?> 
     
 
 
+    
+        
+
 
         <div class="row">
 
             <div class="col-12">
-                 
+
 
                 <div class="card-wrapper">
 
 
-
-                    <?php if( $nrtotal == 0 ){ ?>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="alert alert-info alert-domain" role="alert">
-                                <h1>Ainda não há vídeos cadastrados</h1>
-                            </div><!--alert-->
-                        </div><!--col-->
-                    </div><!--row-->
-
-                            
-                    <?php }else{ ?>
-
-                    <?php $counter1=-1;  if( isset($video) && ( is_array($video) || $video instanceof Traversable ) && sizeof($video) ) foreach( $video as $key1 => $value1 ){ $counter1++; ?>
-
-
-                    <div class="card1 card-video">
+                    <div class="card3">
                         
 
-                       
-                            
-                        
-
-
-                        <div class="body-header">
-
-                            <div class="card-image">
-                            
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo htmlspecialchars( $value1["desvideocode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                            </div><!--card-photo-->
-
-                        </div><!--card-header-->
-
-
-
-
-
-                        <div class="card-body">
+        
                             
 
 
-                            <div class="title">
-
-
-                                <h5><?php echo htmlspecialchars( $value1["desvideo"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h5>
-
-                                <hr>
-
-
-                            </div><!--body-title-->
-
-
-
-
-
-                            <div class="body-row">
-
-                                <textarea readonly="readonly" class="description"><?php echo htmlspecialchars( $value1["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
-
-                            </div><!--body-row-->
-
-
-
-
-
-
-                            <div class="body-footer buttons-wrapper">
-                                
-                                <a href="https://<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" target="_blank">
-                                                
-                                    <i class="fa fa-play"></i>&nbsp;&nbsp;&nbsp;<span>Abrir no YouTube</span>
-
-                                </a>
-
-                            </div>
-
-
-
-
-
-                        </div><!--card-body-->
-
-
-                         
-
-                        
-                            
-                        
-                    </div><!--card1-->
+                        <div class="title">
 
                                 
-                    <?php } ?>
-
-                    <?php } ?> 
+                            <span>Parabéns, <strong><?php echo htmlspecialchars( $message["desmessage"], ENT_COMPAT, 'UTF-8', FALSE ); ?></strong>, você enviou uma mensagem para <?php echo htmlspecialchars( $user["desnick"], ENT_COMPAT, 'UTF-8', FALSE ); ?> e <?php echo htmlspecialchars( $consort["desconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?> e ela ficará visível no Mural assim que o casal a aceitar.</span>
 
 
-                </div><!--wrapper-->
+                        </div><!--big-body-row-->
+
+
+                        <div class="body-row">
+
+                                
+                            <span><strong>Seu e-mail: </strong><?php echo htmlspecialchars( $message["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+
+
+                        </div><!--big-body-row-->
+
+
+
+                        <div class="body-row description-area">
+
+                                
+                            <span><strong>Mensagem: </strong><?php echo htmlspecialchars( $message["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+
+
+                        </div><!--big-body-row-->
+
+                        <div class="body-footer">
+
+
+                            <span><strong>Data da Mensagem: </strong><?php echo formatDate($message["dtregister"]); ?></span>
+
+
+                        </div><!--big-body-row-->
+
+
+
+
+
+
+
+
+
+                                              
+                        
+                    </div><!--card-->
+
+                </div><!--wrapper-->    
 
             </div><!--col-->
     
         </div><!--row-->
 
 
-        
+     
 
-
-
-
-        <div class="row justify-content-center">
                 
-            <div class="col-6 centralizer">
-
-                    <div class="pagination">
-                        
-                        <ul>
-                            <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
-                                <li><a href="<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>                             
-                            <?php } ?>
-                        </ul>
-
-                    </div>
-
-            </div><!--col-->
-
-        </div><!--row-->
 
 
 
@@ -356,6 +329,29 @@
     </div><!--container-->
 
 </section>
+<?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

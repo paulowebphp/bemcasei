@@ -119,9 +119,6 @@
 
 
 
-
-
-
     /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
     .alert-domain h1{
         text-align: center;
@@ -154,6 +151,7 @@
 
 
 
+
     
 </style>
 
@@ -175,10 +173,10 @@
                 <div class="section-title">
                         
 
-                    <a href="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/videos">
+                    <a href="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/album">
                         
                         <h3>
-                            Vídeos
+                            Album
                         </h3>
 
                     </a>
@@ -226,7 +224,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="alert alert-info alert-domain" role="alert">
-                                <h1>Ainda não há vídeos cadastrados</h1>
+                                <h1>Ainda não há imagens cadastradas</h1>
                             </div><!--alert-->
                         </div><!--col-->
                     </div><!--row-->
@@ -234,10 +232,10 @@
                             
                     <?php }else{ ?>
 
-                    <?php $counter1=-1;  if( isset($video) && ( is_array($video) || $video instanceof Traversable ) && sizeof($video) ) foreach( $video as $key1 => $value1 ){ $counter1++; ?>
+                    <?php $counter1=-1;  if( isset($album) && ( is_array($album) || $album instanceof Traversable ) && sizeof($album) ) foreach( $album as $key1 => $value1 ){ $counter1++; ?>
 
 
-                    <div class="card1 card-video">
+                    <div class="card1">
                         
 
                        
@@ -249,7 +247,7 @@
 
                             <div class="card-image">
                             
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo htmlspecialchars( $value1["desvideocode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <img alt="Bem Casei Site de Casamento" src="/uploads/albuns/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--card-photo-->
 
@@ -266,7 +264,7 @@
                             <div class="title">
 
 
-                                <h5><?php echo htmlspecialchars( $value1["desvideo"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h5>
+                                <h5><?php echo htmlspecialchars( $value1["desalbum"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h5>
 
                                 <hr>
 
@@ -290,9 +288,9 @@
 
                             <div class="body-footer buttons-wrapper">
                                 
-                                <a href="https://<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" target="_blank">
-                                                
-                                    <i class="fa fa-play"></i>&nbsp;&nbsp;&nbsp;<span>Abrir no YouTube</span>
+                                <a target="_blank" href="/uploads/albuns/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                
+                                    <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>Ver</span>
 
                                 </a>
 
@@ -356,7 +354,6 @@
     </div><!--container-->
 
 </section>
-
 
 
 

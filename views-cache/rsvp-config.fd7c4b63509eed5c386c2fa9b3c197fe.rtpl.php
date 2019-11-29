@@ -181,7 +181,7 @@
 
 
                             <?php if( $rsvpconfig["inchildren"] == 1 ){ ?>
-                            <div class="rsvpconfig-input-row">
+                            <div class="rsvpconfig-input-row2">
 
                                 <label for="inchildrenage">Idade Máxima considerado Criança para o seu Buffet</label>
                                 <input type="text" class="form-control input-inposition2" id="inchildrenage" name="inchildrenage" value="<?php echo htmlspecialchars( $rsvpconfig["inchildrenage"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">

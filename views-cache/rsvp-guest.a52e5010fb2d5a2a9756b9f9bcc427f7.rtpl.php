@@ -223,7 +223,7 @@
         <?php if( $rsvp["inadultsconfirmed"] > 0 ){ ?>
         <div class="email-row detail">
       
-          <span class="email-label1">Adultos: &nbsp;&nbsp;</span><span class="email-label2"><?php echo htmlspecialchars( $rsvp["inadultsconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?> em <?php echo htmlspecialchars( $rsvp["inmaxadults"], ENT_COMPAT, 'UTF-8', FALSE ); ?> permitidos</span>
+          <span class="email-label1">Adultos: &nbsp;&nbsp;</span><span class="email-label2"><?php echo htmlspecialchars( $rsvp["inadultsconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
 
         </div><!--col-->
 
@@ -245,7 +245,7 @@
         <?php if( $rsvp["inchildrenconfirmed"] > 0 ){ ?>
         <div class="email-row detail">
         
-          <span class="email-label1">Crianças menores que <?php echo htmlspecialchars( $rsvp["inchildrenconfigconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?> anos de idade: &nbsp;&nbsp;</span><span class="email-label2"><?php echo htmlspecialchars( $rsvp["inchildrenconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?> em <?php echo htmlspecialchars( $rsvp["inmaxchildren"], ENT_COMPAT, 'UTF-8', FALSE ); ?> permitidos</span>
+          <span class="email-label1">Crianças menores que <?php echo htmlspecialchars( $rsvp["inchildrenconfigconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?> anos de idade: &nbsp;&nbsp;</span><span class="email-label2"><?php echo htmlspecialchars( $rsvp["inchildrenconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
 
         </div><!--col-->
 
@@ -274,7 +274,7 @@
         <?php if( $rsvp["inadultsconfirmed"] > 0 ){ ?>
         <div class="email-row detail">
        
-          <span class="email-label1">Acompanhantes: &nbsp;&nbsp;</span><span class="email-label2"><?php echo htmlspecialchars( $rsvp["inadultsconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?> em <?php echo htmlspecialchars( $rsvp["inmaxadults"], ENT_COMPAT, 'UTF-8', FALSE ); ?> permitidos</span>
+          <span class="email-label1">Acompanhantes: &nbsp;&nbsp;</span><span class="email-label2"><?php echo htmlspecialchars( $rsvp["inadultsconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
   
         </div><!--col-->
   

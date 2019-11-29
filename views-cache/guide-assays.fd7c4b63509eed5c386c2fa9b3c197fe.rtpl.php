@@ -1,0 +1,203 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                <?php if( !validatePlan() ){ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+               
+
+                <?php }elseif( validatePlanFree() ){ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+
+                <?php }else{ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu");?>
+
+                <?php } ?>
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+         
+
+              <div class="row main-title">
+                
+                <div class="col-10">
+              
+
+                  <div class="title">
+                    
+                    <h1>Ensaios</h1>
+
+                  </div> 
+
+
+                </div><!--col-->
+
+
+                <div id="print-wrapper" class="col-2">
+                  
+                  <a href="javascript:window.print();">
+
+                    <img src="/res/images/print.png" alt="Imprimir">
+
+                  </a> 
+
+                </div><!--col-->
+
+
+                <hr/>
+
+              </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+              <div class="row paragraph">
+      
+                <div class="col-12">
+                  
+                  <div class="title">
+                   
+                    <strong>ENSAIO DA CERIMÔNIA</strong>
+
+                  </div>
+
+                  <div class="blockquote">
+
+                    <p>
+                    
+                    Não há uma quantidade de ensaios no mundo que preparem o casal para um dos momentos mais marcantes de suas vidas: o casamento.
+
+                  </p>
+
+                  
+
+                  <p>
+                    
+                    Mas podemos treinar todo o resto, não é? A disposição dos convidados, a entrada dos pais, padrinhos, madrinhas, celebrante e, claro, das estrelas do dia: os noivos ou noivas.
+
+                  </p>
+
+                  <p>
+                    
+                    Para esses momentos e vários outros, busque entender com a Igreja ou com o local onde ocorrerá a celebração, como agendar um dia e horário em que o ensaio possa ocorrer.
+
+                  </p>
+
+                  <p>
+                    Marque pelo menos um, perto da data da união, para que no dia correto, todos estejam com as informações frescas em mente.
+                  </p>
+                  </div>
+                  
+                </div><!--col-->
+
+              </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="row paragraph">
+      
+                <div class="col-12">
+                  
+                  <div class="title">
+                   
+                    <strong>TRAJETO DA IGREJA PRA FESTA</strong>
+
+                  </div>
+
+                  <div class="blockquote">
+
+                    <p>
+                    
+                      Se a sua união acontecerá no mesmo local da festa, então você pode pular esta parte. Do contrário, continue firme conosco!
+
+                    </p>
+
+                    <p>
+                      
+                      Outro ensaio que vale a pena ser feito para que não ocorra nenhum percalço no caminho é o translado entre a Igreja e a festa.
+
+                    </p>
+
+                    <p>
+                      É claro que o trânsito é sempre uma caixinha de surpresas, mas no ensaio você poderá marcar o tempo de um local a outro, além de definir a melhor rota.
+                    </p>
+
+                    <p>
+                      É essencial que essa informação seja passada ao motorista, do contrário não adiantará muita coisa.
+                    </p>
+                  
+                    <p>
+                      
+                      Falando em carros e motoristas, outro serviço que deverá estar em sua lista é esse. Procure profissionais capacitados e com carros confortáveis e grandes.
+
+                    </p>
+
+                    <p>
+                      
+                      Muitos casais gostam de levar um fotógrafo consigo dentro do veículo para registrar todos os momentos, daí a necessidade de um carro confortável e de um motorista preparado.
+
+                    </p>
+
+                  </div>
+                  
+                </div><!--col-->
+
+              </div><!--row-->
+
+
+
+
+
+
+
+
+
+            </div><!--col-->
+        
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+
+

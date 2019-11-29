@@ -80,11 +80,6 @@
     </script>
 
 
-
-    <!-- Start of bemcasei Zendesk Widget script -->
-    <script id="ze-snippet"
-        src="https://static.zdassets.com/ekr/snippet.js?key=565637ed-1709-4f89-b406-1ce62941de4b"> </script>
-    <!-- End of bemcasei Zendesk Widget script -->
     
 </head>
 
