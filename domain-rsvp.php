@@ -543,11 +543,10 @@ exit;*/
 		else
 		{
 
-
 			if( 
 			
 				isset($_POST['desadultsaccompanies']) 
-				|| 
+				&& 
 				$_POST['desadultsaccompanies'] != ''
 			)
 			{
@@ -712,7 +711,7 @@ exit;*/
 				if( 
 				
 					isset($_POST['deschildrenaccompanies']) 
-					|| 
+					&& 
 					$_POST['deschildrenaccompanies'] != ''
 				)
 				{
@@ -796,8 +795,11 @@ exit;*/
 
 		if( (int)$rsvp->getidrsvp() > 0 )
 		{
-			
 
+			$email_rsvp_user = utf8_decode(Rule::EMAIL_RSVP_USER);
+			$email_rsvp_guest = utf8_decode(Rule::EMAIL_RSVP_GUEST);
+
+			
 			$consort = new Consort();
 
 			$consort->get((int)$user->getiduser());
@@ -806,7 +808,7 @@ exit;*/
 			$userMailer = new Mailer(
 						
 				 
-				Rule::EMAIL_RSVP_USER,
+				$email_rsvp_user,
 
 				"rsvp-user", 
 				
@@ -838,7 +840,7 @@ exit;*/
 			$guestMailer = new Mailer(
 							
 
-				Rule::EMAIL_RSVP_GUEST,
+				$email_rsvp_guest,
 
 				"rsvp-guest", 
 				

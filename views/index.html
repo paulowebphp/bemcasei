@@ -307,12 +307,11 @@
                 <a href="/modelos-templates"><button type="button" class="btn btn-md btn-advantage btn-advantage1">
                         VER TEMPLATES
                     </button></a>
-
-                <a href="/site-casamento"><button type="button" class="btn btn-md btn-advantage btn-advantage2">
+                
+                <!--<a href="/site-casamento"><button type="button" class="btn btn-md btn-advantage btn-advantage2">
                         VER FUNCIONALIDADES
-                    </button></a>
-
-                <h2>&nbsp;</h2>
+                    </button></a>-->
+                
 
             </div>
             <!--col-lg-8-->

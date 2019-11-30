@@ -428,7 +428,7 @@
                         <?php if( $rsvp["inchildrenconfirmed"] > 0 ){ ?>
                         <div class="body-row">
                         
-                          <span><strong>Crianças menores que <?php echo htmlspecialchars( $rsvp["inchildrenconfigconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?> anos de idade: &nbsp;&nbsp;</strong><?php echo htmlspecialchars( $rsvp["inchildrenconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                          <span><strong>Crianças menores que <?php echo htmlspecialchars( $rsvp["inchildrenageconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?> anos de idade: &nbsp;&nbsp;</strong><?php echo htmlspecialchars( $rsvp["inchildrenconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                 
                         </div><!--col-->
                 
@@ -440,7 +440,7 @@
                         <?php }else{ ?>
                         <div class="body-row">
                         
-                          <span><strong>Crianças menores que <?php echo htmlspecialchars( $rsvp["inchildrenconfigconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?> anos de idade: &nbsp;&nbsp;</strong>0</span>
+                          <span><strong>Crianças menores que <?php echo htmlspecialchars( $rsvp["inchildrenageconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?> anos de idade: &nbsp;&nbsp;</strong>0</span>
                 
                         </div><!--col-->
                         <?php } ?>

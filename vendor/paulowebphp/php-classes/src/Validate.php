@@ -127,6 +127,123 @@ class Validate extends Model
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function validateName( $value, $may_be_empty = false )
+	{
+
+
+		$value = trim($value);
+
+		$value = preg_replace('/[^A-Za-z\ç\Ç\s\_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ]/', '', $value);
+
+
+		if ( 
+			
+			!empty($value)
+			||
+			$value != ''
+			||
+			(int)$value != 0
+			
+		)
+		{
+
+			$nameArray = explode(' ', $value);
+
+			$array_handler = [];
+		
+
+			foreach ($nameArray as &$term)
+			{
+				# code...
+				if( $term == '' ) continue;
+
+				$term = trim($term);
+				
+				$term = strtolower($term);
+
+				$term = ucwords($term);
+
+				array_push($array_handler, $term);
+
+			}//end foreach
+
+			$value = implode(' ', $array_handler);
+
+			//$value = strtolower($value);
+
+			//$value = ucfirst($value);
+
+
+		}//end if
+
+
+
+
+		if( !$may_be_empty )
+		{
+
+
+			if( $string != '')
+			{
+				return $string;
+
+			}//end if
+			else
+			{
+				return false;
+
+			}//end else
+
+
+		}//end
+		else
+		{
+
+			return false;
+
+		}//end else
+
+
+
+	}//END validateName
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public static function validateString( $string, $may_be_empty = false )
 	{
 
@@ -320,10 +437,10 @@ class Validate extends Model
 
 
 		/*echo '<pre>';
-var_dump($desaccompanies);
-var_dump($array);
-var_dump($accompaniesQuantity);
-exit;*/
+		var_dump($desaccompanies);
+		var_dump($array);
+		var_dump($accompaniesQuantity);
+		exit;*/
 		
 
 
@@ -367,20 +484,6 @@ exit;*/
 
 
 	}//end validateString
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -786,7 +889,8 @@ exit;*/
 			'KaushanScript',
 			'Norican',
 			'Pacifico',
-			'Satisfy'
+			'Satisfy',
+			'GreatVibes'
 
 		];
 		
