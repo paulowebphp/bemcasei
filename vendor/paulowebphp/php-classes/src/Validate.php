@@ -147,13 +147,26 @@ class Validate extends Model
 
 
 
-	public static function validateName( $value, $may_be_empty = false )
+	public static function validateStringNotSpecialUcwords( 
+		
+		$value,
+		$with_accent = true,
+		$may_be_empty = false 
+		
+	)
 	{
-
 
 		$value = trim($value);
 
-		$value = preg_replace('/[^A-Za-z\ç\Ç\s\_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ]/', '', $value);
+		$value = preg_replace('/[^A-Za-z\ç\Ç\s\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ]/', '', $value);
+
+
+		if ( !$with_accent )
+		{
+			# code...
+			$value = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $value);
+
+		}//end if
 
 
 		if ( 
@@ -167,12 +180,12 @@ class Validate extends Model
 		)
 		{
 
-			$nameArray = explode(' ', $value);
+			$termArray = explode(' ', $value);
 
 			$array_handler = [];
 		
 
-			foreach ($nameArray as &$term)
+			foreach ($termArray as &$term)
 			{
 				# code...
 				if( $term == '' ) continue;
@@ -226,6 +239,95 @@ class Validate extends Model
 
 
 	}//END validateName
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function validateStringNumberSpecial( 
+		
+		$value,
+		$with_accent = true,
+		$may_be_empty = false 
+		
+	)
+	{
+
+		$value = trim($value);
+
+		$string = preg_replace('/[^A-Za-z0-9\ç\Ç\s\_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\!\?\@\#\$\%\&\*\+\,\;\(\)\{\}\=\+\:\>\<\'\*]/', '', $string);
+
+
+		if ( !$with_accent )
+		{
+			# code...
+			$value = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $value);
+
+		}//end if
+
+
+		if( !$may_be_empty )
+		{
+
+
+			if( $string != '')
+			{
+				return $string;
+
+			}//end if
+			else
+			{
+				return false;
+
+			}//end else
+
+
+		}//end
+		else
+		{
+
+			return false;
+
+		}//end else
+
+
+
+	}//END validateName
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -388,7 +490,7 @@ class Validate extends Model
 		
 		$desaccompanies = trim($desaccompanies);
 
-		$desaccompanies = preg_replace('/[^A-Za-z0-9\ç\Ç\s_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\!\?\@\#\$\%\&\*\+\,\;]/', '', $desaccompanies);
+		$desaccompanies = preg_replace('/[^A-Za-z\ç\Ç\s\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ]/', '', $desaccompanies);
 
 		$accompaniesArrayCount = 0;
 
@@ -518,16 +620,12 @@ class Validate extends Model
 	public static function validateDescription( $string, $may_be_empty = false )
 	{
 
-		/*$string = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $string);*/
-		
-
-		//$string = preg_replace('/[^A-Za-z0-9çÇ\s_-]/', '', $string);
-
+	
 		$string = trim($string);
 
-		
+		$string = preg_replace('/[^A-Za-z0-9\ç\Ç\s\_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\!\?\@\#\$\%\&\*\+\,\;\(\)\{\}\=\+\:\>\<\'\*]/', '', $string);
 
-
+	
 
 		if( !$may_be_empty )
 		{
