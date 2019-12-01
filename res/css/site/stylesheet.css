@@ -1821,6 +1821,12 @@ label{
 .site-search-title {
 	width: 100%;
 }
+.site-search-title i{
+	position: absolute;
+	right: 15%;
+	top: 15px;
+	color: #03a9f4;
+}
 #site-search h2{
 	font-family: 'TheHeartOfEverything';
 	font-size: 2.3rem;

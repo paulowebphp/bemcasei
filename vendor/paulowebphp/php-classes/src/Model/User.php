@@ -4635,6 +4635,143 @@ var_dump($plans);*/
 
 
 
+	public static function getSiteSearch( $search, $page = 1, $itensPerPage = 10 )
+	{
+		
+
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  )
+		{
+
+			$search = utf8_decode($search);
+
+		}//end if
+
+
+
+		$start = ($page - 1) * $itensPerPage;
+
+		$sql = new Sql();
+
+
+		$results = $sql->select("
+
+			SELECT a.desdomain,
+			b.desperson,
+			b.desnick,
+			c.desconsort,
+            d.dtwedding,
+            e.descity,
+            e.desstatecode,
+            e.descountry,
+            e.descountrycode,
+            f.desbanner
+			FROM tb_users a 
+			INNER JOIN tb_persons b ON a.idperson = b.idperson
+			INNER JOIN tb_consorts c ON a.iduser = c.iduser
+			INNER JOIN tb_weddings d ON a.iduser = d.iduser
+            INNER JOIN tb_addresses e ON a.iduser = e.iduser
+            INNER JOIN tb_customstyle f ON a.iduser = f.iduser
+			WHERE a.desdomain IS NOT NULL AND b.desperson LIKE :searchlike
+			OR a.desdomain IS NOT NULL AND b.desnick LIKE :searchlike
+			OR a.desdomain IS NOT NULL AND c.desconsort LIKE :searchlike
+			ORDER BY b.desperson,
+			a.dtregister DESC
+			LIMIT $start, $itensPerPage;
+
+
+			", 
+			
+			[
+
+				':searchlike'=>'%'.$search.'%'
+				//':search'=>$search
+
+			]
+		
+		);//end select
+
+
+
+		$nrtotal = $sql->select("
+		
+			SELECT FOUND_ROWS() AS nrtotal;
+			
+		");//end select
+
+
+
+
+
+		if ( count($results) > 0 )
+		{
+			# code...
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+				foreach ($results as &$row)
+				{
+					# code...
+					$row['desperson'] = utf8_encode($row['desperson']);	
+					$row['desnick'] = utf8_encode($row['desnick']);	
+					$row['desconsort'] = utf8_encode($row['desconsort']);
+					$row['descity'] = utf8_encode($row['descity']);
+
+				}//end foreach
+				
+			}//end if
+
+		}//end if
+
+
+		return [
+
+			'results'=>$results,
+			'total'=>(int)$nrtotal[0]["nrtotal"],
+			'pages'=>ceil($nrtotal[0]["nrtotal"] / $itensPerPage)
+
+		];//end return
+
+			
+
+	}//END getPageSearch
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public static function getPageMailingSearch( $search, $page = 1, $itensPerPage = 10 )
 	{
 		
@@ -4670,10 +4807,7 @@ var_dump($plans);*/
 			INNER JOIN tb_weddings d ON a.iduser = d.iduser
             INNER JOIN tb_addresses e ON a.iduser = e.iduser
             INNER JOIN tb_customstyle f ON a.iduser = f.iduser
-			WHERE a.desdomain IS NOT NULL 
-			AND a.deslogin = :search
-			OR a.desdomain IS NOT NULL AND c.desconsortemail = :search
-			OR a.desdomain IS NOT NULL AND b.desperson LIKE :searchlike
+			WHERE a.desdomain IS NOT NULL AND b.desperson LIKE :searchlike
 			OR a.desdomain IS NOT NULL AND b.desnick LIKE :searchlike
 			OR a.desdomain IS NOT NULL AND c.desconsort LIKE :searchlike
 			ORDER BY b.desperson,
@@ -4685,8 +4819,8 @@ var_dump($plans);*/
 			
 			[
 
-				':searchlike'=>'%'.$search.'%',
-				':search'=>$search
+				':searchlike'=>'%'.$search.'%'
+				//':search'=>$search
 
 			]
 		
@@ -4713,6 +4847,7 @@ var_dump($plans);*/
 				foreach ($results as &$row)
 				{
 					# code...
+					$row['desperson'] = utf8_encode($row['desperson']);	
 					$row['desnick'] = utf8_encode($row['desnick']);	
 					$row['desconsort'] = utf8_encode($row['desconsort']);
 					$row['descity'] = utf8_encode($row['descity']);
@@ -4735,10 +4870,6 @@ var_dump($plans);*/
 			
 
 	}//END getPageSearch
-
-
-
-
 
 
 

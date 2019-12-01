@@ -98,12 +98,12 @@ class Validate extends Model
 
 
 
-	public static function validateFullName( $desname )
+	public static function validateFullName( $value )
 	{
 
-		$desname = trim($desname);
+		$value = trim($value);
 
-		if ( !preg_match('/\\s/', $desname) )
+		if ( !preg_match('/\\s/', $value) )
 		{
 
 			return false;
@@ -150,7 +150,7 @@ class Validate extends Model
 	public static function validateStringNotSpecialUcwords( 
 		
 		$value,
-		$with_accent = true,
+		$has_accent = false,
 		$may_be_empty = false 
 		
 	)
@@ -161,7 +161,7 @@ class Validate extends Model
 		$value = preg_replace('/[^A-Za-z\ç\Ç\s\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ]/', '', $value);
 
 
-		if ( !$with_accent )
+		if ( !$has_accent )
 		{
 			# code...
 			$value = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $value);
@@ -216,9 +216,9 @@ class Validate extends Model
 		{
 
 
-			if( $string != '')
+			if( $value != '')
 			{
-				return $string;
+				return $value;
 
 			}//end if
 			else
@@ -267,18 +267,17 @@ class Validate extends Model
 	public static function validateStringNumberSpecial( 
 		
 		$value,
-		$with_accent = true,
+		$has_accent = false,
 		$may_be_empty = false 
 		
 	)
 	{
 
+		$value = preg_replace('/[^A-Za-z0-9\ç\Ç\s\_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\!\?\@\#\$\%\&\*\+\,\;\(\)\{\}\=\+\:\>\<\'\*]/', '', $value);
+
 		$value = trim($value);
 
-		$string = preg_replace('/[^A-Za-z0-9\ç\Ç\s\_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\!\?\@\#\$\%\&\*\+\,\;\(\)\{\}\=\+\:\>\<\'\*]/', '', $string);
-
-
-		if ( !$with_accent )
+		if ( !$has_accent )
 		{
 			# code...
 			$value = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $value);
@@ -290,9 +289,9 @@ class Validate extends Model
 		{
 
 
-			if( $string != '')
+			if( $value != '')
 			{
-				return $string;
+				return $value;
 
 			}//end if
 			else
@@ -344,8 +343,173 @@ class Validate extends Model
 
 
 
+	public static function validateStringSpecial( 
+		
+		$value,
+		$has_accent = false,
+		$may_be_empty = false 
+	)
+	{
+
+		//$value = preg_replace('/[^A-Za-z0-9\ç\Ç\s_\-]/', '', $value);
+
+		
+		$value = preg_replace('/[^A-Za-z0-9\ç\Ç\s\_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\!\?\@\#\$\%\&\*\+\,\;\(\)\{\}\=\+\:\>\<\'\*]/', '', $value);
+
+		$value = trim($value);
+
+		
+		if ( !$has_accent )
+		{
+			# code...
+			$value = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $value);
+
+		}//end if
 
 
+		if( !$may_be_empty )
+		{
+
+
+			if( $value != '')
+			{
+				return $value;
+
+			}//end if
+			else
+			{
+				return false;
+
+			}//end else
+
+
+
+		}//end
+		else
+		{
+
+			return $value;
+
+		}//end else
+
+
+		
+
+
+	}//end validateString
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function validateString( 
+		
+		$value,
+		$has_accent = false,
+		$may_be_empty = false 
+	)
+	{
+
+		
+
+		
+		//$value = preg_replace('/[^A-Za-z0-9\ç\Ç\s_\-]/', '', $value);
+
+		$value = preg_replace('/[^A-Za-z\ç\Ç\s\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ]/', '', $value);
+
+		$value = trim($value);
+
+		
+		if ( !$has_accent )
+		{
+			# code...
+			$value = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $value);
+
+		}//end if
+
+
+		if( !$may_be_empty )
+		{
+
+
+			if( $value != '')
+			{
+				return $value;
+
+			}//end if
+			else
+			{
+				return false;
+
+			}//end else
+
+
+
+		}//end
+		else
+		{
+
+			return $value;
+
+		}//end else
+
+
+		
+
+
+	}//end validateString
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*
 	public static function validateString( $string, $may_be_empty = false )
 	{
 
@@ -390,6 +554,7 @@ class Validate extends Model
 
 
 	}//end validateString
+*/
 
 
 
@@ -414,15 +579,15 @@ class Validate extends Model
 
 
 
-	public static function validateStringWithAccent( $string, $may_be_empty = false )
+	public static function validateStringWithAccent( $value, $may_be_empty = false )
 	{
 
-		/*$string = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $string);*/
+		/*$value = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $value);*/
 		
 
-		$string = preg_replace('/[^A-Za-z0-9\ç\Ç\s_\-\í\Í\á\Á\à\À\ã\Ã\â\Â\é\É\ê\Ê\ó\Ó\ú\Ú\ñ\Ñ\!\?\@\#\$\%\&\*\+]/', '', $string);
+		$value = preg_replace('/[^A-Za-z0-9\ç\Ç\s_\-\í\Í\á\Á\à\À\ã\Ã\â\Â\é\É\ê\Ê\ó\Ó\ú\Ú\ñ\Ñ\!\?\@\#\$\%\&\*\+]/', '', $value);
 
-		$string = trim($string);
+		$value = trim($value);
 
 		
 
@@ -432,9 +597,9 @@ class Validate extends Model
 		{
 
 
-			if( $string != '')
+			if( $value != '')
 			{
-				return $string;
+				return $value;
 
 			}//end if
 			else
@@ -449,7 +614,90 @@ class Validate extends Model
 		else
 		{
 
-			return $string;
+			return $value;
+
+		}//end else
+
+
+		
+
+
+	}//end validateString
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function validateQuaesitum( $value )
+	{
+
+
+		$value = trim($value);
+
+
+		if ( $value != '' )
+		{
+			# code...
+			/*
+			if ( substr_count($value, '@') != 1 )
+			{
+				# code...
+				$value = Validate::validateStringWithAccent($value);
+
+
+			}//end if
+			else
+			{
+				$value = Validate::validateEmail($value);
+
+				
+			}//end else
+			*/
+
+			//$value = Validate::validateString($value, true, false);
+
+
+			if( ($value = Validate::validateString($value, false, false)) === false )
+			{
+
+				return false;
+
+			}//end if
+			else
+			{
+
+				return $value;
+
+			}//end else
+
+		}//end if
+		else
+		{
+
+			return false;
 
 		}//end else
 
@@ -826,77 +1074,6 @@ class Validate extends Model
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	public static function validateQuaesitum( $value )
-	{
-
-
-		$value = trim($value);
-
-
-		if ( $value != '' )
-		{
-			# code...
-			if ( substr_count($value, '@') != 1 )
-			{
-				# code...
-				$value = Validate::validateStringWithAccent($value);
-
-
-			}//end if
-			else
-			{
-				$value = Validate::validateEmail($value);
-
-				
-			}//end else
-
-
-			if( (bool)$value !== false )
-			{
-
-				return $value;
-
-			}//end if
-			else
-			{
-
-				return false;
-
-			}//end else
-
-		}//end if
-		else
-		{
-
-			return false;
-
-		}//end else
-
-
-		
-
-
-	}//end validateString
 
 
 

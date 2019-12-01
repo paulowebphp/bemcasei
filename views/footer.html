@@ -210,8 +210,10 @@
 
 
     <script type="text/javascript" src="/res/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/res/js/popper.min.js"></script>
+
     
-    <script type="text/javascript" src="/res/js/jquery.payment.min.js"></script>
+    <script type="text/javascript"type="text/javascript" src="/res/js/jquery.payment.min.js"></script>
 
     <script type="text/javascript" src="/res/js/bootstrap.min.js"></script>
     

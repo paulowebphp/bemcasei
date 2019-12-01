@@ -36,14 +36,17 @@ $app->get( '/buscar', function()
 		if( ( $search = Validate::validateQuaesitum($_GET['quaesitum']) ) === false )
 		{
 
-			User::setError("O termo buscado não pode ser formado apenas com caracteres especiais, ou não se trata de um e-mail válido | Por favor, tente novamente");
+			User::setError("O nome buscado não pode ser formado apenas com caracteres especiais | Por favor, tente novamente");
 			header('Location: /buscar');
 			exit;
 
 		}//end if
 
+		
 
-		$results = $user->getPageMailingSearch($search,$currentPage,Rule::ITENS_PER_PAGE);
+
+
+		$results = $user->getSiteSearch($search,$currentPage,Rule::ITENS_PER_PAGE);
 
 		
 		

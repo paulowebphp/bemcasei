@@ -48,6 +48,60 @@ $("#menu-mobile-mask, .btn-close").on("click", function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+/******************** SEARCH INFO ***************************************************/
+/******************** SEARCH INFO ***************************************************/
+/******************** SEARCH INFO ***************************************************/
+/******************** SEARCH INFO ***************************************************/
+
+$("#search-info").on("click", function(){
+    
+    $("#header-mobile").toggleClass("open-menu");
+
+});//end on
+
+
+
+$("#search-info, .btn-close").on("click", function(){
+
+    $("#header-mobile").removeClass("open-menu");
+
+
+});//end on
+/******************** SEARCH INFO ***************************************************/
+/******************** SEARCH INFO ***************************************************/
+/******************** SEARCH INFO ***************************************************/
+/******************** SEARCH INFO ***************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /***********DESABILITANDO SUBMIT / DUPLICADAS****************************/
 /***********DESABILITANDO SUBMIT / DUPLICADAS****************************/
 /***********DESABILITANDO SUBMIT / DUPLICADAS****************************/
@@ -461,6 +515,11 @@ $(document).on('mouseleave', '#popover-template2', function(e){
 $(document).on('mouseleave', '#popover-template3', function(e){
 	$('[data-toggle="popover"]').popover('hide');
 });
+
+$(document).on('mouseleave', '#search-info', function(e){
+	$('[data-toggle="popover"]').popover('hide');
+});
+
 
 /******************** BOOTSTRAP POPOVER ***************************************************/
 /******************** BOOTSTRAP POPOVER ***************************************************/

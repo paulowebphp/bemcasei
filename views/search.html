@@ -13,12 +13,14 @@
                 
                 <div class="site-search-title">
             
-                    <h2>Buscar Casal</h2>        
+                    <h2>Buscar Casal</h2>
 
+                        <i id="search-info" data-container="body" data-toggle="popover" data-placement="bottom" data-content='Procure pelo nome do noivo ou da noiva, um de cada vez. Não é possível buscar pelo nome do casal junto.' class="fa fa-question-circle"></i>       
+                    
                 </div>
 
-            </div>
 
+            </div>
 
 
             <div class="col-md-5 col-12">
@@ -31,7 +33,7 @@
 
                         <form action="/buscar">
 
-                        <input type="text" id="quaesitum" name="quaesitum" placeholder="Nome ou e-mail de um dos cônjuges" class="input-text">
+                        <input type="text" id="quaesitum" name="quaesitum" placeholder="Nome de um dos Cônjuges" class="input-text">
                     
                     </div>
 

@@ -43,7 +43,7 @@ mysqldump -u root -p --routines db_amarcasarv3 > ../../../amarcasar/sql/db_amarc
 
 
 
-
+mysqldump -u root -p --routines db_amarcasarv3 > ../../../bemcasei/sql/db_amarcasarv3_dump.sql
 
 
 
