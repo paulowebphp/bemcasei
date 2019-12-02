@@ -294,13 +294,13 @@
 
                 <p>Escolha seu template e personalize do seu jeito! </p>
 
-                <p>&nbsp;</p>
+                <!--<p>&nbsp;</p>
 
                 <div class="template-banner-image">
                     <a href="/modelos-templates">
                         <img src="/res/images/banner-templates.png" alt="Miniaturas dos Banners">
                     </a>
-                </div>
+                </div>-->
 
                 <p>&nbsp;</p>
 
@@ -308,9 +308,9 @@
                         VER TEMPLATES
                     </button></a>
                 
-                <!--<a href="/site-casamento"><button type="button" class="btn btn-md btn-advantage btn-advantage2">
+                <a href="/site-casamento"><button type="button" class="btn btn-md btn-advantage btn-advantage2">
                         VER FUNCIONALIDADES
-                    </button></a>-->
+                    </button></a>
                 
 
             </div>
