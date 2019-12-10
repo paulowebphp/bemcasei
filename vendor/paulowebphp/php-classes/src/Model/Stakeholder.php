@@ -455,9 +455,9 @@ class Stakeholder extends Model
 
 		
 
-		$numStakeholder = $sql->select("
+		$nrtotal = $sql->select("
 		
-			SELECT FOUND_ROWS() AS numstakeholders;
+			SELECT FOUND_ROWS() AS nrtotal;
 			
 		");//end select
 
@@ -484,7 +484,6 @@ class Stakeholder extends Model
 					$row['descategory'] = utf8_encode($row['descategory']);
 					$row['deslocation'] = utf8_encode($row['deslocation']);
 					$row['desdescription'] = utf8_encode($row['desdescription']);
-					$row['dessite'] = utf8_encode($row['dessite']);
 
 				}//end foreach
 				
@@ -499,8 +498,8 @@ class Stakeholder extends Model
 		return [
 
 			'results'=>$results,
-			'numstakeholders'=>(int)$numStakeholder[0]["numstakeholders"],
-			'pages'=>ceil($numStakeholder[0]["numstakeholders"] / $itensPerPage)
+			'nrtotal'=>(int)$nrtotal[0]["nrtotal"],
+			'pages'=>ceil($nrtotal[0]["nrtotal"] / $itensPerPage)
 
 		];//end return
 
@@ -531,6 +530,17 @@ class Stakeholder extends Model
 
 		$sql = new Sql();
 
+
+
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+			$search = utf8_decode($search);
+
+		}//end if
+
+		
+
 		$results = $sql->select("
 
 			SELECT SQL_CALC_FOUND_ROWS *
@@ -556,9 +566,9 @@ class Stakeholder extends Model
 
 
 
-		$numStakeholders = $sql->select("
+		$nrtotal = $sql->select("
 		
-			SELECT FOUND_ROWS() AS numstakeholders;
+			SELECT FOUND_ROWS() AS nrtotal;
 			
 		");//end select
 
@@ -566,7 +576,6 @@ class Stakeholder extends Model
 
 
 		
-
 		
 
 
@@ -582,9 +591,10 @@ class Stakeholder extends Model
 				foreach( $results as &$row )
 				{
 					# code...		
-					$row['desevent'] = utf8_encode($row['desevent']);
-					$row['desdescription'] = utf8_encode($row['desdescription']);
+					$row['desstakeholder'] = utf8_encode($row['desstakeholder']);
+					$row['descategory'] = utf8_encode($row['descategory']);
 					$row['deslocation'] = utf8_encode($row['deslocation']);
+					$row['desdescription'] = utf8_encode($row['desdescription']);
 
 				}//end foreach
 				
@@ -595,13 +605,14 @@ class Stakeholder extends Model
 
 
 
+		
 			
 
 		return [
 
 			'results'=>$results,
-			'numstakeholders'=>(int)$numStakeholders[0]["numstakeholders"],
-			'pages'=>ceil($numStakeholders[0]["numstakeholders"] / $itensPerPage)
+			'nrtotal'=>(int)$nrtotal[0]["nrtotal"],
+			'pages'=>ceil($nrtotal[0]["nrtotal"] / $itensPerPage)
 
 		];//end return
 

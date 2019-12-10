@@ -431,9 +431,9 @@ class Message extends Model
 
 
 
-		$numMessages = $sql->select("
+		$nrtotal = $sql->select("
 		
-			SELECT FOUND_ROWS() AS nummessages;
+			SELECT FOUND_ROWS() AS nrtotal;
 			
 		");//end select
 		
@@ -469,8 +469,8 @@ class Message extends Model
 		return [
 
 			'results'=>$results,
-			'nummessages'=>(int)$numMessages[0]["nummessages"],
-			'pages'=>ceil($numMessages[0]["nummessages"] / $itensPerPage)
+			'nrtotal'=>(int)$nrtotal[0]["nrtotal"],
+			'pages'=>ceil($nrtotal[0]["nrtotal"] / $itensPerPage)
 
 		];//end return
 
@@ -497,6 +497,13 @@ class Message extends Model
 
 		$start = ($page - 1) * $itensPerPage;
 
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+			$search = utf8_decode($search);
+
+		}//end if
+
 		$sql = new Sql();
 
 		$results = $sql->select("
@@ -504,7 +511,7 @@ class Message extends Model
 			SELECT SQL_CALC_FOUND_ROWS *
 			FROM tb_messages
             WHERE iduser = :iduser AND desmessage LIKE :search
-            ORDER BY dtmessage DESC
+            ORDER BY dtregister DESC
 			LIMIT $start, $itensPerPage;
 
 			", 
@@ -520,14 +527,16 @@ class Message extends Model
 
 
 
-		$numMessages = $sql->select("
+		$nrtotal = $sql->select("
 		
-			SELECT FOUND_ROWS() AS nummessages;
+			SELECT FOUND_ROWS() AS nrtotal;
 			
 		");//end select
 
 
 		
+
+
 
 
 		
@@ -558,8 +567,8 @@ class Message extends Model
 		return [
 
 			'results'=>$results,
-			'nummessages'=>(int)$numMessages[0]["nummessages"],
-			'pages'=>ceil($numMessages[0]["nummessages"] / $itensPerPage)
+			'nrtotal'=>(int)$nrtotal[0]["nrtotal"],
+			'pages'=>ceil($nrtotal[0]["nrtotal"] / $itensPerPage)
 
 		];//end return
 

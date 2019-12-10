@@ -109,7 +109,7 @@ $app->get( "/dashboard/rsvp/confirmados", function()
 
 	}//end if
 
-	$search = (isset($_GET['search'])) ? $_GET['search'] : "";
+	$search = (isset($_GET['buscar'])) ? $_GET['buscar'] : "";
 
 	$currentPage = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
 
@@ -1003,7 +1003,7 @@ $app->post( "/dashboard/rsvp/adicionar", function()
 
 	}//end if
 
-	if( !$desguest = Validate::validateStringWithAccent($_POST['desguest']) )
+	if( ( $desguest = Validate::validateStringNumberSpecial($_POST['desguest'], true, false)  ) === false )
 	{
 
 		Rsvp::setError("O nome do convidado não pode ser formado apenas com caracteres especiais, tente novamente");
@@ -1381,7 +1381,7 @@ $app->post( "/dashboard/rsvp/:hash", function( $hash )
 
 	}//end if
 
-	if( !$desguest = Validate::validateStringWithAccent($_POST['desguest']) )
+	if( ( $desguest = Validate::validateStringNumberSpecial($_POST['desguest'], true, false)  ) === false )
 	{
 
 		Rsvp::setError("O nome do convidado não pode ser formado apenas com caracteres especiais, tente novamente");
@@ -1567,7 +1567,7 @@ $app->get( "/dashboard/rsvp", function()
 
 	}//end if
 
-	$search = (isset($_GET['search'])) ? $_GET['search'] : "";
+	$search = (isset($_GET['buscar'])) ? $_GET['buscar'] : "";
 
 	$currentPage = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
 
@@ -1578,17 +1578,20 @@ $app->get( "/dashboard/rsvp", function()
 
 		$results = $rsvp->getSearch((int)$user->getiduser(),$search,$currentPage,Rule::ITENS_PER_PAGE);
 
+
+
 	}//end if
 	else
 	{
 		
 		$results = $rsvp->getPage((int)$user->getiduser(),$currentPage,Rule::ITENS_PER_PAGE);
 
+
 	}//end else
     
     
 
-	$numRsvp = $results['nrtotal'];
+	$nrtotal = $results['nrtotal'];
 
 	$rsvp->setData($results['results']);
 
@@ -1668,9 +1671,10 @@ $app->get( "/dashboard/rsvp", function()
 			'search'=>$search,
 			'pages'=>$pages,
 			'maxRsvp'=>$maxRsvp,
-			'numRsvp'=>$numRsvp,
+			'nrtotal'=>$nrtotal,
 			'rsvpconfig'=>$rsvpconfig->getValues(),
 			'rsvp'=>$rsvp->getValues(),
+			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
 			'success'=>Rsvp::getSuccess(),
 			'error'=>Rsvp::getError()
 			

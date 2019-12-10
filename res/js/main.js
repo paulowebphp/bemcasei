@@ -520,7 +520,17 @@ $(document).on('mouseleave', '#search-info', function(e){
 	$('[data-toggle="popover"]').popover('hide');
 });
 
+$(document).on('mouseleave', '#search-info', function(e){
+	$('[data-toggle="popover"]').popover('hide');
+});
 
+$(document).on('mouseleave', '#popover1', function(e){
+	$('[data-toggle="popover"]').popover('hide');
+});
+
+$(document).on('mouseleave', '#popover2', function(e){
+	$('[data-toggle="popover"]').popover('hide');
+});
 /******************** BOOTSTRAP POPOVER ***************************************************/
 /******************** BOOTSTRAP POPOVER ***************************************************/
 /******************** BOOTSTRAP POPOVER ***************************************************/

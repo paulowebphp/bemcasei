@@ -442,7 +442,8 @@ $app->post( "/dashboard/presentes-virtuais/adicionar", function()
 
 	}//end if
 
-	if( !$desproduct = Validate::validateStringWithAccent($_POST['desproduct']) )
+
+	if( ( $desproduct = Validate::validateStringNumber($_POST['desproduct'], true, false)  ) === false )
 	{	
 		
 
@@ -723,7 +724,7 @@ $app->get( "/dashboard/presentes-virtuais/:hash/deletar", function( $hash )
 
 
 
-$app->get( "/dashboard/presentes-virtuais/lista-pronta/adicionar", function()
+$app->get( "/dashboard/lista-pronta/adicionar", function()
 {
 	
 	if( Maintenance::checkMaintenance() )
@@ -771,29 +772,65 @@ $app->get( "/dashboard/presentes-virtuais/lista-pronta/adicionar", function()
 	{
 		
 		Product::setError("A URL que você tentou acessar não existe, tente novamente | Se a falha persistir, tente enviar outra imagem ou entre em contato com o suporte");
-		header('Location: /dashboard/presentes-virtuais/lista-pronta');
+		header('Location: /dashboard/lista-pronta');
 		exit;
 	}
 
 	
 
-	$idgift = $_GET['presente'];
+	//$idgift = $_GET['presente'];
+
+	$idgift = Validate::getHash($_GET['presente']);
+
+	if( $idgift == '' )
+	{
+
+		Product::setError(Rule::VALIDATE_ID_HASH);
+		header('Location: /dashboard/album');
+		exit;
+
+	}//end if
+
+
+
+
    
 	$numGifts = Gift::getNumGifts();
 
-	if( $_GET['presente'] < 1 || $_GET['presente'] > $numGifts )
+	if( $idgift < 1 || $idgift > $numGifts )
 	{
 		
 		Product::setError("A URL que você tentou acessar não existe, tente novamente | Se a falha persistir, tente enviar outra imagem ou entre em contato com o suporte");
-		header('Location: /dashboard/presentes-virtuais/lista-pronta');
+		header('Location: /dashboard/lista-pronta');
 		exit;
-	}
+
+	}//end if
+
+
+	$product = new Product();
+
+	$numProducts = $product->getNumProducts((int)$user->getiduser());
+	$maxProducts = $product->getMaxProducts((int)$user->getinplancontext());
+
+
+
+
+
+	if( (int)$numProducts >= (int)$maxProducts )
+	{
+		
+		Product::setError("Você não pode adicionar mais presentes, pois já chegou no limite do seu plano");
+		header('Location: /dashboard/lista-pronta');
+		exit;
+
+	}//end if
+
+
 
 	$gift = new Gift();
    
-	$gift->getGift($idgift);
+	$gift->getGift((int)$idgift);
 
-	$product = new Product();
 
 	$product->setiduser($user->getiduser());
 	$product->setincategory($gift->getincategory());
@@ -843,7 +880,7 @@ $app->get( "/dashboard/presentes-virtuais/lista-pronta/adicionar", function()
 
 
 
-$app->get( "/dashboard/presentes-virtuais/lista-pronta", function()
+$app->get( "/dashboard/lista-pronta", function()
 {
 	
 	if( Maintenance::checkMaintenance() )
@@ -876,6 +913,30 @@ $app->get( "/dashboard/presentes-virtuais/lista-pronta", function()
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+
+	$product = new Product();
+
+	$numProducts = $product->getNumProducts((int)$user->getiduser());
+	$maxProducts = $product->getMaxProducts((int)$user->getinplancontext());
+
+
+
+
+
+	if( (int)$numProducts >= (int)$maxProducts )
+	{
+		
+		Product::setError("Você não pode adicionar mais presentes, pois já chegou no limite do seu plano");
+		header('Location: /dashboard/presentes-virtuais');
 		exit;
 
 	}//end if
@@ -922,7 +983,7 @@ $app->get( "/dashboard/presentes-virtuais/lista-pronta", function()
 				
 				[
 
-					'href'=>'/dashboard/presentes-virtuais/lista-pronta?'.http_build_query(
+					'href'=>'/dashboard/lista-pronta?'.http_build_query(
 						
 						[
 
@@ -953,7 +1014,7 @@ $app->get( "/dashboard/presentes-virtuais/lista-pronta", function()
 				
 				[
 
-					'href'=>'/dashboard/presentes-virtuais/lista-pronta?'.http_build_query(
+					'href'=>'/dashboard/lista-pronta?'.http_build_query(
 						
 						[
 
@@ -1223,7 +1284,9 @@ $app->post( "/dashboard/presentes-virtuais/:hash", function( $hash )
 
 	}//end if
 
-	if( !$desproduct = Validate::validateStringWithAccent($_POST['desproduct']) )
+	
+
+	if( ( $desproduct = Validate::validateStringNumber($_POST['desproduct'], true, false)  ) === false )
 	{	
 		
 
@@ -1610,6 +1673,7 @@ $app->get( "/dashboard/presentes-virtuais", function()
 			'maxProducts'=>$maxProducts,
 			'nrtotal'=>$nrtotal,
 			'product'=>$product->getValues(),
+			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
 			'success'=>Product::getSuccess(),
 			'error'=>Product::getError()
 			

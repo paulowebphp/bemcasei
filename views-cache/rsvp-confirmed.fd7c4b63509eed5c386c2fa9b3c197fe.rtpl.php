@@ -57,10 +57,12 @@
                     
                     <div class="col-12">
 
-                        <div class="dash-title">
-                            <h1>Lista de Confirmados</h1>
-                        </div>
+                        <a href="/dashboard/rsvp/confirmados">
+                            <div class="dash-title">
+                                <h1>Lista de Confirmados</h1>
+                            </div>
 
+                        </a>
                     </div>
 
                 </div>
@@ -485,36 +487,73 @@
 
 
                     <div class="row">
-                        
 
-                        <div class="col-12">
-                            <div class="dash-search pull-right">
+
+
+
+                        
+                        <div class="col-md-3 col-12">
+
+                            <div class="search">
+
                                 <form action="/dashboard/rsvp/confirmados">
+
                                     <div class="input-group input-group-sm">
+
+                                        <a href="/dashboard/rsvp/confirmados">
+                                            <button type="button" class="btn btn-default">
+
+                                                <i class="fa fa-undo"></i>
+
+                                            </button>
+                                        </a>
                                         
-                                            <input type="text" name="search" class="form-control pull-right" placeholder="Buscar..." value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-                                            <div class="input-group-btn">
-                                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                            </div>
-                                    </div>
+                                        <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+
+                                        <div class="input-group-btn">
+
+                                            <button type="submit" class="btn btn-default">
+
+                                                <i class="fa fa-search"></i>
+
+                                            </button>
+
+                                        </div><!--input-group-btn--->
+
+                                    </div><!--input-group-->
+
                                 </form>
                                 
-                            </div>
+                            </div><!--search-->
+
+                        </div><!--col-->
 
 
 
-                            <div class="dash-pagination clearfix">
-                                <ul class="pagination pagination-sm no-margin">
+
+
+                        <div class="col-md-9 col-12">
+
+                            <div class="pagination">
+                                
+                                <ul>
                                     <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
-                                        <a href="<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><li><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></li></a>
+                                        <li><a href="<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>                             
+                                                               
                                     <?php } ?>
                                 </ul>
+
                             </div>
 
+                        </div><!--col-->
 
-                        </div>  
-                    </div>
 
+
+
+
+                        
+
+                    </div><!--row-->
 
 
 

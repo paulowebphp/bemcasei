@@ -57,9 +57,11 @@
                     
                     <div class="col-12">
 
-                        <div class="dash-title rsvp">
-                            <h1>RSVP <small>Confirmação de Presença</small></h1>
-                        </div>
+                        <a href="/dashboard/rsvp">
+                            <div class="dash-title rsvp">
+                                <h1>RSVP <small>Confirmação de Presença</small></h1>
+                            </div>
+                        </a>
 
                     </div>
 
@@ -67,43 +69,49 @@
 
         
 
-                <?php if(  $maxRsvp > $numRsvp  ){ ?>
+                <div class="row">
+
+                    <div class="col-12">
+
+                        <div class="button-header">
+
+                            
+                            <a href="/dashboard/rsvp/configurar">
+                                <button>
+                                    Configurações
+                                </button>
+                            </a>
 
 
-                    <div class="row">
+                            <a href="/dashboard/rsvp/confirmados">
+                                <button>
+                                    Lista de Confirmados
+                                </button>
+                            </a>
 
-                        <div class="col-12">
+                            <?php if(  $maxRsvp > $nrtotal  ){ ?>
 
-                            <div class="button-header">
+                            <a href="/dashboard/rsvp/adicionar">
+                                <button>
+                                    Adicionar Convidado
+                                </button>
+                            </a>
 
-                                <a href="/dashboard/rsvp/adicionar">
-                                    <button>
-                                        Adicionar Convidado
-                                    </button>
-                                </a>
+                            <?php }else{ ?>
 
-
-                                <a href="/dashboard/rsvp/configurar">
-                                    <button>
-                                        Configurações
-                                    </button>
-                                </a>
-
-
-                                <a href="/dashboard/rsvp/confirmados">
-                                    <button>
-                                        Lista de Confirmados
-                                    </button>
-                                </a>
-                                
-                    
-                            </div>
-
+                            <button id="popover1" class="disabled-links pointer-none" data-toggle="popover" data-placement="bottom" title="<?php echo htmlspecialchars( $popover1["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-content="<?php echo htmlspecialchars( $popover1["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                Adicionar Convidado
+                            </button>
+                            
+                            <?php } ?>
+                            
+                
                         </div>
 
                     </div>
 
-                <?php } ?>
+                </div>
+
 
             
 
@@ -591,6 +599,14 @@
                                 <form action="/dashboard/rsvp">
 
                                     <div class="input-group input-group-sm">
+
+                                        <a href="/dashboard/rsvp">
+                                            <button type="button" class="btn btn-default">
+
+                                                <i class="fa fa-undo"></i>
+
+                                            </button>
+                                        </a>
                                         
                                         <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 

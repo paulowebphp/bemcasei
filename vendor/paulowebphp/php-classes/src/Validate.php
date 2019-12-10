@@ -340,6 +340,83 @@ class Validate extends Model
 
 
 
+	public static function validateStringNumber( 
+		
+		$value,
+		$has_accent = false,
+		$may_be_empty = false 
+		
+	)
+	{
+
+		$value = preg_replace('/[^A-Za-z0-9\ç\Ç\s\_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\,\;\+\:]/', '', $value);
+
+		$value = trim($value);
+
+		if ( !$has_accent )
+		{
+			# code...
+			$value = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $value);
+
+		}//end if
+
+
+		if( !$may_be_empty )
+		{
+
+
+			if( $value != '')
+			{
+				return $value;
+
+			}//end if
+			else
+			{
+				return false;
+
+			}//end else
+
+
+		}//end
+		else
+		{
+
+			return false;
+
+		}//end else
+
+
+
+	}//END validateName
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -354,7 +431,7 @@ class Validate extends Model
 		//$value = preg_replace('/[^A-Za-z0-9\ç\Ç\s_\-]/', '', $value);
 
 		
-		$value = preg_replace('/[^A-Za-z0-9\ç\Ç\s\_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\!\?\@\#\$\%\&\*\+\,\;\(\)\{\}\=\+\:\>\<\'\*]/', '', $value);
+		$value = preg_replace('/[^A-Za-z\ç\Ç\s\_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\!\?\@\#\$\%\&\*\+\,\;\(\)\{\}\=\+\:\>\<\'\*]/', '', $value);
 
 		$value = trim($value);
 
@@ -578,7 +655,7 @@ class Validate extends Model
 
 
 
-
+	//OLD METHOD
 	public static function validateStringWithAccent( $value, $may_be_empty = false )
 	{
 
@@ -2050,6 +2127,78 @@ class Validate extends Model
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function validatePosition( $inposition )
+	{
+
+		$inposition = trim($inposition);
+
+		$inposition = preg_replace('/[^0-9]/', '', $inposition);
+
+		if( strlen($inposition) < 3 )
+		{
+
+			return $inposition;
+
+		}//end if
+		else
+		{
+			return false;
+
+		}//end else
+
+		
+
+
+	}//end validatePosition
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*
 	public static function validatePosition( $inposition )
 	{
 
@@ -2087,7 +2236,7 @@ class Validate extends Model
 
 
 	}//end validatePosition
-
+	*/
 
 
 

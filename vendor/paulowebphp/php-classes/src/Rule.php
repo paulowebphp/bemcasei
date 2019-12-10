@@ -847,7 +847,7 @@ class Rule extends Model
 	/**PRODUCTS */
 
     const MAX_PRODUCTS_FREE = "1000";
-	const MAX_PRODUCTS_BASIC = "1000";
+	const MAX_PRODUCTS_BASIC = "2";
 	const MAX_PRODUCTS_INTERMEDIATE = "2000";
 	const MAX_PRODUCTS_ADVANCED = "2000";
 
@@ -865,7 +865,8 @@ class Rule extends Model
 
 
 
-
+	const POPOVER_MAX_TITLE = 'Limite Atingido';
+	const POPOVER_MAX_CONTENT = 'Você atingiu o limite para este recurso, dentro plano atual';
 
 
 

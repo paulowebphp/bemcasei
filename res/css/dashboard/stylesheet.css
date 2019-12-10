@@ -107,8 +107,10 @@ body{
   font-size: 1rem;
   font-family: "OpenSans";
 }
+
 a{
   outline:none!important;
+  text-decoration: none!important;
 }
 button{
   outline:none!important;
@@ -621,8 +623,8 @@ label{
 }
 .pagination a:hover{
   text-decoration: none;
-  background-color: #e3e3e3;
-  color: #a3a3a3;
+  background-color: #f0f0f0;
+  color: #b3b3b3;
 }
 /*********************************************PAGINATION************************************************/
 
@@ -713,7 +715,9 @@ label{
 .pointer{
   cursor: pointer!important;
 }
-
+.pointer-none{
+  cursor: default!important;
+}
 
 
 

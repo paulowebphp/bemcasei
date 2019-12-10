@@ -241,7 +241,7 @@ $app->post( "/dashboard/videos/adicionar", function()
 
 	}//end if
 
-	if( !$desvideo = Validate::validateStringWithAccent($_POST['desvideo']) )
+	if( ( $desvideo = Validate::validateStringNumberSpecial($_POST['desvideo'], true, false)  ) === false )
 	{	
 		
 
@@ -606,8 +606,8 @@ $app->post( "/dashboard/videos/:hash", function( $hash )
 
 
 
-if(
-		
+	if(
+			
 		!isset($_POST['instatus']) 
 		|| 
 		$_POST['instatus'] === ''
@@ -697,7 +697,7 @@ if(
 
 	}//end if
 
-	if( !$desvideo = Validate::validateStringWithAccent($_POST['desvideo']) )
+	if( ( $desvideo = Validate::validateStringNumberSpecial($_POST['desvideo'], true, false)  ) === false )
 	{	
 		
 
@@ -877,7 +877,7 @@ $app->get( "/dashboard/videos", function()
 	}//end else
     	
 
-	$numvideos = $results['nrtotal'];
+	$nrtotal = $results['nrtotal'];
 
 	$video->setData($results['results']);
 
@@ -995,8 +995,9 @@ $app->get( "/dashboard/videos", function()
 			'search'=>$search,
 			'pages'=>$pages,
 			'maxvideos'=>$maxvideos,
-			'numvideos'=>$numvideos,
+			'nrtotal'=>$nrtotal,
 			'video'=>$video->getValues(),
+			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
 			'success'=>Video::getSuccess(),
 			'error'=>Video::getError()
 			

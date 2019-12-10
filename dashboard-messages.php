@@ -351,7 +351,7 @@ $app->get( "/dashboard/mensagens", function()
     
 
 
-	$numMessages = $results['nummessages'];
+	$nrtotal = $results['nrtotal'];
 
 	$message->setData($results['results']);
 
@@ -472,7 +472,7 @@ $app->get( "/dashboard/mensagens", function()
 			'search'=>$search,
 			'pages'=>$pages,
 			'maxMessages'=>$maxMessages,
-			'numMessages'=>$numMessages,
+			'nrtotal'=>$nrtotal,
 			'message'=>$message->getValues(),
 			'success'=>Message::getSuccess(),
 			'error'=>Message::getError()

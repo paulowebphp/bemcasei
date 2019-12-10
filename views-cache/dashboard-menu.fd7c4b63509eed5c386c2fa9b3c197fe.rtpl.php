@@ -76,7 +76,7 @@
 
             </div><!--card-header-->
 
-            <div id="collapseOne" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['painel-financeiro','presentes-virtuais','conta-bancaria','transferencias']) ){ ?> show<?php } ?>" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id="collapseOne" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['painel-financeiro','presentes-virtuais','lista-pronta','conta-bancaria','transferencias']) ){ ?> show<?php } ?>" aria-labelledby="headingOne" data-parent="#accordion">
                 
                 <div class="card-body card-body-text">
                 

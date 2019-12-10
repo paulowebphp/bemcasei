@@ -42,9 +42,9 @@ class Gift extends Model
 		");//end select
 
 
-		$numGifts = $sql->select("
+		$nrtotal = $sql->select("
 		
-			SELECT FOUND_ROWS() AS numgifts;
+			SELECT FOUND_ROWS() AS nrtotal;
 			
 		");//end select
 
@@ -78,8 +78,8 @@ class Gift extends Model
 			return [
 
 				'results'=>$results,
-				'numgifts'=>(int)$numGifts[0]["numgifts"],
-				'pages'=>ceil($numGifts[0]["numgifts"] / $itensPerPage)
+				'nrtotal'=>(int)$nrtotal[0]["nrtotal"],
+				'pages'=>ceil($nrtotal[0]["nrtotal"] / $itensPerPage)
 	
 			];//end return
 			
@@ -105,6 +105,13 @@ class Gift extends Model
 
 		$start = ($page - 1) * $itensPerPage;
 
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+			$search = utf8_decode($search);
+
+		}//end if
+
 		$sql = new Sql();
 
 		$results = $sql->select("
@@ -115,11 +122,11 @@ class Gift extends Model
 			ORDER BY incategory DESC
 			LIMIT $start, $itensPerPage;
 
+
 			", 
 			
 			[
 
-				':iduser'=>$iduser,
 				':search'=>'%'.$search.'%'
 
 			]
@@ -129,15 +136,16 @@ class Gift extends Model
 
 
 
-		$numGifts = $sql->select("
+		$nrtotal = $sql->select("
 		
-			SELECT FOUND_ROWS() AS numgifts;
+			SELECT FOUND_ROWS() AS nrtotal;
 			
 		");//end select
 
 
 		
 		
+
 
 		
 		
@@ -165,8 +173,8 @@ class Gift extends Model
 			return [
 
 				'results'=>$results,
-				'numgifts'=>(int)$numGifts[0]["numgifts"],
-				'pages'=>ceil($numGifts[0]["numgifts"] / $itensPerPage)
+				'nrtotal'=>(int)$nrtotal[0]["nrtotal"],
+				'pages'=>ceil($nrtotal[0]["nrtotal"] / $itensPerPage)
 
 			];//end return
 			

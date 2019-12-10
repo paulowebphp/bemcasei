@@ -41,12 +41,34 @@
 
 
 
-                    <div class="row">
+                <div class="row">
                     
                     <div class="col-12">
 
-                        <div class="dash-title">
-                            <h1>Lista Pronta</h1>
+                        <a href="/dashboard/lista-pronta">
+                            <div class="dash-title">
+                                <h1>Lista Pronta</h1>
+                            </div>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+
+                    <div class="col-12">
+
+                        <div class="button-header">
+
+                            <a href="/dashboard/presentes-virtuais">
+                                <button>
+                                    Voltar para Presentes Virtuais
+                                </button>
+                            </a>
+
                         </div>
 
                     </div>
@@ -195,7 +217,7 @@
 
 
 
-                                <a href="/dashboard/presentes-virtuais/lista-pronta/adicionar?presente=<?php echo htmlspecialchars( $value1["idgift"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <a href='/dashboard/lista-pronta/adicionar?presente=<?php echo setHash($value1["idgift"]); ?>'>
 
                                     <button>Adicionar</button>
 
@@ -257,6 +279,14 @@
                                 <form action="/dashboard/lista-pronta">
 
                                     <div class="input-group input-group-sm">
+
+                                        <a href="/dashboard/lista-pronta">
+                                            <button type="button" class="btn btn-default">
+
+                                                <i class="fa fa-undo"></i>
+
+                                            </button>
+                                        </a>
                                         
                                         <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 

@@ -250,7 +250,7 @@ $app->post( "/dashboard/listas-de-fora/adicionar", function()
 	}//end if
 
 
-	if( !$desouterlist = Validate::validateStringWithAccent($_POST['desouterlist']) )
+	if( ( $desouterlist = Validate::validateStringNumberSpecial($_POST['desouterlist'], true, false)  ) === false )
 	{	
 		
 
@@ -752,7 +752,7 @@ $app->post( "/dashboard/listas-de-fora/:hash", function( $hash )
 	}//end if
 
 
-	if( !$desouterlist = Validate::validateStringWithAccent($_POST['desouterlist']) )
+	if( ( $desouterlist = Validate::validateStringNumberSpecial($_POST['desouterlist'], true, false)  ) === false )
 	{	
 		
 
@@ -978,7 +978,7 @@ $app->get( "/dashboard/listas-de-fora", function()
 
     	
 
-	$numouterlists = $results['nrtotal'];
+	$nrtotal = $results['nrtotal'];
 
 	$outerlist->setData($results['results']);
 
@@ -1096,8 +1096,9 @@ $app->get( "/dashboard/listas-de-fora", function()
 			'search'=>$search,
 			'pages'=>$pages,
 			'maxouterlists'=>$maxouterlists,
-			'numouterlists'=>$numouterlists,
+			'nrtotal'=>$nrtotal,
 			'outerlist'=>$outerlist->getValues(),
+			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
 			'success'=>OuterList::getSuccess(),
 			'error'=>OuterList::getError()
 			

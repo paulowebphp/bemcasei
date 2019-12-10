@@ -375,6 +375,53 @@ class Product extends Model
 
 
 
+
+
+
+
+
+
+
+
+	public function getNumProducts( $iduser )
+	{
+
+
+		$sql = new Sql();
+
+			$results = $sql->select("
+
+				SELECT COUNT(*) as nrtotal
+				FROM tb_products
+				WHERE iduser = :iduser;
+
+			",
+
+			[
+
+				'iduser'=>$iduser
+
+			]);//end select
+
+
+			return $results[0]['nrtotal'];
+
+
+	}//END getNumProducts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public function getWithLimit( $iduser, $inplan )
 	{
 
@@ -538,6 +585,15 @@ class Product extends Model
 
 		$start = ($page - 1) * $itensPerPage;
 
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+			$search = utf8_decode($search);
+
+		}//end if
+
+
+
 		$sql = new Sql();
 
 		$results = $sql->select("
@@ -573,7 +629,6 @@ class Product extends Model
 				
 			
 		}//end if
-
 
 
 
@@ -1521,6 +1576,52 @@ class Product extends Model
 				# code...
 				return Rule::MAX_PRODUCTS_FREE;
 				break;
+
+		}//end switch
+
+
+
+	}//END maxEvents
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public function getMaxProducts( $inplancontext )
+	{
+
+		switch( $inplancontext )
+		{
+			case '0':
+				# code...
+				return Rule::MAX_PRODUCTS_FREE;
+
+			case '1':
+				# code...
+				return Rule::MAX_PRODUCTS_BASIC;
+
+			case '2':
+				# code...
+				return Rule::MAX_PRODUCTS_INTERMEDIATE;
+
+			case '3':
+				# code...
+				return Rule::MAX_PRODUCTS_ADVANCED;
+			
 
 		}//end switch
 

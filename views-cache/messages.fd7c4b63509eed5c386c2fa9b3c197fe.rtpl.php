@@ -43,9 +43,11 @@
                     
                     <div class="col-12">
 
-                        <div class="dash-title">
-                            <h1>Mensagens</h1>
-                        </div>
+                        <a href="/dashboard/mensagens">
+                            <div class="dash-title">
+                                <h1>Mensagens</h1>
+                            </div>
+                        </a>
 
                     </div>
 
@@ -91,11 +93,11 @@
                         <div class="account-box-wrapper">
                             <div class="account-box">
                                 <div class="account-box-main">
-                                    <span><?php echo htmlspecialchars( $numMessages, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    <span><?php echo htmlspecialchars( $nrtotal, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 </div>
 
                                 <div class="account-box-title">
-                                    <?php if( $numMessages > 1 ){ ?>
+                                    <?php if( $nrtotal > 1 ){ ?>
                                         <span>Mensagens</span>
                                             <br>
                                         <span>Recebidas</span>
@@ -379,6 +381,14 @@
                                 <form action="/dashboard/mensagens">
 
                                     <div class="input-group input-group-sm">
+
+                                        <a href="/dashboard/mensagens">
+                                            <button type="button" class="btn btn-default">
+
+                                                <i class="fa fa-undo"></i>
+
+                                            </button>
+                                        </a>
                                         
                                         <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 

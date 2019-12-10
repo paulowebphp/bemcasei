@@ -588,6 +588,16 @@ class Event extends Model
 	{
 
 		$start = ($page - 1) * $itensPerPage;
+		
+
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+			$search = utf8_decode($search);
+
+		}//end if
+
+
 
 		$sql = new Sql();
 
@@ -615,9 +625,9 @@ class Event extends Model
 
 
 
-		$numEvents = $sql->select("
+		$nrtotal = $sql->select("
 		
-			SELECT FOUND_ROWS() AS numevents;
+			SELECT FOUND_ROWS() AS nrtotal;
 			
 		");//end select
 
@@ -655,8 +665,8 @@ class Event extends Model
 		return [
 
 			'results'=>$results,
-			'numevents'=>(int)$numEvents[0]["numevents"],
-			'pages'=>ceil($numEvents[0]["numevents"] / $itensPerPage)
+			'nrtotal'=>(int)$nrtotal[0]["nrtotal"],
+			'pages'=>ceil($nrtotal[0]["nrtotal"] / $itensPerPage)
 
 		];//end return
 

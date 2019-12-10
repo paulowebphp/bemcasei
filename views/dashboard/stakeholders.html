@@ -57,9 +57,11 @@
                     
                     <div class="col-12">
 
-                        <div class="dash-title">
-                            <h1>Fornecedores</h1>
-                        </div>
+                        <a href="/dashboard/fornecedores">
+                            <div class="dash-title">
+                                <h1>Fornecedores</h1>
+                            </div>
+                        </a>
 
                     </div>
 
@@ -67,7 +69,7 @@
 
         
 
-                {if=" $maxStakeholders > $numStakeholders "}
+                {if=" $maxStakeholders > $nrtotal "}
 
                 <div class="row">
 
@@ -83,6 +85,26 @@
                             </a>
                      
                             
+                
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {else}
+
+                <div class="row">
+
+                    <div class="col-12">
+
+
+                        <div class="button-header">
+
+                            <button id="popover1" class="disabled-links pointer-none" data-toggle="popover" data-placement="bottom" title="{$popover1.0}" data-content="{$popover1.1}">
+                                Criar Fornecedor
+                            </button>
+                        
                 
                         </div>
 
@@ -453,6 +475,14 @@
                                 <form action="/dashboard/fornecedores">
 
                                     <div class="input-group input-group-sm">
+
+                                        <a href="/dashboard/fornecedores">
+                                            <button type="button" class="btn btn-default">
+
+                                                <i class="fa fa-undo"></i>
+
+                                            </button>
+                                        </a>
                                         
                                         <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="{$search}">
 

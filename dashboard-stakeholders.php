@@ -241,7 +241,7 @@ $app->post( "/dashboard/fornecedores/adicionar", function()
 
 	}//end if
 
-	if( !$desstakeholder = Validate::validateStringWithAccent($_POST['desstakeholder']) )
+	if( ( $desstakeholder = Validate::validateStringNumberSpecial($_POST['desstakeholder'], true, false)  ) === false )
 	{	
 		
 
@@ -713,7 +713,7 @@ $app->post( "/dashboard/fornecedores/:hash", function( $hash )
 
 	}//end if
 
-	if( !$desstakeholder = Validate::validateStringWithAccent($_POST['desstakeholder']) )
+	if( ( $desstakeholder = Validate::validateStringNumberSpecial($_POST['desstakeholder'], true, false)  ) === false )
 	{	
 		
 
@@ -940,12 +940,22 @@ $app->get( "/dashboard/fornecedores", function()
 
 	$currentPage = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
 
+
+
+	
+
+
+
+
+
 	$stakeholder = new Stakeholder();
 
 	if( $search != '' )
 	{
 
 		$results = $stakeholder->getSearch((int)$user->getiduser(),$search,$currentPage,Rule::ITENS_PER_PAGE);
+
+
 
 	}//end if
 	else
@@ -956,7 +966,7 @@ $app->get( "/dashboard/fornecedores", function()
 	}//end else
     	
 
-	$numStakeholders = $results['numstakeholders'];
+	$nrtotal = $results['nrtotal'];
 
 	$stakeholder->setData($results['results']);
 
@@ -1056,6 +1066,7 @@ $app->get( "/dashboard/fornecedores", function()
 	}//end else*/
 
 
+
 	
 
 	$page = new PageDashboard();
@@ -1071,8 +1082,9 @@ $app->get( "/dashboard/fornecedores", function()
 			'search'=>$search,
 			'pages'=>$pages,
 			'maxStakeholders'=>$maxStakeholders,
-			'numStakeholders'=>$numStakeholders,
+			'nrtotal'=>$nrtotal,
 			'stakeholder'=>$stakeholder->getValues(),
+			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
 			'success'=>Stakeholder::getSuccess(),
 			'error'=>Stakeholder::getError()
 			

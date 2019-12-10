@@ -247,7 +247,7 @@ $app->post( "/dashboard/album/adicionar", function()
 
 	}//end if
 
-	if( !$desalbum = Validate::validateStringWithAccent($_POST['desalbum']) )
+	if( ( $desalbum = Validate::validateStringNumberSpecial($_POST['desalbum'], true, false) ) === false )
 	{	
 		
 
@@ -794,7 +794,7 @@ $app->post( "/dashboard/album/:hash", function( $hash )
 
 	}//end if
 
-	if( !$desalbum = Validate::validateStringWithAccent($_POST['desalbum']) )
+	if( ( $desalbum = Validate::validateStringNumberSpecial($_POST['desalbum'], true, false) ) === false )
 	{	
 		
 
@@ -1008,7 +1008,7 @@ $app->get( "/dashboard/album", function()
 
     	
 
-	$numalbuns = $results['nrtotal'];
+	$nrtotal = $results['nrtotal'];
 
 	$album->setData($results['results']);
 
@@ -1103,8 +1103,9 @@ $app->get( "/dashboard/album", function()
 			'search'=>$search,
 			'pages'=>$pages,
 			'maxalbuns'=>$maxalbuns,
-			'numalbuns'=>$numalbuns,
+			'nrtotal'=>$nrtotal,
 			'album'=>$album->getValues(),
+			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
 			'success'=>Album::getSuccess(),
 			'error'=>Album::getError()
 			

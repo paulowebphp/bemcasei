@@ -46,9 +46,11 @@
                     
                     <div class="col-12">
 
-                        <div class="dash-title">
-                            <h1>Listas de Fora</h1>
-                        </div>
+                        <a href="/dashboard/listas-de-fora">
+                            <div class="dash-title">
+                                <h1>Listas de Fora</h1>
+                            </div>
+                        </a>
 
                     </div>
 
@@ -56,7 +58,7 @@
 
         
 
-                {if=" $maxouterlists > $numouterlists "}
+                {if=" $maxouterlists > $nrtotal "}
 
                 <div class="row">
 
@@ -70,6 +72,27 @@
                                     Criar Lista de Fora
                                 </button>
                             </a>
+                     
+                            
+                
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {else}
+
+                <div class="row">
+
+                    <div class="col-12">
+
+
+                        <div class="button-header">
+
+                            <button id="popover1" class="disabled-links pointer-none" data-toggle="popover" data-placement="bottom" title="{$popover1.0}" data-content="{$popover1.1}">
+                                Criar Lista de Fora
+                            </button>
                      
                             
                 
@@ -417,6 +440,14 @@
                                 <form action="/dashboard/listas-de-fora">
 
                                     <div class="input-group input-group-sm">
+
+                                        <a href="/dashboard/listas-de-fora">
+                                            <button type="button" class="btn btn-default">
+
+                                                <i class="fa fa-undo"></i>
+
+                                            </button>
+                                        </a>
                                         
                                         <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="{$search}">
 

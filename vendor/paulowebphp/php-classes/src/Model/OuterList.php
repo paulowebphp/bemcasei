@@ -500,6 +500,14 @@ class OuterList extends Model
 
 		$start = ($page - 1) * $itensPerPage;
 
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+			$search = utf8_decode($search);
+
+		}//end if
+
+
 		$sql = new Sql();
 
 		$results = $sql->select("

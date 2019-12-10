@@ -44,9 +44,11 @@
                     
                     <div class="col-12">
 
-                        <div class="dash-title">
-                            <h1>Presentes</h1>
-                        </div>
+                        <a href="/dashboard/presentes-virtuais">
+                            <div class="dash-title">
+                                <h1>Presentes Virtuais</h1>
+                            </div>
+                        </a>
 
                     </div>
 
@@ -54,55 +56,70 @@
 
         
 
-                <?php if(  $maxProducts > $nrtotal  ){ ?>
+                
 
 
-                    <div class="row">
+                <div class="row">
 
-                        <div class="col-12">
+                    <div class="col-12">
 
-                            <div class="button-header">
+                        <div class="button-header">
 
-
-                                <a href="/dashboard/presentes-virtuais/adicionar">
-                                    <button>
-                                        Criar Presente
-                                    </button>
-                                </a>
-
-
-                                <a href="/dashboard/presentes-virtuais/lista-pronta">
-                                    <button>
-                                        Adicionar da Lista Pronta
-                                    </button>
-                                </a>
+                            <a href="/dashboard/presentes-virtuais/configurar">
+                                <button>
+                                    Configurar
+                                </button>
+                            </a>
 
 
+                            <?php if(  $maxProducts > $nrtotal  ){ ?>
 
-                                <a href="/dashboard/presentes-virtuais/configurar">
-                                    <button>
-                                        Configurar
-                                    </button>
-                                </a>
-
-                               
-                                <?php if( checkDesdomain() ){ ?>
-                                <a target="_blank" href="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/loja">
-                                    <button>
-                                        Ver Loja
-                                    </button>
-                                </a>
-                                <?php } ?>
+                            <a href="/dashboard/presentes-virtuais/adicionar">
+                                <button>
+                                    Criar Presente
+                                </button>
+                            </a>
 
 
-                                
-                            </div>
+                            <a href="/dashboard/lista-pronta">
+                                <button>
+                                    Adicionar da Lista Pronta
+                                </button>
+                            </a>
 
+                            <?php }else{ ?>
+
+                            <button id="popover1" class="disabled-links pointer-none" data-toggle="popover" data-placement="bottom" title="<?php echo htmlspecialchars( $popover1["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-content="<?php echo htmlspecialchars( $popover1["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                Criar Presente
+                            </button>
+
+
+                            <button id="popover2" class="disabled-links pointer-none" data-toggle="popover" data-placement="bottom" title="<?php echo htmlspecialchars( $popover1["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-content="<?php echo htmlspecialchars( $popover1["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                Adicionar da Lista Pronta
+                            </button>
+
+                            <?php } ?>
+
+
+                            
+                           
+                            <?php if( checkDesdomain() ){ ?>
+                            <a target="_blank" href="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/loja">
+                                <button>
+                                    Ver Loja
+                                </button>
+                            </a>
+                            <?php } ?>
+
+
+                            
                         </div>
 
                     </div>
 
-                <?php } ?>
+                </div>
+
+                
 
             
 
@@ -304,6 +321,14 @@
                                 <form action="/dashboard/presentes-virtuais">
 
                                     <div class="input-group input-group-sm">
+
+                                        <a href="/dashboard/presentes-virtuais">
+                                            <button type="button" class="btn btn-default">
+
+                                                <i class="fa fa-undo"></i>
+
+                                            </button>
+                                        </a>
                                         
                                         <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 

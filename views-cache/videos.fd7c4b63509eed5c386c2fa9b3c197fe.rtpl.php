@@ -48,9 +48,11 @@
                     
                     <div class="col-12">
 
-                        <div class="dash-title">
-                            <h1>Vídeos</h1>
-                        </div>
+                        <a href="/dashboard/videos">
+                            <div class="dash-title">
+                                <h1>Vídeos</h1>
+                            </div>
+                        </a>
 
                     </div>
 
@@ -58,7 +60,7 @@
 
         
 
-                <?php if(  $maxvideos > $numvideos  ){ ?>
+                <?php if(  $maxvideos > $nrtotal  ){ ?>
 
                 <div class="row">
 
@@ -72,6 +74,26 @@
                                     Adicionar Vídeo
                                 </button>
                             </a>
+                     
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <?php }else{ ?>
+
+                <div class="row">
+
+                    <div class="col-12">
+
+
+                        <div class="button-header">
+
+                            <button id="popover1" class="disabled-links pointer-none" data-toggle="popover" data-placement="bottom" title="<?php echo htmlspecialchars( $popover1["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-content="<?php echo htmlspecialchars( $popover1["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                Adicionar Vídeo
+                            </button>
                      
 
                         </div>
@@ -365,6 +387,14 @@
                                 <form action="/dashboard/videos">
 
                                     <div class="input-group input-group-sm">
+
+                                        <a href="/dashboard/videos">
+                                            <button type="button" class="btn btn-default">
+
+                                                <i class="fa fa-undo"></i>
+
+                                            </button>
+                                        </a>
                                         
                                         <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 

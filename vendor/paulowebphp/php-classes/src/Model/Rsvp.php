@@ -560,13 +560,22 @@ class Rsvp extends Model
 
 		$start = ($page - 1) * $itensPerPage;
 
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+			$search = utf8_decode($search);
+
+		}//end if
+
+
+
 		$sql = new Sql();
 
 		$results = $sql->select("
 
 			SELECT SQL_CALC_FOUND_ROWS *
 			FROM tb_rsvp
-            WHERE iduser = :iduser AND desname LIKE :search
+            WHERE iduser = :iduser AND desguest LIKE :search
             ORDER BY desguest ASC
 			LIMIT $start, $itensPerPage;
 
@@ -616,6 +625,7 @@ class Rsvp extends Model
 
 		}//end if
 
+		
 
 
 			
@@ -1005,6 +1015,15 @@ class Rsvp extends Model
 
 		$start = ($page - 1) * $itensPerPage;
 
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+			$search = utf8_decode($search);
+
+		}//end if
+
+		
+
 		$sql = new Sql();
 
 		$results = $sql->select("
@@ -1013,7 +1032,7 @@ class Rsvp extends Model
 			FROM tb_rsvp
             WHERE inconfirmed = 1
             AND iduser = :iduser
-            AND desname LIKE :search
+            AND desguest LIKE :search
             ORDER BY desguest ASC
 			LIMIT $start, $itensPerPage;
 

@@ -315,7 +315,7 @@ $app->post( "/dashboard/eventos/adicionar", function()
 
 	}//end if
 
-	if( !$desevent = Validate::validateStringWithAccent($_POST['desevent']) )
+	if( ( $desevent = Validate::validateStringNumberSpecial($_POST['desevent'], true, false)  ) === false )
 	{
 
 		Event::setError("O nome do evento não pode ser formado apenas com caracteres especiais, tente novamente");
@@ -1082,7 +1082,7 @@ $app->post( "/dashboard/eventos/:hash", function( $hash )
 
 	}//end if
 
-	if( !$desevent = Validate::validateStringWithAccent($_POST['desevent']) )
+	if( ( $desevent = Validate::validateStringNumberSpecial($_POST['desevent'], true, false)  ) === false )
 	{
 
 		Event::setError("O nome do evento não pode ser formado apenas com caracteres especiais, tente novamente");
@@ -1565,6 +1565,7 @@ $app->get( "/dashboard/eventos", function()
 			'maxEvents'=>$maxEvents,
 			'nrtotal'=>$nrtotal,
 			'event'=>$event->getValues(),
+			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
 			'success'=>Event::getSuccess(),
 			'error'=>Event::getError()
 			
