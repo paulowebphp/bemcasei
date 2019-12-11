@@ -5,6 +5,7 @@ Disallow: /login/
 Disallow: /recuperar-senha/
 Disallow: /termos-uso/
 Disallow: /termos-lista/
+Disallow: /politica-privacidade/
 Disallow: /central-ajuda/
 Disallow: /cadastrar/
 Disallow: /carrinho/
