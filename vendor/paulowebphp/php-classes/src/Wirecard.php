@@ -6,6 +6,7 @@ use \Core\Model;
 use \Core\Rule;
 use \Core\DB\Sql;
 use \Core\Model\Account;
+use \Core\Model\Bank;
 use \Core\Model\Order;
 use \Core\Model\Payment;
 use \Core\Model\PaymentStatus;

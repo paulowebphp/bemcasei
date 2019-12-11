@@ -29,6 +29,12 @@ use \Core\Model\CustomStyle;
 
 
 
+
+
+
+
+
+
 $app->get( "/:desdomain/presente/:idorder", function( $desdomain, $idorder )
 {
 
@@ -727,7 +733,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( !$desholderaddress = Validate::validateString($_POST['desholderaddress']) )
+			if( ( $desholderaddress = Validate::validateStringNumber($_POST['desholderaddress']) ) === false )
 			{
 
 				Payment::setError(Rule::VALIDATE_ADDRESS);
@@ -797,7 +803,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( !$desholderdistrict = Validate::validateString($_POST['desholderdistrict']) )
+			if( ( $desholderdistrict = Validate::validateStringNumber($_POST['desholderdistrict']) ) === false )
 			{
 
 				Payment::setError(Rule::VALIDATE_DISTRICT);
@@ -809,8 +815,24 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			$desholdercomplement = Validate::validateString($_POST['desholdercomplement'], true);
-			$inholdertypedoc = 0;
+
+
+			if(
+				
+				!isset($_POST['desholdercity']) 
+				|| 
+				$_POST['desholderdistrict'] === ''
+				
+			)
+			{
+
+				Payment::setError(Rule::ERROR_CITY);
+				header('Location: /'.$desdomain.'/checkout');
+				exit;
+
+			}//end if
+
+
 
 			$cityArray = Address::getCity($_POST['desholdercity']);
 			$desholdercity = $cityArray['descity'];
@@ -818,6 +840,14 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 			$stateArray = Address::getState($_POST['desholderstate']);
 			$desholderstate = $stateArray['desstatecode'];
 
+
+
+
+
+			$desholdercomplement = Validate::validateString($_POST['desholdercomplement'], true, true);
+			$inholdertypedoc = 0;
+
+			
 
 			$desholdername = $desname;
 			$descardcode_number = null;
@@ -855,6 +885,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			
 			
+
 
 
 
@@ -1125,7 +1156,6 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-
 			if(
 				!isset($_POST['desholderaddress']) 
 				|| 
@@ -1140,7 +1170,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( !$desholderaddress = Validate::validateString($_POST['desholderaddress']) )
+			if( ( $desholderaddress = Validate::validateStringNumber($_POST['desholderaddress']) ) === false )
 			{
 
 				Payment::setError(Rule::VALIDATE_ADDRESS);
@@ -1193,7 +1223,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			
+			  
 
 			if(
 				
@@ -1210,7 +1240,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( !$desholderdistrict = Validate::validateString($_POST['desholderdistrict']) )
+			if( ( $desholderdistrict = Validate::validateStringNumber($_POST['desholderdistrict']) ) === false )
 			{
 
 				Payment::setError(Rule::VALIDATE_DISTRICT);
@@ -1386,15 +1416,37 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 			}//end if
 
 
+			if(
+				
+				!isset($_POST['desholdercity']) 
+				|| 
+				$_POST['desholderdistrict'] === ''
+				
+			)
+			{
 
-			$desholdercomplement = Validate::validateString($_POST['desholdercomplement'], true);
-			$inholdertypedoc = 0;
+				Payment::setError(Rule::ERROR_CITY);
+				header('Location: /'.$desdomain.'/checkout');
+				exit;
+
+			}//end if
 
 			$cityArray = Address::getCity($_POST['desholdercity']);
 			$desholdercity = $cityArray['descity'];
 
 			$stateArray = Address::getState($_POST['desholderstate']);
 			$desholderstate = $stateArray['desstatecode'];
+
+
+
+
+
+
+			$desholdercomplement = Validate::validateString($_POST['desholdercomplement'], true, true);
+			$inholdertypedoc = 0;
+
+			
+
 
 			$payment->setinpaymentmethod(1);
 			$payment->setnrinstallment($_POST['installment']);
@@ -1471,8 +1523,6 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 		);//end createCustomer
 
-		
-		
 
 
 
@@ -1576,6 +1626,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 		
 
+	
 		
 
 		try 
@@ -1703,7 +1754,8 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 		$order->save();
 
 
-		
+			
+
 
 
 		$consort = new Consort();

@@ -86,30 +86,39 @@ class Order extends Model
 		);//end select
 
 
-		//$results[0]['desname'] = utf8_encode($results[0]['desname']);
-		//$results[0]['desaddress'] = utf8_encode($results[0]['desaddress']);
-		//$results[0]['descomplement'] = utf8_encode($results[0]['descomplement']);
-		//$results[0]['descity'] = utf8_encode($results[0]['descity']);
-		//$results[0]['desdistrict'] = utf8_encode($results[0]['desdistrict']);
-		//$results[0]['desstate'] = utf8_encode($results[0]['desstate']);
+		
 
-		//$results[0]['desholdername'] = utf8_encode($results[0]['desholdername']);
-		//$results[0]['desholderaddress'] = utf8_encode($results[0]['desholderaddress']);
-		//$results[0]['desholdercomplement'] = utf8_encode($results[0]['desholdercomplement']);
-		//$results[0]['desholdercity'] = utf8_encode($results[0]['desholdercity']);
-		//$results[0]['desholderdistrict'] = utf8_encode($results[0]['desholderdistrict']);
-		//$results[0]['desholderstate'] = utf8_encode($results[0]['desholderstate']);
-
-
-
-
-
-
-
+		
 
 
 		if( count($results) > 0 )
 		{
+
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  )
+			{
+
+				$results[0]['desconsort'] = utf8_encode($results[0]['desconsort']);
+				$results[0]['desname'] = utf8_encode($results[0]['desname']);
+				$results[0]['desaddress'] = utf8_encode($results[0]['desaddress']);
+				$results[0]['descomplement'] = utf8_encode($results[0]['descomplement']);
+				$results[0]['descity'] = utf8_encode($results[0]['descity']);
+				$results[0]['desdistrict'] = utf8_encode($results[0]['desdistrict']);
+				$results[0]['desstate'] = utf8_encode($results[0]['desstate']);
+				$results[0]['descountry'] = utf8_encode($results[0]['descountry']);
+
+				$results[0]['desholdername'] = utf8_encode($results[0]['desholdername']);
+				$results[0]['desholderaddress'] = utf8_encode($results[0]['desholderaddress']);
+				$results[0]['desholdercomplement'] = utf8_encode($results[0]['desholdercomplement']);
+				$results[0]['desholdercity'] = utf8_encode($results[0]['desholdercity']);
+				$results[0]['desholderdistrict'] = utf8_encode($results[0]['desholderdistrict']);
+				$results[0]['desholderstate'] = utf8_encode($results[0]['desholderstate']);
+				$results[0]['descountry'] = utf8_encode($results[0]['descountry']);
+
+
+			}//end if
+	
+
+
 
 			$this->setData($results[0]);
 
@@ -829,6 +838,14 @@ class Order extends Model
 	{
 
 		$start = ($page - 1) * $itensPerPage;
+
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+			$search = utf8_decode($search);
+
+		}//end if
+		
 
 		$sql = new Sql();
 

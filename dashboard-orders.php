@@ -7,6 +7,7 @@ use Core\Rule;
 use Core\Validate;
 use Core\Wirecard;
 use Core\Model\Account;
+use Core\Model\Bank;
 use Core\Model\Cart;
 use Core\Model\Consort;
 use Core\Model\Gift;
@@ -394,6 +395,31 @@ $app->get( "/dashboard/painel-financeiro", function()
 
 	
 	$sumCompleted = Transfer::getSumCompleted((int)$user->getiduser());
+
+
+
+
+
+
+
+
+
+	$bank = new Bank();
+
+	$bank->get((int)$user->getiduser());
+
+	$checkBank = 0;
+
+	if ( $bank->getdesbankcode() != '' )
+	{
+
+		$checkBank = 1;
+
+	}//end if
+
+
+
+
 	
 
 	$page = new PageDashboard();
@@ -416,6 +442,8 @@ $app->get( "/dashboard/painel-financeiro", function()
 			'sumRefunded'=>$sumRefunded,
 			'sumCompleted'=>$sumCompleted,
 			'order'=>$order->getValues(),
+			'popover1'=>[0=>'', 1=>Rule::POPOVER_REGISTER_BANK_CONTENT],
+			'checkBank'=>$checkBank,
 			'success'=>Order::getSuccess(),
 			'error'=>Order::getError()
 			

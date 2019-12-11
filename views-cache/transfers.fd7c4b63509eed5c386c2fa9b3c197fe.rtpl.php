@@ -1,4 +1,4 @@
-<section class="dashboard">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
 
     <div class="container-fluid">            
             
@@ -12,20 +12,20 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                {if="!validatePlan()"}
+                <?php if( !validatePlan() ){ ?>
 
-                    {include="dashboard-menu-expirated"}
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
                
 
-                {elseif="validatePlanFree()"}
+                <?php }elseif( validatePlanFree() ){ ?>
 
-                    {include="dashboard-menu-free"}
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
 
-                {else}
+                <?php }else{ ?>
 
-                    {include="dashboard-menu"}
+                    <?php require $this->checkTemplate("dashboard-menu");?>
 
-                {/if}
+                <?php } ?>
                     
 
             </div><!--col-->
@@ -93,31 +93,31 @@
 
 
 
-                {if="$success != ''"}
+                <?php if( $success != '' ){ ?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {$success}
+                                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div> 
                         </div>  
-                    {/if}
+                    <?php } ?>
 
-                    {if="$error != ''"}
+                    <?php if( $error != '' ){ ?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    {$error}
+                                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div> 
                         </div>  
-                    {/if}
+                    <?php } ?>
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-                {loop="$transfer"}
+                <?php $counter1=-1;  if( isset($transfer) && ( is_array($transfer) || $transfer instanceof Traversable ) && sizeof($transfer) ) foreach( $transfer as $key1 => $value1 ){ $counter1++; ?>
                 <div class="row card-dash">
 
                     <div class="col-md-10 col-12">
@@ -143,7 +143,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span>{$value.destransfercode}</span>
+                                        <span><?php echo htmlspecialchars( $value1["destransfercode"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
 
@@ -169,7 +169,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span>{$value.desbanknumber}</span>
+                                        <span><?php echo htmlspecialchars( $value1["desbanknumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -195,7 +195,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span>{$value.desagencynumber}-{$value.desagencycheck}</span>
+                                        <span><?php echo htmlspecialchars( $value1["desagencynumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>-<?php echo htmlspecialchars( $value1["desagencycheck"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -242,7 +242,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span>{$value.desaccountnumber}-{$value.desaccountcheck}</span>
+                                        <span><?php echo htmlspecialchars( $value1["desaccountnumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>-<?php echo htmlspecialchars( $value1["desaccountcheck"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -275,7 +275,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span>R$ {function="formatPrice($value.vlamount)"}</span>
+                                        <span>R$ <?php echo formatPrice($value1["vlamount"]); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -307,7 +307,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span>{$value.intransferstatus}</span>
+                                        <span><?php echo htmlspecialchars( $value1["intransferstatus"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -355,7 +355,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span>{function="formatDateTimeWithSeconds($value.dtregister)"}</span>
+                                        <span><?php echo formatDateTimeWithSeconds($value1["dtregister"]); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -395,7 +395,7 @@
                         <div class="card-dash-field">
 
 
-                            <a href="/dashboard/transferencias/{$value.idtransfer}">
+                            <a href="/dashboard/transferencias/<?php echo htmlspecialchars( $value1["idtransfer"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                                 <button>Detalhes</button>
 
@@ -441,7 +441,7 @@
 
 
 
-                {else}
+                <?php }else{ ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-info">
@@ -449,7 +449,7 @@
                         </div>
                     </div>
                 </div>
-                {/loop}
+                <?php } ?>
 
 
 
