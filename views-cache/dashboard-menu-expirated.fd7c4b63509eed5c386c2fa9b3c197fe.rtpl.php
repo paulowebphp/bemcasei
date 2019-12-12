@@ -59,7 +59,8 @@
 
 
     <div class="menu-main-pages">
-        
+
+        <a href="/dashboard/central-ajuda" class="list-group-item list-group-item-action">Central de Ajuda</a>
         
         <a href="/dashboard/change-password" class="list-group-item list-group-item-action">Alterar Senha</a>
         

@@ -364,7 +364,10 @@ class Rule extends Model
 
 
 
-	const VALIDATE_PLAN = 'Para ter acesso a esta página, você precisa ter um plano ativo | Vá no menu "Meu Plano" para adquirir um plano';
+	const VALIDATE_PLAN = 'Para ter acesso a esta página, você precisa ter um plano ativo | Vá no menu "Meu Plano" para adquirir um plano ou aguarde a confirmação do pagamento | Em caso de dúvida, contate o suporte';
+
+
+	const VALIDATE_UPGRADE = 'Seu plano atual não permite fazer Upgrade | Vá no menu "Meu Plano" para adquirir ou renovar um plano';
 
 	const VALIDATE_PLAN_FREE = 'Usuáris do Plano Free não têm acesso a esta rota';
 
@@ -375,7 +378,7 @@ class Rule extends Model
 
 
 
-	const ERROR_REGISTER = 'Ocorreu um erro momentâneo, provavelmente devido à instabilidade na conexão de internet entre o nosso servidor e o seu dispositivo | Por favor, tente mais uma vez e deverá ocrrer tudo bem | Caso ainda assim o erro persista, entre em contato com o suporte';
+	const ERROR_REGISTER = 'Ocorreu um erro momentâneo, provavelmente devido à instabilidade na conexão de internet entre o nosso servidor e o seu dispositivo | Por favor, faça login na sua conta e você pode adquirir um plano na seção "Meu Plano" do seu Dashboard | Caso ainda assim o erro persista, entre em contato com o suporte';
 	const VALIDATE_REGISTER = 'É necessário concluir seu registro no site antes de acessar essa página';
 
 

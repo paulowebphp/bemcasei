@@ -81,7 +81,7 @@
 
             </div><!--card-header-->
 
-            <div id="collapseThree" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['painel-financeiro','presentes-virtuais']) ){ ?> show<?php } ?>" aria-labelledby="headingThree" data-parent="#accordion">
+            <div id="collapseThree" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['painel-financeiro','presentes-virtuais','lista-pronta']) ){ ?> show<?php } ?>" aria-labelledby="headingThree" data-parent="#accordion">
                 <div class="card-body card-body-text">
                 
 
@@ -276,7 +276,7 @@
 
     <div class="menu-main-pages">
 
-        <a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Testemunho</a>
+        <a href="/dashboard/central-ajuda" class="list-group-item list-group-item-action">Central de Ajuda</a>
           
         <a href="/dashboard/mudar-senha" class="list-group-item list-group-item-action">Alterar Senha</a>
           

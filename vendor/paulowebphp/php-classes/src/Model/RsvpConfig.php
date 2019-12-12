@@ -152,6 +152,7 @@ class RsvpConfig extends Model
 
 		$sql = new Sql();
 
+		
 		$results = $sql->select("
 
 			SELECT  *
@@ -170,18 +171,23 @@ class RsvpConfig extends Model
 		
 		);//end select
 
+		
 
-		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
-		{
-			# code...
-			$results[0]['desadultstitle'] = utf8_encode($results[0]['desadultstitle']);
-			$results[0]['desadultsdescription'] = utf8_encode($results[0]['desadultsdescription']);
-			
-		}//end if
+
+
+		
 			
 
 		if( count($results) > 0 )
 		{
+
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+			{
+				# code...
+				$results[0]['desadultstitle'] = utf8_encode($results[0]['desadultstitle']);
+				$results[0]['desadultsdescription'] = utf8_encode($results[0]['desadultsdescription']);
+				
+			}//end if
 
 			$this->setData($results[0]);
 			

@@ -51,15 +51,25 @@ $app->get( "/dashboard/upgrade/checkout", function()
 	$user = User::getFromSession();
 
 
-	if ( 
-
-		!User::validatePlanDashboard( $user )
-		||
-		!in_array((int)$user->getinplancontext(), [1,2])
-	)
+	if ( !User::validatePlanDashboard( $user ) )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard/meu-plano');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+
+	if ( !in_array((int)$user->getinplancontext(), [1,2]) )
+	{
+		# code...
+		Payment::setError(Rule::VALIDATE_UPGRADE);
 		header('Location: /dashboard/meu-plano');
 		exit;
 
@@ -85,23 +95,36 @@ $app->get( "/dashboard/upgrade/checkout", function()
 
 
 
+	
+	$counter = 0;
 
 	foreach ($inplanUpgrade as $row ) 
 	{
 		# code...
+		
 		if ( (int)$_GET['plano'] == (int)$row['inplancode'] ) 
 		{
 			# code...
+			$counter++;
 			break;
 
 		}//end if
 
 
+	}//ennd foreach
+
+
+
+	if ( $counter == 0 )
+	{
+		# code...
 		Plan::setError(Rule::VALIDATE_PLAN_PURCHASE_CODE);
 		header('Location: /dashboard/upgrade');
 		exit;
 
-	}//ennd foreach
+	}//end if
+
+
 
 	
 
@@ -182,6 +205,9 @@ $app->get( "/dashboard/upgrade/checkout", function()
 
 
 	$inplan = Plan::getPlanArray($plan);
+
+
+
 
 	//$address = new Address();
 
@@ -287,15 +313,32 @@ $app->post( "/dashboard/upgrade/checkout", function()
 	$user = User::getFromSession();
 
 
-	if ( 
+	
 
-		!User::validatePlanDashboard( $user )
-		||
-		!in_array((int)$user->getinplancontext(), [1,2])
-	)
+
+
+
+
+
+	if ( !User::validatePlanDashboard( $user ) )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard/meu-plano');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+
+	if ( !in_array((int)$user->getinplancontext(), [1,2]) )
+	{
+		# code...
+		Payment::setError(Rule::VALIDATE_UPGRADE);
 		header('Location: /dashboard/meu-plano');
 		exit;
 
@@ -347,24 +390,51 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 
-	foreach( $inplanUpgrade as $row ) 
+
+
+
+
+
+
+
+
+
+
+
+	$counter = 0;
+
+	foreach ($inplanUpgrade as $row ) 
 	{
 		# code...
+		
 		if ( (int)$_POST['inplancode'] == (int)$row['inplancode'] ) 
 		{
 			# code...
+			$counter++;
 			break;
 
 		}//end if
 
 
-		Plan::setError(Rule::VALIDATE_PLAN_PURCHASE_CODE);
-		header('Location: /dashboard/upgrade');
-		exit;
-
 	}//ennd foreach
 
+
+
+	if ( $counter == 0 )
+	{
+		# code...
+		Plan::setError(Rule::VALIDATE_PLAN_PURCHASE_CODE);
+		eader('Location: /dashboard/upgrade');
+		exit;
+
+	}//end if
+
 	
+
+
+
+
+
 
 	if ( 
 
@@ -1763,15 +1833,10 @@ $app->get( "/dashboard/upgrade", function()
 	$user = User::getFromSession();
 
 
-	
 
 
-	if ( 
 
-		!User::validatePlanDashboard( $user )
-		||
-		!in_array((int)$user->getinplancontext(), [1,2])
-	)
+	if ( !User::validatePlanDashboard( $user ) )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
@@ -1779,6 +1844,22 @@ $app->get( "/dashboard/upgrade", function()
 		exit;
 
 	}//end if
+
+
+
+
+
+
+
+	if ( !in_array((int)$user->getinplancontext(), [1,2]) )
+	{
+		# code...
+		Payment::setError(Rule::VALIDATE_UPGRADE);
+		header('Location: /dashboard/meu-plano');
+		exit;
+
+	}//end if
+
 
 
 

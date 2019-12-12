@@ -1603,7 +1603,7 @@ public function getFirstPlan( $iduser )
 
 
 			case '3':
-				return false;
+				return [];
 
 		}//end switch
 

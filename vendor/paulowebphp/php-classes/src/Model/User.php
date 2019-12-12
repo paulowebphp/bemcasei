@@ -59,6 +59,9 @@ class User extends Model
 			$user = new User();
 
 			$user->setData($_SESSION[User::SESSION]);
+
+			//$user->setdesperson(utf8_encode($user->getdesperson()));
+
 	
 			return $user;
 
@@ -268,7 +271,7 @@ class User extends Model
 			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
 			{
 				
-				//$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
+				$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
 				$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
 				
 			}//end if
@@ -349,7 +352,7 @@ class User extends Model
 			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
 			{
 				
-				//$data['desperson'] = utf8_encode($data['desperson']);
+				$data['desperson'] = utf8_encode($data['desperson']);
 				$data['desnick'] = utf8_encode($data['desnick']);		
 				
 			}//end if
@@ -739,7 +742,7 @@ class User extends Model
 			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
 			{
 				
-				//$data['desperson'] = utf8_encode($data['desperson']);
+				$data['desperson'] = utf8_encode($data['desperson']);
 				$data['desnick'] = utf8_encode($data['desnick']);
 				
 			}//end if
@@ -1231,7 +1234,7 @@ class User extends Model
 			);//end select
 
 
-			//$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
+			$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
 			$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
 			//$results[0]['desdomain'] = utf8_encode($results[0]['desdomain']);
 			
@@ -1393,6 +1396,7 @@ class User extends Model
 			{
 				
 				//$data['desperson'] = utf8_encode($data['desperson']);
+				$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
 				$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
 				
 			}//end if
@@ -1634,7 +1638,7 @@ class User extends Model
 			);//end select
 
 
-			//$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
+			$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
 			$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
 			//$results[0]['desdomain'] = utf8_encode($results[0]['desdomain']);
 
@@ -1848,7 +1852,8 @@ class User extends Model
 			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
 			{
 				
-				$data['desnick'] = utf8_encode($data['desnick']);	
+				$data['desnick'] = utf8_encode($data['desnick']);
+				$data['desperson'] = utf8_encode($data['desperson']);
 				
 			}//end if
 
@@ -2289,6 +2294,7 @@ class User extends Model
 	    	if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
 			{
 				
+				$results[0]['desperson'] = utf8_encode($results[0]['desperson']);	
 				$results[0]['desnick'] = utf8_encode($results[0]['desnick']);	
 				
 			}//end if
@@ -2517,8 +2523,8 @@ class User extends Model
 
 
 				
-				$this->setdtplanbegin($dt_now->format('Y-m-d'));
-				$this->setdtplanend($dt_free->format('Y-m-d'));
+				//$this->setdtplanbegin($dt_now->format('Y-m-d'));
+				//$this->setdtplanend($dt_free->format('Y-m-d'));
 
 		
 
@@ -2849,8 +2855,7 @@ class User extends Model
 
 			
 
-
-
+			
 
 
 
@@ -2860,7 +2865,12 @@ class User extends Model
 
 
 
+
 			$rsvpconfig->get((int)$this->getiduser());
+
+			
+
+
 
 			$desadultsdescription = 'Lembramos que nosso casamento é um evento apenas para adultos e, portanto, os convidados não deverão levar menores de '.Rule::MIN_ADULTS_AGE.' anos de idade';
 
@@ -3760,6 +3770,7 @@ class User extends Model
 			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
 			{
 				
+				$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
 				$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
 					
 				
@@ -4088,10 +4099,149 @@ class User extends Model
 	{
 
 		/*echo '<pre>';
-var_dump($inplancontext);
-var_dump($dtplanend);
-var_dump((int)$plans == 0);
-var_dump($plans);*/
+		var_dump($inplancontext);
+		var_dump($dtplanend);
+		var_dump((int)$plans == 0);
+		var_dump($plans);*/
+		
+			
+		//$timezone = new DateTimeZone('America/Sao_Paulo');
+
+		$dt_now = new \DateTime('now');
+
+		//$dt_now->setTimezone($timezone);
+
+		//$dt_plan_end = new \DateTime($dtplanend);
+
+		//$dtplanend->setTimezone($timezone);
+
+		
+
+
+		if ( (int)$inplancontext == 0 ) 
+		{
+			# code...
+
+			return true;
+
+		}//end else
+		else
+		{
+
+			foreach ( $plans['results'] as $row ) 
+			{
+				# code...
+				
+
+
+				//Pagamento com Cartão
+				
+				if (
+
+					in_array((int)$row['inpaymentmethod'], [1,2,3])
+
+				)
+				{
+					if( 
+
+						(int)$row['inpaymentstatus'] == 1
+						||
+						(int)$row['inpaymentstatus'] == 2
+						||
+						(int)$row['inpaymentstatus'] == 3
+						||
+						(int)$row['inpaymentstatus'] == 4
+						||
+						(int)$row['inpaymentstatus'] == 5
+						||
+						(int)$row['inpaymentstatus'] == 9
+
+					)
+					{
+
+						$dtend = new \DateTime($row['dtend']);
+
+						if ( $dtend < $dt_now ) break;
+
+						return true;
+
+					}//end if
+					
+
+				}//end if
+				elseif( (int)$row['inpaymentmethod'] == 0 )
+				{
+
+					//Pagamento em Boleto
+					if( 
+		
+						(int)$row['inpaymentstatus'] == 5
+						||
+						(int)$row['inpaymentstatus'] == 9
+
+					)
+					{
+
+						$dtend = new \DateTime($row['dtend']);
+
+						if ( $dtend < $dt_now  ) break;
+
+						return true;
+
+					}//end if
+
+				}//end else
+
+
+			}//end foreach
+
+
+			return false;
+
+
+		}//end else
+
+			
+			
+
+
+	}//validatePlanEnd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*
+	public static function validatePlan( $inplancontext, $dtplanend, $plans )
+	{
+
+		
 		
 			
 		//$timezone = new DateTimeZone('America/Sao_Paulo');
@@ -4154,6 +4304,10 @@ var_dump($plans);*/
 					)
 					{
 
+						$dtend = new \DateTime($row['dtend']);
+
+						if ( $dtend < $dt_now ) break;
+
 						return true;
 
 					}//end if
@@ -4172,6 +4326,10 @@ var_dump($plans);*/
 
 					)
 					{
+
+						$dtend = new \DateTime($row['dtend']);
+
+						if ( $dtend < $dt_now  ) break;
 
 						return true;
 
@@ -4193,6 +4351,7 @@ var_dump($plans);*/
 
 
 	}//validatePlanEnd
+	*/
 
 
 
@@ -4465,7 +4624,7 @@ var_dump($plans);*/
 				foreach( $results as &$row )
 				{
 					# code...		
-					//$row['desperson'] = utf8_encode($row['desperson']);
+					$row['desperson'] = utf8_encode($row['desperson']);
 					$row['desnick'] = utf8_encode($row['desnick']);
 					
 
@@ -4524,7 +4683,8 @@ var_dump($plans);*/
 			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
 			{
 				
-				$results[0]['desnick'] = utf8_encode($results[0]['desnick']);	
+				$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
+				$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
 				
 			}//end if
 
@@ -4596,6 +4756,7 @@ var_dump($plans);*/
 			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
 			{
 				
+				$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
 				$results[0]['desnick'] = utf8_encode($results[0]['desnick']);
 				
 			}//end if

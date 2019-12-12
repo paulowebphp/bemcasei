@@ -5189,6 +5189,7 @@ exit;
 
 	$user->update();
 
+
 	$user->setToSession();
 
 

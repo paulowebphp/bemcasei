@@ -100,6 +100,8 @@ $app->get( "/dashboard/rsvp/confirmados", function()
 
 	$user = User::getFromSession();
 
+	
+
 	if ( !User::validatePlanDashboard( $user ) )
 	{
 		# code...
@@ -108,6 +110,8 @@ $app->get( "/dashboard/rsvp/confirmados", function()
 		exit;
 
 	}//end if
+
+
 
 	$search = (isset($_GET['buscar'])) ? $_GET['buscar'] : "";
 

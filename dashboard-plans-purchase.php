@@ -219,6 +219,7 @@ $app->post( "/dashboard/comprar-plano/cadastrar", function()
 
 
 
+
 	/*if ( 
 
 		isset($_POST['checkout-own-card'])
