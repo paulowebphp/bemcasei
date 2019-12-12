@@ -259,7 +259,8 @@ $app->post( "/dashboard/padrinhos-madrinhas/adicionar", function()
 
 	}//end if
 
-	if( !$desbestfriend = Validate::validateStringWithAccent($_POST['desbestfriend']) )
+	if( ( $desbestfriend = Validate::validateStringNumberSpecial($_POST['desbestfriend'],true,false) ) === false )
+
 	{
 
 		BestFriend::setError("O nome do melhxr amigx não pode ser formado apenas com caracteres especiais, tente novamente");

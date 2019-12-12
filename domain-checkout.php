@@ -463,7 +463,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( !$desname = Validate::validateString($_POST['desname']) )
+			if( ( $desname = Validate::validateStringUcwords($_POST['desname'],true,false) ) === false )
 			{
 
 				Payment::setError(Rule::VALIDATE_CUSTOMER_NAME);
@@ -821,7 +821,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 				
 				!isset($_POST['desholdercity']) 
 				|| 
-				$_POST['desholderdistrict'] === ''
+				$_POST['desholdercity'] === ''
 				
 			)
 			{
@@ -844,7 +844,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			$desholdercomplement = Validate::validateString($_POST['desholdercomplement'], true, true);
+			$desholdercomplement = Validate::validateStringNumber($_POST['desholdercomplement'], false, true);
 			$inholdertypedoc = 0;
 
 			
@@ -904,7 +904,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( !$desname = Validate::validateString($_POST['desname']) )
+			if( ( $desname = Validate::validateStringUcwords($_POST['desname'],true,false) ) === false )
 			{
 
 				Payment::setError(Rule::VALIDATE_CUSTOMER_NAME);
@@ -1420,7 +1420,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 				
 				!isset($_POST['desholdercity']) 
 				|| 
-				$_POST['desholderdistrict'] === ''
+				$_POST['desholdercity'] === ''
 				
 			)
 			{
@@ -1442,7 +1442,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			$desholdercomplement = Validate::validateString($_POST['desholdercomplement'], true, true);
+			$desholdercomplement = Validate::validateStringNumber($_POST['desholdercomplement'], false, true);
 			$inholdertypedoc = 0;
 
 			
@@ -1522,6 +1522,11 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 		  	$descardcode_cvc
 
 		);//end createCustomer
+
+
+
+
+
 
 
 

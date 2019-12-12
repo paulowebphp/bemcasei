@@ -167,7 +167,7 @@ $app->post( "/dashboard/meu-amor", function()
 
 	}//end if
 
-	if( !$desconsort = Validate::validateStringWithAccent($_POST['desconsort']) )
+	if( ( $desconsort = Validate::validateStringNumberSpecial($_POST['desconsort'], true, false)  ) === false )
 	{
 
 		Consort::setError("O nome não pode ser formado apenas com caracteres especiais, tente novamente");

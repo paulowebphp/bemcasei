@@ -214,7 +214,9 @@ $app->post( "/dashboard/meus-dados", function()
 
 	}//end if
 
-	if( !$desperson = Validate::validateString($_POST['desperson']) )
+
+
+	if( ( $desperson = Validate::validateStringUcwords($_POST['desperson'], true, false ) ) === false )
 	{
 
 		User::setError("O seu nome não pode ser formado apenas com caracteres especiais, tente novamente");
@@ -246,7 +248,7 @@ $app->post( "/dashboard/meus-dados", function()
 	}//end if
 
 
-	if( !$desnick = Validate::validateStringWithAccent($_POST['desnick']) )
+	if( ( $desnick = Validate::validateStringNumberSpecial($_POST['desnick'], true, false) ) === false )
 	{
 
 		User::setError("O seu nome não pode ser formado apenas com caracteres especiais, tente novamente");
@@ -405,7 +407,7 @@ $app->post( "/dashboard/meus-dados", function()
 			
 		}//end if
 
-		if( !$desaddress = Validate::validateString($_POST['desaddress']) )
+		if( ( $desaddress = Validate::validateStringNumber($_POST['desaddress'], true, false) ) === false )
 		{
 
 			User::setError("O seu endereço não pode ser formado apenas com caracteres especiais, tente novamente");
@@ -470,7 +472,7 @@ $app->post( "/dashboard/meus-dados", function()
 			
 		}//end if
 
-		if( !$desdistrict = Validate::validateString($_POST['desdistrict']) )
+		if( ( $desdistrict = Validate::validateStringNumber($_POST['desdistrict'], true, false) ) === false )
 		{
 
 			User::setError("O nome do bairro não pode ser formado apenas com caracteres especiais, tente novamente");

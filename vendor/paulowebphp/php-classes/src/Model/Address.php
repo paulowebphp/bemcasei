@@ -354,6 +354,12 @@ class Address extends Model
 			return $results[0];
 
 		}//end if
+		else
+		{
+
+			return false;
+
+		}//end else
 
 
 	}//END getState
@@ -417,6 +423,12 @@ class Address extends Model
 			return $results[0];
 
 		}//end if
+		else
+		{
+
+			return false;
+
+		}//end else
 
 
 	}//END getCity

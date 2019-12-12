@@ -26,9 +26,68 @@ class Wirecard extends Model
 {
 
 
+	private $wirecard_access_token;
+	private $wirecard_primary_receiver;
+	//private $wirecard_app;
+	//private $wirecard_api_token;
+	//private $wirecard_api_key;
+
+
 	const SESSION_ERROR = "WirecardError";
 
+
+
+
+
+
+
+	public function __construct()
+	{
+
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  )
+		{
+			# BEM CASEI SANDBOX PJ
+			#####################################################################
+			$this->wirecard_access_token = 'd53f289e62344cd88ac90b20077f2513_v2';
+			$this->wirecard_primary_receiver = 'MPA-89DC0863B0D3';
+			//$this->wirecard_app = 'APP-335B0VPAUCEH';
+			#####################################################################
+
+
+		}//end if
+		else
+		{
+
+			# BEM CASEI PRODUCTION PJ
+			#####################################################################
+			$this->wirecard_access_token = '75ea4315ea064f88a361fa3d0eaaf5e2_v2';
+			$this->wirecard_primary_receiver = 'MPA-8E6DB57A5738';
+			//$this->wirecard_app = 'APP-SOJRLP26BSJK';
+			#####################################################################
+
+		}//end else
+
+
+	}//end construct
+
+
+
+
+
+
+	//public function getWireca=rdAccessToken(){ return $this->wirecard_access_token; }//end getter
+	//public function getWirecardPrimary=Receiver() { return $this->wirecard_primary_receiver; }//end getter
+	//public function getWirecardApp(){ return $this->wirecard_app; }//end getter
 	
+
+
+
+
+
+
+
+
+
 
 
 
@@ -87,7 +146,7 @@ class Wirecard extends Model
 			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
 			{
 
-				$moip = new Moip(new OAuth(Rule::WIRECARD_ACCESS_TOKEN), Moip::ENDPOINT_SANDBOX);
+				$moip = new Moip(new OAuth($this->wirecard_access_token), Moip::ENDPOINT_SANDBOX);
 
 
 			}//end if
@@ -95,7 +154,7 @@ class Wirecard extends Model
 			{
 
 
-				$moip = new Moip(new OAuth(Rule::WIRECARD_ACCESS_TOKEN), Moip::ENDPOINT_PRODUCTION);
+				$moip = new Moip(new OAuth($this->wirecard_access_token), Moip::ENDPOINT_PRODUCTION);
 
 
 			}//end else
@@ -360,7 +419,7 @@ class Wirecard extends Model
 			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
 			{
 
-				$moip = new Moip(new OAuth(Rule::WIRECARD_ACCESS_TOKEN), Moip::ENDPOINT_SANDBOX);
+				$moip = new Moip(new OAuth($this->wirecard_access_token), Moip::ENDPOINT_SANDBOX);
 
 
 			}//end if
@@ -368,10 +427,12 @@ class Wirecard extends Model
 			{
 
 
-				$moip = new Moip(new OAuth(Rule::WIRECARD_ACCESS_TOKEN), Moip::ENDPOINT_PRODUCTION);
+				$moip = new Moip(new OAuth($this->wirecard_access_token), Moip::ENDPOINT_PRODUCTION);
 
 
 			}//end else
+
+
 
 			
 			/*echo "<pre>";
@@ -396,7 +457,12 @@ class Wirecard extends Model
 	  	var_dump($descardcode_number);
 	  	var_dump($descardcode_cvc);
 	  	var_dump($hash);
+	  	var_dump($this->wirecard_access_token);
+		var_dump($this->getWirecardApp());
+		var_dump($this->getWirecardPrimaryReceiver());
 			exit;*/
+
+
 
 			$customer = $moip->customers()->setOwnId( uniqid() )
 				    ->setFullname( $desname )
@@ -809,7 +875,7 @@ class Wirecard extends Model
 			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
 			{
 
-				$moip = new Moip(new OAuth(Rule::WIRECARD_ACCESS_TOKEN), Moip::ENDPOINT_SANDBOX);
+				$moip = new Moip(new OAuth($this->wirecard_access_token), Moip::ENDPOINT_SANDBOX);
 
 
 			}//end if
@@ -817,7 +883,7 @@ class Wirecard extends Model
 			{
 
 
-				$moip = new Moip(new OAuth(Rule::WIRECARD_ACCESS_TOKEN), Moip::ENDPOINT_PRODUCTION);
+				$moip = new Moip(new OAuth($this->wirecard_access_token), Moip::ENDPOINT_PRODUCTION);
 
 
 			}//end else
@@ -1219,7 +1285,7 @@ class Wirecard extends Model
 			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
 			{
 
-				$moip = new Moip(new OAuth(Rule::WIRECARD_ACCESS_TOKEN), Moip::ENDPOINT_SANDBOX);
+				$moip = new Moip(new OAuth($this->wirecard_access_token), Moip::ENDPOINT_SANDBOX);
 
 
 			}//end if
@@ -1227,7 +1293,7 @@ class Wirecard extends Model
 			{
 
 
-				$moip = new Moip(new OAuth(Rule::WIRECARD_ACCESS_TOKEN), Moip::ENDPOINT_PRODUCTION);
+				$moip = new Moip(new OAuth($this->wirecard_access_token), Moip::ENDPOINT_PRODUCTION);
 
 
 			}//end else
@@ -1354,15 +1420,23 @@ class Wirecard extends Model
 		    
 
 		   	
-	   
- 
+	   	
+ 			$order = $order
+		        ->setShippingAmount(0)
+		        ->setCustomer($customer)
+		        ->addReceiver($this->wirecard_primary_receiver, 'PRIMARY', $primary, 0, false)
+		        ->addReceiver($desaccountcode, 'SECONDARY', $secondary, 0, true)
+		        ->create();
 
+
+		    /*
 		    $order = $order
 		        ->setShippingAmount(0)
 		        ->setCustomer($customer)
 		        ->addReceiver(Rule::WIRECARD_PRIMARY_RECEIVER, 'PRIMARY', $primary, 0, false)
 		        ->addReceiver($desaccountcode, 'SECONDARY', $secondary, 0, true)
 		        ->create();
+		        */
 
 		     
 
@@ -3017,7 +3091,7 @@ class Wirecard extends Model
 	public static function wirecardTestBasic()
 	{
 
-		//$moip = new Moip(new OAuth(Rule::WIRECARD_ACCESS_TOKEN), Moip::ENDPOINT_PRODUCTION);
+		//$moip = new Moip(new OAuth($this->wirecard_access_token), Moip::ENDPOINT_PRODUCTION);
 
 		//$account = $moip->accounts()->checkExistence("012.242.026-86");
 
@@ -3074,7 +3148,7 @@ class Wirecard extends Model
 		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
 			{
 
-				$moip = new Moip(new OAuth(Rule::WIRECARD_ACCESS_TOKEN), Moip::ENDPOINT_SANDBOX);
+				$moip = new Moip(new OAuth($this->wirecard_access_token), Moip::ENDPOINT_SANDBOX);
 
 
 			}//end if
@@ -3082,7 +3156,7 @@ class Wirecard extends Model
 			{
 
 
-				$moip = new Moip(new OAuth(Rule::WIRECARD_ACCESS_TOKEN), Moip::ENDPOINT_PRODUCTION);
+				$moip = new Moip(new OAuth($this->wirecard_access_token), Moip::ENDPOINT_PRODUCTION);
 
 
 			}//end else

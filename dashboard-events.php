@@ -364,7 +364,7 @@ $app->post( "/dashboard/eventos/adicionar", function()
 
 	}//end if
 
-	if( !$desaddress = Validate::validateStringWithAccent($_POST['desaddress']) )
+	if( ( $desaddress = Validate::validateStringNumber($_POST['desaddress'], true, false)  ) === false )
 	{
 
 		Event::setError("O seu endereço não pode ser formado apenas com caracteres especiais, tente novamente");
@@ -423,7 +423,7 @@ $app->post( "/dashboard/eventos/adicionar", function()
 
 	}//end if
 
-	if( !$descity = Validate::validateStringWithAccent($_POST['descity']) )
+	if( ( $descity = Validate::validateString($_POST['descity'], true, false)  ) === false )
 	{
 
 		Event::setError("A cidade não deve conter apenas caracteres especiais, nem pode ser vazio, tente novamente");
@@ -458,7 +458,7 @@ $app->post( "/dashboard/eventos/adicionar", function()
 
 	}//end if
 
-	if( !$desstate = Validate::validateStringWithAccent($_POST['desstate']) )
+	if( ( $desstate = Validate::validateString($_POST['desstate'], true, false)  ) === false )
 	{
 
 		Event::setError("O estado não deve conter apenas caracteres especiais, nem pode ser vazio, tente novamente");
@@ -509,10 +509,11 @@ $app->post( "/dashboard/eventos/adicionar", function()
 
 
 
-	$desdescription = Validate::validateDescription($_POST['desdescription'], true);
-	$desdistrict = Validate::validateStringWithAccent($_POST['desdistrict'], true);
-	$descountry = Validate::validateStringWithAccent($_POST['descountry'], true);
+	$descountry = Validate::validateString($_POST['descountry'], true,true);
+	$desdistrict = Validate::validateStringNumber($_POST['desdistrict'], true,true);
+
 	$desdirections = Validate::validateDescription($_POST['desdirections'], true);
+	$desdescription = Validate::validateDescription($_POST['desdescription'], true);
 	
 
 
@@ -1131,7 +1132,7 @@ $app->post( "/dashboard/eventos/:hash", function( $hash )
 
 	}//end if
 
-	if( !$desaddress = Validate::validateStringWithAccent($_POST['desaddress']) )
+	if( ( $desaddress = Validate::validateStringNumber($_POST['desaddress'], true, false) ) === false )
 	{
 
 		Event::setError("O seu endereço não pode ser formado apenas com caracteres especiais, tente novamente");
@@ -1190,7 +1191,7 @@ $app->post( "/dashboard/eventos/:hash", function( $hash )
 
 	}//end if
 
-	if( !$descity = Validate::validateStringWithAccent($_POST['descity']) )
+	if( ( $descity = Validate::validateString($_POST['descity'], true, false) ) === false )
 	{
 
 		Event::setError("A cidade não deve conter apenas caracteres especiais, nem pode ser vazio, tente novamente");
@@ -1225,7 +1226,7 @@ $app->post( "/dashboard/eventos/:hash", function( $hash )
 
 	}//end if
 
-	if( !$desstate = Validate::validateStringWithAccent($_POST['desstate']) )
+	if( ( $desstate = Validate::validateString($_POST['desstate'], true, false) ) === false )
 	{
 
 		Event::setError("O estado não deve conter apenas caracteres especiais, nem pode ser vazio, tente novamente");
@@ -1267,10 +1268,11 @@ $app->post( "/dashboard/eventos/:hash", function( $hash )
 
 
 
+	$descountry = Validate::validateString($_POST['descountry'], true, true);
+	$desdistrict = Validate::validateStringNumber($_POST['desdistrict'], true, true);
+
 
 	$desdescription = Validate::validateDescription($_POST['desdescription'], true);
-	$desdistrict = Validate::validateStringWithAccent($_POST['desdistrict'], true);
-	$descountry = Validate::validateStringWithAccent($_POST['descountry'], true);
 	$desdirections = Validate::validateDescription($_POST['desdirections'], true);
 
 

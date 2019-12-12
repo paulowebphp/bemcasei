@@ -373,7 +373,7 @@ $app->post( "/dashboard/fornecedores/adicionar", function()
 
 	$desemail = Validate::validateEmail($_POST['desemail'], true);
 	$desdescription = Validate::validateDescription($_POST['desdescription'], true);
-	$deslocation = Validate::validateStringWithAccent($_POST['deslocation'], true);
+	$deslocation = Validate::validateStringNumberSpecial($_POST['deslocation'], true, true);
 
 
 
@@ -851,7 +851,7 @@ $app->post( "/dashboard/fornecedores/:hash", function( $hash )
 
 	$desemail = Validate::validateEmail($_POST['desemail'], true);
 	$desdescription = Validate::validateDescription($_POST['desdescription'], true);
-	$deslocation = Validate::validateStringWithAccent($_POST['deslocation'], true);
+	$deslocation = Validate::validateStringNumberSpecial($_POST['deslocation'], true, true);
 	
 
 

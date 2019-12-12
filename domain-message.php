@@ -267,7 +267,7 @@ $app->post( "/:desdomain/mural-mensagens/enviar", function( $desdomain )
 
 		}//end if
 
-		if( ( $desmessage = Validate::validateStringWithAccent($_POST['desmessage']) ) === false )
+		if( ( $desmessage = Validate::validateStringUcwords($_POST['desmessage'], true, false) ) === false )
 		{	
 			
 

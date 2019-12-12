@@ -17,6 +17,9 @@ class Rule extends Model
 
 
 
+
+
+
 	/*
 	# BEM CASEI SANDBOX PJ
 	#####################################################################
@@ -27,7 +30,7 @@ class Rule extends Model
 
 	const WIRECARD_PRIMARY_RECEIVER = 'MPA-89DC0863B0D3';
 	#####################################################################
-	*/
+	
 
 	
 	# BEM CASEI PRODUCTION PJ
@@ -39,15 +42,14 @@ class Rule extends Model
 
 	const WIRECARD_PRIMARY_RECEIVER = 'MPA-8E6DB57A5738';
 	#####################################################################
+	*/
+
+
+
+
+
+
 	
-
-
-
-
-	
-
-
-
 
 	
 
@@ -462,7 +464,11 @@ class Rule extends Model
 
 
 
- 	const ERROR_CITY = 'Selecione a cidade';
+ 	const ERROR_CITY = 'Selecione a Cidade';
+ 	const VALIDATE_CITY = 'Cidade não válida';
+
+ 	const ERROR_STATE = 'Selecione o Estado';
+ 	const VALIDATE_STATE = 'Estado não válido';
 
 
 

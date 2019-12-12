@@ -708,7 +708,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		}//end if
 
-		if( !$desholderaddress = Validate::validateString($_POST['desholderaddress']) )
+		if( !$desholderaddress = Validate::validateStringNumber($_POST['desholderaddress']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_ADDRESS);
@@ -779,7 +779,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		}//end if
 
-		if( !$desholderdistrict = Validate::validateString($_POST['desholderdistrict']) )
+		if( !$desholderdistrict = Validate::validateStringNumber($_POST['desholderdistrict']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_DISTRICT);
@@ -956,19 +956,85 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 
+
+		if(
+				
+			!isset($_POST['desholdercity']) 
+			|| 
+			$_POST['desholdercity'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_CITY);
+			header('Location: /dashboard/upgrade/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+
+
+		if ( ( $cityArray = Address::getCity($_POST['desholdercity']); ) === false ) 
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_CITY);
+			header('Location: /dashboard/upgrade/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+		$desholdercity = $cityArray['descity'];
+
+
+
+
+
+
+
+
+
+		if(
+				
+			!isset($_POST['desholderstate']) 
+			|| 
+			$_POST['desholderstate'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_STATE);
+			header('Location: /dashboard/upgrade/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+
+
+		if ( ( $stateArray = Address::getState($_POST['desholderstate']) ) === false ) 
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_STATE);
+			header('Location: /dashboard/upgrade/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+
 		
-		$desholdercomplement = Validate::validateString($_POST['desholdercomplement'], true);
+		$desholderstate = $stateArray['desstatecode'];
+
+
+
+
+
+
+
+		
+		$desholdercomplement = Validate::validateStringNumber($_POST['desholdercomplement'], false, true);
 
 		//$inholdertypedoc = $_POST['inholdertypedoc'];
 		$inholdertypedoc = 0;
 
-
-
-		$cityArray = Address::getCity($_POST['desholdercity']);
-		$desholdercity = $cityArray['descity'];
-
-		$stateArray = Address::getState($_POST['desholderstate']);
-		$desholderstate = $stateArray['desstatecode'];
 
 
 

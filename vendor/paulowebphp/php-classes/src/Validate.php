@@ -146,7 +146,7 @@ class Validate extends Model
 
 
 
-
+	//DUPLICAÇÃO DE validateStringUcwords
 	public static function validateStringNotSpecialUcwords( 
 		
 		$value,
@@ -232,13 +232,148 @@ class Validate extends Model
 		else
 		{
 
-			return false;
+			return $value;
 
 		}//end else
 
 
 
 	}//END validateName
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function validateStringUcwords( 
+		
+		$value,
+		$has_accent = false,
+		$may_be_empty = false 
+		
+	)
+	{
+
+		$value = trim($value);
+
+		$value = preg_replace('/[^A-Za-z\ç\Ç\s\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ]/', '', $value);
+
+
+		if ( !$has_accent )
+		{
+			# code...
+			$value = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $value);
+
+		}//end if
+
+
+		if ( 
+			
+			!empty($value)
+			||
+			$value != ''
+			||
+			(int)$value != 0
+			
+		)
+		{
+
+			$value = strtolower($value);
+
+			$termArray = explode(' ', $value);
+
+			$array_handler = [];
+		
+
+			foreach ($termArray as &$term)
+			{
+				# code...
+				if( $term == '' ) continue;
+
+				$term = trim($term);
+				
+				//$term = strtolower($term);
+
+				$term = ucwords($term);
+
+				array_push($array_handler, $term);
+
+			}//end foreach
+
+			$value = implode(' ', $array_handler);
+
+			//$value = strtolower($value);
+
+			//$value = ucfirst($value);
+
+
+		}//end if
+
+
+
+
+		if( !$may_be_empty )
+		{
+
+
+			if( $value != '')
+			{
+				return $value;
+
+			}//end if
+			else
+			{
+				return false;
+
+			}//end else
+
+
+		}//end
+		else
+		{
+
+			return $value;
+
+		}//end else
+
+
+
+	}//END validateName
+
+
+
 
 
 
@@ -273,7 +408,14 @@ class Validate extends Model
 	)
 	{
 
+		
+
+
 		$value = preg_replace('/[^A-Za-z0-9\ç\Ç\s\_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\!\?\@\#\$\%\&\*\+\,\;\(\)\{\}\=\+\:\>\<\'\*]/', '', $value);
+
+
+
+
 
 		$value = trim($value);
 
@@ -305,7 +447,7 @@ class Validate extends Model
 		else
 		{
 
-			return false;
+			return $value;
 
 		}//end else
 
@@ -349,7 +491,7 @@ class Validate extends Model
 	)
 	{
 
-		$value = preg_replace('/[^A-Za-z0-9\ç\Ç\s\_\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\,\;\+\:]/', '', $value);
+		$value = preg_replace('/[^A-Za-z0-9\ç\Ç\s\-\á\Á\à\À\ã\Ã\â\Â\ä\Ä\é\É\è\È\ê\Ê\ë\Ë\í\Í\ì\Ì\î\Î\ï\Ï\ó\Ó\ô\Ô\õ\Õ\ò\Ò\ö\Ö\ú\Ú\ù\Ù\û\Û\ü\Ü\ñ\Ñ\,]/', '', $value);
 
 		$value = trim($value);
 
@@ -381,7 +523,7 @@ class Validate extends Model
 		else
 		{
 
-			return false;
+			return $value;
 
 		}//end else
 
@@ -830,6 +972,9 @@ class Validate extends Model
 
 			$desaccompanies = preg_replace('/[\,]/', ';', $desaccompanies);
 
+
+			$desaccompanies = strtolower($desaccompanies);
+
 			$accompaniesArray = explode(';', $desaccompanies);
 
 			$array_handler = [];
@@ -842,7 +987,7 @@ class Validate extends Model
 
 				$term = trim($term);
 				
-				$term = strtolower($term);
+				//$term = strtolower($term);
 
 				$term = ucwords($term);
 

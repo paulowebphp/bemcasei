@@ -251,7 +251,7 @@ $app->post( "/criar-site", function()
 
 
 
-	if( !$desperson = Validate::validateString($_POST['name']) )
+	if( ( $desperson = Validate::validateStringUcwords($_POST['name'], true, false) ) === false )
 	{
 
 		User::setErrorRegister(Rule::VALIDATE_NAME);
@@ -1330,7 +1330,7 @@ $app->post( "/cadastrar/:hash", function( $hash )
 
 
 
-	if( !$desaddress = Validate::validateString($_POST['desaddress']) )
+	if( !$desaddress = Validate::validateStringNumber($_POST['desaddress']) )
 	{
 
 		Account::setError(Rule::VALIDATE_ADDRESS);
@@ -1411,7 +1411,7 @@ $app->post( "/cadastrar/:hash", function( $hash )
 
 
 
-	if( !$desdistrict = Validate::validateString($_POST['desdistrict']) )
+	if( !$desdistrict = Validate::validateStringNumber($_POST['desdistrict']) )
 	{
 
 		Account::setError(Rule::VALIDATE_DISTRICT);
@@ -1451,9 +1451,103 @@ $app->post( "/cadastrar/:hash", function( $hash )
 
 
 
-	$descomplement = Validate::validateString($_POST['descomplement'], true);
-	$desstate = Address::getState($_POST['desstate']);
-	$descity = Address::getCity($_POST['descity']);
+
+
+
+
+
+
+
+
+	if(
+				
+		!isset($_POST['descity']) 
+		|| 
+		$_POST['descity'] === ''
+		
+	)
+	{
+
+		Account::setError(Rule::ERROR_CITY);
+		header('Location: /cadastrar/'.$hash);
+		exit;
+
+	}//end if
+
+
+
+	if ( ( $descity = Address::getCity($_POST['descity']); ) === false ) 
+	{
+		# code...
+		Account::setError(Rule::VALIDATE_CITY);
+		header('Location: /cadastrar/'.$hash);
+		exit;
+
+	}//end if
+
+
+
+	//$descity = Address::getCity($_POST['descity']);
+
+
+
+
+
+
+
+
+
+
+
+	if(
+				
+		!isset($_POST['desstate']) 
+		|| 
+		$_POST['desstate'] === ''
+		
+	)
+	{
+
+		Payment::setError(Rule::ERROR_STATE);
+		header('Location: /dashboard/upgrade/checkout?plano='.$_POST['inplancode']);
+		exit;
+
+	}//end if
+
+
+
+	if ( ( $desstate = Address::getState($_POST['desstate']) ) === false ) 
+	{
+		# code...
+		Payment::setError(Rule::VALIDATE_STATE);
+		header('Location: /dashboard/upgrade/checkout?plano='.$_POST['inplancode']);
+		exit;
+
+	}//end if
+
+
+
+
+	//$desstate = Address::getState($_POST['desstate']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
+	
 
 
 
@@ -3212,7 +3306,7 @@ exit;
 
 
 
-		if( !$desholderaddress = Validate::validateString($_POST['desholderaddress']) )
+		if( !$desholderaddress = Validate::validateStringNumber($_POST['desholderaddress']) )
 		{
 
 			if ( $coupon == '')
@@ -3388,7 +3482,7 @@ exit;
 
 
 
-		if( !$desholderdistrict = Validate::validateString($_POST['desholderdistrict']) )
+		if( !$desholderdistrict = Validate::validateStringNumber($_POST['desholderdistrict']) )
 		{
 
 			if ( $coupon == '')
@@ -3871,16 +3965,130 @@ exit;
 
 
 
-		$desholdercomplement = Validate::validateString($_POST['desholdercomplement'], true);
+
+
+
+
+		/*
+		if(
+				
+			!isset($_POST['desholdercity']) 
+			|| 
+			$_POST['desholdercity'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_CITY);
+			header('Location: /checkout/'.$hash.'?cupom='.$coupon.'&acao=aplicar');
+			exit;
+
+		}//end if
+
+		$cityArray = Address::getCity($_POST['desholdercity']);
+		$desholdercity = $cityArray['descity'];*/
+
+
+
+
+
+
+
+		if(
+				
+			!isset($_POST['desholdercity']) 
+			|| 
+			$_POST['desholdercity'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_CITY);
+			header('Location: /checkout/'.$hash.'?cupom='.$coupon.'&acao=aplicar');
+			exit;
+
+		}//end if
+
+
+
+		if ( ( $cityArray = Address::getCity($_POST['desholdercity']); ) === false ) 
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_CITY);
+			header('Location: /checkout/'.$hash.'?cupom='.$coupon.'&acao=aplicar');
+			exit;
+
+		}//end if
+
+		$desholdercity = $cityArray['descity'];
+
+
+
+
+
+
+
+
+
+
+		if(
+				
+			!isset($_POST['desholderstate']) 
+			|| 
+			$_POST['desholderstate'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_STATE);
+			header('Location: /checkout/'.$hash.'?cupom='.$coupon.'&acao=aplicar');
+			exit;
+
+		}//end if
+
+
+
+		if ( ( $stateArray = Address::getState($_POST['desholderstate']) ) === false ) 
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_STATE);
+			header('Location: /checkout/'.$hash.'?cupom='.$coupon.'&acao=aplicar');
+			exit;
+
+		}//end if
+
+
+		
+		$desholderstate = $stateArray['desstatecode'];
+
+
+
+
+
+
+
+
+
+		//$stateArray = Address::getState($_POST['desholderstate']);
+		//$desholderstate = $stateArray['desstatecode'];
+
+		
+
+
+
+
+
+
+
+
+
+
+		$desholdercomplement = Validate::validateStringNumber($_POST['desholdercomplement'], false, true);
 	
 
 		$inholdertypedoc = 0;
 
-		$cityArray = Address::getCity($_POST['desholdercity']);
-		$desholdercity = $cityArray['descity'];
 
-		$stateArray = Address::getState($_POST['desholderstate']);
-		$desholderstate = $stateArray['desstatecode'];
 
 
 		$payment->setinpaymentmethod(1);

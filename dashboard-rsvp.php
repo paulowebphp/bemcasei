@@ -1003,7 +1003,7 @@ $app->post( "/dashboard/rsvp/adicionar", function()
 
 	}//end if
 
-	if( ( $desguest = Validate::validateStringNumberSpecial($_POST['desguest'], true, false)  ) === false )
+	if( ( $desguest = Validate::validateStringUcwords($_POST['desguest'], true, false)  ) === false )
 	{
 
 		Rsvp::setError("O nome do convidado não pode ser formado apenas com caracteres especiais, tente novamente");
