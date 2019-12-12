@@ -726,7 +726,7 @@ $app->post( "/dashboard/comprar-plano/cadastrar", function()
 
 
 
-	if ( ( $descity = Address::getCity($_POST['descity']); ) === false ) 
+	if ( ( $descity = Address::getCity($_POST['descity']) ) === false ) 
 	{
 		# code...
 		Account::setError(Rule::VALIDATE_CITY);
@@ -3145,7 +3145,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-		if ( ( $cityArray = Address::getCity($_POST['desholdercity']); ) === false ) 
+		if ( ( $cityArray = Address::getCity($_POST['desholdercity']) ) === false ) 
 		{
 			# code...
 			Payment::setError(Rule::VALIDATE_CITY);

@@ -1060,7 +1060,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
-		if ( ( $cityArray = Address::getCity($_POST['desholdercity']); ) === false ) 
+		if ( ( $cityArray = Address::getCity($_POST['desholdercity']) ) === false ) 
 		{
 			# code...
 			Payment::setError(Rule::VALIDATE_CITY);

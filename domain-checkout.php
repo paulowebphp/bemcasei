@@ -817,6 +817,13 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
+
+
+
+
+
+
+
 			if(
 				
 				!isset($_POST['desholdercity']) 
@@ -834,11 +841,73 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			$cityArray = Address::getCity($_POST['desholdercity']);
+			if ( ( $cityArray = Address::getCity($_POST['desholdercity']) ) === false ) 
+			{
+				# code...
+				Payment::setError(Rule::VALIDATE_CITY);
+				header('Location: /'.$desdomain.'/checkout');
+				exit;
+
+			}//end if
+
 			$desholdercity = $cityArray['descity'];
 
-			$stateArray = Address::getState($_POST['desholderstate']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			if(
+					
+				!isset($_POST['desholderstate']) 
+				|| 
+				$_POST['desholderstate'] === ''
+				
+			)
+			{
+
+				Payment::setError(Rule::ERROR_STATE);
+				header('Location: /'.$desdomain.'/checkout');
+				exit;
+
+			}//end if
+
+
+
+			if ( ( $stateArray = Address::getState($_POST['desholderstate']) ) === false ) 
+			{
+				# code...
+				Payment::setError(Rule::VALIDATE_STATE);
+				header('Location: /'.$desdomain.'/checkout');
+				exit;
+
+			}//end if
+
+
+			
 			$desholderstate = $stateArray['desstatecode'];
+
+
+
+
+
+
+
 
 
 
@@ -1416,6 +1485,13 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 			}//end if
 
 
+
+
+
+
+
+
+
 			if(
 				
 				!isset($_POST['desholdercity']) 
@@ -1431,12 +1507,56 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			$cityArray = Address::getCity($_POST['desholdercity']);
+
+
+			if ( ( $cityArray = Address::getCity($_POST['desholdercity']) ) === false ) 
+			{
+				# code...
+				Payment::setError(Rule::VALIDATE_CITY);
+				header('Location: /'.$desdomain.'/checkout');
+				exit;
+
+			}//end if
+
 			$desholdercity = $cityArray['descity'];
 
-			$stateArray = Address::getState($_POST['desholderstate']);
-			$desholderstate = $stateArray['desstatecode'];
 
+
+
+
+
+
+
+
+			if(
+					
+				!isset($_POST['desholderstate']) 
+				|| 
+				$_POST['desholderstate'] === ''
+				
+			)
+			{
+
+				Payment::setError(Rule::ERROR_STATE);
+				header('Location: /'.$desdomain.'/checkout');
+				exit;
+
+			}//end if
+
+
+
+			if ( ( $stateArray = Address::getState($_POST['desholderstate']) ) === false ) 
+			{
+				# code...
+				Payment::setError(Rule::VALIDATE_STATE);
+				header('Location: /'.$desdomain.'/checkout');
+				exit;
+
+			}//end if
+
+
+			
+			$desholderstate = $stateArray['desstatecode'];
 
 
 

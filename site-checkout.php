@@ -1476,7 +1476,7 @@ $app->post( "/cadastrar/:hash", function( $hash )
 
 
 
-	if ( ( $descity = Address::getCity($_POST['descity']); ) === false ) 
+	if ( ( $descity = Address::getCity($_POST['descity']) ) === false ) 
 	{
 		# code...
 		Account::setError(Rule::VALIDATE_CITY);
@@ -4011,7 +4011,7 @@ exit;
 
 
 
-		if ( ( $cityArray = Address::getCity($_POST['desholdercity']); ) === false ) 
+		if ( ( $cityArray = Address::getCity($_POST['desholdercity']) ) === false ) 
 		{
 			# code...
 			Payment::setError(Rule::VALIDATE_CITY);
