@@ -1180,6 +1180,7 @@ class User extends Model
 					:inseller, 
 					:inregister, 
 					:inaccount,
+					:inplancontext,
 					:inplan,
 					:inautostatus, 
 					:interms,
@@ -1208,6 +1209,7 @@ class User extends Model
 					":inseller"=>$this->getinseller(),
 					":inregister"=>$this->getinregister(),
 					":inaccount"=>$this->getinaccount(),
+					":inplancontext"=>$this->getinplancontext(),
 					":inplan"=>$this->getinplan(),
 					":inautostatus"=>$this->getinautostatus(),
 					":interms"=>$this->getinterms(),
@@ -1253,6 +1255,7 @@ class User extends Model
 					:inseller, 
 					:inregister, 
 					:inaccount, 
+					:inplancontext, 
 					:inplan, 
 					:inautostatus, 
 					:interms,
@@ -1281,6 +1284,7 @@ class User extends Model
 					":inseller"=>$this->getinseller(),
 					":inregister"=>$this->getinregister(),
 					":inaccount"=>$this->getinaccount(),
+					":inplancontext"=>$this->getinplancontext(),
 					":inplan"=>$this->getinplan(),
 					":inautostatus"=>$this->getinautostatus(),
 					":interms"=>$this->getinterms(),
@@ -1575,6 +1579,7 @@ class User extends Model
 					:inseller, 
 					:inregister,
 					:inaccount,
+					:inplancontext,
 					:inplan,
 					:inautostatus, 
 					:interms,
@@ -1604,6 +1609,7 @@ class User extends Model
 					":inseller"=>$this->getinseller(),
 					":inregister"=>$this->getinregister(),
 					":inaccount"=>$this->getinaccount(),
+					":inplancontext"=>$this->getinplancontext(),
 					":inplan"=>$this->getinplan(),
 					":inautostatus"=>$this->getinautostatus(),
 					":interms"=>$this->getinterms(),
@@ -1651,6 +1657,7 @@ class User extends Model
 					:inseller, 
 					:inregister,
 					:inaccount,
+					:inplancontext,
 					:inplan,
 					:inautostatus, 
 					:interms,
@@ -1680,6 +1687,7 @@ class User extends Model
 					":inseller"=>$this->getinseller(),
 					":inregister"=>$this->getinregister(),
 					":inaccount"=>$this->getinaccount(),
+					":inplancontext"=>$this->getinplancontext(),
 					":inplan"=>$this->getinplan(),
 					":inautostatus"=>$this->getinautostatus(),
 					":interms"=>$this->getinterms(),
@@ -2491,6 +2499,7 @@ class User extends Model
 
 					'iduser'=>$this->getiduser(),
 					'inplancode'=>$inplan['inplancode'],
+					'incontext'=>$inplan['inplancontext'],
 					'inmigration'=>0,
 					'inperiod'=>$inplan['inperiod'],
 					'desplan'=>$inplan['desplan'],
@@ -4190,6 +4199,138 @@ class User extends Model
 
 
 	}//validatePlanEnd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//BACKUP
+	/*
+	public static function validatePlan( $inplancontext, $dtplanend, $plans )
+	{
+
+		
+			
+		//$timezone = new DateTimeZone('America/Sao_Paulo');
+
+		$dt_now = new \DateTime('now');
+
+		//$dt_now->setTimezone($timezone);
+
+		//$dt_plan_end = new \DateTime($dtplanend);
+
+		//$dtplanend->setTimezone($timezone);
+
+		
+
+
+		if ( (int)$inplancontext == 0 ) 
+		{
+			# code...
+
+			return true;
+
+		}//end else
+		else
+		{
+
+			foreach ( $plans['results'] as $row ) 
+			{
+				# code...
+				
+
+
+				//Pagamento com Cartão
+				
+				if (
+
+					in_array((int)$row['inpaymentmethod'], [1,2,3])
+
+				)
+				{
+					if( 
+
+						(int)$row['inpaymentstatus'] == 1
+						||
+						(int)$row['inpaymentstatus'] == 2
+						||
+						(int)$row['inpaymentstatus'] == 3
+						||
+						(int)$row['inpaymentstatus'] == 4
+						||
+						(int)$row['inpaymentstatus'] == 5
+						||
+						(int)$row['inpaymentstatus'] == 9
+
+					)
+					{
+
+						$dtend = new \DateTime($row['dtend']);
+
+						if ( $dtend < $dt_now ) break;
+
+						return true;
+
+					}//end if
+					
+
+				}//end if
+				elseif( (int)$row['inpaymentmethod'] == 0 )
+				{
+
+					//Pagamento em Boleto
+					if( 
+		
+						(int)$row['inpaymentstatus'] == 5
+						||
+						(int)$row['inpaymentstatus'] == 9
+
+					)
+					{
+
+						$dtend = new \DateTime($row['dtend']);
+
+						if ( $dtend < $dt_now  ) break;
+
+						return true;
+
+					}//end if
+
+				}//end else
+
+
+			}//end foreach
+
+
+			return false;
+
+
+		}//end else
+
+			
+			
+
+
+	}//validatePlanEnd
+	*/
 
 
 

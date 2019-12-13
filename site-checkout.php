@@ -489,7 +489,7 @@ $app->post( "/criar-site", function()
 
 	$inplancontext = substr($inplancode, 0, 1);
 
-
+	$inplancontext = ( (int)$inplancontext === 0 ) ? 0 : 1;
 
 
 
@@ -505,7 +505,8 @@ $app->post( "/criar-site", function()
 		'inseller'=>1,
 		'instatus'=>0,
 		'inaccount'=>0,
-		'inplan'=>0,
+		'inplancontext'=>$inplancontext,
+		'inplan'=>$inplancode,
 		'inautostatus'=>1,
 		'interms'=>0,
 		'desipterms'=>NULL,
@@ -4804,6 +4805,7 @@ exit;
 
 		'iduser'=>$user->getiduser(),
 		'inplancode'=>$inplan['inplancode'],
+		'incontext'=>$inplan['inplancontext'],
 		'inmigration'=>0,
 		'inperiod'=>$inplan['inperiod'],
 		'desplan'=>$inplan['desplan'],
@@ -5094,6 +5096,43 @@ exit;
 	
 
 
+
+
+	if ( (int)$invoucher == 1 )
+	{
+
+		$inplancontext = substr($plan->getinplancode(), 0, 1);
+
+		$user->setinplan((int)$plan->getinplancode());
+		$user->setinplancontext((int)$inplancontext);
+
+		$user->update();
+
+		//$user->setToSession();
+
+	}//end if
+
+
+
+
+	//$user->setinstatus('1');
+	//$user->setdtplanbegin($dtnow->format('Y-m-d'));
+	//$user->setdtplanend($dtend->format('Y-m-d'));
+
+	//$user->update();
+
+	$user->setToSession();
+
+
+	if(isset($_SESSION['siteCheckoutValues'])) unset($_SESSION['siteCheckoutValues']);
+
+
+
+
+
+	
+
+
 	/*echo '<pre>';
 	var_dump('1<br>');
 	var_dump($user->getValues());
@@ -5168,30 +5207,7 @@ exit;
 
 
 
-	if ( (int)$invoucher == 1 )
-	{
-
-		$inplancontext = substr($plan->getinplancode(), 0, 1);
-
-		$user->setinplan((int)$plan->getinplancode());
-		$user->setinplancontext((int)$inplancontext);
-
-	}//end if
-
-
-
-
-	//$user->setinstatus('1');
-	$user->setdtplanbegin($dtnow->format('Y-m-d'));
-	$user->setdtplanend($dtend->format('Y-m-d'));
-
-	$user->update();
-
-
-	$user->setToSession();
-
-
-	if(isset($_SESSION['siteCheckoutValues'])) unset($_SESSION['siteCheckoutValues']);
+	
 
 
 
