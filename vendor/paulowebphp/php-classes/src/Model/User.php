@@ -4088,7 +4088,7 @@ class User extends Model
 
 
 
-	public static function validatePlan( $inplancontext, $dtplanend, $plans )
+	public static function validatePlan( $inplancontext, $inautostatus, $plans )
 	{
 
 		/*echo '<pre>';
@@ -4110,8 +4110,14 @@ class User extends Model
 
 		
 
+		if( (int)$inautostatus == 0 )
+		{
 
-		if ( (int)$inplancontext == 0 ) 
+			return false;
+
+
+		}//end if
+		elseif ( (int)$inplancontext == 0 ) 
 		{
 			# code...
 
@@ -4496,6 +4502,67 @@ class User extends Model
 
 
 
+
+
+
+
+
+	public static function validatePlanDashboard( $user )
+	{
+
+
+		//$user = User::getFromSession();
+
+		
+
+		$plans = [];
+
+
+		if( (int)$user->getinplancontext() != 0 )
+		{
+
+			$plan = new Plan();
+
+			$plans = $plan->get((int)$user->getiduser());
+
+		}//end if
+
+
+		return User::validatePlan( $user->getinplancontext(), $user->getinautostatus(), $plans );
+
+
+
+	}//end validatePlanEnd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//BACKUP
+	/*
 	public static function validatePlanDashboard( $user )
 	{
 
@@ -4522,6 +4589,7 @@ class User extends Model
 
 
 	}//end validatePlanEnd
+	*/
 
 
 
