@@ -4088,15 +4088,10 @@ class User extends Model
 
 
 
-	public static function validatePlan( $inplancontext, $inautostatus, $plans )
+	public static function validatePlan( $plans, $inplancontext, $inautostatus )
 	{
 
-		/*echo '<pre>';
-		var_dump($inplancontext);
-		var_dump($dtplanend);
-		var_dump((int)$plans == 0);
-		var_dump($plans);*/
-		
+				
 			
 		//$timezone = new DateTimeZone('America/Sao_Paulo');
 
@@ -4162,7 +4157,7 @@ class User extends Model
 
 						if ( $dtend < $dt_now ) break;
 
-						return true;
+						return $row;
 
 					}//end if
 					
@@ -4185,7 +4180,7 @@ class User extends Model
 
 						if ( $dtend < $dt_now  ) break;
 
-						return true;
+						return $row;
 
 					}//end if
 
@@ -4510,10 +4505,21 @@ class User extends Model
 	public static function validatePlanDashboard( $user )
 	{
 
-
+		//backup
 		//$user = User::getFromSession();
 
+
+
+
+
+		/*echo '<pre>';
+var_dump('--------------------');
+var_dump($user);
+var_dump((int)$user->getinplancontext() != 0);
+exit;*/
 		
+
+
 
 		$plans = [];
 
@@ -4528,7 +4534,7 @@ class User extends Model
 		}//end if
 
 
-		return User::validatePlan( $user->getinplancontext(), $user->getinautostatus(), $plans );
+		return User::validatePlan( $plans, $user->getinplancontext(), $user->getinautostatus() );
 
 
 
@@ -4672,11 +4678,24 @@ class User extends Model
 				# code...
 				$template = '2';
 				break;
-			
-			default:
+
+			case '3':
 				# code...
-				$template = '1';
+				$template = '3';
 				break;
+
+
+			case '4':
+				# code...
+				$template = '4';
+				break;
+
+			case '5':
+				# code...
+				$template = '5';
+				break;
+			
+			
 
 		}//end switch
 

@@ -39,11 +39,34 @@ $app->get( "/dashboard/videos/adicionar", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+	$maxVideos = Video::maxVideos($validate['inplancode']);
+
+	$numVideos = Video::getNumVideos((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numVideos >= (int)$maxVideos )
+	{	
+		
+		Video::setError("Você já atingiu o limite de videos do seu plano atual");
+		header('Location: /dashboard/videos');
 		exit;
 
 	}//end if
@@ -64,6 +87,7 @@ $app->get( "/dashboard/videos/adicionar", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>Video::getSuccess(),
 			'error'=>Video::getError()
 			
@@ -132,7 +156,9 @@ $app->post( "/dashboard/videos/adicionar", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -140,8 +166,6 @@ $app->post( "/dashboard/videos/adicionar", function()
 		exit;
 
 	}//end if
-
-	
 
 
 
@@ -303,7 +327,32 @@ $app->post( "/dashboard/videos/adicionar", function()
 
 	
 
+	
+
+
+
+	$maxVideos = Video::maxVideos($validate['inplancode']);
+
+	$numVideos = Video::getNumVideos((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numVideos >= (int)$maxVideos )
+	{	
+		
+		Video::setError("Você já atingiu o limite de videos do seu plano atual");
+		header('Location: /dashboard/videos');
+		exit;
+
+	}//end if
+
+
+
+
+
 	$video = new Video();
+
 
 	$video->get((int)$user->getiduser());
 
@@ -391,11 +440,11 @@ $app->get( "/dashboard/videos/:hash/deletar", function( $hash )
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Video::setError(Rule::VALIDATE_PLAN);
-		header('Location: /video');
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
 		exit;
 
 	}//end if
@@ -480,7 +529,7 @@ $app->get( "/dashboard/videos/:hash", function( $hash )
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -521,6 +570,7 @@ $app->get( "/dashboard/videos/:hash", function( $hash )
 		[
 			'user'=>$user->getValues(),
 			'video'=>$video->getValues(),
+			'validate'=>$validate,
 			'success'=>Video::getSuccess(),
 			'error'=>Video::getError()
 			
@@ -574,7 +624,7 @@ $app->post( "/dashboard/videos/:hash", function( $hash )
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -824,6 +874,10 @@ $app->post( "/dashboard/videos/:hash", function( $hash )
 $app->get( "/dashboard/videos", function()
 {
 
+
+
+
+
 	if( Maintenance::checkMaintenance() )
 	{	
 
@@ -846,7 +900,7 @@ $app->get( "/dashboard/videos", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -856,6 +910,8 @@ $app->get( "/dashboard/videos", function()
 	}//end if
 
 	
+	
+
 
 	$search = (isset($_GET['buscar'])) ? $_GET['buscar'] : "";
 
@@ -881,7 +937,12 @@ $app->get( "/dashboard/videos", function()
 
 	$video->setData($results['results']);
 
-	$maxvideos = $video->maxVideos($user->getinplan());
+	//$maxvideos = $video->maxVideos($user->getinplan());
+	$maxVideos = Video::maxVideos($validate['inplancode']);
+
+
+	
+
 
 	$pages = [];	
     
@@ -994,10 +1055,11 @@ $app->get( "/dashboard/videos", function()
 			'user'=>$user->getValues(),
 			'search'=>$search,
 			'pages'=>$pages,
-			'maxvideos'=>$maxvideos,
+			'maxvideos'=>$maxVideos,
 			'nrtotal'=>$nrtotal,
 			'video'=>$video->getValues(),
 			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
+			'validate'=>$validate,
 			'success'=>Video::getSuccess(),
 			'error'=>Video::getError()
 			

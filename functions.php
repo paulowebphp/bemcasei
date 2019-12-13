@@ -1478,7 +1478,7 @@ function validatePlan()
 	}//end if
 
 
-	return User::validatePlan( $user->getinplancontext(), $user->getdtplanend(), $plans );
+	return User::validatePlan( $plans, $user->getinplancontext(), $user->getinautostatus() );
 
 
 
@@ -1529,7 +1529,7 @@ function validatePlanDomain()
 	}//end if
 
 
-	return User::validatePlan( $user->getinplancontext(), $user->getdtplanend(), $plans );
+	return User::validatePlan( $plans, $user->getinplancontext(), $user->getinautostatus() );
 
 
 

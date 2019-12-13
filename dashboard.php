@@ -339,6 +339,12 @@ $app->get( "/dashboard", function()
 	
 
 
+
+
+
+
+
+
 	$message = new Message();
 
 	$nrtotal = $message->get((int)$user->getiduser());
