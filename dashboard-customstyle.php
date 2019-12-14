@@ -47,7 +47,7 @@ $app->get( "/dashboard/personalizar-site/resetar", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -180,7 +180,7 @@ $app->post( "/dashboard/personalizar-site", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -898,7 +898,7 @@ $app->post( "/dashboard/personalizar-site", function()
                 var_dump($desborderimagesize);
                 var_dump($desborderradiusbutton);
                 exit;
-*/
+				*/
 
 			
 
@@ -1099,7 +1099,7 @@ $app->get( "/dashboard/personalizar-site", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -1158,6 +1158,7 @@ $app->get( "/dashboard/personalizar-site", function()
 		[
 			'user'=>$user->getValues(),
 			'customstyle'=>$customstyle->getValues(),
+			'validate'=>$validate,
 			'success'=>CustomStyle::getSuccess(),
 			'error'=>CustomStyle::getError()
 			

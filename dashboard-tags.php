@@ -39,6 +39,15 @@ $app->get( "/dashboard/tags-papelaria", function()
 
 	$user = User::getFromSession();
 
+
+	
+
+	$validate = User::validatePlanDashboard( $user );
+
+
+
+
+
 	$tag = new Tag();
 
 	$tag->getTags();
@@ -81,6 +90,7 @@ $app->get( "/dashboard/tags-papelaria", function()
 			[
 				'user'=>$user->getValues(),
 				'tag'=>$tag->getValues(),
+				'validate'=>$validate,
 				'success'=>Tag::getSuccess(),
 				'error'=>Tag::getError()
 
@@ -104,6 +114,7 @@ $app->get( "/dashboard/tags-papelaria", function()
 			[
 				'user'=>$user->getValues(),
 				'tag'=>$tag->getValues(),
+				'validate'=>$validate,
 				'success'=>Tag::getSuccess(),
 				'error'=>Tag::getError()
 

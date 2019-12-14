@@ -46,7 +46,7 @@ $app->get( "/dashboard/testemunho", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -77,6 +77,7 @@ $app->get( "/dashboard/testemunho", function()
 		[
 			'testimonial'=>$testimonial->getValues(),
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>Testimonial::getSuccess(),
 			'error'=>Testimonial::getError()
 
@@ -147,7 +148,7 @@ $app->post( "/dashboard/testemunho", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);

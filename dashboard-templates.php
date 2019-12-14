@@ -39,7 +39,7 @@ $app->get( "/dashboard/meu-template", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -47,6 +47,9 @@ $app->get( "/dashboard/meu-template", function()
 		exit;
 
 	}//end if
+
+
+
 
 	$customstyle = new CustomStyle();
 
@@ -98,6 +101,7 @@ $app->get( "/dashboard/meu-template", function()
 			'user'=>$user->getValues(),
 			'templateInfoFullArray'=>$templateInfoFullArray,
 			'preview'=>$preview,
+			'validate'=>$validate,
 			'customstyle'=>$customstyle->getValues(),
 			'success'=>CustomStyle::getSuccess(),
 			'error'=>CustomStyle::getError()
@@ -108,6 +112,19 @@ $app->get( "/dashboard/meu-template", function()
 	);//end setTpl
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -139,7 +156,7 @@ $app->post( "/dashboard/meu-template", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -147,6 +164,9 @@ $app->post( "/dashboard/meu-template", function()
 		exit;
 
 	}//end if
+
+
+
 	
 
 	

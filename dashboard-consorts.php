@@ -42,7 +42,7 @@ $app->get( "/dashboard/meu-amor", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -95,6 +95,7 @@ $app->get( "/dashboard/meu-amor", function()
 		[
 			'user'=>$user->getValues(),
 			'consort'=>$consort->getValues(),
+			'validate'=>$validate,
 			'success'=>Consort::getSuccess(),
 			'error'=>Consort::getError()
 			
@@ -142,7 +143,7 @@ $app->post( "/dashboard/meu-amor", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);

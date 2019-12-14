@@ -36,6 +36,11 @@ $app->get( "/dashboard/termos-uso", function()
 
 
 
+	
+
+	$validate = User::validatePlanDashboard( $user );
+
+
 	/*$plan = new Plan();
 
 
@@ -73,6 +78,7 @@ $app->get( "/dashboard/termos-uso", function()
 		[
 			'user'=>$user->getValues(),
 			'plans'=>$plans,
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			
@@ -122,6 +128,11 @@ $app->get( "/dashboard/termos-lista", function()
 	$user = User::getFromSession();
 
 
+	 
+
+	$validate = User::validatePlanDashboard( $user );
+
+
 
 	/*$plan = new Plan();
 
@@ -158,6 +169,7 @@ $app->get( "/dashboard/termos-lista", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			
@@ -213,6 +225,10 @@ $app->get( "/dashboard/politica-privacidade", function()
 
 
 
+
+	$validate = User::validatePlanDashboard( $user );
+
+
 	/*$plan = new Plan();
 
 
@@ -248,6 +264,7 @@ $app->get( "/dashboard/politica-privacidade", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			

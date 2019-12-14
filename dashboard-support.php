@@ -37,6 +37,8 @@ $app->get( "/dashboard/central-ajuda", function()
 
 
 
+	$validate = User::validatePlanDashboard( $user );
+
 
 	
 	$page = new PageDashboard();
@@ -49,6 +51,7 @@ $app->get( "/dashboard/central-ajuda", function()
 			
 		[
 			
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			

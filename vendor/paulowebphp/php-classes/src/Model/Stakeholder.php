@@ -731,15 +731,67 @@ class Stakeholder extends Model
 
 
 
-    public function maxStakeholders( $inplan )
+
+
+
+
+
+
+
+
+
+
+    public static function getNumStakeholders( $iduser )
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT COUNT(*)
+			FROM tb_stakeholders
+			WHERE iduser = :iduser;
+
+		",
+
+		[
+
+			'iduser'=>$iduser
+
+
+		]);//end select
+
+
+		return count($results[0]);
+
+
+
+	}//END getNumGifts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static function maxStakeholders( $inplan )
 	{
 
 		switch( $inplan )
 		{
+			case '0':
 			case '001':
 				# code...
 				return Rule::MAX_STAKEHOLDERS_FREE;
-				break;
+				
 
 			case '101':
 			case '103':
@@ -749,7 +801,7 @@ class Stakeholder extends Model
 			case '112':
 				# code...
 				return Rule::MAX_STAKEHOLDERS_BASIC;
-				break;
+				
 
 			case '203':
 			case '204':
@@ -758,7 +810,7 @@ class Stakeholder extends Model
 			case '212':
 				# code...
 				return Rule::MAX_STAKEHOLDERS_INTERMEDIATE;
-				break;
+				
 
 			case '303':
 			case '304':
@@ -767,12 +819,12 @@ class Stakeholder extends Model
 			case '312':
 				# code...
 				return Rule::MAX_STAKEHOLDERS_ADVANCED;
-				break;
+				
 			
 			default:
 				# code...
 				return Rule::MAX_STAKEHOLDERS_FREE;
-				break;
+				
 
 		}//end switch
 

@@ -39,7 +39,9 @@ $app->get( "/dashboard/fornecedores/adicionar", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -47,6 +49,28 @@ $app->get( "/dashboard/fornecedores/adicionar", function()
 		exit;
 
 	}//end if
+
+
+
+	$maxStakeholders = Stakeholder::maxStakeholders($validate['inplancode']);
+
+
+	//pode ser substituído pelo get(), getPage() ou getSearch()
+	$numStakeholders = Stakeholder::getNumStakeholders((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numStakeholders >= (int)$maxStakeholders )
+	{	
+		
+		User::setError("Você já atingiu o limite de fornecedores do seu plano atual");
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
 
     /**$Event = new Event();
     
@@ -88,6 +112,7 @@ $app->get( "/dashboard/fornecedores/adicionar", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>Stakeholder::getSuccess(),
 			'error'=>Stakeholder::getError()
 			
@@ -137,10 +162,35 @@ $app->post( "/dashboard/fornecedores/adicionar", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+
+
+	$maxStakeholders = Stakeholder::maxStakeholders($validate['inplancode']);
+
+
+	//pode ser substituído pelo get(), getPage() ou getSearch()
+	$numStakeholders = Stakeholder::getNumStakeholders((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numStakeholders >= (int)$maxStakeholders )
+	{	
+		
+		User::setError("Você já atingiu o limite de fornecedores do seu plano atual");
 		header('Location: /dashboard');
 		exit;
 
@@ -422,6 +472,12 @@ $app->post( "/dashboard/fornecedores/adicionar", function()
 
 
 
+
+
+
+
+
+
 $app->get( "/dashboard/fornecedores/:hash/deletar", function( $hash ) 
 {
 	if( Maintenance::checkMaintenance() )
@@ -442,7 +498,7 @@ $app->get( "/dashboard/fornecedores/:hash/deletar", function( $hash )
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -508,7 +564,7 @@ $app->get( "/dashboard/fornecedores/:hash", function( $hash )
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -555,6 +611,7 @@ $app->get( "/dashboard/fornecedores/:hash", function( $hash )
 		[
 			'user'=>$user->getValues(),
 			'stakeholder'=>$stakeholder->getValues(),
+			'validate'=>$validate,
 			'success'=>Stakeholder::getSuccess(),
 			'error'=>Stakeholder::getError()
 			
@@ -593,12 +650,16 @@ $app->post( "/dashboard/fornecedores/:hash", function( $hash )
 		
 	}//end if
 
+
+
+
+
 	User::verifyLogin(false);
 
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -927,7 +988,8 @@ $app->get( "/dashboard/fornecedores", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -970,7 +1032,8 @@ $app->get( "/dashboard/fornecedores", function()
 
 	$stakeholder->setData($results['results']);
 
-	$maxStakeholders = $stakeholder->maxStakeholders($user->getinplan());
+	//$maxStakeholders = $stakeholder->maxStakeholders($user->getinplan());
+	$maxStakeholders = Stakeholder::maxStakeholders($validate['inplancode']);
 
 	$pages = [];	
     
@@ -1085,6 +1148,7 @@ $app->get( "/dashboard/fornecedores", function()
 			'nrtotal'=>$nrtotal,
 			'stakeholder'=>$stakeholder->getValues(),
 			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
+			'validate'=>$validate,
 			'success'=>Stakeholder::getSuccess(),
 			'error'=>Stakeholder::getError()
 			
@@ -1094,6 +1158,8 @@ $app->get( "/dashboard/fornecedores", function()
 	);//end setTpl
 
 });//END route
+
+
 
 
 

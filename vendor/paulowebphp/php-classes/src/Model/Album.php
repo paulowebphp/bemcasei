@@ -778,11 +778,12 @@ class Album extends Model
 
 
 
-    public function maxAlbuns( $inplan )
+    public static function maxAlbuns( $inplan )
 	{
 
 		switch( $inplan )
 		{
+			case '0':
 			case '001':
 				# code...
 				return Rule::MAX_IMAGES_FREE;

@@ -40,10 +40,10 @@ $app->get( "/dashboard/album/adicionar", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Album::setError(Rule::VALIDATE_PLAN);
+		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
 		exit;
 
@@ -153,10 +153,10 @@ $app->post( "/dashboard/album/adicionar", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Album::setError(Rule::VALIDATE_PLAN);
+		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
 		exit;
 
@@ -303,13 +303,14 @@ $app->post( "/dashboard/album/adicionar", function()
 
 	$userSizeTotal = Album::getSizeTotal((int)$user->getiduser());
 
-	$maxSizeTotal = Album::maxSizeTotal($user->getinplancontext());
+	//$maxSizeTotal = Album::maxSizeTotal($user->getinplancontext());
+	$maxSizeTotal = Album::maxSizeTotal($validate['inplancode']);
 
 
 	
 
 
-	if ( ((int)$_FILES["file"]["size"] + (int)$userSizeTotal['sizetotal']) > (int)$maxSizeTotal ) 
+	if ( ((float)$_FILES["file"]["size"] + (float)$userSizeTotal['sizetotal']) > (float)$maxSizeTotal ) 
 	{
 		
 		$sizetotal = ($userSizeTotal['sizetotal']/1000000);
@@ -320,10 +321,10 @@ $app->post( "/dashboard/album/adicionar", function()
 		$maxSizeTotal = ($maxSizeTotal/1000000);
 		$maxSizeTotal = number_format($maxSizeTotal, 0);
 
-		if($user->getinplancontext() == '3')
+		if( (int)$validate['inplancode'] == 3 )
 		{
 
-			Album::setError("Esta imagem faz ultrapassar o seu limite máximo de espaço permitido | Você está utilizando ".$sizetotal." MB (".$sizetotalKilobytes." KB) de ".$maxSizeTotal." MB permitidos | Tente novamente com outra imagem");
+			Album::setError("Você está utilizando ".$sizetotal." MB (".$sizetotalKilobytes." KB). No momento temos ".$maxSizeTotal." MB disponíveis | Parece que o nosso servidor está muito cheio nos últimos dias e por isso não conseguimos fazer o upload da sua imagem | Tente novamente daqui a alguns instantes, se a falha persistir, por favor, entre em contato com nosso suporte para liberarmos espaço para você");
 			header('Location: /dashboard/album/adicionar');
 			exit;
 
@@ -331,7 +332,7 @@ $app->post( "/dashboard/album/adicionar", function()
 		else
 		{
 
-			Album::setError("Esta imagem faz ultrapassar o seu limite máximo de espaço permitido | Você está utilizando ".$sizetotal." MB (".$sizetotalKilobytes." KB) de ".$maxSizeTotal." MB permitidos | Tente novamente com outra imagem ou faça um upgrade de plano para adquirir mais espaço");
+			Album::setError("Esta imagem faz ultrapassar o seu limite máximo de espaço permitido | Você está utilizando ".$sizetotal." MB (".$sizetotalKilobytes." KB) de ".$maxSizeTotal." MB permitidos | Tente novamente com outra imagem menor ou faça um upgrade de plano para adquirir mais espaço");
 			header('Location: /dashboard/album/adicionar');
 			exit;
 
@@ -466,6 +467,17 @@ $app->post( "/dashboard/album/adicionar", function()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 $app->get( "/dashboard/album/:hash/deletar", function( $hash ) 
 {
 	if( Maintenance::checkMaintenance() )
@@ -492,10 +504,10 @@ $app->get( "/dashboard/album/:hash/deletar", function( $hash )
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Album::setError(Rule::VALIDATE_PLAN);
+		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
 		exit;
 
@@ -584,10 +596,10 @@ $app->get( "/dashboard/album/:hash", function( $hash )
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Album::setError(Rule::VALIDATE_PLAN);
+		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
 		exit;
 
@@ -630,6 +642,7 @@ $app->get( "/dashboard/album/:hash", function( $hash )
 		[
 			'user'=>$user->getValues(),
 			'album'=>$album->getValues(),
+			'validate'=>$validate,
 			'success'=>Album::getSuccess(),
 			'error'=>Album::getError()
 			
@@ -639,6 +652,10 @@ $app->get( "/dashboard/album/:hash", function( $hash )
 	);//end setTpl
 
 });//END route
+
+
+
+
 
 
 
@@ -684,10 +701,10 @@ $app->post( "/dashboard/album/:hash", function( $hash )
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Album::setError(Rule::VALIDATE_PLAN);
+		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
 		exit;
 
@@ -971,10 +988,10 @@ $app->get( "/dashboard/album", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Album::setError(Rule::VALIDATE_PLAN);
+		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
 		exit;
 
@@ -1012,7 +1029,7 @@ $app->get( "/dashboard/album", function()
 
 	$album->setData($results['results']);
 
-	$maxalbuns = $album->maxAlbuns($user->getinplan());
+	$maxlbuns = Album::maxAlbuns($user->getinplan());
 
 	$pages = [];	
     
@@ -1106,6 +1123,7 @@ $app->get( "/dashboard/album", function()
 			'nrtotal'=>$nrtotal,
 			'album'=>$album->getValues(),
 			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
+			'validate'=>$validate,
 			'success'=>Album::getSuccess(),
 			'error'=>Album::getError()
 			

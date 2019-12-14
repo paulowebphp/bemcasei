@@ -40,7 +40,15 @@ $app->get( "/dashboard/meu-casamento", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+
+
+
+
+
+	
+
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -48,6 +56,9 @@ $app->get( "/dashboard/meu-casamento", function()
 		exit;
 
 	}//end if
+
+
+
 
 	$wedding = new Wedding();
 
@@ -70,6 +81,7 @@ $app->get( "/dashboard/meu-casamento", function()
 		[
 			'user'=>$user->getValues(),
 			'wedding'=>$wedding->getValues(),
+			'validate'=>$validate,
 			'success'=>Wedding::getSuccess(),
 			'error'=>Wedding::getError()
 			
@@ -125,7 +137,7 @@ $app->post( "/dashboard/meu-casamento", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);

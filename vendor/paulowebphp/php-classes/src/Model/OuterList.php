@@ -708,15 +708,69 @@ class OuterList extends Model
 
 
 
-    public function maxOuterLists( $inplan )
+
+
+
+
+
+
+    public static function getNumOuterLists( $iduser )
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT COUNT(*)
+			FROM tb_outerlists
+			WHERE iduser = :iduser;
+
+		",
+
+		[
+
+			'iduser'=>$iduser
+
+
+		]);//end select
+
+
+		return count($results[0]);
+
+
+
+	}//END getNumGifts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static function maxOuterLists( $inplan )
 	{
 
 		switch( $inplan )
 		{
+			case '0':
 			case '001':
 				# code...
 				return Rule::MAX_OUTER_LISTS_FREE;
-				break;
+				
 
 			case '101':
 			case '103':
@@ -726,7 +780,7 @@ class OuterList extends Model
 			case '112':
 				# code...
 				return Rule::MAX_OUTER_LISTS_BASIC;
-				break;
+				
 
 			case '203':
 			case '204':
@@ -735,7 +789,7 @@ class OuterList extends Model
 			case '212':
 				# code...
 				return Rule::MAX_OUTER_LISTS_INTERMEDIATE;
-				break;
+				
 
 			case '303':
 			case '304':
@@ -744,12 +798,12 @@ class OuterList extends Model
 			case '312':
 				# code...
 				return Rule::MAX_OUTER_LISTS_ADVANCED;
-				break;
+				
 			
 			default:
 				# code...
 				return Rule::MAX_OUTER_LISTS_FREE;
-				break;
+				
 
 		}//end switch
 

@@ -42,7 +42,7 @@ $app->get( "/dashboard/festa-de-casamento", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -97,6 +97,7 @@ $app->get( "/dashboard/festa-de-casamento", function()
 		[
 			'user'=>$user->getValues(),
 			'party'=>$party->getValues(),
+			'validate'=>$validate,
 			'success'=>Party::getSuccess(),
 			'error'=>Party::getError()
 			
@@ -153,7 +154,7 @@ $app->post( "/dashboard/festa-de-casamento", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);

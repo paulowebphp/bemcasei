@@ -542,15 +542,89 @@ class BestFriend extends Model
 
 
 
-	public function maxBestFriends( $inplan )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function getNumBestFriends( $iduser )
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT COUNT(*)
+			FROM tb_bestfriends
+			WHERE iduser = :iduser;
+
+		",
+
+		[
+
+			'iduser'=>$iduser
+
+
+		]);//end select
+
+
+		return count($results[0]);
+
+
+
+	}//END getNumGifts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function maxBestFriends( $inplan )
 	{
 
 		switch( $inplan )
 		{
+			case '0':
 			case '001':
 				# code...
 				return Rule::MAX_BESTFRIENDS_FREE;
-				break;
+				
 
 			case '101':
 			case '103':
@@ -560,7 +634,7 @@ class BestFriend extends Model
 			case '112':
 				# code...
 				return Rule::MAX_BESTFRIENDS_BASIC;
-				break;
+				
 
 			case '203':
 			case '204':
@@ -569,7 +643,7 @@ class BestFriend extends Model
 			case '212':
 				# code...
 				return Rule::MAX_BESTFRIENDS_INTERMEDIATE;
-				break;
+				
 
 			case '303':
 			case '304':
@@ -578,12 +652,12 @@ class BestFriend extends Model
 			case '312':
 				# code...
 				return Rule::MAX_BESTFRIENDS_ADVANCED;
-				break;
+				
 			
 			default:
 				# code...
 				return Rule::MAX_BESTFRIENDS_FREE;
-				break;
+				
 
 		}//end switch
 

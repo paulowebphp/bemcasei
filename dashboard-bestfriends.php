@@ -43,7 +43,7 @@ $app->get( "/dashboard/padrinhos-madrinhas/adicionar", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -59,21 +59,48 @@ $app->get( "/dashboard/padrinhos-madrinhas/adicionar", function()
 
 	
     
-	$results = $bestfriend->get((int)$user->getiduser());
+	//$results = $bestfriend->get((int)$user->getiduser());
 	
 
 
-	$nrtotal = $results['nrtotal'];
+	//$nrtotal = $results['nrtotal'];
 
 	//$bestfriend->setData($results['results']);
 
-	$maxBestFriends = $bestfriend->maxBestFriends($user->getinplan());
+	//$maxBestFriends = $bestfriend->maxBestFriends($user->getinplan());
 	
+	/*
 	if( $nrtotal >= $maxBestFriends )
 	{
 
 		BestFriend::setError("Você já atingiu o limite de Melhores Amigxs");
 		header('Location: /dashboard/padrinhos-madrinhas');
+		exit;
+
+	}//end if
+	*/
+
+
+
+
+
+
+
+
+	$maxBestFriends = BestFriend::maxBestFriends($validate['inplancode']);
+
+
+	//pode ser substituído pelo get(), getPage() ou getSearch()
+	$numBestFriends = BestFriend::getNumBestFriends((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numBestFriends >= (int)$maxBestFriends )
+	{	
+		
+		User::setError("Você já atingiu o limite de melhores amigos do seu plano atual");
+		header('Location: /dashboard');
 		exit;
 
 	}//end if
@@ -94,6 +121,7 @@ $app->get( "/dashboard/padrinhos-madrinhas/adicionar", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>BestFriend::getSuccess(),
 			'error'=>BestFriend::getError()
 			
@@ -166,7 +194,7 @@ $app->post( "/dashboard/padrinhos-madrinhas/adicionar", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -174,6 +202,44 @@ $app->post( "/dashboard/padrinhos-madrinhas/adicionar", function()
 		exit;
 
 	}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	$maxBestFriends = BestFriend::maxBestFriends($validate['inplancode']);
+
+
+	//pode ser substituído pelo get(), getPage() ou getSearch()
+	$numBestFriends = BestFriend::getNumBestFriends((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numBestFriends >= (int)$maxBestFriends )
+	{	
+		
+		User::setError("Você já atingiu o limite de melhores amigos do seu plano atual");
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+	
 
 
 
@@ -565,7 +631,7 @@ $app->get( "/dashboard/padrinhos-madrinhas/:hash", function( $hash )
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -618,6 +684,7 @@ $app->get( "/dashboard/padrinhos-madrinhas/:hash", function( $hash )
 		[
 			'user'=>$user->getValues(),
 			'bestfriend'=>$bestfriend->getValues(),
+			'validate'=>$validate,
 			'success'=>BestFriend::getSuccess(),
 			'error'=>BestFriend::getError()
 			
@@ -688,7 +755,7 @@ $app->post( "/dashboard/padrinhos-madrinhas/:hash", function( $hash )
 	
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -987,7 +1054,7 @@ $app->get( "/dashboard/padrinhos-madrinhas", function()
 
 	
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -1011,7 +1078,7 @@ $app->get( "/dashboard/padrinhos-madrinhas", function()
 	$nrtotal = $results['nrtotal'];
 
 	
-	$maxBestFriends = $bestfriend->maxBestFriends($user->getinplan());
+	$maxBestFriends = BestFriend::maxBestFriends($user->getinplan());
 
 
 
@@ -1031,6 +1098,7 @@ $app->get( "/dashboard/padrinhos-madrinhas", function()
 			'maxBestFriends'=>$maxBestFriends,
 			'nrtotal'=>$nrtotal,
 			'bestfriend'=>$bestfriend->getValues(),
+			'validate'=>$validate,
 			'success'=>BestFriend::getSuccess(),
 			'error'=>BestFriend::getError()
 			

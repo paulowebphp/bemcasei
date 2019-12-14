@@ -49,7 +49,7 @@ $app->get( "/dashboard/pagina-inicial", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -105,6 +105,7 @@ $app->get( "/dashboard/pagina-inicial", function()
 		[	
 			'user'=>$user->getValues(),
 			'initialpage'=>$initialpage->getValues(),
+			'validate'=>$validate,
 			'success'=>InitialPage::getSuccess(),
 			'error'=>InitialPage::getError()
 
@@ -151,7 +152,7 @@ $app->post( "/dashboard/pagina-inicial", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);

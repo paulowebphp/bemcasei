@@ -49,7 +49,7 @@ $app->get( "/dashboard/menu", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -92,7 +92,7 @@ $app->get( "/dashboard/menu", function()
 		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
 
 	}//end else
-*/
+	*/
 
 
 
@@ -106,6 +106,7 @@ $app->get( "/dashboard/menu", function()
 		[
 			'user'=>$user->getValues(),
 			'menu'=>$menu->getValues(),
+			'validate'=>$validate,
 			'success'=>Menu::getSuccess(),
 			'error'=>Menu::getError()
 
@@ -164,7 +165,7 @@ $app->post( "/dashboard/menu", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);

@@ -802,13 +802,69 @@ class Event extends Model
 
 
 
+    public static function getNumEvents( $iduser )
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT COUNT(*)
+			FROM tb_events
+			WHERE iduser = :iduser;
+
+		",
+
+		[
+
+			'iduser'=>$iduser
 
 
-    public function maxEvents( $inplan )
+		]);//end select
+
+
+		return count($results[0]);
+
+
+
+	}//END getNumGifts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static function maxEvents( $inplan )
 	{
 
 		switch( $inplan )
 		{
+			case '0':
 			case '001':
 				return Rule::MAX_EVENTS_FREE;
 

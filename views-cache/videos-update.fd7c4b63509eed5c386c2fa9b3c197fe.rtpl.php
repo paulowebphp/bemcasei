@@ -12,20 +12,20 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( !validatePlan() ){ ?>
+            <?php if( !$validate ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-               
+                <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+           
 
-                <?php }elseif( validatePlanFree() ){ ?>
+            <?php }elseif( $user["inplancontext"] == 0 ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+                <?php require $this->checkTemplate("dashboard-menu-free");?>
 
-                <?php }else{ ?>
+            <?php }else{ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu");?>
+                <?php require $this->checkTemplate("dashboard-menu");?>
 
-                <?php } ?>
+            <?php } ?>
                     
 
             </div><!--col-->

@@ -17,6 +17,8 @@ use Core\Model\Plan;
 $app->get( "/dashboard/listas-de-fora/adicionar", function()
 {
 	
+
+
 	if( Maintenance::checkMaintenance() )
 	{	
 
@@ -41,7 +43,7 @@ $app->get( "/dashboard/listas-de-fora/adicionar", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -53,6 +55,23 @@ $app->get( "/dashboard/listas-de-fora/adicionar", function()
 
 
 
+	$maxOuterLists = OuterList::maxOuterLists($validate['inplancode']);
+
+
+	//pode ser substituído pelo get(), getPage() ou getSearch()
+	$numOuterLists = OuterList::getNumOuterLists((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numOuterLists >= (int)$maxOuterLists )
+	{	
+		
+		User::setError("Você já atingiu o limite de listas de fora do seu plano atual");
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
 
 
 
@@ -97,6 +116,7 @@ $app->get( "/dashboard/listas-de-fora/adicionar", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>OuterList::getSuccess(),
 			'error'=>OuterList::getError()
 			
@@ -157,7 +177,7 @@ $app->post( "/dashboard/listas-de-fora/adicionar", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -165,6 +185,27 @@ $app->post( "/dashboard/listas-de-fora/adicionar", function()
 		exit;
 
 	}//end if
+
+
+
+	$maxOuterLists = OuterList::maxOuterLists($validate['inplancode']);
+
+
+	//pode ser substituído pelo get(), getPage() ou getSearch()
+	$numOuterLists = OuterList::getNumOuterLists((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numOuterLists >= (int)$maxOuterLists )
+	{	
+		
+		User::setError("Você já atingiu o limite de listas de fora do seu plano atual");
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
 
 
 
@@ -434,7 +475,7 @@ $app->get( "/dashboard/listas-de-fora/:hash/deletar", function( $hash )
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -442,6 +483,7 @@ $app->get( "/dashboard/listas-de-fora/:hash/deletar", function( $hash )
 		exit;
 
 	}//end if
+
 
 
 
@@ -508,7 +550,7 @@ $app->get( "/dashboard/listas-de-fora/:hash", function( $hash )
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -516,6 +558,7 @@ $app->get( "/dashboard/listas-de-fora/:hash", function( $hash )
 		exit;
 
 	}//end if
+
 
 
 
@@ -579,6 +622,7 @@ $app->get( "/dashboard/listas-de-fora/:hash", function( $hash )
 		[
 			'user'=>$user->getValues(),
 			'outerlist'=>$outerlist->getValues(),
+			'validate'=>$validate,
 			'success'=>OuterList::getSuccess(),
 			'error'=>OuterList::getError()
 			
@@ -640,7 +684,7 @@ $app->post( "/dashboard/listas-de-fora/:hash", function( $hash )
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -648,6 +692,7 @@ $app->post( "/dashboard/listas-de-fora/:hash", function( $hash )
 		exit;
 
 	}//end if
+
 
 
 
@@ -917,6 +962,8 @@ $app->post( "/dashboard/listas-de-fora/:hash", function( $hash )
 
 $app->get( "/dashboard/listas-de-fora", function()
 {
+
+
 	
 	if( Maintenance::checkMaintenance() )
 	{	
@@ -941,7 +988,7 @@ $app->get( "/dashboard/listas-de-fora", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -949,6 +996,7 @@ $app->get( "/dashboard/listas-de-fora", function()
 		exit;
 
 	}//end if
+
 
 
 
@@ -982,7 +1030,7 @@ $app->get( "/dashboard/listas-de-fora", function()
 
 	$outerlist->setData($results['results']);
 
-	$maxouterlists = $outerlist->maxOuterLists($user->getinplan());
+	$maxouterlists = OuterList::maxOuterLists($user->getinplan());
 
 	$pages = [];	
     
@@ -1099,6 +1147,7 @@ $app->get( "/dashboard/listas-de-fora", function()
 			'nrtotal'=>$nrtotal,
 			'outerlist'=>$outerlist->getValues(),
 			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
+			'validate'=>$validate,
 			'success'=>OuterList::getSuccess(),
 			'error'=>OuterList::getError()
 			
@@ -1108,6 +1157,10 @@ $app->get( "/dashboard/listas-de-fora", function()
 	);//end setTpl
 
 });//END route
+
+
+
+
 
 
 

@@ -42,7 +42,7 @@ $app->get( "/dashboard/social", function()
 
 	$user = User::getFromSession();
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -102,6 +102,7 @@ $app->get( "/dashboard/social", function()
 			'consort'=>$consort->getValues(),
 			'user'=>$user->getValues(),
 			'socialmedia'=>$socialmedia->getValues(),
+			'validate'=>$validate,
 			'success'=>SocialMedia::getSuccess(),
 			'error'=>SocialMedia::getError()
 
@@ -153,7 +154,7 @@ $app->post( "/dashboard/social", function()
 
 	$user = User::getFromSession();
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);

@@ -40,13 +40,17 @@ $app->get( "/dashboard/guia-de-casamento/noivado", function()
 	
 
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		!User::validatePlanDashboard( $user )
-		||
-		(int)$user->getinplancontext() == 0
+	}//end if
 
-	)
+
+	if ( (int)$user->getinplancontext() == 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -70,6 +74,7 @@ $app->get( "/dashboard/guia-de-casamento/noivado", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			
@@ -120,13 +125,17 @@ $app->get( "/dashboard/guia-de-casamento/padrinhos-madrinhas", function()
 
 
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		!User::validatePlanDashboard( $user )
-		||
-		(int)$user->getinplancontext() == 0
+	}//end if
 
-	)
+
+	if ( (int)$user->getinplancontext() == 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -150,6 +159,7 @@ $app->get( "/dashboard/guia-de-casamento/padrinhos-madrinhas", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			
@@ -213,13 +223,17 @@ $app->get( "/dashboard/guia-de-casamento/planejamento", function()
 
 
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		!User::validatePlanDashboard( $user )
-		||
-		(int)$user->getinplancontext() == 0
+	}//end if
 
-	)
+
+	if ( (int)$user->getinplancontext() == 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -243,6 +257,7 @@ $app->get( "/dashboard/guia-de-casamento/planejamento", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			
@@ -300,13 +315,17 @@ $app->get( "/dashboard/guia-de-casamento/eventos", function()
 	$user = User::getFromSession();
 
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		!User::validatePlanDashboard( $user )
-		||
-		(int)$user->getinplancontext() == 0
+	}//end if
 
-	)
+
+	if ( (int)$user->getinplancontext() == 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -329,6 +348,7 @@ $app->get( "/dashboard/guia-de-casamento/eventos", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			
@@ -385,13 +405,17 @@ $app->get( "/dashboard/guia-de-casamento/listas", function()
 	$user = User::getFromSession();
 
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		!User::validatePlanDashboard( $user )
-		||
-		(int)$user->getinplancontext() == 0
+	}//end if
 
-	)
+
+	if ( (int)$user->getinplancontext() == 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -414,6 +438,7 @@ $app->get( "/dashboard/guia-de-casamento/listas", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			
@@ -482,13 +507,17 @@ $app->get( "/dashboard/guia-de-casamento/cerimonial", function()
 
 
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		!User::validatePlanDashboard( $user )
-		||
-		(int)$user->getinplancontext() == 0
+	}//end if
 
-	)
+
+	if ( (int)$user->getinplancontext() == 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -511,6 +540,7 @@ $app->get( "/dashboard/guia-de-casamento/cerimonial", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			
@@ -571,13 +601,17 @@ $app->get( "/dashboard/guia-de-casamento/buffet", function()
 
 
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		!User::validatePlanDashboard( $user )
-		||
-		(int)$user->getinplancontext() == 0
+	}//end if
 
-	)
+
+	if ( (int)$user->getinplancontext() == 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -599,6 +633,7 @@ $app->get( "/dashboard/guia-de-casamento/buffet", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			
@@ -671,13 +706,17 @@ $app->get( "/dashboard/guia-de-casamento/roupa", function()
 
 
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		!User::validatePlanDashboard( $user )
-		||
-		(int)$user->getinplancontext() == 0
+	}//end if
 
-	)
+
+	if ( (int)$user->getinplancontext() == 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -699,6 +738,7 @@ $app->get( "/dashboard/guia-de-casamento/roupa", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			
@@ -756,13 +796,17 @@ $app->get( "/dashboard/guia-de-casamento/fotos", function()
 
 
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		!User::validatePlanDashboard( $user )
-		||
-		(int)$user->getinplancontext() == 0
+	}//end if
 
-	)
+
+	if ( (int)$user->getinplancontext() == 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -787,6 +831,7 @@ $app->get( "/dashboard/guia-de-casamento/fotos", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			
@@ -855,13 +900,17 @@ $app->get( "/dashboard/guia-de-casamento/ensaios", function()
 
 
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		!User::validatePlanDashboard( $user )
-		||
-		(int)$user->getinplancontext() == 0
+	}//end if
 
-	)
+
+	if ( (int)$user->getinplancontext() == 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -886,6 +935,7 @@ $app->get( "/dashboard/guia-de-casamento/ensaios", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			
@@ -948,13 +998,17 @@ $app->get( "/dashboard/guia-de-casamento/lua-de-mel", function()
 
 
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		!User::validatePlanDashboard( $user )
-		||
-		(int)$user->getinplancontext() == 0
+	}//end if
 
-	)
+
+	if ( (int)$user->getinplancontext() == 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -980,6 +1034,7 @@ $app->get( "/dashboard/guia-de-casamento/lua-de-mel", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 			

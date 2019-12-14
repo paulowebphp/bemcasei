@@ -54,7 +54,14 @@ $app->get( "/dashboard/meus-dados", function()
 
 	}//end if*/
 
-	
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
 
 
 
@@ -104,6 +111,7 @@ $app->get( "/dashboard/meus-dados", function()
 			'city'=>$city,
 			'address'=>((int)$address->getValues() > 0) ? $address->getValues() : ['deszipcode'=>'','desaddress'=>'','desnumber'=>'','descomplement'=>'','desdistrict'=>'','idstate'=>'','idcity'=>''],
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 
@@ -174,7 +182,7 @@ $app->post( "/dashboard/meus-dados", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -182,6 +190,7 @@ $app->post( "/dashboard/meus-dados", function()
 		exit;
 
 	}//end if
+
 
 
 
@@ -590,7 +599,6 @@ $app->post( "/dashboard/meus-dados", function()
 
 
 	
-	# Core colocou $user->save(); Aula 120
 	$user->update();
 
 	$user->setToSession();

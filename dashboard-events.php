@@ -48,7 +48,7 @@ $app->get( "/dashboard/eventos/adicionar", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -65,6 +65,31 @@ $app->get( "/dashboard/eventos/adicionar", function()
 
 
 
+
+
+	$maxEvents = Event::maxEvents($validate['inplancode']);
+
+
+	//pode ser substituído pelo get(), getPage() ou getSearch()
+	$numEvents = Event::getNumEvents((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numEvents >= (int)$maxEvents )
+	{	
+		
+		User::setError("Você já atingiu o limite de eventos do seu plano atual");
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+
+
 	
 	$page = new PageDashboard();
 
@@ -76,7 +101,7 @@ $app->get( "/dashboard/eventos/adicionar", function()
 			
 		[
 			'user'=>$user->getValues(),
-
+			'validate'=>$validate,
 			'success'=>Event::getSuccess(),
 			'error'=>Event::getError()
 			
@@ -141,7 +166,7 @@ $app->post( "/dashboard/eventos/adicionar", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -149,6 +174,34 @@ $app->post( "/dashboard/eventos/adicionar", function()
 		exit;
 
 	}//end if
+
+
+
+
+
+
+	$maxEvents = Event::maxEvents($validate['inplancode']);
+
+
+	//pode ser substituído pelo get(), getPage() ou getSearch()
+	$numEvents = Event::getNumEvents((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numEvents >= (int)$maxEvents )
+	{	
+		
+		User::setError("Você já atingiu o limite de eventos do seu plano atual");
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+	
 	
 
 
@@ -759,7 +812,7 @@ $app->get( "/dashboard/eventos/:hash", function( $hash )
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -833,6 +886,7 @@ $app->get( "/dashboard/eventos/:hash", function( $hash )
 			'city'=>$city,
 			'user'=>$user->getValues(),
 			'event'=>$event->getValues(),
+			'validate'=>$validate,
 			'success'=>Event::getSuccess(),
 			'error'=>Event::getError()
 			
@@ -891,7 +945,7 @@ $app->post( "/dashboard/eventos/:hash", function( $hash )
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -1431,7 +1485,7 @@ $app->get( "/dashboard/eventos", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -1474,7 +1528,7 @@ $app->get( "/dashboard/eventos", function()
 
 	$event->setData($results['results']);
 
-	$maxEvents = $event->maxEvents($user->getinplan());
+	$maxEvents = Event::maxEvents($user->getinplan());
 
 	$pages = [];	
     
@@ -1567,6 +1621,7 @@ $app->get( "/dashboard/eventos", function()
 			'maxEvents'=>$maxEvents,
 			'nrtotal'=>$nrtotal,
 			'event'=>$event->getValues(),
+			'validate'=>$validate,
 			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
 			'success'=>Event::getSuccess(),
 			'error'=>Event::getError()

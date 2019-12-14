@@ -123,6 +123,8 @@ $app->get( "/dashboard/transferencias/transferir-saldo", function()
 		}//end else*/
 
 
+		$validate = User::validatePlanDashboard( $user );
+
 
 		$page = new PageDashboard();
 
@@ -138,6 +140,7 @@ $app->get( "/dashboard/transferencias/transferir-saldo", function()
 				'transfer'=>$transfer->getValues(),
 				'bank'=>$bank->getValues(),
 				'transfer'=>$transfer->getValues(),
+				'validate'=>$validate,
 				'success'=>Transfer::getSuccess(),
 				'error'=>Transfer::getError()
 
@@ -319,6 +322,15 @@ $app->post( "/dashboard/transferencias/transferir-saldo", function()
 
 
 
+
+
+
+
+
+
+
+
+
 	
 
 
@@ -473,6 +485,8 @@ $app->get( "/dashboard/transferencias", function()
 
 		}//end else*/
 
+		$validate = User::validatePlanDashboard( $user );
+
 
 		
 
@@ -489,6 +503,7 @@ $app->get( "/dashboard/transferencias", function()
 				'page'=>[],
 				'search'=>'',
 				'transfer'=>$transfer->getValues(),
+				'validate'=>$validate,
 				'success'=>Transfer::getSuccess(),
 				'error'=>Transfer::getError()
 

@@ -65,11 +65,11 @@ $app->post( "/dashboard/conta-bancaria", function()
 	}//end if*/
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Order::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/painel-financeiro');
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
 		exit;
 
 	}//end if
@@ -479,11 +479,11 @@ $app->get( "/dashboard/conta-bancaria", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Order::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/painel-financeiro');
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
 		exit;
 
 	}//end if
@@ -549,6 +549,7 @@ $app->get( "/dashboard/conta-bancaria", function()
 			'user'=>$user->getValues(),
 			'bankvalues'=>$bankValues,
 			'bank'=>$bank->getValues(),
+			'validate'=>$validate,
 			'success'=>Bank::getSuccess(),
 			'error'=>Bank::getError()
 

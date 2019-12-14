@@ -51,7 +51,7 @@ $app->get( "/dashboard/dominio", function()
 	//$user->get((int)$user->getiduser());
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -93,6 +93,7 @@ $app->get( "/dashboard/dominio", function()
 		
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 
@@ -152,7 +153,7 @@ $app->post( "/dashboard/dominio", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
