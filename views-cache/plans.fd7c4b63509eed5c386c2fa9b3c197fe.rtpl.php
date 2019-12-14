@@ -12,12 +12,12 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( !validatePlan() ){ ?>
+                <?php if( !$validate ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-expirated");?>
                
 
-                <?php }elseif( validatePlanFree() ){ ?>
+                <?php }elseif( $user["inplancontext"] == 0 ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-free");?>
 
@@ -40,7 +40,7 @@
 
 
 
-                <?php if( expirationDate($user["dtplanend"]) ){ ?>
+                <?php if( expirationDate($validate["dtend"]) ){ ?>
                 <div class="row">
                     
                     <div class="col-12">
@@ -51,9 +51,8 @@
                             
 
                                 <div class="expiration-info">
-                                    <span>Olá, <strong><?php echo htmlspecialchars( $user["desnick"], ENT_COMPAT, 'UTF-8', FALSE ); ?></strong>, seu plano atual termina em <?php echo formatDate($user["dtplanend"]); ?></span>
+                                    <span>Olá, <strong><?php echo htmlspecialchars( $user["desnick"], ENT_COMPAT, 'UTF-8', FALSE ); ?></strong>, seu plano atual termina em <?php echo formatDate($validate["dtend"]); ?></span>
                                 </div>
-
                         </div>
 
                     </div>
@@ -74,7 +73,7 @@
 
 
 
-                <?php if( !validatePlan() ){ ?>
+                <?php if( !$validate ){ ?>
 
                 <div class="row">
 
@@ -96,7 +95,7 @@
                 </div>
                
 
-                <?php }elseif( validatePlanFree() ){ ?>
+                <?php }elseif( $user["inplancontext"] == 0 ){ ?>
 
                 <div class="row">
 
@@ -117,7 +116,7 @@
 
                 </div>
 
-                <?php }elseif( $user["inplancontext"] != '3' ){ ?>
+                <?php }elseif( $validate["incontext"] != '3' and $validate["incontext"] != '0' ){ ?>
 
                 <div class="row">
 

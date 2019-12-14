@@ -42,6 +42,14 @@ $app->get( "/dashboard/meu-plano", function()
 
 	$user = User::getFromSession();
 
+
+	$validate = User::validatePlanDashboard( $user );
+
+
+
+
+	
+
 	$plan = new Plan();
 	   
 	$regular_plan = $plan->getRegularPlan((int)$user->getiduser());
@@ -57,6 +65,8 @@ $app->get( "/dashboard/meu-plano", function()
 	//if(isset($free_plan['results'])) $free_plan = $free_plan['results'];
 
 
+
+	
 
 	
 
@@ -88,6 +98,7 @@ $app->get( "/dashboard/meu-plano", function()
 			'user'=>$user->getValues(),
 			'regular_plan'=>$regular_plan['results'],
 			'free_plan'=>$free_plan,
+			'validate'=>$validate,
 			'error'=>Payment::getError(),
 			'success'=>Payment::getSuccess()
 			

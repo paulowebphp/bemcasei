@@ -1109,15 +1109,83 @@ class Rsvp extends Model
 
 
 
-    public function maxRsvp( $inplan )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static function getNumRsvp( $iduser )
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT COUNT(*)
+			FROM tb_rsvp
+			WHERE iduser = :iduser;
+
+		",
+
+		[
+
+			'iduser'=>$iduser
+
+
+		]);//end select
+
+
+		return count($results[0]);
+
+
+
+	}//END getNumGifts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static function maxRsvp( $inplan )
 	{
 
 		switch( $inplan )
 		{
+			case '0':
 			case '001':
 				# code...
 				return Rule::MAX_RSVP_FREE;
-				break;
+				
 
 			case '101':
 			case '103':
@@ -1127,7 +1195,7 @@ class Rsvp extends Model
 			case '112':
 				# code...
 				return Rule::MAX_RSVP_BASIC;
-				break;
+				
 
 			case '203':
 			case '204':
@@ -1136,7 +1204,7 @@ class Rsvp extends Model
 			case '212':
 				# code...
 				return Rule::MAX_RSVP_INTERMEDIATE;
-				break;
+				
 
 			case '303':
 			case '304':
@@ -1145,12 +1213,12 @@ class Rsvp extends Model
 			case '312':
 				# code...
 				return Rule::MAX_RSVP_ADVANCED;
-				break;
+				
 			
 			default:
 				# code...
 				return Rule::MAX_RSVP_FREE;
-				break;
+				
 
 		}//end switch
 

@@ -47,7 +47,7 @@ $app->get( "/dashboard/presentes-virtuais/configurar", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -100,6 +100,7 @@ $app->get( "/dashboard/presentes-virtuais/configurar", function()
 
 			'productconfig'=>$productconfig->getValues(),
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>Product::getSuccess(),
 			'error'=>Product::getError()
 			
@@ -162,7 +163,7 @@ $app->post( "/dashboard/presentes-virtuais/configurar", function()
 
 
 	
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -284,7 +285,7 @@ $app->get( "/dashboard/presentes-virtuais/adicionar", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -300,14 +301,15 @@ $app->get( "/dashboard/presentes-virtuais/adicionar", function()
 
 	$product = new Product();
     
-	$results = $product->get((int)$user->getiduser());
+	//$results = $product->get((int)$user->getiduser());
 	
-	$nrtotal = $results['nrtotal'];
+	//$nrtotal = $results['nrtotal'];
 
-	$product->setData($results['results']);
+	//$product->setData($results['results']);
 
-	$maxProducts = $product->maxProducts($user->getinplan());
-	
+	//$maxProducts = $product->maxProducts($user->getinplan());
+
+	/*
 	if( $nrtotal >= $maxProducts )
 	{
 
@@ -316,6 +318,22 @@ $app->get( "/dashboard/presentes-virtuais/adicionar", function()
 		exit;
 
 	}//end if
+	*/
+
+	$numProducts = Product::getNumProducts((int)$user->getiduser());
+	$maxProducts = Product::getMaxProducts($validate['inplancode']);
+
+	//$maxProducts = Product::maxProducts($validate['inplancode']);
+
+	if( (int)$numProducts >= (int)$maxProducts )
+	{
+
+		Product::setError("Você já atingiu o limite máximo de Presentes Virtuais | Em caso de dúvida, entre em contato com o Suporte");
+		header('Location: /dashboard/presentes-virtuais');
+		exit;
+
+	}//end if
+	
 
 
 
@@ -356,6 +374,7 @@ $app->get( "/dashboard/presentes-virtuais/adicionar", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>Product::getSuccess(),
 			'error'=>Product::getError()
 			
@@ -414,7 +433,7 @@ $app->post( "/dashboard/presentes-virtuais/adicionar", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -550,6 +569,27 @@ $app->post( "/dashboard/presentes-virtuais/adicionar", function()
 
 	$product = new Product();
 
+
+
+
+	$numProducts = Product::getNumProducts((int)$user->getiduser());
+	$maxProducts = Product::getMaxProducts($validate['inplancode']);
+
+	//$maxProducts = Product::maxProducts($validate['inplancode']);
+
+	if( (int)$numProducts >= (int)$maxProducts )
+	{
+
+		Product::setError("Você já atingiu o limite máximo de Presentes Virtuais | Em caso de dúvida, entre em contato com o Suporte");
+		header('Location: /dashboard/presentes-virtuais');
+		exit;
+
+	}//end if
+
+
+
+
+
 	$product->setData([
 
 		'iduser'=>$user->getiduser(),
@@ -672,7 +712,7 @@ $app->get( "/dashboard/presentes-virtuais/:hash/deletar", function( $hash )
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -724,6 +764,22 @@ $app->get( "/dashboard/presentes-virtuais/:hash/deletar", function( $hash )
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $app->get( "/dashboard/lista-pronta/adicionar", function()
 {
 	
@@ -754,7 +810,7 @@ $app->get( "/dashboard/lista-pronta/adicionar", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -809,11 +865,12 @@ $app->get( "/dashboard/lista-pronta/adicionar", function()
 
 	$product = new Product();
 
-	$numProducts = $product->getNumProducts((int)$user->getiduser());
-	$maxProducts = $product->getMaxProducts((int)$user->getinplancontext());
+	//$numProducts = $product->getNumProducts((int)$user->getiduser());
+	//$maxProducts = $product->getMaxProducts((int)$user->getinplancontext());
 
 
-
+	$numProducts = Product::getNumProducts((int)$user->getiduser());
+	$maxProducts = Product::getMaxProducts($validate['inplancode']);
 
 
 	if( (int)$numProducts >= (int)$maxProducts )
@@ -880,6 +937,15 @@ $app->get( "/dashboard/lista-pronta/adicionar", function()
 
 
 
+
+
+
+
+
+
+
+
+
 $app->get( "/dashboard/lista-pronta", function()
 {
 	
@@ -908,7 +974,7 @@ $app->get( "/dashboard/lista-pronta", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -925,11 +991,12 @@ $app->get( "/dashboard/lista-pronta", function()
 
 	$product = new Product();
 
-	$numProducts = $product->getNumProducts((int)$user->getiduser());
-	$maxProducts = $product->getMaxProducts((int)$user->getinplancontext());
+	//$numProducts = $product->getNumProducts((int)$user->getiduser());
+	//$maxProducts = $product->getMaxProducts((int)$user->getinplancontext());
 
 
-
+	$numProducts = Product::getNumProducts((int)$user->getiduser());
+	$maxProducts = Product::getMaxProducts($validate['inplancode']);
 
 
 	if( (int)$numProducts >= (int)$maxProducts )
@@ -1077,6 +1144,7 @@ $app->get( "/dashboard/lista-pronta", function()
 			'search'=>$search,
 			'pages'=>$pages,
 			'gift'=>$gift->getValues(),
+			'validate'=>$validate,
 			'success'=>Product::getSuccess(),
 			'error'=>Product::getError()
 			
@@ -1086,6 +1154,18 @@ $app->get( "/dashboard/lista-pronta", function()
 	);//end setTpl
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1129,7 +1209,7 @@ $app->get( "/dashboard/presentes-virtuais/:hash", function( $hash )
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -1179,6 +1259,7 @@ $app->get( "/dashboard/presentes-virtuais/:hash", function( $hash )
 		[
 			'user'=>$user->getValues(),
 			'product'=>$product->getValues(),
+			'validate'=>$validate,
 			'success'=>Product::getSuccess(),
 			'error'=>Product::getError()
 			
@@ -1238,7 +1319,7 @@ $app->post( "/dashboard/presentes-virtuais/:hash", function( $hash )
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -1490,6 +1571,23 @@ $app->post( "/dashboard/presentes-virtuais/:hash", function( $hash )
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $app->get( "/dashboard/presentes-virtuais", function()
 {
 	
@@ -1516,7 +1614,7 @@ $app->get( "/dashboard/presentes-virtuais", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -1552,7 +1650,7 @@ $app->get( "/dashboard/presentes-virtuais", function()
 
 	$nrtotal = $results['nrtotal'];
 
-	$maxProducts = $product->maxProducts($user->getinplan());
+	$maxProducts = Product::maxProducts($validate['inplancode']);
 
 	$pages = [];	
     
@@ -1674,6 +1772,7 @@ $app->get( "/dashboard/presentes-virtuais", function()
 			'nrtotal'=>$nrtotal,
 			'product'=>$product->getValues(),
 			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
+			'validate'=>$validate,
 			'success'=>Product::getSuccess(),
 			'error'=>Product::getError()
 			

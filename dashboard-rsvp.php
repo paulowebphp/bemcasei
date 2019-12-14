@@ -46,7 +46,7 @@ $app->get("/dashboard/rsvp/download", function(){
 
 	$user = User::getFromSession();
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -59,6 +59,12 @@ $app->get("/dashboard/rsvp/download", function(){
 	Rsvp::generateCsv( (int)$user->getiduser() );
 
 });//END route
+
+
+
+
+
+
 
 
 
@@ -102,7 +108,7 @@ $app->get( "/dashboard/rsvp/confirmados", function()
 
 	
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -212,6 +218,7 @@ $app->get( "/dashboard/rsvp/confirmados", function()
 			//'maxRsvp'=>$maxRsvp,
 			'numConfirmed'=>$numConfirmed,
 			'rsvp'=>$rsvp->getValues(),
+			'validate'=>$validate,
 			'success'=>Rsvp::getSuccess(),
 			'error'=>Rsvp::getError()
 			
@@ -259,13 +266,11 @@ $app->get( "/dashboard/rsvp/:hash/deletar", function( $hash )
 
 
 
-
-
 	User::verifyLogin(false);
 
 	$user = User::getFromSession();
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -304,6 +309,9 @@ $app->get( "/dashboard/rsvp/:hash/deletar", function( $hash )
 
 	header('Location: /dashboard/rsvp');
 	exit;
+
+
+
 	
 });//END route
 
@@ -361,7 +369,7 @@ $app->get( "/dashboard/rsvp/configurar", function()
 
 	$user = User::getFromSession();
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -399,6 +407,7 @@ $app->get( "/dashboard/rsvp/configurar", function()
 		
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'rsvpconfig'=>$rsvpconfig->getValues(),
 			'success'=>RsvpConfig::getSuccess(),
 			'error'=>RsvpConfig::getError()
@@ -449,7 +458,7 @@ $app->post( "/dashboard/rsvp/configurar", function()
 
 	$user = User::getFromSession();
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -863,7 +872,7 @@ $app->get( "/dashboard/rsvp/adicionar", function()
 
 	$user = User::getFromSession();
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -871,6 +880,33 @@ $app->get( "/dashboard/rsvp/adicionar", function()
 		exit;
 
 	}//end if
+
+
+
+
+
+
+
+	$maxRsvp = Rsvp::maxRsvp($validate['inplancode']);
+
+
+	//pode ser substituído pelo get(), getPage() ou getSearch()
+	$numRsvp = Rsvp::getNumRsvp((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numRsvp >= (int)$maxRsvp )
+	{	
+		
+		User::setError("Você já atingiu o limite de convidados do seu plano atual");
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
 
     /**$Event = new Event();
     
@@ -905,6 +941,9 @@ $app->get( "/dashboard/rsvp/adicionar", function()
 
 	$rsvpconfig->get((int)$user->getiduser());
 
+
+
+
 	
 	$page = new PageDashboard();
 
@@ -916,6 +955,7 @@ $app->get( "/dashboard/rsvp/adicionar", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'rsvpconfig'=>$rsvpconfig->getValues(),
 			'success'=>Rsvp::getSuccess(),
 			'error'=>Rsvp::getError()
@@ -977,10 +1017,40 @@ $app->post( "/dashboard/rsvp/adicionar", function()
 
 	$user = User::getFromSession();
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+
+	$maxRsvp = Rsvp::maxRsvp($validate['inplancode']);
+
+
+	//pode ser substituído pelo get(), getPage() ou getSearch()
+	$numRsvp = Rsvp::getNumRsvp((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numRsvp >= (int)$maxRsvp )
+	{	
+		
+		User::setError("Você já atingiu o limite de convidados do seu plano atual");
 		header('Location: /dashboard');
 		exit;
 
@@ -1201,7 +1271,7 @@ $app->get( "/dashboard/rsvp/:hash", function( $hash )
 
 	$user = User::getFromSession();
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -1267,6 +1337,7 @@ $app->get( "/dashboard/rsvp/:hash", function( $hash )
 		[
 			'user'=>$user->getValues(),
 			'rsvp'=>$rsvp->getValues(),
+			'validate'=>$validate,
 			'rsvpconfig'=>$rsvpconfig->getValues(),
 			'success'=>Rsvp::getSuccess(),
 			'error'=>Rsvp::getError()
@@ -1321,7 +1392,7 @@ $app->post( "/dashboard/rsvp/:hash", function( $hash )
 
 	$user = User::getFromSession();
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -1535,6 +1606,17 @@ $app->post( "/dashboard/rsvp/:hash", function( $hash )
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 $app->get( "/dashboard/rsvp", function()
 {
 	
@@ -1562,7 +1644,7 @@ $app->get( "/dashboard/rsvp", function()
 
 	$user = User::getFromSession();
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -1599,7 +1681,7 @@ $app->get( "/dashboard/rsvp", function()
 
 	$rsvp->setData($results['results']);
 
-	$maxRsvp = $rsvp->maxRsvp($user->getinplan());
+	$maxRsvp = Rsvp::maxRsvp($validate['inplancode']);
 
 	$pages = [];	
     
@@ -1678,6 +1760,7 @@ $app->get( "/dashboard/rsvp", function()
 			'nrtotal'=>$nrtotal,
 			'rsvpconfig'=>$rsvpconfig->getValues(),
 			'rsvp'=>$rsvp->getValues(),
+			'validate'=>$validate,
 			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
 			'success'=>Rsvp::getSuccess(),
 			'error'=>Rsvp::getError()

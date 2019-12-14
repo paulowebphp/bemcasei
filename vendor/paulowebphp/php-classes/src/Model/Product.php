@@ -380,34 +380,7 @@ class Product extends Model
 
 
 
-
-
-
-	public function getNumProducts( $iduser )
-	{
-
-
-		$sql = new Sql();
-
-			$results = $sql->select("
-
-				SELECT COUNT(*) as nrtotal
-				FROM tb_products
-				WHERE iduser = :iduser;
-
-			",
-
-			[
-
-				'iduser'=>$iduser
-
-			]);//end select
-
-
-			return $results[0]['nrtotal'];
-
-
-	}//END getNumProducts
+	
 
 
 
@@ -425,7 +398,10 @@ class Product extends Model
 	public function getWithLimit( $iduser, $inplan )
 	{
 
-		$limit = $this->maxProducts($inplan);
+		//$limit = $this->maxProducts($inplan);
+
+		$limit = Product::maxProducts($inplan);
+
 
 		$sql = new Sql();
 
@@ -1534,15 +1510,103 @@ class Product extends Model
 
 
 
-    public function maxProducts( $inplan )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function getNumProducts( $iduser )
+	{
+
+
+		$sql = new Sql();
+
+			$results = $sql->select("
+
+				SELECT COUNT(*) as nrtotal
+				FROM tb_products
+				WHERE iduser = :iduser;
+
+			",
+
+			[
+
+				'iduser'=>$iduser
+
+			]);//end select
+
+
+			return $results[0]['nrtotal'];
+
+
+	}//END getNumProducts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static function maxProducts( $inplan )
 	{
 
 		switch( $inplan )
 		{
+			case '0':
 			case '001':
 				# code...
 				return Rule::MAX_PRODUCTS_FREE;
-				break;
+				
 
 			case '101':
 			case '103':
@@ -1552,7 +1616,7 @@ class Product extends Model
 			case '112':
 				# code...
 				return Rule::MAX_PRODUCTS_BASIC;
-				break;
+				
 
 			case '203':
 			case '204':
@@ -1561,7 +1625,7 @@ class Product extends Model
 			case '212':
 				# code...
 				return Rule::MAX_PRODUCTS_INTERMEDIATE;
-				break;
+				
 
 			case '303':
 			case '304':
@@ -1570,12 +1634,12 @@ class Product extends Model
 			case '312':
 				# code...
 				return Rule::MAX_PRODUCTS_ADVANCED;
-				break;
+				
 			
 			default:
 				# code...
 				return Rule::MAX_PRODUCTS_FREE;
-				break;
+				
 
 		}//end switch
 

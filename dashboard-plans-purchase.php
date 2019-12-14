@@ -51,12 +51,23 @@ $app->get( "/dashboard/comprar-plano/cadastrar", function()
 
 	$user = User::getFromSession();
 
-	if ( 
+	
 
-		User::validatePlanDashboard( $user )
-		&&
-		in_array((int)$user->getinplancontext(), [1,2,3])
-	)
+
+
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+	if ( in_array((int)$validate['incontext'], [1,2,3]) )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
@@ -138,6 +149,7 @@ $app->get( "/dashboard/comprar-plano/cadastrar", function()
 			'inplancode'=>$inplancode,
 			'city'=>$city,
 			'state'=>$state,
+			'validate'=>$validate,
 			'error'=>Account::getError(),
 			'success'=>Account::getSuccess(),
 			'planPurchaseRegisterValues'=> (isset($_SESSION["planPurchaseRegisterValues"])) ? $_SESSION["planPurchaseRegisterValues"] : ['desdocument'=>'', 'nrddd'=>'', 'nrphone'=>'', 'dtbirth'=>'', 'zipcode'=>'', 'desaddress'=>'', 'desnumber'=>'', 'descomplement'=>'', 'desdistrict'=>'', 'desstate'=>'', 'descity'=>'']
@@ -148,23 +160,6 @@ $app->get( "/dashboard/comprar-plano/cadastrar", function()
 	);//end setTpl
 
 });//END route
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -275,12 +270,18 @@ $app->post( "/dashboard/comprar-plano/cadastrar", function()
 
 	$user = User::getFromSession();
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		User::validatePlanDashboard( $user )
-		&&
-		in_array((int)$user->getinplancontext(), [1,2,3])
-	)
+	}//end if
+
+
+
+	if ( in_array((int)$validate['incontext'], [1,2,3]) )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
@@ -341,12 +342,6 @@ $app->post( "/dashboard/comprar-plano/cadastrar", function()
 		exit;
 		
 	}//end if
-
-
-
-
-
-
 
 
 
@@ -1061,12 +1056,18 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 	
 
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		User::validatePlanDashboard( $user )
-		&&
-		in_array((int)$user->getinplancontext(), [1,2,3])
-	)
+	}//end if
+
+
+
+	if ( in_array((int)$validate['incontext'], [1,2,3]) )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
@@ -1544,6 +1545,7 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 			'coupon'=>$coupon,
 			'action'=>$action,
 			'invoucher'=>$invoucher,
+			'validate'=>$validate,
 			'error'=>Payment::getError(),
 			'success'=>Payment::getSuccess(),
 			'planPurchaseValues'=> (isset($_SESSION["planPurchaseValues"])) ? $_SESSION["planPurchaseValues"] : ['desholderdocument'=>'', 'nrholderddd'=>'', 'nrholderphone'=>'', 'dtholderbirth'=>'', 'zipcode'=>'', 'desholderaddress'=>'', 'desholdernumber'=>'', 'desholdercomplement'=>'', 'desholderdistrict'=>'', 'desholderstate'=>'', 'desholdercity'=>'']
@@ -1706,12 +1708,18 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 	$user = User::getFromSession();
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		User::validatePlanDashboard( $user )
-		&&
-		in_array((int)$user->getinplancontext(), [1,2,3])
-	)
+	}//end if
+
+
+
+	if ( in_array((int)$validate['incontext'], [1,2,3]) )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
@@ -4309,11 +4317,13 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-	$inplancontext = substr($plan->getinplancode(), 0, 1);
+	
 
 
 	if ( (int)$invoucher == 0 )
 	{
+
+		$inplancontext = substr($plan->getinplancode(), 0, 1);
 
 
 		$user->setinplan((int)$plan->getinplancode());
@@ -4321,21 +4331,24 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 		
 
 	}//end if
+	
+	/*
 	else
 	{
 
 
-		$user->setinplan((int)$plan->getinplancode());
-		$user->setinplancontext((int)$inplancontext);
+		//$user->setinplan((int)$plan->getinplancode());
+		//$user->setinplancontext((int)$inplancontext);
 
 
 	}//end else
+	*/
 
 	//$plan->updateLastPlanDtEnd($lastplan['idplan'], $user->getiduser(), $plan->getdtbegin());
 
 	//$user->setinstatus('1');
 	
-	$user->setdtplanend($plan->getdtend());
+	//$user->setdtplanend($plan->getdtend());
 
 
 	
@@ -4421,12 +4434,18 @@ $app->get( "/dashboard/comprar-plano", function()
 
 
 
-	if ( 
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
-		User::validatePlanDashboard( $user )
-		&&
-		in_array((int)$user->getinplancontext(), [1,2,3])
-	)
+	}//end if
+
+
+
+	if ( in_array((int)$validate['incontext'], [1,2,3]) )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
@@ -4482,6 +4501,7 @@ $app->get( "/dashboard/comprar-plano", function()
 		[
 			'user'=>$user->getValues(),
 			//'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'plans'=>$plans,
 			'error'=>Plan::getError(),
 			'success'=>Plan::getSuccess(),

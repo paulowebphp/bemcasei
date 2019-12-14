@@ -12,12 +12,12 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                {if="!$validate"}
+                {if="!validatePlan()"}
 
                     {include="dashboard-menu-expirated"}
                
 
-                {elseif="$user.inplancontext == 0"}
+                {elseif="validatePlanFree()"}
 
                     {include="dashboard-menu-free"}
 
@@ -40,7 +40,7 @@
 
 
 
-                {if="expirationDate($validate.dtend)"}
+                {if="expirationDate($user.dtplanend)"}
                 <div class="row">
                     
                     <div class="col-12">
@@ -51,8 +51,9 @@
                             
 
                                 <div class="expiration-info">
-                                    <span>Olá, <strong>{$user.desnick}</strong>, seu plano atual termina em {function="formatDate($validate.dtend)"}</span>
+                                    <span>Olá, <strong>{$user.desnick}</strong>, seu plano atual termina em {function="formatDate($user.dtplanend)"}</span>
                                 </div>
+
                         </div>
 
                     </div>
@@ -73,7 +74,7 @@
 
 
 
-                {if="!$validate"}
+                {if="!validatePlan()"}
 
                 <div class="row">
 
@@ -95,7 +96,7 @@
                 </div>
                
 
-                {elseif="$user.inplancontext == 0"}
+                {elseif="validatePlanFree()"}
 
                 <div class="row">
 
@@ -116,7 +117,7 @@
 
                 </div>
 
-                {elseif="$validate.incontext != '3' and $validate.incontext != '0'"}
+                {elseif="$user.inplancontext != '3'"}
 
                 <div class="row">
 
