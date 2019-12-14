@@ -51,11 +51,14 @@ $app->get( "/dashboard/upgrade/checkout", function()
 	$user = User::getFromSession();
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+
+
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
 		exit;
 
 	}//end if
@@ -66,7 +69,7 @@ $app->get( "/dashboard/upgrade/checkout", function()
 
 
 
-	if ( !in_array((int)$user->getinplancontext(), [1,2]) )
+	if ( !in_array((int)$validate['incontext'], [1,2]) )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_UPGRADE);
@@ -89,9 +92,9 @@ $app->get( "/dashboard/upgrade/checkout", function()
 
 
 
-	$sufix = substr($user->getinplan(), 1, 2);
+	$sufix = substr($validate['inplancode'], 1, 2);
 
-	$inplanUpgrade = Plan::getPlanArrayUpgrade($user->getinplancontext(), $sufix);
+	$inplanUpgrade = Plan::getPlanArrayUpgrade($validate['incontext'], $sufix);
 
 
 
@@ -230,6 +233,7 @@ $app->get( "/dashboard/upgrade/checkout", function()
 			//'payment'=>$payment->getValues(),
 			//'plan'=>$plan,
 			'inplan'=>$inplan,
+			'validate'=>$validate,
 			'error'=>Payment::getError(),
 			'success'=>Payment::getSuccess(),
 			'planUpgradeValues'=> (isset($_SESSION["planUpgradeValues"])) ? $_SESSION["planUpgradeValues"] : ['desholderdocument'=>'', 'nrholderddd'=>'', 'nrholderphone'=>'', 'dtholderbirth'=>'', 'zipcode'=>'', 'desholderaddress'=>'', 'desholdernumber'=>'', 'desholdercomplement'=>'', 'desholderdistrict'=>'', 'desholderstate'=>'', 'desholdercity'=>'']
@@ -320,11 +324,11 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
 		exit;
 
 	}//end if
@@ -335,7 +339,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 
-	if ( !in_array((int)$user->getinplancontext(), [1,2]) )
+	if ( !in_array((int)$validate['incontext'], [1,2]) )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_UPGRADE);
@@ -383,9 +387,9 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 
-	$sufix = substr($user->getinplan(), 1, 2);
+	$sufix = substr($validate['inplancode'], 1, 2);
 
-	$inplanUpgrade = Plan::getPlanArrayUpgrade($user->getinplancontext(), $sufix);
+	$inplanUpgrade = Plan::getPlanArrayUpgrade($validate['incontext'], $sufix);
 
 
 
@@ -1487,7 +1491,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 	
 	$plan = new Plan();
 
-	$lastplan = $plan->getLastPlanPurchased($user->getiduser());
+	$lastplan = $plan->getLastPlanPurchased((int)$user->getiduser());
 
 	$inplan = Plan::getPlanArray($_POST['inplancode']);
 
@@ -1503,7 +1507,8 @@ $app->post( "/dashboard/upgrade/checkout", function()
 	$plan->setData([
 
 		'iduser'=>$user->getiduser(),
-		'inplancode'=>$_POST['inplancode'],
+		'inplancode'=>$inplan['inplancode'],
+		'incontext'=>$inplan['inplancontext'],
 		'inmigration'=>2,
 		'inperiod'=>$inplan['inperiod'],
 		'desplan'=>$inplan['desplan'],
@@ -1770,12 +1775,12 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 	
 
-	$user->setinplancontext($inplan['inplancontext']);
-	$user->setinplan($plan->getinplancode());
-	$user->setdtplanend($plan->getdtend());
+	//$user->setinplancontext($inplan['inplancontext']);
+	//$user->setinplan($plan->getinplancode());
+	//$user->setdtplanend($plan->getdtend());
 
 	
-	$user->update();
+	//$user->update();
 	$user->setToSession();
 
 
@@ -1836,11 +1841,11 @@ $app->get( "/dashboard/upgrade", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
 		exit;
 
 	}//end if
@@ -1851,7 +1856,7 @@ $app->get( "/dashboard/upgrade", function()
 
 
 
-	if ( !in_array((int)$user->getinplancontext(), [1,2]) )
+	if ( !in_array((int)$validate['incontext'], [1,2]) )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_UPGRADE);
@@ -1867,10 +1872,10 @@ $app->get( "/dashboard/upgrade", function()
 
 	//$plan = new Plan();
 
-	//$plan = substr($user->getinplan(), 0, 1);
-	$sufix = substr($user->getinplan(), 1, 2);
+	//$plan = substr($validate['inplancode'], 0, 1);
+	$sufix = substr($validate['inplancode'], 1, 2);
 
-	$inplan = Plan::getPlanArrayUpgrade($user->getinplancontext(), $sufix);
+	$inplan = Plan::getPlanArrayUpgrade($validate['incontext'], $sufix);
 
 
 	
@@ -1878,7 +1883,7 @@ $app->get( "/dashboard/upgrade", function()
 	/*$plan = new Plan();
 
 
-	if( (int)$user->getinplancontext() == 0 )
+	if( (int)$validate['incontext'] == 0 )
 	{
 
 		$plan->setinpaymentstatus('0');
@@ -1907,6 +1912,7 @@ $app->get( "/dashboard/upgrade", function()
 			'inplan'=>$inplan,
 			'sufix'=>$sufix,
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'error'=>Plan::getError(),
 			'success'=>Plan::getSuccess()
 			

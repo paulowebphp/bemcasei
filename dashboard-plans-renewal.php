@@ -49,19 +49,28 @@ $app->get( "/dashboard/renovar/checkout", function()
 
 
 
-	if ( 
-
-		!User::validatePlanDashboard( $user )
-		||
-		(int)$user->getinplancontext() == 0
-	)
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
 		exit;
 
 	}//end if
+
+
+	if ( (int)$validate['incontext'] == 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
 
 
 	
@@ -250,6 +259,7 @@ $app->get( "/dashboard/renovar/checkout", function()
 			'user'=>$user->getValues(),
 			//'payment'=>$payment->getValues(),
 			'inplan'=>$inplan,
+			'validate'=>$validate,
 			'error'=>Payment::getError(),
 			'success'=>Payment::getError(),
 			'planRenewalValues'=> (isset($_SESSION["planRenewalValues"])) ? $_SESSION["planRenewalValues"] : ['desholderdocument'=>'', 'nrholderddd'=>'', 'nrholderphone'=>'', 'dtholderbirth'=>'', 'zipcode'=>'', 'desholderaddress'=>'', 'desholdernumber'=>'', 'desholdercomplement'=>'', 'desholderdistrict'=>'', 'desholderstate'=>'', 'desholdercity'=>'']
@@ -365,16 +375,21 @@ $app->post( "/dashboard/renovar/checkout", function()
 	$user = User::getFromSession();
 
 
-	if ( 
-
-		!User::validatePlanDashboard( $user )
-		||
-		(int)$user->getinplancontext() == 0
-	)
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	if ( (int)$validate['incontext'] == 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
 		exit;
 
 	}//end if
@@ -2679,23 +2694,30 @@ $app->get( "/dashboard/renovar", function()
 
 
 
-	if ( 
-
-		!User::validatePlanDashboard( $user )
-		||
-		(int)$user->getinplancontext() == 0
-	)
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	if ( (int)$validate['incontext'] == 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
 		exit;
 
 	}//end if
 
 
 	   
-	$inplan = Plan::getPlanArrayRenewal( $user->getinplancontext() );
+	//$inplan = Plan::getPlanArrayRenewal( $user->getinplancontext() );
+	
+	$inplan = Plan::getPlanArrayRenewal( $validate['incontext'] );
 
 
 
@@ -2714,6 +2736,7 @@ $app->get( "/dashboard/renovar", function()
 		[
 			'user'=>$user->getValues(),
 			//'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'inplan'=>$inplan,
 			'success'=>Plan::getSuccess(),		
 			'error'=>Plan::getError()		

@@ -122,6 +122,8 @@ $app->get( "/dashboard/mudar-senha", function()
 
 
 
+	$validate = User::validatePlanDashboard( $user );
+
 
 	/*$plan = new Plan();
 
@@ -156,6 +158,7 @@ $app->get( "/dashboard/mudar-senha", function()
 		
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'error'=>User::getError(),
 			'success'=>User::getSuccess()
 
@@ -164,6 +167,15 @@ $app->get( "/dashboard/mudar-senha", function()
 	);//end setTpl
 
 });//END route
+
+
+
+
+
+
+
+
+
 
 
 
@@ -306,6 +318,15 @@ $app->post( "/dashboard/mudar-senha", function()
 
 
 
+
+
+
+
+
+
+
+
+
 $app->get( "/dashboard", function()
 {
 	
@@ -339,6 +360,8 @@ $app->get( "/dashboard", function()
 	
 
 
+
+	$validate = User::validatePlanDashboard( $user );
 
 
 
@@ -415,6 +438,7 @@ $app->get( "/dashboard", function()
 			'rsvp_total'=>$results['nrtotal'],
 			'message'=>$nrtotal['nrtotal'],
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()
 

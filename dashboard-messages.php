@@ -41,7 +41,7 @@ $app->get( "/dashboard/mensagens/:hash/aprovar", function( $hash )
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -117,6 +117,14 @@ $app->get( "/dashboard/mensagens/:hash/aprovar", function( $hash )
 
 
 
+
+
+
+
+
+
+
+
 $app->get( "/dashboard/mensagens/:hash/moderar", function( $hash )
 {
 	
@@ -146,7 +154,7 @@ $app->get( "/dashboard/mensagens/:hash/moderar", function( $hash )
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -206,6 +214,25 @@ $app->get( "/dashboard/mensagens/:hash/moderar", function( $hash )
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $app->get( "/dashboard/mensagens/:hash/deletar", function( $hash ) 
 {
 
@@ -234,7 +261,7 @@ $app->get( "/dashboard/mensagens/:hash/deletar", function( $hash )
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -286,6 +313,27 @@ $app->get( "/dashboard/mensagens/:hash/deletar", function( $hash )
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $app->get( "/dashboard/mensagens", function()
 {
 
@@ -316,7 +364,7 @@ $app->get( "/dashboard/mensagens", function()
 
 
 
-	if ( !User::validatePlanDashboard( $user ) )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -355,7 +403,7 @@ $app->get( "/dashboard/mensagens", function()
 
 	$message->setData($results['results']);
 
-	$maxMessages = $message->maxMessages($user->getinplan());
+	//$maxMessages = $message->maxMessages($user->getinplan());
 
 	$pages = [];	
     
@@ -471,7 +519,8 @@ $app->get( "/dashboard/mensagens", function()
 			'user'=>$user->getValues(),
 			'search'=>$search,
 			'pages'=>$pages,
-			'maxMessages'=>$maxMessages,
+			'validate'=>$validate,
+			//'maxMessages'=>$maxMessages,
 			'nrtotal'=>$nrtotal,
 			'message'=>$message->getValues(),
 			'success'=>Message::getSuccess(),
