@@ -1,0 +1,370 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                <?php if( !$validate ){ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+               
+
+                <?php }elseif( $user["inplancontext"] == 0 ){ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+
+                <?php }else{ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu");?>
+
+                <?php } ?>
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+         
+
+              <div class="row main-title">
+                
+                <div class="col-10">
+              
+
+                  <div class="title">
+                    
+                    <h1>Padrinhos, Madrinhas, Daminhas e Pajens</h1>
+
+                  </div> 
+
+
+                </div><!--col-->
+
+
+                <div id="print-wrapper" class="col-2">
+                  
+                  <a href="javascript:window.print();">
+
+                    <img src="/res/images/print.png" alt="Imprimir">
+
+                  </a> 
+
+                </div><!--col-->
+
+
+                <hr/>
+
+              </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+              <div class="row paragraph">
+      
+                <div class="col-12">
+                  
+                  <div class="title">
+                   
+                    <strong>A ESCOLHA DOS PADRINHOS E MADRINHAS</strong>
+
+                  </div>
+
+                  <div class="blockquote">
+
+                    <p>
+                      
+                      Um dos momentos mais incríveis, especiais e até divertidos de todo casamento é a escolha dos padrinhos e madrinhas.
+
+                    </p>
+
+                    <p>
+                      
+                      Mas, assim como toda escolha, definir seus padrinhos e madrinhas pode ser um momento de muitas dúvidas, que tentaremos esclarecer para você!
+
+                    </p>
+
+                  </div>
+                  
+                </div><!--col-->
+
+              </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="row paragraph">
+      
+                <div class="col-12">
+                  
+                  <div class="title">
+                   
+                    <strong>QUEM ESCOLHER</strong>
+
+                  </div>
+
+                  <div class="blockquote">
+
+                    <p>
+                    
+                    Os padrinhos e madrinhas do seu casamento devem ser pessoas que fizeram parte da sua história e que são especiais para você.
+
+                  </p>
+
+                  <p>
+                    
+                    Não se prenda a escolher apenas pessoas da família. Às vezes um colega de trabalho teve um papel tão ou mais importante no seu relacionamento do que um irmão, por exemplo.
+
+                  </p>
+
+                  <p>
+                    
+                    Da mesma forma, amigos mais próximos são escolhas bastante comuns neste estágio do planejamento do casamento.
+
+                  </p>
+
+                  </div>
+                  
+                </div><!--col-->
+
+              </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="row paragraph">
+      
+                <div class="col-12">
+                  
+                  <div class="title">
+                   
+                    <strong>EXISTE ETIQUETAS PARA A ESCOLHA?</strong>
+
+                  </div>
+
+                  <div class="blockquote">
+
+                    <p>
+                    
+                      Muitas dúvidas giram em torno dessas questões: “será que não vai pegar mal chamar um e não chamar outro?” ou “será que ela ficará chateada?”, entre outras.
+
+                    </p>
+
+                    <p>
+                      
+                      É comum tropeçarmos em algumas formalidades no meio do caminho de um planejamento de casamento, mas vamos ser sinceros: a escolha de padrinhos e madrinhas deve vir diretamente do coração dos noivos e noivas, não busque racionalizar este momento. Seria injusto para vocês e para eles também!
+
+                    </p>
+
+                    <p>
+                      
+                      Muitos noivos e noivas perguntam, por exemplo, se devem convidar os namorados(as) dos futuros padrinhos e madrinhas para serem padrinhos e madrinhas também.
+
+                    </p>
+
+                    <p>
+                      
+                      É um tema sensível, porém a resposta mais direta e reta é <strong>não</strong>. A não ser, é claro, que os respectivos namorados tenham tanta importância sentimental quanto.
+
+                    </p>
+
+                    <p>Isto é: se são pessoas igualmente especiais e que fazem parte da vida do casal, está mais do que ótimo convidá-los. Só não os convide se sentir que é uma obrigação.</p>
+
+
+                  </div>
+                  
+                </div><!--col-->
+
+              </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="row paragraph">
+      
+                <div class="col-12">
+                  
+                  <div class="title">
+                   
+                    <strong>COMO FAZER O CONVITE</strong>
+
+                  </div>
+
+                  <div class="blockquote">
+
+                    <p>
+                                    
+                      Assim como a festa de noivado, o convite para o papel do padrinho e da madrinha pode ser feito de diversas maneiras, dependendo apenas dos noivos e das noivas.
+
+                    </p>
+
+
+                    <p>
+                      
+                      Alguns casais preferem um convite criativo, outros mais significativos e outros mais formais. Trocando em miúdos, algumas ideias:
+
+                    </p>
+
+                    <p>
+                      
+                      <ul>
+                        <li>Enviar um acessório a ser usado no casamento juntamente com um cartão com o pedido: pode ser uma gravata ou uma presilha para ser usada o cabelo, por exemplo!;</li>
+                        <li>Enviar uma caixa cheia de mimos, como doces para aguentar a ansiedade, miniatura de bebidas para entrar no clima da festa ou um cupcake confeitado que remeta ao bolo de casamento, junto com um cartão propondo o convite;</li>
+                        <li>Realizar uma pequena festa ou um jantar com os casais que serão padrinhos e madrinhas. Durante o evento, anunciar que eles estão sendo convidados para ocupar este posto tão especial;</li>
+                        <li>E finalmente: chamar cada um(a) para um café da manhã, brunch, almoço ou jantar e realizar o pedido de forma intimista e mais simples.</li>
+                        <li>Ah, e claro: está mais do que liberado misturar esses pontos para deixar o pedido bem fofo e inesquecível!</li>
+                      </ul>
+
+                    </p>
+
+                  </div>
+                  
+                </div><!--col-->
+
+              </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="row paragraph">
+      
+                <div class="col-12">
+                  
+                  <div class="title">
+                   
+                    <strong>ESCOLHA DAS DAMINHAS E PAJENS</strong>
+
+                  </div>
+
+                  <div class="blockquote">
+
+                    <p>
+                      
+                      A “regra” é quase a mesma utilizada para escolher os Padrinhos e Madrinhas: simplesmente deixe o coração falar mais alto.
+
+                    </p>
+
+
+                    <p>
+
+                      Faça o convite de forma criativa para engajar a criança, que nem sempre liga muito para casamentos, e deixá-la animada para o evento! Dica: convites com doces são puro sucesso!
+
+                    </p>
+
+                    <p>
+                      
+                      Mas se por acaso você não tem crianças na família ou se seus amigos não têm filhos, uma opção é ser criativo(a).
+
+                    </p>
+
+
+                    <p>
+                      
+                      Isto é, chame seus familiares adolescentes (aquele que você viu crescer, sabe?), aquele amigo mais brincalhão ou… seu pet! Nada mais fofo que um cachorro de blacktie, né?
+
+                    </p>
+                  </div>
+                  
+                </div><!--col-->
+
+              </div><!--row-->
+
+
+
+
+
+
+
+
+
+            </div><!--col-->
+        
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+
+

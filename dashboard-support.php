@@ -51,6 +51,7 @@ $app->get( "/dashboard/central-ajuda", function()
 			
 		[
 			
+			'user'=>$user->getValues(),
 			'validate'=>$validate,
 			'success'=>User::getSuccess(),
 			'error'=>User::getError()

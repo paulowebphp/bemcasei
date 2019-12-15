@@ -1,0 +1,269 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                <?php if( !$validate ){ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+               
+
+                <?php }elseif( $user["inplancontext"] == 0 ){ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+
+                <?php }else{ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu");?>
+
+                <?php } ?>
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+         
+
+              <div class="row main-title">
+                
+                <div class="col-10">
+              
+
+                  <div class="title">
+                    
+                    <h1>ROUPA, CABELO E MAQUIAGEM</h1>
+
+                  </div> 
+
+
+                </div><!--col-->
+
+
+                <div id="print-wrapper" class="col-2">
+                  
+                  <a href="javascript:window.print();">
+
+                    <img src="/res/images/print.png" alt="Imprimir">
+
+                  </a> 
+
+                </div><!--col-->
+
+
+                <hr/>
+
+              </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+              <div class="row paragraph">
+      
+                <div class="col-12">
+                  
+                  <div class="title">
+                   
+                    <strong>ROUPAS PARA O CASAL, PADRINHOS, MADRINHAS, DAMAS E PAJENS</strong>
+
+                  </div>
+
+                  <div class="blockquote">
+
+                    <p>
+                    
+                    As figuras centrais do casamento merecem toda a atenção do mundo quanto à vestimenta utilizada na hora da cerimônia e da festa.
+
+                  </p>
+
+                  
+
+                  <p>
+                    
+                    Como falamos ao longo do texto, a definição do estilo ajudará e muito no restante de todas as outras decisões, pois servirá como um filtro para a escolha.
+
+                  </p>
+
+                  <p>
+                    
+                    Inclusive, não necessariamente as noivas utilizarão vestidos e salto; e não necessariamente os homens irão se vestir com ternos.
+
+                  </p>
+
+                 
+
+                  <p>
+                    
+                    Tudo dependerá do estilo!
+
+                  </p>
+
+                  <p>
+                    
+                    Mas mesmo que usem roupas com pegadas mais tradicionais, como vestidos e ternos, o casal precisa estar atento a alguns detalhes que não podem faltar:
+
+                  </p>
+
+                  <p>
+                    <ul>
+                      <li>● As roupas serão compradas ou alugadas?;</li>
+                      <li>● Se compradas, serão adquiridas em que lugar no Brasil ou no exterior?;</li>
+                      <li>● Independente disso, é necessário passar por provas ao longo dos meses que antecedem o casamento e não só em um único momento;</li>
+                      <li>● Existirá um padrão de cores e estilos para as madrinhas e padrinhos?;</li>
+                      <li>● Se sim, é sempre bom indicar um local de confiança para facilitar a ida dos mesmos e a escolha das roupas;</li>
+                      <li>● O mesmo serve para as damas e pajens, cujas roupas podem ser alugadas ou compradas pelo próprio casal ou pelos pais das crianças. Basta combinar!;</li>
+                      <li>● É opção dos noivos ou das noivas trabalharem com profissionais que podem desenhar modelos e costurá-los para que fiquem 100% dentro do estilo e do tamanho do casal, dos padrinhos, das madrinhas, dos pajens e damas.</li>
+                    </ul>
+                  </p>
+
+                  </div>
+                  
+                </div><!--col-->
+
+              </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="row paragraph">
+      
+                <div class="col-12">
+                  
+                  <div class="title">
+                   
+                    <strong>ROUPAS PARA A FESTA</strong>
+
+                  </div>
+
+                  <div class="blockquote">
+
+                    <p>
+                      Os homens não sofrem muito com isso, podendo apenas tirar o paletó para curtir a festa mais à vontade, depois que as fotos oficiais forem tiradas.
+                    </p>
+                  
+                    <p>
+                      
+                      Já as meninas podem ficar menos à vontade com vestidos pesados e longos. Para isso, procure vestimentas igualmente elegantes, porém mais confortáveis para a festa.
+
+                    </p>
+
+                    <p>
+                      
+                      Para os dois gêneros, uma opção em comum são calçados mais confortáveis, como tênis ou chinelos, para dançarem o tempo todo sem sentir dores nos pés.
+
+                    </p>
+
+
+
+                  </div>
+                  
+                </div><!--col-->
+
+              </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="row paragraph">
+      
+                <div class="col-12">
+                  
+                  <div class="title">
+                   
+                    <strong>CABELO E MAQUIAGEM</strong>
+
+                  </div>
+
+                  <div class="blockquote">
+
+                    <p>
+                    
+                      Outro ponto de atenção para todos que querem dar um up no visual e garantir a melhor versão de si no grande dia, é a contratação de cabeleireiros e maquiadores.
+
+                    </p>
+
+                    <p>
+                      
+                      Assim como todos os profissionais que falamos ao longo deste texto, existem dicas preciosas na hora de contratar os cabeleireiros e maquiadores.
+
+                    </p>
+
+                    <p>
+                      <ul>
+                        <li>● A definição de estilo: a esta altura do campeonato, você já deve saber isso de cor. Que bom! Pois é muito importante! É essencial que o cabelo e a maquiagem esteja dentro do look pretendido a partir do estilo definido;</li>
+                        <li>● O melhor para cada pessoa: da mesma forma, é importante que o cabelo e a maquiagem combine com o formato de rosto de cada um. É praticamente impossível dizer que existe corte e maquiagem padrão, mesmo os mais básicos;</li>
+                        <li>● Pense no ambiente: é fundamental que o profissional esteja a par do ambiente e do horário onde ocorrerá a cerimônia. Maquiagem de noite é totalmente diferente da maquiagem para o dia, por exemplo;</li>
+                        <li>● As mesmas orientações servem para os penteados, que devem ser pensados quanto a estilo, look pretendido e ambiente;</li>
+                        <li>● Todos os passos do casamento são importantes, mas o cabelo e a maquiagem estarão no foco, uma vez que você será o foco do casamento. Por isso, analise tudo com calma e antecedência. Não dê espaço para jeitinhos!;</li>
+                        <li>● Analise os profissionais a partir do seu atendimento e do seu portfólio, sinta confiança e segurança nele/nela;</li>
+                        <li>● Assim como na escolha do buffet, é natural pedir provas ou testes de maquiagem e penteado!</li>
+                      </ul>
+                    </p>
+
+
+
+
+                  </div>
+                  
+                </div><!--col-->
+
+              </div><!--row-->
+
+
+
+
+
+            </div><!--col-->
+        
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+
+
+
+
+

@@ -1,0 +1,199 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                <?php if( !$validate ){ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+               
+
+                <?php }elseif( $user["inplancontext"] == 0 ){ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+
+                <?php }else{ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu");?>
+
+                <?php } ?>
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+         
+
+              <div class="row main-title">
+                
+                <div class="col-10">
+              
+
+                  <div class="title">
+                    
+                    <h1>BUFFET</h1>
+
+                  </div> 
+
+
+                </div><!--col-->
+
+
+                <div id="print-wrapper" class="col-2">
+                  
+                  <a href="javascript:window.print();">
+
+                    <img src="/res/images/print.png" alt="Imprimir">
+
+                  </a> 
+
+                </div><!--col-->
+
+
+                <hr/>
+
+              </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+              <div class="row paragraph">
+      
+                <div class="col-12">
+                  
+                  <div class="title">
+                   
+                    <strong>ESCOLHA DO BUFFET</strong>
+
+                  </div>
+
+                  <div class="blockquote">
+
+                    <p>O serviço de buffet para casamentos é um dos tópicos mais sensíveis e que requer muito cuidado ao ser contratado. Imagina um casamento sem comida!</p>
+
+
+                    <p>
+                                      
+                      Nem pensar, né? Por isso separamos algumas dicas que irá ajudá-los a conseguirem as melhores opções de buffet para seu casamento ser inesquecível até no sabor.
+
+                    </p>
+
+                    <p>
+                      <ul>
+                        <li>Defina suas preferências: a festa de casamento pertence aos noivos ou às noivas. Por isso, nada mais justo do que escolher um buffet composto de comidas e aperitivos que os agradem. No entanto…</li>
+                        <li>Defina suas necessidades: como falávamos, no entanto, é impossível fazer uma festa pensando somente em si. É necessário que os noivos ou as noivas pensem nos convidados e em suas necessidades - afinal, eles fazem parte deste momento inesquecível. Procure saber se há pessoas com intolerância à lactose, alergias ou qualquer outro tipo de restrição alimentar, além de vegetarianos e/ou veganos. É importante, portanto, que o buffet escolhido esteja apto a atender tais necessidades;</li>
+                        <li>Defina o número de convidados: e por falar em convidados, é essencial que vocês tenham o número aproximado de pessoas que irão comparecer ao evento. Muitos buffets trabalham com número mínimo/máximo de convidados, além de oferecerem cardápios diferenciados a depender da quantidade de pessoas;</li>
+                        <li>Está perto de encontrar um buffet? Então pesquise referências e opiniões! Como falamos em outra parte deste guia, as avaliações de clientes anteriores serão seus melhores amigos durante todo o processo de organização de um casamento. Recomendações de amigos e familiares também são muito bem-vindos!;</li>
+                        <li>Veja se o buffet oferece outros serviços como decoração, bolo, doces ou bebidas. Às vezes é jogo contratar uma só empresa para diversos serviços, especialmente se os noivos ou as noivas estão organizando o casamento sozinhos(as);</li>
+                        <li>Sempre peça degustações: experimentar a comida a ser contratada é fundamental para que os noivos ou as noivas se sintam seguros e possam bater o martelo quanto a contratação do buffet. Não fiquem com vergonha, é algo completamente natural;</li>
+                        <li>Atente-se para o contrato: sempre busque a transparência, tire dúvidas quantas vezes forem necessárias e, se ainda ficar em dúvida, busque a ajuda de um advogado que possa reler o contrato e pedir alterações, se necessário. Lembre-se que o seguro morreu de velho!</li>
+                      </ul>
+                    </p>
+
+                  </div>
+                  
+                </div><!--col-->
+
+              </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="row paragraph">
+      
+                <div class="col-12">
+                  
+                  <div class="title">
+                   
+                    <strong>A PARTE DOCE: BOLO E DOCINHOS</strong>
+
+                  </div>
+
+                  <div class="blockquote">
+
+                    <p>
+                    
+                      Como mencionamos acima, muitos serviços de buffet para casamentos oferecem o bolo e os docinhos em um mesmo pacote.
+
+                    </p>
+
+                    <p>
+                      
+                      Mas o bolo, especialmente, é mais do que apenas uma comida: é um verdadeiro símbolo do casamento e figura central da mesa principal.
+
+                    </p>
+
+                    <p>
+                      Se os noivos ou as noivas não quiserem, ou não se sentirem confiantes, em centralizar todos o serviços em uma só empresa, é melhor encontrar outros profissionais.
+                    </p>
+
+                    <p>Da mesma forma, é muito comum que os noivos ou as noivas já tenham nomes em mente para essa função.</p>
+
+                    <p>As regras para não errar na escolha são basicamente as mesmas que falamos na parte do buffet, mas aqui ainda há um detalhe em especial:</p>
+
+
+
+                    <p>Os doces e o bolo têm um apelo visual muito grande, além do sabor, é claro. Portanto, procure sempre o portfólio das empresas ou profissionais que quer contratar.</p>
+
+
+                    <p>Veja o cuidado que eles têm com os doces, tanto na qualidade dos produtos quanto na apresentação dos mesmos.</p>
+
+
+                    <p>E a melhor parte: sempre peça a degustação, caso não ofereçam!</p>
+
+
+
+                  </div>
+                  
+                </div><!--col-->
+
+              </div><!--row-->
+
+
+
+
+
+            </div><!--col-->
+        
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+
+
+
+

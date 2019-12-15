@@ -45,7 +45,7 @@
 
                   <div class="title">
                     
-                    <h1>Ensaios</h1>
+                    <h1>CERIMONIAL E DECORAÇÃO</h1>
 
                   </div> 
 
@@ -84,7 +84,7 @@
                   
                   <div class="title">
                    
-                    <strong>ENSAIO DA CERIMÔNIA</strong>
+                    <strong>CERIMONIAL</strong>
 
                   </div>
 
@@ -92,27 +92,42 @@
 
                     <p>
                     
-                    Não há uma quantidade de ensaios no mundo que preparem o casal para um dos momentos mais marcantes de suas vidas: o casamento.
+                      O cerimonial do casamento nada mais é que o conjunto de passos que vão da entrada na Igreja (ou local escolhido para a celebração) até o término da cerimônia (incluindo a festa).
 
-                  </p>
+                    </p>
 
-                  
-
-                  <p>
                     
-                    Mas podemos treinar todo o resto, não é? A disposição dos convidados, a entrada dos pais, padrinhos, madrinhas, celebrante e, claro, das estrelas do dia: os noivos ou noivas.
 
-                  </p>
+                    <p>
+                      
+                      Pois é, são muitos detalhes, né?
 
-                  <p>
-                    
-                    Para esses momentos e vários outros, busque entender com a Igreja ou com o local onde ocorrerá a celebração, como agendar um dia e horário em que o ensaio possa ocorrer.
+                    </p>
 
-                  </p>
+                    <p>
+                      
+                      O nome também é utilizado para o serviço que cuida desses momentos. Para as noivas ou para os noivos, o serviço pode ser uma ajuda ímpar neste momento.
 
-                  <p>
-                    Marque pelo menos um, perto da data da união, para que no dia correto, todos estejam com as informações frescas em mente.
-                  </p>
+                    </p>
+
+                   
+
+                    <p>
+                      
+                      Não podemos esquecer que o profissional de um Cerimonial de Casamento tem experiência e jogo de cintura suficientes para fazer um casamento impecável em todos os detalhes.
+
+                    </p>
+
+                    <p>
+                      
+                      A Cerimonialista terá em mente todos os passos do casamento, deixando os noivos ou noivas tranquilos. A Cerimonialista cuidará também de inconvenientes que podem ocorrer.
+
+                    </p>
+
+                    <p>
+                      No entanto, é opção dos noivos ou das noivas contratarem o serviço ou incubirem algum amigo ou familiar para a função.
+                    </p>
+
                   </div>
                   
                 </div><!--col-->
@@ -138,7 +153,7 @@
                   
                   <div class="title">
                    
-                    <strong>TRAJETO DA IGREJA PRA FESTA</strong>
+                    <strong>DECORAÇÃO</strong>
 
                   </div>
 
@@ -146,45 +161,36 @@
 
                     <p>
                     
-                      Se a sua união acontecerá no mesmo local da festa, então você pode pular esta parte. Do contrário, continue firme conosco!
+                      Como falamos anteriormente, é fundamental que os noivos ou as noivas escolham um estilo a ser seguido e encontrem uma identidade para o casamento.
 
                     </p>
 
                     <p>
                       
-                      Outro ensaio que vale a pena ser feito para que não ocorra nenhum percalço no caminho é o translado entre a Igreja e a festa.
+                      Isto é, se o casamento for na praia, de dia e ao ar livre, o convite, a decoração e até mesmo as roupas dos convidados, assim como as dos futuros cônjuges, devem ser bem pensados.
 
                     </p>
 
-                    <p>
-                      É claro que o trânsito é sempre uma caixinha de surpresas, mas no ensaio você poderá marcar o tempo de um local a outro, além de definir a melhor rota.
-                    </p>
 
-                    <p>
-                      É essencial que essa informação seja passada ao motorista, do contrário não adiantará muita coisa.
-                    </p>
-                  
                     <p>
                       
-                      Falando em carros e motoristas, outro serviço que deverá estar em sua lista é esse. Procure profissionais capacitados e com carros confortáveis e grandes.
+                      O mesmo vale para casamentos rústicos, casamentos clássicos, casamentos minimalistas, casamentos bucólicos, casamentos vintage e por aí vai.
 
                     </p>
 
                     <p>
                       
-                      Muitos casais gostam de levar um fotógrafo consigo dentro do veículo para registrar todos os momentos, daí a necessidade de um carro confortável e de um motorista preparado.
+                      A dica é encontrar o seu estilo preferido e segui-lo em todos os detalhes. Para isso, ajuda especializada é fundamental para que não ocorra erros ou misturas descabidas.
 
                     </p>
+
+
 
                   </div>
                   
                 </div><!--col-->
 
               </div><!--row-->
-
-
-
-
 
 
 
@@ -199,5 +205,7 @@
     </div><!--container-->
 
 </section>
+
+
 
 
