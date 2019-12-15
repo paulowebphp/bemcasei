@@ -107,6 +107,8 @@ $app->get( "/dashboard/renovar/checkout", function()
 
 
 			!in_array((int)$lastplan['inpaymentstatus'], [0,1,2,3,4])
+			&&
+			(int)$lastplan['inpaymentmethod'] != 0
 
 		)
 		{
@@ -1544,7 +1546,8 @@ $app->post( "/dashboard/renovar/checkout", function()
 	$plan->setData([
 
 		'iduser'=>$user->getiduser(),
-		'inplancode'=>$_POST['inplancode'],
+		'inplancode'=>$inplan['inplancode'],
+		'incontext'=>$inplan['inplancontext'],
 		'inmigration'=>1,
 		'inperiod'=>$inplan['inperiod'],
 		'desplan'=>$inplan['desplan'],

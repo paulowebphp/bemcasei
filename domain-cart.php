@@ -64,6 +64,7 @@ $app->get( "/:desdomain/carrinho/:idproduct/adicionar", function( $desdomain, $i
 
 
 
+
 		$menu = new Menu();
 
 		$menu->get((int)$user->getiduser());
@@ -862,6 +863,10 @@ $app->get( "/:desdomain/carrinho", function( $desdomain )
 		$user->getFromUrl($desdomain);
 
 
+		
+
+		$validate = User::validatePlanDashboard( $user );
+
 
 		$menu = new Menu();
 
@@ -923,6 +928,7 @@ $app->get( "/:desdomain/carrinho", function( $desdomain )
 				'totals'=>$cart->getProductsTotals(),
 				'user'=>$user->getValues(),
 				'cart'=>$cart->getValues(),
+				'validate'=>$validate,
 				'products'=>$cart->getProducts(),
 				'error'=>Cart::getError(),
 				'success'=>Cart::getSuccess(),

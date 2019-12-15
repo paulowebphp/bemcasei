@@ -25,12 +25,12 @@ $app->get( "/:desdomain/loja/:category", function( $desdomain, $category )
 
 	/*
 	echo '<pre>';
-var_dump($desdomain);
-var_dump($category);
-var_dump(Maintenance::checkMaintenance());
-var_dump(User::checkDesdomain($desdomain));
-var_dump(Product::checkCategory($category));
-exit;*/
+	var_dump($desdomain);
+	var_dump($category);
+	var_dump(Maintenance::checkMaintenance());
+	var_dump(User::checkDesdomain($desdomain));
+	var_dump(Product::checkCategory($category));
+	exit;*/
 
 
 	
@@ -66,17 +66,19 @@ exit;*/
 		
 		
 	}//end if
-	elseif( 
-		
-		User::checkDesdomain($desdomain)
-
-	)
+	elseif( User::checkDesdomain($desdomain) )
 	{
 
 		
 		$user = new User();
 	
 		$user->getFromUrl($desdomain);
+
+
+		
+
+		$validate = User::validatePlanDashboard( $user );
+
 
 
 		$customstyle = new CustomStyle();
@@ -120,15 +122,15 @@ exit;*/
 
 		/*
 		echo '<pre>';
-var_dump($desdomain);
-var_dump($category);
-var_dump(Maintenance::checkMaintenance());
-var_dump(User::checkDesdomain($desdomain));
-var_dump($user);
-var_dump((int)$menu->getinstore() == 0);
-var_dump((int)$user->getinplancontext() == 0);
-exit;
-*/
+		var_dump($desdomain);
+		var_dump($category);
+		var_dump(Maintenance::checkMaintenance());
+		var_dump(User::checkDesdomain($desdomain));
+		var_dump($user);
+		var_dump((int)$menu->getinstore() == 0);
+		var_dump((int)$user->getinplancontext() == 0);
+		exit;
+		*/
 
 		if ( (int)$menu->getinstore() == 0 )
 		{
@@ -148,6 +150,8 @@ exit;
 			exit;
 			
 		}//end if
+
+
 
 
 
@@ -331,19 +335,19 @@ exit;
 
 	/*
 	echo '<pre>';
-var_dump($categories);
-var_dump($category);
-var_dump($currentPage);
-var_dump($category_name);
-var_dump($orderby);
-var_dump($customstyle);
-var_dump($productconfig);
-var_dump($results['nrtotal']);
-var_dump($pages);
-var_dump($product);
+		var_dump($categories);
+		var_dump($category);
+		var_dump($currentPage);
+		var_dump($category_name);
+		var_dump($orderby);
+		var_dump($customstyle);
+		var_dump($productconfig);
+		var_dump($results['nrtotal']);
+		var_dump($pages);
+		var_dump($product);
 
-exit;
-*/
+		exit;
+		*/
 
 
 
@@ -364,6 +368,7 @@ exit;
 				'productconfig'=>$productconfig->getValues(),
 				'nrtotal'=>$results['nrtotal'],
 				'pages'=>$pages,
+				'validate'=>$validate,
 				'user'=>$user->getValues(),
 				'product'=>$product->getValues(),
 				'success'=>Product::getSuccess(),
@@ -496,6 +501,10 @@ $app->get( "/:desdomain/loja", function( $desdomain )
 	
 		$user->getFromUrl($desdomain);
 
+
+		
+
+		$validate = User::validatePlanDashboard( $user );
 
 
 
@@ -711,6 +720,7 @@ $app->get( "/:desdomain/loja", function( $desdomain )
 				'pages'=>$pages,
 				'user'=>$user->getValues(),
 				'product'=>$product->getValues(),
+				'validate'=>$validate,
 				'success'=>Product::getSuccess(),
 				'error'=>Product::getError()
 

@@ -120,18 +120,6 @@
 
 
 
-    /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
-    .alert-domain h1{
-        text-align: center;
-        color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
-        font-family: <?php if( $customstyle["desfontfamily1"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamily1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'Norican'<?php } ?>;
-
-    }
-    /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
-
-
-
-
 
 
 
@@ -187,47 +175,11 @@
 
 
 
+    
 
-
-
-
-
-
-
-
-
-
-
-    /********************************STORE 2*****************************************/
-    .card-add-cart button{
-        font-family: 'OpenSans'!important;
-        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
-        border: 0;
-        border-radius: 12px;
-        padding: 10px 34px;
-        color: #fff;
-        background-color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#333333<?php } ?>;
-    }
-    .card-add-cart button:hover{
-        color: #fff;
-        background-color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>DD<?php }else{ ?>#333333<?php } ?>;
-    }
-    .card-add-continue button{
-        font-family: 'OpenSans'!important;
-        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
-        background: #e6e6e6;
-        border: 0;
-        border-radius: 12px;
-        padding: 10px 34px;
-        font-size: 0.9rem;
-        color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#333333<?php } ?>;
-    }
-    .card-add-continue button:hover{
-      background: #e1e1e1;
-      color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#333333<?php } ?>;
-      
-    }
-    /********************************STORE 2*****************************************/
+    /********************************WEDDING, PARTY*****************************************/
+    <?php if( $customstyle["inroundborderimage"] == '1' ){ ?>.main-image img{ border-radius: 50%; border: <?php echo htmlspecialchars( $customstyle["desborderimagesize"], ENT_COMPAT, 'UTF-8', FALSE ); ?>px solid #<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>DD;}<?php } ?>;
+    /********************************WEDDING, PARTY*****************************************/
 
 
 
@@ -236,54 +188,15 @@
 
     
 </style>
-<?php if( !$validate ){ ?>
-<section class="domain">
-    <div class="container-fluid">
-
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-info alert-domain" role="alert">
-                    <h1>Confirmação de Presença Desabilitada</h1>
-                </div><!--alert-->
-            </div><!--col-->
-        </div><!--row-->
-    </div>
-</section>
-
-<?php }elseif( $user["inplancontext"] == 0 ){ ?>
-<section class="domain">
-    <div class="container-fluid">
-
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-info alert-domain" role="alert">
-                    <h1>Para liberar as funcionalidades de Confirmação de Presença é necessário adquirir um plano</h1>
-                </div><!--alert-->
-            </div><!--col-->
-        </div><!--row-->
-    </div>
-</section>
-
-
-<?php }else{ ?>
-
-
-
-
-
-
-
 
 
 
 
 <section class="domain">
 
-    <div class="container-fluid">
-
-
-        
-
+    <div class="container-fluid">            
+            
+            
         <div class="row">
             
             <div class="col-12">
@@ -293,7 +206,7 @@
                         
 
                     <h3>
-                        RSVP
+                        Festa de Casamento
                     </h3>
 
                     <hr>
@@ -304,24 +217,33 @@
                      
                
             </div><!--col-->
-
         
         </div><!--row-->
 
 
-        
 
 
-
-
-
-
-        <?php if( $rsvpconfig["inclosed"] == 0 ){ ?>
-
-        
-
-
+        <?php if( $error != '' ){ ?>
         <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row--> 
+        <?php } ?> 
+    
+
+
+               
+
+
+
+
+        <div class="row ">
 
             <div class="col-12">
 
@@ -329,64 +251,181 @@
                 <div class="card-wrapper">
 
 
-                    <div class="card3 text-left">
+                    <div class="card2 unshadow">
                         
 
-                        <?php if( $success != '' ){ ?>
-                        <div class="bottom3 alert alert-success alert-dismissible fade show" role="alert">
-                            <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div> 
-                        <?php } ?>
+                       
+                            
+                        <div class="body-header row">
+
+                            <div class="main-image">
+                            
+                                <img alt="Bem Casei Site de Casamento" src="/uploads/parties/<?php echo htmlspecialchars( $party["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+
+                            </div><!--card-photo-->
+
+                        </div><!--card-header-->
 
 
-                        <?php if( $error != '' ){ ?>
-                        <div class="bottom3 alert alert-danger alert-dismissible fade show" role="alert">
-                            <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div> 
-                        <?php } ?>
 
+
+
+
+
+
+
+
+                        <div class="body-row centralizer row">
+                    
+
+
+                            <div class="col-md-3 col-5">
+
+                                <h5>                           
+
+                                    <?php if( $party["dtparty"] != '' ){ ?>                       
+                                        <?php echo formatDate($party["dtparty"]); ?>
+                                    <?php }else{ ?>
+                                        -
+                                    <?php } ?>
+
+                                </h5>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Data</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+
+
+
+
+
+                            <div class="col-md-3 col-5">
+                                
+                                <h5>
+                                    <?php if( $party["tmparty"] != '' ){ ?>
+                                        <?php echo formatTime($party["tmparty"]); ?>
+                                    <?php }else{ ?>
+                                        -
+                                    <?php } ?>
+                                </h5>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Horário</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+                        </div><!--row-->
+
+
+
+
+
+
+
+
+                        <div class="body-row row">
+
+                            <div class="col-12">
+                                
+                                <textarea readonly="readonly" class="description-area"><?php echo htmlspecialchars( $party["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="body-row centralizer row">
+                    
+
+                            <div class="col-md-3 col-12 inside-row">
+                                
+                                <h6><?php if( $party["descostume"] != '' ){ ?><?php echo htmlspecialchars( $party["descostume"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>-<?php } ?></h6>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Traje</h6>
+
+                                </div><!--card-label-->
+                               
+                            </div><!--col-->
+
+
+
+                            <div class="col-md-6 col-12 inside-row">
+
+                                <h6>
+
+                                    <?php if( $party["desaddress"] != '' ){ ?>
+
+                                        <?php echo htmlspecialchars( $party["desaddress"], ENT_COMPAT, 'UTF-8', FALSE ); ?>, <?php echo htmlspecialchars( $party["desnumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                        <?php if( $party["desdistrict"] != '' ){ ?> - Bairro <?php echo htmlspecialchars( $party["desdistrict"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>
+
+                                        <?php if( $party["descity"] != '' ){ ?> - <?php echo htmlspecialchars( $party["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?> / <?php echo htmlspecialchars( $party["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>
+
+                                        <?php if( $party["descountry"] != '' ){ ?> / <?php echo htmlspecialchars( $party["descountry"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>
+
+                                    <?php }else{ ?>
+
+
+                                        -
+
+
+                                    <?php } ?>
+
+                                </h6>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Local</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
 
                             
-                        <form action="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/rsvp" method="post">
 
 
-                            <div class="title">
+                            <div class="col-md-3 col-12 inside-row">
+                                
+                                
+                                <h6><?php if( $party["desdirections"] != '' ){ ?><?php echo htmlspecialchars( $party["desdirections"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>-<?php } ?></h6>
+                                <hr>
 
-                                    
-                                <h5>Convidado, insira seu nome completo sem abreviaturas:</h5>
+                                <div class="card-label">
 
+                                    <h6>Ponto de Referência</h6>
 
-                            </div><!--big-body-row-->
+                                </div><!--card-label-->
 
-
-                            <div class="body-row">
-
-                                    
-                                <input type="text" id="desguest" name="desguest" placeholder="Nome" class="input-text">
-
-
-                            </div><!--big-body-row-->
-
-
-                            
-
-                            <div class="body-footer text-right">
-
-
-                                <button type="submit" value="Enviar Mensagem"><h4>Enviar</h4></button>
-
-
-                            </div><!--big-body-row-->
+                            </div><!--col-->
 
 
 
-                        </form>
+
+
+                        </div><!--row-->
 
 
 
@@ -398,7 +437,48 @@
 
 
 
-                                              
+
+                        <?php if( $party["desaddress"] != '' ){ ?>
+
+                        
+                        <div class="body-footer row">
+
+
+                            <div class="buttons-wrapper">
+                                
+                                <a target="_blank" href='<?php echo setQueryString($party["desaddress"],$party["desnumber"],$party["desdistrict"],$party["descity"],$party["desstate"],"bicycling"); ?>'>
+
+                                    <button>Bicicleta</button>
+
+                                </a>
+                                
+
+
+                                <a target="_blank" href='<?php echo setQueryString($party["desaddress"],$party["desnumber"],$party["desdistrict"],$party["descity"],$party["desstate"],"transit"); ?>'>
+
+                                    <button>Transporte Público</button>
+
+                                </a>
+
+
+                                
+
+
+                                <a target="_blank" href='<?php echo setQueryString($party["desaddress"],$party["desnumber"],$party["desdistrict"],$party["descity"],$party["desstate"],"driving"); ?>'>
+
+                                    <button>Carro</button>
+
+                                </a>
+
+                            </div><!--buttons-wrapper-->
+                                
+                               
+                        </div><!--body-footer-->
+
+                        <?php } ?> 
+
+
+
                         
                     </div><!--card-->
 
@@ -408,23 +488,13 @@
     
         </div><!--row-->
 
-        
+       
 
-        <?php }else{ ?>
 
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-info alert-domain" role="alert">
-                    <h1>Confirmação de Presença Encerrada!</h1>
-                </div><!--alert-->
-            </div><!--col-->
-        </div><!--row-->
+                
 
-        <?php } ?>
-
-        
             
-            
+
 
 
 
@@ -434,21 +504,6 @@
     </div><!--container-->
 
 </section>
-<?php } ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

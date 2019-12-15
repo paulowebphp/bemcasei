@@ -381,7 +381,7 @@ $app->post( "/criar-site", function()
 
 
 
-	if( User::checkLoginExists($_POST['email']) === true )
+	/*if( User::checkLoginExists($_POST['email']) === true )
 	{
 
 		User::setErrorRegister(Rule::CHECK_LOGIN_EXISTS);
@@ -404,8 +404,7 @@ $app->post( "/criar-site", function()
 
 	}//end if*/
 
-
-
+	
 
 
 
@@ -446,6 +445,19 @@ $app->post( "/criar-site", function()
 	if ( $_SERVER['HTTP_HOST'] != Rule::CANONICAL_NAME )
 	{
 		# code...
+
+		if( User::checkLoginExists($_POST['email']) === true )
+		{
+
+			User::setErrorRegister(Rule::CHECK_LOGIN_EXISTS);
+			header("Location: /criar-site?plano=".$inplancode);
+			exit;
+
+		}//end if*/
+
+		
+
+
 		if (
 
 			!isset($_POST['g-recaptcha-response'])

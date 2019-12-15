@@ -120,6 +120,9 @@
 
 
 
+
+
+
     /***ALBUM,  BESTFRIENDS, EVENTS, MESSAGES, OUTERLISTS, STAKEHOLDERS, VIDEOS, STORE****/
     .alert-domain h1{
         text-align: center;
@@ -155,120 +158,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-    /****************INDEX, WEDDING, PARTY , EVENTS , MESSAGE, STORE ********************/
-
-    .buttons-wrapper button{
-      padding: 10px 34px;
-      border-radius: <?php if( $customstyle["desborderradiusbutton"] != '' ){ ?><?php echo htmlspecialchars( $customstyle["desborderradiusbutton"], ENT_COMPAT, 'UTF-8', FALSE ); ?>px<?php }else{ ?>20px<?php } ?>;
-      font-family: <?php if( $customstyle["desfontfamily1"] != '' ){ ?>'<?php echo htmlspecialchars( $customstyle["desfontfamily1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'<?php }else{ ?>'Norican'<?php } ?>;
-
-      <?php if( $customstyle["inbgcolorbutton"] == '0' ){ ?>
-      background-color: transparent;
-      color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
-      border: 1px solid <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;
-      <?php }else{ ?>
-      background-color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#DD716F<?php } ?>;;
-      color: #FFFFFF;
-      border: none;
-      <?php } ?>
-    }
-    /****************INDEX, WEDDING, PARTY , EVENTS , MESSAGE, STORE ********************/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /********************************STORE 2*****************************************/
-    .card-add-cart button{
-        font-family: 'OpenSans'!important;
-        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
-        border: 0;
-        border-radius: 12px;
-        padding: 10px 34px;
-        color: #fff;
-        background-color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#333333<?php } ?>;
-    }
-    .card-add-cart button:hover{
-        color: #fff;
-        background-color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?>DD<?php }else{ ?>#333333<?php } ?>;
-    }
-    .card-add-continue button{
-        font-family: 'OpenSans'!important;
-        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
-        background: #e6e6e6;
-        border: 0;
-        border-radius: 12px;
-        padding: 10px 34px;
-        font-size: 0.9rem;
-        color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#333333<?php } ?>;
-    }
-    .card-add-continue button:hover{
-      background: #e1e1e1;
-      color: <?php if( $customstyle["descolor2"] != '' ){ ?>#<?php echo htmlspecialchars( $customstyle["descolor2"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>#333333<?php } ?>;
-      
-    }
-    /********************************STORE 2*****************************************/
-
-
-
-
-
-
     
 </style>
-<?php if( !$validate ){ ?>
-<section class="domain">
-    <div class="container-fluid">
-
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-info alert-domain" role="alert">
-                    <h1>Confirmação de Presença Desabilitada</h1>
-                </div><!--alert-->
-            </div><!--col-->
-        </div><!--row-->
-    </div>
-</section>
-
-<?php }elseif( $user["inplancontext"] == 0 ){ ?>
-<section class="domain">
-    <div class="container-fluid">
-
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-info alert-domain" role="alert">
-                    <h1>Para liberar as funcionalidades de Confirmação de Presença é necessário adquirir um plano</h1>
-                </div><!--alert-->
-            </div><!--col-->
-        </div><!--row-->
-    </div>
-</section>
-
-
-<?php }else{ ?>
-
-
-
 
 
 
@@ -279,11 +170,9 @@
 
 <section class="domain">
 
-    <div class="container-fluid">
-
-
-        
-
+    <div class="container-fluid">            
+            
+            
         <div class="row">
             
             <div class="col-12">
@@ -292,9 +181,13 @@
                 <div class="section-title">
                         
 
-                    <h3>
-                        RSVP
-                    </h3>
+                    <a href="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/listas-de-fora">
+                        
+                        <h3>
+                            Listas de Fora
+                        </h3>
+                        
+                    </a>
 
                     <hr>
 
@@ -304,24 +197,49 @@
                      
                
             </div><!--col-->
-
         
         </div><!--row-->
 
 
-        
 
 
+        <?php if( $error != '' ){ ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row--> 
+        <?php } ?> 
+    
 
 
+               
 
 
-        <?php if( $rsvpconfig["inclosed"] == 0 ){ ?>
-
-        
-
+        <?php if( $nrtotal == 0 ){ ?>
 
         <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Ainda não há listas cadastradas</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+
+               
+
+
+        <?php }else{ ?>
+
+        <?php $counter1=-1;  if( isset($outerlist) && ( is_array($outerlist) || $outerlist instanceof Traversable ) && sizeof($outerlist) ) foreach( $outerlist as $key1 => $value1 ){ $counter1++; ?>
+
+
+        <div class="row ">
 
             <div class="col-12">
 
@@ -329,72 +247,128 @@
                 <div class="card-wrapper">
 
 
-                    <div class="card3 text-left">
+                    <div class="card2">
                         
 
-                        <?php if( $success != '' ){ ?>
-                        <div class="bottom3 alert alert-success alert-dismissible fade show" role="alert">
-                            <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div> 
-                        <?php } ?>
-
-
-                        <?php if( $error != '' ){ ?>
-                        <div class="bottom3 alert alert-danger alert-dismissible fade show" role="alert">
-                            <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div> 
-                        <?php } ?>
-
-
-                            
-                        <form action="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/rsvp" method="post">
-
-
-                            <div class="title">
-
-                                    
-                                <h5>Convidado, insira seu nome completo sem abreviaturas:</h5>
-
-
-                            </div><!--big-body-row-->
-
-
-                            <div class="body-row">
-
-                                    
-                                <input type="text" id="desguest" name="desguest" placeholder="Nome" class="input-text">
-
-
-                            </div><!--big-body-row-->
-
-
+                       
                             
 
-                            <div class="body-footer text-right">
-
-
-                                <button type="submit" value="Enviar Mensagem"><h4>Enviar</h4></button>
-
-
-                            </div><!--big-body-row-->
-
-
-
-                        </form>
 
 
 
 
+                        <div class="title row">
+                            
+                            <div class="col-12">
+                                
+                                <h5><?php echo htmlspecialchars( $value1["desouterlist"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h5>
+
+                                <hr>
+
+                            </div>
+
+                        </div>
 
 
 
 
+
+
+
+
+
+                        <div class="body-row row">
+
+                            <div class="col-12">
+                                
+                                <textarea readonly="readonly" class="description-area"><?php echo htmlspecialchars( $value1["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
+
+                            </div>
+
+                        </div><!--big-body-row-->
+
+
+
+
+
+
+
+
+
+
+                        <div class="body-footer centralizer row">
+                    
+
+
+                            <div class="col-md-4 col-12 inside-row">
+
+
+                                <a target="_blank" href="https://<?php echo htmlspecialchars( $value1["dessite"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+
+                                    <h5><?php echo htmlspecialchars( $value1["dessite"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h5>
+
+                                </a>
+
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Site</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+
+
+
+
+
+                            <div class="col-md-4 col-12 inside-row">
+                                
+                                <h5>
+                                    <?php echo htmlspecialchars( $value1["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                </h5>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Contato</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="col-md-4 col-12 inside-row">
+                                
+                                <h5>
+                                    <?php echo htmlspecialchars( $value1["deslocation"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                </h5>
+                                <hr>
+
+                                <div class="card-label">
+
+                                    <h6>Endereço</h6>
+
+                                </div><!--card-label-->
+
+                            </div><!--col-->
+
+
+
+
+
+                        </div><!--row-->
 
 
 
@@ -408,23 +382,39 @@
     
         </div><!--row-->
 
-        
-
-        <?php }else{ ?>
-
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-info alert-domain" role="alert">
-                    <h1>Confirmação de Presença Encerrada!</h1>
-                </div><!--alert-->
-            </div><!--col-->
-        </div><!--row-->
 
         <?php } ?>
 
+        <?php } ?> 
+
+
+                
+
+            
+
+
         
-            
-            
+
+
+
+
+        <div class="row justify-content-center">
+                
+            <div class="col-6 centralizer">
+
+                <div class="pagination">
+                    
+                    <ul>
+                        <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
+                            <li><a href="<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>                             
+                        <?php } ?>
+                    </ul>
+
+                </div>
+
+            </div><!--col-->
+
+        </div><!--row-->
 
 
 
@@ -434,17 +424,6 @@
     </div><!--container-->
 
 </section>
-<?php } ?>
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -321,9 +321,11 @@ $app->get( "/dashboard/presentes-virtuais/adicionar", function()
 	*/
 
 	$numProducts = Product::getNumProducts((int)$user->getiduser());
-	$maxProducts = Product::getMaxProducts($validate['inplancode']);
+	$maxProducts = Product::maxProducts($validate['inplancode']);
 
 	//$maxProducts = Product::maxProducts($validate['inplancode']);
+
+	
 
 	if( (int)$numProducts >= (int)$maxProducts )
 	{
@@ -334,6 +336,7 @@ $app->get( "/dashboard/presentes-virtuais/adicionar", function()
 
 	}//end if
 	
+
 
 
 
@@ -573,7 +576,7 @@ $app->post( "/dashboard/presentes-virtuais/adicionar", function()
 
 
 	$numProducts = Product::getNumProducts((int)$user->getiduser());
-	$maxProducts = Product::getMaxProducts($validate['inplancode']);
+	$maxProducts = Product::maxProducts($validate['inplancode']);
 
 	//$maxProducts = Product::maxProducts($validate['inplancode']);
 
@@ -866,11 +869,11 @@ $app->get( "/dashboard/lista-pronta/adicionar", function()
 	$product = new Product();
 
 	//$numProducts = $product->getNumProducts((int)$user->getiduser());
-	//$maxProducts = $product->getMaxProducts((int)$user->getinplancontext());
+	//$maxProducts = $product->maxProducts((int)$user->getinplancontext());
 
 
 	$numProducts = Product::getNumProducts((int)$user->getiduser());
-	$maxProducts = Product::getMaxProducts($validate['inplancode']);
+	$maxProducts = Product::maxProducts($validate['inplancode']);
 
 
 	if( (int)$numProducts >= (int)$maxProducts )
@@ -992,11 +995,11 @@ $app->get( "/dashboard/lista-pronta", function()
 	$product = new Product();
 
 	//$numProducts = $product->getNumProducts((int)$user->getiduser());
-	//$maxProducts = $product->getMaxProducts((int)$user->getinplancontext());
+	//$maxProducts = $product->maxProducts((int)$user->getinplancontext());
 
 
 	$numProducts = Product::getNumProducts((int)$user->getiduser());
-	$maxProducts = Product::getMaxProducts($validate['inplancode']);
+	$maxProducts = Product::maxProducts($validate['inplancode']);
 
 
 	if( (int)$numProducts >= (int)$maxProducts )

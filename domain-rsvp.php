@@ -68,6 +68,8 @@ $app->get( "/:desdomain/rsvp/confirmacao/:hash/presenca-confirmada", function( $
 
 
 
+		$validate = User::validatePlanDashboard( $user );
+
 
 		$menu = new Menu();
 
@@ -155,6 +157,7 @@ $app->get( "/:desdomain/rsvp/confirmacao/:hash/presenca-confirmada", function( $
 				'rsvpconfig'=>$rsvpconfig->getValues(),
 				'rsvp'=>$rsvp->getValues(),
 				'user'=>$user->getValues(),
+				'validate'=>$validate,
 				'error'=>Rsvp::getError(),
 				'success'=>Rsvp::getSuccess()
 
@@ -512,13 +515,13 @@ $app->post( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 
 			
 			/*echo '<pre>';
-var_dump($_POST);
-var_dump($adults_handler);
-var_dump($adultsArrayCount);
-var_dump($desadultsaccompanies);
-var_dump($inadultsconfirmed);
+		var_dump($_POST);
+		var_dump($adults_handler);
+		var_dump($adultsArrayCount);
+		var_dump($desadultsaccompanies);
+		var_dump($inadultsconfirmed);
 
-exit;*/
+		exit;*/
 
 
 			if( (int)$adultsArrayCount < (int)$inadultsconfirmed )
@@ -678,12 +681,12 @@ exit;*/
 				//$childrenArray = explode(';', $deschildrenaccompanies);
 	/*echo '<pre>';
 				var_dump($_POST);
-var_dump($children_handler);
-var_dump($childrenArrayCount);
-var_dump($deschildrenaccompanies);
-var_dump($inchildrenconfirmed);
-exit;*/
-	
+		var_dump($children_handler);
+		var_dump($childrenArrayCount);
+		var_dump($deschildrenaccompanies);
+		var_dump($inchildrenconfirmed);
+		exit;*/
+			
 				if( (int)$childrenArrayCount < (int)$inchildrenconfirmed )
 				{
 					Rsvp::setError("A quantidade de nomes de crianças informadas foi menor do que a quantidade que o convidado declarou que levaria | Por favor, corrija e tente novamente");
@@ -999,6 +1002,10 @@ $app->get( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 
 
 
+
+		$validate = User::validatePlanDashboard( $user );
+
+
 		$menu = new Menu();
 
 		$menu->get((int)$user->getiduser());
@@ -1100,6 +1107,7 @@ $app->get( "/:desdomain/rsvp/confirmacao/:hash", function( $desdomain, $hash )
 				'rsvpconfig'=>$rsvpconfig->getValues(),
 				'rsvp'=>$rsvp->getValues(),
 				'user'=>$user->getValues(),
+				'validate'=>$validate,
 				'error'=>Rsvp::getError(),
 				'success'=>Rsvp::getSuccess()
 
@@ -1431,7 +1439,9 @@ $app->get( "/:desdomain/rsvp", function( $desdomain )
 		$user->getFromUrl($desdomain);
 
 
+		
 
+		$validate = User::validatePlanDashboard( $user );
 
 
 		$menu = new Menu();
@@ -1484,6 +1494,7 @@ $app->get( "/:desdomain/rsvp", function( $desdomain )
 				'customstyle'=>$customstyle->getValues(),
 				'rsvpconfig'=>$rsvpconfig->getValues(),
 				'consort'=>$consort->getValues(),
+				'validate'=>$validate,
 				'user'=>$user->getValues(),
 				'error'=>Rsvp::getError(),
 				'success'=>Rsvp::getSuccess()

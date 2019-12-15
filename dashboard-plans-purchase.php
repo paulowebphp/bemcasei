@@ -56,18 +56,11 @@ $app->get( "/dashboard/comprar-plano/cadastrar", function()
 
 
 
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	$validate = User::validatePlanDashboard( $user );
 
 
 
-	if ( in_array((int)$validate['incontext'], [1,2,3]) )
+	if ( (int)$user->getinplancontext() != 0 )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
@@ -270,18 +263,11 @@ $app->post( "/dashboard/comprar-plano/cadastrar", function()
 
 	$user = User::getFromSession();
 
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	$validate = User::validatePlanDashboard( $user );
 
 
 
-	if ( in_array((int)$validate['incontext'], [1,2,3]) )
+	if ( (int)$user->getinplancontext() != 0 )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
@@ -1056,18 +1042,11 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 	
 
 
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	$validate = User::validatePlanDashboard( $user );
 
 
 
-	if ( in_array((int)$validate['incontext'], [1,2,3]) )
+	if ( (int)$user->getinplancontext() != 0 )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
@@ -1708,18 +1687,11 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 	$user = User::getFromSession();
 
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	$validate = User::validatePlanDashboard( $user );
 
 
 
-	if ( in_array((int)$validate['incontext'], [1,2,3]) )
+	if ( (int)$user->getinplancontext() != 0 )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
@@ -4434,18 +4406,11 @@ $app->get( "/dashboard/comprar-plano", function()
 
 
 
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	$validate = User::validatePlanDashboard( $user );
 
 
 
-	if ( in_array((int)$validate['incontext'], [1,2,3]) )
+	if ( (int)$user->getinplancontext() != 0 )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);

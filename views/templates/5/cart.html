@@ -138,7 +138,7 @@
 
 
 
-{if="!validatePlanDomain()"}
+{if="!$validate"}
 <section class="domain">
     <div class="container-fluid">
 
@@ -179,7 +179,7 @@
 
 
 
-        <form action="/{$user.desdomain}/checkout">
+        
             
 
                          
@@ -392,7 +392,10 @@
                 <div class="col-md-8 col-6 text-right">
 
                     <div class="cart-button">
-                        <input type="submit" value="Finalizar Compra" name="proceed">
+                        <!--<input type="submit" value="Finalizar Compra" name="proceed">-->
+                        <a href="/{$user.desdomain}/checkout">
+                            <span>Finalizar Compra</span>
+                        </a>
                     </div>
                     
                 </div>
@@ -489,7 +492,6 @@
 
 
 
-        </form>
 
 
 

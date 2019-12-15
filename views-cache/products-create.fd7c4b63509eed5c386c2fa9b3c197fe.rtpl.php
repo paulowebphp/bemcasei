@@ -36,20 +36,20 @@
             <div class="col-md-9 col-12 dash-panel">
 
 
-                
-                <form method="post" action="/dashboard/meu-amor" enctype="multipart/form-data">
+               
+
+               <form method="post" action="/dashboard/presentes-virtuais/adicionar" enctype="multipart/form-data">
+
 
                     <div class="row">
                         <div class="col-md-12">
                             
                             <div class="dash-title">
-                                <h1>Meu Amor</h1>
+                                <h1>Criar Presente</h1>
                             </div><!--dash-title-->
 
                         </div><!--col-->
                     </div><!--row-->
-
-
 
 
 
@@ -82,15 +82,63 @@
 
 
 
+                    
+
                     <div class="row">
                         
                         <div class="col-md-6 dash-column">
 
 
-                            <div class="dash-input-row">
 
-                                <label for="desconsort">Nome</label>
-                                <input type="text" class="form-control" id="desconsort" name="desconsort" value="<?php echo htmlspecialchars( $consort["desconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+
+
+                            <div class="dash-input-row input-date">
+
+                                <label for="desproduct">Nome do Presente</label>
+                                <input type="text" class="form-control" id="desproduct" name="desproduct">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+                            <!--<div class="dash-input-row">
+
+
+                                <label for="incategory">Categoria</label>
+                                <input type="text" class="form-control" id="incategory" name="incategory">
+
+
+                            </div>-->
+
+
+
+
+                            <div class="dash-input-row">
+                                
+                                <div class="input-group mb-3">
+
+                                  <div class="input-group-prepend">
+
+                                    <label class="input-group-text" for="incategory">Categoria</label>
+
+                                  </div><!--input-group-prepend-->
+
+                                  <select id="incategory" name="incategory" class="custom-select">
+
+                                    <option value="11">Bar e Adega</option>
+                                    <option value="12">Cama, Mesa e Banho</option>
+                                    <option value="13">Cozinha</option>
+                                    <option value="14">Eletrodomésticos</option>
+                                    <option value="15">Eletrônicos</option>
+                                    <option value="16">Lua de Mel</option>
+                                    <option value="17">Móveis</option>
+
+                                  </select>
+
+                                
+                                </div><!--mb-3-->
 
                             </div><!--dash-input-row-->
 
@@ -99,8 +147,10 @@
 
                             <div class="dash-input-row">
 
-                                <label for="desconsortemail">E-mail (opcional)</label>
-                                <input type="text" class="form-control" id="desconsortemail" name="desconsortemail" value="<?php echo htmlspecialchars( $consort["desconsortemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+
+                                <label for="vlprice">Valor</label>
+                                <input type="number" min="100.00" max="2000.00" step="0.01" class="form-control" id="vlprice" name="vlprice">
+
 
                             </div><!--dash-input-row-->
 
@@ -109,13 +159,33 @@
 
 
 
+                             
 
 
-                            <div class="dash-input-row">
 
-                                <input type="hidden" class="form-control" id="idconsort" name="idconsort" value="<?php echo htmlspecialchars( $consort["idconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
+                            <div class="dash-input-row input-photo">
+
+                            
+                                    <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                      </div>
+                                      <div class="custom-file">
+                                        <input type="file" name="file" class="custom-file-input" id="file" aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="file"></label>
+
+                                      </div>
+                                    </div>
+                                    <div class="input-rows">
+                                        <img class="img-responsive" id="image-preview" src="/uploads/products/0.jpg" alt="">
+                                    </div>
+
+                                
                             </div><!--dash-input-row-->
+
+
+                            
 
 
 
@@ -148,17 +218,27 @@
 
                     <div class="row">
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
 
                             <div class="dash-input-row input-footer">
                                 
                                 <button type="submit" class="btn btn-primary">Salvar</button>
 
-                                <a href="/dashboard" class="btn btn-danger">Voltar</a>
+                                <a href="/dashboard/presentes-virtuais" class="btn btn-danger">Voltar</a>
 
                             </div><!--dash-input-row-->
                             
                         </div><!--col-->
+
+
+
+                        <div class="col-md-6">
+
+                            &nbsp;
+                            
+                        </div><!--col-->
+
+
 
                     </div><!--row-->
 

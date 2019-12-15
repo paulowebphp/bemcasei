@@ -289,6 +289,7 @@ class Plan extends Model
 				{
 					# code...		
 					$row['desplan'] = utf8_encode($row['desplan']);
+					$row['desname'] = utf8_encode($row['desname']);
 
 				}//end foreach
 					

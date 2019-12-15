@@ -90,6 +90,7 @@ $app->get( "/dashboard/album/adicionar", function()
 			
 		[
 			'user'=>$user->getValues(),
+			'validate'=>$validate,
 			'success'=>Album::getSuccess(),
 			'error'=>Album::getError()
 			
@@ -1029,7 +1030,7 @@ $app->get( "/dashboard/album", function()
 
 	$album->setData($results['results']);
 
-	$maxlbuns = Album::maxAlbuns($user->getinplan());
+	$maxalbuns = Album::maxAlbuns($user->getinplan());
 
 	$pages = [];	
     

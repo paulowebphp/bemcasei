@@ -138,7 +138,7 @@
 
 
 
-<?php if( !validatePlanDomain() ){ ?>
+<?php if( !$validate ){ ?>
 <section class="domain">
     <div class="container-fluid">
 

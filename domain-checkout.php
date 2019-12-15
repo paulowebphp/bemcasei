@@ -80,6 +80,9 @@ $app->get( "/:desdomain/presente/:idorder", function( $desdomain, $idorder )
 		$user->getFromUrl($desdomain);
 
 
+		
+
+		$validate = User::validatePlanDashboard( $user );
 
 		
 		$menu = new Menu();
@@ -188,6 +191,7 @@ $app->get( "/:desdomain/presente/:idorder", function( $desdomain, $idorder )
 				'product'=>$product,
 				'user'=>$user->getValues(),
 				'order'=>$order->getValues(),
+				'validate'=>$validate,
 				//'productconfig'=>$productconfig->getValues(),
 				'cart'=>$cart,
 				'error'=>$order->getError()
@@ -2142,6 +2146,12 @@ $app->get( "/:desdomain/checkout", function( $desdomain )
 
 
 
+
+
+		$validate = User::validatePlanDashboard( $user );
+
+
+
 		$menu = new Menu();
 
 		$menu->get((int)$user->getiduser());
@@ -2208,6 +2218,7 @@ $app->get( "/:desdomain/checkout", function( $desdomain )
 				'user'=>$user->getValues(),
 				'cart'=>$cart->getValues(),
 				'products'=>$cart->getProducts(),
+				'validate'=>$validate,
 				'error'=>Payment::getError(),
 				'success'=>Payment::getSuccess(),
 				'domainCheckoutValues'=> (isset($_SESSION["domainCheckoutValues"])) ? $_SESSION["domainCheckoutValues"] : ['desname'=>'', 'desemail'=>'', 'desholderdocument'=>'', 'nrholderddd'=>'', 'nrholderphone'=>'', 'dtholderbirth'=>'', 'zipcode'=>'', 'desholderaddress'=>'', 'desholdernumber'=>'', 'desholdercomplement'=>'', 'desholderdistrict'=>'', 'desholderstate'=>'', 'desholdercity'=>'']

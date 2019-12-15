@@ -149,6 +149,8 @@ $app->get( "/dashboard/upgrade/checkout", function()
 
 
 			!in_array((int)$lastplan['inpaymentstatus'], [0,1,2,3,4])
+			&&
+			(int)$lastplan['inpaymentmethod'] != 0
 
 		)
 		{
@@ -458,6 +460,8 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 			!in_array((int)$lastplan['inpaymentstatus'], [0,1,2,3,4])
+			&&
+			(int)$lastplan['inpaymentmethod'] != 0
 
 		)
 		{

@@ -68,6 +68,9 @@ $app->get( "/:desdomain/mural-mensagens/:hash/mensagem-enviada", function( $desd
 
 
 
+		$validate = User::validatePlanDashboard( $user );
+
+
 		$menu = new Menu();
 
 		$menu->get((int)$user->getiduser());
@@ -132,6 +135,7 @@ $app->get( "/:desdomain/mural-mensagens/:hash/mensagem-enviada", function( $desd
 				'consort'=>$consort->getValues(),
 				'user'=>$user->getValues(),
 				'message'=>$message->getValues(),
+				'validate'=>$validate,
 				'error'=>Message::getError(),
 				'success'=>Message::getSuccess()
 
@@ -559,6 +563,8 @@ $app->get( "/:desdomain/mural-mensagens/enviar", function( $desdomain )
 
 
 
+		$validate = User::validatePlanDashboard( $user );
+
 
 		$menu = new Menu();
 
@@ -596,6 +602,7 @@ $app->get( "/:desdomain/mural-mensagens/enviar", function( $desdomain )
 				'customstyle'=>$customstyle->getValues(),	
 				'consort'=>$consort->getValues(),	
 				'user'=>$user->getValues(),
+				'validate'=>$validate,
 				'error'=>Message::getError(),
 				'success'=>Message::getSuccess()
 
@@ -703,6 +710,10 @@ $app->get( "/:desdomain/mural-mensagens", function( $desdomain )
  
 		$user->getFromUrl($desdomain);
 
+
+		
+
+		$validate = User::validatePlanDashboard( $user );
 
 
 		$menu = new Menu();
@@ -816,6 +827,7 @@ $app->get( "/:desdomain/mural-mensagens", function( $desdomain )
 				'nrtotal'=>$nrtotal,
 				'user'=>$user->getValues(),
 				'message'=>$results['results'],
+				'validate'=>$validate,
 				'error'=>Message::getError(),
 				'success'=>Message::getSuccess()
 
