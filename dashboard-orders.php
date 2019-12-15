@@ -32,7 +32,7 @@ use Core\Model\User;
 
 
 
-$app->get( "/dashboard/painel-financeiro/:hash/detalhes", function( $hash ) 
+$app->get( "/dashboard/painel-financeiro/detalhes/:hash", function( $hash ) 
 {
 
 	if( Maintenance::checkMaintenance() )
@@ -59,6 +59,17 @@ $app->get( "/dashboard/painel-financeiro/:hash/detalhes", function( $hash )
 	$user = User::getFromSession();
 
 
+
+
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
 
 
 
@@ -161,6 +172,7 @@ $app->get( "/dashboard/painel-financeiro/:hash/detalhes", function( $hash )
 			'cart'=>$cart,
 			'order'=>$order->getValues(),
 			'consort'=>$consort->getValues(),
+			'validate'=>$validate,
 			'success'=>Order::getSuccess(),
 			'error'=>Order::getError()
 
@@ -224,6 +236,18 @@ $app->get( "/dashboard/painel-financeiro", function()
 	User::verifyLogin(false);
 
 	$user = User::getFromSession();
+
+
+
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
 
 
 
@@ -442,6 +466,7 @@ $app->get( "/dashboard/painel-financeiro", function()
 			'sumRefunded'=>$sumRefunded,
 			'sumCompleted'=>$sumCompleted,
 			'order'=>$order->getValues(),
+			'validate'=>$validate,
 			'popover1'=>[0=>'', 1=>Rule::POPOVER_REGISTER_BANK_CONTENT],
 			'checkBank'=>$checkBank,
 			'success'=>Order::getSuccess(),

@@ -12,12 +12,12 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( !validatePlan() ){ ?>
+                <?php if( !$validate ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-expirated");?>
                
 
-                <?php }elseif( validatePlanFree() ){ ?>
+                <?php }elseif( $user["inplancontext"] == 0 ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-free");?>
 
@@ -859,7 +859,7 @@
 
 
 
-                                <a href='/dashboard/painel-financeiro/<?php echo setHash($value1["idorder"]); ?>/detalhes'>
+                                <a href='/dashboard/painel-financeiro/detalhes/<?php echo setHash($value1["idorder"]); ?>'>
 
                                     <button>Detalhes</button>
 

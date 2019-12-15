@@ -66,6 +66,12 @@ $app->get( "/dashboard/meus-dados", function()
 
 
 
+
+
+
+	
+
+
 		
 	//$user->get((int)$user->getiduser());
 
@@ -275,7 +281,25 @@ $app->post( "/dashboard/meus-dados", function()
 
 
 
-	if(
+	
+
+
+
+
+
+
+
+
+
+
+
+	if ( (int)$user->getinaccount() > 0 )
+	{
+		# code...
+
+
+
+		if(
 			
 			!isset($_POST['dtbirth']) 
 			|| 
@@ -306,21 +330,6 @@ $app->post( "/dashboard/meus-dados", function()
 
 
 
-
-
-
-
-
-	if ( (int)$user->getinaccount() > 0 )
-	{
-		# code...
-
-
-
-
-
-
-
 		if( 
 			
 			!isset($_POST['nrddd']) 
@@ -334,6 +343,9 @@ $app->post( "/dashboard/meus-dados", function()
 			exit;
 			
 		}//end if
+
+
+
 
 
 		if( 
@@ -350,6 +362,10 @@ $app->post( "/dashboard/meus-dados", function()
 			
 		}//end if
 
+
+
+
+
 		if( !$nrddd = Validate::validateDDD($_POST['nrddd']) )
 		{
 
@@ -360,6 +376,8 @@ $app->post( "/dashboard/meus-dados", function()
 		}//end if
 
 
+
+
 		if( !$nrphone = Validate::validatePhone($_POST['nrphone']) )
 		{
 
@@ -368,6 +386,7 @@ $app->post( "/dashboard/meus-dados", function()
 			exit;
 
 		}//end if
+
 
 
 
@@ -580,7 +599,7 @@ $app->post( "/dashboard/meus-dados", function()
 		$address->update();
 
 
-
+		$user->setdtbirth( $dtbirth );
 
 		$user->setnrddd( $nrddd );
 		$user->setnrphone( $nrphone );
@@ -595,7 +614,7 @@ $app->post( "/dashboard/meus-dados", function()
 	$user->setdesperson( $desperson );
 	$user->setdesnick( $desnick );
 	
-	$user->setdtbirth( $dtbirth );
+	
 
 
 	
