@@ -62,14 +62,7 @@ $app->get( "/dashboard/painel-financeiro/detalhes/:hash", function( $hash )
 
 
 
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	$validate = User::validatePlanDashboard( $user );
 
 
 
@@ -240,15 +233,7 @@ $app->get( "/dashboard/painel-financeiro", function()
 
 
 
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
+	$validate = User::validatePlanDashboard( $user );
 
 
 
@@ -422,6 +407,7 @@ $app->get( "/dashboard/painel-financeiro", function()
 
 
 
+	
 
 
 

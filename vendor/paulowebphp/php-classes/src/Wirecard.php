@@ -458,8 +458,7 @@ class Wirecard extends Model
 	  	var_dump($descardcode_cvc);
 	  	var_dump($hash);
 	  	var_dump($this->wirecard_access_token);
-		var_dump($this->getWirecardApp());
-		var_dump($this->getWirecardPrimaryReceiver());
+		var_dump($this->wirecard_primary_receiver);
 			exit;*/
 
 
@@ -491,7 +490,7 @@ class Wirecard extends Model
 
 
 
-			if( in_array($inpaymentmethod, ['1','2']) )
+			if( in_array((int)$inpaymentmethod, [1,2]) )
 			{
 				# code...
 				$customerid = $customer->getid();
@@ -867,6 +866,35 @@ class Wirecard extends Model
 	)
 	{
 
+		/*echo '<pre>';
+		var_dump($descustomercode);
+		var_dump($idcart);
+		var_dump($nrholdercountryarea);
+		var_dump($nrholderddd);
+		var_dump($nrholderphone);
+		var_dump($desholdername);
+		var_dump($dtholderbirth);
+		var_dump($inholdertypedoc);
+		var_dump($desholderdocument);
+		var_dump($desholderzipcode); 
+		var_dump($desholderaddress);
+		var_dump($desholdernumber); 
+	  	var_dump($desholdercomplement);
+	  	var_dump($desholderdistrict); 
+	  	var_dump($desholdercity); 
+	  	var_dump($desholderstate);
+	  	var_dump($inpaymentmethod);
+	  	var_dump($nrinstallment);
+	  	var_dump($descardcode_month);
+	  	var_dump($descardcode_year);
+	  	var_dump($descardcode_number);
+	  	var_dump($descardcode_cvc);
+	  	var_dump($hash);
+	  	exit;*/
+
+
+
+
 		try
 		{
 
@@ -918,6 +946,9 @@ class Wirecard extends Model
 
 			$order = $moip->orders()->setOwnId( uniqid() );
 
+
+			
+
 			$order = $order->addItem( 
 
 	        	$item['desplan'],
@@ -929,11 +960,12 @@ class Wirecard extends Model
 
 
 
+
 			$vlantecipation = Wirecard::getAntecipationValue($nrinstallment);
 
+			
 
-
-			if ( in_array($inpaymentmethod, ['1','2']) ) 
+			if ( in_array((int)$inpaymentmethod, [1,2]) ) 
 		    {
 		    	# code...
 		    	
@@ -952,6 +984,8 @@ class Wirecard extends Model
 
 		    	$processor = 3.49;
 		    	$primary_liquid = $item['vlprice'] - $processor;
+
+
 
 
 		    }//end else
@@ -981,7 +1015,7 @@ class Wirecard extends Model
 
 
 
-			if( in_array($inpaymentmethod, ['1','2']) )
+			if( in_array((int)$inpaymentmethod, [1,2]) )
 			{	
 
 				$holder = $moip->holders()->setFullname( $desholdername )
@@ -1039,16 +1073,30 @@ class Wirecard extends Model
 			else
 			{
 
-				$logo_uri = 'https://amarcasar.com/res/images/logo/logo-dd716f.png';;
+				
+				$logo_uri = 'https://bemcasei.com.br/res/images/logo/logo-main.png';;
 
 				$expiration_date = new \DateTime('now + 5 day');
 
 				$instruction_lines = ['A', 'A', 'A'];
 
+
+				
+
 				$payment = $order->payments()  
 				    ->setBoleto($expiration_date, $logo_uri, $instruction_lines)
 				    ->setStatementDescriptor(Rule::STATEMENT_DESCRIPTOR)
 				    ->execute();
+
+
+				/*echo '<pre>';
+var_dump('1');
+var_dump($logo_uri);
+var_dump($expiration_date);
+var_dump($instruction_lines);
+var_dump($expiration_date->format('Y-m-d'));
+var_dump($payment);
+exit;*/
 
 
 				$inpaymentstatus = PaymentStatus::getStatus($payment->getstatus());
@@ -1120,6 +1168,7 @@ class Wirecard extends Model
 		    {
 
 		    	Payment::setError(Rule::PLAN_VALIDATION);
+		    	//printf($e->__toString());
 				header('Location: /dashboard/meu-plano');
 				exit;
 
@@ -1498,7 +1547,7 @@ class Wirecard extends Model
 			else
 			{
 
-				$logo_uri = 'https://amarcasar.com/res/images/logo/logo-dd716f.png';;
+				$logo_uri = 'https://bemcasei.com.br/res/images/logo/logo-main.png';;
 
 				$expiration_date = new \DateTime('now + 5 day');
 

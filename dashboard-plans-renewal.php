@@ -1381,8 +1381,8 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 	
-
-	/*echo "<pre>";
+	/*
+	echo "<pre>";
 	var_dump($inholdertypedoc);
 	var_dump($desholderdocument);
 	var_dump($nrholderddd);
@@ -1402,8 +1402,8 @@ $app->post( "/dashboard/renovar/checkout", function()
 	var_dump($descardcode_year);
 	var_dump($descardcode_number);
 
-	exit;*/
-
+	exit;
+	*/
 
 
 	$cart = new Cart();
@@ -1466,8 +1466,10 @@ $app->post( "/dashboard/renovar/checkout", function()
 	);//END createCustomer
 
 
-	
-
+	echo '<pre>';
+var_dump($wirecardCustomerData);
+var_dump($address);
+exit;
 
 
 	$customer = new Customer();
@@ -1830,12 +1832,12 @@ $app->post( "/dashboard/renovar/checkout", function()
 	//$plan->updateLastPlanDtEnd($lastplan['idplan'], $user->getiduser(), $plan->getdtbegin());
 
 
-	$user->setinplan($plan->getinplancode());
-	$user->setdtplanend($plan->getdtend());
+	//$user->setinplan($plan->getinplancode());
+	//$user->setdtplanend($plan->getdtend());
 
 
 	
-	$user->update();
+	//$user->update();
 	$user->setToSession();
 
 

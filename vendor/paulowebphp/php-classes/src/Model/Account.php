@@ -4,6 +4,7 @@ namespace Core\Model;
 
 use \Core\DB\Sql;
 use \Core\Model;
+use \Core\Rule;
 use \Moip\Moip;
 use \Moip\Auth\OAuth;
 
@@ -16,6 +17,172 @@ class Account extends Model
 	const SESSION_ERROR = "AccountError";
 	const SUCCESS = 'AccountSuccess';
 	
+
+
+
+
+
+
+
+
+	public function save()
+	{
+
+		
+
+		$sql = new Sql();
+
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+
+			$results = $sql->select("
+
+				CALL sp_accounts_save(
+
+					:idaccount,
+					:iduser,
+					:desaccountcode,
+					:desaccesstoken,
+					:deschannelid,
+					:desname,
+					:desemail,
+					:nrcountryarea,
+					:nrddd,
+					:nrphone,
+					:intypedoc,
+					:desdocument,
+				  	:deszipcode, 
+					:desaddress,
+					:desnumber, 
+				  	:descomplement,
+				  	:desdistrict, 
+				  	:descity, 
+				  	:desstate, 
+				  	:descountry, 
+				  	:dtbirth
+
+				);", 
+				
+				[
+
+					':idaccount'=>$this->getidaccount(),
+					':iduser'=>$this->getiduser(),
+					':desaccountcode'=>$this->getdesaccountcode(),
+					':desaccesstoken'=>$this->getdesaccesstoken(),
+					':deschannelid'=>$this->getdeschannelid(),
+					':desname'=>utf8_decode($this->getdesname()),
+					':desemail'=>$this->getdesemail(),
+					':nrcountryarea'=>$this->getnrcountryarea(),
+					':nrddd'=>$this->getnrddd(),
+					':nrphone'=>$this->getnrphone(),
+					':intypedoc'=>$this->getintypedoc(),
+					':desdocument'=>$this->getdesdocument(),
+					':deszipcode'=>$this->getdeszipcode(),			
+					':desaddress'=>utf8_decode($this->getdesaddress()),
+					':desnumber'=>$this->getdesnumber(),			
+					':descomplement'=>utf8_decode($this->getdescomplement()),
+					':desdistrict'=>utf8_decode($this->getdesdistrict()),
+					':descity'=>utf8_decode($this->getdescity()),
+					':desstate'=>utf8_decode($this->getdesstate()),
+					':descountry'=>utf8_decode($this->getdescountry()),
+					':dtbirth'=>$this->getdtbirth()
+
+				]
+			
+			);//end select
+
+			
+			$results[0]['desname'] = utf8_encode($results[0]['desname']);
+			$results[0]['desaddress'] = utf8_encode($results[0]['desaddress']);
+			$results[0]['descomplement'] = utf8_encode($results[0]['descomplement']);
+			$results[0]['desdistrict'] = utf8_encode($results[0]['desdistrict']);
+			$results[0]['descity'] = utf8_encode($results[0]['descity']);
+			$results[0]['desstate'] = utf8_encode($results[0]['desstate']);
+			$results[0]['descountry'] = utf8_encode($results[0]['descountry']);
+
+
+		}//end if
+		else
+		{
+
+
+			$results = $sql->select("
+
+				CALL sp_accounts_save(
+
+					:idaccount,
+					:iduser,
+					:desaccountcode,
+					:desaccesstoken,
+					:deschannelid,
+					:desname,
+					:desemail,
+					:nrcountryarea,
+					:nrddd,
+					:nrphone,
+					:intypedoc,
+					:desdocument,
+				  	:deszipcode, 
+					:desaddress,
+					:desnumber, 
+				  	:descomplement,
+				  	:desdistrict, 
+				  	:descity, 
+				  	:desstate, 
+				  	:descountry, 
+				  	:dtbirth
+
+				);", 
+				
+				[
+
+					':idaccount'=>$this->getidaccount(),
+					':iduser'=>$this->getiduser(),
+					':desaccountcode'=>$this->getdesaccountcode(),
+					':desaccesstoken'=>$this->getdesaccesstoken(),
+					':deschannelid'=>$this->getdeschannelid(),
+					':desname'=>$this->getdesname(),
+					':desemail'=>$this->getdesemail(),
+					':nrcountryarea'=>$this->getnrcountryarea(),
+					':nrddd'=>$this->getnrddd(),
+					':nrphone'=>$this->getnrphone(),
+					':intypedoc'=>$this->getintypedoc(),
+					':desdocument'=>$this->getdesdocument(),
+					':deszipcode'=>$this->getdeszipcode(),			
+					':desaddress'=>$this->getdesaddress(),
+					':desnumber'=>$this->getdesnumber(),			
+					':descomplement'=>$this->getdescomplement(),
+					':desdistrict'=>$this->getdesdistrict(),
+					':descity'=>$this->getdescity(),
+					':desstate'=>$this->getdesstate(),
+					':descountry'=>$this->getdescountry(),
+					':dtbirth'=>$this->getdtbirth()
+
+				]
+			
+			);//end select
+
+			
+
+		}//end else
+
+		
+
+
+		
+
+
+		if( count($results) > 0 )
+		{
+
+			$this->setData($results[0]);
+
+		}//end if
+
+
+
+	}//END save
 
 
 
@@ -134,7 +301,8 @@ class Account extends Model
 
 
 
-
+	//BACKUP
+	/*
 	public function save()
 	{
 
@@ -219,7 +387,8 @@ class Account extends Model
 
 
 
-	}//END save
+	}//END save*/
+
 
 
 

@@ -196,13 +196,13 @@ class Customer extends Model
 					':intypedoc'=>$this->getintypedoc(),
 					':desdocument'=>$this->getdesdocument(),
 					':deszipcode'=>$this->getdeszipcode(),			
-					':desaddress'=>$this->getdesaddress(),
+					':desaddress'=>utf8_decode($this->getdesaddress()),
 					':desnumber'=>$this->getdesnumber(),			
-					':descomplement'=>$this->getdescomplement(),
-					':desdistrict'=>$this->getdesdistrict(),
-					':descity'=>$this->getdescity(),
-					':desstate'=>$this->getdesstate(),
-					':descountry'=>$this->getdescountry(),
+					':descomplement'=>utf8_decode($this->getdescomplement()),
+					':desdistrict'=>utf8_decode($this->getdesdistrict()),
+					':descity'=>utf8_decode($this->getdescity()),
+					':desstate'=>utf8_decode($this->getdesstate()),
+					':descountry'=>utf8_decode($this->getdescountry()),
 					':descardcode'=>$this->getdescardcode(),
 					':desbrand'=>$this->getdesbrand(),
 					':infirst6'=>$this->getinfirst6(),
@@ -214,6 +214,12 @@ class Customer extends Model
 			);//end select
 			
 			$results[0]['desname'] = utf8_encode($results[0]['desname']);
+			$results[0]['desaddress'] = utf8_encode($results[0]['desaddress']);
+			$results[0]['descomplement'] = utf8_encode($results[0]['descomplement']);
+			$results[0]['desdistrict'] = utf8_encode($results[0]['desdistrict']);
+			$results[0]['descity'] = utf8_encode($results[0]['descity']);
+			$results[0]['desstate'] = utf8_encode($results[0]['desstate']);
+			$results[0]['descountry'] = utf8_encode($results[0]['descountry']);
 			
 
 		}//end if

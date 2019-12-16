@@ -12,14 +12,15 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( !validatePlan() ){ ?>
+                <?php if( $user["inplancontext"] == 0 ){ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+
+
+                <?php }elseif( !$validate ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-expirated");?>
                
-
-                <?php }elseif( validatePlanFree() ){ ?>
-
-                    <?php require $this->checkTemplate("dashboard-menu-free");?>
 
                 <?php }else{ ?>
 

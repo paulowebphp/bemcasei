@@ -30,68 +30,155 @@ class Payment extends Model
 
 		$sql = new Sql();
 
-		$results = $sql->select("
-
-			CALL sp_payments_update(
-
-				:idpayment,
-				:iduser,
-	            :despaymentcode,
-	            :inpaymentstatus,
-	            :inpaymentmethod,
-	            :incharge,
-	            :inrefunded,
-	            :nrinstallment,
-	            :deslinecode,
-	            :desprinthref,
-	            :desholdername,
-	            :nrholdercountryarea,
-	            :nrholderddd,
-	            :nrholderphone,
-	            :inholdertypedoc,
-	            :desholderdocument,
-	            :desholderzipcode,
-	            :desholderaddress,
-	            :desholdernumber,
-	            :desholdercomplement,
-	            :desholderdistrict,
-	            :desholdercity,
-	            :desholderstate,
-	            :dtholderbirth
-
-			);", 
-			
-			[
-
-				':idpayment'=>$this->getidpayment(),
-				':iduser'=>$this->getiduser(),
-				':despaymentcode'=>$this->getdespaymentcode(),
-				':inpaymentstatus'=>$this->getinpaymentstatus(),
-				':inpaymentmethod'=>$this->getinpaymentmethod(),
-				':incharge'=>$this->getincharge(),
-				':inrefunded'=>$this->getinrefunded(),
-				':nrinstallment'=>$this->getnrinstallment(),
-				':deslinecode'=>$this->getdeslinecode(),
-				':desprinthref'=>$this->getdesprinthref(),
-				':desholdername'=>$this->getdesholdername(),
-				':nrholdercountryarea'=>$this->getnrholdercountryarea(),
-				':nrholderddd'=>$this->getnrholderddd(),
-				':nrholderphone'=>$this->getnrholderphone(),
-				':inholdertypedoc'=>$this->getinholdertypedoc(),
-				':desholderdocument'=>$this->getdesholderdocument(),
-				':desholderzipcode'=>$this->getdesholderzipcode(),
-				':desholderaddress'=>$this->getdesholderaddress(),
-				':desholdernumber'=>$this->getdesholdernumber(),
-				':desholdercomplement'=>$this->getdesholdercomplement(),
-				':desholderdistrict'=>$this->getdesholderdistrict(),
-				':desholdercity'=>$this->getdesholdercity(),
-				':desholderstate'=>$this->getdesholderstate(),
-				':dtholderbirth'=>$this->getdtholderbirth()
-
-			]
 		
-		);//end select
 
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+
+			$results = $sql->select("
+
+				CALL sp_payments_update(
+
+					:idpayment,
+					:iduser,
+		            :despaymentcode,
+		            :inpaymentstatus,
+		            :inpaymentmethod,
+		            :incharge,
+		            :inrefunded,
+		            :nrinstallment,
+		            :deslinecode,
+		            :desprinthref,
+		            :desholdername,
+		            :nrholdercountryarea,
+		            :nrholderddd,
+		            :nrholderphone,
+		            :inholdertypedoc,
+		            :desholderdocument,
+		            :desholderzipcode,
+		            :desholderaddress,
+		            :desholdernumber,
+		            :desholdercomplement,
+		            :desholderdistrict,
+		            :desholdercity,
+		            :desholderstate,
+		            :dtholderbirth
+
+				);", 
+				
+				[
+
+					':idpayment'=>$this->getidpayment(),
+					':iduser'=>$this->getiduser(),
+					':despaymentcode'=>$this->getdespaymentcode(),
+					':inpaymentstatus'=>$this->getinpaymentstatus(),
+					':inpaymentmethod'=>$this->getinpaymentmethod(),
+					':incharge'=>$this->getincharge(),
+					':inrefunded'=>$this->getinrefunded(),
+					':nrinstallment'=>$this->getnrinstallment(),
+					':deslinecode'=>$this->getdeslinecode(),
+					':desprinthref'=>$this->getdesprinthref(),
+					':desholdername'=>utf8_decode($this->getdesholdername()),
+					':nrholdercountryarea'=>$this->getnrholdercountryarea(),
+					':nrholderddd'=>$this->getnrholderddd(),
+					':nrholderphone'=>$this->getnrholderphone(),
+					':inholdertypedoc'=>$this->getinholdertypedoc(),
+					':desholderdocument'=>$this->getdesholderdocument(),
+					':desholderzipcode'=>$this->getdesholderzipcode(),
+					':desholderaddress'=>utf8_decode($this->getdesholderaddress()),
+					':desholdernumber'=>$this->getdesholdernumber(),
+					':desholdercomplement'=>utf8_decode($this->getdesholdercomplement()),
+					':desholderdistrict'=>utf8_decode($this->getdesholderdistrict()),
+					':desholdercity'=>utf8_decode($this->getdesholdercity()),
+					':desholderstate'=>utf8_decode($this->getdesholderstate()),
+					':dtholderbirth'=>$this->getdtholderbirth()
+
+				]
+			
+			);//end select
+
+
+
+			$results[0]['desholdername'] = utf8_encode($results[0]['desholdername']);
+			$results[0]['desholderaddress'] = utf8_encode($results[0]['desholderaddress']);
+			$results[0]['desholdercomplement'] = utf8_encode($results[0]['desholdercomplement']);
+			$results[0]['desholderdistrict'] = utf8_encode($results[0]['desholderdistrict']);
+			$results[0]['desholdercity'] = utf8_encode($results[0]['desholdercity']);
+			$results[0]['desholderstate'] = utf8_encode($results[0]['desholderstate']);
+
+
+
+
+
+		}//end if
+		else
+		{
+
+			$results = $sql->select("
+
+				CALL sp_payments_update(
+
+					:idpayment,
+					:iduser,
+		            :despaymentcode,
+		            :inpaymentstatus,
+		            :inpaymentmethod,
+		            :incharge,
+		            :inrefunded,
+		            :nrinstallment,
+		            :deslinecode,
+		            :desprinthref,
+		            :desholdername,
+		            :nrholdercountryarea,
+		            :nrholderddd,
+		            :nrholderphone,
+		            :inholdertypedoc,
+		            :desholderdocument,
+		            :desholderzipcode,
+		            :desholderaddress,
+		            :desholdernumber,
+		            :desholdercomplement,
+		            :desholderdistrict,
+		            :desholdercity,
+		            :desholderstate,
+		            :dtholderbirth
+
+				);", 
+				
+				[
+
+					':idpayment'=>$this->getidpayment(),
+					':iduser'=>$this->getiduser(),
+					':despaymentcode'=>$this->getdespaymentcode(),
+					':inpaymentstatus'=>$this->getinpaymentstatus(),
+					':inpaymentmethod'=>$this->getinpaymentmethod(),
+					':incharge'=>$this->getincharge(),
+					':inrefunded'=>$this->getinrefunded(),
+					':nrinstallment'=>$this->getnrinstallment(),
+					':deslinecode'=>$this->getdeslinecode(),
+					':desprinthref'=>$this->getdesprinthref(),
+					':desholdername'=>$this->getdesholdername(),
+					':nrholdercountryarea'=>$this->getnrholdercountryarea(),
+					':nrholderddd'=>$this->getnrholderddd(),
+					':nrholderphone'=>$this->getnrholderphone(),
+					':inholdertypedoc'=>$this->getinholdertypedoc(),
+					':desholderdocument'=>$this->getdesholderdocument(),
+					':desholderzipcode'=>$this->getdesholderzipcode(),
+					':desholderaddress'=>$this->getdesholderaddress(),
+					':desholdernumber'=>$this->getdesholdernumber(),
+					':desholdercomplement'=>$this->getdesholdercomplement(),
+					':desholderdistrict'=>$this->getdesholderdistrict(),
+					':desholdercity'=>$this->getdesholdercity(),
+					':desholderstate'=>$this->getdesholderstate(),
+					':dtholderbirth'=>$this->getdtholderbirth()
+
+				]
+			
+			);//end select
+
+
+		}//end else
 
 		
 

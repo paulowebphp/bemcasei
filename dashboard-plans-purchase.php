@@ -4292,7 +4292,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 	
 
 
-	if ( (int)$invoucher == 0 )
+	if ( (int)$invoucher == 1 )
 	{
 
 		$inplancontext = substr($plan->getinplancode(), 0, 1);
