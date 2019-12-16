@@ -4103,6 +4103,8 @@ class User extends Model
 
 		//$dtplanend->setTimezone($timezone);
 
+
+		
 		
 
 		if( (int)$inautostatus == 0 )
@@ -4126,7 +4128,7 @@ class User extends Model
 			{
 				# code...
 				
-
+					
 
 				//Pagamento com Cartão
 				

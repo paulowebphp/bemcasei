@@ -5118,11 +5118,16 @@ exit;
 		$user->setinplan((int)$plan->getinplancode());
 		$user->setinplancontext((int)$inplancontext);
 
-		$user->update();
 
 		//$user->setToSession();
 
 	}//end if
+	else
+	{
+
+		$user->setinplancontext(1);
+		
+	}//end else
 
 
 
@@ -5134,6 +5139,7 @@ exit;
 	//$user->update();
 
 	$user->setToSession();
+	$user->update();
 
 
 	if(isset($_SESSION['siteCheckoutValues'])) unset($_SESSION['siteCheckoutValues']);

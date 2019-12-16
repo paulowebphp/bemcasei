@@ -365,8 +365,7 @@ $app->get( "/dashboard", function()
 	$validate = User::validatePlanDashboard( $user );
 
 
-
-
+	
 
 
 	$message = new Message();

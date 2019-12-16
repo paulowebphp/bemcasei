@@ -4303,6 +4303,12 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 		
 
 	}//end if
+	else
+	{
+
+		$user->setinplancontext(1);
+		
+	}//end else
 	
 	/*
 	else
@@ -4322,6 +4328,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 	
 	//$user->setdtplanend($plan->getdtend());
 
+	
 
 	
 	$user->update();

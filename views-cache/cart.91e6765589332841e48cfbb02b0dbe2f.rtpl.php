@@ -138,20 +138,8 @@
 
 
 
-<?php if( !$validate ){ ?>
-<section class="domain">
-    <div class="container-fluid">
 
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-info alert-domain" role="alert">
-                    <h1>Carrinho Desabilitada</h1>
-                </div><!--alert-->
-            </div><!--col-->
-        </div><!--row-->
-    </div>
-</section>
-<?php }elseif( $user["inplancontext"] == 0 ){ ?>
+<?php if( $user["inplancontext"] == 0 ){ ?>
 <section class="domain">
     <div class="container-fluid">
 
@@ -159,6 +147,21 @@
             <div class="col-12">
                 <div class="alert alert-info alert-domain" role="alert">
                     <h1>Para liberar as funcionalidades de sua Loja é necessário adquirir um plano</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+    </div>
+</section>
+
+
+<?php }elseif( !$validate ){ ?>
+<section class="domain">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Carrinho Desabilitada</h1>
                 </div><!--alert-->
             </div><!--col-->
         </div><!--row-->

@@ -236,20 +236,8 @@
 
     
 </style>
-<?php if( !$validate ){ ?>
-<section class="domain">
-    <div class="container-fluid">
 
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-info alert-domain" role="alert">
-                    <h1>Loja Desabilitada</h1>
-                </div><!--alert-->
-            </div><!--col-->
-        </div><!--row-->
-    </div>
-</section>
-<?php }elseif( $user["inplancontext"] == 0 ){ ?>
+<?php if( $user["inplancontext"] == 0 ){ ?>
 <section class="domain">
     <div class="container-fluid">
 
@@ -262,6 +250,22 @@
         </div><!--row-->
     </div>
 </section>
+
+
+<?php }elseif( !$validate ){ ?>
+<section class="domain">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Loja Desabilitada</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+    </div>
+</section>
+
 
 <?php }else{ ?>
 

@@ -236,21 +236,9 @@
 
     
 </style>
-{if="!$validate"}
-<section class="domain">
-    <div class="container-fluid">
 
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-info alert-domain" role="alert">
-                    <h1>Confirmação de Presença Desabilitada</h1>
-                </div><!--alert-->
-            </div><!--col-->
-        </div><!--row-->
-    </div>
-</section>
 
-{elseif="$user.inplancontext == 0"}
+{if="$user.inplancontext == 0"}
 <section class="domain">
     <div class="container-fluid">
 
@@ -264,6 +252,19 @@
     </div>
 </section>
 
+{elseif="!$validate"}
+<section class="domain">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Confirmação de Presença Desabilitada</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+    </div>
+</section>
 
 {else}
 

@@ -237,7 +237,23 @@
     
 </style>
 
-{if="!$validate"}
+
+{if="$user.inplancontext == 0"}
+<section class="domain">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Para liberar as funcionalidades do Mural é necessário adquirir um plano</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+    </div>
+</section>
+
+
+{elseif="!$validate"}
 <section class="domain">
     <div class="container-fluid">
 
@@ -251,19 +267,7 @@
     </div>
 </section>
 
-{elseif="$user.inplancontext == 0"}
-<section class="domain">
-    <div class="container-fluid">
 
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-info alert-domain" role="alert">
-                    <h1>Para liberar as funcionalidades do Mural é necessário adquirir um plano</h1>
-                </div><!--alert-->
-            </div><!--col-->
-        </div><!--row-->
-    </div>
-</section>
 
 {else}
 
