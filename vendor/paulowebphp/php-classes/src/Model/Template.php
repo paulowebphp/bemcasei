@@ -727,60 +727,60 @@ class Template extends Model
 				'0'=>[
 
 
-					'desvideo'=>'Ai, Amor - Ana Vitória',
-					'desdescription'=>'Lembrando do primeiro show que fomos, quando NINGUÉM conhecia AnaVitória! Inesquecível para nós.',
-					'desvideocode'=>'rOemX8-L2CI',
-					'desurl'=>'youtube.com/watch?v=rOemX8-L2CI'
+					'desvideo'=>'Mania de você - Rita Lee',
+					'desdescription'=>'Lembrando do primeiro show que fomos juntos, foi dessa diva absoluta! Inesquecível!',
+					'desvideocode'=>'j5XF9YBuVnQ',
+					'desurl'=>'youtube.com/watch?v=j5XF9YBuVnQ'
 
 				],
 
 				'1'=>[
 
 
-					'desvideo'=>'Hymn for the Weekend - Coldplay',
-					'desdescription'=>'A razão pela qual nos conhecemos: Coldplay!',
-					'desvideocode'=>'YykjpeuMNEk',
-					'desurl'=>'youtube.com/watch?v=YykjpeuMNEk'
+					'desvideo'=>'Perfect - Ed Sheeran',
+					'desdescription'=>'A razão pela qual nos conhecemos: Ed Sheeran!',
+					'desvideocode'=>'2Vv-BfVoq4g',
+					'desurl'=>'youtube.com/watch?v=2Vv-BfVoq4g'
 
 				],
 
 				'2'=>[
 
 
-					'desvideo'=>'Transbordar - Tchelo (feat. Mel)',
-					'desdescription'=>'Aquela música que é a mais pura verdade: nada melhor que alguém te amar por aquilo que você é!',
-					'desvideocode'=>'ImBapIbG2R4',
-					'desurl'=>'youtube.com/watch?v=ImBapIbG2R4'
+					'desvideo'=>'You Are Always On My Mind - Elvis Presley',
+					'desdescription'=>'Sempre que escuto essa música, lembro de nós! Porque você literalmente sempre, sempre está na minha mente!',
+					'desvideocode'=>'u9sRJ-eOHnc',
+					'desurl'=>'youtube.com/watch?v=u9sRJ-eOHnc'
 
 				],
 
 				'3'=>[
 
 
-					'desvideo'=>'Lexa - Só depois do Carnaval',
-					'desdescription'=>'O hino de todo solteiro, vai bombar na pista! Não é nossa realidade, mas dançar vale com qualquer música!',
-					'desvideocode'=>'b78_dITFwy8',
-					'desurl'=>'youtube.com/watch?v=b78_dITFwy8'
+					'desvideo'=>'Viva la Vida - Coldplay',
+					'desdescription'=>'Foi durante essa música que a gente se olhou pela primeira vez, e você veio até mim com aquele sorriso enigmático e...... o resto é história! Te amo!',
+					'desvideocode'=>'27xybIXe0Fk',
+					'desurl'=>'youtube.com/watch?v=27xybIXe0Fk'
 
 				],
 
 				'4'=>[
 
 
-					'desvideo'=>'Glória Groove - YoYo (feat. IZA)',
-					'desdescription'=>'Falando em dançar, chama essa Rainha pra gente se acabar!',
-					'desvideocode'=>'GKfMYbbWEJY',
-					'desurl'=>'youtube.com/watch?v=GKfMYbbWEJY'
+					'desvideo'=>'Velha Infância - Tribalistas',
+					'desdescription'=>'Essa música marco tantos momentos! Ao escutá-la passa um filme na minha cabeça!',
+					'desvideocode'=>'zwqrmEMB0wc',
+					'desurl'=>'youtube.com/watch?v=zwqrmEMB0wc'
 
 				],
 
 				'5'=>[
 
 
-					'desvideo'=>'Pablo Vittar - Flash Pose',
-					'desdescription'=>'Agora a Pabllo está perto demais, arrasando na nossa festa e fazendo parte da nossa vida!',
-					'desvideocode'=>'rZVhR399IoA',
-					'desurl'=>'youtube.com/watch?v=rZVhR399IoA'
+					'desvideo'=>'Sentimental - Los Hermanos',
+					'desdescription'=>'Fico muito sentimental quando penso em você!',
+					'desvideocode'=>'n2nMv-eULfg',
+					'desurl'=>'https://www.youtube.com/watch?v=n2nMv-eULfg'
 
 				]
 
