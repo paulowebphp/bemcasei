@@ -1626,8 +1626,8 @@ public function getFirstPlan( $iduser )
 
 
 
-
-
+	//BACKUP
+	/*
 	public static function getPlansFullArray()
 	{
 
@@ -1898,6 +1898,7 @@ public function getFirstPlan( $iduser )
 
 	}//END getPlansFullArray
 
+	*/
 
 
 
@@ -1905,8 +1906,275 @@ public function getFirstPlan( $iduser )
 
 
 
+	public static function getPlansFullArray()
+	{
+
+		
+		$plan = [
+
+			'0'=>  
+				
+				[
+
+					'vlprice'=>'0.00', 
+					'inperiod'=>'10', 
+					'desperiod'=>'dias', 
+					'inplancontext'=>'0', 
+					'inplancode'=>'0',
+					'desvlprice'=>'',
+					'desplan'=>Rule::PLAN_NAME_FREE
+				],
 
 
+
+
+			'101'=>
+				[
+
+					'vlprice'=>'25.90',  
+					'inperiod'=>'1', 
+					'desperiod'=>'mês', 
+					'inplancontext'=>'1', 
+					'inplancode'=>'101',
+					'desvlprice'=>'vinte e cinco reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_BASIC
+				],
+				
+
+
+			'103'=>
+				 [
+					'vlprice'=>'48.90',
+					'inperiod'=>'3',
+					'desperiod'=>'meses',
+					'inplancontext'=>'1',  
+					'inplancode'=>'103',
+					'desvlprice'=>'quarenta e oito reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_BASIC
+				],
+				
+
+
+			'104'=>
+				[
+					'vlprice'=>'58.90',
+					'inperiod'=>'4',
+					'desperiod'=>'meses', 
+					'inplancontext'=>'1', 
+					'inplancode'=>'104',
+					'desvlprice'=>'cinquenta e oito reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_BASIC
+				],
+				
+
+
+			'106'=>
+				[
+					'vlprice'=>'79.90',
+					'inperiod'=>'6',
+					'desperiod'=>'meses', 
+					'inplancontext'=>'1', 
+					'inplancode'=>'106',
+					'desvlprice'=>'setenta e nove reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_BASIC
+				],
+				
+
+
+			'109'=>
+				[
+					'vlprice'=>'98.90',
+					'inperiod'=>'9',
+					'desperiod'=>'meses',
+					'inplancontext'=>'1', 
+					'inplancode'=>'109',
+					'desvlprice'=>'noventa e oito reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_BASIC
+				],
+				
+
+
+			'112'=>
+				# code...
+				[
+					'vlprice'=>'126.90',
+					'inperiod'=>'12', 
+					'desperiod'=>'meses',
+					'inplancontext'=>'1', 
+					'inplancode'=>'112',
+					'desvlprice'=>'cento e vinte e seis reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_BASIC
+				],
+				
+
+
+			'201'=>
+				[
+					'vlprice'=>'62.90',
+					'inperiod'=>'1',
+					'desperiod'=>'mês', 
+					'inplancontext'=>'2', 
+					'inplancode'=>'201',
+					'desvlprice'=>'sessenta e dois reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_INTERMEDIATE
+				],
+				
+
+
+			'203'=>
+				[
+					'vlprice'=>'78.90',
+					'inperiod'=>'3',
+					'desperiod'=>'meses', 
+					'inplancontext'=>'2',
+					'inplancode'=>'203',
+					'desvlprice'=>'setenta e oito reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_INTERMEDIATE
+				],
+				
+
+
+			'204'=>
+				[
+					'vlprice'=>'89.90',
+					'inperiod'=>'4',
+					'desperiod'=>'meses', 
+					'inplancontext'=>'2',
+					'inplancode'=>'204',
+					'desvlprice'=>'oitenta e nove reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_INTERMEDIATE
+				],
+				
+
+
+			'206'=>
+
+				[
+					'vlprice'=>'109.90',
+					'inperiod'=>'6',
+					'desperiod'=>'meses', 
+					'inplancontext'=>'2',
+					'inplancode'=>'206',
+					'desvlprice'=>'cento e nove reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_INTERMEDIATE
+				],
+				
+
+
+			'209'=>
+				[
+					'vlprice'=>'136.90',
+					'inperiod'=>'9',
+					'desperiod'=>'meses', 
+					'inplancontext'=>'2',
+					'inplancode'=>'209',
+					'desvlprice'=>'cento e trinta e seis reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_INTERMEDIATE
+				],
+				
+
+
+			'212'=>
+				[
+					'vlprice'=>'164.90',
+					'inperiod'=>'12',
+					'desperiod'=>'meses', 
+					'inplancontext'=>'2',
+					'inplancode'=>'212',
+					'desvlprice'=>'cento e sessenta e quatro reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_INTERMEDIATE
+				],
+				
+
+
+			'301'=>
+				[
+					'vlprice'=>'89.90',
+					'inperiod'=>'1',
+					'desperiod'=>'mês', 
+					'inplancontext'=>'3',
+					'inplancode'=>'301',
+					'desvlprice'=>'oitenta e nove reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_ADVANCED
+				],
+				
+
+
+			'303'=>
+				[
+					'vlprice'=>'109.90',
+					'inperiod'=>'3',
+					'desperiod'=>'meses', 
+					'inplancontext'=>'3',
+					'inplancode'=>'303',
+					'desvlprice'=>'noventa e nove reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_ADVANCED
+				],
+				
+
+
+			'304'=>
+				[
+					'vlprice'=>'119.90',
+					'inperiod'=>'4',
+					'desperiod'=>'meses', 
+					'inplancontext'=>'3',
+					'inplancode'=>'304',
+					'desvlprice'=>'cento e dezenove reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_ADVANCED
+				],
+				
+
+
+			'306'=>
+				[
+					'vlprice'=>'143.90',
+					'inperiod'=>'6',
+					'desperiod'=>'meses', 
+					'inplancontext'=>'3',
+					'inplancode'=>'306',
+					'desvlprice'=>'cento e quarenta e três reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_ADVANCED
+
+				],
+				
+
+
+			'309'=>
+				[
+					'vlprice'=>'162.90',
+					'inperiod'=>'9',
+					'desperiod'=>'meses', 
+					'inplancontext'=>'3',
+					'inplancode'=>'309',
+					'desvlprice'=>'cento e sessenta e dois reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_ADVANCED
+				],
+				
+
+
+			'312'=>
+				[
+					'vlprice'=>'199.90',
+					'inperiod'=>'12', 
+					'desperiod'=>'meses',
+					'inplancontext'=>'3',
+					'inplancode'=>'312',
+					'desvlprice'=>'cento e noventa e nove reais e noventa centavos',
+					'desplan'=>Rule::PLAN_NAME_ADVANCED
+				]
+				
+				
+
+		];//end array
+		
+			
+
+		return $plan;
+
+
+
+	}//END getPlansFullArray
 
 
 
