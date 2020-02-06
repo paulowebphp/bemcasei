@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="/res/css/site/stylesheet-mobile.css">
     <link rel="stylesheet" type="text/css" href="/res/css/site/print.css" media="print">
 
-    <link rel="icon" type="image/png" href="/res/images/favicon/site/favicon.png" />
+    <link rel="icon" type="image/png" href="/res/images/favicon/site/favicon.ico" />
 
 
 
@@ -40,7 +40,7 @@
       "@context": "http://schema.org/",
       "@type": "Service",
       "serviceType": "Software as a Service",
-      "logo": "https://bemcasei.com.br/res/images/logo/bem-casei-logo-square.jpg",
+      "logo": "https://bemcasei.com.br/res/images/favicon/site/favicon.ico",
       "termsOfService": "https://bemcasei.com.br/termos-uso",
       "category": "Service",
       "areaServed": {
