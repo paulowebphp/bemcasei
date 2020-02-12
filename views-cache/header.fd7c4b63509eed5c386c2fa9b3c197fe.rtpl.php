@@ -12,7 +12,7 @@
 
 
     <title><?php echo getDashPageConfig('pagetitle'); ?></title>
-    <link rel="icon" type="image/png" href="/res/images/favicon/dashboard/favicon.png"/>
+    <link rel="icon" type="image/png" href="/res/images/favicon/dashboard/favicon.ico"/>
     <link rel="stylesheet" media="screen" type="text/css" href="/res/colorpicker/css/colorpicker.css" />
     <link rel="stylesheet" type="text/css" href="/res/css/bootstrap.min.css">
     <!-- Font Awesome -->

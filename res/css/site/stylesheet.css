@@ -856,8 +856,25 @@ label{
 #site-features h3{
 	color: #555;
 }
+#site-features h2{
+	color: #03A9F4;
+}
 .features-details{
 	padding: 5%;
+}
+#site-features ul li{
+	list-style: none;
+}
+#site-features i{
+	color: #03A9F4;
+	font-weight: bolder;
+}
+.table-simulate{
+
+	padding:1% 2%;
+}
+.grey{
+	background:#f2f2f2;
 }
 /********************** SITE FEATURES **************************/
 /********************** SITE FEATURES **************************/

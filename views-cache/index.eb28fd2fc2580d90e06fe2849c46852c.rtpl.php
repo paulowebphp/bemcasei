@@ -45,158 +45,121 @@
 
 
 
-<section id="features">
-
-    <div class="container-fluid">
 
 
-        <div class="row bottom3">
 
-            <div class="col-md-12 text-center">
 
-                <h2>SITE DE CASAMENTO</h2>
 
-            </div><!-- col-xs-12-->
+<section id="site-features" class="site">
 
-        </div><!-- row-->
+    <div class="container">
+        
+        <div class="row bottom2 centralizer">
+     
+            <div class="col-md-4 text-center">
+                
+                <div class="bottom2">
+                    <h2>
+                        FUNCIONALIDADES DO SITE DE CASAMENTO
+                    </h2>
+                </div>
+                
+                               
+                
+
+            </div><!--col-->
+            
+        </div><!--row-->
+
 
 
 
 
         <div class="row">
+            
+            <div class="col-md-6">
+
+                <div class="bottom3">
+
+                    <ul> 
+
+                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Funciona no celular, tablet e notebook</li> 
+                        
+                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Lista de Presentes convertida em Dinheiro</li>
+
+                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Divulgue detalhes do Seu Casamento (Data, Local, Horário, Trajes etc.)</li>
 
 
+                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Templates Modernos</li>
 
-            <div class="col-md-3 text-center">
+                        
 
-                <div class="media">
+                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Confirmação de Presença On-Line</li>
 
-                    <div class="text-center thumbnail-center">
+                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Contagem Regressiva pra Data do Casamento</li>
 
+                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Galeria de Fotos</li>
 
-                        <img src="/res/images/feature3.jpg" class="media-object">
+                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Habilitar e Desabilitar Páginas</li>
 
-                        <div class="media-body">
+                        
 
-                            <h3 class="media-heading feature-box">LISTA DE PRESENTES EM DINHEIRO</h3>
+                    </ul>
 
-                            <p>Crie uma lista de presentes, envie para seus convidados e converta os valores recebidos
-                                em dinheiro</p>
+                </div><!--gifts-section1-->
 
-                        </div>
-
-                    </div>
-
-
-                </div>
-                <!--media-->
 
             </div>
-            <!--col-lg-3-->
+
+            
 
 
+            <div class="col-md-6">
+
+                <div class="bottom3">
+
+                    <ul> 
+                        
+
+                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Eventos (Aniversário, Ensaios Pra Valsa, entre outros)</li> 
+                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Traça Rotas para os Convidados com Google Maps URL</li>
+    
+    
+                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Galeria de Vídeos</li>
+                        
+                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Mural de Mensagens dos Amigos e Família</li>
+                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Coloque Suas Redes Sociais no Rodapé</li>
+                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Página de Padrinhos e Madrinhas</li>
+                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Fornecedores e Listas de Fora</li>
+    
+                    </ul>
+    
+                </div><!--col-->
+
+            </div><!--col-->
 
 
-            <div class="col-md-3 text-center">
-
-                <div class="media">
-
-                    <div class="text-center thumbnail-center">
-
-
-                        <img src="/res/images/feature2.jpg" class="media-object">
-
-                        <div class="media-body">
-
-                            <h3 class="media-heading feature-box">LINDOS TEMPLATES</h3>
-
-                            <p>Encante seus convidados com um site de casamento elegante e atraente</p>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-                <!--media-->
-
-            </div>
-            <!--col-lg-3-->
-
-
-
-
-            <div class="col-md-3 text-center">
-
-                <div class="media">
-
-                    <div class="text-center thumbnail-center">
-
-
-                        <img src="/res/images/feature1.jpg" class="media-object">
-
-                        <div class="media-body">
-
-                            <h3 class="media-heading feature-box">CONFIRMAÇÃO DE PRESENÇA ON-LINE</h3>
-
-                            <p>Organize e receba de forma prática e confortável as confirmações de presença</p>
-
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-                <!--media-->
-
-            </div>
-            <!--col-lg-3-->
+          
+       
+               
+            
+        </div><!--row-->
 
 
 
 
 
 
-
-
-
-
-
-
-            <div class="col-md-3 text-center">
-
-                <div class="media">
-
-                    <div class="text-center thumbnail-center">
-
-
-                        <img src="/res/images/feature4.jpg" class="media-object">
-
-                        <div class="media-body">
-
-                            <h3 class="media-heading feature-box">MURAL DE RECADOS</h3>
-
-                            <p>Receba mensagens de felicitações de seus familiares e amigos num mural</p>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-                <!--media-->
-
-            </div>
-            <!--col-lg-3-->
-
-        </div>
-        <!--row-->
-
-    </div>
-    <!--container-->
+    </div><!--container-->
 
 </section>
+
+
+
+
+
+
+
 
 
 
@@ -211,17 +174,19 @@
 
             <div class="col-md-6 text-center">
 
-                <p>
-                    Crie sua Lista e receba seus presentes em dinheiro de maneira prática e fácil, com a moderna Lista
-                    de Presentes do Bem Casei!<br>
-                    Comodidade para o casal, segurança e confiabilidade para os convidados.
-                </p>
+            
 
-            </div>
-            <!--col-->
+                <div class="row bottom1 centralizer">
+                    <p>
+                        Crie uma Lista e receba seus presentes em <span style="color:#03a9f4;font-weight:normal;">dinheiro</span> para usar como quiser!
+                    </p>
 
+                </div>
 
-            <div class="col-md-6 text-center">
+                <div class="row bottom3 centralizer">
+    
+                    <p>Praticidade, segurança e confiabilidade para ajudar a tornar sua festa de debutante um sucesso!</p>
+                </div>
 
 
                 <div class="row bottom2">
@@ -234,11 +199,34 @@
 
                 </div>
 
+            </div>
+            <!--col-->
+
+
+            <div class="col-md-6 text-center">
+
+
+                <div class="row bottom3 centralizer">
+
+                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Tarifa Total de <span style="color:#03a9f4;font-weight:normal;">4,99%</span></p>
+                    
+                    
+                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Transferências <span style="color:#03a9f4;font-weight:normal;">GRATUITAS</span> para Conta Bancária</p>
+
+                    
+
+                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Escolha Quem Arca com as Tarifas: Você ou o Convidado</p>
+
+                </div>
+
+
+                
+
                 <div class="row bottom2">
 
                     <div class="col-md-12">
 
-                        <a href="/planos"><button type="button" class="button1">Criar Lista</button></a>
+                        <a href="/planos"><button type="button" class="button1">Planos</button></a>
 
                     </div>
 
