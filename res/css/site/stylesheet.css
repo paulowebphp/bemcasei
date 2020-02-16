@@ -492,7 +492,7 @@ label{
 	color: #fff;
 	border: 1px solid #fff;
 	background: #ffffff66;
-	text-shadow: #7e7e7e 0.1em 0.1em 0.2em;
+	text-shadow: #767676 0.1em 0.1em 0.2em;
 	font-family: 'TheHeartOfEverything';
 }
 .button1:hover{
@@ -662,13 +662,13 @@ label{
 	font-family: 'TheHeartOfEverything';
 	color: #fff;
 	font-size: 4rem;
-	text-shadow: #7e7e7e 0.1em 0.1em 0.2em;
+	text-shadow: #767676 0.1em 0.1em 0.2em;
 }
 #banner h3 {
 	color: #fff;
-	font-size: 2.5rem;
-	font-weight: bolder;
-	text-shadow: #7e7e7e 0.1em 0.1em 0.2em;
+	font-size: 1.9rem;
+	font-weight: lighter;
+	text-shadow: #767676 0.1em 0.1em 0.2em;
 }
 
 /********************************* BANNER *****************************************/
@@ -1337,7 +1337,7 @@ label{
 #create-list p{
 	font-size: 2rem;
 	font-weight: bolder;
-	text-shadow: #7e7e7e 0.1em 0.1em 0.2em;
+	text-shadow: #767676 0.1em 0.1em 0.2em;
 }
 
 

@@ -27,10 +27,10 @@ class PageConfig extends Model
 
 
 
-	const METADESCRIPTION_MAIN = 'Bem Casei, o site de casamento mais elegante do Brasil! Ajudamos você a promover este evento máximo em sua vida! Teste 10 dias grátis!';
+	const METADESCRIPTION_MAIN = 'Bem Casei Site Casamento. Por Que Seguir o Comum? Use um Site de Casamento Diferenciado. Venha Conferir e Teste por 10 Dias Gratuitamente!';
 
 
-	const PAGETITLE_MAIN = 'Bem Casei | O site de casamento mais elegante do Brasil!';
+	const PAGETITLE_MAIN = 'Bem Casei';
 
 
 
@@ -58,7 +58,7 @@ class PageConfig extends Model
 			'site-casamento'=>[
 
 				'pagetitle'=>'Site de Casamento | Bem Casei',
-				'metadescription'=>'Funcionalidades incríveis para criar o seu site de casamento e ter acesso a todas as suas comodidades! Confira já!',
+				'metadescription'=>'Funcionalidades incríveis para Criar o seu Site de Casamento e Usufruir de Todas as suas Comodidades! Confira Já!',
 				'noindex'=>0
 
 
@@ -67,7 +67,7 @@ class PageConfig extends Model
 			'lista-presentes'=>[
 
 				'pagetitle'=>'Lista de Presentes | Bem Casei',
-				'metadescription'=>'Crie sua Lista de Presentes Virtuais, envie para seus convidados, receba os valores em dinheiro e transfira gratuitamente para sua conta bancária!',
+				'metadescription'=>'Crie sua Lista e Receba Presentes em Dinheiro Para Usar Como Quiser! Os Saques São Gratuitos! Confira! ',
 				'noindex'=>0
 
 
@@ -76,7 +76,7 @@ class PageConfig extends Model
 			'tarifas-condicoes'=>[
 
 				'pagetitle'=>'Tarifas e Condições | Bem Casei',
-				'metadescription'=>'A Lista de Presentes do Bem Casei tem taxas ótimas. E você escolhe quem arca com as tarifas: você ou o convidado. Venha conferir!',
+				'metadescription'=>'Nossa Lista de Presentes Tem Ótimas Tarifas. E Você Escolhe Quem Arca Com Elas: Você ou o Convidado! Venha Conferir!',
 				'noindex'=>0
 
 
@@ -85,7 +85,7 @@ class PageConfig extends Model
 			'quem-somos'=>[
 
 				'pagetitle'=>'Quem Somos | Bem Casei',
-				'metadescription'=>'O Bem Casei é o caçula entre os sites de casamento, porém, se destaca por oferecer estilo, transparência e qualidade. Confira agora!',
+				'metadescription'=>'Por Que Seguir o Comum? Use um Site de Casamento Diferenciado. Visite-Nos Agora e Veja Você Mesmo!',
 				'noindex'=>0
 
 
@@ -94,7 +94,7 @@ class PageConfig extends Model
 			'modelos-templates'=>[
 
 				'pagetitle'=>'Modelos de Templates | Bem Casei',
-				'metadescription'=>'O Bem Casei tem lindos modelos de templates, com visual moderno e totalmente adaptados para computador, tablet e celular. Confira já!',
+				'metadescription'=>'Encante Seus Amigos e Familiares Com Um Site Com Visual Diferenciado E De Bom Gosto. Confira Já!',
 				'noindex'=>0
 
 
@@ -103,7 +103,7 @@ class PageConfig extends Model
 			'criar-site'=>[
 
 				'pagetitle'=>'Criar Site | Bem Casei',
-				'metadescription'=>'Crie seu site de casamento agora mesmo. São inúmeras funcionalidades para ajudar você a promover este evento máximo em sua vida! Confira já!',
+				'metadescription'=>'Crie seu Site de Casamento Agora Mesmo! São Inúmeras Funcionalidades para Ajudar Você a Promover Este Evento Máximo em Sua Vida! Confira já!',
 				'noindex'=>0
 
 

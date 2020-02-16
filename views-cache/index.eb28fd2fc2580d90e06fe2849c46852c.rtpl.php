@@ -11,13 +11,13 @@
                 <div class="text-center">
 
                     <div class="bottom1">
-                        <h1>Bem Casei</h1>
+                        <h1>Bem Casei Site de Casamento</h1>
 
                     </div>
                     <!--inner-text-introduction-->
 
                     <div class="bottom2">
-                        <h3>O site de casamento mais elegante do Brasil!</h3>
+                        <h3>Por que seguir o comum? Seja diferenciado.</h3>
                     </div>
 
                     <a href="/criar-site"><button type="button" class="button1">Criar meu Site</button></a>
@@ -178,7 +178,7 @@
 
                 <div class="row bottom1 centralizer">
                     <p>
-                        Crie uma Lista e receba seus presentes em <span style="color:#03a9f4;font-weight:normal;">dinheiro</span> para usar como quiser!
+                        Crie uma Lista e receba seus presentes em <span style="color:#f0ff00;font-weight:normal;">dinheiro</span> para usar como quiser!
                     </p>
 
                 </div>
@@ -208,10 +208,10 @@
 
                 <div class="row bottom3 centralizer">
 
-                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Tarifa Total de <span style="color:#03a9f4;font-weight:normal;">4,99%</span></p>
+                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Tarifa Total de <span style="color:#f0ff00;font-weight:normal;">4,99%</span></p>
                     
                     
-                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Transferências <span style="color:#03a9f4;font-weight:normal;">GRATUITAS</span> para Conta Bancária</p>
+                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Transferências <span style="color:#f0ff00;font-weight:normal;">GRATUITAS</span> para Conta Bancária</p>
 
                     
 
