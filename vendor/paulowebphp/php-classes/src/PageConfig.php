@@ -27,10 +27,12 @@ class PageConfig extends Model
 
 
 
-	const METADESCRIPTION_MAIN = 'Bem Casei Site Casamento. Por Que Seguir o Comum? Use um Site de Casamento Diferenciado. Venha Conferir e Teste por 10 Dias Gratuitamente!';
+	//const METADESCRIPTION_MAIN = 'Bem Casei Site Casamento. Por Que Seguir o Comum? Use um Site de Casamento Diferenciado. Venha Conferir e Teste por 10 Dias Gratuitamente!';
+
+	const METADESCRIPTION_MAIN = 'Por Que Seguir o Comum? Use um Site de Casamento Diferenciado e que sua família e seus convidados vão amar! Confira e faça um teste de 10 Dias Gratuitamente!';
 
 
-	const PAGETITLE_MAIN = 'Bem Casei';
+	const PAGETITLE_MAIN = 'Bem Casei | Site de Casamento';
 
 
 
@@ -58,7 +60,7 @@ class PageConfig extends Model
 			'site-casamento'=>[
 
 				'pagetitle'=>'Site de Casamento | Bem Casei',
-				'metadescription'=>'Funcionalidades incríveis para Criar o seu Site de Casamento e Usufruir de Todas as suas Comodidades! Confira Já!',
+				'metadescription'=>'Tenha um site de casamento com mais de 20 funcionalidades incríveis pra você configurar e enviar pra sua família e seus convidados! Confira!',
 				'noindex'=>0
 
 
@@ -67,7 +69,7 @@ class PageConfig extends Model
 			'lista-presentes'=>[
 
 				'pagetitle'=>'Lista de Presentes | Bem Casei',
-				'metadescription'=>'Crie sua Lista e Receba Presentes em Dinheiro Para Usar Como Quiser! Os Saques São Gratuitos! Confira! ',
+				'metadescription'=>'Receba Presentes em Dinheiro Para Usar Como Quiser! Os Saques São Gratuitos e nossa Lista é totalmente segura! Confira!',
 				'noindex'=>0
 
 
@@ -113,7 +115,7 @@ class PageConfig extends Model
 			'planos'=>[
 
 				'pagetitle'=>'Planos | Bem Casei',
-				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
+				'metadescription'=>'Compare os planos do Bem Casei, ou faça um teste drive de 10 dias gratuitamente! Nossos preços e condições estão excelentes! Venha conferir!',
 				'noindex'=>0
 
 
