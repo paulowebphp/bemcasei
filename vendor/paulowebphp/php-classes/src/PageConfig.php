@@ -53,7 +53,8 @@ class PageConfig extends Model
 				'pagetitle'=>PageConfig::PAGETITLE_MAIN,
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>0,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 
 			],
@@ -63,7 +64,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Site de Casamento | Bem Casei',
 				'metadescription'=>'Tenha um site de casamento com mais de 20 funcionalidades incríveis pra você configurar e enviar pra sua família e seus convidados! Confira!',
 				'noindex'=>0,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 
 			],
@@ -73,7 +75,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Lista de Presentes | Bem Casei',
 				'metadescription'=>'Receba Presentes em Dinheiro Para Usar Como Quiser! Os Saques São Gratuitos e nossa Lista é totalmente segura! Confira!',
 				'noindex'=>0,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 
 			],
@@ -83,7 +86,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Tarifas e Condições | Bem Casei',
 				'metadescription'=>'Nossa Lista de Presentes Tem Ótimas Tarifas. E Você Escolhe Quem Arca Com Elas: Você ou o Convidado! Venha Conferir!',
 				'noindex'=>0,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 
 			],
@@ -93,7 +97,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Quem Somos | Bem Casei',
 				'metadescription'=>'Por Que Seguir o Comum? Use um Site de Casamento Diferenciado. Visite-Nos Agora e Veja Você Mesmo!',
 				'noindex'=>0,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 
 			],
@@ -103,7 +108,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Modelos de Templates | Bem Casei',
 				'metadescription'=>'Encante Seus Amigos e Familiares Com Um Site Com Visual Diferenciado E De Bom Gosto. Confira Já!',
 				'noindex'=>0,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 
 			],
@@ -113,7 +119,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Criar Site | Bem Casei',
 				'metadescription'=>'Crie seu Site de Casamento Agora Mesmo! São Inúmeras Funcionalidades para Ajudar Você a Promover Este Evento Máximo em Sua Vida! Confira já!',
 				'noindex'=>0,
-				'recaptcha'=>1
+				'recaptcha'=>1,
+				'card-payment-js'=>0
 
 
 			],
@@ -124,7 +131,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Planos | Bem Casei',
 				'metadescription'=>'Compare os planos do Bem Casei, ou faça um teste drive de 10 dias gratuitamente! Nossos preços e condições estão excelentes! Venha conferir!',
 				'noindex'=>0,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 
 			],
@@ -135,7 +143,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Política de Privacidade | Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>0,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 			],
 
@@ -146,7 +155,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Termos de Uso | Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 
 			],
@@ -157,7 +167,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Termos da Lista de Presentes Virtuais | Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 
 			],
@@ -169,7 +180,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Cadastrar | Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 			],
 
@@ -179,7 +191,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Carrinho | Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 
 			],
@@ -189,7 +202,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Checkout | Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>1
 
 
 			],
@@ -199,7 +213,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Buscar | Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 
 			],
@@ -209,7 +224,8 @@ class PageConfig extends Model
 				'pagetitle'=>'Login | Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 
 			],
@@ -219,7 +235,8 @@ class PageConfig extends Model
 				'pagetitle'=>PageConfig::PAGETITLE_MAIN,
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 
 			],
@@ -229,7 +246,8 @@ class PageConfig extends Model
 				'pagetitle'=>PageConfig::PAGETITLE_MAIN,
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
-				'recaptcha'=>0
+				'recaptcha'=>0,
+				'card-payment-js'=>0
 
 
 			]
