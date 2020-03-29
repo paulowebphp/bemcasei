@@ -65,9 +65,9 @@
     }
     </script>
 
-
+    <?php if( getSitePageConfig('recaptcha') == 1 ){ ?>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
+    <?php } ?>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152061464-1"></script>
@@ -81,7 +81,7 @@
 
     <!-- Start of bemcasei Zendesk Widget script -->
     <script id="ze-snippet"
-        src="https://static.zdassets.com/ekr/snippet.js?key=565637ed-1709-4f89-b406-1ce62941de4b"> </script>
+        src="https://static.zdassets.com/ekr/snippet.js?key=565637ed-1709-4f89-b406-1ce62941de4b"></script>
     <!-- End of bemcasei Zendesk Widget script -->
     
 </head>

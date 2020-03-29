@@ -3,7 +3,6 @@
 use \Core\Page;
 use \Core\Validate;
 use \Core\Mailer;
-use \Core\Model\Product;
 use \Core\Model\Mailing;
 use \Core\Wirecard;
 //use \Core\Model\Category;
