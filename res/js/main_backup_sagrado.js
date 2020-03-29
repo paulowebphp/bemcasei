@@ -48,6 +48,60 @@ $("#menu-mobile-mask, .btn-close").on("click", function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+/******************** SEARCH INFO ***************************************************/
+/******************** SEARCH INFO ***************************************************/
+/******************** SEARCH INFO ***************************************************/
+/******************** SEARCH INFO ***************************************************/
+
+$("#search-info").on("click", function(){
+    
+    $("#header-mobile").toggleClass("open-menu");
+
+});//end on
+
+
+
+$("#search-info, .btn-close").on("click", function(){
+
+    $("#header-mobile").removeClass("open-menu");
+
+
+});//end on
+/******************** SEARCH INFO ***************************************************/
+/******************** SEARCH INFO ***************************************************/
+/******************** SEARCH INFO ***************************************************/
+/******************** SEARCH INFO ***************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /***********DESABILITANDO SUBMIT / DUPLICADAS****************************/
 /***********DESABILITANDO SUBMIT / DUPLICADAS****************************/
 /***********DESABILITANDO SUBMIT / DUPLICADAS****************************/
@@ -55,7 +109,11 @@ $("#menu-mobile-mask, .btn-close").on("click", function(){
 
 
 $(document).on('submit', 'form', function(e){
+
+
 	$('input[type="submit"], button[type="submit"]').prop('disabled', true);
+
+
 });
 
 
@@ -64,6 +122,139 @@ $(document).on('submit', 'form', function(e){
 /***********DESABILITANDO SUBMIT / DUPLICADAS****************************/
 /***********DESABILITANDO SUBMIT / DUPLICADAS****************************/
 /***********DESABILITANDO SUBMIT / DUPLICADAS****************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***********LOAD NOS BOTÕES E SUBMITS****************************/
+/***********LOAD NOS BOTÕES E SUBMITS****************************/
+/***********LOAD NOS BOTÕES E SUBMITS****************************/
+/***********LOAD NOS BOTÕES E SUBMITS****************************/
+
+$(document).on(
+
+	'click', 
+
+	'#site-register, #site-accounts', 
+
+	function(e){
+	
+		let load = `<img src="/res/images/loading3.gif">`;
+
+		$('#load1').html(load);
+
+});
+
+
+
+
+
+
+
+
+
+
+$(document).on('click', '#checkout1', function(e){
+	
+	let load = `<img src="/res/images/loading3.gif">`;
+
+	$('#load1').html(load);
+
+});
+
+
+
+
+
+$(document).on('click', '#checkout2', function(e){
+	
+	
+	let load = `<img src="/res/images/loading3.gif">`;
+
+	$('#load2').html(load);
+
+});
+
+
+
+
+
+
+$(document).on('click', '#checkout3', function(e){
+	
+	
+
+	let load = `<img src="/res/images/loading3.gif">`;
+
+	$('#load3').html(load);
+
+});
+
+
+
+
+$(document).on('click', '#checkout6', function(e){
+	
+	
+
+	let load = `<img src="/res/images/loading3.gif">`;
+
+	$('#load6').html(load);
+
+});
+
+
+
+
+
+$(document).on('click', '#checkout4', function(e){
+	
+	let load = `<img src="/res/images/loading3.gif">`;
+
+	$('#load4').html(load);
+
+});
+
+
+
+
+
+$(document).on('click', '#checkout5', function(e){
+	
+	
+	let load = `<img src="/res/images/loading3.gif">`;
+
+	$('#load5').html(load);
+
+});
+
+
+
+
+
+/***********LOAD NOS BOTÕES E SUBMITS****************************/
+/***********LOAD NOS BOTÕES E SUBMITS****************************/
+/***********LOAD NOS BOTÕES E SUBMITS****************************/
+/***********LOAD NOS BOTÕES E SUBMITS****************************/
+
+
 
 
 
@@ -325,6 +516,21 @@ $(document).on('mouseleave', '#popover-template3', function(e){
 	$('[data-toggle="popover"]').popover('hide');
 });
 
+$(document).on('mouseleave', '#search-info', function(e){
+	$('[data-toggle="popover"]').popover('hide');
+});
+
+$(document).on('mouseleave', '#search-info', function(e){
+	$('[data-toggle="popover"]').popover('hide');
+});
+
+$(document).on('mouseleave', '#popover1', function(e){
+	$('[data-toggle="popover"]').popover('hide');
+});
+
+$(document).on('mouseleave', '#popover2', function(e){
+	$('[data-toggle="popover"]').popover('hide');
+});
 /******************** BOOTSTRAP POPOVER ***************************************************/
 /******************** BOOTSTRAP POPOVER ***************************************************/
 /******************** BOOTSTRAP POPOVER ***************************************************/
@@ -1586,7 +1792,7 @@ $(document).on('click', '#options-payments5', function(){
 
 	$('#options-payments4').removeClass('options-selected');
 	$('#nrinstallment').css('display','block');
-	$('#installment').attr('form','checkout-form5');
+	$('#installment2').attr('form','checkout-form5');
 	//$('#checkout-method').val('cartao-terceiro');
 	$('#payment-inputs5').css('display','block');
 	$('#payment-inputs4').css('display','none');
@@ -1625,7 +1831,7 @@ $(document).on('click', '#options-payments4', function(){
 
 	$('#options-payments5').removeClass('options-selected');
 	$('#nrinstallment').css('display','none');
-	$('#installment').attr('form','checkout-form4');
+	$('#installment2').attr('form','checkout-form4');
 	//$('#checkout-method').val('cartao-terceiro');
 	$('#payment-inputs4').css('display','block');
 	$('#payment-inputs5').css('display','none');
@@ -1719,7 +1925,7 @@ $(document).on(
 /************************ INSTALLMENT ********************************/
 /************************ INSTALLMENT ********************************/
 
-$('#installment').on('change', function(){
+$('#installment2').on('change', function(){
 
 	let interest = $("option:selected", this).attr('data-interest');
 

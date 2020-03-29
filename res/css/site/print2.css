@@ -1,16 +1,19 @@
-@page {
-  size: A4;
-}
+@page{
+	size: a4;
+	
+}/*@page*/
+
 @media print {
 	*{
-		background: transparent;
+		margin:0;
+		padding:0;
 		color: #000;
-		text-shadow: none; 
-		filter: none;
-		-ms-filter: none;
-		margin: 0;
-		padding: 0;
 	}
+	html,body{
+		font-size: 10pt;
+
+	}
+	
 	header{
 		display: none;
 	}
@@ -18,29 +21,29 @@
 		display: none;
 		page-break-after: always;
 	}
-	h1{
-		font-size: 1.5rem;
-		color: #000;
-	}
 	a:link, a:visited{
-		color: #333; text-decoration: underline;
+		color: #000; 
+		text-decoration: underline;
 	}
 	a[href]:after{
 		content: "(" attr(href) ")";
 	}
-	
-	#terms {
-	    width: 100%;
-	    padding: 4%;
-	    margin: 1%;
-	    font-size: 1rem;
+	h1{
+		font-size: 16pt;
 	}
-	
 	#print-wrapper{
 		display: none;
 	}
-	.title h1{
-		color: #000;
+	#terms {
+		padding: 3%;
+		margin: 0;
+	}	
+	.row{
+		width: 140mm;
 	}
+
+
+
+	
 
 }/*@media print*/
