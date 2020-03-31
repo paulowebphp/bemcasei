@@ -185,7 +185,7 @@
 
                 <div class="row bottom3 centralizer">
     
-                    <p>Praticidade, segurança e confiabilidade para ajudar a tornar sua festa de debutante um sucesso!</p>
+                    <p>Praticidade, segurança e confiabilidade para ajudar a tornar seu casamento um sucesso!</p>
                 </div>
 
 
