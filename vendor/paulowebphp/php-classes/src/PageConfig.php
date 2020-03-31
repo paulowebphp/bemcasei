@@ -29,10 +29,12 @@ class PageConfig extends Model
 
 	//const METADESCRIPTION_MAIN = 'Bem Casei Site Casamento. Por Que Seguir o Comum? Use um Site de Casamento Diferenciado. Venha Conferir e Teste por 10 Dias Gratuitamente!';
 
-	const METADESCRIPTION_MAIN = 'Por Que Seguir o Comum? Use um Site de Casamento Diferenciado e que sua família e seus convidados vão amar! Confira e faça um teste de 10 Dias Gratuitamente!';
+	//const METADESCRIPTION_MAIN = 'Tenha um Site de Casamento Diferenciado e que sua família e seus convidados vão amar! Confira e faça um teste de 10 Dias Gratuitamente!';
+
+	const METADESCRIPTION_MAIN = 'Site de Casamento famoso, mas com templates feios pra montar seu site? Chega disso! O Bem Casei tem templates bonitos e modernos de verdade! Confira!';
 
 
-	const PAGETITLE_MAIN = 'Bem Casei | Site de Casamento';
+	const PAGETITLE_MAIN = 'Bem Casei, Seu Site de Casamento Diferenciado dos Outros';
 
 
 

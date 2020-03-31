@@ -28,8 +28,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/res/css/font-awesome.min.css">
 
-    <link rel="stylesheet" type="text/css" href="/res/css/site/stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="/res/css/site/stylesheet-mobile.css">
+    <link rel="stylesheet" type="text/css" href="/res/css/site/stylesheet2.css">
+    <link rel="stylesheet" type="text/css" href="/res/css/site/stylesheet-mobile2.css">
     <link rel="stylesheet" type="text/css" href="/res/css/site/print.css" media="print">
 
     <link rel="icon" type="image/png" href="/res/images/favicon/site/favicon.ico" />

@@ -844,7 +844,7 @@ label{
 /********************** SITE FEATURES **************************/
 #site-features{
     width: 100%;
-    padding: 10% 10%;
+    padding: 5% 10%;
 }
 #site-features	img{
     width: 100%;
@@ -858,6 +858,8 @@ label{
 }
 #site-features h2{
 	color: #03A9F4;
+	font-size:2rem;
+	font-weight: bolder;
 }
 .features-details{
 	padding: 5%;
@@ -1206,9 +1208,11 @@ label{
 	background-color: #f2f2f2;
 	background-size: cover;
 }
+
 #advantages h2{
-	font-size: 3rem;
-	color: #6a0378;
+	color: #03A9F4;
+	font-size:2rem;
+	font-weight: bolder;
 }
 #advantages h3{
 	color: #555;
@@ -1396,7 +1400,7 @@ label{
 
 #confirmation h2{
 	color: #fff;
-	text-shadow:4px 4px 4px rgba(0, 0, 0, .45);
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .95);
 	margin-bottom: 60px;
 	font-family: 'TheHeartOfEverything';
 	font-size: 4rem;
@@ -1404,9 +1408,12 @@ label{
 
 #confirmation h3{
 	color: #fff;
-	text-shadow:4px 4px 4px rgba(0, 0, 0, .45);
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .95);
 	font-family: 'TheHeartOfEverything';
 	font-size: 3rem;
+}
+#confirmation .button1{
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .65);
 }
 /********************** CONFIRMATION *********************************/
 /********************** CONFIRMATION *********************************/

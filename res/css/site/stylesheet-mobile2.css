@@ -725,6 +725,10 @@ footer {
 	padding: 10% 3%;
     /*background-position-x: center;*/
 }
+#site-features h2 {
+    font-size: 1.8rem;
+    font-weight: bolder;
+}
 #confirmation {
     background-position-x: center;
 	padding: 25% 3%!important;
@@ -733,7 +737,7 @@ footer {
 	padding: 10% 0;
 }
 #advantages h2 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: bolder;
 }
 #advantages p{

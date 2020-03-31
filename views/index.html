@@ -17,10 +17,10 @@
                     <!--inner-text-introduction-->
 
                     <div class="bottom2">
-                        <h3>Por que seguir o comum? Seja diferenciado.</h3>
+                        <h3>Prático, moderno, bonito.</h3>
                     </div>
 
-                    <a href="/criar-site"><button type="button" class="button1">Criar meu Site</button></a>
+                    <a href="/criar-site"><button type="button" class="button1">Criar meu Site 10 Dias Grátis</button></a>
 
                 </div>
                 <!--textIntroduction_-->
@@ -56,7 +56,7 @@
         
         <div class="row bottom2 centralizer">
      
-            <div class="col-md-4 text-center">
+            <div class="col-md-6 text-center">
                 
                 <div class="bottom2">
                     <h2>
