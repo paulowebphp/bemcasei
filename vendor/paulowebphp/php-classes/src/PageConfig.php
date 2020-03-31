@@ -279,11 +279,16 @@ class PageConfig extends Model
 
 	public static function getSitePageConfig( $page, $parameter )
 	{
-
+		
 
 		$array = PageConfig::getSitePageConfigFullArray();
 
-		
+
+		if ( preg_match('/criar-site/', $page) ) {
+			# code...
+			$page = 'criar-site';
+
+		}//end if
 
 		if ( isset($array[$page]) ) 
 		{

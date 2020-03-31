@@ -126,11 +126,11 @@ label{font-size:1rem;}
 .brands{width:50%;margin:0 auto;}
 .boleto{width:150px;margin:0 auto;}
 .brands img{width:100%;}
-#site-features{width:100%;padding:10% 10%;}
+#site-features{width:100%;padding:5% 10%;}
 #site-features img{width:100%;}
 #site-features p{font-size:1.4rem;margin-bottom:5%;}
 #site-features h3{color:#555;}
-#site-features h2{color:#03A9F4;}
+#site-features h2{color:#03A9F4;font-size:2rem;font-weight:bolder;}
 .features-details{padding:5%;}
 #site-features ul li{list-style:none;}
 #site-features i{color:#03A9F4;font-weight:bolder;}
@@ -157,7 +157,7 @@ label{font-size:1rem;}
 #features{width:100%;padding:5% 10%;position:relative;}
 .media img{width:100%;}
 #advantages{padding:5% 10%;width:100%;position:relative;background:url("/res/images/advantages.jpg") no-repeat;background-color:#f2f2f2;background-size:cover;}
-#advantages h2{font-size:3rem;color:#6a0378;}
+#advantages h2{color:#03A9F4;font-size:2rem;font-weight:bolder;}
 #advantages h3{color:#555;}
 #advantages p{font-size:1.1rem;}
 .btn-advantage{padding:12px 24px;}
@@ -181,8 +181,9 @@ label{font-size:1rem;}
 #create-list .col-md-6{display:grid;align-items:center;}
 #create-list p{font-size:2rem;font-weight:bolder;text-shadow:#767676 0.1em 0.1em 0.2em;}
 #confirmation{padding:10%;position:relative;background:url("/res/images/banner/banner3.jpg") no-repeat center center fixed;background-size:cover;}
-#confirmation h2{color:#fff;text-shadow:4px 4px 4px rgba(0, 0, 0, .45);margin-bottom:60px;font-family:'TheHeartOfEverything';font-size:4rem;}
-#confirmation h3{color:#fff;text-shadow:4px 4px 4px rgba(0, 0, 0, .45);font-family:'TheHeartOfEverything';font-size:3rem;}
+#confirmation h2{color:#fff;text-shadow:4px 4px 4px rgba(0, 0, 0, .95);margin-bottom:60px;font-family:'TheHeartOfEverything';font-size:4rem;}
+#confirmation h3{color:#fff;text-shadow:4px 4px 4px rgba(0, 0, 0, .95);font-family:'TheHeartOfEverything';font-size:3rem;}
+#confirmation .button1{text-shadow:4px 4px 4px rgba(0, 0, 0, .65);}
 #about h2{color:#03a9f4;}
 #about.site{padding:10% 15%!important;}
 #about p{font-size:1.2rem;text-align:justify;}

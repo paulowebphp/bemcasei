@@ -83,9 +83,10 @@ footer{padding:15% 5% 5% 5%;}
 #banner h1{font-size:2.8rem;}
 #banner{padding:25% 1%!important;background-position-x:center;background-position-y:50px;}
 #create-list{padding:10% 3%;}
+#site-features h2{font-size:1.8rem;font-weight:bolder;}
 #confirmation{background-position-x:center;padding:25% 3%!important;}
 #advantages{padding:10% 0;}
-#advantages h2{font-size:1.6rem;font-weight:bolder;}
+#advantages h2{font-size:1.8rem;font-weight:bolder;}
 #advantages p{font-size:1rem;}
 #features h2{font-size:1.6rem;font-weight:bolder;}
 #features{padding:10% 0;}
