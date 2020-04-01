@@ -34,7 +34,7 @@ class PageConfig extends Model
 	const METADESCRIPTION_MAIN = 'Site de Casamento famoso, mas com templates horríveis pra montar seu site? Chega disso! O Bem Casei tem templates bonitos e modernos de verdade! Confira!';
 
 
-	const PAGETITLE_MAIN = 'Bem Casei &#9659; Seu Site de Casamento Diferenciado dos Outros';
+	const PAGETITLE_MAIN = 'Bem Casei ᐅ Seu Site de Casamento Diferenciado dos Outros';
 
 
 
@@ -63,7 +63,7 @@ class PageConfig extends Model
 
 			'site-casamento'=>[
 
-				'pagetitle'=>'Site de Casamento &#9659; Bem Casei',
+				'pagetitle'=>'Site de Casamento ᐅ Bem Casei',
 				'metadescription'=>'Tenha um site de casamento com mais de 20 funcionalidades incríveis pra você configurar e enviar pra sua família e seus convidados! Confira!',
 				'noindex'=>0,
 				'recaptcha'=>0,
@@ -74,7 +74,7 @@ class PageConfig extends Model
 
 			'lista-presentes'=>[
 
-				'pagetitle'=>'Lista de Presentes &#9659; Bem Casei',
+				'pagetitle'=>'Lista de Presentes ᐅ Bem Casei',
 				'metadescription'=>'Receba Presentes em Dinheiro Para Usar Como Quiser! Os Saques São Gratuitos e nossa Lista é totalmente segura! Confira!',
 				'noindex'=>0,
 				'recaptcha'=>0,
@@ -85,7 +85,7 @@ class PageConfig extends Model
 
 			'tarifas-condicoes'=>[
 
-				'pagetitle'=>'Tarifas e Condições &#9659; Bem Casei',
+				'pagetitle'=>'Tarifas e Condições ᐅ Bem Casei',
 				'metadescription'=>'Nossa Lista de Presentes Tem Ótimas Tarifas. E Você Escolhe Quem Arca Com Elas: Você ou o Convidado! Venha Conferir!',
 				'noindex'=>0,
 				'recaptcha'=>0,
@@ -96,7 +96,7 @@ class PageConfig extends Model
 
 			'quem-somos'=>[
 
-				'pagetitle'=>'Quem Somos &#9659; Bem Casei',
+				'pagetitle'=>'Quem Somos ᐅ Bem Casei',
 				'metadescription'=>'Por Que Seguir o Comum? Use um Site de Casamento Diferenciado. Visite-Nos Agora e Veja Você Mesmo!',
 				'noindex'=>0,
 				'recaptcha'=>0,
@@ -107,7 +107,7 @@ class PageConfig extends Model
 
 			'modelos-templates'=>[
 
-				'pagetitle'=>'Modelos de Templates &#9659; Bem Casei',
+				'pagetitle'=>'Modelos de Templates ᐅ Bem Casei',
 				'metadescription'=>'Encante Seus Amigos e Familiares Com Um Site Com Visual Diferenciado E De Bom Gosto. Confira Já!',
 				'noindex'=>0,
 				'recaptcha'=>0,
@@ -118,7 +118,7 @@ class PageConfig extends Model
 
 			'criar-site'=>[
 
-				'pagetitle'=>'Criar Site &#9659; Bem Casei',
+				'pagetitle'=>'Criar Site ᐅ Bem Casei',
 				'metadescription'=>'Crie seu Site de Casamento Agora Mesmo! São Inúmeras Funcionalidades para Ajudar Você a Promover Este Evento Máximo em Sua Vida! Confira já!',
 				'noindex'=>0,
 				'recaptcha'=>1,
@@ -130,7 +130,7 @@ class PageConfig extends Model
 
 			'planos'=>[
 
-				'pagetitle'=>'Planos &#9659; Bem Casei',
+				'pagetitle'=>'Planos ᐅ Bem Casei',
 				'metadescription'=>'Compare os planos do Bem Casei, ou faça um teste drive de 10 dias gratuitamente! Nossos preços e condições estão excelentes! Venha conferir!',
 				'noindex'=>0,
 				'recaptcha'=>0,
@@ -142,7 +142,7 @@ class PageConfig extends Model
 
 			'politica-privacidade'=>[
 
-				'pagetitle'=>'Política de Privacidade &#9659; Bem Casei',
+				'pagetitle'=>'Política de Privacidade ᐅ Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>0,
 				'recaptcha'=>0,
@@ -154,7 +154,7 @@ class PageConfig extends Model
 			
 			'termos-uso'=>[
 
-				'pagetitle'=>'Termos de Uso &#9659; Bem Casei',
+				'pagetitle'=>'Termos de Uso ᐅ Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
 				'recaptcha'=>0,
@@ -166,7 +166,7 @@ class PageConfig extends Model
 
 			'termos-lista'=>[
 
-				'pagetitle'=>'Termos da Lista de Presentes Virtuais &#9659; Bem Casei',
+				'pagetitle'=>'Termos da Lista de Presentes Virtuais ᐅ Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
 				'recaptcha'=>0,
@@ -179,7 +179,7 @@ class PageConfig extends Model
 
 			'cadastrar'=>[
 
-				'pagetitle'=>'Cadastrar &#9659; Bem Casei',
+				'pagetitle'=>'Cadastrar ᐅ Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
 				'recaptcha'=>0,
@@ -190,7 +190,7 @@ class PageConfig extends Model
 
 			'carrinho'=>[
 
-				'pagetitle'=>'Carrinho &#9659; Bem Casei',
+				'pagetitle'=>'Carrinho ᐅ Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
 				'recaptcha'=>0,
@@ -201,7 +201,7 @@ class PageConfig extends Model
 
 			'checkout'=>[
 
-				'pagetitle'=>'Checkout &#9659; Bem Casei',
+				'pagetitle'=>'Checkout ᐅ Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
 				'recaptcha'=>0,
@@ -212,7 +212,7 @@ class PageConfig extends Model
 
 			'buscar'=>[
 
-				'pagetitle'=>'Buscar &#9659; Bem Casei',
+				'pagetitle'=>'Buscar ᐅ Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
 				'recaptcha'=>0,
@@ -223,7 +223,7 @@ class PageConfig extends Model
 
 			'login'=>[
 
-				'pagetitle'=>'Login &#9659; Bem Casei',
+				'pagetitle'=>'Login ᐅ Bem Casei',
 				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>1,
 				'recaptcha'=>0,
