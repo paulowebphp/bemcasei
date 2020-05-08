@@ -1119,7 +1119,8 @@ $app->post( "/dashboard/rsvp/upload", function()
 		$_FILES["file"], 
 		$user->getiduser(),
 		Rule::CODE_RSVP,
-		Rule::DIRECTORY_RSVP
+		Rule::DIRECTORY_RSVP,
+		$validate
 		
 		
 	);//end setPhoto
@@ -1458,6 +1459,18 @@ $app->post( "/dashboard/rsvp/adicionar", function()
 
 		Rsvp::setError("O nome do convidado não pode ser formado apenas com caracteres especiais, tente novamente");
 		header('Location: /dashboard/rsvp/adicionar');
+		exit;
+
+	}//end if
+
+
+
+	if ( Rsvp::checkDesguestExists( $user->getiduser(), $desguest ) ) 
+	{
+		# code...
+
+		Rsvp::setError("O convidado \"" . $desguest . "\" está sendo adicionado de forma duplicada | Por favor, verifique sua Lista e tente novamente, deletando ou alterando o nome deste convidado | Caso o erro persista, entre em contato como suporte");
+		header('Location: /dashboard/rsvp/upload');
 		exit;
 
 	}//end if

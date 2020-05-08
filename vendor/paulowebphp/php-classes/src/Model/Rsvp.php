@@ -931,7 +931,8 @@ class Rsvp extends Model
 		$file, 
 		$iduser,
 		$entity_code,
-		$entity_directory
+		$entity_directory,
+		$validate
 
 
 	)
@@ -1054,12 +1055,17 @@ class Rsvp extends Model
 					//exit;
 
 					$array_handler[$key] = $term;
+
+
+
+
 					//array_push($array_handler, $term);
 
 				}//end foreach
 
 				//if($array_handler[0]) continue;
 
+				//array_pop($array_handler);
 				array_push($rsvp_handler, $array_handler);
 
 			}//end while
@@ -1068,6 +1074,11 @@ class Rsvp extends Model
 			array_shift($rsvp_handler);
 			array_pop($rsvp_handler);
 
+				
+			//echo '<pre>';
+			//var_dump($rsvp_handler);
+			//var_dump(count($rsvp_handler));
+			//exit;
 
 
 			//echo '<pre>';	
@@ -1076,10 +1087,31 @@ class Rsvp extends Model
 			fclose( $file_handler );
 			unlink( $filename );
 
+
+
+			foreach ( $rsvp_handler as $guest ) 
+			{
+				# code...
+				if ( Rsvp::checkDesguestExists( $iduser, $guest['desguest'] ) ) 
+				{
+					# code...
+
+					Rsvp::setError("O convidado \"" . $guest['desguest'] . "\" está sendo adicionado de forma duplicada | Por favor, verifique sua Lista e tente novamente, deletando ou alterando o nome deste convidado | Caso o erro persista, entre em contato como suporte");
+					header('Location: /dashboard/rsvp/upload');
+					exit;
+
+				}//end if
+
+
+			}//end foreach
+
+
+
 			Rsvp::saveRsvpList( 
 
 				$iduser,
-				$rsvp_handler
+				$rsvp_handler,
+				$validate
 
 			);
 
@@ -1111,10 +1143,29 @@ class Rsvp extends Model
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public static function saveRsvpList(
 
 		$iduser,
-		$rsvp_handler
+		$rsvp_handler,
+		$validate
 
 	)
 	{
@@ -1155,6 +1206,11 @@ class Rsvp extends Model
 
 
 
+			//echo '<pre>';
+			//var_dump($rsvpconfig->getinchildren());
+			//var_dump(!isset($guest['inmaxchildren']) || $guest['inmaxchildren'] === '');
+			//var_dump($guest);
+			//exit;
 
 
 
@@ -1191,6 +1247,47 @@ class Rsvp extends Model
 
 
 		}//end foreach
+
+
+
+
+
+
+
+
+
+
+
+
+
+		$maxRsvp = Rsvp::maxRsvp($validate['inplancode']);
+
+		//pode ser substituído pelo get(), getPage() ou getSearch()
+		$numRsvp = Rsvp::getNumRsvp((int)$iduser);
+
+		$countRsvpList = count($rsvp_handler);
+
+
+
+		//echo '<pre>';
+		//var_dump($maxRsvp);
+		//var_dump($numRsvp);
+		//var_dump($countRsvpList);
+		//var_dump(( (int)$numRsvp + (int)$countRsvpList ) >= (int)$maxRsvp);
+		//exit;
+
+
+
+
+		if( ( (int)$numRsvp + (int)$countRsvpList ) >= (int)$maxRsvp )
+		{	
+			
+			Rsvp::setError("Você já atingiu o limite de convidados do seu plano atual");
+			header('Location: /dashboard/rsvp');
+			exit;
+
+		}//end if
+
 
 
 
