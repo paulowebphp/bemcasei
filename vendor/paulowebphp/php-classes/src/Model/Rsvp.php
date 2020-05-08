@@ -1007,16 +1007,29 @@ class Rsvp extends Model
 
 			$rsvp_handler = [];
 
+			
 
 			while( !feof( $file_handler ) )
 			{
 
 				//Pega os dados da linha
-				$line = fgets($file_handler, 1024);
+				$line = fgets( $file_handler, 1024 );
+
+				$line = trim($line);
+
+				//if($line == '') continue;
+				//echo '<pre>';
+				//var_dump($line);
 
 				$line = preg_replace('/,/', ';', $line);
 
 				$data = explode(';', $line);
+
+				//echo '<pre>';
+				//var_dump($data);
+				//exit;
+				
+
 
 				$array_handler = [];
 
@@ -1026,6 +1039,10 @@ class Rsvp extends Model
 					//if( $term == '' ) continue;
 
 					$term = trim($term);
+
+					$term = utf8_encode($term);
+
+
 					
 					$term = strtolower($term);
 
@@ -1057,8 +1074,6 @@ class Rsvp extends Model
 					$array_handler[$key] = $term;
 
 
-
-
 					//array_push($array_handler, $term);
 
 				}//end foreach
@@ -1066,13 +1081,21 @@ class Rsvp extends Model
 				//if($array_handler[0]) continue;
 
 				//array_pop($array_handler);
+
+				if( $array_handler['desguest'] == "" ) continue;
+				
 				array_push($rsvp_handler, $array_handler);
+
+				//echo '<pre>';
+				//var_dump($array_handler);
+				//var_dump($rsvp_handler);
+				//exit;
 
 			}//end while
 
 
 			array_shift($rsvp_handler);
-			array_pop($rsvp_handler);
+			//array_pop($rsvp_handler);
 
 				
 			//echo '<pre>';
@@ -1081,8 +1104,11 @@ class Rsvp extends Model
 			//exit;
 
 
-			//echo '<pre>';	
-			//var_dump($rsvp_handler);
+			
+
+
+
+
 
 			fclose( $file_handler );
 			unlink( $filename );
@@ -1192,14 +1218,18 @@ class Rsvp extends Model
 			# code...
 
 
-
+			//echo '<pre>';
+			//var_dump($guest);
+			//var_dump($inmaxadults);
+			//var_dump($inmaxchildren);
+			//exit;
 
 			if( ($inmaxadults = Validate::validateMaxRsvp($guest['inmaxadults'])) === false )
 			{	
 				
 
 				Rsvp::setError("A quantidade deve estar entre 0 e 99");
-				header('Location: /dashboard/rsvp/adicionar');
+				header('Location: /dashboard/rsvp/upload');
 				exit;
 
 			}//end if
@@ -1244,6 +1274,13 @@ class Rsvp extends Model
 
 
 			}//enf if
+			else
+			{
+
+				$inmaxchildren = 0;
+
+
+			}//end else
 
 
 		}//end foreach

@@ -1470,7 +1470,7 @@ $app->post( "/dashboard/rsvp/adicionar", function()
 		# code...
 
 		Rsvp::setError("O convidado \"" . $desguest . "\" está sendo adicionado de forma duplicada | Por favor, verifique sua Lista e tente novamente, deletando ou alterando o nome deste convidado | Caso o erro persista, entre em contato como suporte");
-		header('Location: /dashboard/rsvp/upload');
+		header('Location: /dashboard/rsvp/adicionar');
 		exit;
 
 	}//end if
