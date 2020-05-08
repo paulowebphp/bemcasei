@@ -138,8 +138,9 @@ class Rule extends Model
 
 
 
-	/**PHOTO */
+	/**PHOTO UPLOAD*/
 	const CODE_PRODUCTS = "11";
+	
 	const CODE_BESTFRIENDS = "22";
 	const CODE_GIFTS = "33";
 	const CODE_WEDDINGS = "44";
@@ -155,9 +156,9 @@ class Rule extends Model
 
 
 
-
-
-
+	/**RSPV upload*/
+	const CODE_RSVP = "15";
+	const DIRECTORY_RSVP = "rsvp";
 
 
 
@@ -184,14 +185,20 @@ class Rule extends Model
 		'image/jpeg',
 		'image/jpg',
 		'image/gif',
-		'image/png'
+		'image/png',
+		'text/csv',
+		'application/vnd.ms-excel',
 
 	];
 
 
 
 
+	const UPLOAD_MIME_TYPE_RSVP = [
 
+		'csv'
+
+	];
 
 
 

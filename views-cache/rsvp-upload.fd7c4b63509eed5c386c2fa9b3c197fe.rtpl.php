@@ -36,14 +36,14 @@
 
             <div class="col-md-9 col-12 dash-panel">
 
-
-               <form method="post" action="/dashboard/rsvp/adicionar">
+                
+               <form method="post" action="/dashboard/rsvp/upload" enctype="multipart/form-data">
 
                     <div class="row">
                         <div class="col-md-12">
                             
                             <div class="dash-title">
-                                <h1>Adicionar Convidado</h1>
+                                <h1>Adicionar Convidados a Partir de Lista</h1>
                             </div><!--dash-title-->
 
                         </div><!--col-->
@@ -87,49 +87,24 @@
                         <div class="col-md-6 dash-column">
 
 
-                            <div class="dash-input-row">
+                            
 
-                                <label for="desguest">Convidado</label>
-                                <input type="text" class="form-control" id="desguest" name="desguest">
+                            <div class="dash-input-row input-photo">
 
-                            </div><!--dash-input-row-->
+                            
+                                    <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                      </div>
+                                      <div class="custom-file">
+                                        <input type="file" name="file" class="custom-file-input" id="file" aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="file"></label>
 
-
-
-
-
-                        
-
-                            <label for="inmaxadults">Quantidade Máxima de Adultos <br><small>(Esta opção é válida apenas para este convidado)</small> </label>
-
-                            <div class="dash-input-row input-inposition">
-
+                                      </div>
+                                    </div>
 
                                 
-                                <input type="text" class="form-control" id="inmaxadults" name="inmaxadults">
-
-
                             </div><!--dash-input-row-->
-
-
-
-
-
-
-
-
-                            <?php if( $rsvpconfig["inchildren"] == 1 ){ ?>
-                            <label for="inmaxchildren">Quantidade Máxima de Crianças <br><small>(Esta opção é válida apenas para este convidado)</small></label>
-
-                            <div class="dash-input-row input-inposition">
-                                
-                                <input type="text" class="form-control" id="inmaxchildren" name="inmaxchildren">
-
-
-                            </div><!--dash-input-row-->
-                            <?php } ?>
-
-
 
 
 
@@ -164,7 +139,7 @@
 
                             <div class="dash-input-row input-footer">
                                 
-                                <button type="submit" class="btn btn-primary">Salvar</button>
+                                <button type="submit" class="btn btn-primary">Enviar</button>
 
                                 <a href="/dashboard/rsvp" class="btn btn-danger">Voltar</a>
 

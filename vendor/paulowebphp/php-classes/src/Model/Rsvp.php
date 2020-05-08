@@ -6,6 +6,7 @@ namespace Core\Model;
 use \Core\DB\Sql;
 use \Core\Model;
 use \Core\Rule;
+use \Core\Validate;
 
 
 
@@ -898,6 +899,364 @@ class Rsvp extends Model
         
 
     }//end generateCsv
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function uploadRsvpList( 
+		
+		$file, 
+		$iduser,
+		$entity_code,
+		$entity_directory
+
+
+	)
+	{
+
+
+
+	
+		$extension = explode('.', $file['name']);
+
+		$extension = end($extension);
+
+		$extension = strtolower($extension);
+
+
+		//$mimeTypeAllowed = Rule::UPLOAD_MIME_TYPE;
+
+		$basename = $iduser .
+		"." .
+		$extension;
+
+		//$entity_directory = $this->getDirectoryName($entity_code);
+
+
+
+		$filename = $_SERVER['DOCUMENT_ROOT'] . 
+		DIRECTORY_SEPARATOR . "uploads" . 
+		DIRECTORY_SEPARATOR . $entity_directory.
+		DIRECTORY_SEPARATOR .
+		$basename;
+
+
+		/*
+		
+		echo '<pre>';
+		var_dump($file);
+		var_dump($entity_code);
+		var_dump($iduser);
+		var_dump($extension);
+		var_dump($basename);
+		var_dump($entity_directory);
+		var_dump(!in_array($file['type'], Rule::UPLOAD_MIME_TYPE));
+		exit;
+
+		*/
+
+		if( !in_array($extension, Rule::UPLOAD_MIME_TYPE_RSVP) )
+		{
+
+			$basename = false;
+
+		}//end else if 
+		elseif( move_uploaded_file( $file["tmp_name"], $filename ) )
+		{
+
+			/*
+			
+			echo '<pre>';
+			var_dump($file);
+			var_dump($entity_code);
+			var_dump($iduser);
+			var_dump($extension);
+			var_dump($basename);
+			var_dump($entity_directory);
+			var_dump(!in_array($file['type'], Rule::UPLOAD_MIME_TYPE));
+			exit;
+			exit;
+			*/
+
+
+			$file_handler = fopen( $filename, 'r');
+
+			$rsvp_handler = [];
+
+
+			while( !feof( $file_handler ) )
+			{
+
+				//Pega os dados da linha
+				$line = fgets($file_handler, 1024);
+
+				$line = preg_replace('/,/', ';', $line);
+
+				$data = explode(';', $line);
+
+				$array_handler = [];
+
+				foreach ($data as $key => $term)
+				{
+					# code...
+					//if( $term == '' ) continue;
+
+					$term = trim($term);
+					
+					$term = strtolower($term);
+
+					$term = ucwords($term);
+
+					if( (int)$key == 0 )
+					{
+						$key = 'desguest';
+
+					}//end if
+					elseif((int)$key == 1)
+					{
+
+						$key = 'inmaxadults';
+					}//end elseif
+					elseif((int)$key == 2)
+					{
+
+						$key = 'inmaxchildren';
+
+					}//end else
+
+					//echo '<pre>';
+					//var_dump($data);
+					//var_dump($term);
+					//var_dump($key);
+					//exit;
+
+					$array_handler[$key] = $term;
+					//array_push($array_handler, $term);
+
+				}//end foreach
+
+				//if($array_handler[0]) continue;
+
+				array_push($rsvp_handler, $array_handler);
+
+			}//end while
+
+
+			array_shift($rsvp_handler);
+			array_pop($rsvp_handler);
+
+
+
+			//echo '<pre>';	
+			//var_dump($rsvp_handler);
+
+			fclose( $file_handler );
+			unlink( $filename );
+
+			Rsvp::saveRsvpList( 
+
+				$iduser,
+				$rsvp_handler
+
+			);
+
+			
+
+		}//end else if
+		else
+		{
+			$basename = false;
+			
+		}//end else
+
+		return [
+
+			'basename'=>$basename,
+			'extension'=>$extension
+
+		];//end return
+
+	}//END uploadRsvpList
+
+
+
+
+
+
+
+
+
+
+
+	public static function saveRsvpList(
+
+		$iduser,
+		$rsvp_handler
+
+	)
+	{
+
+
+		//echo '<pre>';	
+		//var_dump($iduser);
+		//var_dump($rsvp_handler);
+		//exit;
+
+
+
+
+		$rsvpconfig = new RsvpConfig();
+		$rsvpconfig->get((int)$iduser);
+
+		$inmaxadults = 0;
+		$inmaxchildren = 0;
+
+
+
+		foreach ($rsvp_handler as $guest) 
+		{
+			# code...
+
+
+
+
+			if( ($inmaxadults = Validate::validateMaxRsvp($guest['inmaxadults'])) === false )
+			{	
+				
+
+				Rsvp::setError("A quantidade deve estar entre 0 e 99");
+				header('Location: /dashboard/rsvp/adicionar');
+				exit;
+
+			}//end if
+
+
+
+
+
+
+			if ( (int)$rsvpconfig->getinchildren() == 1 )
+			{
+				# code...
+				if(
+				
+					!isset($guest['inmaxchildren']) 
+					|| 
+					$guest['inmaxchildren'] === ''
+					
+				)
+				{
+			
+					Rsvp::setError("Preencha quantas crianças no máximo o convidado poderá levar");
+					header('Location: /dashboard/rsvp/upload');
+					exit;
+			
+				}//end if
+			
+				if( ($inmaxchildren = Validate::validateMaxRsvp($guest['inmaxchildren'])) === false )
+				{	
+					
+			
+					Rsvp::setError("A quantidade deve ser entre 0 e 99");
+					header('Location: /dashboard/rsvp/upload');
+					exit;
+			
+				}//end if
+
+
+			}//enf if
+
+
+		}//end foreach
+
+
+
+
+
+
+
+
+
+		foreach ($rsvp_handler as $guest)
+		{
+
+
+			$rsvp = new Rsvp();
+
+			$rsvp->setData([
+
+		    	'iduser'=>$iduser,
+		    	'desguest'=>$guest['desguest'],
+		    	'desemail'=>NULL,
+		    	'nrphone'=>NULL,
+		    	'inconfirmed'=>0,
+		    	'inmaxadults'=>$guest['inmaxadults'],
+		    	'inadultsconfirmed'=>NULL,
+		    	'inmaxchildren'=>$guest['inmaxchildren'],
+		    	'inchildrenconfirmed'=>NULL,
+		    	'inchildrenageconfirmed'=>NULL,
+		    	'desadultsaccompanies'=>NULL,
+		    	'deschildrenaccompanies'=>NULL,
+				'dtconfirmed'=>NULL
+
+		    ]);
+
+		    $rsvp->update();
+
+
+		}//end foreach
+
+
+
+		Rsvp::setSuccess("Lista criada");
+
+		header('Location: /dashboard/rsvp');
+		exit;
+
+
+
+
+	}//END saveRsvpList 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

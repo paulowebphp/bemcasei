@@ -126,7 +126,10 @@ ul{
   -webkit-justify-content: center;
   justify-content: center;
 }
-
+.bottom1{margin-bottom:2%!important;}
+.bottom2{margin-bottom:5%!important;}
+.bottom3{margin-bottom:10%!important;}
+.bottom4{margin-bottom:15%!important;}
 
 
 

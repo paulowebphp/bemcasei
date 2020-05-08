@@ -20,6 +20,9 @@ use Core\Model\Plan;
 
 
 
+
+
+
 $app->get("/dashboard/rsvp/download", function(){
 
 	if( Maintenance::checkMaintenance() )
@@ -59,6 +62,7 @@ $app->get("/dashboard/rsvp/download", function(){
 	Rsvp::generateCsv( (int)$user->getiduser() );
 
 });//END route
+
 
 
 
@@ -418,6 +422,15 @@ $app->get( "/dashboard/rsvp/configurar", function()
 	);//end setTpl
 
 });//END route
+
+
+
+
+
+
+
+
+
 
 
 
@@ -822,6 +835,369 @@ $app->post( "/dashboard/rsvp/configurar", function()
 	
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->get( "/dashboard/rsvp/upload", function()
+{
+	
+	if( Maintenance::checkMaintenance() )
+	{	
+
+		$maintenance = new Maintenance();
+
+		$maintenance->getMaintenance();
+
+		User::setError($maintenance->getdesdescription());
+		header("Location: /login");
+		exit;
+		
+	}//end if
+
+
+
+
+
+
+
+
+	User::verifyLogin(false);
+
+	$user = User::getFromSession();
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+
+	$maxRsvp = Rsvp::maxRsvp($validate['inplancode']);
+
+
+	//pode ser substituído pelo get(), getPage() ou getSearch()
+	$numRsvp = Rsvp::getNumRsvp((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numRsvp >= (int)$maxRsvp )
+	{	
+		
+		User::setError("Você já atingiu o limite de convidados do seu plano atual");
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+	$rsvpconfig = new RsvpConfig();
+
+	$rsvpconfig->get((int)$user->getiduser());
+
+
+
+
+	
+	$page = new PageDashboard();
+
+	$page->setTpl(
+		
+ 
+ 
+		"rsvp-upload", 
+			
+		[
+			'user'=>$user->getValues(),
+			'validate'=>$validate,
+			'rsvpconfig'=>$rsvpconfig->getValues(),
+			'success'=>Rsvp::getSuccess(),
+			'error'=>Rsvp::getError()
+			
+
+		]
+	
+	);//end setTpl
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->post( "/dashboard/rsvp/upload", function()
+{
+	
+
+	
+
+	//echo '<pre>';
+	//var_dump($_FILES);
+	//exit;
+
+	if( Maintenance::checkMaintenance() )
+	{	
+
+		$maintenance = new Maintenance();
+
+		$maintenance->getMaintenance();
+
+		User::setError($maintenance->getdesdescription());
+		header("Location: /login");
+		exit;
+		
+	}//end if
+
+
+
+
+
+
+
+
+	User::verifyLogin(false);
+
+	$user = User::getFromSession();
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	$maxRsvp = Rsvp::maxRsvp($validate['inplancode']);
+
+
+	//pode ser substituído pelo get(), getPage() ou getSearch()
+	$numRsvp = Rsvp::getNumRsvp((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numRsvp >= (int)$maxRsvp )
+	{	
+		
+		User::setError("Você já atingiu o limite de convidados do seu plano atual");
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+
+
+
+
+	if( $_FILES["file"]["error"] === '' )
+	{
+		Rsvp::setError("Falha no envio da imagem, tente novamente | Se a falha persistir, tente enviar outra imagem ou entre em contato com o suporte");
+		header('Location: /dashboard/rsvp/upload');
+		exit;
+
+	}//end if
+
+
+
+
+	if( $_FILES["file"]["size"] > Rule::MAX_PHOTO_UPLOAD_SIZE )
+	{
+
+		Rsvp::setError("Só é possível fazer upload de arquivos de até ".(Rule::MAX_PHOTO_UPLOAD_SIZE/1000000)."MB");
+		header('Location: /dashboard/rsvp/upload');
+		exit;
+
+	}//end if
+
+
+	
+
+
+
+	//$rsvp = new Rsvp();
+
+
+	$basename = Rsvp::uploadRsvpList(
+		
+		$_FILES["file"], 
+		$user->getiduser(),
+		Rule::CODE_RSVP,
+		Rule::DIRECTORY_RSVP
+		
+		
+	);//end setPhoto
+
+
+
+	
+	if( $basename['basename'] === false )
+	{
+
+		//$rsvp->deleteRsvpList();
+
+		Rsvp::setError("Falha no envio da Lista, tente novamente | Se a falha persistir, entre em contato com o suporte");
+
+		header('Location: /dashboard/rsvp/upload');
+		exit;
+
+	}//end if
+	else
+	{
+
+		//$rsvp->setdesphoto($basename['basename']);
+		//$rsvp->setdesextension($basename['extension']);
+
+		//$rsvp->update();
+
+		Rsvp::setSuccess("Lista importada");
+
+		header('Location: /dashboard/rsvp');
+		exit;
+
+	}//end else
+
+
+
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

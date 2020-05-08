@@ -78,14 +78,14 @@
 
                             
                             <a href="/dashboard/rsvp/configurar">
-                                <button>
+                                <button class="bottom1">
                                     Configurações
                                 </button>
                             </a>
 
 
                             <a href="/dashboard/rsvp/confirmados">
-                                <button>
+                                <button class="bottom1">
                                     Lista de Confirmados
                                 </button>
                             </a>
@@ -93,11 +93,17 @@
                             <?php if(  $maxRsvp > $nrtotal  ){ ?>
 
                             <a href="/dashboard/rsvp/adicionar">
-                                <button>
-                                    Adicionar Convidado
+                                <button class="bottom1">
+                                    Adicionar Convidado Manualmente
                                 </button>
                             </a>
 
+                            <a href="/dashboard/rsvp/upload">
+                                <button class="bottom1">
+                                    Adicionar Convidados A Partir de Lista
+                                </button>
+                            </a>
+                            
                             <?php }else{ ?>
 
                             <button id="popover1" class="disabled-links pointer-none" data-toggle="popover" data-placement="bottom" title="<?php echo htmlspecialchars( $popover1["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-content="<?php echo htmlspecialchars( $popover1["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
