@@ -132,7 +132,7 @@
 
     <script type="text/javascript" src="/res/js/bootstrap.min.js"></script>
     
-    <script type="text/javascript" src="/res/js/main.js"></script>
+    <script type="text/javascript" src="/res/js/main2.js"></script>
 
 
 

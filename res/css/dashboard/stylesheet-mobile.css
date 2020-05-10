@@ -476,12 +476,19 @@ footer .caption .list-group-horizontal {
     max-width: 100%;
     width: 100%;
 }
+
 .input-photo {
     width: 60%;
     margin: 0 auto;
 }
 .input-photo img {
     width: 100%;
+}
+.input-photo2 {
+    width: 60%;
+}
+.hr1 hr{
+	width: 90%;
 }
 .custom-style-row {
     padding: 7% 5%;

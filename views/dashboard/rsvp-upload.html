@@ -84,12 +84,13 @@
 
                     <div class="row">
                         
-                        <div class="col-md-6 dash-column">
+                        <div class="col-md-6 dash-column input-rsvp">
 
 
                             
+                            <div id="name-preview" class="bottom1" alt="name-preview"></div>
 
-                            <div class="dash-input-row input-photo">
+                            <div class="dash-input-row input-photo2">
 
                             
                                     <div class="input-group mb-3">
@@ -97,15 +98,15 @@
                                         <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                                       </div>
                                       <div class="custom-file">
-                                        <input type="file" name="file" class="custom-file-input" id="file" aria-describedby="inputGroupFileAddon01">
+                                        <input type="file" name="file" class="custom-file-input" id="file-rsvp" aria-describedby="inputGroupFileAddon01">
                                         <label class="custom-file-label" for="file"></label>
 
                                       </div>
+                                      
                                     </div>
-
+                                    
                                 
                             </div><!--dash-input-row-->
-
 
 
                                 

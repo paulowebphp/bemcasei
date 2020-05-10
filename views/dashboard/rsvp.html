@@ -74,7 +74,7 @@
 
                     <div class="col-12">
 
-                        <div class="button-header">
+                        <div class="button-header hr1">
 
                             
                             <a href="/dashboard/rsvp/configurar">
@@ -92,6 +92,8 @@
 
                             {if=" $maxRsvp > $nrtotal "}
 
+                            <hr><br>
+
                             <a href="/dashboard/rsvp/adicionar">
                                 <button class="bottom1">
                                     Adicionar Convidado Manualmente
@@ -103,13 +105,33 @@
                                     Adicionar Convidados A Partir de Lista
                                 </button>
                             </a>
-                            
+
                             {else}
+
+                            <hr><br>
 
                             <button id="popover1" class="disabled-links pointer-none" data-toggle="popover" data-placement="bottom" title="{$popover1.0}" data-content="{$popover1.1}">
                                 Adicionar Convidado
                             </button>
                             
+                            {/if}
+
+                            {if=" $nrtotal > 0 "}
+
+                            <hr><br>
+
+                            <a href="/dashboard/rsvp/enviar">
+                                <button class="bottom1">
+                                    Enviar Convites Virtuais
+                                </button>
+                            </a>
+
+                            <a href="/dashboard/rsvp/enviar">
+                                <button class="bottom1">
+                                    Adiar Convites Virtuais
+                                </button>
+                            </a>
+
                             {/if}
                             
                 

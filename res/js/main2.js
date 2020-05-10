@@ -1466,6 +1466,46 @@ $(function(){
 
 
 
+/************************ UPLOAD IMAGE PREVIEW image-preview ********************************/
+/************************ UPLOAD IMAGE PREVIEW image-preview ********************************/
+/************************ UPLOAD IMAGE PREVIEW image-preview ********************************/
+/************************ UPLOAD IMAGE PREVIEW image-preview ********************************/
+$(function(){
+
+	$('#file-rsvp').change(function(){
+
+
+		//console.log(this);
+
+		let name = $(this)[0].files[0].name;
+
+		//console.log(name);
+
+		html = '<i class="fa fa-check"></i> ';
+		html += name;
+
+		$('#name-preview').html(html);
+		
+
+	});
+
+});
+/************************ UPLOAD IMAGE PREVIEW image-preview ********************************/
+/************************ UPLOAD IMAGE PREVIEW image-preview ********************************/
+/************************ UPLOAD IMAGE PREVIEW image-preview ********************************/
+/************************ UPLOAD IMAGE PREVIEW image-preview ********************************/
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
