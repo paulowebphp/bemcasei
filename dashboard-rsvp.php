@@ -867,6 +867,355 @@ $app->post( "/dashboard/rsvp/configurar", function()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+$app->get( "/dashboard/rsvp/enviar", function()
+{
+	
+	if( Maintenance::checkMaintenance() )
+	{	
+
+		$maintenance = new Maintenance();
+
+		$maintenance->getMaintenance();
+
+		User::setError($maintenance->getdesdescription());
+		header("Location: /login");
+		exit;
+		
+	}//end if
+
+
+
+
+
+
+
+
+	User::verifyLogin(false);
+
+	$user = User::getFromSession();
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+
+	$maxRsvp = Rsvp::maxRsvp($validate['inplancode']);
+
+
+	//pode ser substituído pelo get(), getPage() ou getSearch()
+	$numRsvp = Rsvp::getNumRsvp((int)$user->getiduser());
+
+
+	
+
+	if( (int)$numRsvp >= (int)$maxRsvp )
+	{	
+		
+		User::setError("Você já atingiu o limite de convidados do seu plano atual");
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+	$rsvpconfig = new RsvpConfig();
+
+	$rsvpconfig->get((int)$user->getiduser());
+
+
+
+
+	
+	$page = new PageDashboard();
+
+	$page->setTpl(
+		
+ 
+ 
+		"rsvp-send", 
+			
+		[
+			'user'=>$user->getValues(),
+			'validate'=>$validate,
+			'rsvpconfig'=>$rsvpconfig->getValues(),
+			'success'=>Rsvp::getSuccess(),
+			'error'=>Rsvp::getError()
+			
+
+		]
+	
+	);//end setTpl
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->post( "/dashboard/rsvp/enviar", function()
+{
+	
+
+	
+
+	//echo '<pre>';
+	//var_dump($_FILES);
+	//exit;
+
+	if( Maintenance::checkMaintenance() )
+	{	
+
+		$maintenance = new Maintenance();
+
+		$maintenance->getMaintenance();
+
+		User::setError($maintenance->getdesdescription());
+		header("Location: /login");
+		exit;
+		
+	}//end if
+
+
+
+
+
+
+
+
+	User::verifyLogin(false);
+
+	$user = User::getFromSession();
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+	$maxRsvp = Rsvp::maxRsvp($validate['inplancode']);
+
+
+	//pode ser substituído pelo get(), getPage() ou getSearch()
+	$numRsvp = Rsvp::getNumRsvp((int)$user->getiduser());
+
+	
+
+
+
+	if( (int)$numRsvp >= (int)$maxRsvp )
+	{	
+		
+		User::setError("Você já atingiu o limite de convidados do seu plano atual");
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+
+	//echo '<pre>';
+	//var_dump($_POST);
+	//exit;
+
+
+
+
+	$count = $numRsvp/20;
+
+	$countCeil = ceil( $count );
+
+	//$i = 0;
+
+
+
+
+	
+	$rsvp = new Rsvp();
+
+	
+
+
+	for ($i=1; $i <= $countCeil; $i++) 
+	{ 
+		# code...
+		$results = $rsvp->getPage( (int)$user->getiduser(), 1, Rule::MAX_MAIL_SEND );
+
+		echo '<pre>';
+		var_dump($user->getiduser());
+		var_dump(Rule::MAX_MAIL_SEND);
+		var_dump($count);
+		var_dump($countCeil);
+		var_dump($results);
+		exit;
+		  
+
+	}//end for
+
+	
+
+	
+
+	
+
+   
+	
+
+    
+
+	Rsvp::setSuccess("Convidado criado");
+
+	header('Location: /dashboard/rsvp');
+	exit;
+
+
+
+
+
+
+
+
+
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $app->get( "/dashboard/rsvp/upload", function()
 {
 	

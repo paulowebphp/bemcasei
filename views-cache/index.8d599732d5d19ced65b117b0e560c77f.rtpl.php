@@ -1,0 +1,271 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section id="banner">
+
+    <div class="container">
+
+
+        
+        <div class="row centralizer">
+            
+            <div class="col-md-10 col-12 text-center">
+                
+                <div class="bottom2">
+                    <h1>A Maneira Mais Simples e Segura De Realizar Seu Casamento Durante a Pandemia</h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="row centralizer">
+
+
+
+            <div class="col-md-8 col-12">
+
+                
+
+                <div class="lead2 text-center">
+
+                    
+
+                    <form>
+
+                      <div class="form-group">
+
+                        <!-- 
+                        <label for="exampleInputEmail1">E-mail</label>
+                        -->
+
+                        <div class="bottom2">
+                            <h3>Insira Seu Email Abaixo e Clique No Botão Para Receber o E-book Em Seu Email Gratuitamente!</h3>
+                        </div>
+
+
+                        <input type="email" class="form-control bottom2" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu Melhor E-mail">
+
+                      </div>
+
+
+
+
+                    <!--
+                    <div class="form-group">
+
+                    <label for="exampleInputPassword1">Telefone</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Telefone">
+
+                    </div>
+                    -->
+
+
+
+
+                      <button type="submit" class="button6">Fazer Download</button>
+
+                    </form>
+
+                </div>
+                <!--textIntroduction_-->
+
+            </div>
+
+
+
+
+
+
+
+
+
+            
+
+
+
+        </div>
+
+    </div>
+    <!--container-->
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="site-features" class="site">
+
+    <div class="container">
+        
+        <div class="row bottom2 centralizer">
+     
+            <div class="col-md-6 text-center">
+                
+                <div class="bottom2">
+                    <h2>
+                        O QUE VOCÊ IRÁ ENCONTRAR NESTE E-BOOK?
+                    </h2>
+                </div>
+                
+                               
+                
+
+            </div><!--col-->
+            
+        </div><!--row-->
+
+
+
+
+
+        <div class="row">
+            
+            <div class="col-md-6">
+
+                <div class="bottom3">
+
+                    <ul> 
+
+                        <li><i class="fa fa-check"></i>&nbsp; Por Que Adiar Meu Casamento?</li> 
+                        
+                        <li><i class="fa fa-check"></i>&nbsp; Para Quando Adiar</li>
+
+                        <li><i class="fa fa-check"></i>&nbsp; Como Comunicar Meus Convidados</li>
+
+
+                        <li><i class="fa fa-check"></i>&nbsp; O Que Posso Fazer Na Pandemia</li>
+
+                        
+
+                        <li><i class="fa fa-check"></i>&nbsp; Como Adaptar Meu Casamento</li>
+
+                                                
+
+                        
+
+                    </ul>
+
+                </div><!--gifts-section1-->
+
+
+            </div>
+
+            
+
+
+            <div class="col-md-6">
+
+                <div class="bottom3">
+
+                    <ul> 
+                        
+
+                        <li><i class="fa fa-check"></i>&nbsp; Devo Fazer Meu Casamento Civil?</li>
+                        <li><i class="fa fa-check"></i>&nbsp; Que Tipo de Celebração Devo Fazer?</li>
+    
+    
+                        <li><i class="fa fa-check"></i>&nbsp; Expectativa Vs Realidade</li>
+                        
+                        <li><i class="fa fa-check"></i>&nbsp; Qual a Maneira Mais Segura de Fazer Seu Casamento</li>
+                        
+    
+                    </ul>
+    
+                </div><!--col-->
+
+            </div><!--col-->
+
+
+          
+       
+               
+            
+        </div><!--row-->
+
+
+
+
+
+
+    </div><!--container-->
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="advantages">
+
+    <div class="container">
+
+
+        <div class="row">
+
+            <div class="col-md-4 col-12 vertical-centralizer bottom2">
+
+                <div class="lead-img">
+                    
+                    <img src="/res/images/leads/banner1.png" alt="Imagem de E-book">
+                </div>  
+                
+
+            </div>
+            <!--col-lg-8-->
+
+            <div class="col-md-8 col-12">
+
+                <div class="bottom3">
+                    <h2>Olá, Noivinha!</h2>
+                </div>
+
+                <div class="bottom2">
+                    <h3>Você provavelmente está confusa e preocupada com relação ao que fazer com seu casamento e devem ter surgido muitas perguntas em seu coração! </h3>
+                </div>
+
+                <div class="bottom2">
+                    <h3>Mas queremos provar pra você que existem soluções para o seu problema!</h3>
+                </div>
+
+                <div class="bottom2">
+                    <h3>Preparamos com muito carinho este material bem resumido com 18 passos simples e eficientes para realizar seu casamento durante esta época tão difícil de pandemia.</h3>
+                </div>
+
+            </div>
+            <!--col-md-4-->
+
+        </div>
+        <!--row-->
+
+</section>
+
+
+
+
+
+
+

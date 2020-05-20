@@ -281,6 +281,30 @@ class Rsvp extends Model
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public function getRsvp( $idrsvp )
 	{
 
@@ -330,6 +354,18 @@ class Rsvp extends Model
 
 
 	}//END getEvent
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -423,6 +459,27 @@ class Rsvp extends Model
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public function getConfirmed( $iduser )
 	{
 
@@ -472,10 +529,28 @@ class Rsvp extends Model
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public function getPage( $iduser, $page = 1, $itensPerPage = 10 )
 	{
 
+		
+
 		$start = ($page - 1) * $itensPerPage;
+
+
+		
 
 		$sql = new Sql();
 
@@ -533,6 +608,8 @@ class Rsvp extends Model
 			
 		}//end if
 
+
+		
 			
 
 		return [
@@ -547,6 +624,28 @@ class Rsvp extends Model
 
     }//END getPage
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -657,6 +756,26 @@ class Rsvp extends Model
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static function checkDesguestExists( $iduser, $search )
 	{
 
@@ -734,6 +853,18 @@ class Rsvp extends Model
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 	/*public function getFromHash( $hash )
 	{
 
@@ -782,6 +913,31 @@ class Rsvp extends Model
 
 
 	}//END getFromHash*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -899,6 +1055,26 @@ class Rsvp extends Model
         
 
     }//end generateCsv
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1158,6 +1334,25 @@ class Rsvp extends Model
 		];//end return
 
 	}//END uploadRsvpList
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1503,6 +1698,22 @@ class Rsvp extends Model
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function getConfirmedSearch( $iduser, $search, $page = 1, $itensPerPage = 10 )
 	{
 
@@ -1591,6 +1802,19 @@ class Rsvp extends Model
 			
 
     }//END getConfirmedSearch
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1731,6 +1955,27 @@ class Rsvp extends Model
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public function delete()
 	{
 		$sql = new Sql();
@@ -1751,6 +1996,18 @@ class Rsvp extends Model
 		);//end query
 
 	}//END delete
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

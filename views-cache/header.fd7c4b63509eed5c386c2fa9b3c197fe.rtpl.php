@@ -15,6 +15,7 @@
     <link rel="icon" type="image/png" href="/res/images/favicon/dashboard/favicon.ico"/>
     <link rel="stylesheet" media="screen" type="text/css" href="/res/colorpicker/css/colorpicker.css" />
     <link rel="stylesheet" type="text/css" href="/res/css/bootstrap.min.css">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" type="text/css" href="/res/css/font-awesome.min.css">
     <!-- Custom CSS -->

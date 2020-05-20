@@ -68,6 +68,14 @@ body {
   -webkit-justify-content: center;
   justify-content: center;
 }
+.vertical-centralizer{
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
 a{
   outline:none!important;
   text-decoration: none!important;
@@ -105,9 +113,11 @@ header {
 	padding: 2%	 2%;
 	z-index: 2;
   	position: relative;
+	/*
 	box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
   		-webkit-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
 		-moz-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
+	*/
 }
 /*header .container-fluid {
 	width: 100%;
@@ -546,6 +556,23 @@ label{
   .button5:hover{
 	  opacity:0.8;
   }
+
+.button6{
+	font-size: 2.5rem;
+	border-radius: 8px;
+	padding: 20px 25px;
+	color: #fff;
+	background: transparent;
+	text-shadow: #767676 0.1em 0.1em 0.2em;
+	font-family: 'TheHeartOfEverything';
+	/*
+	border: 1px solid #fff;
+	background: #ffffff66;
+	*/
+}
+.button6:hover{
+	color: #c7e8f7;
+}
 .width100{
 	width: 100%!important;
 }
@@ -653,24 +680,23 @@ label{
 /********************************* BANNER *****************************************/
 /********************************* BANNER *****************************************/
 #banner {
-	
-	background:	#03A9F4;
-	/*
 	padding: 10% 0;
-	background: url("/res/images/banner/banner1.jpg") no-repeat;
+	background:	#fff;
+	
+	background: url("/res/images/banner/banner3.jpg") no-repeat;
 	background-size: cover;
 	background-position-y: center;
-	*/
+	
 }
 #banner h1 {
 	font-family: 'TheHeartOfEverything';
 	color: #fff;
-	font-size: 4rem;
+	font-size: 3.5rem;
 	text-shadow: #767676 0.1em 0.1em 0.2em;
 }
 #banner h3 {
 	color: #fff;
-	font-size: 1.9rem;
+	font-size: 1.5rem;
 	font-weight: lighter;
 	text-shadow: #767676 0.1em 0.1em 0.2em;
 }
@@ -701,7 +727,22 @@ label{
 /********************************* SITE-LEAD *****************************************/
 /********************************* SITE-LEAD *****************************************/
 .lead2{
-	background: #3a539b;	
+	background: #03A9F4;
+    background: -webkit-linear-gradient(45deg, #c7e8f7, #03A9F4);
+    background: -o-linear-gradient(45deg, #c7e8f7, #03A9F4);
+    background: -moz-linear-gradient(45deg, #c7e8f7, #03A9F4);
+		background: linear-gradient(45deg, #c7e8f7, #03A9F4);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 72px 55px 65px 55px;
+}
+.lead-img{
+	width: 200px;
+	margin: 0 auto;
+
+}
+.lead-img img{
+	width: 100%;
 }
 
 /********************************* SITE-LEAD *****************************************/

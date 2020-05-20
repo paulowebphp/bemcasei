@@ -122,13 +122,13 @@
 
                             <a href="/dashboard/rsvp/enviar">
                                 <button class="bottom1">
-                                    Enviar Convites Virtuais
+                                    Enviar RSVP
                                 </button>
                             </a>
 
-                            <a href="/dashboard/rsvp/enviar">
+                            <a href="/dashboard/rsvp/adiar">
                                 <button class="bottom1">
-                                    Adiar Convites Virtuais
+                                    Adiar Casamento
                                 </button>
                             </a>
 

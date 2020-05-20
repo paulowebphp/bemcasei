@@ -275,18 +275,18 @@
 
                             <div class="thumb row2">
                                     
-                                    <input type="radio" class="form-control" id="template5" name="idtemplate" value="5" <?php if( $customstyle["idtemplate"] == '5' ){ ?>checked="checked"<?php } ?>>
+                                <input type="radio" class="form-control" id="template5" name="idtemplate" value="5" <?php if( $customstyle["idtemplate"] == '5' ){ ?>checked="checked"<?php } ?>>
 
-                                </div><!--thumb row2-->
+                            </div><!--thumb row2-->
 
-                                    
+                                
 
-                            </div><!--col-md-6-->
-
-
+                        </div><!--col-md-6-->
 
 
-                        <div class="col-md-6 col-12">
+
+
+                    <div class="col-md-6 col-12">
 
 
 

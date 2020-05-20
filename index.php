@@ -58,6 +58,8 @@ require_once("site-pages.php");
 require_once("site-search.php");
 require_once("site-templates.php");
 require_once("site-email.php");
+require_once("site-leads.php");
+require_once("site-promotions.php");
 
 
 require_once("admin.php");

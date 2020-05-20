@@ -161,6 +161,8 @@ class Rule extends Model
 	const DIRECTORY_RSVP = "rsvp";
 
 
+	/***RSVP SEND***/
+	const MAX_MAIL_SEND = 20;
 
 
 

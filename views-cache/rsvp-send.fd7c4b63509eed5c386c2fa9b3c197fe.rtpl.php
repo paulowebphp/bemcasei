@@ -36,16 +36,14 @@
 
             <div class="col-md-9 col-12 dash-panel">
 
-
                 
-
-               <form method="post" action='/dashboard/rsvp/<?php echo setHash($rsvp["idrsvp"]); ?>'>
+               <form method="post" action="/dashboard/rsvp/enviar">
 
                     <div class="row">
                         <div class="col-md-12">
                             
                             <div class="dash-title">
-                                <h1>Editar</h1>
+                                <h1>Enviar Convites</h1>
                             </div><!--dash-title-->
 
                         </div><!--col-->
@@ -81,69 +79,23 @@
 
 
 
-                    
 
+                    
 
                     <div class="row">
                         
                         <div class="col-md-6 dash-column">
 
 
-                            <div class="dash-input-row">
+                            <div class="form-check bottom2">
 
-                                <label for="desguest">Convidado</label>
-                                <input type="text" class="form-control" id="desguest" name="desguest" value="<?php echo htmlspecialchars( $rsvp["desguest"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                              <input class="form-check-input" type="checkbox" name="rsvp-send-store" value="1" id="rsvp-send-store">
 
-                            </div><!--dash-input-row-->
+                              <label class="form-check-label" for="rsvp-send-store">
+                                Enviar o link da Loja Virtual do Casal no e-mail
+                              </label>
 
-
-
-
-
-                        
-                            <label for="inmaxadults">Quantidade Máxima de Adultos<br><small>(Esta opção é válida apenas para este convidado)</small></label>
-
-                            <div class="dash-input-row input-inposition">
-
-
-                                
-                                <input type="text" class="form-control" id="inmaxadults" name="inmaxadults" value="<?php echo htmlspecialchars( $rsvp["inmaxadults"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-
-                            </div><!--dash-input-row-->
-
-
-
-
-
-
-
-
-
-                            <?php if( $rsvpconfig["inchildren"] == 1 ){ ?>
-                            <label for="inmaxchildren">Quantidade Máxima de Crianças<br><small>(Esta opção é válida apenas para este convidado)</small></label>
-
-                            <div class="dash-input-row input-inposition">
-
-
-                                
-                                <input type="text" class="form-control" id="inmaxchildren" name="inmaxchildren" value="<?php echo htmlspecialchars( $rsvp["inmaxchildren"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-
-                            </div><!--dash-input-row-->
-                            <?php } ?>
-
-
-
-
-                            <div class="dash-input-row">
-
-
-                                <input type="hidden" class="form-control" id="idrsvp" name="idrsvp" value='<?php echo setHash($rsvp["idrsvp"]); ?>'>
-
-
-                            </div><!--dash-input-row-->
-
+                            </div>
 
                                 
 
@@ -170,17 +122,152 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="row">
+                        
+                        <div class="col-md-6 dash-column">
+
+
+
+
+
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="rsvp-send-message" id="rsvp-send-message1" value="1" checked="checked">
+                              <label class="form-check-label" for="rsvp-send-message1">
+                                Message1
+                              </label>
+                            </div>
+
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="rsvp-send-message" id="rsvp-send-message2" value="2">
+                              <label class="form-check-label" for="rsvp-send-message2">
+                                Message2
+                              </label>
+                            </div>
+
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="rsvp-send-message" id="rsvp-send-message3" value="3" checked="checked">
+                              <label class="form-check-label" for="rsvp-send-message3">
+                                Message3
+                              </label>
+                            </div>
+
+
+                            
+
+
+
+
+                        </div><!--col-md-6-->
+
+
+
+
+
+                        <div class="col-md-6">
+                            
+                            
+                            
+                            &nbsp;
+
+                            
+                            
+                        </div><!--col-md-6-->
+
+
+                    </div><!--row-->
+
+
+
+
+
+
+
+
+                    <div class="row">
+                        
+                        <div class="col-md-6 dash-column">
+
+
+
+
+
+
+                            <h2>teste</h2>
+
+                            <textarea class="description-area" rows="5" maxlength="500" id="rsvp-send-message0" name="rsvp-send-message0"></textarea>
+
+                              
+
+
+
+
+                        </div><!--col-md-6-->
+
+
+
+
+
+                        <div class="col-md-6">
+                            
+                            
+                            
+                            &nbsp;
+
+                            
+                            
+                        </div><!--col-md-6-->
+
+
+                    </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
                     <div class="row">
 
                         <div class="col-md-6">
 
+
+
+
+
+
+
                             <div class="dash-input-row input-footer">
                                 
-                                <button type="submit" class="btn btn-primary">Salvar</button>
+                                <button type="submit" class="btn btn-primary">Enviar</button>
 
                                 <a href="/dashboard/rsvp" class="btn btn-danger">Voltar</a>
 
                             </div><!--dash-input-row-->
+
+
+
+
+
                             
                         </div><!--col-->
 

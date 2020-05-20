@@ -346,12 +346,6 @@ section h6{
 section button{
   font-size: 1rem;
 }
-textarea{
-  overflow: hidden;
-  outline: none;
-  width: 100%;
-  font-size: 1rem;
-}
 select{
   width: 100%;
   border-radius: 4px;
@@ -385,9 +379,13 @@ select{
   padding: 2%;
 }
 textarea{
+  overflow-y: scroll;
+  resize: none;
   border: 1px solid #ced4da;
   padding: 2% 1%;
   width: 100%;
+  outline: none;
+  font-size: 1rem;
 }
 input{
   border: 1px solid #ced4da;
@@ -411,10 +409,11 @@ label{
 .rsvp h1 small{
   font-weight: lighter;
 }
+
 .hr1 hr{
-  background: #03A9F4;
-  height: 1px;
+  border: 1px dashed #03A9F4;
   border-radius: 8px;
+
 }
 .input-photo2{
   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);
@@ -706,7 +705,7 @@ label{
   font-family: 'Norican', Arial;
   color: #171f26;
 }
-.templates-models input[type=checkbox], input[type=radio] {
+.templates-models input[type=checkbox], .templates-models input[type=radio] {
     display: none;
 }
 
