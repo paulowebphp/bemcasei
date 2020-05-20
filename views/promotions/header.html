@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/res/css/font-awesome.min.css">
 
-    <link rel="stylesheet" type="text/css" href="/res/css/site/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="/res/css/site/stylesheet-promotions.css">
     <link rel="stylesheet" type="text/css" href="/res/css/site/stylesheet-mobile.css">
     <link rel="stylesheet" type="text/css" href="/res/css/site/print.css" media="print">
 
@@ -110,7 +110,7 @@
                         <div id="logo">
 
 
-                            <a href="/"><img id="logotipo" src="/res/images/logo/logo-main.png" alt="Logotipo"></a>
+                            <a target="_blank" href="/"><img id="logotipo" src="/res/images/logo/logo-main.png" alt="Logotipo"></a>
 
                             <!--<img id="logotipo" src="/res/images/logo/logo-main.png" width="203" height="65" alt="Logotipo">-->
 
@@ -125,19 +125,12 @@
 
 
 
-                    <div class="col-10 text-center">
+                    <div class="col-10 text-right">
 
 
                         <div id="menu">
                             <ul>
-                                <li><a href="/site-casamento">SITE DE CASAMENTO</a></li>
-                                <li><a href="/lista-presentes">LISTA DE PRESENTES</a></li>
-                                <li><a href="/planos">PLANOS</a></li>
-                                <li><a href="/modelos-templates">TEMPLATES</a></li>
-                                <!--<li><a href="https://blog.amarcasar.com/" target="_blank">BLOG</a></li> -->
-                                <!--<li><a href="/buscar">BUSCAR CASAL</a></li>-->
-
-                                <li><a href="/criar-site"><button id="nav-free">TESTE GRÁTIS</button></a></li>
+                                <!--<li>Faça Login Para Baixar o Seu E-book</li>-->
 
                                 <li><a href="/login"><button id="nav-login">LOGIN</button></a></li>
                             </ul>
@@ -183,15 +176,7 @@
                         <div id="menu-mobile">
 
                             <ul>
-                                <li><a href="/">INICIO</a></li>
-                                <li><a href="/site-casamento">SITE DE CASAMENTO</a></li>
-                                <li><a href="/lista-presentes">LISTA DE PRESENTES</a></li>
-                                <li><a href="/planos">PLANOS</a></li>
-                                <li><a href="/modelos-templates">TEMPLATES</a></li>
-                                <!--<li><a href="https://blog.amarcasar.com/" target="_blank">BLOG</a></li>  -->
-                                <!--<li><a href="/buscar">BUSCAR CASAL</a></li>-->
-
-                                <li><a href="/criar-site"><button id="nav-free">TESTE GRÁTIS</button></a></li>
+                                <!--<li>Faça Login Para Baixar o Seu E-book</li>-->
 
                                 <li><a href="/login"><button id="nav-login">LOGIN</button></a></li>
                             </ul>

@@ -22,7 +22,7 @@
 
 
     <title>Central de Ajuda | Bem Casei</title>
-    <link rel="icon" type="image/png" href="/res/images/favicon/site/favicon.png" />
+    <link rel="icon" type="image/png" href="/res/images/favicon/site/favicon.ico" />
     <link rel="stylesheet" href="/res/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/res/css/font-awesome.min.css">
@@ -33,43 +33,40 @@
 
 
     <script type="application/ld+json">
-    {
-      "@context": "http://schema.org/",
-      "@type": "Service",
-      "serviceType": "Software as a Service",
-      "logo": "https://bemcasei.com.br/res/images/logo/bem-casei-logo-round-white.png",
-      "termsOfService": "https://bemcasei.com.br/termos-uso",
-      "category": "Service",
-      "areaServed": {
-        "@type": "Country",
-        "name": "BR"
-      },
-      "audience": {
-        "@type": "PeopleAudience",
-        "geographicArea": {
-          "@type": "Country",
-          "name": "BR"
+        {
+          "@context": "http://schema.org/",
+          "@type": "Service",
+          "serviceType": "Software as a Service",
+          "logo": "https://bemcasei.com.br/res/images/favicon/site/favicon.ico",
+          "termsOfService": "https://bemcasei.com.br/termos-uso",
+          "category": "Service",
+          "areaServed": {
+            "@type": "Country",
+            "name": "BR"
+          },
+          "audience": {
+            "@type": "PeopleAudience",
+            "geographicArea": {
+              "@type": "Country",
+              "name": "BR"
+            }
+          },
+          "brand": {
+            "@type": "Organization",
+            "name": "Bem Casei Site de Casamento"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Bem Casei Site de Casamento"
+          }
         }
-      },
-      "brand": {
-        "@type": "Organization",
-        "name": "Bem Casei Site de Casamentos"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Bem Casei Site de Casamentos"
-      }
-    }
-    </script>
+        </script>
 
 
 
 
 
-    <!-- Start of bemcasei Zendesk Widget script -->
-    <script id="ze-snippet"
-        src="https://static.zdassets.com/ekr/snippet.js?key=565637ed-1709-4f89-b406-1ce62941de4b"> </script>
-    <!-- End of bemcasei Zendesk Widget script -->
+    
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152061464-1"></script>
@@ -80,6 +77,14 @@
 
         gtag('config', 'UA-152061464-1');
     </script>
+
+
+
+
+    <!-- Start of bemcasei Zendesk Widget script -->
+    <script id="ze-snippet"
+    src="https://static.zdassets.com/ekr/snippet.js?key=565637ed-1709-4f89-b406-1ce62941de4b"> </script>
+    <!-- End of bemcasei Zendesk Widget script -->
 
 </head>
 
@@ -132,7 +137,7 @@
                                 <!--<li><a href="https://blog.amarcasar.com/" target="_blank">BLOG</a></li>-->
                                 <!--<li><a href="/buscar">BUSCAR CASAL</a></li>-->
 
-                                <li><a href="/criar-site-de-casamento"><button id="nav-free">TESTE GRÁTIS</button></a>
+                                <li><a href="/criar-site"><button id="nav-free">TESTE GRÁTIS</button></a>
                                 </li>
 
                                 <li><a href="/login"><button id="nav-login">LOGIN</button></a></li>
@@ -186,7 +191,7 @@
                                 <!--<li><a href="https://blog.amarcasar.com/" target="_blank">BLOG</a></li>-->
                                 <!--<li><a href="/buscar">BUSCAR CASAL</a></li>-->
 
-                                <li><a href="/criar-site-de-casamento"><button id="nav-free">TESTE GRÁTIS</button></a>
+                                <li><a href="/criar-site"><button id="nav-free">TESTE GRÁTIS</button></a>
                                 </li>
 
                                 <li><a href="/login"><button id="nav-login">LOGIN</button></a></li>

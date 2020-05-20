@@ -39,7 +39,7 @@
                         -->
 
                         <div class="bottom2">
-                            <h3>Insira Seu Email Abaixo e Clique No Botão Para Receber o E-book Em Seu Email Gratuitamente!</h3>
+                            <h3>Insira Seu Email Abaixo e Clique No Botão Para Receber Seu E-book Gratuitamente!</h3>
                         </div>
 
 
@@ -62,7 +62,7 @@
 
 
 
-                      <button type="submit" class="button6">Fazer Download</button>
+                      <button type="submit" class="button6">Quero Receber Meu E-book!</button>
 
                     </form>
 

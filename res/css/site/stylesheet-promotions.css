@@ -113,11 +113,9 @@ header {
 	padding: 2%	 2%;
 	z-index: 2;
   	position: relative;
-	/*
 	box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
   		-webkit-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
 		-moz-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
-	*/
 }
 /*header .container-fluid {
 	width: 100%;
@@ -562,17 +560,49 @@ label{
 	border-radius: 8px;
 	padding: 20px 25px;
 	color: #fff;
-	background: transparent;
+	
+	border: 1px solid #96281b;
+	/*
+	background: #ffffff66;
+	border: 1px solid #fff;
+	*/
+	background: #f22613;
 	text-shadow: #767676 0.1em 0.1em 0.2em;
 	font-family: 'TheHeartOfEverything';
-	/*
-	border: 1px solid #fff;
-	background: #ffffff66;
-	*/
 }
 .button6:hover{
-	color: #c7e8f7;
+	color: #f1a9a0;
+	/*color: #c7e8f7;*/
 }
+
+.button7{
+	color: #03a9f4;
+	font-size: 2.5rem;
+	border-radius: 8px;
+	padding: 20px 25px;
+	background: #fff;
+	
+	/*
+	font-family: 'TheHeartOfEverything';
+	background: #ffffff66;
+	text-shadow: #767676 0.1em 0.1em 0.2em;
+	border: 1px solid #fff;
+	*/
+	border: none;
+	box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);;
+  		-webkit-box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);;
+	    -moz-box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);;
+}
+.button7:hover{
+	/*color: #c7e8f7;*/
+	cursor: auto;
+}
+.button7 h3{
+	font-size: 1.5rem;
+	font-weight: bolder;
+	color: #03a9f4;
+}
+
 .width100{
 	width: 100%!important;
 }
@@ -680,23 +710,28 @@ label{
 /********************************* BANNER *****************************************/
 /********************************* BANNER *****************************************/
 #banner {
-	padding: 10% 0;
-	background:	#fff;
-	
-	background: url("/res/images/banner/banner3.jpg") no-repeat;
+	background:	#03A9F4;
+	padding: 5% 0;
+	/*
+	background: url("/res/images/promotions/banner1.jpg") no-repeat;
 	background-size: cover;
-	background-position-y: center;
+	background-position-y: center;*/
+
+    background: -webkit-linear-gradient(45deg, #c7e8f7, #03A9F4);
+    background: -o-linear-gradient(45deg, #c7e8f7, #03A9F4);
+    background: -moz-linear-gradient(45deg, #c7e8f7, #03A9F4);
+		background: linear-gradient(45deg, #c7e8f7, #03A9F4);
 	
 }
 #banner h1 {
 	font-family: 'TheHeartOfEverything';
 	color: #fff;
-	font-size: 3.5rem;
+	font-size: 4rem;
 	text-shadow: #767676 0.1em 0.1em 0.2em;
 }
 #banner h3 {
 	color: #fff;
-	font-size: 1.5rem;
+	font-size: 1.9rem;
 	font-weight: lighter;
 	text-shadow: #767676 0.1em 0.1em 0.2em;
 }
@@ -722,41 +757,111 @@ label{
 
 
 
-/********************************* SITE-LEAD *****************************************/
-/********************************* SITE-LEAD *****************************************/
-/********************************* SITE-LEAD *****************************************/
-/********************************* SITE-LEAD *****************************************/
-.lead2{
-	background: #03A9F4;
+/********************** CONFIRMATION2 *********************************/
+/********************** CONFIRMATION2 *********************************/
+/********************** CONFIRMATION2 *********************************/
+/********************** CONFIRMATION2 *********************************/
+
+#confirmation2 {
+	background:	#03A9F4;
+	padding: 5% 0;
+
     background: -webkit-linear-gradient(45deg, #c7e8f7, #03A9F4);
     background: -o-linear-gradient(45deg, #c7e8f7, #03A9F4);
     background: -moz-linear-gradient(45deg, #c7e8f7, #03A9F4);
 		background: linear-gradient(45deg, #c7e8f7, #03A9F4);
-    border-radius: 10px;
-    overflow: hidden;
-    padding: 72px 55px 65px 55px;
 }
-.lead-img{
-	width: 200px;
-	margin: 0 auto;
 
+#confirmation2 h2 {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bolder;
 }
-.lead-img img{
+
+/*#confirmation2 h2{
+	color: #fff;
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .95);
+	margin-bottom: 60px;
+	font-family: 'TheHeartOfEverything';
+	font-size: 1.9rem;
+}*/
+
+/*
+#confirmation2 h3{
+	color: #fff;
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .95);
+	font-family: 'TheHeartOfEverything';
+	font-size: 3rem;
+}*/
+
+#confirmation2 .button1{
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .65);
+}
+/********************** CONFIRMATION2 *********************************/
+/********************** CONFIRMATION2 *********************************/
+/********************** CONFIRMATION2 *********************************/
+/********************** CONFIRMATION2 *********************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********************************* PROMOTION *****************************************/
+/********************************* PROMOTION *****************************************/
+/********************************* PROMOTION *****************************************/
+/********************************* PROMOTION *****************************************/
+.img-promotion{
+	width: 300px;
+}
+.img-promotion img{
 	width: 100%;
 }
 
-/********************************* SITE-LEAD *****************************************/
-/********************************* SITE-LEAD *****************************************/
-/********************************* SITE-LEAD *****************************************/
-/********************************* SITE-LEAD *****************************************/
-
-
-
-
-
-
-
-
+.img-promotion2{
+	width: 100%;
+}
+.img-promotion2 img{
+	width: 100%;
+	border-radius: 6px;
+	border: 4px solid #03a9f499;
+	box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);;
+  		-webkit-box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);;
+	    -moz-box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);;
+}
+.hr1 hr{
+	background-color: #03a9f4;
+	height: 8px;
+	width: 100px;
+}
+.justify1{
+	display: flex;
+	justify-content: center;
+}
+/********************************* PROMOTION *****************************************/
+/********************************* PROMOTION *****************************************/
+/********************************* PROMOTION *****************************************/
+/********************************* PROMOTION *****************************************/
 
 
 
@@ -1263,12 +1368,16 @@ label{
 
 /********************************* ADVANTAGES *****************************************/
 #advantages {
-	padding: 5% 10%;
+	padding: 5% 0;
 	width: 100%;
 	position: relative;
-	background: url("/res/images/advantages.jpg") no-repeat;
+	/*
+	padding: 5% 10%;
+
 	background-color: #f2f2f2;
+	background: url("/res/images/advantages.jpg") no-repeat;
 	background-size: cover;
+	*/
 }
 
 #advantages h2{

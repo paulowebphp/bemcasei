@@ -110,7 +110,7 @@
                         <div id="logo">
 
 
-                            <a href="/"><img id="logotipo" src="/res/images/logo/logo-main.png" alt="Logotipo"></a>
+                            <a target="_blank" href="/"><img id="logotipo" src="/res/images/logo/logo-main.png" alt="Logotipo"></a>
 
                             <!--<img id="logotipo" src="/res/images/logo/logo-main.png" width="203" height="65" alt="Logotipo">-->
 
@@ -130,7 +130,7 @@
 
                         <div id="menu">
                             <ul>
-                                <li>Faça Login Para Baixar o Seu E-book</li>
+                                <!--<li>Faça Login Para Baixar o Seu E-book</li>-->
 
                                 <li><a href="/login"><button id="nav-login">LOGIN</button></a></li>
                             </ul>
@@ -176,7 +176,7 @@
                         <div id="menu-mobile">
 
                             <ul>
-                                <li>Faça Login Para Baixar o Seu E-book</li>
+                                <!--<li>Faça Login Para Baixar o Seu E-book</li>-->
 
                                 <li><a href="/login"><button id="nav-login">LOGIN</button></a></li>
                             </ul>

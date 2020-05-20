@@ -6,27 +6,39 @@
         <div class="row centralizer">
 
 
-            <div class="col-md-10">
+            <div class="col-md-8 col-12 bottom2">
 
                 <div class="text-center">
 
                     <div class="bottom1">
-                        <h1>Bem Casei Site de Casamento</h1>
+                        <h1>Bem Casei Pocket</h1>
 
                     </div>
                     <!--inner-text-introduction-->
 
                     <div class="bottom2">
-                        <h3>Prático, moderno, bonito.</h3>
+                        <h3>Vc gostaria de iniciar seu casamento se sentindo mais plena, mais segura e confiante no seu parceiro?</h3>
                     </div>
 
-                    <a href="/criar-site"><button type="button" class="button1">Criar meu Site 10 Dias Grátis</button></a>
+                    
+
+                    <a href="/criar-site"><button type="button" class="button6">Sim! Quero Comprar Meu Casamento Pocket!</button></a>
 
                 </div>
                 <!--textIntroduction_-->
 
             </div>
-            <!--col-md-12-->
+
+
+
+
+            <div class="col-md-4 col-12 centralizer bottom2">
+                
+                <div class="img-promotion bottom2">
+                    <img src="/res/images/promotions/banner2.png" alt="Imagem de um Casal">
+                </div>
+
+            </div>
 
         </div>
 
@@ -60,7 +72,7 @@
                 
                 <div class="bottom2">
                     <h2>
-                        FUNCIONALIDADES DO SITE DE CASAMENTO
+                        O CASAMENTO POCKET SERVE PARA QUAIS NOIVAS?
                     </h2>
                 </div>
                 
@@ -83,25 +95,16 @@
 
                     <ul> 
 
-                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Funciona no celular, tablet e notebook</li> 
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que estão pensando em adiar seu casamento por causa da Pandemia</li> 
                         
-                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Lista de Presentes convertida em Dinheiro</li>
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que já adiaram seu Casamento por causa da Pandemia</li>
 
-                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Divulgue detalhes do Seu Casamento (Data, Local, Horário, Trajes etc.)</li>
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que estão querendo casar só no Civil</li> 
 
 
-                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Templates Modernos</li>
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas Que Precisam de uma ferramenta para Comunicar Seus Convidados Sobre o Adiamento Do Seu Casamento</li>
 
                         
-
-                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Confirmação de Presença On-Line</li>
-
-                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Contagem Regressiva pra Data do Casamento</li>
-
-                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Galeria de Fotos</li>
-
-                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Habilitar e Desabilitar Páginas</li>
-
                         
 
                     </ul>
@@ -119,18 +122,17 @@
                 <div class="bottom3">
 
                     <ul> 
+
+
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que estão planejando casar, mas estão em dúvidas por causa da Pandemia</li>
+                        
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que cancelaram seu Casamento por Causa da Pandemia</li>
+    
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas Que estão desejam utilizar uma Lista de Presentes que seja Convertida em Dinheiro</li>
+                        
                         
 
-                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Eventos (Aniversário, Ensaios Pra Valsa, entre outros)</li> 
-                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Traça Rotas para os Convidados com Google Maps URL</li>
-    
-    
-                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Galeria de Vídeos</li>
                         
-                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Mural de Mensagens dos Amigos e Família</li>
-                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Coloque Suas Redes Sociais no Rodapé</li>
-                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Página de Padrinhos e Madrinhas</li>
-                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Fornecedores e Listas de Fora</li>
     
                     </ul>
     
@@ -166,6 +168,7 @@
 
 
 
+<!--
 <section id="create-list">
 
     <div class="container">
@@ -200,7 +203,6 @@
                 </div>
 
             </div>
-            <!--col-->
 
 
             <div class="col-md-6 text-center">
@@ -233,18 +235,255 @@
                 </div>
 
             </div>
-            <!--col-->
+
+        </div>
+
+    </div>
+
+</section>
+-->
+
+
+
+
+<section id="confirmation2">
+
+    <div class="container text-center">
+
+
+        <div class="row bottom2 centralizer">
+     
+            <div class="col-md-6 text-center">
+                
+                <div class="bottom2">
+                    <h2>
+                        COMO O CASAMENTO POCKET FUNCIONA?
+                    </h2>
+                </div>
+                
+                               
+                
+
+            </div><!--col-->
+            
+        </div><!--row-->
+
+
+
+
+        <div class="row">
+
+
+
+
+            <div class="col-md-3 col-12 text-center centralizer bottom2">
+
+
+
+
+                <button type="button" class="button7">
+
+                    <div class="bottom2">
+                        <i class="fa fa-signal"></i>
+                    </div>
+
+                    <h3>Plataforma 100% On-Line</h3>
+
+                </button>
+
+            </div>
+
+
+
+
+            <div class="col-md-3 col-12 text-center centralizer bottom2">
+
+                <button type="button" class="button7">
+
+                    <div class="bottom2">
+                        <i class="fa fa-desktop"></i>
+                    </div>
+
+                    <h3>Funciona no celular, tablet e notebook</h3>
+
+                </button>
+
+            </div>
+
+
+
+
+
+            <div class="col-md-3 col-12 text-center centralizer bottom2">
+
+                <button type="button" class="button7">
+
+                    <div class="bottom2">
+                        <i class="fa fa-play"></i>
+                    </div>
+
+                    <h3>Galeria de Fotos e Vídeos</h3>
+
+                </button>
+
+            </div>
+
+
+
+
+
+            <div class="col-md-3 col-12 text-center centralizer bottom2">
+
+                <button type="button" class="button7">
+
+                    <div class="bottom2">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+
+                    <h3>Acesso por 12 Meses (+ 12 Meses de Bônus)</h3>
+
+                </button>
+
+            </div>
+
+
+
+
+
+
 
         </div>
         <!--row-->
 
+
+
+
     </div>
     <!--container-->
-
+    <!-- # End / Contet Text #  -->
 </section>
 
 
 
+
+<!--
+
+<section id="confirmation2">
+
+    <div class="container text-center">
+
+
+        <div class="row bottom2 centralizer">
+     
+            <div class="col-md-6 text-center">
+                
+                <div class="bottom2">
+                    <h2>
+                        COMO O CASAMENTO POCKET FUNCIONA?
+                    </h2>
+                </div>
+                
+                               
+                
+
+            </div>
+            
+        </div>
+
+
+
+
+        <div class="row">
+
+
+
+
+            <div class="col-md-3 col-12 text-center centralizer bottom2">
+
+
+
+
+                <button type="button" class="button7">
+
+                    <div class="bottom2">
+                        <i class="fa fa-desktop"></i>
+                    </div>
+
+                    <h3>Acesso 100% On-Line à Plataforma Por 12 Meses (+ 12 Meses de Bônus)</h3>
+
+                </button>
+
+            </div>
+
+
+
+
+            <div class="col-md-3 col-12 text-center centralizer bottom2">
+
+                <button type="button" class="button7">
+
+                    <div class="bottom2">
+                        <i class="fa fa-camera-retro"></i>
+                    </div>
+
+                    <h3>Ensaio Fotográfico Com Os Melhores Profissionais</h3>
+
+                </button>
+
+            </div>
+
+
+
+
+
+            <div class="col-md-3 col-12 text-center centralizer bottom2">
+
+                <button type="button" class="button7">
+
+                    <div class="bottom2">
+                        <i class="fa fa-check-square"></i>
+                    </div>
+
+                    <h3>Lista de Presentes Convertida em Dinheiro</h3>
+
+                </button>
+
+            </div>
+
+
+
+
+
+            <div class="col-md-3 col-12 text-center centralizer bottom2">
+
+                <button type="button" class="button7">
+
+                    <div class="bottom2">
+                        <i class="fa fa-envelope-square"></i>
+                    </div>
+
+                    <h3>Comunicar Seus Convidados Sobre o Adiamento</h3>
+
+                </button>
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+</section>
+
+-->
 
 
 
@@ -260,7 +499,7 @@
 
             <div class="col-md-12 text-center">
 
-                <h2>VANTAGENS</h2>
+                <h2>AQUI ESTÃO ALGUMAS VANTAGENS E BENEFÍCIOS QUE VOCÊ VAI RECEBER AO ADQUIRIR O CASAMENTO POCKET</h2>
 
             </div>
             <!--col-lg-12-->
@@ -268,90 +507,250 @@
         </div>
         <!--row-->
 
-        <div class="row">
-
-            <div class="col-lg-8 col-12">
-
-                <h3>TEMPLATES EXCLUSIVOS PARA</h3>
-
-                <h3>QUEM QUER BEM CASAR!</h3>
-
-                <p>&nbsp;</p>
-
-                <p>Seu site de casamento merece um design exclusivo Bem Casei. </p>
-
-                <p>Escolha seu template e personalize do seu jeito! </p>
-
-                <!--<p>&nbsp;</p>
-
-                <div class="template-banner-image">
-                    <a href="/modelos-templates">
-                        <img src="/res/images/banner-templates.png" alt="Miniaturas dos Banners">
-                    </a>
-                </div>-->
-
-                <p>&nbsp;</p>
-
-                <a href="/modelos-templates"><button type="button" class="btn btn-md btn-advantage btn-advantage1">
-                        VER TEMPLATES
-                    </button></a>
-                
-                <a href="/site-casamento"><button type="button" class="btn btn-md btn-advantage btn-advantage2">
-                        VER FUNCIONALIDADES
-                    </button></a>
-                
-
-            </div>
-            <!--col-lg-8-->
-
-            <div class="col-lg-4 col-12">
-
-                <div id="box-price">
-
-                    <div id="box-price-logo">
-                        <img src="/res/images/logo/logo-white.png">
-                    </div>
 
 
-                    <ul id="advantages-features">
-
-                        <li id="box-header">Tenha acesso a um sistema on-line que irá lhe auxiliar a promover seu
-                            casamento</li>
-
-                        <li><i class="fa fa-check"></i>&nbsp;&nbsp;Receba Presentes em Dinheiro</li>
-
-                        <li><i class="fa fa-check"></i>&nbsp;&nbsp;Saques Gratuitos</li>
-
-                        <li><i class="fa fa-check"></i>&nbsp;&nbsp;Templates Modernos</li>
-
-                        <li><i class="fa fa-check"></i>&nbsp;&nbsp;Confirmação de Presença On-line</li>
-
-                        
-
-                        
-
-                        <li>&nbsp;&nbsp;<b>E muito mais!</b></li>
-
-                    </ul>
 
 
-                    <div id="box-footer">
+        <div class="row bottom2">
 
-                        <a href="/planos"><strong>COMECE JÁ</strong></a>
 
-                    </div>
-                    <!--active-->
 
+            <div class="col-md-4 col-12 bottom2">
+
+                <div class="img-promotion2 bottom2">
+                    <img src="/res/images/promotions/banner1.jpg" alt="Imagem de um Casal">
                 </div>
-                <!--price_block-->
+                
 
             </div>
-            <!--col-md-4-->
+
+
+
+
+
+            <div class="col-md-8 col-12 bottom1">
+
+                <div class="bottom1">
+                    <h2>Ensaio Fotográfico</h2>
+                </div>
+
+                <div class="bottom1">
+                    <h3>Faça um Ensaio Fotográfico com os melhores profissionais de Belo Horizonte e coloque no seu site para que seus familiares e amigos possam ver e se encantar!</h3>
+                </div>
+
+                <div class="bottom1">
+                    <h3>Em tempos de quarentena esta é maneira mais elegante e segura de registrar esse momento lindo e histórico!</h3>
+                </div>
+
+
+                
+
+            </div>
+
 
         </div>
-        <!--row-->
+
+
+
+
+        <!--
+<div class="hr1 bottom4">
+            <hr>
+        </div>
+        -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="row bottom2">
+
+
+
+            <div class="col-md-4 col-12 bottom2">
+
+                <div class="img-promotion2 bottom2">
+                    <img src="/res/images/promotions/banner3.jpg" alt="Imagem de um Casal">
+                </div>
+                
+
+            </div>
+
+
+
+
+
+            <div class="col-md-8 col-12 bottom1">
+
+                <div class="bottom1">
+                    <h2>Lista de Presentes Convertida em Dinheiro</h2>
+                </div>
+
+                <div class="bottom1">
+                    <h3>Crie uma Lista de Presentes e receba os valores em Dinheiro para usar como quiser!</h3>
+                </div>
+
+                <div class="bottom1">
+                    <h3>Tarifa Total de apenas <span style="color:#03a9f4;font-weight:normal;">4,99%</span> e Transferências <span style="color:#03a9f4;font-weight:normal;">GRATUITAS</span> para a Conta Bancária</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+        <!--
+<div class="hr1 bottom4">
+            <hr>
+        </div>
+        -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="row bottom2">
+
+
+
+            <div class="col-md-4 col-12 bottom2">
+
+                <div class="img-promotion2 bottom2">
+                    <img src="/res/images/promotions/banner4.jpg" alt="Imagem de um Casal">
+                </div>
+                
+
+            </div>
+
+
+
+
+
+            <div class="col-md-8 col-12 bottom1">
+
+                <div class="bottom1">
+                    <h2>Comunique Seus Convidados Sobre o Adiamento</h2>
+                </div>
+
+                <div class="bottom1">
+                    <h3>Se você já enviou os convites e tomou a decisão de adiar a data do seu casamento por causa da pandemia, precisa avisar os seus convidados!</h3>
+                </div>
+
+                <div class="bottom1">
+                    <h3>O Bem Casei tem uma ferramenta que possibilita você enviar e-mails com aviso de adiamento de forma fácil e descomplicada!</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+        <!--
+<div class="hr1 bottom4">
+            <hr>
+        </div>
+        -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="row bottom2">
+
+
+
+            <div class="col-md-4 col-12 bottom2">
+
+                <div class="img-promotion2 bottom2">
+                    <img src="/res/images/promotions/banner5.jpg" alt="Imagem de um Casal">
+                </div>
+                
+
+            </div>
+
+
+
+
+
+            <div class="col-md-8 col-12 bottom1">
+
+                <div class="bottom1">
+                    <h2>Divulgue o Seu Casamento Civil</h2>
+                </div>
+
+                <div class="bottom1">
+                    <h3>Divulgue detalhes do Seu Casamento Civil em lindos templates e Encante os Seus Amigos e Familiares!</h3>
+                </div>
+
+                
+
+            </div>
+
+        </div>
+
+
+
+
+        <!--
+<div class="hr1 bottom4">
+            <hr>
+        </div>
+        -->
+
+
+
+
+
+
 
 </section>
+
+
+
+
+
+
+
+
+
 
 
 

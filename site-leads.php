@@ -31,7 +31,7 @@ $app->get( '/baixar-ebook', function()
 	$page = new PageLead();
 
 	$page->setTpl(
-		
+
 		"index"
 	
 	);//end setTpl
