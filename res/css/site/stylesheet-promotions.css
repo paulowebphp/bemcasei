@@ -1880,8 +1880,23 @@ label{
 
 
 
+@media only screen and (max-width: 767px){
+
+/*************************CARD1******************************/
+.card1 {
+    margin: 0 0 15% 0;
+    width: 100%;
+}
+.card1 .body-row{
+    margin-bottom: 10%;
+}
+.card1 .inside-row{
+    margin-bottom: 10%;
+}
 
 
+
+}/*BREAKPOINT*/
 
 
 
