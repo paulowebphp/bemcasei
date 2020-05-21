@@ -553,11 +553,11 @@
 
 
 
-        <!--
-<div class="hr1 bottom4">
-            <hr>
-        </div>
-        -->
+                <!--
+        <div class="hr1 bottom4">
+                    <hr>
+                </div>
+                -->
 
 
 
@@ -612,11 +612,11 @@
 
 
 
-        <!--
-<div class="hr1 bottom4">
-            <hr>
-        </div>
-        -->
+                <!--
+        <div class="hr1 bottom4">
+                    <hr>
+                </div>
+                -->
 
 
 
@@ -668,11 +668,11 @@
 
 
 
-        <!--
-<div class="hr1 bottom4">
-            <hr>
-        </div>
-        -->
+                <!--
+        <div class="hr1 bottom4">
+                    <hr>
+                </div>
+                -->
 
 
 
@@ -729,11 +729,11 @@
 
 
 
-        <!--
-<div class="hr1 bottom4">
-            <hr>
-        </div>
-        -->
+                <!--
+        <div class="hr1 bottom4">
+                    <hr>
+                </div>
+                -->
 
 
 
@@ -755,13 +755,258 @@
 
 
 
-
-
-
-
 <section id="confirmation">
 
-    <div class="container text-center">
+    <div class="container">
+
+
+
+        <!--
+
+            <div class="row centralizer">
+                
+                <div class="col-md-10 col-12 text-center">
+                    
+                    <div class="bottom2">
+                        <h3>Adquira já o seu Casamento Pocket, a Maneira Mais Simples e Segura De Realizar Seu Casamento Durante a Pandemia</h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        -->
+
+
+        <div class="row centralizer">
+
+
+
+            <div class="col-md-8 col-12">
+
+                
+
+                <div class="lead2 text-center">
+
+                    
+                    <div class="bottom2">
+                        <h3>Adquira já o seu Casamento Pocket, a Maneira Mais Simples e Segura De Realizar Seu Casamento Durante a Pandemia!</h3>
+                    </div>
+
+                    <div class="bottom3">
+
+                        <ul> 
+
+                            <li><i class="fa fa-check"></i>&nbsp; Acesso à Plataforma por 12 Meses (+ 12 Meses de Bônus)</li> 
+                            
+                            <li><i class="fa fa-check"></i>&nbsp; Ensaio Fotográfico</li>
+
+                            <li><i class="fa fa-check"></i>&nbsp; Lista de Presentes Convertida em Dinheiro</li> 
+
+
+                            <li><i class="fa fa-check"></i>&nbsp; Comunique seus Convidados do Adiamento do Casamento</li>
+
+                            
+                            
+
+                        </ul>
+
+                    </div><!--gifts-section1-->
+
+                    <div class="line-through1 bottom2">
+                        <h3>De R$ 1.597,00</h3>
+                    </div>
+
+                    <div class="bottom2">
+                        <h3>Por</h3>
+                    </div>
+
+                    <div class="bottom3">
+                        <h3>R$ 997,00</h3>
+                    </div>
+
+                    <button type="submit" class="button6">Sim! Quero Comprar!</button>
+
+
+                </div>
+                <!--textIntroduction_-->
+
+            </div>
+
+
+
+
+
+
+
+
+
+            
+
+
+
+        </div>
+
+
+    </div>
+    <!--container-->
+    <!-- # End / Contet Text #  -->
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="advantages2">
+
+    <div class="container-fluid">            
+            
+            
+        <div class="row bottom3">
+
+            <div class="col-md-12 text-center">
+
+                <h2>CONFIRA ALGUNS DOS NOSSOS ENSAIOS</h2>
+
+            </div>
+            <!--col-lg-12-->
+
+        </div>
+
+
+
+    
+
+
+
+        <div class="row">
+
+            <div class="col-12">
+                 
+
+                <div class="card-wrapper">
+
+
+                    <?php $counter1=-1;  if( isset($album) && ( is_array($album) || $album instanceof Traversable ) && sizeof($album) ) foreach( $album as $key1 => $value1 ){ $counter1++; ?>
+
+
+                    <div class="card1">
+                        
+
+                       
+                            
+                        
+
+
+                        <div class="body-header">
+
+                            <div class="card-image">
+                            
+                                <img alt="Bem Casei Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+
+                            </div><!--card-photo-->
+
+                        </div><!--card-header-->
+
+
+                        
+                        <!--
+
+                        <div class="card-body">
+                            
+
+
+                            <div class="title">
+
+
+                                <h5><?php echo htmlspecialchars( $value1["desalbum"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h5>
+
+                                <hr>
+
+
+                            </div>
+
+
+
+
+
+                            <div class="body-row">
+
+                                <textarea readonly="readonly" class="description"><?php echo htmlspecialchars( $value1["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
+
+                            </div>
+
+
+
+
+
+
+                            <div class="body-footer buttons-wrapper">
+                                
+                                <a target="_blank" href="/res/images/template/photo/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                
+                                    <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>Ver</span>
+
+                                </a>
+
+                            </div>
+
+
+
+
+
+                        </div>
+                    -->
+                        
+                            
+                        
+                    </div><!--card1-->
+
+                                
+                    <?php } ?>
+
+
+
+
+
+
+                </div><!--wrapper-->
+
+            </div><!--col-->
+    
+        </div><!--row-->
+
+
+        
+
+
+
+    </div><!--container-->
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="advantages">
+
+    <div class="container">
 
 
 
@@ -769,57 +1014,58 @@
 
         <div class="row">
 
-            <div class="col-md-6 col-12 text-center centralizer">
 
-                <h2>Olá, você é Convidado?</h2>
+
+            <div class="col-md-4 col-12 vertical-centralizer bottom2">
+
+                <div class="img-promotion bottom2">
+                    <img src="/res/images/promotions/banner6.png" alt="Selo de Garantia">
+                </div>
+                
 
             </div>
 
-            <div class="col-md-6 col-12 text-center">
 
 
-                <div class="row bottom2">
 
-                    <div class="col-12">
 
-                        <a href="/buscar"><button type="button" class="button1">
+            <div class="col-md-8 col-12 bottom1">
 
-                                Presenteie o Casal
+                <div class="bottom1">
+                    <h2>Garantia Blindada 30 Dias</h2>
+                </div>
 
-                            </button></a>
-                    </div>
+                <div class="bottom1">
+                    <h3>Sua Compra do Casamento Pocket está 100% Coberto Por Uma Garantia Total De 30 Dias!</h3>
+                </div>
+
+                <div class="bottom1">
+                    <h3>Se neste período você não estiver satisfeito com o seu investimento, tudo o que você tem que fazer é escrever entrar no Chat na Área de <strong>Central de Ajuda</strong> e pedir a evolução da sua compra!</h3>
                 </div>
 
 
-                <div class="row bottom2">
-
-                    <div class="col-12">
-
-                        <h3>ou</h3>
-                    </div>
-                </div>
-
-
-                <div class="row bottom2">
-
-                    <div class="col-12">
-
-                        <a href="/buscar"><button type="button" class="button1">
-
-                                Confirme sua Presença
-
-                            </button></a>
-                    </div>
-                </div>
-
+                
 
             </div>
-            <!--col-md-6-->
+
 
         </div>
-        <!--row-->
 
-    </div>
-    <!--container-->
-    <!-- # End / Contet Text #  -->
+
+
+
+                <!--
+        <div class="hr1 bottom4">
+                    <hr>
+                </div>
+                -->
+
+
+
+
+
+
+
+
+
 </section>

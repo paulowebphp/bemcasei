@@ -5,6 +5,7 @@ use \Core\PagePromotions;
 use \Core\Validate;
 use \Core\Mailer;
 use \Core\Model\Lead;
+use \Core\Model\Template;
 use \Core\Wirecard;
 //use \Core\Model\Category;
 //use \Core\Model\Cart;
@@ -26,13 +27,20 @@ use \Core\Wirecard;
 
 $app->get( '/promocao', function()
 {
-	
+
+
+	$album = Template::getAlbum(1, true);
 
 	$page = new PagePromotions();
 
 	$page->setTpl(
 		
-		"index"
+		"index",
+
+		[
+
+			'album'=>$album
+		]
 	
 	);//end setTpl
 

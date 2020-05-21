@@ -797,6 +797,8 @@ label{
 #confirmation2 .button1{
 	text-shadow:4px 4px 4px rgba(0, 0, 0, .65);
 }
+
+
 /********************** CONFIRMATION2 *********************************/
 /********************** CONFIRMATION2 *********************************/
 /********************** CONFIRMATION2 *********************************/
@@ -858,12 +860,208 @@ label{
 	display: flex;
 	justify-content: center;
 }
+#advantages2 {
+	padding: 5% 0;
+	width: 100%;
+	position: relative;
+	
+	
+
+	background-color: #f2f2f2;
+	background: url("/res/images/advantages.jpg") no-repeat;
+	background-size: cover;
+	
+}
+
+#advantages2 h2{
+	color: #03A9F4;
+	font-size:2rem;
+	font-weight: bolder;
+}
+#advantages2 h3{
+	color: #555;
+}
+#advantages2 p{
+	font-size: 1.1rem;
+}
 /********************************* PROMOTION *****************************************/
 /********************************* PROMOTION *****************************************/
 /********************************* PROMOTION *****************************************/
 /********************************* PROMOTION *****************************************/
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********************************* SITE-LEAD *****************************************/
+/********************************* SITE-LEAD *****************************************/
+/********************************* SITE-LEAD *****************************************/
+/********************************* SITE-LEAD *****************************************/
+.lead2{
+	background: #03A9F4;
+    background: -webkit-linear-gradient(45deg, #c7e8f7, #03A9F4);
+    background: -o-linear-gradient(45deg, #c7e8f7, #03A9F4);
+    background: -moz-linear-gradient(45deg, #c7e8f7, #03A9F4);
+		background: linear-gradient(45deg, #c7e8f7, #03A9F4);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 72px 55px 65px 55px;
+}
+.lead-img{
+	width: 200px;
+	margin: 0 auto;
+
+}
+.lead-img img{
+	width: 100%;
+}
+
+/********************************* SITE-LEAD *****************************************/
+/********************************* SITE-LEAD *****************************************/
+/********************************* SITE-LEAD *****************************************/
+/********************************* SITE-LEAD *****************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********************************* ALBUM CARD *****************************************/
+/********************************* ALBUM CARD *****************************************/
+/********************************* ALBUM CARD *****************************************/
+/********************************* ALBUM CARD *****************************************/
+.card1 {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 3% 7% 3%;
+  width: 420px;
+  position: relative;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
+}
+
+.card1 .body-header{
+  padding:0; 
+}
+.card1 .title{
+  margin-bottom: 15%;
+}
+.card1 .body-row {
+  margin-bottom: 10%;
+}
+.card1 .body-footer{
+  padding-top: 4%;
+}
+.section-title{
+  text-align: center;
+  margin-bottom: 8%;
+}
+.section-title hr{
+  width: 5%;
+  height: 10px;
+}
+.section-header .section-title{
+  margin-bottom: 0;
+}
+.card-wrapper{
+  text-align: center;
+}
+.body-header{
+  height: auto;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  border:0;
+  vertical-align: middle;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+}
+.card-image iframe {
+  border-radius: 4px;
+  width: 100%;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+}
+
+
+/*
+.card-body {
+  padding: 10% 5% 10% 5%;
+}
+.card-label h6 {
+  font-size: 0.8rem;
+  font-style: italic;
+}
+.description{
+  border: none;
+  text-align: center;
+}
+.description-area{
+  border: 1px solid #DDD;
+  padding: 4%;
+  text-align: center;
+}
+.description-area.row{
+  margin-right: 0;
+  margin-left: 0;
+}
+*/
+
+/********************************* ALBUM CARD *****************************************/
+/********************************* ALBUM CARD *****************************************/
+/********************************* ALBUM CARD *****************************************/
+/********************************* ALBUM CARD *****************************************/
 
 
 
@@ -1579,12 +1777,28 @@ label{
 
 #confirmation h3{
 	color: #fff;
-	text-shadow:4px 4px 4px rgba(0, 0, 0, .95);
-	font-family: 'TheHeartOfEverything';
-	font-size: 3rem;
+	/*text-shadow:4px 4px 4px rgba(0, 0, 0, .95);*/
+	font-family: 'Poppins';
+	color: #fff;
+	font-size: 2rem;
 }
 #confirmation .button1{
 	text-shadow:4px 4px 4px rgba(0, 0, 0, .65);
+}
+#confirmation ul li{
+	list-style: none;
+	text-align: left;
+	color: #fff;
+	font-size:1.3rem;
+}
+#confirmation i{
+	color: #03A9F4;
+	font-weight: bolder;
+}
+.line-through1{
+	font-size: 1.7rem!important;
+	text-decoration: line-through;
+	color: #fff;
 }
 /********************** CONFIRMATION *********************************/
 /********************** CONFIRMATION *********************************/
