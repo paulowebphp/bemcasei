@@ -865,7 +865,18 @@
 
 
 
-<section id="advantages2">
+
+
+
+
+
+
+
+
+
+
+
+<section id="advantages">
 
     <div class="container-fluid">            
             
@@ -1004,7 +1015,27 @@
 
 
 
-<section id="advantages">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="advantages2">
 
     <div class="container">
 
@@ -1062,10 +1093,281 @@
 
 
 
+</section>
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="testimonial1">
+
+    <div class="container">
+
+        <div class="row bottom2">
+     
+            <div class="col-md-12 text-center">
+                
+                <div class="bottom1">
+                    <h2>
+                        PERGUNTAS FREQUENTES
+                    </h2>
+                </div>
+                
+                               
+                
+
+            </div><!--col-->
+            
+        </div><!--row-->
+
+        <div class="row">
+
+            <div class="col-md-12 text-center">
+
+                <div class="accordion" id="accordion-testimonial1">
+                    <div class="card">
+                      <div class="card-header" id="headingOneTwenty">
+                        <h2 class="mb-0">
+                          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOneTwenty" aria-expanded="true" aria-controls="collapseOneTwenty">
+                            Quanto Tempo o Meu Site Fica On-Line?
+                          </button>
+                        </h2>
+                      </div>
+                  
+                      <div id="collapseOneTwenty" class="collapse" aria-labelledby="headingOneTwenty" data-parent="#accordion-testimonial1">
+                        <div class="card-body">
+                          Ficará On-Line o tempo que você comprou no seu plano, por exemplo: Plano Fiona por 4 meses. Todavia, caso necessite, você pode a qualquer momento comprar renovação de plano por mais 1,3,4,6,9 ou 12 meses, quantas vezes quiser. Além da renovação, você também pode fazer upgrade de Plano, por exemplo, passar do Plano Fiona para o Plano Frozen ou Plano Princess, ganhando assim, mais recursos em seu site.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" id="headingTwoTwenty">
+                        <h2 class="mb-0">
+                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwoTwenty" aria-expanded="false" aria-controls="collapseTwoTwenty">
+                            E se Eu quiser manter o site no Ar por mais tempo, mesmo depois da Festa ter acontecido?
+                          </button>
+                        </h2>
+                      </div>
+                      <div id="collapseTwoTwenty" class="collapse" aria-labelledby="headingTwoTwenty" data-parent="#accordion-testimonial1">
+                        <div class="card-body">
+                          Caso você precise, antes de terminar o seu plano, você pode fazer a Renovação do mesmo pelo período de mais 1, 3, 4, 6, 9 ou 12 meses, mantendo assim seu site no ar, mesmo depois da festa já ter acontecido.
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+                    <div class="card">
+                      <div class="card-header" id="headingThreeTwenty">
+                        <h2 class="mb-0">
+                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThreeTwenty" aria-expanded="false" aria-controls="collapseThreeTwenty">
+                            Existe um período para Experimentar o Site?
+                          </button>
+                        </h2>
+                      </div>
+                      <div id="collapseThreeTwenty" class="collapse" aria-labelledby="headingThreeTwenty" data-parent="#accordion-testimonial1">
+                        <div class="card-body">
+                          Existe, sim. Você pode experimentar o site por 10 Dias grátis, com quase todos os recursos liberados, antes de se decidir a comprar um plano.
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+
+                
+
+
+
+
+
+
+                      <div class="card">
+                        <div class="card-header" id="headingFiveTwenty">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFiveTwenty" aria-expanded="false" aria-controls="collapseFiveTwenty">
+                                Quem É Responsável pela Lista de Presentes? A debutante ou o Responsável Legal?
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseFiveTwenty" class="collapse" aria-labelledby="headingFiveTwenty" data-parent="#accordion-testimonial1">
+                          <div class="card-body">
+                            No Caso da Lista de Presentes, é necessário ser maior de 18 anos para utilizar, portanto, a mesma é de responsabilidade do seu Responsável Legal. Além disso, a conta bancária destinada a receber os valores deve pertencer a esse Responsável Legal, caso contrário não é possível efetuar a transferência. Portanto, o único que pode receber os valores é o Responsável da Debutante, e é, em última instância, o único gerenciador da mesma.
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
+
+
+                      <div class="card">
+                        <div class="card-header" id="headingSixTwenty">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSixTwenty" aria-expanded="false" aria-controls="collapseSixTwenty">
+                                Se eu quiser moderar o site da minha filha debutante, eu posso?
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseSixTwenty" class="collapse" aria-labelledby="headingSixTwenty" data-parent="#accordion-testimonial1">
+                          <div class="card-body">
+                            Sim, o Responsável principal pelo site é o Responsável Legal da Debutante, maior de 18 anos, pois a condição da idade impede a debutante de responder legalmente. Sendo assim, o Responsável sempre estará resguardado e poderá moderar o site da sua filha, ou sua tutelada a qualquer momento. Para isto basta utilizar o chat no rodapé do site, que fica disponível das 10:00 às 22:00, todos os dias da semana.
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+                      <div class="card">
+                        <div class="card-header" id="headingSevenTewenty">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSevenTwenty" aria-expanded="false" aria-controls="collapseSevenTwenty">
+                              Os Valores que eu ganhar nos presentes que meus convidados comprarem são garantidos mesmo?
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseSevenTwenty" class="collapse" aria-labelledby="headingSevenTewenty" data-parent="#accordion-testimonial1">
+                          <div class="card-body">
+                            Sim, somos uma empresa idônea, responsável, que quer fornecer um serviço de qualidade no ramo de Site de Debutantes, e preza pela melhoria contínua. Nossa sede é na cidade de Belo Horizonte, capital de Minas Gerais, no bairro de Lourdes, coração da cidade. Nosso CNPJ é o 34.700.513/0001-27, e somos uma equipe de desenvolvedores e empreendedores que atua em Serviços Na Internet e WebDesign.
+
+                            <br><br>
+                            Todos as nossas transações de Cartão e Boleto são integrados com a Wirecard (www.wirecard.com.br), testadas exaustivamente, e atendem a todas as melhores práticas de segurança, além, é claro, da utilização de plataformas robustas, rápidas e seguras.
+
+                            <br><br>
+
+                            Em qualquer hipótese, será resguardado e garantido o acesso da Debutante ou de seu Responsável aos valores recebidos através da compra de presentes por seus convidados e amigos. Em última instância, qualquer dúvida ou problema, temos o atendimento pelo Chat que fica no rodapé, das 10:00 às 22:00, todos os dias da semana. Basta entrar em contato com a gente, e qualquer situação de problema será prontamente resolvida.
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
+                      <div class="card">
+                        <div class="card-header" id="headingEightTwenty">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEightTwenty" aria-expanded="false" aria-controls="collapseEightTwenty">
+                              Caso ainda não tenha todas as informações da Festa, posso criar o site mesmo assim?
+                              
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseEightTwenty" class="collapse" aria-labelledby="headingEightTwenty" data-parent="#accordion-testimonial1">
+                          <div class="card-body">
+                            Sim, totalmente, os Layouts do 15aninhos são totalmente editáveis e você pode colocar, retirar ou editar informações a qualquer momento que quiser.
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
+
+
+                      <div class="card">
+                        <div class="card-header" id="headingNineTwenty">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseNineTwenty" aria-expanded="false" aria-controls="collapseNineTwenty">
+                              Que informações preciso para criar o site?
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseNineTwenty" class="collapse" aria-labelledby="headingNineTwenty" data-parent="#accordion-testimonial1">
+                          <div class="card-body">
+                            Para criar o site você pode pagar no ato, ou usar um plano 10 Dias Free, e pagar apenas depois.
+
+                            Caso você use o Plano 10 Dias Free precisará apenas de Seu Nome, Seu E-mail e Escolher uma Senha de Acesso!
+
+                            Caso você queira já comprar um plano de uma vez precisará de: Nome, E-mail e Senha de Acesso (Pode ser a da Debutante ou do Responsável Legal) e também de Informações do Pagamento (do Responsável pelo Pagamento).
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
+                      <div class="card">
+                        <div class="card-header" id="headingTenTwenty">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTenTwenty" aria-expanded="false" aria-controls="collapseTenTwenty">
+                              As Informações são Editáveis?
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseTenTwenty" class="collapse" aria-labelledby="headingTenTwenty" data-parent="#accordion-testimonial1">
+                          <div class="card-body">
+                            Sim, todas as informações e funcionalidades são totalmente editáveis.
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
+                  </div>
+
+            </div>
+            <!--col-->
+
+
+          
+
+        </div>
+        <!--row-->
+
+    </div>
+    <!--container-->
 
 </section>

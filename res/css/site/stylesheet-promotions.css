@@ -906,6 +906,64 @@ label{
 
 
 
+/********************************* TESTIMONIAL 1 *****************************************/
+/********************************* TESTIMONIAL 1 *****************************************/
+/********************************* TESTIMONIAL 1 *****************************************/
+/********************************* TESTIMONIAL 1 *****************************************/
+/********************************* TESTIMONIAL 1 *****************************************/
+
+#testimonial1 {
+	color: #171f26;
+	padding: 10% 10%;
+	position: relative;
+	/*background: url("/res/images/banner/banner2.jpg") no-repeat;*/
+	/*background: url("/res/images/advantages.jpg") no-repeat;*/
+	/*background: url(/res/images/banner/banner2.jpg) no-repeat center center fixed;*/
+	/*background-size: cover;*/
+	background-color: #fff;
+}
+
+
+#testimonial1 .col-md-6{
+	display: grid;
+	align-items: center;
+}
+
+#testimonial1 h2{
+	color: #03A9F4;
+	font-size:2rem;
+	font-weight: bolder;
+}
+#testimonial1 p{
+	font-size: 1.6rem;
+}
+#testimonial1 .btn-link:hover, .btn-link:active, .btn-link:focus {
+    text-decoration: none;
+}
+
+#testimonial1 ul li{
+	list-style: none;
+	font-size: 1.8rem;
+	text-shadow:4px 4px 4px rgba(0, 0, 0, .75);
+}
+#testimonial1 i{
+	color: #FAB1A0;
+	font-weight: bolder;
+}
+/********************************* TESTIMONIAL 1 *****************************************/
+/********************************* TESTIMONIAL 1 *****************************************/
+/********************************* TESTIMONIAL 1 *****************************************/
+/********************************* TESTIMONIAL 1 *****************************************/
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1646,6 +1704,7 @@ label{
 #advantages-features i {
     color: #03a9f4;
 }
+
 #box-price-logo{
 	padding:5%;
 }
@@ -1792,7 +1851,7 @@ label{
 	font-size:1.3rem;
 }
 #confirmation i{
-	color: #03A9F4;
+	color: #fff;
 	font-weight: bolder;
 }
 .line-through1{

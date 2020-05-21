@@ -118,6 +118,7 @@
 
                             <?php if(  $nrtotal > 0  ){ ?>
 
+                            <!--
                             <hr><br>
 
                             <a href="/dashboard/rsvp/enviar">
@@ -131,6 +132,7 @@
                                     Adiar Casamento
                                 </button>
                             </a>
+                            -->
 
                             <?php } ?>
                             
