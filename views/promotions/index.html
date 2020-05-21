@@ -17,7 +17,7 @@
                     <!--inner-text-introduction-->
 
                     <div class="bottom2">
-                        <h3>Vc gostaria de iniciar seu casamento se sentindo mais plena, mais segura e confiante no seu parceiro?</h3>
+                        <h3>Você gostaria de iniciar seu casamento se sentindo mais plena, mais segura e confiante no seu parceiro?</h3>
                     </div>
 
                     

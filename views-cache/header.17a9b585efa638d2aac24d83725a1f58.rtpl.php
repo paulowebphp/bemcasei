@@ -98,8 +98,15 @@
 
 <body>
 
+    <?php if( getDesdomain() != 'promocao'  ){ ?>
 
     <header>
+
+
+
+        
+
+
 
         <div class="container-fluid">
 
@@ -219,4 +226,15 @@
         <!--container-fluid-->
 
 
+        
+
+
     </header>
+
+    <?php }else{ ?>
+    
+
+    <header style="display:none!important;"></header>
+
+
+    <?php } ?>

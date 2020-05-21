@@ -92,6 +92,8 @@
 <body>
 
 
+    <?php if( getDesdomain() != 'baixar-ebook'  ){ ?>
+
     <header>
 
         <div class="container-fluid">
@@ -213,3 +215,12 @@
 
 
     </header>
+
+
+    <?php }else{ ?>
+    
+
+    <header style="display:none!important;"></header>
+
+
+    <?php } ?>
