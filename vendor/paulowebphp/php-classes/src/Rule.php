@@ -59,6 +59,7 @@ class Rule extends Model
 
 
 	const COUPON_LENGTH = 8;
+	const LEAD_PASSWORD_LENGTH = 6;
 
 
 
@@ -267,6 +268,7 @@ class Rule extends Model
 	/*********************************EMAIL SUBJECTS ***************************************/
 
 	const EMAIL_PLAN = 'Bem Casei - Compra de Plano';
+	const EMAIL_LEAD = 'Bem Casei - Baixe o Seu E-book!';
 
 	const EMAIL_PLAN_AUTHORIZED = 'Bem Casei - Compra de Plano Confirmada';
 
@@ -361,6 +363,8 @@ class Rule extends Model
 	/********************************* SET ERROR ***************************************/
 	const CHECK_LOGIN_EXISTS = 'Este endereço de e-mail já está sendo usado por outro usuário | Caso seja seu e-mail, faça login no Bem Casei';
 
+	const CHECK_LEAD_EXISTS = 'Este endereço de e-mail já foi usado  | Caso seja o seu e-mail, vá na sua Caixa de Entrada e clique no link recebido para fazer Login e baixar o E-book';
+
 
 	const ERROR_RECAPTCHA = 'Clique no Recaptcha para prosseguir';
 	const VALIDATE_RECAPTCHA = 'Não passou pelo Recaptcha | Por favor, tente novamente, se o erro persistir entre em contato com o suporte';
@@ -396,7 +400,7 @@ class Rule extends Model
 
 
 
-	const VALIDATE_ID_HASH = 'O endereço da página que você tentou acessar está incorreto | Por favor, volte à página anterior e tente acessar a página novamente';
+	const VALIDATE_ID_HASH = 'O endereço da página que você tentou acessar está incorreto | Por favor, confira o endereço digitado e tente acessar novamente';
 
 
 	const VALIDATE_RSVP_CONFIRMED = 'Este convidado já fez sua confirmação e, portanto, você não pode editá-lo | Se precisar alterar os seus dados recomendamos o seguinte procedimento: delete o convidado, recrie-o e peça para o mesmo fazer a confirmação de presença novamente no seu site';	
@@ -412,6 +416,15 @@ class Rule extends Model
 
 	const ERROR_EMAIL = 'Informe o seu e-mail';
 	const VALIDATE_EMAIL = 'O e-mail parece estar num formato inválido | Tente novamente';
+
+
+
+
+
+
+
+	
+
 
 
 

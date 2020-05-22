@@ -92,12 +92,13 @@ class Lead extends Model
 
 
 
-    public function save()
+    public function update()
 	{
+
+
 
 		$sql = new Sql();
 
-		
 
 		
 	
@@ -109,11 +110,16 @@ class Lead extends Model
 
 			$results = $sql->select("
 
-				CALL sp_leads_save(
+				CALL sp_leads_update(
 				               
 	                :idlead,
+	                :instatus,
 	                :desname,
 	                :desemail,
+	                :despassword,
+	                :desoriginalpassword,
+	                :nrddd,
+	                :nrphone,
 	                :desip
 
 				)", 
@@ -121,15 +127,33 @@ class Lead extends Model
 				[
 
 					':idlead'=>$this->getidlead(),
+					':instatus'=>$this->getinstatus(),
 					':desname'=>utf8_encode($this->getdesname()),
 					':desemail'=>$this->getdesemail(),
+					':despassword'=>Lead::getPasswordHash($this->getdespassword()),
+					':desoriginalpassword'=>base64_encode($this->getdesoriginalpassword()),
+					':nrddd'=>$this->getnrddd(),
+					':nrphone'=>$this->getnrphone(),
 					':desip'=>$this->getdesip()
 					
 				]
 	        
 	            
 	        );//end select
-			
+
+
+
+			/*
+
+			echo '<pre>';
+	        var_dump($this);
+	        var_dump(Lead::getPasswordHash($this->getdespassword()));
+	        var_dump(base64_encode($this->getdesoriginalpassword()));
+	        var_dump($results);
+	        
+	        exit;
+
+	        */
 
 
 			$results[0]['desname'] = utf8_encode($results[0]['desname']);
@@ -144,11 +168,16 @@ class Lead extends Model
 			
 			$results = $sql->select("
 
-				CALL sp_leads_save(
+				CALL sp_leads_update(
 				               
 	                :idlead,
+	                :instatus,
 	                :desname,
 	                :desemail,
+	                :despassword,
+	                :desoriginalpassword,
+	                :nrddd,
+	                :nrphone,
 	                :desip
 
 				)", 
@@ -156,8 +185,13 @@ class Lead extends Model
 				[
 
 					':idlead'=>$this->getidlead(),
-					':desname'=>$this->getdesname(),
+					':instatus'=>$this->getinstatus(),
+					':desname'=>utf8_encode($this->getdesname()),
 					':desemail'=>$this->getdesemail(),
+					':despassword'=>CodeFactory::getPasswordHash($this->getdespassword()),
+					':desoriginalpassword'=>base64_encode($this->getdesoriginalpassword()),
+					':nrddd'=>$this->getnrddd(),
+					':nrphone'=>$this->getnrphone(),
 					':desip'=>$this->getdesip()
 					
 				]
@@ -195,6 +229,23 @@ class Lead extends Model
 
 
 
+	public static function getPasswordHash( $password )
+    {
+        return password_hash(
+            
+            $password, 
+            
+            PASSWORD_DEFAULT, 
+            
+            [
+
+                'cost'=>12
+
+            ]
+        
+        );//end password_hash
+
+    }//END getPasswordHash
 
 
 
@@ -208,8 +259,7 @@ class Lead extends Model
 
 
 
-
-	public static function checkLead( $desemail )
+	public static function checkLeadExists( $desemail )
 	{
 
 
@@ -239,7 +289,7 @@ class Lead extends Model
 		return ( count($results) > 0 );
 
 
-	}//END checkLead
+	}//END checkLeadExists
 
 
 

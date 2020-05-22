@@ -28,9 +28,11 @@
 
                 <div class="lead2 text-center">
 
+
+
                     
 
-                    <form>
+                    <form action="/baixar-ebook" method="post">
 
                       <div class="form-group">
 
@@ -42,8 +44,14 @@
                             <h3>Insira Seu Email Abaixo e Clique No Botão Para Receber Seu E-book Gratuitamente!</h3>
                         </div>
 
+                        <?php if( $errorLead != '' ){ ?>
+                        <div class="alert alert-danger">
+                            <?php echo htmlspecialchars( $errorLead, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                        </div>
+                        <?php } ?>
 
-                        <input type="email" class="form-control bottom2" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu Melhor E-mail">
+
+                        <input type="email" class="form-control bottom2" id="desemail" name="desemail" aria-describedby="emailHelp" placeholder="Seu Melhor E-mail" value="<?php echo htmlspecialchars( $registerLead["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                       </div>
 
