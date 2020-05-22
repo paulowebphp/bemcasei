@@ -56,7 +56,8 @@ $app->get( '/baixar-ebook/obrigado/:hash', function( $hash )
 
 			'lead'=>$lead->getValues(),
 			'success'=>Lead::getSuccess(),
-			'error'=>Lead::getError()
+			'error'=>Lead::getError(),
+			'registerLead'=>(isset($_SESSION['registerLead'])) ? $_SESSION['registerLead'] : ['desemail'=>'']
 
 		]
 	
@@ -95,7 +96,7 @@ $app->get( '/baixar-ebook', function()
 
 		[
 
-			'errorLead'=>Lead::getError(),
+			'error'=>Lead::getError(),
 			'registerLead'=>(isset($_SESSION['registerLead'])) ? $_SESSION['registerLead'] : ['desemail'=>'']
 
 		]
