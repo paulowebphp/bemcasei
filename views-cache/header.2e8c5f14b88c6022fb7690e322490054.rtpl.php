@@ -1,0 +1,242 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Bem Casei, o site de casamento mais lindo do Brasil! Ajudamos você a promover este evento máximo em sua vida!">
+    <meta name="robots" content="noindex">
+
+
+    <title><?php echo getDashPageConfig('pagetitle'); ?></title>
+    <link rel="icon" type="image/png" href="/res/images/favicon/dashboard/favicon.ico"/>
+    <link rel="stylesheet" media="screen" type="text/css" href="/res/colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="/res/css/bootstrap.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="/res/css/font-awesome.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/res/css/dashboard/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="/res/css/dashboard/stylesheet-mobile.css">
+    <link rel="stylesheet" type="text/css" href="/res/css/dashboard/print.css" media="print">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144014663-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-144014663-1');
+    </script>
+
+
+    <!-- Start of bemcasei Zendesk Widget script -->
+    <script id="ze-snippet"
+        src="https://static.zdassets.com/ekr/snippet.js?key=565637ed-1709-4f89-b406-1ce62941de4b"> </script>
+    <!-- End of bemcasei Zendesk Widget script -->
+
+</head>
+
+
+
+<body>
+    
+
+    <header>
+
+        <div id="header-device" class="container-fluid">
+            
+
+            <div class="row">
+                
+
+                <div class="col-md-3">
+                    
+
+
+                    <div id="logo">
+
+                        <img id="logotipo" src="/res/images/logo/logo-white.png" alt="Logotipo">
+
+                    </div>
+         
+
+                </div><!--col-md-->
+
+
+
+
+
+
+                <div class="col-md-9">
+                                       
+                        
+                    <div id="menu-header">
+                        <ul>
+
+
+
+                                <li><a href="/painel"><i class="fa fa-user"></i> <?php echo getLeadDesemail(); ?></a></li>
+
+                                <li><a href="/painel/logout"><i class="fa fa-sign-out"></i> Sair</a></li>
+
+                            
+                        </ul>
+                    </div>
+
+
+
+                </div><!--col-md-->
+
+
+            </div><!--row-->
+
+
+        </div>
+
+
+
+    <div id="header-mobile" class="container-fluid">
+
+        <div class="row">
+
+
+
+            <div class="col-md-12">
+                
+
+
+
+                <div id="menu-condensed">
+                        
+                    <button id="btn-bars" type="button"><i class="fa fa-bars"></i></button>
+                    
+                </div>
+
+
+
+
+                
+
+                <div id="menu-mobile">
+                    
+                    <ul>
+
+                            <li><a href="/painel"><i class="fa fa-user"></i> <?php echo getLeadDesemail(); ?></a></li>
+
+
+
+
+
+
+                            <?php if( getInlead() == '1'  ){ ?>
+
+                                <div class="list-group">
+
+
+
+
+
+                                    <div class="menu-main-pages">
+                                        
+                                        <a href="/dashboard" class="list-group-item list-group-item-action">Início</a>
+
+                                        <a href="/dashboard/meus-dados" class="list-group-item list-group-item-action">Meus Dados</a>
+
+
+                                    </div>
+
+
+
+
+
+
+                                    <!--
+                                    <div class="accordion" id="accordion7">
+                                        
+                                        <div class="card">
+
+                                            <div data-toggle="collapse" data-target="#collapseThirteen" class="card-header btn collapsed" id="headingThirteen">
+
+                                                    <button>Termos de Serviço</button>
+
+                                            </div>
+
+                                            <div id="collapseThirteen" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']), ['termos-uso','politica-privacidade','termos-lista']) ){ ?> show<?php } ?>" aria-labelledby="headingThirteen" data-parent="#accordion7">
+                                                
+                                                <div class="card-body card-body-text">
+                                                
+                                                    <a href="/dashboard/termos-uso" class="list-group-item list-group-item-action">Termos de Uso</a>
+
+
+                                                    <a href="/dashboard/politica-privacidade" class="list-group-item list-group-item-action">Política de Privacidade</a>
+
+                                                    <a href="/dashboard/termos-lista" class="list-group-item list-group-item-action">Termos da Lista de Presentes Virtuais</a>
+                                        
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                -->
+S
+                                    
+
+
+
+
+
+                                    <div class="menu-main-pages">
+
+                                        <a href="/dashboard/central-ajuda" class="list-group-item list-group-item-action">Central de Ajuda</a>
+
+                                        <a href="/dashboard/mudar-senha" class="list-group-item list-group-item-action">Alterar Senha</a>  
+                                        
+                                        <a href="/painel/logout" class="list-group-item list-group-item-action">Sair</a>
+
+                                    </div><!--menu-main-pages-->
+
+
+
+
+                                </div><!--list-group-->
+
+                            <?php } ?>
+
+                        
+
+
+
+
+
+
+
+
+                    </ul>
+
+                    <div class="bar-close">
+                        <button type="button" class="btn btn-close"><i class="fa fa-close"></i></button>
+                    </div>
+
+                </div>
+
+
+                <div id="menu-mobile-mask"></div>
+
+
+
+            </div><!--row-->
+
+
+
+        </div><!--container-->
+
+    </div><!--header-mobile-->
+        
+             
+</header>

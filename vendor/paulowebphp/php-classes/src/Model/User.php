@@ -45,6 +45,18 @@ class User extends Model
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 	public static function getFromSession()
 	{
 
@@ -284,6 +296,23 @@ class User extends Model
 
 
 	}//END getFromHash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

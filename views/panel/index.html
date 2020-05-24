@@ -1,0 +1,127 @@
+<section class="dashboard dashboard-index">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+
+                {if="$lead.inlead == 1"}
+
+                    {include="panel-menu1"}
+
+                {/if}
+                    
+
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12 dash-panel">
+
+
+                
+
+                
+                {if="$success != ''"}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {$success}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                {/if}
+
+                {if="$error != ''"}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {$error}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                {/if}
+
+
+
+
+
+                    
+
+                <div class="row resume-row">
+                    
+                    <div class="col-md-6 resume-wrapper">
+
+                        <div class="resume-box">
+
+                            
+
+                            <div class="resume-content">
+                                <h2>XXX</h2>
+
+                                <h6>Presença</h6><h6>Confirmada</h6>
+                            </div>
+
+                        </div>
+
+                    </div><!--col-lg-3-->
+
+
+
+
+                    <div class="col-md-6 resume-wrapper">
+
+                        <div class="resume-box">
+
+                            
+
+                            <div class="resume-content">
+                                <h2>XXX</h2>
+
+                                <h6>Mensagem</h6>
+                                <h6>Recebida</h6>
+                            </div>
+
+
+
+                        </div>
+
+                    </div><!--col-lg-3-->
+
+
+                </div><!--row-->
+
+
+
+                
+
+
+
+
+
+
+            </div><!--col-->
+        
+
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

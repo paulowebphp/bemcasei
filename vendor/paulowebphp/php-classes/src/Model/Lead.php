@@ -114,6 +114,7 @@ class Lead extends Model
 				               
 	                :idlead,
 	                :instatus,
+	                :inlead,
 	                :desname,
 	                :desemail,
 	                :despassword,
@@ -128,10 +129,12 @@ class Lead extends Model
 
 					':idlead'=>$this->getidlead(),
 					':instatus'=>$this->getinstatus(),
+					':inlead'=>$this->getinlead(),
 					':desname'=>utf8_encode($this->getdesname()),
 					':desemail'=>$this->getdesemail(),
 					':despassword'=>Lead::getPasswordHash($this->getdespassword()),
-					':desoriginalpassword'=>base64_encode($this->getdesoriginalpassword()),
+					//':desoriginalpassword'=>base64_encode($this->getdesoriginalpassword()),
+					':desoriginalpassword'=>$this->getdesoriginalpassword(),
 					':nrddd'=>$this->getnrddd(),
 					':nrphone'=>$this->getnrphone(),
 					':desip'=>$this->getdesip()
@@ -172,6 +175,7 @@ class Lead extends Model
 				               
 	                :idlead,
 	                :instatus,
+	                :inlead,
 	                :desname,
 	                :desemail,
 	                :despassword,
@@ -186,6 +190,7 @@ class Lead extends Model
 
 					':idlead'=>$this->getidlead(),
 					':instatus'=>$this->getinstatus(),
+					':inlead'=>$this->getinlead(),
 					':desname'=>utf8_encode($this->getdesname()),
 					':desemail'=>$this->getdesemail(),
 					':despassword'=>CodeFactory::getPasswordHash($this->getdespassword()),
@@ -373,6 +378,285 @@ class Lead extends Model
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function logout()
+	{
+		$_SESSION[Lead::SESSION] = NULL;
+		
+	}//END logout
+
+
+
+
+
+
+
+
+	public function setToSession()
+	{
+
+		$_SESSION[Lead::SESSION] = $this->getValues();
+
+	}//END setToSession
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function login( $login, $password )
+	{	
+
+		
+		
+
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT * FROM tb_leads
+			WHERE desemail = :LOGIN
+			ORDER BY dtregister DESC
+			LIMIT 1;
+
+			",  
+			
+			array(
+
+				":LOGIN"=>$login
+
+			)//end array
+
+		);//end select
+
+		
+			
+		
+		
+		
+
+		if( count($results) === 0 )
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida");
+			
+		}//end if
+
+		$data = $results[0];
+
+
+		/*
+		echo '<pre>';
+		var_dump($login);
+		var_dump($password);
+		var_dump($data);
+		var_dump(password_verify( $password, $data["despassword"] ) === true);
+		var_dump($data["despassword"] === $password);
+		var_dump(base64_decode($data["despassword"]) === $password);
+		exit;
+		*/
+		
+		
+
+		if( password_verify( $password, $data["despassword"] ) === true )
+		{
+
+
+			$lead = new Lead();
+
+				
+				
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+				$data['desname'] = utf8_encode($data['desname']);
+				
+			}//end if
+
+
+
+			$lead->setData($data);
+
+
+
+			
+			$_SESSION[Lead::SESSION] = $lead->getValues();
+
+			return $lead;
+			
+			
+
+		}//end if
+		else
+
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida");
+			
+		}//end else
+
+
+	}//END login
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function verifyLogin()
+	{
+
+
+		if( !Lead::checkLogin() )		
+		{
+			
+			header("Location: /painel/login");
+			exit;
+
+		}//end if
+
+		
+
+	}//END verifyLogin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function checkLogin()
+	{
+
+
+
+		if(
+
+			!isset($_SESSION[Lead::SESSION])
+			|| 
+			!$_SESSION[Lead::SESSION]
+			|| 
+			!(int)$_SESSION[Lead::SESSION]["idlead"] > 0
+
+		)
+		{
+
+			# Em qualquer das condições acima, não está logado
+			return false;
+	
+		}//end if
+		else
+		{
+			
+
+			return true;
+
+
+		}//end else
+
+
+
+
+
+	}//END checkLogin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function getFromSession()
+	{
+
+		if( 
+
+			isset($_SESSION[Lead::SESSION])
+			&& 
+			(int)$_SESSION[Lead::SESSION]['idlead'] > 0
+		)
+		{
+	
+			$lead = new Lead();
+
+			$lead->setData($_SESSION[Lead::SESSION]);
+
+			//$lead->setdesperson(utf8_encode($lead->getdesperson()));
+
+	
+			return $lead;
+
+		}//end if
+		else
+		{
+
+			return false;
+
+			
+		}//end else
+
+
+	}//END getFromSession
 
 
 

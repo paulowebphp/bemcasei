@@ -11,6 +11,7 @@ use \Core\Model\Bank;
 use \Core\Model\Product;
 use \Core\Model\ProductConfig;
 use \Core\Model\Consort;
+use \Core\Model\Lead;
 use \Core\Model\SocialMedia;
 use \Core\Model\Wedding;
 use \Core\Model\Template;
@@ -2158,6 +2159,31 @@ function getUserNick()
 
 
 
+function getLeadDesemail()
+{
+
+	$lead = Lead::getFromSession();
+
+	return $lead->getdesemail();
+
+}//END function
+
+
+
+function getInlead()
+{
+
+	$lead = Lead::getFromSession();
+
+	return $lead->getinlead();
+
+}//END function
+
+
+
+
+
+
 
 function getMaxAdults( $inmaxadults, $inadultsconfig, $inmaxadultsconfig )
 {
@@ -2219,6 +2245,7 @@ function getMaxChildren( $inmaxchildren, $inchildrenconfig, $inmaxchildrenconfig
 
 function checkDesdomain()
 {
+
 	$user = User::getFromSession();
 
 	if ( 

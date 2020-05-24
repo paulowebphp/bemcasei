@@ -21,6 +21,184 @@ use \Core\Model\Lead;
 
 
 
+
+
+
+
+
+$app->get( "/painel/login", function()
+{
+
+	
+	/*
+	echo '<pre>';
+	var_dump($_POST);
+	var_dump($_SESSION);
+	exit;
+	*/
+
+	if( 
+
+		isset($_SESSION[Lead::SESSION])
+		&&
+		$_SESSION[Lead::SESSION] !== null
+		&&
+		(int)$_SESSION[Lead::SESSION]['idlead'] > 0
+
+	) 
+	{
+
+		header('Location: /painel');
+		exit;	
+
+	}//end if
+	else
+	{
+
+		
+		//User::verifyLogin(false);
+
+		//$user = new User();
+
+		//$user->setData($_SESSION[User::SESSION]);
+
+		
+
+		$page = new PageLead();
+
+		$page->setTpl(
+			
+			"login", 
+			
+			[
+
+				'error'=>Lead::getError(),
+				//'errorRegister'=>Lead::getErrorRegister()
+
+			]
+		
+		);//end setTpl
+
+	}//end else
+
+
+
+
+	
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->post( "/painel/login", function()
+{
+	
+
+	try
+	{
+
+		Lead::login($_POST['login'], $_POST['password']);
+
+	}//end try
+	catch( Exception $e )
+	{
+
+		Lead::setError($e->getMessage());
+
+	}//end catch
+
+	header("Location: /painel");
+	exit;
+
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->get( "/painel/logout", function()
+{
+
+	Lead::logout();
+
+	header("Location: /painel/login");
+	exit;
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $app->get( '/baixar-ebook/obrigado/:hash', function( $hash )
 {
 	
@@ -199,6 +377,7 @@ $app->post( '/baixar-ebook', function()
 
 
 		'instatus'=>1,
+		'inlead'=>1,
 		'desname'=>null,
 		'desemail'=>$desemail,
 		'despassword'=>$despassword,
@@ -285,167 +464,6 @@ $app->post( '/baixar-ebook', function()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-$app->get( '/news', function()
-{
-	
-
-
-
-
-
-	if( 
-		
-		!isset($_GET['name']) 
-		|| 
-		$_GET['name'] == ''
-	)
-	{
-
-		//Mailing::setError("Preencha o seu nome");
-		//header("Location: /");
-		//exit;
-
-		echo 'Preencha o seu nome';
-		return false;
-
-
-	}//end if
-
-
-	
-	if( !$desname = Validate::validateString($_GET['name']) )
-	{
-
-		//Mailing::setError("O seu nome não pode ser formado apenas com caracteres especiais, tente novamente");
-		//header("Location: /");
-		//exit;
-
-		echo 'O seu nome não pode ser formado apenas com caracteres especiais, tente novamente';
-		return false;
-
-	}//end if
-
-
-	
-
-
-	if(
-		
-		!isset($_GET['email']) 
-		|| 
-		$_GET['email'] == ''
-	)
-	{
-
-		//Mailing::setError("Preencha o seu e-mail");
-		//header("Location: /");
-		//exit;
-
-
-		echo 'Preencha o seu e-mail';
-		return false;
-
-
-	}//end if
-
-	if( ($desemail = Validate::validateEmail($_GET['email'])) === false )
-	{	
-		
-		//Mailing::setError("O e-mail parece estar num formato inválido, tente novamente");
-		//header("Location: /");
-		//exit;
-
-
-		echo 'O e-mail parece estar num formato inválido, tente novamente';
-		return false;
-
-
-	}//end if
-
-
-	if ( Mailing::checkMailing($desemail) ) 
-	{
-		# code...
-		echo 'Este email já foi enviado uma vez';
-		return false;
-
-	}//end if
-
-
-
-	$mailing = new Mailing();
-
-
-	$mailing->setData([
-
-		'desname'=>$desname,
-		'desemail'=>$desemail,
-		'desip'=>$_SERVER['REMOTE_ADDR']
-
-	]);//end setData
-
-
-	$mailing->save();
-
-
-
-	if ( $mailing->getidmailing() > 0 )
-	{
-		# code...
-		$mailer = new Mailer(
-									 
-			"Amar Casar - Obrigado por enviar seu e-mail!",
-
-			"mailing-success", 
-			
-			array(
-
-				"mailing"=>$mailing->getValues()
-
-			),
-
-			$desemail,
-
-			$desname
-		
-		);//end Mailer
-		
-		$mailer->send();
-
-		/*Mailing::setSuccess('Obrigado por enviar seu e-mail!');
-		header("Location: /");
-		exit;*/
-
-		echo 'Obrigado por enviar seu e-mail!';
-		return true;
-
-	}//end if
-	else
-	{
-
-		/*Mailing::setError('Não foi possível cadastrar o seu e-mail, possivelmente devido à lentidão na internet | Por favor, tente novamente');
-		header("Location: /");
-		exit;*/
-
-		echo 'Não foi possível cadastrar o seu e-mail, possivelmente devido à lentidão na internet | Por favor, tente novamentee';
-		return false;
-
-	}//end else
-
-	
-
-});//END route
 
 
 
