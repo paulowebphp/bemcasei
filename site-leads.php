@@ -199,6 +199,46 @@ $app->get( "/painel/logout", function()
 
 
 
+$app->get( '/baixar-ebook/obrigado', function()
+{
+	
+	
+
+
+	$page = new PageLead();
+
+	$page->setTpl(
+
+		"thank-you"
+	
+	);//end setTpl
+
+
+
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
 $app->get( '/baixar-ebook/obrigado/:hash', function( $hash )
 {
 	
@@ -242,6 +282,15 @@ $app->get( '/baixar-ebook/obrigado/:hash', function( $hash )
 	);//end setTpl
 
 });//END route
+
+*/
+
+
+
+
+
+
+
 
 
 

@@ -30,6 +30,11 @@
                     <h3>Você receberá o E-book em seu E-mail em até 60 minutos!</h3>
                 </div>
 
+                {if="$error != ''"}
+                <div class="alert alert-danger">
+                    {$error}
+                </div>
+                {/if}
 
             </div>
            

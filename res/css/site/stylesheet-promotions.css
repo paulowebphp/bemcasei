@@ -574,7 +574,6 @@ label{
 	color: #f1a9a0;
 	/*color: #c7e8f7;*/
 }
-
 .button7{
 	color: #03a9f4;
 	font-size: 2.5rem;
@@ -596,6 +595,26 @@ label{
 .button7:hover{
 	/*color: #c7e8f7;*/
 	cursor: auto;
+}
+.button8{
+	font-size: 1.5rem;
+	border-radius: 8px;
+	padding: 20px 25px;
+	color: #fff;
+	background: #1e824c;
+	text-shadow: #767676 0.1em 0.1em 0.2em;
+	font-family: 'Poppins';
+	border-top: none;
+	border-right: 4px solid #00b16a;
+	border-bottom: 4px solid #00b16a;
+	border-left: none;
+	/*
+	border: 1px solid #fff;
+	background: #ffffff66;
+	*/
+}
+.button8:hover{
+	color: #c8f7c5;
 }
 .button7 h3{
 	font-size: 1.5rem;
@@ -711,7 +730,7 @@ label{
 /********************************* BANNER *****************************************/
 #banner {
 	background:	#03A9F4;
-	padding: 5% 0;
+	padding: 8% 0;
 	/*
 	background: url("/res/images/promotions/banner1.jpg") no-repeat;
 	background-size: cover;
@@ -724,17 +743,34 @@ label{
 	
 }
 #banner h1 {
-	font-family: 'TheHeartOfEverything';
+	font-family: 'Poppins';
 	color: #fff;
-	font-size: 4rem;
+	font-size: 2.5rem;
 	text-shadow: #767676 0.1em 0.1em 0.2em;
 }
+
+#banner h2 {
+	font-family: 'TheHeartOfEverything';
+	color: #fff;
+	font-size: 3.5rem;
+	text-shadow: #767676 0.1em 0.1em 0.2em;
+}
+
+
+#banner h3 {
+	color: #fff;
+	font-size: 1.3rem;
+	font-weight: lighter;
+	text-shadow: #767676 0.1em 0.1em 0.2em;
+}
+/*
 #banner h3 {
 	color: #fff;
 	font-size: 1.9rem;
 	font-weight: lighter;
 	text-shadow: #767676 0.1em 0.1em 0.2em;
 }
+*/
 
 /********************************* BANNER *****************************************/
 /********************************* BANNER *****************************************/
@@ -1841,6 +1877,13 @@ label{
 	color: #fff;
 	font-size: 2rem;
 }
+#confirmation h4{
+	color: #fff;
+	/*text-shadow:4px 4px 4px rgba(0, 0, 0, .95);*/
+	font-family: 'Poppins';
+	color: #fff;
+	font-size: 1.4rem;
+}
 #confirmation .button1{
 	text-shadow:4px 4px 4px rgba(0, 0, 0, .65);
 }
@@ -1893,7 +1936,9 @@ label{
 .card1 .inside-row{
     margin-bottom: 10%;
 }
-
+#banner{
+	background-position-y: 0!important;
+}
 
 
 }/*BREAKPOINT*/

@@ -10,19 +10,31 @@
 
                 <div class="text-center">
 
+                    <div class="bottom2">
+                        <h2>Casamento Pocket</h2>
+                    </div>
+
+                    <div class="bottom3">
+                        <h1>Enquanto não pode fazer a Grande Festa, Dê Início a sua Vida a Dois da Forma Mais Rápida e Segura!</h1>
+                    </div>
+                    <!--
                     <div class="bottom1">
                         <h1>Bem Casei Pocket</h1>
 
                     </div>
-                    <!--inner-text-introduction-->
+                    -->
 
                     <div class="bottom2">
-                        <h3>Você gostaria de iniciar seu casamento se sentindo mais plena, mais segura e confiante no seu parceiro?</h3>
+                        <!--
+                        <h3>Você quer dar um fim à sua angústia e realizar seu casamento da maneira mais rápida e segura durante a pandemia?</h3>
+                        -->
+
+                        <h3>Entre no nosso Grupo VIP do WhatsApp Para Ter Acesso a um Desconto Único e Exclusivo!</h3>
                     </div>
 
                     
 
-                    <a href="/criar-site"><button type="button" class="button6">Sim! Quero Comprar Meu Casamento Pocket!</button></a>
+                    <a href="/criar-site"><button type="button" class="button8">Sim! Quero Iniciar Minha Vida a Dois!</button></a>
 
                 </div>
                 <!--textIntroduction_-->
@@ -275,10 +287,41 @@
 
 
 
+            <div class="col-md-3 col-12 text-center centralizer bottom2">
+
+                <button type="button" class="button7">
+
+                    <div class="bottom2">
+                        <i class="fa fa-play"></i>
+                    </div>
+
+                    <h3>Galeria de Fotos e Vídeos</h3>
+
+                </button>
+
+            </div>
+
+
+
 
             <div class="col-md-3 col-12 text-center centralizer bottom2">
 
+                <button type="button" class="button7">
 
+                    <div class="bottom2">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+
+                    <h3>Acesso por 12 Meses (+6 Meses de Bônus)</h3>
+
+                </button>
+
+            </div>
+
+
+
+
+            <div class="col-md-3 col-12 text-center centralizer bottom2">
 
 
                 <button type="button" class="button7">
@@ -290,6 +333,7 @@
                     <h3>Plataforma 100% On-Line</h3>
 
                 </button>
+
 
             </div>
 
@@ -314,37 +358,13 @@
 
 
 
-            <div class="col-md-3 col-12 text-center centralizer bottom2">
-
-                <button type="button" class="button7">
-
-                    <div class="bottom2">
-                        <i class="fa fa-play"></i>
-                    </div>
-
-                    <h3>Galeria de Fotos e Vídeos</h3>
-
-                </button>
-
-            </div>
+            
 
 
 
 
 
-            <div class="col-md-3 col-12 text-center centralizer bottom2">
-
-                <button type="button" class="button7">
-
-                    <div class="bottom2">
-                        <i class="fa fa-calendar"></i>
-                    </div>
-
-                    <h3>Acesso por 12 Meses (+ 12 Meses de Bônus)</h3>
-
-                </button>
-
-            </div>
+            
 
 
 
@@ -602,7 +622,7 @@
                 </div>
 
                 <div class="bottom1">
-                    <h3>Tarifa Total de apenas <span style="color:#03a9f4;font-weight:normal;">4,99%</span> e Transferências <span style="color:#03a9f4;font-weight:normal;">GRATUITAS</span> para a Conta Bancária</h3>
+                    <h3>Tarifas Absurdamente Baixas e Transferências <span style="color:#03a9f4;font-weight:normal;">GRATUITAS</span> para a Conta Bancária</h3>
                 </div>
 
             </div>
@@ -791,14 +811,14 @@
 
                     
                     <div class="bottom2">
-                        <h3>Adquira já o seu Casamento Pocket, a Maneira Mais Simples e Segura De Realizar Seu Casamento Durante a Pandemia!</h3>
+                        <h3>Realize o Seu Casamento da Maneira Mais Rápida e Segura Durante a Pandemia!</h3>
                     </div>
 
                     <div class="bottom3">
 
                         <ul> 
 
-                            <li><i class="fa fa-check"></i>&nbsp; Acesso à Plataforma por 12 Meses (+ 12 Meses de Bônus)</li> 
+                            <li><i class="fa fa-check"></i>&nbsp; Acesso à Plataforma por 12 Meses (+6 Meses de Bônus)</li> 
                             
                             <li><i class="fa fa-check"></i>&nbsp; Ensaio Fotográfico</li>
 
@@ -814,19 +834,27 @@
 
                     </div><!--gifts-section1-->
 
-                    <div class="line-through1 bottom2">
-                        <h3>De R$ 1.597,00</h3>
+
+                    <div class="bottom1">
+                        <h4>Tudo Isto Por</h4>
+                        
                     </div>
 
-                    <div class="bottom2">
-                        <h3>Por</h3>
-                    </div>
+                    
 
                     <div class="bottom3">
-                        <h3>R$ 997,00</h3>
+                        <h3>R$ 1.597,00</h3>
                     </div>
 
-                    <button type="submit" class="button6">Sim! Quero Comprar!</button>
+                    
+
+                    
+
+                    <div class="bottom2">
+                        <h4>Entre no nosso Grupo VIP do WhatsApp Para Ter Acesso a um Desconto Único e Exclusivo!</h4>
+                    </div>
+
+                    <button type="submit" class="button8">Sim! Quero Realizar Meu Casamento!</button>
 
 
                 </div>
@@ -1154,14 +1182,18 @@
                       <div class="card-header" id="headingOneTwenty">
                         <h2 class="mb-0">
                           <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOneTwenty" aria-expanded="true" aria-controls="collapseOneTwenty">
-                            Quanto Tempo o Meu Site Fica On-Line?
+                            Quanto Tempo o Meu Site Ficará On-Line?
                           </button>
                         </h2>
                       </div>
                   
                       <div id="collapseOneTwenty" class="collapse" aria-labelledby="headingOneTwenty" data-parent="#accordion-testimonial1">
                         <div class="card-body">
-                          Ficará On-Line o tempo que você comprou no seu plano, por exemplo: Plano Fiona por 4 meses. Todavia, caso necessite, você pode a qualquer momento comprar renovação de plano por mais 1,3,4,6,9 ou 12 meses, quantas vezes quiser. Além da renovação, você também pode fazer upgrade de Plano, por exemplo, passar do Plano Fiona para o Plano Frozen ou Plano Princess, ganhando assim, mais recursos em seu site.
+                          Seu Site Ficará no Ar por 12 meses + 6 meses de Bônus, totalizando 18 meses ininterruptos no ar!
+
+                          <br><br>
+
+                          Caso necessite, você pode a qualquer momento comprar renovação de plano por mais 1,3,4,6,9 ou 12 meses, quantas vezes quiser.
                         </div>
                       </div>
                     </div>
@@ -1183,6 +1215,7 @@
 
 
 
+                    <!---
                     <div class="card">
                       <div class="card-header" id="headingThreeTwenty">
                         <h2 class="mb-0">
@@ -1197,6 +1230,7 @@
                         </div>
                       </div>
                     </div>
+                -->
 
 
 
@@ -1208,45 +1242,6 @@
 
 
 
-
-                      <div class="card">
-                        <div class="card-header" id="headingFiveTwenty">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFiveTwenty" aria-expanded="false" aria-controls="collapseFiveTwenty">
-                                Quem É Responsável pela Lista de Presentes? A debutante ou o Responsável Legal?
-                            </button>
-                          </h2>
-                        </div>
-                        <div id="collapseFiveTwenty" class="collapse" aria-labelledby="headingFiveTwenty" data-parent="#accordion-testimonial1">
-                          <div class="card-body">
-                            No Caso da Lista de Presentes, é necessário ser maior de 18 anos para utilizar, portanto, a mesma é de responsabilidade do seu Responsável Legal. Além disso, a conta bancária destinada a receber os valores deve pertencer a esse Responsável Legal, caso contrário não é possível efetuar a transferência. Portanto, o único que pode receber os valores é o Responsável da Debutante, e é, em última instância, o único gerenciador da mesma.
-                          </div>
-                        </div>
-                      </div>
-
-
-
-
-
-
-
-
-
-
-                      <div class="card">
-                        <div class="card-header" id="headingSixTwenty">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSixTwenty" aria-expanded="false" aria-controls="collapseSixTwenty">
-                                Se eu quiser moderar o site da minha filha debutante, eu posso?
-                            </button>
-                          </h2>
-                        </div>
-                        <div id="collapseSixTwenty" class="collapse" aria-labelledby="headingSixTwenty" data-parent="#accordion-testimonial1">
-                          <div class="card-body">
-                            Sim, o Responsável principal pelo site é o Responsável Legal da Debutante, maior de 18 anos, pois a condição da idade impede a debutante de responder legalmente. Sendo assim, o Responsável sempre estará resguardado e poderá moderar o site da sua filha, ou sua tutelada a qualquer momento. Para isto basta utilizar o chat no rodapé do site, que fica disponível das 10:00 às 22:00, todos os dias da semana.
-                          </div>
-                        </div>
-                      </div>
 
 
 
@@ -1287,7 +1282,7 @@
                         <div class="card-header" id="headingEightTwenty">
                           <h2 class="mb-0">
                             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEightTwenty" aria-expanded="false" aria-controls="collapseEightTwenty">
-                              Caso ainda não tenha todas as informações da Festa, posso criar o site mesmo assim?
+                              Caso ainda não tenha todas as informações do Casamento, posso criar o site mesmo assim?
                               
                             </button>
                           </h2>
@@ -1295,34 +1290,6 @@
                         <div id="collapseEightTwenty" class="collapse" aria-labelledby="headingEightTwenty" data-parent="#accordion-testimonial1">
                           <div class="card-body">
                             Sim, totalmente, os Layouts do 15aninhos são totalmente editáveis e você pode colocar, retirar ou editar informações a qualquer momento que quiser.
-                          </div>
-                        </div>
-                      </div>
-
-
-
-
-
-
-
-
-
-
-                      <div class="card">
-                        <div class="card-header" id="headingNineTwenty">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseNineTwenty" aria-expanded="false" aria-controls="collapseNineTwenty">
-                              Que informações preciso para criar o site?
-                            </button>
-                          </h2>
-                        </div>
-                        <div id="collapseNineTwenty" class="collapse" aria-labelledby="headingNineTwenty" data-parent="#accordion-testimonial1">
-                          <div class="card-body">
-                            Para criar o site você pode pagar no ato, ou usar um plano 10 Dias Free, e pagar apenas depois.
-
-                            Caso você use o Plano 10 Dias Free precisará apenas de Seu Nome, Seu E-mail e Escolher uma Senha de Acesso!
-
-                            Caso você queira já comprar um plano de uma vez precisará de: Nome, E-mail e Senha de Acesso (Pode ser a da Debutante ou do Responsável Legal) e também de Informações do Pagamento (do Responsável pelo Pagamento).
                           </div>
                         </div>
                       </div>

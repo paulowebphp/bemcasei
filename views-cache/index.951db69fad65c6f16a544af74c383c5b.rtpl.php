@@ -41,7 +41,7 @@
                         -->
 
                         <div class="bottom2">
-                            <h3>Insira Seu Email Abaixo e Clique No Botão Para Receber Seu E-book Gratuitamente!</h3>
+                            <h3>Insira Seu Email Abaixo e Clique No Botão Para Receber o E-book Gratuitamente!</h3>
                         </div>
 
                         <?php if( $error != '' ){ ?>
@@ -146,18 +146,17 @@
 
                     <ul> 
 
-                        <li><i class="fa fa-check"></i>&nbsp; Por Que Adiar Meu Casamento?</li> 
-                        
-                        <li><i class="fa fa-check"></i>&nbsp; Para Quando Adiar</li>
-
-                        <li><i class="fa fa-check"></i>&nbsp; Como Comunicar Meus Convidados</li>
-
-
-                        <li><i class="fa fa-check"></i>&nbsp; O Que Posso Fazer Na Pandemia</li>
-
+                        <li><i class="fa fa-check"></i>&nbsp; Como Adaptar Seu Casamento</li>
                         
 
-                        <li><i class="fa fa-check"></i>&nbsp; Como Adaptar Meu Casamento</li>
+                        <li><i class="fa fa-check"></i>&nbsp; Como Comunicar Seus Convidados Sobre o Adiamento</li>
+
+
+                        <li><i class="fa fa-check"></i>&nbsp; Que Tipo de Celebração Você Pode Fazer</li>
+
+                        
+
+                        
 
                                                 
 
@@ -180,11 +179,10 @@
                     <ul> 
                         
 
-                        <li><i class="fa fa-check"></i>&nbsp; Devo Fazer Meu Casamento Civil?</li>
-                        <li><i class="fa fa-check"></i>&nbsp; Que Tipo de Celebração Devo Fazer?</li>
-    
-    
-                        <li><i class="fa fa-check"></i>&nbsp; Expectativa Vs Realidade</li>
+                        <li><i class="fa fa-check"></i>&nbsp; Como Fazer Seu Casamento Civil</li>
+
+                        
+                        <li><i class="fa fa-check"></i>&nbsp; Como Controlar a Sua Ansiedade</li>
                         
                         <li><i class="fa fa-check"></i>&nbsp; Qual a Maneira Mais Segura de Fazer Seu Casamento</li>
                         
@@ -260,7 +258,11 @@
                 </div>
 
                 <div class="bottom2">
-                    <h3>Preparamos com muito carinho este material bem resumido com 18 passos simples e eficientes para realizar seu casamento durante esta época tão difícil de pandemia.</h3>
+                    <h3>Preparamos com muito carinho este material bem resumido com <strong>10 passos simples e eficientes</strong> para realizar seu casamento durante esta época tão difícil de Pandemia.</h3>
+                </div>
+
+                <div class="bottom2">
+                    <h3>Várias noivas já fizeram o download. Não fique de fora e baixe o seu também!</h3>
                 </div>
 
             </div>

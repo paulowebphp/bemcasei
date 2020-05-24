@@ -30,11 +30,6 @@
                     <h3>Você receberá o E-book em seu E-mail em até 60 minutos!</h3>
                 </div>
 
-                <?php if( $error != '' ){ ?>
-                <div class="alert alert-danger">
-                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                </div>
-                <?php } ?>
 
             </div>
            

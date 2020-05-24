@@ -98,6 +98,143 @@
 
 <body>
 
+    {if="getDesdomain() != 'promocao' "}
+
+    <header>
+
+
+
+        
+
+
+
+        <div class="container-fluid">
+
+
+            <div id="header-device">
+
+
+                <div class="row centralizer">
+
+
+                    <div class="col-2 text-center">
+
+
+
+                        <div id="logo">
+
+
+                            <a target="_blank" href="/"><img id="logotipo" src="/res/images/logo/logo-main.png" alt="Logotipo"></a>
+
+                            <!--<img id="logotipo" src="/res/images/logo/logo-main.png" width="203" height="65" alt="Logotipo">-->
+
+                        </div>
+
+
+                    </div>
+                    <!--col-md-->
+
+
+
+
+
+
+                    <div class="col-10 text-right">
+
+
+                        <div id="menu">
+                            <ul>
+                                <!--<li>Faça Login Para Baixar o Seu E-book</li>-->
+
+                                <li><a href="/login"><button id="nav-login">LOGIN</button></a></li>
+                            </ul>
+                        </div>
+
+
+
+                    </div>
+                    <!--col-md-->
+
+
+                </div>
+                <!--row-->
+
+
+            </div>
+            <!--header-device-->
+
+
+
+            <div id="header-mobile">
+
+                <div class="row">
+
+
+
+                    <div class="col-md-12">
+
+
+
+
+                        <div id="menu-condensed">
+
+                            <button id="btn-bars" type="button"><i class="fa fa-bars"></i></button>
+
+                        </div>
+
+
+
+
+
+
+                        <div id="menu-mobile">
+
+                            <ul>
+                                <!--<li>Faça Login Para Baixar o Seu E-book</li>-->
+
+                                <li><a href="/login"><button id="nav-login">LOGIN</button></a></li>
+                            </ul>
+
+                            <div class="bar-close">
+                                <button type="button" class="btn btn-close"><i class="fa fa-close"></i></button>
+                            </div>
+
+                        </div>
+
+
+                        <div id="menu-mobile-mask"></div>
+
+
+
+                    </div>
+                    <!--col-->
+
+
+
+                </div>
+                <!--row-->
+
+            </div>
+            <!--header-mobile-->
+
+
+
+
+
+
+        </div>
+        <!--container-fluid-->
+
+
+        
+
+
+    </header>
+
+    {else}
+    
 
     <header style="display:none!important;"></header>
 
+
+    {/if}
