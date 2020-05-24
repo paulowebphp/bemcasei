@@ -294,6 +294,24 @@ $app->get( '/baixar-ebook', function()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $app->post( '/baixar-ebook', function()
 {
 	
@@ -414,25 +432,27 @@ $app->post( '/baixar-ebook', function()
 
 
 
-	/*
+	
 
 	if ( (int)$lead->getidlead() > 0 )
 	{
 
-		$lead->setoriginalpassword(base64_decode($lead->getoriginalpassword()));
+		//$lead->setoriginalpassword(base64_decode($lead->getoriginalpassword()));
 
 		# code...
 		$leadMailer = new Mailer(
 												
 			Rule::EMAIL_LEAD,
 
-			"lead", 
+			"lead1", 
 			
 			array(
 
 				"lead"=>$lead->getValues(),
 
 			),
+
+			$lead->getdesemail(),
 
 			$lead->getdesemail()
 		
@@ -446,7 +466,7 @@ $app->post( '/baixar-ebook', function()
 
 		
 
-	}//end if*/
+	}//end if
 
 
 	

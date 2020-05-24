@@ -46,7 +46,34 @@ $("#menu-mobile-mask, .btn-close").on("click", function(){
 
 
 
+/******************** EBOOK DOWNLOAD PANEL ***************************************************/
+/******************** EBOOK DOWNLOAD PANEL ***************************************************/
+/******************** EBOOK DOWNLOAD PANEL ***************************************************/
+/******************** EBOOK DOWNLOAD PANEL ***************************************************/
 
+$("#ebook-download").on("click", function(e){
+    
+    console.log('ok');
+
+
+    e.preventDefault();
+
+    let link = document.createElement('a');
+	link.href = '/ebook/casamento_pocket_lancamento.pdf';
+	link.download = 'casamento_pocket_lancamento.pdf';
+	link.click();
+	
+
+});//end on
+
+
+
+
+
+/******************** EBOOK DOWNLOAD PANEL ***************************************************/
+/******************** EBOOK DOWNLOAD PANEL ***************************************************/
+/******************** EBOOK DOWNLOAD PANEL ***************************************************/
+/******************** EBOOK DOWNLOAD PANEL ***************************************************/
 
 
 

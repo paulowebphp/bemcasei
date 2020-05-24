@@ -62,43 +62,35 @@
 
                     
 
-                <div class="row resume-row">
+                <div class="row">
                     
-                    <div class="col-md-6 resume-wrapper">
+                    <div class="col-md-6 col-12">
 
-                        <div class="resume-box">
+                        <h3>Olá!</h3>
 
-                            
+                        <p>Para fazer o Download do seu E-book, clique no botão abaixo:</p>
 
-                            <div class="resume-content">
-                                <h2>XXX</h2>
+                        
 
-                                <h6>Presença</h6><h6>Confirmada</h6>
-                            </div>
-
+                        <div class="bottom2">
+                            <button id="ebook-download" type="button" class="button7">Download</button>
                         </div>
+
+                        <p>Se preferir, abra o E-book em uma Nova Aba:</p>
+
+                        <div class="bottom2">
+                            <a target="_blank" href="/ebook/casamento_pocket_lancamento.pdf"><button type="button" class="button7">Abrir Em Outra Aba</button></a>
+                        </div>
+
 
                     </div><!--col-lg-3-->
 
 
 
 
-                    <div class="col-md-6 resume-wrapper">
+                    <div class="col-md-6 col-12">
 
-                        <div class="resume-box">
-
-                            
-
-                            <div class="resume-content">
-                                <h2>XXX</h2>
-
-                                <h6>Mensagem</h6>
-                                <h6>Recebida</h6>
-                            </div>
-
-
-
-                        </div>
+                        &nbsp;
 
                     </div><!--col-lg-3-->
 

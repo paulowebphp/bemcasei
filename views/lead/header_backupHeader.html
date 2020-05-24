@@ -1,4 +1,4 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 
 
@@ -7,23 +7,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="<?php echo getSitePageConfig('metadescription'); ?>">
-    <?php if( getSitePageConfig('noindex') == 1 ){ ?>
+    <meta name="description" content="{function="getSitePageConfig('metadescription')"}">
+    {if="getSitePageConfig('noindex') == 1"}
     <meta name="robots" content="noindex">
-    <?php } ?>
+    {/if}
 
 
 
-    <meta property="og:title" content="<?php echo getSitePageConfig('pagetitle'); ?>">
-    <meta property="og:description" content="<?php echo getSitePageConfig('metadescription'); ?>">
-    <meta property="og:url" content='https://<?php echo getHttpHost(); ?>'>
+    <meta property="og:title" content="{function="getSitePageConfig('pagetitle')"}">
+    <meta property="og:description" content="{function="getSitePageConfig('metadescription')"}">
+    <meta property="og:url" content='https://{function="getHttpHost()"}'>
     <meta property="og:site_name" content="Bem Casei">
     <meta property="og:type" content="website">
     <meta property="og:image"
-        content='https://<?php echo getHttpHost(); ?>/res/images/logo/bem-casei-logo-square.jpg'>
+        content='https://{function="getHttpHost()"}/res/images/logo/bem-casei-logo-square.jpg'>
 
 
-    <title><?php echo getSitePageConfig('pagetitle'); ?></title>
+    <title>{function="getSitePageConfig('pagetitle')"}</title>
     <!-- <link rel="stylesheet" type="text/css" href="/res/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/res/css/font-awesome.min.css">
@@ -66,9 +66,9 @@
     }
     </script>
 
-    <?php if( getSitePageConfig('recaptcha') == 1 ){ ?>
+    {if="getSitePageConfig('recaptcha') == 1"}
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <?php } ?>
+    {/if}
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152061464-1"></script>
@@ -92,10 +92,124 @@
 <body>
 
 
-    
+    {if="getDesdomain() != 'baixar-ebook' "}
+
+    <header>
+
+        <div class="container-fluid">
+
+
+            <div id="header-device">
+
+
+                <div class="row centralizer">
+
+
+                    <div class="col-2 text-center">
+
+
+
+                        <div id="logo">
+
+
+                            <a target="_blank" href="/"><img id="logotipo" src="/res/images/logo/logo-main.png" alt="Logotipo"></a>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+                    <div class="col-10 text-right">
+
+
+                        <div id="menu">
+                            <ul>
+
+                                <li><a href="/login"><button id="nav-login">LOGIN</button></a></li>
+                            </ul>
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div id="header-mobile">
+
+                <div class="row">
+
+
+
+                    <div class="col-md-12">
+
+
+
+
+                        <div id="menu-condensed">
+
+                            <button id="btn-bars" type="button"><i class="fa fa-bars"></i></button>
+
+                        </div>
+
+
+
+
+
+
+                        <div id="menu-mobile">
+
+                            <ul>
+
+                                <li><a href="/login"><button id="nav-login">LOGIN</button></a></li>
+                            </ul>
+
+                            <div class="bar-close">
+                                <button type="button" class="btn btn-close"><i class="fa fa-close"></i></button>
+                            </div>
+
+                        </div>
+
+
+                        <div id="menu-mobile-mask"></div>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+    </header>
+
+
+    {else}
     
 
     <header style="display:none!important;"></header>
 
 
-    
+    {/if}

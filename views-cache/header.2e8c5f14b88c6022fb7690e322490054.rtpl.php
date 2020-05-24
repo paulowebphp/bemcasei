@@ -143,9 +143,8 @@
 
                                     <div class="menu-main-pages">
                                         
-                                        <a href="/dashboard" class="list-group-item list-group-item-action">Início</a>
+                                        <a href="/painel" class="list-group-item list-group-item-action">Início</a>
 
-                                        <a href="/dashboard/meus-dados" class="list-group-item list-group-item-action">Meus Dados</a>
 
 
                                     </div>
@@ -170,12 +169,12 @@
                                                 
                                                 <div class="card-body card-body-text">
                                                 
-                                                    <a href="/dashboard/termos-uso" class="list-group-item list-group-item-action">Termos de Uso</a>
+                                                    <a href="/painel/termos-uso" class="list-group-item list-group-item-action">Termos de Uso</a>
 
 
-                                                    <a href="/dashboard/politica-privacidade" class="list-group-item list-group-item-action">Política de Privacidade</a>
+                                                    <a href="/painel/politica-privacidade" class="list-group-item list-group-item-action">Política de Privacidade</a>
 
-                                                    <a href="/dashboard/termos-lista" class="list-group-item list-group-item-action">Termos da Lista de Presentes Virtuais</a>
+                                                    <a href="/painel/termos-lista" class="list-group-item list-group-item-action">Termos da Lista de Presentes Virtuais</a>
                                         
                                                 </div>
 
@@ -193,9 +192,8 @@ S
 
                                     <div class="menu-main-pages">
 
-                                        <a href="/dashboard/central-ajuda" class="list-group-item list-group-item-action">Central de Ajuda</a>
 
-                                        <a href="/dashboard/mudar-senha" class="list-group-item list-group-item-action">Alterar Senha</a>  
+                                        <a href="/painel/mudar-senha" class="list-group-item list-group-item-action">Alterar Senha</a>  
                                         
                                         <a href="/painel/logout" class="list-group-item list-group-item-action">Sair</a>
 
