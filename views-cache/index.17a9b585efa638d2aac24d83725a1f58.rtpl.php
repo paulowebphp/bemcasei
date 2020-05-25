@@ -15,7 +15,7 @@
                     </div>
 
                     <div class="bottom3">
-                        <h1>Enquanto não pode fazer a Grande Festa, Dê Início a sua Vida a Dois da Forma Mais Rápida e Segura!</h1>
+                        <h1>Dê Início a Sua Vida a Dois da Forma Mais Segura e Simples Durante a Quarentena!</h1>
                     </div>
                     <!--
                     <div class="bottom1">
@@ -29,7 +29,7 @@
                         <h3>Você quer dar um fim à sua angústia e realizar seu casamento da maneira mais rápida e segura durante a pandemia?</h3>
                         -->
 
-                        <h3>Entre no nosso Grupo VIP do WhatsApp Para Ter Acesso a um Desconto Único e Exclusivo!</h3>
+                        <h3>Venha Pertencer à Nossa Lista VIP do WhatsApp Para Ter Acesso a um Desconto Único e Exclusivo!</h3>
                     </div>
 
                     
@@ -107,9 +107,9 @@
 
                     <ul> 
 
-                        <li><i class="fa fa-female"></i>&nbsp; Noivas que estão pensando em adiar seu casamento por causa da Pandemia</li> 
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que estão pensando em adiar seu casamento por causa da Quarentena</li> 
                         
-                        <li><i class="fa fa-female"></i>&nbsp; Noivas que já adiaram seu Casamento por causa da Pandemia</li>
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que já adiaram seu Casamento por causa da Quarentena</li>
 
                         <li><i class="fa fa-female"></i>&nbsp; Noivas que estão querendo casar só no Civil</li> 
 
@@ -136,9 +136,9 @@
                     <ul> 
 
 
-                        <li><i class="fa fa-female"></i>&nbsp; Noivas que estão planejando casar, mas estão em dúvidas por causa da Pandemia</li>
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que estão planejando casar, mas estão em dúvidas de como fazer por causa da Quarentena</li>
                         
-                        <li><i class="fa fa-female"></i>&nbsp; Noivas que cancelaram seu Casamento por Causa da Pandemia</li>
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que cancelaram seu Casamento por Causa da Quarentena</li>
     
                         <li><i class="fa fa-female"></i>&nbsp; Noivas Que estão desejam utilizar uma Lista de Presentes que seja Convertida em Dinheiro</li>
                         
@@ -674,7 +674,7 @@
                 </div>
 
                 <div class="bottom1">
-                    <h3>Se você já enviou os convites e tomou a decisão de adiar a data do seu casamento por causa da pandemia, precisa avisar os seus convidados!</h3>
+                    <h3>Se você já enviou os convites e tomou a decisão de adiar a data do seu casamento por causa da Quarentena, precisa avisar os seus convidados!</h3>
                 </div>
 
                 <div class="bottom1">
@@ -836,7 +836,7 @@
 
 
                     <div class="bottom1">
-                        <h4>Tudo Isto Por</h4>
+                        <h4>Por</h4>
                         
                     </div>
 
@@ -851,10 +851,10 @@
                     
 
                     <div class="bottom2">
-                        <h4>Entre no nosso Grupo VIP do WhatsApp Para Ter Acesso a um Desconto Único e Exclusivo!</h4>
+                        <h4>Venha Pertencer à Nossa Lista VIP do WhatsApp Para Ter Acesso a um Desconto Único e Exclusivo!</h4>
                     </div>
 
-                    <button type="submit" class="button8">Sim! Quero Realizar Meu Casamento!</button>
+                    <button type="submit" class="button8">Sim! Quero Dar Início Ao Meu Casamento!</button>
 
 
                 </div>
