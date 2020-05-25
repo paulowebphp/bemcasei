@@ -811,7 +811,7 @@
 
                     
                     <div class="bottom2">
-                        <h3>Realize o Seu Casamento da Maneira Mais Rápida e Segura Durante a Pandemia!</h3>
+                        <h3>Realize o Seu Casamento da Maneira Mais Segura e Simples Durante a Quarentena!</h3>
                     </div>
 
                     <div class="bottom3">
