@@ -479,6 +479,8 @@ $app->post( '/baixar-ebook', function()
 
 
 
+	/*
+
 	echo '<pre>';
 	var_dump($desemail);
 	var_dump($_POST);
@@ -493,6 +495,8 @@ $app->post( '/baixar-ebook', function()
 	var_dump('---------------22------------');
 	var_dump($lead);
 	exit;
+
+	*/
 
 
 	if(isset($_SESSION['registerLead'])) unset($_SESSION['registerLead']);
@@ -530,7 +534,7 @@ $app->post( '/baixar-ebook', function()
 			
 			array(
 
-				"lead"=>$lead->getValues(),
+				"lead"=>$lead->getValues()
 
 			),
 
