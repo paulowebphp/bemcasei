@@ -521,9 +521,10 @@ $app->post( '/baixar-ebook', function()
 	
 
 
-	$hash = base64_encode($lead->getidlead());
+	//$hash = base64_encode($lead->getidlead());
 
-	header("Location: /baixar-ebook/obrigado/".$hash);
+	//header("Location: /baixar-ebook/obrigado/".$hash);
+	header("Location: /baixar-ebook/obrigado");
 	exit;
 	
 
