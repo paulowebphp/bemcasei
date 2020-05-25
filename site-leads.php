@@ -465,6 +465,20 @@ $app->post( '/baixar-ebook', function()
 
 
 
+
+
+
+
+
+
+
+
+	//$user->setToSession();
+	$lead->update();
+
+
+
+
 	echo '<pre>';
 	var_dump($desemail);
 	var_dump($_POST);
@@ -479,15 +493,6 @@ $app->post( '/baixar-ebook', function()
 	var_dump('---------------------------');
 	var_dump($lead);
 	exit;
-
-
-
-
-
-
-
-	//$user->setToSession();
-	$lead->update();
 
 
 	if(isset($_SESSION['registerLead'])) unset($_SESSION['registerLead']);

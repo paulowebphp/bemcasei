@@ -101,7 +101,10 @@ class Lead extends Model
 
 
 		
-	
+		echo '<pre>';
+
+		var_dump($this);
+		exit;
 		
 
 		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
