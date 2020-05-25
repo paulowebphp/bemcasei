@@ -402,6 +402,9 @@ $app->post( '/baixar-ebook', function()
 	var_dump($desemail);
 	var_dump($_POST);
 	var_dump($_SESSION);
+	var_dump('---------------------------');
+	var_dump(Lead::checkLeadExists($desemail) === true);
+	var_dump($_SERVER['HTTP_HOST'] != Rule::CANONICAL_NAME);
 	exit;
 
 
