@@ -193,7 +193,7 @@ class Lead extends Model
 					':inlead'=>$this->getinlead(),
 					':desname'=>utf8_encode($this->getdesname()),
 					':desemail'=>$this->getdesemail(),
-					':despassword'=>CodeFactory::getPasswordHash($this->getdespassword()),
+					':despassword'=>Lead::getPasswordHash($this->getdespassword()),
 					//':desoriginalpassword'=>base64_encode($this->getdesoriginalpassword()),
 					':desoriginalpassword'=>$this->getdesoriginalpassword(),
 					':nrddd'=>$this->getnrddd(),

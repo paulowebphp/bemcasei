@@ -398,7 +398,11 @@ $app->post( '/baixar-ebook', function()
 
 
 
-
+	echo '<pre>';
+	var_dump($desemail);
+	var_dump($_POST);
+	var_dump($_SESSION);
+	exit;
 
 
 
