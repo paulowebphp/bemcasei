@@ -74,19 +74,19 @@
             <div class="col-md-7 col-12">
 
                 <div class="bottom3">
-                    <h3>APROVEITE ESTA OFERTA!</h3>
+                    <h3>APROVEITE ESTA OFERTA LIMITADA!</h3>
                 </div>
 
                 <div class="bottom2">
-                    <p>Em breve nós faremos o lançamento do <strong>Casamento Pocket</strong>, um pacote super especial para você começar a jornada de casada da forma mais rápida e segura nestes tempos de Pandemia!</p>
+                    <p>Em breve nós faremos o pré-lançamento do <strong>Casamento Pocket</strong>, um pacote super especial para você dar início à sua vida a dois da forma mais rápida e segura durante a Quarentena!</p>
                 </div>
 
                 <div class="bottom2">
-                    <p>Você não pode ficar de fora dessa porque é uma oferta super especial! Mas para visualizá-la é preciso estar dentro da nossa na nossa <strong>Lista Bem Casei VIP no WhatsApp</strong>.</p>
+                    <p>Trata-se de um pacote especial e não existe nada igual ainda, mas para visualizá-lo é preciso pertencer a nossa <strong>Lista VIP no WhatsApp</strong>.</p>
                 </div>
 
                 <div class="bottom2">
-                    <p>Então clique no botão abaixo e entre agora mesmo!</p>
+                    <p>Você quer entrar na Lista e ter acesso a uma oferta única e exclusiva?</p>
                 </div>
 
                 <div class="bottom2">

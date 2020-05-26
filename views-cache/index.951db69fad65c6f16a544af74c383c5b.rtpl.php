@@ -9,7 +9,7 @@
             <div class="col-md-10 col-12 text-center">
                 
                 <div class="bottom2">
-                    <h1>A Maneira Mais Simples e Segura De Realizar Seu Casamento Durante a Pandemia</h1>
+                    <h1>A Maneira Mais Segura e Simples De Realizar Seu Casamento Durante a Quarentena!</h1>
 
                 </div>
 
@@ -245,7 +245,7 @@
 
             <div class="col-md-8 col-12">
 
-                <div class="bottom3">
+                <div class="bottom2">
                     <h2>Olá, Noivinha!</h2>
                 </div>
 
@@ -258,11 +258,11 @@
                 </div>
 
                 <div class="bottom2">
-                    <h3>Preparamos com muito carinho este material bem resumido com <strong>10 passos simples e eficientes</strong> para realizar seu casamento durante esta época tão difícil de Pandemia.</h3>
+                    <h3>Preparamos com muito carinho este material bem resumido com <strong>10 passos rápidos e eficientes</strong> para realizar seu casamento durante a Quarentena.</h3>
                 </div>
 
                 <div class="bottom2">
-                    <h3>Várias noivas já fizeram o download. Não fique de fora e baixe o seu também!</h3>
+                    <h3>Várias noivas fizeram o Download e já sabem como fazer o seu casamento. Não fique de fora e baixe o seu também!</h3>
                 </div>
 
             </div>
