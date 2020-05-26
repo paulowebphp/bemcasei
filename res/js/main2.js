@@ -59,8 +59,8 @@ $("#ebook-download").on("click", function(e){
     e.preventDefault();
 
     let link = document.createElement('a');
-	link.href = '/ebook/casamento_pocket_lancamento.pdf';
-	link.download = 'casamento_pocket_lancamento.pdf';
+	link.href = '/ebook/A_Maneira_Mais_Segura_e_Simples_De_Realizar_Seu_Casamento_Durante_A_Pandemia.pdf';
+	link.download = 'A_Maneira_Mais_Segura_e_Simples_De_Realizar_Seu_Casamento_Durante_A_Pandemia.pdf';
 	link.click();
 	
 
