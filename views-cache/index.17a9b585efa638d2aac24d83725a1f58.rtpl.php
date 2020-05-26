@@ -29,12 +29,14 @@
                         <h3>Você quer dar um fim à sua angústia e realizar seu casamento da maneira mais rápida e segura durante a pandemia?</h3>
                         -->
 
-                        <h3>Venha Pertencer à Nossa Lista VIP do WhatsApp Para Ter Acesso a um Desconto Único e Exclusivo!</h3>
+                        <h3>Venha Pertencer à Nossa Lista VIP do WhatsApp Para Ter Acesso a uma Condição Única e Exclusiva!</h3>
                     </div>
 
                     
 
-                    <a href="/criar-site"><button type="button" class="button8">Sim! Quero Iniciar Minha Vida a Dois!</button></a>
+                    <div class="button-centralizer">
+                        <a href="/criar-site"><button type="button" class="button8">Sim! Quero Ter Acesso À Condição Única e Exclusiva!</button></a>
+                    </div>
 
                 </div>
                 <!--textIntroduction_-->
@@ -851,10 +853,10 @@
                     
 
                     <div class="bottom2">
-                        <h4>Venha Pertencer à Nossa Lista VIP do WhatsApp Para Ter Acesso a um Desconto Único e Exclusivo!</h4>
+                        <h4>Venha Pertencer à Nossa Lista VIP do WhatsApp Para Ter Acesso a uma Condição Única e Exclusiva!</h4>
                     </div>
 
-                    <button type="submit" class="button8">Sim! Quero Dar Início Ao Meu Casamento!</button>
+                    <button type="submit" class="button8">Sim! Quero Ter Acesso À Condição Única e Exclusiva!</button>
 
 
                 </div>

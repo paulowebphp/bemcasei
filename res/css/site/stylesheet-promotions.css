@@ -763,6 +763,10 @@ label{
 	font-weight: lighter;
 	text-shadow: #767676 0.1em 0.1em 0.2em;
 }
+.button-centralizer{
+	width: 80%;
+	margin: 0 auto;
+}
 /*
 #banner h3 {
 	color: #fff;
