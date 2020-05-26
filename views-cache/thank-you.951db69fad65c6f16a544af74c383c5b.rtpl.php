@@ -82,11 +82,11 @@
                 </div>
 
                 <div class="bottom2">
-                    <p>Trata-se de um pacote especial e não existe nada igual ainda, mas para visualizá-lo é preciso pertencer a nossa <strong>Lista VIP no WhatsApp</strong>.</p>
+                    <p>Trata-se de uma condição especial e não existe nada igual ainda, mas para visualizá-la é preciso pertencer a nossa <strong>Lista VIP no WhatsApp</strong>.</p>
                 </div>
 
                 <div class="bottom2">
-                    <p>Você quer entrar na Lista e ter acesso a uma oferta única e exclusiva?</p>
+                    <p>Você quer entrar na Lista e ter acesso a uma condição única e exclusiva?</p>
                 </div>
 
                 <div class="bottom2">
