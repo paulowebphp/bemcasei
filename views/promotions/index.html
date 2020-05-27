@@ -29,7 +29,7 @@
                         <h3>Você quer dar um fim à sua angústia e realizar seu casamento da maneira mais rápida e segura durante a pandemia?</h3>
                         -->
 
-                        <h3>Uma Alternativa Incrível Para Se Casar No Momento Atual!</h3>
+                        <h3>Uma Alternativa Incrível Para Aliviar O Seu Estresse No Momento Atual E Se Casar!</h3>
                     </div>
 
                     
@@ -603,7 +603,7 @@
             <div class="col-md-4 col-12 bottom2">
 
                 <div class="img-promotion2 bottom2">
-                    <img src="/res/images/promotions/banner3.jpg" alt="Imagem de um Casal">
+                    <img src="/res/images/promotions/banner8.jpg" alt="Imagem de um Casal">
                 </div>
                 
 
@@ -853,7 +853,7 @@
                     
 
                     <div class="bottom2">
-                        <h4>Uma Alternativa Incrível Para Se Casar No Momento Atual!</h4>
+                        <h4>Uma Alternativa Incrível Para Aliviar O Seu Estresse No Momento Atual E Se Casar!</h4>
                     </div>
 
                     <button type="submit" class="button8">Quero Realizar Meu Casamento!</button>
@@ -1077,7 +1077,7 @@
 
 
 
-            <div class="col-md-4 col-12 vertical-centralizer bottom2">
+            <div class="col-md-4 col-12 vertical-centralizer bottom1">
 
                 <div class="img-promotion bottom2">
                     <img src="/res/images/promotions/banner6.png" alt="Selo de Garantia">
@@ -1093,11 +1093,11 @@
             <div class="col-md-8 col-12 bottom1">
 
                 <div class="bottom1">
-                    <h2>Garantia Blindada 30 Dias</h2>
+                    <h2>Garantia Blindada 10 Dias</h2>
                 </div>
 
                 <div class="bottom1">
-                    <h3>Sua Compra do Casamento Pocket está 100% Coberto Por Uma Garantia Total De 30 Dias!</h3>
+                    <h3>Sua Compra do Casamento Pocket está 100% Coberto Por Uma Garantia Total De 10 Dias!</h3>
                 </div>
 
                 <div class="bottom1">
