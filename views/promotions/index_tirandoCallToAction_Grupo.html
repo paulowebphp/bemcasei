@@ -1,4 +1,4 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><section id="banner">
+<section id="banner">
 
     <div class="container">
 
@@ -29,13 +29,13 @@
                         <h3>Você quer dar um fim à sua angústia e realizar seu casamento da maneira mais rápida e segura durante a pandemia?</h3>
                         -->
 
-                        <h3>Um Conceito Diferente Para Superar O Momento Atual!</h3>
+                        <h3>Venha Pertencer à Nossa Lista VIP do WhatsApp Para Ter Acesso a uma Condição Única e Exclusiva!</h3>
                     </div>
 
                     
 
                     <div class="button-centralizer">
-                        <a href="/criar-site"><button type="button" class="button8">Sim! Quero Iniciar Minha Vida A Dois!</button></a>
+                        <a href="/criar-site"><button type="button" class="button8">Sim! Quero Ter Acesso À Condição Única e Exclusiva!</button></a>
                     </div>
 
                 </div>
@@ -853,10 +853,10 @@
                     
 
                     <div class="bottom2">
-                        <h4>Um Conceito Diferente Para Superar O Momento Atual!</h4>
+                        <h4>Venha Pertencer à Nossa Lista VIP do WhatsApp Para Ter Acesso a uma Condição Única e Exclusiva!</h4>
                     </div>
 
-                    <button type="submit" class="button8">Quero Realizar Meu Casamento!</button>
+                    <button type="submit" class="button8">Sim! Quero Ter Acesso À Condição Única e Exclusiva!</button>
 
 
                 </div>
@@ -936,7 +936,7 @@
                 <div class="card-wrapper">
 
 
-                    <?php $counter1=-1;  if( isset($album) && ( is_array($album) || $album instanceof Traversable ) && sizeof($album) ) foreach( $album as $key1 => $value1 ){ $counter1++; ?>
+                    {loop="$album"}
 
 
                     <div class="card1">
@@ -951,7 +951,7 @@
 
                             <div class="card-image">
                             
-                                <img alt="Bem Casei Site de Casamento" src="/res/images/template/photo/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <img alt="Bem Casei Site de Casamento" src="/res/images/template/photo/{$value.desphoto}">
 
                             </div><!--card-photo-->
 
@@ -968,7 +968,7 @@
                             <div class="title">
 
 
-                                <h5><?php echo htmlspecialchars( $value1["desalbum"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h5>
+                                <h5>{$value.desalbum}</h5>
 
                                 <hr>
 
@@ -981,7 +981,7 @@
 
                             <div class="body-row">
 
-                                <textarea readonly="readonly" class="description"><?php echo htmlspecialchars( $value1["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
+                                <textarea readonly="readonly" class="description">{$value.desdescription}</textarea>
 
                             </div>
 
@@ -992,7 +992,7 @@
 
                             <div class="body-footer buttons-wrapper">
                                 
-                                <a target="_blank" href="/res/images/template/photo/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <a target="_blank" href="/res/images/template/photo/{$value.desphoto}">
                                 
                                     <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>Ver</span>
 
@@ -1012,7 +1012,7 @@
                     </div><!--card1-->
 
                                 
-                    <?php } ?>
+                    {/loop}
 
 
 
