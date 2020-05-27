@@ -624,7 +624,7 @@
                 </div>
 
                 <div class="bottom1">
-                    <h3>Tarifas Absurdamente Baixas e Transferências <span style="color:#03a9f4;font-weight:normal;">GRATUITAS</span> para a Conta Bancária</h3>
+                    <h3>Tarifas Absurdamente Baixas e Transferências <span style="color:#ec656d;font-weight:normal;">GRATUITAS</span> para a Conta Bancária</h3>
                 </div>
 
             </div>

@@ -147,13 +147,13 @@ header #logo{
 }
 header #nav-free{
 	background: none;
-	border:	1px solid #03a9f4;
+	border:	1px solid #ec656d;
 	border-radius: 8px;
 	padding: 15px 25px;
-	color: #03a9f4;	
+	color: #ec656d;	
 }
 header #nav-login{
-	background: #03a9f4;
+	background: #ec656d;
 	border:	none;
 	border-radius: 8px;
 	padding: 15px 25px;
@@ -217,7 +217,7 @@ header #menu-condensed{
 /********************************* FOOTER *****************************************/
 footer{
 	padding: 5% 5% 2% 5%;
-	background: #03a9f4;
+	background: #ec656d;
 	font-size: 24px;
 	color: #fff;
 }
@@ -240,7 +240,7 @@ footer .bottom-footer p {
 }
 
 footer .bottom-footer {
-    background: #03a9f4;
+    background: #ec656d;
     width: 100%;
     height: 100%;
     padding: 10px 0;
@@ -250,7 +250,7 @@ footer #footer-logo{
 	margin-bottom: 12%;
 }
 footer a:hover {
-    color: #c7e8f7;
+    color: #f9d9de;
     text-decoration: none;
 }
 
@@ -276,7 +276,7 @@ footer .list-socials i {
   margin: 7px auto;
 }
 footer .list-socials a:hover {
-  border: 1px solid #c7e8f7;
+  border: 1px solid #f9d9de;
 }
 .btn-trans {
     color: #fff;
@@ -310,7 +310,7 @@ footer .list-socials a:hover {
 }
 .btn-send {
     color: #fff;
-    background-color: #03a9f4;
+    background-color: #ec656d;
     border: none;
     border-radius: 8px;
     border: 1px solid #fff;
@@ -406,7 +406,7 @@ section h1{
 	font-size: 2.5rem;
 	position: relative;
 	font-family: "Poppins";
-	color: #03a9f4;
+	color: #ec656d;
 }
 section h2{
 	font-size: 1.6rem;
@@ -417,7 +417,7 @@ section h3{
 	font-size: 1.5rem;
 	position: relative;
 	font-family: "Poppins";
-	color: #03a9f4;
+	color: #ec656d;
 }
 section h4{
   font-size: 2rem;
@@ -479,7 +479,7 @@ label{
 	margin-bottom: 15%;
 }
 .color1{
-	color: #03a9f4;
+	color: #ec656d;
 }
 .color2{
 	color: #5e299a;
@@ -488,7 +488,7 @@ label{
 	font-weight: bolder;
 }
 .blue{
-	color: #03a9f4;
+	color: #ec656d;
 }
 .purple{
 	color: #5e299a;
@@ -504,13 +504,13 @@ label{
 	font-family: 'TheHeartOfEverything';
 }
 .button1:hover{
-	color: #c7e8f7;
+	color: #f9d9de;
 }
 .button2 a{
 	border-radius: 50px;
 	padding: 12px 34px;
-	color: #03a9f4;
-	border: 4px solid #03a9f4;
+	color: #ec656d;
+	border: 4px solid #ec656d;
 	background: #ffffff66;
 	font-family: 'TheHeartOfEverything';
 	font-size: 1.5rem;
@@ -519,7 +519,7 @@ label{
 	text-decoration: none;
 }
 .button3{
-	background: #03a9f4;
+	background: #ec656d;
 	color: #fff;
 	border-radius: 10px;
 	padding: 12px 34px;
@@ -545,7 +545,7 @@ label{
 	border-radius: 10px;
 	font-weight: bolder;
 	background: #ddd;
-	color: #03a9f4;
+	color: #ec656d;
 	padding: 12px 24px;
 	box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
 	  -webkit-box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);
@@ -571,11 +571,11 @@ label{
 	font-family: 'TheHeartOfEverything';
 }
 .button6:hover{
-	color: #f1a9a0;
-	/*color: #c7e8f7;*/
+	color: #f9d9de;
+	/*color: #f9d9de;*/
 }
 .button7{
-	color: #03a9f4;
+	color: #ec656d;
 	font-size: 2.5rem;
 	border-radius: 8px;
 	padding: 20px 25px;
@@ -593,7 +593,7 @@ label{
 	    -moz-box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);;
 }
 .button7:hover{
-	/*color: #c7e8f7;*/
+	/*color: #f9d9de;*/
 	cursor: auto;
 }
 .button8{
@@ -601,12 +601,12 @@ label{
 	border-radius: 8px;
 	padding: 20px 25px;
 	color: #fff;
-	background: #1e824c;
+	background: #26a65b;
 	text-shadow: #767676 0.1em 0.1em 0.2em;
 	font-family: 'Poppins';
 	border-top: none;
-	border-right: 4px solid #00b16a;
-	border-bottom: 4px solid #00b16a;
+	border-right: 4px solid #3fc380;
+	border-bottom: 4px solid #3fc380;
 	border-left: none;
 	/*
 	border: 1px solid #fff;
@@ -619,7 +619,7 @@ label{
 .button7 h3{
 	font-size: 1.5rem;
 	font-weight: bolder;
-	color: #03a9f4;
+	color: #ec656d;
 }
 
 .width100{
@@ -634,12 +634,12 @@ label{
 	width: 100%;
 }
 .follow1 a{
-	color: #03a9f4;
+	color: #ec656d;
 	text-decoration: none;
 }
 
 .follow1 a:hover{
-	color: #c7e8f7;
+	color: #f9d9de;
 }
 .follow2 a{
 	color: #dd716f;
@@ -729,39 +729,42 @@ label{
 /********************************* BANNER *****************************************/
 /********************************* BANNER *****************************************/
 #banner {
-	background:	#03A9F4;
+	background:	#ec656d;
 	padding: 8% 0;
-	/*
-	background: url("/res/images/promotions/banner1.jpg") no-repeat;
+	
+	background: url("/res/images/promotions/banner7.jpg") no-repeat;
 	background-size: cover;
-	background-position-y: center;*/
+	background-position-y: center;
 
-    background: -webkit-linear-gradient(45deg, #c7e8f7, #03A9F4);
-    background: -o-linear-gradient(45deg, #c7e8f7, #03A9F4);
-    background: -moz-linear-gradient(45deg, #c7e8f7, #03A9F4);
-		background: linear-gradient(45deg, #c7e8f7, #03A9F4);
+    /*
+    background: -webkit-linear-gradient(45deg, #e89aa0, #ec656d);
+    background: -o-linear-gradient(45deg, #e89aa0, #ec656d);
+    background: -moz-linear-gradient(45deg, #e89aa0, #ec656d);
+		background: linear-gradient(45deg, #e89aa0, #ec656d);
+		*/
 	
 }
 #banner h1 {
 	font-family: 'Poppins';
-	color: #fff;
+	color: #ec656d;
 	font-size: 2.5rem;
-	text-shadow: #767676 0.1em 0.1em 0.2em;
+	font-weight: bolder;
+	/*text-shadow: #767676 0.1em 0.1em 0.2em;*/
 }
 
 #banner h2 {
 	font-family: 'TheHeartOfEverything';
-	color: #fff;
+	color: #ec656d;
 	font-size: 3.2rem;
-	text-shadow: #767676 0.1em 0.1em 0.2em;
+	/*text-shadow: #767676 0.1em 0.1em 0.2em;*/
 }
 
 
 #banner h3 {
-	color: #fff;
+	color: #ec656d;
 	font-size: 1.3rem;
 	font-weight: lighter;
-	text-shadow: #767676 0.1em 0.1em 0.2em;
+	/*text-shadow: #767676 0.1em 0.1em 0.2em;*/
 }
 .button-centralizer{
 	width: 80%;
@@ -803,13 +806,13 @@ label{
 /********************** CONFIRMATION2 *********************************/
 
 #confirmation2 {
-	background:	#03A9F4;
+	background:	#ec656d;
 	padding: 5% 0;
 
-    background: -webkit-linear-gradient(45deg, #c7e8f7, #03A9F4);
-    background: -o-linear-gradient(45deg, #c7e8f7, #03A9F4);
-    background: -moz-linear-gradient(45deg, #c7e8f7, #03A9F4);
-		background: linear-gradient(45deg, #c7e8f7, #03A9F4);
+    background: -webkit-linear-gradient(45deg, #e89aa0, #ec656d);
+    background: -o-linear-gradient(45deg, #e89aa0, #ec656d);
+    background: -moz-linear-gradient(45deg, #e89aa0, #ec656d);
+		background: linear-gradient(45deg, #e89aa0, #ec656d);
 }
 
 #confirmation2 h2 {
@@ -886,13 +889,13 @@ label{
 .img-promotion2 img{
 	width: 100%;
 	border-radius: 6px;
-	border: 4px solid #03a9f499;
+	border: 4px solid #ec656d99;
 	box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);;
   		-webkit-box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);;
 	    -moz-box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);;
 }
 .hr1 hr{
-	background-color: #03a9f4;
+	background-color: #ec656d;
 	height: 8px;
 	width: 100px;
 }
@@ -914,7 +917,7 @@ label{
 }
 
 #advantages2 h2{
-	color: #03A9F4;
+	color: #ec656d;
 	font-size:2rem;
 	font-weight: bolder;
 }
@@ -970,7 +973,7 @@ label{
 }
 
 #testimonial1 h2{
-	color: #03A9F4;
+	color: #ec656d;
 	font-size:2rem;
 	font-weight: bolder;
 }
@@ -1020,11 +1023,11 @@ label{
 /********************************* SITE-LEAD *****************************************/
 /********************************* SITE-LEAD *****************************************/
 .lead2{
-	background: #03A9F4;
-    background: -webkit-linear-gradient(45deg, #c7e8f7, #03A9F4);
-    background: -o-linear-gradient(45deg, #c7e8f7, #03A9F4);
-    background: -moz-linear-gradient(45deg, #c7e8f7, #03A9F4);
-		background: linear-gradient(45deg, #c7e8f7, #03A9F4);
+	background: #ec656d;
+    background: -webkit-linear-gradient(45deg, #e89aa0, #ec656d);
+    background: -o-linear-gradient(45deg, #e89aa0, #ec656d);
+    background: -moz-linear-gradient(45deg, #e89aa0, #ec656d);
+		background: linear-gradient(45deg, #e89aa0, #ec656d);
     border-radius: 10px;
     overflow: hidden;
     padding: 72px 55px 65px 55px;
@@ -1181,7 +1184,7 @@ label{
 	list-style: none;
 }
 #gifts-list i{
-	color: #03a9f4;
+	color: #ec656d;
 	font-weight: bolder;
 }
 .gifts-title3{
@@ -1320,7 +1323,7 @@ label{
 	color: #555;
 }
 #site-features h2{
-	color: #03A9F4;
+	color: #ec656d;
 	font-size:2rem;
 	font-weight: bolder;
 }
@@ -1331,7 +1334,7 @@ label{
 	list-style: none;
 }
 #site-features i{
-	color: #03A9F4;
+	color: #ec656d;
 	font-weight: bolder;
 }
 .table-simulate{
@@ -1378,7 +1381,7 @@ label{
 
 /********************************* ACCOUNTS *****************************************/
 .payment-warn{
-	color: #03a9f4;
+	color: #ec656d;
 	text-align: center;
 	margin: 0 auto;
 }
@@ -1416,18 +1419,18 @@ label{
 	width: 100%;
 }
 #desdocument-warn{
-	color: #03a9f4;
+	color: #ec656d;
 }
 #desdocument-warn a{
-	color: #03a9f4;
+	color: #ec656d;
 	text-decoration: underline!important;
 	font-style: italic;
 }
 .buttons-wrapper1 a{
-	color: #03a9f4;
+	color: #ec656d;
 }
 .buttons-wrapper1 a:hover{
-	color: #c7e8f7;
+	color: #f9d9de;
 	text-decoration: none;
 }
 #accounts label {
@@ -1518,14 +1521,14 @@ label{
 }
 
 #register a:hover{
-	color: #c7e8f7;
+	color: #f9d9de;
 	text-decoration: none;
 }
 #register #register-desdocument-warn{
-	color: #03a9f4;
+	color: #ec656d;
 }
 #register #register-desdocument-warn a{
-	color: #03a9f4;
+	color: #ec656d;
 	text-decoration: underline;
 	font-style: italic;
 }
@@ -1568,7 +1571,7 @@ label{
 
 }
 #register #register-accounts-button{
-	background: #03a9f4;
+	background: #ec656d;
 	color: #fff;
 	margin-top: 25%;
 }
@@ -1677,7 +1680,7 @@ label{
 }
 
 #advantages h2{
-	color: #03A9F4;
+	color: #ec656d;
 	font-size:2rem;
 	font-weight: bolder;
 }
@@ -1692,15 +1695,15 @@ label{
 }
 .btn-advantage1 {
   color: #fff;
-  background-color: #03a9f4;
-  border: 2px solid #03a9f4;
+  background-color: #ec656d;
+  border: 2px solid #ec656d;
   margin-bottom: 10%;
 }
 .btn-advantage2 {
   margin-bottom: 10%;
 }
 .btn-advantage1:hover {
-  color: #c7e8f7;
+  color: #f9d9de;
 }
 .btn-advantage2:hover {
   color: #6a0378;
@@ -1713,9 +1716,9 @@ label{
     position: relative;
     box-sizing: border-box;
     margin-bottom: 10px;
-    border: 5px solid #03a9f4;
+    border: 5px solid #ec656d;
     width: 100%;
-  	background-color: #03a9f4;
+  	background-color: #ec656d;
   	margin-top: 10px;
 }
 #box-price img {
@@ -1742,7 +1745,7 @@ label{
     margin-right: 20px;
 }
 #advantages-features i {
-    color: #03a9f4;
+    color: #ec656d;
 }
 
 #box-price-logo{
@@ -1753,10 +1756,10 @@ label{
     padding: 5%;
 }
 #box-footer a{
-    color: #03a9f4;
+    color: #ec656d;
 }
 #box-footer a:hover {
-    color: #c7e8f7;
+    color: #f9d9de;
     text-decoration: none;
 }
 .template-banner-image{
@@ -1862,7 +1865,7 @@ label{
 #confirmation {
 	padding: 10%;
 	position: relative;
-	background: url("/res/images/banner/banner3.jpg") no-repeat center center fixed;
+	background: url("/res/images/promotions/banner3.jpg") no-repeat center center fixed;
 	background-size: cover;
 }
 
@@ -2005,7 +2008,7 @@ label{
 /********************************* ABOUT *****************************************/
 /********************************* ABOUT *****************************************/
 #about h2{
-	color: #03a9f4;
+	color: #ec656d;
 }
 #about.site{
 	padding: 10% 15%!important;
@@ -2026,7 +2029,7 @@ label{
 	margin: 0 auto;
 	width: 100%;
 	border-radius: 50%;
-    border: 10px solid #03a9f4d8;
+    border: 10px solid #ec656dd8;
     float: left;
     margin-right: 40px!important;
     margin-bottom: 40px!important;
@@ -2287,7 +2290,7 @@ label{
 
 
 #dash-login .dash-login-box input{
-	border-bottom: 2px solid #03a9f4;
+	border-bottom: 2px solid #ec656d;
 	width: 80%;
 	border-left: 0;
     border-right: 0;
@@ -2300,7 +2303,7 @@ label{
 	margin: 10% 0;
 	padding: 2%;
 	width: 50%;
-	background: #03a9f4;
+	background: #ec656d;
 	box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
   		-webkit-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
 		-moz-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
@@ -2328,7 +2331,7 @@ label{
 	margin:	0 auto;
 }
 .search-submit input{
-	background-color: #03a9f4;
+	background-color: #ec656d;
 	color: #fff;
 	margin: 10% 0;
 	padding: 3%;
@@ -2357,12 +2360,12 @@ label{
 	position: absolute;
 	right: 15%;
 	top: 15px;
-	color: #03a9f4;
+	color: #ec656d;
 }
 #site-search h2{
 	font-family: 'TheHeartOfEverything';
 	font-size: 2.3rem;
-	color: #03a9f4;
+	color: #ec656d;
 }
 
 .quaesitum-area{
@@ -2390,7 +2393,7 @@ label{
 
 
 .dash-login-pass-recovery a{
-	color: #03a9f4;
+	color: #ec656d;
 	text-decoration: none;
 }
 
@@ -2409,7 +2412,7 @@ label{
     bottom: 15%;
     left: -100%;
     background: #ddd;
-    color: #03a9f4;
+    color: #ec656d;
 }
 
 #dtbirth-warn::before{
@@ -2497,14 +2500,14 @@ label{
 
 
 #dash-forgot .dash-forgot-box h2{
-	color: #03a9f4;
+	color: #ec656d;
 	font-size: 1.4rem;
 	margin-bottom: 20%;
 }
 
 
 #dash-forgot .dash-forgot-box input{
-	border-bottom: 2px solid #03a9f4;
+	border-bottom: 2px solid #ec656d;
 	width: 80%;
 	border-left: 0;
     border-right: 0;
@@ -2516,7 +2519,7 @@ label{
 	margin: 10% 0;
 	padding: 2%;
 	width: 50%;
-	background: #03a9f4;
+	background: #ec656d;
 	box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
   		-webkit-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
 		-moz-box-shadow: 10px 10px 30px 1px rgba(0,0,0,0.75);
@@ -2526,7 +2529,7 @@ label{
 
 
 #dash-forgot .dash-forgot-pass-recovery a{
-	color: #03a9f4;
+	color: #ec656d;
 	text-decoration: none;
 }
 
@@ -2618,7 +2621,7 @@ label{
 }
 
 #checkout .checkout-warn{
-	color: #03a9f4;
+	color: #ec656d;
 	text-align: center;
 	height: 350px;
 	width: 65%;
@@ -2664,14 +2667,14 @@ label{
 	display: none;
 }*/
 #checkout a{
-	color: #03a9f4;
+	color: #ec656d;
 }
 #checkout a:hover{
-	color: #c7e8f7;
+	color: #f9d9de;
 	text-decoration: none;
 }
 #checkout #checkout-desdocument-warn{
-	color: #03a9f4;
+	color: #ec656d;
 
 }
 #checkout input{
@@ -2701,7 +2704,7 @@ label{
 
 }
 #checkout #checkout-accounts-button{
-	background: #03a9f4;
+	background: #ec656d;
 	color: #fff;
 	margin-top: 25%;
 }
@@ -2779,7 +2782,7 @@ label{
 }
 #checkout .installment-title{
 	display: block;
-	color: #03a9f4;
+	color: #ec656d;
 }
 #checkout .domain-checkout-buttons{
     display: flex;
@@ -2908,7 +2911,7 @@ label{
 #site-search img{
 	width: 50%;
 	border-radius: 50%;
-	border: 6px solid #03a9f499;
+	border: 6px solid #ec656d99;
 }
 #site-search h3{
 	font-size: 1.3rem;
@@ -3099,7 +3102,7 @@ label{
   color: #fff;
 }
 #register #text-slide2{
-  color: #03a9f4;
+  color: #ec656d;
   
 }
 #register #slides .slide .slide-partial {
@@ -3304,7 +3307,7 @@ label{
 	letter-spacing: 0.1rem;
 }
 #plans .fa-check{
-	color: #03a9f4;
+	color: #ec656d;
 }
 .plans-title {
   text-align:center;
@@ -3382,13 +3385,13 @@ label{
 #plans .plan:hover .plan-subtitle,
 #plans .plan:hover .plan-subtitle a,
 #plans .plan.plan-active .plan-subtitle {
-  color: #03a9f4;
+  color: #ec656d;
 }
 
 #plans .plan:hover button,
 #plans .plan.plan-active button {
   color: #fff;
-  background: #03a9f4;
+  background: #ec656d;
 }
 
 
@@ -3451,7 +3454,7 @@ label{
   line-height: 18px;
   font-size: 14px;
   font-weight: 500;
-  color: #03a9f4;
+  color: #ec656d;
 }
 #plans button {
   text-transform: uppercase;
@@ -3462,20 +3465,20 @@ label{
 }
 
 .plan-box-button {
-  border: solid 1px #03a9f4;
+  border: solid 1px #ec656d;
   background: #fff;
   border-radius: 100px;
   display: inline-block;
   font-size: 14px;
   font-weight: 500;
-  color: #03a9f4;
+  color: #ec656d;
   line-height: 18px;
   padding: 17px 12px;
 }
 
 .plan-box-button:hover, .plan-box-button:visited,
 .plan-box-button:active, .plan-box-button:link {
-  color: #03a9f4;
+  color: #ec656d;
   text-decoration: none;
 }
 

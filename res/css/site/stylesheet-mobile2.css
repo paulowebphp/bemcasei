@@ -151,7 +151,7 @@ header #menu-mobile ul{
 }
 header #menu-condensed i{
 	font-size: 30px;
-	color: #03a9f499;
+	color: #ec656d99;
 }
 header 	#menu-condensed {
 	background-color: #fff;
@@ -219,7 +219,7 @@ header .bar-close {
 header .bar-close .btn-close {
 	background:none;
 	border: none;
-	color: #03a9f4;
+	color: #ec656d;
 	font-size: 22px;
 }
 header.open-search #logotipo {

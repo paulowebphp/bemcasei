@@ -9,7 +9,7 @@ header #logotipo{display:none;;}
 header{height:50px;position:fixed;box-shadow:none;}
 header #menu-condensed{height:50px;display:block;position:fixed;width:100%;z-index:10;top:0;left:0;}
 header #menu-mobile ul{padding:1%;list-style:none;}
-header #menu-condensed i{font-size:30px;color:#03a9f499;}
+header #menu-condensed i{font-size:30px;color:#ec656d99;}
 header #menu-condensed{background-color:#fff;height:60px;}
 header #menu-mobile{display:block;transition:0.5s;position:fixed;background-color:#fff;width:40%;height:100%;left:-70%;z-index:5;top:0;}
 header #menu-condensed li a{width:32px;height:32px;display:block;}
@@ -20,7 +20,7 @@ header #menu-mobile li{text-align:center;border-top:#ccc 1px solid;}
 header #menu-mobile li:last-child{border-bottom:#ccc 1px solid;}
 header #menu-mobile li a{color:#11171D;font-family:'Poppins';font-weight:bold;font-size:0.8rem;padding:18px;display:block;text-decoration:none;}
 header .bar-close{position:relative;margin-top:10%;background-color:#ddd;width:100%;}
-header .bar-close .btn-close{background:none;border:none;color:#03a9f4;font-size:22px;}
+header .bar-close .btn-close{background:none;border:none;color:#ec656d;font-size:22px;}
 header.open-search #logotipo{z-index:9;}
 #header-mobile.open-menu #menu-mobile{left:0;}
 #header-mobile.open-menu #menu-mobile-mask{display:block!important;position:fixed;width:100%;height:100%;top:0;left:0;background-color:rgba(0,0,0,.5);z-index:4;transition:0.5s;}

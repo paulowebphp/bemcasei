@@ -146,7 +146,7 @@ header {
 	padding: 2%	 2%;
 	z-index: 2;
   	position: relative;
-  	background-color: #03a9f4;
+  	background-color: #ec656d;
   	color: #fff;
 	   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);;
   		-webkit-box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);;
@@ -179,13 +179,13 @@ header  #menu-header li a {
 }
 header #nav-free{
 	background: none;
-	border:	1px solid #03A9F4;
+	border:	1px solid #ec656d;
 	border-radius: 8px;
 	padding: 15px 25px;
-	color: #03A9F4;
+	color: #ec656d;
 }
 header 	#nav-login{
-	background: #03A9F4;
+	background: #ec656d;
 	border:	none;
 	border-radius: 8px;
 	padding: 15px 25px;
@@ -247,7 +247,7 @@ header #menu-condensed
 /********************************* FOOTER *****************************************/
 footer{
 	padding: 3%;
-	background: #03a9f4;
+	background: #ec656d;
 	color: #fff;
   min-height: 250px;
 }
@@ -266,7 +266,7 @@ footer .bottom-footer p {
   /*border-top: 1px solid #fff;*/
 }
 footer .bottom-footer {
-    background: #03a9f4;
+    background: #ec656d;
     width: 100%;
     padding: 10px 0;
     text-transform: capitalize;
@@ -281,7 +281,7 @@ footer .bottom-footer {
   margin-left: -20px;
 }
 footer a:hover {
-    color: #c7e8f7;
+    color: #f9d9de;
     text-decoration: none;
 }
 .input-footer{
@@ -411,7 +411,7 @@ label{
 }
 
 .hr1 hr{
-  border: 1px dashed #03A9F4;
+  border: 1px dashed #ec656d;
   border-radius: 8px;
 
 }
@@ -486,7 +486,7 @@ label{
   background: #fff;
 }
 .card-body-text a:hover{
-  background: #03a9f405;
+  background: #ec656d05;
 }
 .card-body{
   padding: 0;
@@ -495,7 +495,7 @@ label{
   background: #f9f9f9;
 }
 .menu-main-pages a:hover{
-  background: #03a9f425;
+  background: #ec656d25;
 }
 .row-2-columns{
   padding: 0 1%;
@@ -515,7 +515,7 @@ label{
   color: #171F26;
 }
 .card-header:hover{
-  background: #03a9f410;
+  background: #ec656d10;
 }
 
 
@@ -574,12 +574,12 @@ label{
 
 .dash-title h1{
   font-size: 2rem;
-  color: #03a9f4;
+  color: #ec656d;
 }
 
 .dash-title h3{
   font-size: 1.4rem;
-  color: #03a9f4;
+  color: #ec656d;
   font-weight: lighter;
   letter-spacing: 0.2rem;
 }
@@ -882,15 +882,15 @@ label{
 .card-dash button{
   padding: 8% 12%;
   background-color: transparent;
-  border: 1px solid #03A9F4;
+  border: 1px solid #ec656d;
   border-radius: 20px;
-  color: #03A9F4;
+  color: #ec656d;
   margin-bottom: 8%;
   width: 100%;
 }
 
 .del-button button{
-  background-color: #03A9F4;
+  background-color: #ec656d;
   color: #fff;
 }
 
@@ -913,8 +913,8 @@ label{
 }
 .see-button button{
   background-color: transparent;
-  color: #03a9f4;
-  border: 1px solid #03a9f4;
+  color: #ec656d;
+  border: 1px solid #ec656d;
   font-size: 0.9rem;  
 
 }
@@ -1002,10 +1002,10 @@ label{
 .card-plan button{
   padding: 10px 34px;
   background-color: transparent;
-  border: 1px solid #03A9F4;
+  border: 1px solid #ec656d;
   border-radius: 20px;
   margin: 0 1%;
-  color: #03A9F4;
+  color: #ec656d;
   margin-bottom: 8%;
 }
 .card-plan-header2{
@@ -1094,7 +1094,7 @@ label{
 
 /************************* MODAL PLAN FREE **************************/
 .modal-dialog{
-  color: #03a9f4;
+  color: #ec656d;
 }
 
 
@@ -1278,7 +1278,7 @@ label{
 }
 
 .title h1{
-  color: #03a9f4;
+  color: #ec656d;
 }
 .table-title{
   padding: 5% 0;
@@ -1633,7 +1633,7 @@ label{
 }
 
 .checkout-warn{
-  color: #03A9F4;
+  color: #ec656d;
   text-align: center;
   height: 350px;
   width: 65%;
@@ -1653,7 +1653,7 @@ label{
   margin: 5% 0;
 }
 #checkout-desdocument-warn{
-  color: #03a9f4;
+  color: #ec656d;
 }
 .custom-file-label::after {
     content: none;
@@ -1669,7 +1669,7 @@ label{
   display: inline;
 }
 #checkout-accounts-button{
-  background: #03A9F4;
+  background: #ec656d;
   color: #fff;
   margin-top: 25%;
 }
@@ -1708,7 +1708,7 @@ label{
 }
 #installment-title{
   display: block;
-  color: #03a9f4;
+  color: #ec656d;
 }
 #purchase-resume table .column1{
   background: #ccc;
@@ -1760,7 +1760,7 @@ label{
   padding: 0;
 }
 .payment-warn{
-  color: #03a9f4;
+  color: #ec656d;
   text-align: center;
   margin: 0 auto;
   padding:4%;
@@ -1792,24 +1792,24 @@ label{
 
 .plan-upgrade-button {
   width: 100%;
-  border: solid 1px #03a9f4;
+  border: solid 1px #ec656d;
   background: #fff;
   border-radius: 100px;
   display: inline-block;
   font-size: 14px;
   font-weight: 500;
-  color: #03a9f4;
+  color: #ec656d;
   line-height: 18px;
   padding: 17px 12px;
 }
 .plan-upgrade-button:hover, .plan-upgrade-button:visited,
 .plan-upgrade-button:active, .plan-upgrade-button:link {
   color: #fff;
-  background: #03a9f4;
+  background: #ec656d;
   text-decoration: none;
 }
 .upgrade-price{
-  color: #03a9f4;
+  color: #ec656d;
   font-size: 1.2rem;
   font-weight: 500;
 }
@@ -1846,14 +1846,14 @@ label{
 .dash-plans-title{
   text-align: center;
   font-size: 2rem;
-  color: #03a9f4;
+  color: #ec656d;
 }
 .plans-title {
   text-align:center;
 }
 .plans-title h1 {
   font-size: 2rem;
-  color: #03a9f4;
+  color: #ec656d;
 }
 .plans-title p {
   font-size: 0.6;
@@ -1926,12 +1926,12 @@ label{
 #plans .plan:hover .plan-subtitle,
 #plans .plan:hover .plan-subtitle a,
 #plans .plan.plan-active .plan-subtitle {
-  color: #03a9f4;
+  color: #ec656d;
 }
 #plans .plan:hover button,
 #plans .plan.plan-active button {
   color: #fff;
-  background: #03a9f4;
+  background: #ec656d;
 }
 #plans .plan-title {
   font-size: 1.5rem;
@@ -1991,7 +1991,7 @@ label{
   line-height: 18px;
   font-size: 14px;
   font-weight: 500;
-  color: #03a9f4;
+  color: #ec656d;
 }
 #plans button {
   text-transform: uppercase;
@@ -2001,19 +2001,19 @@ label{
   font-weight: 600;
 }
 .plan-box-button {
-  border: solid 1px #03a9f4;
+  border: solid 1px #ec656d;
   background: #fff;
   border-radius: 100px;
   display: inline-block;
   font-size: 14px;
   font-weight: 500;
-  color: #03a9f4;
+  color: #ec656d;
   line-height: 18px;
   padding: 17px 12px;
 }
 .plan-box-button:hover, .plan-box-button:visited,
 .plan-box-button:active, .plan-box-button:link {
-  color: #03a9f4;
+  color: #ec656d;
   text-decoration: none;
 }
 #plans-table th {
@@ -2117,7 +2117,7 @@ label{
   text-align: center !important;
 }
 .tablersw th{
-  color: #03a9f4;
+  color: #ec656d;
   text-align: center !important;padding: 1em !important;
   font-size: 22px;border-left: 1px solid #f9f9f9 !important;
   border-right: 1px solid #f9f9f9 !important;
@@ -2132,7 +2132,7 @@ color: #ccc;font-weight: bold;
 /*border-bottom: 1px solid #f9f9f9 !important;*/
 }
 .tablersw .opcao_plano_{
-color: #03a9f4;font-weight: bold;
+color: #ec656d;font-weight: bold;
 /*border-bottom: 1px solid #f9f9f9 !important;*/
 }
 .tablersw select{
