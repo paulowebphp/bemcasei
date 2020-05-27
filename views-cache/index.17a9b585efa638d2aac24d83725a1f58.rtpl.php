@@ -29,7 +29,7 @@
                         <h3>Você quer dar um fim à sua angústia e realizar seu casamento da maneira mais rápida e segura durante a pandemia?</h3>
                         -->
 
-                        <h3>Um Conceito Diferente Para Superar O Momento Atual!</h3>
+                        <h3>Uma Alternativa Incrível Para Se Casar No Momento Atual!</h3>
                     </div>
 
                     
@@ -853,7 +853,7 @@
                     
 
                     <div class="bottom2">
-                        <h4>Um Conceito Diferente Para Superar O Momento Atual!</h4>
+                        <h4>Uma Alternativa Incrível Para Se Casar No Momento Atual!</h4>
                     </div>
 
                     <button type="submit" class="button8">Quero Realizar Meu Casamento!</button>
