@@ -5,7 +5,7 @@ use \Core\PagePromotions;
 use \Core\Validate;
 use \Core\Mailer;
 use \Core\Model\Lead;
-use \Core\Model\Template;
+use \Core\Model\Promotions;
 use \Core\Wirecard;
 //use \Core\Model\Category;
 //use \Core\Model\Cart;
@@ -29,7 +29,7 @@ $app->get( '/promocao', function()
 {
 
 
-	$album = Template::getAlbum(1, true);
+	$album = Promotions::getAlbum(1, true);
 
 	$page = new PagePromotions();
 

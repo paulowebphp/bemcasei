@@ -338,6 +338,225 @@ class Promotions extends Model
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function getAlbum( $idtemplate, $initialpage = false )
+	{	
+
+
+		$fullArray = [
+
+
+			'1'=>[
+
+				'0'=>[
+
+
+					'desphoto'=>'photo1.jpg',
+					'desalbum'=>'Myra Fotografia',
+					'desdescription'=>'Myra Fotografia'
+					
+
+				],
+
+				'1'=>[
+
+
+					'desphoto'=>'photo2.jpg',
+					'desalbum'=>'Myra Fotografia',
+					'desdescription'=>''
+
+				],
+
+
+				'2'=>[
+
+
+					'desphoto'=>'photo3.jpg',
+					'desalbum'=>'Myra Fotografia',
+					'desdescription'=>''
+
+				],
+
+				'3'=>[
+
+
+					'desphoto'=>'photo4.jpg',
+					'desalbum'=>'Myra Fotografia',
+					'desdescription'=>''
+
+				],
+
+
+
+				'4'=>[
+
+
+					'desphoto'=>'photo5.jpg',
+					'desalbum'=>'Myra Fotografia',
+					'desdescription'=>''
+
+				],
+
+
+				
+
+				'5'=>[
+
+
+					'desphoto'=>'photo6.jpg',
+					'desalbum'=>'Myra Fotografia',
+					'desdescription'=>''
+
+				],
+
+
+
+				'6'=>[
+
+
+					'desphoto'=>'photo7.jpg',
+					'desalbum'=>'Myra Fotografia',
+					'desdescription'=>''
+
+				],
+
+				'7'=>[
+
+
+					'desphoto'=>'photo8.jpg',
+					'desalbum'=>'Myra Fotografia',
+					'desdescription'=>''
+
+				],
+
+				'8'=>[
+
+
+					'desphoto'=>'photo9.jpg',
+					'desalbum'=>'Myra Fotografia',
+					'desdescription'=>''
+
+				],
+
+				'9'=>[
+
+
+					'desphoto'=>'photo10.jpg',
+					'desalbum'=>'Myra Fotografia',
+					'desdescription'=>''
+
+				],
+
+				'10'=>[
+
+
+					'desphoto'=>'photo11.jpg',
+					'desalbum'=>'Myra Fotografia',
+					'desdescription'=>''
+
+				],
+
+				'11'=>[
+
+
+					'desphoto'=>'photo13.jpg',
+					'desalbum'=>'Myra Fotografia',
+					'desdescription'=>''
+
+				],
+
+				'12'=>[
+
+
+					'desphoto'=>'photo14.jpg',
+					'desalbum'=>'Myra Fotografia',
+					'desdescription'=>''
+
+				]
+
+			]//end template
+
+
+		];//end fullArray
+
+
+
+
+		return $fullArray[1];
+
+		
+		
+
+
+	}//END getTemplateNames
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public static function listAll()
 	{
 		$sql = new Sql();

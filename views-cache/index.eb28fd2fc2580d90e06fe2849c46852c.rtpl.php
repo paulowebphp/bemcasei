@@ -178,7 +178,7 @@
 
                 <div class="row bottom1 centralizer">
                     <p>
-                        Crie uma Lista e receba seus presentes em <span style="color:#f0ff00;font-weight:normal;">dinheiro</span> para usar como quiser!
+                        Crie uma Lista e receba seus presentes em <span style="color:#ec656d;font-weight:500;">dinheiro</span> para usar como quiser!
                     </p>
 
                 </div>
@@ -208,10 +208,10 @@
 
                 <div class="row bottom3 centralizer">
 
-                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Tarifa Total de <span style="color:#f0ff00;font-weight:normal;">4,99%</span></p>
+                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Tarifa Total de <span style="color:#ec656d;font-weight:500;">4,99%</span></p>
                     
                     
-                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Transferências <span style="color:#f0ff00;font-weight:normal;">GRATUITAS</span> para Conta Bancária</p>
+                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Transferências <span style="color:#ec656d;font-weight:500;">GRATUITAS</span> para Conta Bancária</p>
 
                     
 
@@ -226,7 +226,7 @@
 
                     <div class="col-md-12">
 
-                        <a href="/planos"><button type="button" class="button1">Planos</button></a>
+                        <a href="/planos"><button type="button" class="button1">Ver Planos</button></a>
 
                     </div>
 
