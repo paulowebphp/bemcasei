@@ -449,6 +449,8 @@ label{
 .flex{
 	display: flex;
 }
+.top1{margin-top:3%;}
+.top2{margin-top:5%;}
 .top3{
 	margin-top: 10%;
 }

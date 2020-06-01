@@ -80,6 +80,8 @@ label{font-size:1rem;}
 .site li{list-style-type:disc;margin-bottom:15px;}
 .site ul{border-collapse:collapse;justify-content:center;text-align:justify;}
 .flex{display:flex;}
+.top1{margin-top:3%;}
+.top2{margin-top:5%;}
 .top3{margin-top:10%;}
 .top4{margin-top:15%;}
 .tight-bottom1{margin-bottom:2%;}

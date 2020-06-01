@@ -269,6 +269,24 @@
 
 
 
+            <div class="col-md-3 col-12 text-center centralizer bottom2">
+
+
+                <button type="button" class="button7">
+
+                    <div class="bottom2">
+                        <i class="fa fa-desktop"></i>
+                    </div>
+
+                    <h3>Sessão de Coaching Por Video-Conferência</h3>
+
+                </button>
+
+
+            </div>
+
+
+
 
             <div class="col-md-3 col-12 text-center centralizer bottom2">
 
@@ -291,21 +309,7 @@
 
 
 
-            <div class="col-md-3 col-12 text-center centralizer bottom2">
-
-
-                <button type="button" class="button7">
-
-                    <div class="bottom2">
-                        <i class="fa fa-desktop"></i>
-                    </div>
-
-                    <h3>Sessão de Coaching Por Video-Conferência</h3>
-
-                </button>
-
-
-            </div>
+            
 
 
 
@@ -1209,7 +1213,7 @@
     <div class="container-fluid">            
             
             
-        <div class="row bottom3">
+        <div class="row bottom2">
 
             <div class="col-md-12 text-center">
 
