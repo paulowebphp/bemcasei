@@ -1946,7 +1946,12 @@ label{
 #banner{
 	background-position-y: 0!important;
 }
-
+.lead2 {
+    padding: 42px 25px 35px 25px;
+}
+#confirmation h3{
+	font-size: 2rem!important;
+}
 
 }/*BREAKPOINT*/
 

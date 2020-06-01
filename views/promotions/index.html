@@ -76,6 +76,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 <section id="site-features" class="site">
 
     <div class="container">
@@ -86,7 +97,7 @@
                 
                 <div class="bottom2">
                     <h2>
-                        O CASAMENTO POCKET SERVE PARA QUAIS NOIVAS?
+                        O QUE É O CASAMENTO POCKET?
                     </h2>
                 </div>
                 
@@ -101,6 +112,37 @@
 
 
 
+
+
+
+        <div class="row bottom2 centralizer">
+     
+            <div class="col-md-8 text-center">
+                
+                <div class="bottom1">
+                    <P>Nós acreditamos que, mais importante do que as coisas, são as experiências que vivemos.</P>
+                </div>
+
+
+                <div class="bottom2">
+                    <P>O Casamento Pocket é um plano com experiências inovadoras para marcar o inicio do seu casamento onde você terá acesso a:</P>
+                </div>
+                
+                               
+                
+
+            </div><!--col-->
+            
+        </div><!--row-->
+
+
+
+
+
+
+
+
+
         <div class="row">
             
             <div class="col-md-6">
@@ -109,14 +151,13 @@
 
                     <ul> 
 
-                        <li><i class="fa fa-female"></i>&nbsp; Noivas que estão pensando em adiar seu casamento por causa da Quarentena</li> 
+                        <li><i class="fa fa-check"></i>&nbsp; Acesso ao Plano Gold no Bem Casei por 12 meses</li> 
                         
-                        <li><i class="fa fa-female"></i>&nbsp; Noivas que já adiaram seu Casamento por causa da Quarentena</li>
 
-                        <li><i class="fa fa-female"></i>&nbsp; Noivas que estão querendo casar só no Civil</li> 
+                        <li><i class="fa fa-check"></i>&nbsp; Ensaio Fotográfico Profissional para produzir fotos de extrema qualidade</li> 
 
 
-                        <li><i class="fa fa-female"></i>&nbsp; Noivas Que Precisam de uma ferramenta para Comunicar Seus Convidados Sobre o Adiamento Do Seu Casamento</li>
+                        <li><i class="fa fa-check"></i>&nbsp; Uma Sessão com um Coach de Finanças para definir e organizar as metas financeiras do casal</li>
 
                         
                         
@@ -138,11 +179,11 @@
                     <ul> 
 
 
-                        <li><i class="fa fa-female"></i>&nbsp; Noivas que estão planejando casar, mas estão em dúvidas de como fazer por causa da Quarentena</li>
+                        <li><i class="fa fa-check"></i>&nbsp; Lista de Presentes Convertida em Dinheiro com excelentes tarifas e transferências gratuitas para a conta bancária</li>
                         
-                        <li><i class="fa fa-female"></i>&nbsp; Noivas que cancelaram seu Casamento por Causa da Quarentena</li>
+                        <li><i class="fa fa-check"></i>&nbsp; Ferramenta para comunicar os convidados sobre o adiamento do casamento</li>
     
-                        <li><i class="fa fa-female"></i>&nbsp; Noivas Que estão desejam utilizar uma Lista de Presentes que seja Convertida em Dinheiro</li>
+                        <li><i class="fa fa-check"></i>&nbsp; Um bônus de 6 meses a mais de acesso para usar o seu site!</li>
                         
                         
 
@@ -179,83 +220,6 @@
 
 
 
-
-
-
-<!--
-<section id="create-list">
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-md-6 text-center">
-
-            
-
-                <div class="row bottom1 centralizer">
-                    <p>
-                        Crie uma Lista e receba seus presentes em <span style="color:#f0ff00;font-weight:normal;">dinheiro</span> para usar como quiser!
-                    </p>
-
-                </div>
-
-                <div class="row bottom3 centralizer">
-    
-                    <p>Praticidade, segurança e confiabilidade para ajudar a tornar seu casamento um sucesso!</p>
-                </div>
-
-
-                <div class="row bottom2">
-
-                    <div class="col-md-12">
-
-                        <a href="/lista-presentes"><button type="button" class="button1">Lista de Presentes</button></a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-md-6 text-center">
-
-
-                <div class="row bottom3 centralizer">
-
-                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Tarifa Total de <span style="color:#f0ff00;font-weight:normal;">4,99%</span></p>
-                    
-                    
-                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Transferências <span style="color:#f0ff00;font-weight:normal;">GRATUITAS</span> para Conta Bancária</p>
-
-                    
-
-                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Escolha Quem Arca com as Tarifas: Você ou o Convidado</p>
-
-                </div>
-
-
-                
-
-                <div class="row bottom2">
-
-                    <div class="col-md-12">
-
-                        <a href="/planos"><button type="button" class="button1">Planos</button></a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
--->
 
 
 
@@ -388,6 +352,209 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="site-features" class="site">
+
+    <div class="container">
+        
+        <div class="row bottom2 centralizer">
+     
+            <div class="col-md-6 text-center">
+                
+                <div class="bottom2">
+                    <h2>
+                        O CASAMENTO POCKET SERVE PARA QUAIS NOIVAS?
+                    </h2>
+                </div>
+                
+                               
+                
+
+            </div><!--col-->
+            
+        </div><!--row-->
+
+
+
+
+
+        <div class="row">
+            
+            <div class="col-md-6">
+
+                <div class="bottom3">
+
+                    <ul> 
+
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que pretendem adiar ou já adiaram o seu casamento</li> 
+                        
+
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que pretendem realizar apenas o Casamento Civil</li> 
+
+
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que necessitam de uma ferramenta para comunicar seus convidados sobre o sdiamento do seu casamento</li>
+
+                        
+                        
+
+                    </ul>
+
+                </div><!--gifts-section1-->
+
+
+            </div>
+
+            
+
+
+            <div class="col-md-6">
+
+                <div class="bottom3">
+
+                    <ul> 
+
+
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que desejam iniciar a vida a dois com a segurança de um planejamento financeiro personalizado</li>
+                        
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que cancelaram seu casamento por causa da quarentena</li>
+    
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que necessitam de uma Lista de Presentes que seja convertida em dinheiro</li>
+                        
+                        
+
+                        
+    
+                    </ul>
+    
+                </div><!--col-->
+
+            </div><!--col-->
+
+
+          
+       
+               
+            
+        </div><!--row-->
+
+
+
+
+
+
+    </div><!--container-->
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<section id="create-list">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6 text-center">
+
+            
+
+                <div class="row bottom1 centralizer">
+                    <p>
+                        Crie uma Lista e receba seus presentes em <span style="color:#f0ff00;font-weight:normal;">dinheiro</span> para usar como quiser!
+                    </p>
+
+                </div>
+
+                <div class="row bottom3 centralizer">
+    
+                    <p>Praticidade, segurança e confiabilidade para ajudar a tornar seu casamento um sucesso!</p>
+                </div>
+
+
+                <div class="row bottom2">
+
+                    <div class="col-md-12">
+
+                        <a href="/lista-presentes"><button type="button" class="button1">Lista de Presentes</button></a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 text-center">
+
+
+                <div class="row bottom3 centralizer">
+
+                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Tarifa Total de <span style="color:#f0ff00;font-weight:normal;">4,99%</span></p>
+                    
+                    
+                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Transferências <span style="color:#f0ff00;font-weight:normal;">GRATUITAS</span> para Conta Bancária</p>
+
+                    
+
+                    <p><i class="fa fa-arrow-right"></i></i>&nbsp; Escolha Quem Arca com as Tarifas: Você ou o Convidado</p>
+
+                </div>
+
+
+                
+
+                <div class="row bottom2">
+
+                    <div class="col-md-12">
+
+                        <a href="/planos"><button type="button" class="button1">Planos</button></a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+-->
+
+
+
+
+
+
+
+
+
 <!--
 
 <section id="confirmation2">
@@ -513,9 +680,52 @@
 
 
 
+
+
+<section id="confirmation2">
+
+    <div class="container text-center">
+
+
+        <div class="row centralizer">
+     
+            <div class="col-md-12 text-center">
+                
+                <h2>
+                    AQUI ESTÃO ALGUMAS VANTAGENS E BENEFÍCIOS QUE VOCÊ VAI RECEBER AO ADQUIRIR O CASAMENTO POCKET
+                </h2>
+                
+                               
+                
+
+            </div><!--col-->
+            
+        </div><!--row-->
+
+
+
+
+
+
+    </div>
+    <!--container-->
+    <!-- # End / Contet Text #  -->
+</section>
+
+
+
+
+
+
+
 <section id="advantages">
 
     <div class="container">
+
+
+
+        <!--
+
 
         <div class="row bottom3">
 
@@ -524,10 +734,10 @@
                 <h2>AQUI ESTÃO ALGUMAS VANTAGENS E BENEFÍCIOS QUE VOCÊ VAI RECEBER AO ADQUIRIR O CASAMENTO POCKET</h2>
 
             </div>
-            <!--col-lg-12-->
 
         </div>
-        <!--row-->
+
+    -->
 
 
 
@@ -619,7 +829,7 @@
                 </div>
 
                 <div class="bottom1">
-                    <h3>Faça uma sessão com um Coach de Finanças para traçar suas metas e objetivos financeiros.</h3>
+                    <h3>Faça uma sessão personalizada com um Coach de Finanças para traçar suas metas e objetivos financeiros.</h3>
                 </div>
 
                 <div class="bottom1">
@@ -884,7 +1094,7 @@
 
                             <li><i class="fa fa-check"></i>&nbsp; Acesso à Plataforma por 12 Meses (+6 Meses de Bônus)</li> 
                             
-                            <li><i class="fa fa-check"></i>&nbsp; Ensaio Fotográfico</li>
+                            <li><i class="fa fa-check"></i>&nbsp; Um Ensaio Fotográfico</li>
 
                             <li><i class="fa fa-check"></i>&nbsp; Uma Sessão Com um Coach de Finanças</li>
 
@@ -1356,6 +1566,26 @@
                         <div id="collapseEightTwenty" class="collapse" aria-labelledby="headingEightTwenty" data-parent="#accordion-testimonial1">
                           <div class="card-body">
                             Sim, totalmente, os Layouts do Bem Casei são totalmente editáveis e você pode colocar, retirar ou editar informações a qualquer momento que quiser.
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+                      <div class="card">
+                        <div class="card-header" id="headingElevenTwenty">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEightTwenty" aria-expanded="false" aria-controls="collapseEightTwenty">
+                              Como será a sessão com o Coach financeiro?
+                              
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseEightTwenty" class="collapse" aria-labelledby="headingElevenTwenty" data-parent="#accordion-testimonial1">
+                          <div class="card-body">
+                           Nosso parceiro, especializado em finanças fará um encontro online com o casal, onde vcs traçarão planos concretos para quitar dívidas, controlar despesas e prever futuros riscos nas finanças do casal, a partir do perfil de cada um. Tudo isso de maneira totalmente customizada à realidade do casal.pode colocar, retirar ou editar informações a qualquer momento que quiser.
                           </div>
                         </div>
                       </div>
