@@ -261,7 +261,7 @@
                         <i class="fa fa-play"></i>
                     </div>
 
-                    <h3>Galeria de Fotos e Vídeos</h3>
+                    <h3>Lindas Galerias para Fotos e Vídeos</h3>
 
                 </button>
 
@@ -287,6 +287,29 @@
 
 
 
+
+
+
+
+            <div class="col-md-3 col-12 text-center centralizer bottom2">
+
+
+                <button type="button" class="button7">
+
+                    <div class="bottom2">
+                        <i class="fa fa-desktop"></i>
+                    </div>
+
+                    <h3>Sessão de Coaching Por Video-Conferência</h3>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!--
             <div class="col-md-3 col-12 text-center centralizer bottom2">
 
 
@@ -302,6 +325,7 @@
 
 
             </div>
+        -->
 
 
 
@@ -311,7 +335,7 @@
                 <button type="button" class="button7">
 
                     <div class="bottom2">
-                        <i class="fa fa-desktop"></i>
+                        <i class="fa fa-signal"></i>
                     </div>
 
                     <h3>Funciona no celular, tablet e notebook</h3>
