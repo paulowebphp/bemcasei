@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="bottom2">
-                    <a target="_blank" href="/"><button type="button" class="button7">Sim! Quero Entrar Na Lista!</button></a>
+                    <a target="_blank" href="https://bit.ly/3eksNde"><button type="button" class="button7">Sim! Quero Entrar Na Lista!</button></a>
                 </div>
 
             </div>
