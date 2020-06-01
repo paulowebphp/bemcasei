@@ -35,7 +35,7 @@
                     
 
                     <div class="button-centralizer">
-                        <a href="/criar-site"><button type="button" class="button8">Sim! Quero Iniciar Minha Vida A Dois!</button></a>
+                        <a href="/promocao"><button type="button" class="button8">Sim! Quero Iniciar Minha Vida A Dois!</button></a>
                     </div>
 
                 </div>
@@ -1158,7 +1158,7 @@
                         <h4>Uma Alternativa Incrível Para Se Casar No Momento Atual!</h4>
                     </div>
 
-                    <button type="submit" class="button8">Quero Realizar Meu Casamento!</button>
+                    <a href="/promocao"><button type="button" class="button8">Sim! Quero Realizar Meu Casamento!</button></a>
 
 
                 </div>
