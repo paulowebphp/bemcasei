@@ -151,10 +151,10 @@
 
                     <ul> 
 
-                        <li><i class="fa fa-check"></i>&nbsp; Acesso ao Plano Gold no Bem Casei por 12 meses</li> 
+                        <li><i class="fa fa-check"></i>&nbsp; Plano Gold na plataforma Bem Casei por 12 meses para fazer seu site de casamento</li> 
                         
 
-                        <li><i class="fa fa-check"></i>&nbsp; Ensaio Fotográfico Profissional para produzir fotos de extrema qualidade</li> 
+                        <li><i class="fa fa-check"></i>&nbsp; Um Ensaio Fotográfico Profissional para fazer fotos de extrema qualidade e postar no seu site</li> 
 
 
                         <li><i class="fa fa-check"></i>&nbsp; Uma Sessão com um Coach de Finanças para definir e organizar as metas financeiras do casal</li>
@@ -261,7 +261,7 @@
                         <i class="fa fa-play"></i>
                     </div>
 
-                    <h3>Lindas Galerias para Fotos e Vídeos</h3>
+                    <h3>Lindas Galerias para Postar Suas Fotos e Vídeos</h3>
 
                 </button>
 
