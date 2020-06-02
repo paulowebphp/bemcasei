@@ -1482,6 +1482,12 @@
             <div class="col-md-12 text-center">
 
                 <div class="accordion" id="accordion-testimonial1">
+
+
+
+
+
+
                     <div class="card">
                       <div class="card-header" id="headingOneTwenty">
                         <h2 class="mb-0">
@@ -1501,6 +1507,14 @@
                         </div>
                       </div>
                     </div>
+
+
+
+
+
+
+
+
                     <div class="card">
                       <div class="card-header" id="headingTwoTwenty">
                         <h2 class="mb-0">
@@ -1579,52 +1593,6 @@
 
 
 
-
-
-
-                      <div class="card">
-                        <div class="card-header" id="headingEightTwenty">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEightTwenty" aria-expanded="false" aria-controls="collapseEightTwenty">
-                              Caso ainda não tenha todas as informações do Casamento, posso criar o site mesmo assim?
-                              
-                            </button>
-                          </h2>
-                        </div>
-                        <div id="collapseEightTwenty" class="collapse" aria-labelledby="headingEightTwenty" data-parent="#accordion-testimonial1">
-                          <div class="card-body">
-                            Sim, totalmente, os Layouts do Bem Casei são totalmente editáveis e você pode colocar, retirar ou editar informações a qualquer momento que quiser.
-                          </div>
-                        </div>
-                      </div>
-
-
-
-
-
-                      <div class="card">
-                        <div class="card-header" id="headingElevenTwenty">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEightTwenty" aria-expanded="false" aria-controls="collapseEightTwenty">
-                              Como será a sessão com o Coach financeiro?
-                              
-                            </button>
-                          </h2>
-                        </div>
-                        <div id="collapseEightTwenty" class="collapse" aria-labelledby="headingElevenTwenty" data-parent="#accordion-testimonial1">
-                          <div class="card-body">
-                           Nosso parceiro, especializado em finanças fará um encontro online com o casal, onde vcs traçarão planos concretos para quitar dívidas, controlar despesas e prever futuros riscos nas finanças do casal, a partir do perfil de cada um. Tudo isso de maneira totalmente customizada à realidade do casal.pode colocar, retirar ou editar informações a qualquer momento que quiser.
-                          </div>
-                        </div>
-                      </div>
-
-
-
-
-
-
-
-
                       <div class="card">
                         <div class="card-header" id="headingTenTwenty">
                           <h2 class="mb-0">
@@ -1639,6 +1607,158 @@
                           </div>
                         </div>
                       </div>
+
+
+
+
+
+
+
+
+                      <div class="card">
+                        <div class="card-header" id="headingOneThirty">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOneThirty" aria-expanded="false" aria-controls="collapseOneThirty">
+                              A empresa Bem Casei fornecerá álcool em gel?
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseOneThirty" class="collapse" aria-labelledby="headingOneThirty" data-parent="#accordion-testimonial1">
+                          <div class="card-body">
+                            Sim, nós forneceremos dois frascos de 200ml de álcool gem gel 70% cheio e novo para ser consumido durante o ensaio: um para uso exclusivo do casal, outro para uso exclusivo da equipe de fotografia.
+
+                            <br><br>
+
+                            O frasco será levado pela equipe de fotografia para o local do ensaio e entregue para os noivos que poderão, inclusive, levar consigo para sua residência ao término do ensaio.
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      <div class="card">
+                        <div class="card-header" id="headingTwoThirty">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwoThirty" aria-expanded="false" aria-controls="collapseTwoThirty">
+                               A empresa Bem Casei fornecerá as máscaras de proteção facial?
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseTwoThirty" class="collapse" aria-labelledby="headingTwoThirty" data-parent="#accordion-testimonial1">
+                          <div class="card-body">
+                            Não, nós não forneceremos as máscaras faciais por um motivo bem simples: higiene pessoal.
+
+                            <br><br>
+
+                            As máscaras são um utensílio extremamente pessoal, que entra em contato com partes muito importantes do aparelho digestivo e respiratório de cada indivíduo e, portanto, é de bom senso que cada um lave, utilize e transporte a sua própria.
+
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                      <div class="card">
+                        <div class="card-header" id="headingThreeThirty">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThreeThirty" aria-expanded="false" aria-controls="collapseThreeThirty">
+                               Quantas máscaras devo levar para o ensaio?
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseThreeThirty" class="collapse" aria-labelledby="headingThreeThirty" data-parent="#accordion-testimonial1">
+                          <div class="card-body">
+                            Como o ensaio terá uma duração de até 2 horas, fora o tempo de deslocamento para ir e voltar, e, pelo fato de muitas pessoas poderem suar bastante durante o ensaio, nós aconselhamos levar de 3 a 4 máscaras.
+
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
+                      <div class="card">
+                        <div class="card-header" id="headingFourThirty">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFourThirty" aria-expanded="false" aria-controls="collapseFourThirty">
+                               Quantas máscaras devo levar para o ensaio?
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseFourThirty" class="collapse" aria-labelledby="headingFourThirty" data-parent="#accordion-testimonial1">
+                          <div class="card-body">
+                            Como o ensaio terá uma duração de até 2 horas, fora o tempo de deslocamento para ir e voltar, e, pelo fato de muitas pessoas poderem suar bastante durante o ensaio, nós aconselhamos levar de 3 a 4 máscaras.
+
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+                      
+
+
+
+
+                      <div class="card">
+                        <div class="card-header" id="headingElevenTwenty">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseElevenTwenty" aria-expanded="false" aria-controls="collapseElevenTwenty">
+                              A empresa Bem Casei levará o casal para o ensaio?
+                              
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseElevenTwenty" class="collapse" aria-labelledby="headingElevenTwenty" data-parent="#accordion-testimonial1">
+                          <div class="card-body">
+                           Não. É de responsabilidade de cada casal providenciar os meios necessários para ir e voltar para o local escolhido para o ensaio.
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
+                      
 
 
 
