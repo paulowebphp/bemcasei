@@ -125,7 +125,7 @@
 
 
                 <div class="bottom2">
-                    <P>O Casamento Pocket é um plano com experiências inovadoras para marcar o inicio do seu casamento onde você terá acesso a:</P>
+                    <P>O Casamento Pocket é um pacote que inclui vários serviços, onde você terá acesso a:</P>
                 </div>
                 
                                
@@ -179,9 +179,9 @@
                     <ul> 
 
 
-                        <li><i class="fa fa-check"></i>&nbsp; Lista de Presentes Convertida em Dinheiro com excelentes tarifas e transferências gratuitas para a conta bancária</li>
+                        <li><i class="fa fa-check"></i>&nbsp; Lista de Presentes Convertida em Dinheiro com conndições e tarifas incríveis</li>
                         
-                        <li><i class="fa fa-check"></i>&nbsp; Ferramenta para comunicar os convidados sobre o adiamento do casamento</li>
+                        <li><i class="fa fa-check"></i>&nbsp; Ferramenta para enviar e-mail para meus convidados</li>
     
                         <li><i class="fa fa-check"></i>&nbsp; Um bônus de 6 meses a mais de acesso para usar o seu site!</li>
                         
@@ -226,81 +226,200 @@
 
 <section id="confirmation2">
 
-    <div class="container text-center">
+    <div class="container centralizer text-center">
 
 
-        <div class="row bottom2 centralizer">
+        <div class="col-md-8 col-12">
+            
+
+            <div class="row bottom2 centralizer">
      
-            <div class="col-md-6 text-center">
+                <div class="col-md-6 text-center">
+                    
+                    <div class="bottom2">
+                        <h2>
+                            COMO O CASAMENTO POCKET FUNCIONA?
+                        </h2>
+                    </div>
+                    
+                                   
+                    
+
+                </div><!--col-->
                 
-                <div class="bottom2">
-                    <h2>
-                        COMO O CASAMENTO POCKET FUNCIONA?
-                    </h2>
+            </div><!--row-->
+
+
+
+
+            
+            <div class="row">
+
+
+
+                <div class="col-md-6 col-12 text-center centralizer bottom2">
+
+                    <div class="box1">
+
+                        <!--<div class="bottom2">
+                            <i class="fa fa-play"></i>
+                        </div>
+
+                        <h3>Lindas Galerias para Postar Suas Fotos e Vídeos</h3>-->
+
+
+
+                        <div class="number1 bottom1">
+                            <h3>1.</h3>
+                        </div>
+
+                        <h3>Agende o Ensaio Fotográfico pelo WhatsApp</h3>
+
+                    </div>
+
                 </div>
+
+
+
+                <div class="col-md-6 col-12 text-center centralizer bottom2">
+
+
+                    <div class="box1">
+
+                        <!--
+                        <div class="bottom2">
+                            <i class="fa fa-desktop"></i>
+                        </div>
+
+                        <h3>Sessão de Coaching Por Video-Conferência</h3>
+                    -->
+
+
+
+
+
+                        <div class="number1 bottom1">
+                            <h3>2.</h3>
+                        </div>
+
+                        <h3>Poste As Fotos do Ensaio no Seu Site de Casamento</h3>
+
+                    </div>
+
+
+                </div>
+
+
+
+
                 
-                               
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="row">
+
+
+
                 
 
-            </div><!--col-->
-            
-        </div><!--row-->
 
 
 
+                <div class="col-md-6 col-12 text-center centralizer bottom2">
 
-        <div class="row">
+                    <div class="box1">
+
+                        <!--
+                        <div class="bottom2">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+
+                        <h3>Acesso por 12 Meses (+6 Meses de Bônus)</h3>
+                    -->
 
 
+                        <div class="number1 bottom1">
+                            <h3>3.</h3>
+                        </div>
 
-            <div class="col-md-3 col-12 text-center centralizer bottom2">
+                        <h3>Agende a Sessão de Coaching pelo WhatsApp</h3>
 
-                <button type="button" class="button7">
-
-                    <div class="bottom2">
-                        <i class="fa fa-play"></i>
                     </div>
 
-                    <h3>Lindas Galerias para Postar Suas Fotos e Vídeos</h3>
-
-                </button>
-
-            </div>
+                </div>
 
 
 
-            <div class="col-md-3 col-12 text-center centralizer bottom2">
 
 
-                <button type="button" class="button7">
 
-                    <div class="bottom2">
-                        <i class="fa fa-desktop"></i>
+
+
+                
+
+
+
+                <!--
+                <div class="col-md-6 col-12 text-center centralizer bottom2">
+
+
+                    <div class="box1">
+
+                        <div class="bottom2">
+                            <i class="fa fa-signal"></i>
+                        </div>
+
+                        <h3>Plataforma 100% On-Line</h3>
+
                     </div>
 
-                    <h3>Sessão de Coaching Por Video-Conferência</h3>
 
-                </button>
-
-
-            </div>
+                </div>
+            -->
 
 
 
 
-            <div class="col-md-3 col-12 text-center centralizer bottom2">
+                <div class="col-md-6 col-12 text-center centralizer bottom2">
 
-                <button type="button" class="button7">
+                    <div class="box1">
 
-                    <div class="bottom2">
-                        <i class="fa fa-calendar"></i>
+                        <!--
+                        <div class="bottom2">
+                            <i class="fa fa-signal"></i>
+                        </div>
+
+                        <h3>Funciona no celular, tablet e notebook</h3>
+                    -->
+
+
+
+
+                        <div class="number1 bottom1">
+                            <h3>4.</h3>
+                        </div>
+
+                        <h3>Faça a Sessão de Coaching pelo Skype por Video</h3>
+
                     </div>
 
-                    <h3>Acesso por 12 Meses (+6 Meses de Bônus)</h3>
-
-                </button>
-
-            </div>
+                </div>
 
 
 
@@ -308,43 +427,6 @@
 
 
 
-
-            
-
-
-
-            <!--
-            <div class="col-md-3 col-12 text-center centralizer bottom2">
-
-
-                <button type="button" class="button7">
-
-                    <div class="bottom2">
-                        <i class="fa fa-signal"></i>
-                    </div>
-
-                    <h3>Plataforma 100% On-Line</h3>
-
-                </button>
-
-
-            </div>
-        -->
-
-
-
-
-            <div class="col-md-3 col-12 text-center centralizer bottom2">
-
-                <button type="button" class="button7">
-
-                    <div class="bottom2">
-                        <i class="fa fa-signal"></i>
-                    </div>
-
-                    <h3>Funciona no celular, tablet e notebook</h3>
-
-                </button>
 
             </div>
 
@@ -352,22 +434,97 @@
 
 
 
-            
 
 
 
 
 
-            
 
 
 
 
+
+
+
+
+
+
+
+
+
+            <div class="row">
+
+
+
+                
+
+
+
+
+                <div class="col-md-6 col-12 text-center centralizer bottom2">
+
+                    <div class="box1">
+
+                        
+
+
+                        <div class="number1 bottom1">
+                            <h3>5.</h3>
+                        </div>
+
+                        <h3>Acesso à Plataforma por 12 Meses (+6 Meses de Bônus)</h3>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="col-md-6 col-12 text-center centralizer bottom2">
+
+                    <div class="box1">
+
+                       
+
+
+
+
+                        <div class="number1 bottom1">
+                            <h3>6.</h3>
+                        </div>
+
+                        <h3>Funciona no celular, tablet e notebook</h3>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
 
 
 
         </div>
-        <!--row-->
+
+
+
+
+
+
+
+
 
 
 
@@ -434,7 +591,7 @@
                         <li><i class="fa fa-female"></i>&nbsp; Noivas que pretendem realizar apenas o Casamento Civil</li> 
 
 
-                        <li><i class="fa fa-female"></i>&nbsp; Noivas que necessitam de uma ferramenta para comunicar seus convidados sobre o sdiamento do seu casamento</li>
+                        <li><i class="fa fa-female"></i>&nbsp; Noivas que necessitam de uma ferramenta para comunicar seus convidados sobre o adiamento do seu casamento</li>
 
                         
                         
@@ -1704,26 +1861,6 @@
 
 
 
-
-
-
-                      <div class="card">
-                        <div class="card-header" id="headingFourThirty">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFourThirty" aria-expanded="false" aria-controls="collapseFourThirty">
-                               Quantas máscaras devo levar para o ensaio?
-                            </button>
-                          </h2>
-                        </div>
-                        <div id="collapseFourThirty" class="collapse" aria-labelledby="headingFourThirty" data-parent="#accordion-testimonial1">
-                          <div class="card-body">
-                            Como o ensaio terá uma duração de até 2 horas, fora o tempo de deslocamento para ir e voltar, e, pelo fato de muitas pessoas poderem suar bastante durante o ensaio, nós aconselhamos levar de 3 a 4 máscaras.
-
-
-
-                          </div>
-                        </div>
-                      </div>
 
 
 
