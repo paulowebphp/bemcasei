@@ -562,7 +562,7 @@
                 
                 <div class="bottom2">
                     <h2>
-                        PRETENDO ADIAR MEU CASAMENTO POR CAUSA DA QUARENTENA, SERVE PRA MIM TAMBÉM?
+                        PRETENDO ADIAR MEU CASAMENTO POR CAUSA DA QUARENTENA, POSSO USAR O BEM CASEI?
                     </h2>
                 </div>
                 
@@ -589,7 +589,7 @@
      
             <div class="col-md-8 text-center">
                 
-                <p>Serve sim, pois você pode postar as fotos do seu casamento civil ou de uma celebração íntima na Galeria de Fotos!</p>
+                <p>Sim, pode sim, pois você pode postar as fotos do seu casamento civil ou de uma celebração íntima na Galeria de Fotos!</p>
 
 
                 <p>Se você fez vídeos e postou no YouTube pode incorporá-los na Galeria de Vídeos para seus amigos e parentes assistirem de forma fácil e prática!</p>
