@@ -17,7 +17,7 @@
                     <!--inner-text-introduction-->
 
                     <div class="bottom2">
-                        <h3>Prático, moderno, bonito.</h3>
+                        <h3>Com um site desses, não vai ter como você não casar.</h3>
                     </div>
 
                     <a href="/criar-site"><button type="button" class="button1">Criar meu Site 10 Dias Grátis</button></a>
@@ -60,7 +60,7 @@
                 
                 <div class="bottom2">
                     <h2>
-                        FUNCIONALIDADES DO SITE DE CASAMENTO
+                        O QUE É O BEM CASEI?
                     </h2>
                 </div>
                 
@@ -75,32 +75,420 @@
 
 
 
+
+
+
+
+
+
+
+
+        <div class="row centralizer">
+     
+            <div class="col-md-8 text-center">
+                
+                <p>O Bem Casei é uma plataforma onde você pode criar o seu site de casamento de uma forma simples e rápida!</p>
+
+             
+                               
+                <p>É uma ferramenta super útil para quem está planejando seu casamento ou já está prestes a se casar!</p>
+
+            </div><!--col-->
+            
+        </div><!--row-->
+
+
+
+
+    </div><!--container-->
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="section2">
+
+    <div class="container centralizer text-center">
+
+
+        <div class="col-md-10 col-12">
+            
+
+            <div class="row bottom2 centralizer">
+     
+                <div class="col-md-12 text-center">
+                    
+                    <div class="bottom2">
+                        <h2>
+                            COMO O BEM CASEI FUNCIONA?
+                        </h2>
+                    </div>
+                    
+                                   
+                    
+
+                </div><!--col-->
+                
+            </div><!--row-->
+
+
+
+
+            
+            <div class="row">
+
+
+
+                <div class="col-md-6 col-12 text-center centralizer bottom2">
+
+                    <div class="box1">
+
+                        <!--<div class="bottom2">
+                            <i class="fa fa-play"></i>
+                        </div>
+
+                        <h3>Lindas Galerias para Postar Suas Fotos e Vídeos</h3>-->
+
+
+
+                        <div class="number1 bottom1">
+                            <h3>1.</h3>
+                        </div>
+
+                        <h3>Faça Login com seu E-mail e Senha</h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-md-6 col-12 text-center centralizer bottom2">
+
+
+                    <div class="box1">
+
+                        <!--
+                        <div class="bottom2">
+                            <i class="fa fa-desktop"></i>
+                        </div>
+
+                        <h3>Sessão de Coaching Por Video-Conferência</h3>
+                    -->
+
+
+
+
+
+                        <div class="number1 bottom1">
+                            <h3>2.</h3>
+                        </div>
+
+                        <h3>Escolha um domínio para o seu site</h3>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+                
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="row">
+
+
+
+                
+
+
+
+
+                <div class="col-md-6 col-12 text-center centralizer bottom2">
+
+                    <div class="box1">
+
+                        <!--
+                        <div class="bottom2">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+
+                        <h3>Acesso por 12 Meses (+6 Meses de Bônus)</h3>
+                    -->
+
+
+                        <div class="number1 bottom1">
+                            <h3>3.</h3>
+                        </div>
+
+                        <h3>Personalize seu site com informações do casamento, fotos, vídeos, crie uma lista de presentes e muito mais!</h3>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+                
+
+
+
+                <!--
+                <div class="col-md-6 col-12 text-center centralizer bottom2">
+
+
+                    <div class="box1">
+
+                        <div class="bottom2">
+                            <i class="fa fa-signal"></i>
+                        </div>
+
+                        <h3>Plataforma 100% On-Line</h3>
+
+                    </div>
+
+
+                </div>
+            -->
+
+
+
+
+                <div class="col-md-6 col-12 text-center centralizer bottom2">
+
+                    <div class="box1">
+
+                        <!--
+                        <div class="bottom2">
+                            <i class="fa fa-signal"></i>
+                        </div>
+
+                        <h3>Funciona no celular, tablet e notebook</h3>
+                    -->
+
+
+
+
+                        <div class="number1 bottom1">
+                            <h3>4.</h3>
+                        </div>
+
+                        <h3>Envie o domínio que você escolheu para seus amigos e parentes</h3>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="row centralizer">
+
+
+
+                
+
+
+
+
+                <div class="col-md-6 col-12 text-center centralizer bottom2">
+
+                    <div class="box1">
+
+                        
+
+
+                        <div class="number1 bottom1">
+                            <h3>5.</h3>
+                        </div>
+
+                        <h3>Eles vão acessar seu site de casamento e se encantar com tudo que você postou!</h3>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+                
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <!--container-->
+    <!-- # End / Contet Text #  -->
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="site-features" class="site">
+
+    <div class="container">
+        
+        <div class="row bottom2 centralizer">
+     
+            <div class="col-md-8 col-12 text-center">
+                
+                <div class="bottom3">
+                    <h2>
+                        O QUE TEM NO BEM CASEI?
+                    </h2>
+                </div>
+
+
+
+                <div class="bottom1">
+                    <p>O Bem Casei é super completo e tem mais de 20 funcionalidades e serviços!</p>
+                </div>
+                
+                               
+                
+
+            </div><!--col-->
+            
+        </div><!--row-->
+
+
+
+
+
+
+
+
+
         <div class="row">
             
             <div class="col-md-6">
 
                 <div class="bottom3">
 
-                    <ul> 
-
-                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Funciona no celular, tablet e notebook</li> 
-                        
-                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Lista de Presentes convertida em Dinheiro</li>
-
-                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Divulgue detalhes do Seu Casamento (Data, Local, Horário, Trajes etc.)</li>
+                    <ul>
 
 
-                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Templates Modernos</li>
+                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Galeria Pra Você Postar Suas Fotos</li>
 
                         
+                        
+                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Lista de Presentes Convertida em Dinheiro</li>
 
-                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Confirmação de Presença On-Line</li>
+                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Galeria Pra Você Colocar Seus Vídeos do YouTube</li>
 
-                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Contagem Regressiva pra Data do Casamento</li>
+                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Divulgue detalhes do Seu Casamento (Data, Local, Horário, Trajes etc.)</li>
 
-                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Galeria de Fotos</li>
 
-                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Habilitar e Desabilitar Páginas</li>
+                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Templates Lindos e Modernos</li>
+
+                        <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Funciona no celular, tablet e notebook</li> 
+                        
+
+                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Habilitar e Desabilitar Páginas</li>
 
                         
 
@@ -121,11 +509,11 @@
                     <ul> 
                         
 
-                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Eventos (Aniversário, Ensaios Pra Valsa, entre outros)</li> 
+                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Eventos (Chá Bar, Chá da Casa Nova, Ensaios Pra Valsa, entre outros)</li> 
                         <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Traça Rotas para os Convidados com Google Maps URL</li>
     
-    
-                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Galeria de Vídeos</li>
+                        <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Contagem Regressiva pra Data do Casamento</li>
+                        
                         
                         <li><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Mural de Mensagens dos Amigos e Família</li>
                         <li class="table-simulate grey"><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp; Coloque Suas Redes Sociais no Rodapé</li>
@@ -164,6 +552,69 @@
 
 
 
+<section id="site-features" class="site">
+
+    <div class="container">
+        
+        <div class="row bottom2 centralizer">
+     
+            <div class="col-md-10 text-center">
+                
+                <div class="bottom2">
+                    <h2>
+                        PRETENDO ADIAR MEU CASAMENTO POR CAUSA DA QUARENTENA, SERVE PRA MIM TAMBÉM?
+                    </h2>
+                </div>
+                
+                               
+                
+
+            </div><!--col-->
+            
+        </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="row centralizer">
+     
+            <div class="col-md-8 text-center">
+                
+                <p>Serve sim, pois você pode postar as fotos do seu casamento civil ou de uma celebração íntima na Galeria de Fotos!</p>
+
+
+                <p>Se você fez vídeos e postou no YouTube pode incorporá-los na Galeria de Vídeos para seus amigos e parentes assistirem de forma fácil e prática!</p>
+
+             
+                               
+                <p>Além disso, você pode utilizar a Lista de Presentes Convertida em Dinheiro para ganhar um dinheirinho e organizar melhor seu casamento pra quando a Quarentena acabar!</p>
+
+                <p>Tudo de uma forma que priorize o isolamento social e a segurança e saúde dos seus entes queridos!</p>
+
+            </div><!--col-->
+            
+        </div><!--row-->
+
+
+
+
+    </div><!--container-->
+
+</section>
+
+
+
+
+
 
 
 <section id="create-list">
@@ -185,7 +636,7 @@
 
                 <div class="row bottom3 centralizer">
     
-                    <p>Praticidade, segurança e confiabilidade para ajudar a tornar seu casamento um sucesso!</p>
+                    <p>Praticidade total para ajudar a tornar seu casamento um sucesso!</p>
                 </div>
 
 

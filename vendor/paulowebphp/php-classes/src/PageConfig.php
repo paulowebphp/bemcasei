@@ -31,7 +31,7 @@ class PageConfig extends Model
 
 	//const METADESCRIPTION_MAIN = 'Tenha um Site de Casamento Diferenciado e que sua família e seus convidados vão amar! Confira e faça um teste de 10 Dias Gratuitamente!';
 
-	const METADESCRIPTION_MAIN = 'Cansado de plataformas de Site de Casamento com templates horríveis para usar? Chega disso! O Bem Casei tem templates bonitos e modernos de verdade! Confira!';
+	const METADESCRIPTION_MAIN = 'Com um site desses, não vai ter como você não casar! Confira!';
 
 
 	const PAGETITLE_MAIN = 'Bem Casei ᐅ Seu Site de Casamento Mais Lindo';
@@ -131,7 +131,7 @@ class PageConfig extends Model
 			'planos'=>[
 
 				'pagetitle'=>'Planos ᐅ Bem Casei',
-				'metadescription'=>'Compare os planos do Bem Casei, ou faça um teste drive de 10 dias gratuitamente! Nossos preços e condições estão excelentes! Venha conferir!',
+				'metadescription'=>'Compare os planos do Bem Casei, ou faça um test drive de 10 dias gratuitamente! Nossos preços e condições estão excelentes! Venha conferir!',
 				'noindex'=>0,
 				'recaptcha'=>0,
 				'card-payment-js'=>0
