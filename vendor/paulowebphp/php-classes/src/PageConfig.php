@@ -31,10 +31,10 @@ class PageConfig extends Model
 
 	//const METADESCRIPTION_MAIN = 'Tenha um Site de Casamento Diferenciado e que sua família e seus convidados vão amar! Confira e faça um teste de 10 Dias Gratuitamente!';
 
-	const METADESCRIPTION_MAIN = 'Com um site desses, não vai ter como você não casar! Confira!';
+	const METADESCRIPTION_MAIN = 'Com um site desses, não vai ter como você não casar! Confira agora!';
 
 
-	const PAGETITLE_MAIN = 'Bem Casei ᐅ Seu Site de Casamento Mais Lindo';
+	const PAGETITLE_MAIN = 'Bem Casei Site de Casamento ᐅ Pro Seu Casamento Ser Inesquecível!';
 
 
 
@@ -64,7 +64,7 @@ class PageConfig extends Model
 			'site-casamento'=>[
 
 				'pagetitle'=>'Site de Casamento ᐅ Bem Casei',
-				'metadescription'=>'Tenha um site de casamento com mais de 20 funcionalidades incríveis pra você configurar e enviar pra sua família e seus convidados! Confira!',
+				'metadescription'=>'Funcionalidades super úteis para quem vai fazer um casamento com poucos ou muitos recursos! Confira!',
 				'noindex'=>0,
 				'recaptcha'=>0,
 				'card-payment-js'=>0
@@ -75,7 +75,7 @@ class PageConfig extends Model
 			'lista-presentes'=>[
 
 				'pagetitle'=>'Lista de Presentes ᐅ Bem Casei',
-				'metadescription'=>'Receba Presentes em Dinheiro Para Usar Como Quiser! Os Saques São Gratuitos e nossa Lista é totalmente segura! Confira!',
+				'metadescription'=>'Comece sua vida conjugal sem dívidas! Receba presentes em dinheiro pra usar como quiser! Confira!',
 				'noindex'=>0,
 				'recaptcha'=>0,
 				'card-payment-js'=>0
@@ -86,7 +86,7 @@ class PageConfig extends Model
 			'tarifas-condicoes'=>[
 
 				'pagetitle'=>'Tarifas e Condições ᐅ Bem Casei',
-				'metadescription'=>'Nossa Lista de Presentes Tem Ótimas Tarifas. E Você Escolhe Quem Arca Com Elas: Você ou o Convidado! Venha Conferir!',
+				'metadescription'=>'Lista de Presentes com condições incríveis para você alcançar os seus objetivos financeiros! Venha Conferir!',
 				'noindex'=>0,
 				'recaptcha'=>0,
 				'card-payment-js'=>0
@@ -97,7 +97,7 @@ class PageConfig extends Model
 			'quem-somos'=>[
 
 				'pagetitle'=>'Quem Somos ᐅ Bem Casei',
-				'metadescription'=>'Por Que Seguir o Comum? Use um Site de Casamento Diferenciado. Visite-Nos Agora e Veja Você Mesmo!',
+				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>0,
 				'recaptcha'=>0,
 				'card-payment-js'=>0
@@ -108,7 +108,7 @@ class PageConfig extends Model
 			'modelos-templates'=>[
 
 				'pagetitle'=>'Modelos de Templates ᐅ Bem Casei',
-				'metadescription'=>'Encante Seus Amigos e Familiares Com Um Site Com Visual Diferenciado E De Bom Gosto. Confira Já!',
+				'metadescription'=>'Tenha um site de casamento com visual moderno para encantar seus familiares e amigos queridos! Confira Já!',
 				'noindex'=>0,
 				'recaptcha'=>0,
 				'card-payment-js'=>0
@@ -118,8 +118,8 @@ class PageConfig extends Model
 
 			'criar-site'=>[
 
-				'pagetitle'=>'Criar Site ᐅ Bem Casei',
-				'metadescription'=>'Crie seu Site de Casamento Agora Mesmo! São Inúmeras Funcionalidades para Ajudar Você a Promover Este Evento Máximo em Sua Vida! Confira já!',
+				'pagetitle'=>'Criar Site de Casamento ᐅ Bem Casei',
+				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>0,
 				'recaptcha'=>1,
 				'card-payment-js'=>0
@@ -131,7 +131,7 @@ class PageConfig extends Model
 			'planos'=>[
 
 				'pagetitle'=>'Planos ᐅ Bem Casei',
-				'metadescription'=>'Compare os planos do Bem Casei, ou faça um test drive de 10 dias gratuitamente! Nossos preços e condições estão excelentes! Venha conferir!',
+				'metadescription'=>PageConfig::METADESCRIPTION_MAIN,
 				'noindex'=>0,
 				'recaptcha'=>0,
 				'card-payment-js'=>0
