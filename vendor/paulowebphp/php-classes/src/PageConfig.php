@@ -31,7 +31,7 @@ class PageConfig extends Model
 
 	//const METADESCRIPTION_MAIN = 'Tenha um Site de Casamento Diferenciado e que sua família e seus convidados vão amar! Confira e faça um teste de 10 Dias Gratuitamente!';
 
-	const METADESCRIPTION_MAIN = 'Com um site desses, não vai ter como não casar! Confira agora!';
+	const METADESCRIPTION_MAIN = 'Com um site desses, vai ser difícil ficar sem Casar! Confira agora!';
 
 
 	const PAGETITLE_MAIN = 'Bem Casei Site de Casamento ᐅ Tenha Um Casamento Inesquecível';
