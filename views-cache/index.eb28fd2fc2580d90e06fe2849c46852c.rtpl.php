@@ -17,7 +17,7 @@
                     <!--inner-text-introduction-->
 
                     <div class="bottom2">
-                        <h3>Com um site desses, não vai ter como você não casar.</h3>
+                        <h3>Com um site desses, vai ser difícil ficar sem Casar.</h3>
                     </div>
 
                     <a href="/criar-site"><button type="button" class="button1">Criar meu Site 10 Dias Grátis</button></a>

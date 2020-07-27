@@ -74,23 +74,47 @@
             <div class="col-md-7 col-12">
 
                 <div class="bottom3">
-                    <h3>APROVEITE ESTA OFERTA LIMITADA!</h3>
+                    <h3>CRIE O SEU SITE DE CASAMENTO POR 10 DIAS GRATUITAMENTE!</h3>
                 </div>
 
                 <div class="bottom2">
-                    <p>Em breve nós faremos o pré-lançamento do <strong>Casamento Pocket</strong>, um pacote super especial para você dar início à sua vida a dois da forma mais rápida e segura durante a Quarentena!</p>
+                    <p>Imagine como seria você começar sua vida a dois mesmo durante a quarentena?</p>
                 </div>
 
                 <div class="bottom2">
-                    <p>Trata-se de uma condição especial e não existe nada igual ainda, mas para visualizá-la é preciso pertencer a nossa <strong>Lista VIP no WhatsApp</strong>.</p>
+                    <p>Imagine como seria você divulgar o seu casamento de uma maneira cômoda e descomplicada?</p>
                 </div>
 
                 <div class="bottom2">
-                    <p>Você quer entrar na Lista e ter acesso a uma condição única e exclusiva?</p>
+                    <p>O <strong>Bem Casei Site de Casamento</strong> tem várias funcionalidades pra te ajudar.</p>
                 </div>
 
                 <div class="bottom2">
-                    <a target="_blank" href="https://bit.ly/3eksNde"><button type="button" class="button7">Sim! Quero Entrar Na Lista!</button></a>
+                    <p>Nele você pode criar uma:</p>
+                    
+                    <ul> 
+
+                        <li><i class="fa fa-check"></i>&nbsp; Lista de Presentes Convertida em Dinheiro</li>
+                        
+
+                        <li><i class="fa fa-check"></i>&nbsp; Lista de Convidados</li>
+
+
+                        <li><i class="fa fa-check"></i>&nbsp; Álbum de Fotos</li>
+
+                        <li><i class="fa fa-check"></i>&nbsp; Álbum de Vídeos</li>
+
+                        <li><i class="fa fa-check"></i>&nbsp; E muitas outras coisas!</li>
+
+                    </ul>
+                </div>
+
+                <div class="bottom2">
+                    <p>Crie o seu site por <strong>10 Dias Gratuitamente</strong> e avalie!</p>
+                </div>
+
+                <div class="bottom2">
+                    <a target="_blank" href="https://bemcasei.com.br/criar-site"><button type="button" class="button7">Sim! Quero Criar Meu Site!</button></a>
                 </div>
 
             </div>

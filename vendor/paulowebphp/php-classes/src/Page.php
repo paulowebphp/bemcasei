@@ -184,6 +184,12 @@ class Page
 
 
 
+
+
+
+
+
+
 	public static function checkDomainPage( $value )
 	{
 

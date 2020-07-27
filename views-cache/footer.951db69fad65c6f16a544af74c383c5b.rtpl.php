@@ -2,6 +2,8 @@
 
     <div class="container-fluid">
 
+        <!--
+
         <div id="footer-first-row" class="row">
 
 
@@ -18,7 +20,7 @@
 
                                 
 
-            </div><!--col-lg-6-->
+            </div>
 
 
 
@@ -39,14 +41,14 @@
                     <p><a target="_blank" href="/quem-somos">Quem Somos</a></p>
                     <p><a target="_blank" href="/termos-uso">Termos de Uso</a></p>
                     <p><a target="_blank" href="/politica-privacidade">Politica de Privacidade</a></p>
-                    <!--<p><a target="_blank" href="https://blog.amarcasar.com/">Blog</a></p>-->
+                    
 
-                </div><!--caption-->
+                </div><
 
                 
 
 
-            </div><!--col-md-3-->
+            </div>
 
 
 
@@ -61,36 +63,13 @@
                 <div class="caption">
 
                     <h2>Dúvidas e Suporte</h2>
-                    <!--<p><a href="central-ajuda">Central de Ajuda</a></p>-->
                     <p><a target="_blank" href="/central-ajuda">Central de Ajuda</a></p>
 
-                </div><!--caption-->
-
-
-
-                <!--
-                <div class="caption">
-
-                    <h2>Redes Sociais</h2>
-
-
-                    <ul class="list-socials list-unstyled list-group list-group-horizontal">
-
-                        
-
-                        <li>
-                            <a href="https://www.facebook.com/bemcaseioficial" target="_blank"><i class="fa fa-facebook"></i></a>
-                        </li>
-
-                        <li>
-                            <a href="https://www.instagram.com/bemcaseioficial" target="_blank"><i class="fa fa-instagram"></i></a>
-                        </li>
-           
-                    </ul>
-
-
                 </div>
-                -->
+
+
+
+                
 
 
            
@@ -99,12 +78,12 @@
 
 
 
-            </div><!--col-md-3-->
+            </div>
 
 
 
-
-    </div><!--row-->
+        </div>
+    -->
 
 
 
@@ -125,11 +104,12 @@
 
     <div class="row centralizer">
 
-        <div class="col-md-12 bottom-footer p">
+        <div class="col-md-12 bottom-footer">
 
             <div class="caption">
 
-                <p>Bem Casei © <?php echo getYear(); ?> - CNPJ 34.700.513/0001-27<br><a target="_blank" href="/termos-uso">Termos de Uso</a> | <a target="_blank" href="/politica-privacidade">Política de Privacidade</a> | <a href="/central-ajuda">Dúvidas e Suporte</a></p>
+                <p>Bem Casei © <?php echo getYear(); ?> - CNPJ 34.700.513/0001-27
+                    <!--<br><a target="_blank" href="/termos-uso">Termos de Uso</a> | <a target="_blank" href="/politica-privacidade">Política de Privacidade</a> | <a target="_blank" href="/central-ajuda">Dúvidas e Suporte</a></p>-->
 
 
 
@@ -144,7 +124,11 @@
 
 
 
-
+    <!--
+    <a href="https://wa.me/5531984050125?text=Quero%20falar%20com%20um%20consultor%20do%20Bem%20Casei" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;z-index:1000;" target="_blank">
+        <i style="margin-top:16px" class="fa fa-whatsapp"></i>
+    </a>
+-->
     
 
     

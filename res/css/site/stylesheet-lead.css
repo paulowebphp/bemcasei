@@ -218,7 +218,8 @@ header #menu-condensed{
 
 /********************************* FOOTER *****************************************/
 footer{
-	padding: 5% 5% 2% 5%;
+	padding: 3% 5% 2% 5%;
+	/*padding: 5% 5% 2% 5%;*/
 	background: #ec656d;
 	font-size: 24px;
 	color: #fff;
@@ -237,8 +238,10 @@ footer .bottom-footer p {
   color: #fff;
   line-height: 24px;
   font-size: 1rem;
+  /*
   padding-top: 20px;
   border-top: 1px solid #fff;
+  */
 }
 
 footer .bottom-footer {
@@ -583,7 +586,7 @@ label{
 	text-shadow: #767676 0.1em 0.1em 0.2em;
 	font-family: 'Poppins';
 	border-top: none;
-	border-right: 4px solid #3fc380;
+	border-right: none;
 	border-bottom: 4px solid #3fc380;
 	border-left: none;
 	/*
@@ -592,7 +595,7 @@ label{
 	*/
 }
 .button7:hover{
-	color: #c8f7c5;
+	background-color: #00b16a;
 }
 .width100{
 	width: 100%!important;
@@ -848,6 +851,14 @@ label{
 }
 #advantages2 p{
 	font-size: 1.3rem;
+}
+#advantages2 ul li{
+	list-style: none;
+	font-size: 1.3rem;
+}
+#advantages2 i{
+	color: #ec656d;
+	font-weight: bolder;
 }
 
 /********************************* ADVANTAGES2 *****************************************/

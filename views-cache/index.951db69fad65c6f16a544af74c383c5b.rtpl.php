@@ -9,7 +9,7 @@
             <div class="col-md-10 col-12 text-center">
                 
                 <div class="bottom2">
-                    <h1>A Maneira Mais Segura e Simples De Realizar Seu Casamento Durante a Quarentena!</h1>
+                    <h1>7 Passos Seguros e Eficientes Para Realizar Seu Casamento Durante a Quarentena!</h1>
 
                 </div>
 
@@ -258,7 +258,7 @@
                 </div>
 
                 <div class="bottom2">
-                    <h3>Preparamos com muito carinho este material bem resumido com <strong>10 passos rápidos e eficientes</strong> para realizar seu casamento durante a Quarentena.</h3>
+                    <h3>Preparamos com muito carinho este material bem resumido com <strong>7 passos seguros e eficientes</strong> para realizar seu casamento durante a Quarentena.</h3>
                 </div>
 
                 <div class="bottom2">
