@@ -199,7 +199,7 @@ $app->get( "/painel/logout", function()
 
 
 
-$app->get( '/ebook-7-passos-seguros-e-eficientes/obrigado', function()
+$app->get( '/7-passos-seguros-e-eficientes/obrigado', function()
 {
 	
 	
@@ -239,7 +239,7 @@ $app->get( '/ebook-7-passos-seguros-e-eficientes/obrigado', function()
 
 /*
 
-$app->get( '/ebook-7-passos-seguros-e-eficientes/obrigado/:hash', function( $hash )
+$app->get( '/7-passos-seguros-e-eficientes/obrigado/:hash', function( $hash )
 {
 	
 	$idlead = base64_decode($hash);
@@ -248,7 +248,7 @@ $app->get( '/ebook-7-passos-seguros-e-eficientes/obrigado/:hash', function( $has
 	{
 
 		Lead::setError(Rule::VALIDATE_ID_HASH);
-		header('Location: /ebook-7-passos-seguros-e-eficientes');
+		header('Location: /7-passos-seguros-e-eficientes');
 		exit;
 
 	}//end if
@@ -310,7 +310,7 @@ $app->get( '/ebook-7-passos-seguros-e-eficientes/obrigado/:hash', function( $has
 
 
 
-$app->get( '/ebook-7-passos-seguros-e-eficientes', function()
+$app->get( '/7-passos-seguros-e-eficientes', function()
 {
 	
 
@@ -361,7 +361,7 @@ $app->get( '/ebook-7-passos-seguros-e-eficientes', function()
 
 
 
-$app->post( '/ebook-7-passos-seguros-e-eficientes', function()
+$app->post( '/7-passos-seguros-e-eficientes', function()
 {
 	
 
@@ -381,7 +381,7 @@ $app->post( '/ebook-7-passos-seguros-e-eficientes', function()
 	{
 
 		Lead::setError(Rule::ERROR_EMAIL);
-		header("Location: /ebook-7-passos-seguros-e-eficientes");
+		header("Location: /7-passos-seguros-e-eficientes");
 		exit;
 
 	}//end if
@@ -390,7 +390,7 @@ $app->post( '/ebook-7-passos-seguros-e-eficientes', function()
 	{	
 		
 		Lead::setError(Rule::VALIDATE_EMAIL);
-		header("Location: /ebook-7-passos-seguros-e-eficientes");
+		header("Location: /7-passos-seguros-e-eficientes");
 		exit;
 
 	}//end if
@@ -411,7 +411,7 @@ $app->post( '/ebook-7-passos-seguros-e-eficientes', function()
 		{
 
 			Lead::setError(Rule::CHECK_LEAD_EXISTS);
-			header("Location: /ebook-7-passos-seguros-e-eficientes");
+			header("Location: /7-passos-seguros-e-eficientes");
 			exit;
 
 		}//end if
@@ -560,8 +560,8 @@ $app->post( '/ebook-7-passos-seguros-e-eficientes', function()
 
 	//$hash = base64_encode($lead->getidlead());
 
-	//header("Location: /ebook-7-passos-seguros-e-eficientes/obrigado/".$hash);
-	header("Location: /ebook-7-passos-seguros-e-eficientes/obrigado");
+	//header("Location: /7-passos-seguros-e-eficientes/obrigado/".$hash);
+	header("Location: /7-passos-seguros-e-eficientes/obrigado");
 	exit;
 	
 
