@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
 <html lang="pt-br">
 
 
@@ -11,7 +11,7 @@
     <meta name="robots" content="noindex">
 
 
-    <title>{function="getDashPageConfig('pagetitle')"}</title>
+    <title><?php echo getDashPageConfig('pagetitle'); ?></title>
     <link rel="icon" type="image/png" href="/res/images/favicon/dashboard/favicon.ico"/>
     <link rel="stylesheet" media="screen" type="text/css" href="/res/colorpicker/css/colorpicker.css" />
     <link rel="stylesheet" type="text/css" href="/res/css/bootstrap.min.css">
@@ -100,7 +100,7 @@
 
 
 
-                                <li><a href="/painel"><i class="fa fa-user"></i> {function="getLeadDesemail()"}</a></li>
+                                <li><a href="/painel"><i class="fa fa-user"></i> <?php echo getLeadDesemail(); ?></a></li>
 
                                 <li><a href="/painel/logout"><i class="fa fa-sign-out"></i> Sair</a></li>
 
@@ -146,14 +146,14 @@
                     
                     <ul>
 
-                            <li><a href="/painel"><i class="fa fa-user"></i> {function="getLeadDesemail()"}</a></li>
+                            <li><a href="/painel"><i class="fa fa-user"></i> <?php echo getLeadDesemail(); ?></a></li>
 
 
 
 
 
 
-                            {if="getInlead() == '1' "}
+                            <?php if( getInlead() == '1'  ){ ?>
 
                                 <div class="list-group">
 
@@ -191,7 +191,7 @@
 
                                 </div><!--list-group-->
 
-                            {/if}
+                            <?php } ?>
 
                         
 

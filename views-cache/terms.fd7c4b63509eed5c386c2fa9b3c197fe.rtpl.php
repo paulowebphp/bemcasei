@@ -1,4 +1,4 @@
-<section class="dashboard">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
 
     <div class="container-fluid">            
             
@@ -12,21 +12,21 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                {if="$user.inplancontext == 0"}
+                <?php if( $user["inplancontext"] == 0 ){ ?>
 
-                    {include="dashboard-menu-free"}
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
 
 
-                {elseif="!$validate"}
+                <?php }elseif( !$validate ){ ?>
 
-                    {include="dashboard-menu-expirated"}
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
                
 
-                {else}
+                <?php }else{ ?>
 
-                    {include="dashboard-menu"}
+                    <?php require $this->checkTemplate("dashboard-menu");?>
 
-                {/if}
+                <?php } ?>
                     
 
             </div><!--col-->
@@ -347,25 +347,25 @@
 
           <p>
             
-            4.1. O Bem Casei disponibilizará os serviços do {$plans.103.desplan}, mediante o qual o CASAL pagará o valor de R$ {function="formatPrice($plans.103.vlprice)"} ({$plans.103.desvlprice}) referente a {$plans.103.inperiod} {$plans.103.desperiod}; R$ {function="formatPrice($plans.104.vlprice)"} ({$plans.104.desvlprice}) referente a {$plans.104.inperiod} {$plans.104.desperiod}; e R$ {function="formatPrice($plans.106.vlprice)"} ({$plans.106.desvlprice}) referente a {$plans.106.inperiod} {$plans.106.desperiod}; R$ {function="formatPrice($plans.109.vlprice)"} ({$plans.109.desvlprice}) referente a {$plans.109.inperiod} {$plans.109.desperiod} e R$ {function="formatPrice($plans.112.vlprice)"} ({$plans.112.desvlprice}) referente a {$plans.112.inperiod} {$plans.112.desperiod} de hospedagem;
+            4.1. O Bem Casei disponibilizará os serviços do <?php echo htmlspecialchars( $plans["103"]["desplan"], ENT_COMPAT, 'UTF-8', FALSE ); ?>, mediante o qual o CASAL pagará o valor de R$ <?php echo formatPrice($plans["103"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["103"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["103"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["103"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?>; R$ <?php echo formatPrice($plans["104"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["104"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["104"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["104"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?>; e R$ <?php echo formatPrice($plans["106"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["106"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["106"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["106"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?>; R$ <?php echo formatPrice($plans["109"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["109"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["109"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["109"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> e R$ <?php echo formatPrice($plans["112"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["112"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["112"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["112"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> de hospedagem;
 
           </p>
 
           <p>
             
-            4.2.  O Bem Casei disponibilizará os serviços do {$plans.203.desplan}, mediante o qual o CASAL pagará o valor de R$ {function="formatPrice($plans.203.vlprice)"} ({$plans.203.desvlprice}) referente a {$plans.203.inperiod} {$plans.203.desperiod}; R$ {function="formatPrice($plans.204.vlprice)"} ({$plans.204.desvlprice}) referente a {$plans.204.inperiod} {$plans.204.desperiod}; e R$ {function="formatPrice($plans.206.vlprice)"} ({$plans.206.desvlprice}) referente a {$plans.206.inperiod} {$plans.206.desperiod}; R$ {function="formatPrice($plans.209.vlprice)"} ({$plans.209.desvlprice}) referente a {$plans.209.inperiod} {$plans.209.desperiod} e R$ {function="formatPrice($plans.212.vlprice)"} ({$plans.212.desvlprice}) referente a {$plans.212.inperiod} {$plans.212.desperiod} de hospedagem;
+            4.2.  O Bem Casei disponibilizará os serviços do <?php echo htmlspecialchars( $plans["203"]["desplan"], ENT_COMPAT, 'UTF-8', FALSE ); ?>, mediante o qual o CASAL pagará o valor de R$ <?php echo formatPrice($plans["203"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["203"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["203"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["203"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?>; R$ <?php echo formatPrice($plans["204"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["204"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["204"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["204"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?>; e R$ <?php echo formatPrice($plans["206"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["206"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["206"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["206"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?>; R$ <?php echo formatPrice($plans["209"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["209"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["209"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["209"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> e R$ <?php echo formatPrice($plans["212"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["212"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["212"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["212"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> de hospedagem;
 
           </p>
 
           <p>
             
-            4.3.  O Bem Casei disponibilizará os serviços do {$plans.303.desplan} mediante o qual o CASAL pagará o valor de R$ {function="formatPrice($plans.303.vlprice)"} ({$plans.303.desvlprice}) referente a {$plans.303.inperiod} {$plans.303.desperiod}; R$ {function="formatPrice($plans.304.vlprice)"} ({$plans.304.desvlprice}) referente a {$plans.304.inperiod} {$plans.304.desperiod}; e R$ {function="formatPrice($plans.306.vlprice)"} ({$plans.306.desvlprice}) referente a {$plans.306.inperiod} {$plans.306.desperiod}; R$ {function="formatPrice($plans.309.vlprice)"} ({$plans.309.desvlprice}) referente a {$plans.309.inperiod} {$plans.309.desperiod} e R$ {function="formatPrice($plans.312.vlprice)"} ({$plans.312.desvlprice}) referente a {$plans.312.inperiod} {$plans.312.desperiod} de hospedagem;
+            4.3.  O Bem Casei disponibilizará os serviços do <?php echo htmlspecialchars( $plans["303"]["desplan"], ENT_COMPAT, 'UTF-8', FALSE ); ?> mediante o qual o CASAL pagará o valor de R$ <?php echo formatPrice($plans["303"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["303"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["303"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["303"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?>; R$ <?php echo formatPrice($plans["304"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["304"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["304"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["304"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?>; e R$ <?php echo formatPrice($plans["306"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["306"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["306"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["306"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?>; R$ <?php echo formatPrice($plans["309"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["309"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["309"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["309"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> e R$ <?php echo formatPrice($plans["312"]["vlprice"]); ?> (<?php echo htmlspecialchars( $plans["312"]["desvlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) referente a <?php echo htmlspecialchars( $plans["312"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["312"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> de hospedagem;
 
           </p>
 
           <p>
             
-            4.4.  O Bem Casei disponibilizará {$plans.0.inperiod} {$plans.0.desperiod} sem qualquer ônus para o Casal a título de cortesia para testar os serviços do site;
+            4.4.  O Bem Casei disponibilizará <?php echo htmlspecialchars( $plans["0"]["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php echo htmlspecialchars( $plans["0"]["desperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> sem qualquer ônus para o Casal a título de cortesia para testar os serviços do site;
 
           </p>
 

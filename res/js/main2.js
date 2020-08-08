@@ -59,8 +59,8 @@ $("#ebook-download").on("click", function(e){
     e.preventDefault();
 
     let link = document.createElement('a');
-	link.href = '/ebook/A_Maneira_Mais_Segura_e_Simples_De_Realizar_Seu_Casamento.pdf';
-	link.download = 'A_Maneira_Mais_Segura_e_Simples_De_Realizar_Seu_Casamento.pdf';
+	link.href = '/ebook/7_Passos_Seguros_e_Eficientes_Para_Realizar_Seu_Casamento.pdf';
+	link.download = '7_Passos_Seguros_e_Eficientes_Para_Realizar_Seu_Casamento.pdf';
 	link.click();
 	
 

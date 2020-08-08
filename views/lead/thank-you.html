@@ -26,8 +26,17 @@
 
                 
 
+                <div class="bottom3">
+                    <h3>Você receberá o E-book em seu E-mail em até 60 minutos...</h3>
+                </div>
+
                 <div class="bottom2">
-                    <h3>Você receberá o E-book em seu E-mail em até 60 minutos!</h3>
+                    <h3>...mas se quiser abrí-lo agora, clique no botão abaixo!</h3>
+                </div>
+
+
+                <div class="bottom2">
+                    <a target="_blank" href="/ebook/7_Passos_Seguros_e_Eficientes_Para_Realizar_Seu_Casamento.pdf"><button type="button" class="button7">Quero abrir o E-book!</button></a>
                 </div>
 
 
@@ -74,15 +83,15 @@
             <div class="col-md-7 col-12">
 
                 <div class="bottom3">
-                    <h3>CRIE O SEU SITE DE CASAMENTO POR 10 DIAS GRATUITAMENTE!</h3>
+                    <h3>CRIE O SEU SITE DE CASAMENTO!</h3>
                 </div>
 
                 <div class="bottom2">
-                    <p>Imagine como seria você começar sua vida a dois mesmo durante a quarentena?</p>
+                    <p>Imagine como seria você começar sua vida a dois (de uma forma segura), mesmo durante a quarentena?</p>
                 </div>
 
                 <div class="bottom2">
-                    <p>Imagine como seria você divulgar o seu casamento de uma maneira cômoda e descomplicada?</p>
+                    <p>Imagine como seria você divulgar o seu casamento para seus amigos e familiares de uma maneira cômoda e descomplicada?</p>
                 </div>
 
                 <div class="bottom2">

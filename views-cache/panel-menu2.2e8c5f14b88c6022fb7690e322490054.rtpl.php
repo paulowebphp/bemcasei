@@ -1,4 +1,4 @@
-<div class="list-group">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="list-group">
 
 
 

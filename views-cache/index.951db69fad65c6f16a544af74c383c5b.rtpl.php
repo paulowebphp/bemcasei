@@ -32,7 +32,7 @@
 
                     
 
-                    <form action="/baixar-ebook" method="post">
+                    <form action="/7-passos-seguros-e-eficientes" method="post">
 
                       <div class="form-group">
 
@@ -232,7 +232,7 @@
 
         <div class="row">
 
-            <div class="col-md-4 col-12 vertical-centralizer bottom2">
+            <div class="col-md-4 col-12 vertical-centralizer bottom3">
 
                 <div class="lead-img">
                     

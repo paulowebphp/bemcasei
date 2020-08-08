@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
@@ -137,14 +137,34 @@
   <section id="email-canvas">
     
 
-
-
-
-
+      <?php if( $plan["inmigration"] == 0 ){ ?>
 
       <div class="title">
             
-        <h1>Presente Cancelado</h1>
+        <h1>Compra de Plano</h1>
+
+      </div>
+
+
+      <div class="email-row">
+            
+        <span>Olá, <strong><?php echo htmlspecialchars( $user["desnick"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php if( $consort["desconsortemail"] != '' ){ ?> & <?php echo htmlspecialchars( $consort["desconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>!</strong></span>
+
+      </div>
+
+
+      <div class="email-row">
+      
+
+         <span>Parabéns! O pagamento do seu plano foi realizado com sucesso. Confira os dados abaixo:</span>
+
+      </div>
+
+      <?php }elseif( $plan["inmigration"] == 1 ){ ?>
+
+      <div class="title">
+            
+        <h1>Renovação de Plano</h1>
 
       </div>
 
@@ -154,134 +174,63 @@
 
       <div class="email-row">
             
-        <span>Olá, <strong>{$results.desname}!</strong></span>
+        <span>Olá, <strong><?php echo htmlspecialchars( $user["desnick"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php if( $consort["desconsortemail"] != '' ){ ?> & <?php echo htmlspecialchars( $consort["desconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>!</strong></span>
 
       </div>
 
 
       <div class="email-row">
       
-         
-         <span>A compra do presente virtual que você realizou no site de casamento de <strong>{$results.desperson} e {$results.desconsort}</strong> foi cancelada por falta de limite ou devido à transação ser considerada de alto risco. Não se preocupe, você não foi onerado. Confira os dados da compra cancelada:</span>
+
+ 
+        <span>Parabéns! O pagamento pela renovação seu plano foi realizado com sucesso. Confira os dados abaixo:</span>
+
 
       </div>
+
+      <?php }else{ ?>
+
+      <div class="title">
+            
+        <h1>Upgrade de Plano</h1>
+
+      </div>
+
+
+
+
+
+      <div class="email-row">
+            
+        <span>Olá, <strong><?php echo htmlspecialchars( $user["desnick"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php if( $consort["desconsortemail"] != '' ){ ?> & <?php echo htmlspecialchars( $consort["desconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>!</strong></span>
+
+      </div>
+
+
+      <div class="email-row">
+      
+
+        <span>Parabéns! O pagamento pelo upgrade do seu plano foi realizado com sucesso. Confira os dados abaixo:</span>
+
+
+      </div>
+
+      <?php } ?>
+
+
+
+
+      
       
 
       
 
-      <div class="spacing2  "></div>
+      <div class="spacing"></div>
 
 
 
 
     
-
-        
-
-      <div class="email-row info">
-            
-        <span>Detalhes do Comprador</span>
-        <hr>
-
-      </div>
-
-
-
-
-
-
-                                    
-
-
-
-      <div class="email-row detail">
-           
-        <span class="email-label1">Nome de quem presenteou: </span><span class="email-label2">{$results.desname}</span>
-
-      </div><!--col-->
-
-
-      <div class="email-row detail">
-       
-        <span class="email-label1">Telefone: </span><span class="email-label2">{$results.nrphone}</span>
-
-      </div><!--col-->
-
-
-      <div class="email-row2 detail">
-       
-        <span class="email-label1">E-mail: </span><span class="email-label2">{$results.desemail}</span>
-
-      </div><!--col-->
-
-
-      
-
-
-
-
-
-
-      <div class="spacing2"></div>
-
-
-
-
-    
-
-        
-
-      <div class="email-row info">
-            
-        <span>Itens da Compra</span>
-        <hr>
-
-      </div>
-
-
-      
-                                    
-                                    
-
-
-      {loop="$order"}
-      <div class="email-row detail product">
-           
-        <span class="email-label1">{$counter+1}. </span><span class="email-label2"> <strong>{$value.desproduct}</strong></span>
-
-        <br>
-
-        <span class="email-label1">R$ {function="formatPrice(getInterest($value.vltotal,'1','1',$results.incharge))"}</span>
-
-      </div><!--col-->
-      {/loop}
-
-
-      <div class="email-row3 info">
-            
-        <hr>
-
-      </div>
-
-
-      <div class="email-row info detail product">
-           
-      <span class="email-label1"></span><span class="email-label2"><strong>Valor Total</strong></span>
-
-      <br>
-
-      <span class="email-label1">R$ {function="formatPrice($results.vltotal)"}</span>
-
-      </div><!--col-->
-
-
-
-
-      <div class="spacing2"></div>
-
-
-
-
 
         
 
@@ -301,47 +250,63 @@
                                     
 
 
-        
+      <?php if( $plan["inmigration"] != 2 ){ ?>
       <div class="email-row detail">
            
-        <span class="email-label1">Data da Compra: </span><span class="email-label2">{function="formatDate($results.dtregister)"}</span>
-
-      </div><!--col-->
-
-      <div class="email-row detail">
-       
-        <span class="email-label1">ID Pagamento: </span><span class="email-label2">{$results.despaymentcode}</span>
+        <span class="email-label1">Plano: &nbsp;&nbsp;</span><span class="email-label2"><?php echo htmlspecialchars( $plan["desplan"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
 
       </div><!--col-->
 
 
       <div class="email-row detail">
        
-        <span class="email-label1">Meio de Pagamento: </span><span class="email-label2">{if="$results.inpaymentmethod == 0"}Boleto{else}Cartão{/if}</span>
+        
+          <span class="email-label1">Período: &nbsp;&nbsp;</span><span class="email-label2"><?php if( $plan["inperiod"] > 1 ){ ?> <?php echo htmlspecialchars( $plan["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> meses <?php }else{ ?> <?php echo htmlspecialchars( $plan["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> mês <?php } ?></span>
+
+      </div><!--col-->
+      <?php }else{ ?>
+      <div class="email-row detail">
+           
+        <span class="email-label1">Plano: &nbsp;&nbsp;</span><span class="email-label2"><?php echo htmlspecialchars( $plan["desplan"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+
+      </div><!--col-->
+      <?php } ?>
+
+
+
+
+      <div class="email-row detail">
+       
+        <span class="email-label1">Valor: &nbsp;&nbsp;</span><span class="email-label2">R$ <?php echo formatPrice($order["vltotal"]); ?></span>
 
       </div><!--col-->
 
 
-      {if="$results.nrinstallment > 1"}
+      <div class="email-row detail">
+       
+        <span class="email-label1">Meio de Pagamento: &nbsp;&nbsp;</span><span class="email-label2">Cartão</span>
+
+      </div><!--col-->
+
+
+      <?php if( $order["nrinstallment"] > 1 ){ ?>
 
           <div class="email-row detail">
        
-            <span class="email-label2">Parcelado em {$results.nrinstallment} vezes de R$ {function="formatPrice($results.vltotal/$results.nrinstallment)"}</span>
+            <span class="email-label2">Parcelado em <?php echo htmlspecialchars( $order["nrinstallment"], ENT_COMPAT, 'UTF-8', FALSE ); ?> vezes de R$ <?php echo formatPrice($order["vltotal"]/$order["nrinstallment"]); ?></span>
 
           </div><!--col-->         
 
-      {/if}
-
-
-      
+      <?php } ?>
 
 
 
+      <div class="email-row2 detail">
+       
+        <span class="email-label1">Data da Compra: &nbsp;&nbsp;</span><span class="email-label2"><?php echo formatDate($order["dtregister"]); ?></span>
 
+      </div><!--col-->
 
-
-
-      <div class="spacing2"></div>  
 
 
       <div class="spacing2"></div>  
@@ -351,7 +316,7 @@
       <div class="email-row">
             
         <span>
-          Busque o nome do casal no <strong>Bem Casei</strong> para encantar-se com histórias, fotos, vídeos e muito mais!
+          Faça login no <strong>Bem Casei</strong> para começar a usar seu plano
         </span>
 
 
@@ -360,8 +325,8 @@
 
       <div class="email-row email-button">
         
-        <a target="_blank" href="https://bemcasei.com.br/buscar">
-          <span>Buscar Casal</span>
+        <a target="_blank" href="https://bemcasei.com.br/login">
+          <span>Login</span>
         </a>
 
         
