@@ -70,7 +70,7 @@
 
 
 
-                      <button type="submit" class="button7">Quero Receber Meu E-book!</button>
+                      <button type="submit" class="button7">Quero Realizar Meu Casamento Com Segurança na Quarentena!</button>
 
                     </form>
 
