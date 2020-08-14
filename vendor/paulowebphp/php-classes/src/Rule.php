@@ -267,44 +267,34 @@ class Rule extends Model
 	/*********************************EMAIL SUBJECTS ***************************************/
 	/*********************************EMAIL SUBJECTS ***************************************/
 
-	const EMAIL_PLAN = 'Bem Casei - Compra de Plano';
-	const EMAIL_LEAD = 'Bem Casei - Baixe o Seu E-book!';
+	const EMAIL_PLAN = 'Compra de Plano';
+	const EMAIL_LEAD = 'Baixe o Seu E-book!';
 
-	const EMAIL_PLAN_AUTHORIZED = 'Bem Casei - Compra de Plano Confirmada';
+	const EMAIL_PLAN_AUTHORIZED = 'Compra de Plano Confirmada';
 
-	const EMAIL_PLAN_CANCELLED = 'Bem Casei - Compra de Plano Cancelada';
-
-
-
-
-
-
-	const EMAIL_PRODUCT_SELLER = 'Bem Casei - Presente Recebido';
-
-	const EMAIL_PRODUCT_BUYER = 'Bem Casei - Compra de Presente';
-
-
-
-
-	const EMAIL_PRODUCT_SELLER_AUTHORIZED = 'Bem Casei - Presente Confirmado';
-
-	const EMAIL_PRODUCT_BUYER_AUTHORIZED = 'Bem Casei - Compra de Presente Confirmada';
-
-
-
-
-
-	const EMAIL_PRODUCT_CANCELLED = 'Bem Casei - Compra de Presente Cancelada';
+	const EMAIL_PLAN_CANCELLED = 'Compra de Plano Cancelada';
 
 
 
 
 
 
+	const EMAIL_PRODUCT_SELLER = 'Presente Recebido';
 
-	const EMAIL_RSVP_USER = 'Bem Casei - Confirmação de Presença Recebida';
+	const EMAIL_PRODUCT_BUYER = 'Compra de Presente';
 
-	const EMAIL_RSVP_GUEST = 'Bem Casei - Confirmação de Presença Enviada';
+
+
+
+	const EMAIL_PRODUCT_SELLER_AUTHORIZED = 'Presente Confirmado';
+
+	const EMAIL_PRODUCT_BUYER_AUTHORIZED = 'Compra de Presente Confirmada';
+
+
+
+
+
+	const EMAIL_PRODUCT_CANCELLED = 'Compra de Presente Cancelada';
 
 
 
@@ -312,15 +302,25 @@ class Rule extends Model
 
 
 
-	const EMAIL_MESSAGE_USER = 'Bem Casei - Mensagem Recebida';
+	const EMAIL_RSVP_USER = 'Confirmação de Presença Recebida';
 
-	const EMAIL_MESSAGE_GUEST = 'Bem Casei - Mensagem Enviada';
-
-
+	const EMAIL_RSVP_GUEST = 'Confirmação de Presença Enviada';
 
 
 
-	const EMAIL_PASSWORD_RECOVERY = 'Bem Casei - Redefinir Senha';
+
+
+
+
+	const EMAIL_MESSAGE_USER = 'Mensagem Recebida';
+
+	const EMAIL_MESSAGE_GUEST = 'Mensagem Enviada';
+
+
+
+
+
+	const EMAIL_PASSWORD_RECOVERY = 'Redefinir Senha';
 	
 
 
