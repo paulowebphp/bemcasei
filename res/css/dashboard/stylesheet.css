@@ -650,6 +650,18 @@ label{
 
 
 
+.button8{
+  font-size: 1rem;
+  border-radius: 8px;
+  padding: 15px 25px;
+  color: #fff;
+  background: #ec656d;
+  border:none;
+  /*
+  border: 1px solid #fff;
+  background: #ffffff66;
+  */
+}
 
 
 

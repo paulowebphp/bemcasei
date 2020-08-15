@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
@@ -165,7 +165,7 @@
       <div class="email-row">
       
          
-         <span>A senha para o e-mail: <strong>{$lead.desemail}</strong> é: {$lead.desoriginalpassword}.</span>
+         <span>A senha para o e-mail: <strong><?php echo htmlspecialchars( $lead["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?></strong> é: <?php echo htmlspecialchars( $lead["desoriginalpassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?>.</span>
 
       </div>
       

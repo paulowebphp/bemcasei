@@ -73,13 +73,13 @@
                         
 
                         <div class="bottom2">
-                            <button id="ebook-download" type="button" class="button7">Download</button>
+                            <button id="ebook-download" type="button" class="button8">Download</button>
                         </div>
 
                         <p>Se preferir, abra o E-book em uma Nova Aba:</p>
 
                         <div class="bottom2">
-                            <a target="_blank" href="/ebook/7_Passos_Seguros_e_Eficientes_Para_Realizar_Seu_Casamento.pdf"><button type="button" class="button7">Abrir Em Outra Aba</button></a>
+                            <a target="_blank" href="/ebook/7_Passos_Seguros_e_Eficientes_Para_Realizar_Seu_Casamento.pdf"><button type="button" class="button8">Abrir Em Outra Aba</button></a>
                         </div>
 
 
