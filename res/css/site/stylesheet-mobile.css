@@ -18,7 +18,7 @@ header.open-search #input-search-mobile{top:0;}
 header #menu-mobile ul{margin:20px;margin-top:60px;}
 header #menu-mobile li{text-align:center;border-top:#ccc 1px solid;}
 header #menu-mobile li:last-child{border-bottom:#ccc 1px solid;}
-header #menu-mobile li a{color:#11171D;font-family:'Poppins';font-weight:bold;font-size:0.8rem;padding:18px;display:block;text-decoration:none;}
+header #menu-mobile li a{color:#11171D;font-family:'OpenSans';font-weight:bold;font-size:0.8rem;padding:18px;display:block;text-decoration:none;}
 header .bar-close{position:relative;margin-top:10%;background-color:#ddd;width:100%;}
 header .bar-close .btn-close{background:none;border:none;color:#ec656d;font-size:22px;}
 header.open-search #logotipo{z-index:9;}
@@ -52,7 +52,6 @@ header.open-search #logotipo{z-index:9;}
 @media only screen and (max-width:991px){.site-search-title i{position:absolute;right:0;top:15px;}
 }
 @media only screen and (max-width:767px){body{font-size:0.9rem;}
-section h1{font-size:2rem;position:relative;}
 section h2{font-size:1.2rem;position:relative;}
 section h3{font-size:1.1rem;position:relative;}
 section h4{font-size:1.2rem;position:relative;}
@@ -79,7 +78,7 @@ footer{padding:15% 5% 5% 5%;}
 .button2{font-size:1rem;}
 .button2 a{padding:10px 20px;font-size:1.5rem;}
 .block-center{width:100%;}
-#banner h3{font-size:1.4rem;}
+#banner h3{font-size:1.5rem;}
 #banner h1{font-size:2.5rem;}
 #banner{padding:25% 1%!important;background-position-x:center;background-position-y:50px;}
 #create-list{padding:10% 3%;}

@@ -119,7 +119,7 @@ label{font-size:1rem;}
 .body-row{margin-bottom:10%;}
 .body-footer{padding-top:10%;}
 #banner{background:url("/res/images/banner/banner1.jpg") no-repeat;background-size:cover;padding:10% 0;background-position-y:center;}
-#banner h1{font-family:'OpenSans';color:#fff;font-size:3rem;text-shadow:#000 0em 0em 0.2em;}
+#banner h1{font-family:'OpenSans';color:#fff;font-size:3rem;text-shadow:#000 0em 0em 0.2em;font-weight: bolder;}
 #banner h3{color:#fff;font-size:1.9rem;font-weight:lighter;text-shadow:#767676 0.1em 0.1em 0.2em;}
 #gifts-list ul li{list-style:none;}
 #gifts-list i{color:#ec656d;font-weight:bolder;}
