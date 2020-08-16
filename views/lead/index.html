@@ -9,7 +9,7 @@
             <div class="col-md-10 col-12 text-center">
                 
                 <div class="bottom2">
-                    <h1>Descubra como realizar seu casamento em segurança seguindo 7 passos seguros e eficientes para conseguir realizar seu grande sonho e ainda proteger seus entes queridos durante a quarentena!</h1>
+                    <h1>Descubra como se casar com segurança seguindo 7 passos seguros e eficientes para conseguir realizar seu grande sonho e ainda proteger seus entes queridos durante a quarentena!</h1>
 
                 </div>
 
