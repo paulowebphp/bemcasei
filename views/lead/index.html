@@ -9,7 +9,7 @@
             <div class="col-md-10 col-12 text-center">
                 
                 <div class="bottom2">
-                    <h1>Descubra como se casar com segurança seguindo 7 passos seguros e eficientes para conseguir realizar seu grande sonho e ainda proteger seus entes queridos durante a quarentena!</h1>
+                    <h1>Descubra como se Casar com Segurança Durante a Quarentena e conseguir ao mesmo tempo Realizar seu grande Sonho e Proteger seus Entes Queridos!</h1>
 
                 </div>
 
@@ -70,7 +70,7 @@
 
 
 
-                      <button type="submit" class="button7">Quero Realizar Meu Casamento Com Segurança na Quarentena!</button>
+                      <button type="submit" class="button7">Quero Saber Como Realizar Meu Casamento Com Segurança!</button>
 
                     </form>
 
