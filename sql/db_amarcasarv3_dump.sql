@@ -734,6 +734,7 @@ CREATE TABLE `tb_leads` (
   `idlead` int(11) NOT NULL AUTO_INCREMENT,
   `instatus` tinyint(4) DEFAULT 1,
   `inlead` tinyint(4) DEFAULT 0,
+  `inpasswordchange` tinyint(4) DEFAULT 0,
   `desname` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
   `desemail` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `despassword` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
@@ -743,7 +744,7 @@ CREATE TABLE `tb_leads` (
   `desip` varchar(22) COLLATE utf8_unicode_ci DEFAULT NULL,
   `dtregister` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`idlead`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -752,7 +753,7 @@ CREATE TABLE `tb_leads` (
 
 LOCK TABLES `tb_leads` WRITE;
 /*!40000 ALTER TABLE `tb_leads` DISABLE KEYS */;
-INSERT INTO `tb_leads` VALUES (1,1,1,NULL,'fornecedor@hotmail.com','$2y$12$1BKLtTF541Aalkb8P3PD2O.8sufqx9wnv3052vH64xPHBVU8pvmUe','NGM4ZWM4',NULL,NULL,'127.0.0.1','2020-05-22 20:05:45'),(2,1,1,'','fornecedor@hotmail.com','$2y$12$KpRwuo5O5Ox2l7fJJLWtc.q9zxid9t/XTgxkbAwTJ6dLWmzK3FnRC','MmhiOW5p',NULL,NULL,'127.0.0.1','2020-05-22 20:06:16'),(3,1,1,'','fornecedor@hotmail.com','$2y$12$UVjTtRz6PW61Q0pZXDBV8u0WvNaev03hydTccVo481Aah4MI4FN5y','MWc5bXE0',NULL,NULL,'127.0.0.1','2020-05-22 20:06:28'),(4,1,1,'','fornecedor2@gmail.com','$2y$12$/5v2BKnTTEUGy90zg1TeeOTuNw101R94kzkl.n7IFGlcP.pynoePu','YXdvbjli',NULL,NULL,'127.0.0.1','2020-05-22 20:08:52'),(5,1,1,'','fornecedor3@gmail.com','$2y$12$1OWDl31PA30hlXQ8adIGYOKPvZRR9f6UUT8EepAe811E/w4P0ZCMO','d2E4ajVp',NULL,NULL,'127.0.0.1','2020-05-22 20:10:08'),(6,1,1,'','fornecedor3@gmail.com','$2y$12$KC7Kn/xPRdCQeigCOV63Nuy8fCjVVprOvO991EuyoOC4biUOHXbYa','a2Zhb3dz',NULL,NULL,'127.0.0.1','2020-05-22 20:11:52'),(7,1,1,'','fornecedor3@gmail.com','$2y$12$uEvdP4L/bgZCFOgNX4JDDOL6H/UKQ/HtFewx95z/3BNlO3bM.H61K','MDhhZTZu',NULL,NULL,'127.0.0.1','2020-05-22 20:12:20'),(8,1,1,'','fornecedor4@gmail.com','$2y$12$0rezDVEkWbqf5fce0HGxkOCnJlaTJVlWrFO.7OzVewNX3l31mRtVm','1t7mrj',NULL,NULL,'127.0.0.1','2020-05-23 00:28:24'),(9,1,1,'','fornecedor4@gmail.com','$2y$12$T1ekCpcNR2YqumOqX4iJQOhKzxf523NeHXeXvJ90pxei5affc75B.','1t7mrj',NULL,NULL,'127.0.0.1','2020-05-24 16:53:02'),(10,1,1,'','fornecedor5@gmail.com','$2y$12$suKNYrUamLoT1nrXjmNVSu1J5fLmZg7v4Ux5CruHjEKJRmvYFhDc2','ii6i3v',NULL,NULL,'127.0.0.1','2020-05-24 16:59:50'),(11,1,1,'','fornecedor5@gmail.com','$2y$12$s1QK/cma7L3qQ77g6X0uP.FjU1.EFH3ZYNDglHBz8.ohEKB62C2oi','ii6i3v',NULL,NULL,'127.0.0.1','2020-05-24 17:00:38'),(12,1,1,'','fornecedor6@gmail.com','$2y$12$4cQtXOvfdrTUVCV2vSvTGOvWArqRPwoP7hRco.B5Z9/9NwL4wr5vq','7whf3t',NULL,NULL,'127.0.0.1','2020-05-24 17:09:18'),(13,1,1,'','jpccambraia2@gmail.com','$2y$12$eEliJlQm13TncL./VaW3Juhcdcb2QCfTpk51v5UQ4T84q1mQKSV8K','nulmwr',NULL,NULL,'127.0.0.1','2020-05-24 17:32:44'),(14,1,1,'','jpccambraia2@gmail.com','$2y$12$8/LJsXYrSKUZnyQK.jPjAeyYoohZ40whcPu1SwDRctwt7bzITZ/W2','rreuht',NULL,NULL,'127.0.0.1','2020-05-24 17:33:44'),(15,1,1,'','jpccambraia@gmail.com','$2y$12$HdF5CNE2VjlPC74vcy4bzucGSZaTDPlb5Mpy0Vco7Pbak5sdf3viy','7oeuft',NULL,NULL,'127.0.0.1','2020-05-25 18:16:40'),(16,1,1,'','fornecedor@hotmail.com','$2y$12$cQGEMdGD96wmAx5KV0OCs.8O8lsThMmTEl79MmfvU5eW8QcnS/Kda','unhqo0',NULL,NULL,'127.0.0.1','2020-05-25 18:17:02'),(17,1,1,'','jpccambraia2@gmail.com','$2y$12$qtoIBop0BxxsJJq.GkhsJOtr6fpU9N8qb6F5KBmqAkJMxGM3115N2','3i4ec5',NULL,NULL,'127.0.0.1','2020-05-25 18:27:27'),(18,1,1,'','jpccambraia2@gmail.com','$2y$12$U0cGaPlf2Ipaz1ZcOWJ1tOUvaC84xCKFkx4QbjKSodbrUYt2t0jHC','vwfujg',NULL,NULL,'127.0.0.1','2020-08-04 18:37:00');
+INSERT INTO `tb_leads` VALUES (1,1,1,0,NULL,'fornecedor@hotmail.com','$2y$12$1BKLtTF541Aalkb8P3PD2O.8sufqx9wnv3052vH64xPHBVU8pvmUe','NGM4ZWM4',NULL,NULL,'127.0.0.1','2020-05-22 20:05:45'),(2,1,1,0,'','fornecedor@hotmail.com','$2y$12$KpRwuo5O5Ox2l7fJJLWtc.q9zxid9t/XTgxkbAwTJ6dLWmzK3FnRC','MmhiOW5p',NULL,NULL,'127.0.0.1','2020-05-22 20:06:16'),(3,1,1,0,'','fornecedor@hotmail.com','$2y$12$UVjTtRz6PW61Q0pZXDBV8u0WvNaev03hydTccVo481Aah4MI4FN5y','MWc5bXE0',NULL,NULL,'127.0.0.1','2020-05-22 20:06:28'),(4,1,1,0,'','fornecedor2@gmail.com','$2y$12$/5v2BKnTTEUGy90zg1TeeOTuNw101R94kzkl.n7IFGlcP.pynoePu','YXdvbjli',NULL,NULL,'127.0.0.1','2020-05-22 20:08:52'),(5,1,1,0,'','fornecedor3@gmail.com','$2y$12$1OWDl31PA30hlXQ8adIGYOKPvZRR9f6UUT8EepAe811E/w4P0ZCMO','d2E4ajVp',NULL,NULL,'127.0.0.1','2020-05-22 20:10:08'),(6,1,1,0,'','fornecedor3@gmail.com','$2y$12$KC7Kn/xPRdCQeigCOV63Nuy8fCjVVprOvO991EuyoOC4biUOHXbYa','a2Zhb3dz',NULL,NULL,'127.0.0.1','2020-05-22 20:11:52'),(7,1,1,0,'','fornecedor3@gmail.com','$2y$12$uEvdP4L/bgZCFOgNX4JDDOL6H/UKQ/HtFewx95z/3BNlO3bM.H61K','MDhhZTZu',NULL,NULL,'127.0.0.1','2020-05-22 20:12:20'),(8,1,1,0,'','fornecedor4@gmail.com','$2y$12$0rezDVEkWbqf5fce0HGxkOCnJlaTJVlWrFO.7OzVewNX3l31mRtVm','1t7mrj',NULL,NULL,'127.0.0.1','2020-05-23 00:28:24'),(9,1,1,0,'','fornecedor4@gmail.com','$2y$12$T1ekCpcNR2YqumOqX4iJQOhKzxf523NeHXeXvJ90pxei5affc75B.','1t7mrj',NULL,NULL,'127.0.0.1','2020-05-24 16:53:02'),(10,1,1,0,'','fornecedor5@gmail.com','$2y$12$suKNYrUamLoT1nrXjmNVSu1J5fLmZg7v4Ux5CruHjEKJRmvYFhDc2','ii6i3v',NULL,NULL,'127.0.0.1','2020-05-24 16:59:50'),(11,1,1,0,'','fornecedor5@gmail.com','$2y$12$s1QK/cma7L3qQ77g6X0uP.FjU1.EFH3ZYNDglHBz8.ohEKB62C2oi','ii6i3v',NULL,NULL,'127.0.0.1','2020-05-24 17:00:38'),(12,1,1,0,'','fornecedor6@gmail.com','$2y$12$4cQtXOvfdrTUVCV2vSvTGOvWArqRPwoP7hRco.B5Z9/9NwL4wr5vq','7whf3t',NULL,NULL,'127.0.0.1','2020-05-24 17:09:18'),(13,1,1,0,'','jpccambraia2@gmail.com','$2y$12$eEliJlQm13TncL./VaW3Juhcdcb2QCfTpk51v5UQ4T84q1mQKSV8K','nulmwr',NULL,NULL,'127.0.0.1','2020-05-24 17:32:44'),(14,1,1,0,'','jpccambraia2@gmail.com','$2y$12$8/LJsXYrSKUZnyQK.jPjAeyYoohZ40whcPu1SwDRctwt7bzITZ/W2','rreuht',NULL,NULL,'127.0.0.1','2020-05-24 17:33:44'),(15,1,1,0,'','jpccambraia@gmail.com','$2y$12$HdF5CNE2VjlPC74vcy4bzucGSZaTDPlb5Mpy0Vco7Pbak5sdf3viy','7oeuft',NULL,NULL,'127.0.0.1','2020-05-25 18:16:40'),(16,1,1,0,'','fornecedor@hotmail.com','$2y$12$cQGEMdGD96wmAx5KV0OCs.8O8lsThMmTEl79MmfvU5eW8QcnS/Kda','unhqo0',NULL,NULL,'127.0.0.1','2020-05-25 18:17:02'),(17,1,1,0,'','jpccambraia2@gmail.com','$2y$12$qtoIBop0BxxsJJq.GkhsJOtr6fpU9N8qb6F5KBmqAkJMxGM3115N2','3i4ec5',NULL,NULL,'127.0.0.1','2020-05-25 18:27:27'),(18,1,1,0,'','jpccambraia2@gmail.com','$2y$12$U0cGaPlf2Ipaz1ZcOWJ1tOUvaC84xCKFkx4QbjKSodbrUYt2t0jHC','vwfujg',NULL,NULL,'127.0.0.1','2020-08-04 18:37:00'),(19,1,1,0,'','jpccambraia2@gmail.com','$2y$12$xomv3nhgZA1TcTMIRIPpEuWe28w3gjjuyB1xmXJbN2/K93IBCljXa','ggni21',NULL,NULL,'127.0.0.1','2020-08-12 17:26:59'),(20,1,1,0,'','jpccambraia2@gmail.com','$2y$12$GnkHZUowjmpzxNJTjzofcuEpEDXPfNeUEWxY1v.hHYeRqwJRwH8Sy','ptyaad',NULL,NULL,'127.0.0.1','2020-08-12 17:34:13'),(21,1,1,0,'','jpccambraia2@gmail.com','$2y$12$TgkGdjPnMYn1nFUYf.t3..3Dk03Ils.SBanq/lhuLfCkLFFexeJUe','9ej7hz',NULL,NULL,'127.0.0.1','2020-08-15 14:01:36'),(22,1,1,0,'','jpccambraia2@gmail.com','$2y$12$26MFlW.TQKvmEYCcKDB/teoSgb5H..6RLjths6We66OFVJS.fKALC','4gvwj3',NULL,NULL,'127.0.0.1','2020-08-15 18:51:05'),(23,1,1,0,'','jpccambraia@gmail.com','$2y$12$v8y9WaukrfaBRj5V.taWZ.heDxH.0fUqdGcZGdTy80gLGVyL.nNNu','xs1mxk',NULL,NULL,'127.0.0.1','2020-08-15 18:52:53'),(24,1,1,1,'','jpccambraia2@gmail.com','$2y$12$4BIvdD3isDO1Li7WZXxlRe9ZPsSp5Xeqkvwe5sHwE7cnyY7rkO3o.','nzercq',NULL,NULL,'127.0.0.1','2020-08-16 13:58:45');
 /*!40000 ALTER TABLE `tb_leads` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2847,6 +2848,7 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_leads_update`(`pidlead` INT(11), 
 `pinstatus` TINYINT, 
 `pinlead` TINYINT, 
+`pinpasswordchange` TINYINT, 
 `pdesname` VARCHAR(128), 
 `pdesemail` VARCHAR(128), 
 `pdespassword` VARCHAR(256), 
@@ -2863,6 +2865,7 @@ BEGIN
         SET           
 			instatus = pinstatus,
             inlead = pinlead,
+            inpasswordchange = pinpasswordchange,
 			desname = pdesname,
             desemail = pdesemail,
             despassword = pdespassword,
@@ -2876,6 +2879,7 @@ BEGIN
 		INSERT INTO tb_leads (idlead,
                 instatus,
                 inlead,
+                inpasswordchange,
                 desname,
                 desemail,
                 despassword,
@@ -2886,6 +2890,7 @@ BEGIN
         VALUES(pidlead,
                 pinstatus,
                 pinlead,
+                pinpasswordchange,
                 pdesname,
                 pdesemail,
                 pdespassword,
@@ -4888,4 +4893,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-12 13:05:25
+-- Dump completed on 2020-08-16 11:26:15

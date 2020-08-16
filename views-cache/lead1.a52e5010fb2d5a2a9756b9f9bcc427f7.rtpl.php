@@ -180,7 +180,7 @@
 
       <div class="email-row email-button">
         
-        <a target="_blank" href="https://bemcasei.com.br/painel/login">
+        <a target="_blank" href="https://bemcasei.com.br/painel/login/<?php echo htmlspecialchars( $desemail, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
           <span>Fazer Download do E-book!</span>
         </a>
 

@@ -60,7 +60,7 @@
                                 <!--<label for="login">E-mail <span class="required">*</span>
                                 </label>-->
 
-                                <input type="text" id="login" name="login" placeholder="E-mail" class="input-text">
+                                <input type="email" id="desemail" name="desemail" placeholder="E-mail" class="input-text" value="<?php echo htmlspecialchars( $errorLoginLead1["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                             
                             </p>
 
@@ -72,7 +72,7 @@
                                 <!--<label for="senha">Senha <span class="required">*</span>
                                 </label>-->
 
-                                <input type="password" id="senha" name="password" placeholder="Senha" class="input-text">
+                                <input type="password" id="despassword" name="despassword" placeholder="Senha" class="input-text" value="<?php echo htmlspecialchars( $errorLoginLead1["despassword"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </p>
 

@@ -51,7 +51,7 @@
                         <?php } ?>
 
 
-                        <input type="email" class="form-control bottom2" id="desemail" name="desemail" aria-describedby="emailHelp" placeholder="Seu Melhor E-mail" value="<?php echo htmlspecialchars( $registerLead["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                        <input type="email" class="form-control bottom2" id="desemail" name="desemail" aria-describedby="emailHelp" placeholder="Seu Melhor E-mail" value="<?php echo htmlspecialchars( $registerLead1["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                       </div>
 

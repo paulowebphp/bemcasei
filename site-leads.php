@@ -23,6 +23,129 @@ use \Core\Model\Lead;
 
 
 
+$app->get( "/painel/login/:desemail", function( $desemail )
+{
+
+	$desemail = Validate::getHash($desemail);
+
+	$lead = new Lead();
+
+	$lead->getLeadByEmail($desemail);
+
+
+	
+
+	if( 
+
+		isset($_SESSION[Lead::SESSION])
+		&&
+		$_SESSION[Lead::SESSION] !== null
+		&&
+		$lead->getdesemail() !== ''
+		&&
+		(int)$_SESSION[Lead::SESSION]['idlead'] > 0
+		&&
+		(int)$_SESSION[Lead::SESSION]['idlead'] === (int)$lead->getidlead()
+
+	) 
+	{
+
+		header('Location: /painel');
+		exit;	
+
+	}//end if
+	else
+	{
+
+
+
+		$_SESSION[Lead::SESSION] = NULL;
+		$_SESSION['loginLead1Values'] = ["desemail"=>$lead->getdesemail(),"despassword"=>((int)$lead->getinpasswordchange() == 0)? $lead->getdesoriginalpassword() : ''];
+
+		header('Location: /painel/login');
+		exit;	
+		
+
+	}//end else
+
+
+
+
+	
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->post( "/painel/login", function()
+{
+	
+
+	try
+	{
+
+		Lead::login($_POST['desemail'], $_POST['despassword']);
+
+	}//end try
+	catch( Exception $e )
+	{
+
+		Lead::setError($e->getMessage());
+
+	}//end catch
+
+	header("Location: /painel");
+	exit;
+
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -73,7 +196,8 @@ $app->get( "/painel/login", function()
 			[
 
 				'error'=>Lead::getError(),
-				//'errorRegister'=>Lead::getErrorRegister()
+				'errorLoginLead1'=>(isset($_SESSION['loginLead1Values'])) ? $_SESSION['loginLead1Values'] : ['desemail'=>'','despassword'=>'']
+
 
 			]
 		
@@ -117,35 +241,6 @@ $app->get( "/painel/login", function()
 
 
 
-$app->post( "/painel/login", function()
-{
-	
-
-	try
-	{
-
-		Lead::login($_POST['login'], $_POST['password']);
-
-	}//end try
-	catch( Exception $e )
-	{
-
-		Lead::setError($e->getMessage());
-
-	}//end catch
-
-	header("Location: /painel");
-	exit;
-
-
-});//END route
-
-
-
-
-
-
-
 
 
 
@@ -175,6 +270,21 @@ $app->get( "/painel/logout", function()
 	exit;
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -310,54 +420,6 @@ $app->get( '/7-passos-seguros-e-eficientes/obrigado/:hash', function( $hash )
 
 
 
-$app->get( '/7-passos-seguros-e-eficientes', function()
-{
-	
-
-	$page = new PageLead();
-
-	$page->setTpl(
-
-		"index",
-
-
-		[
-
-			'error'=>Lead::getError(),
-			'registerLead'=>(isset($_SESSION['registerLead'])) ? $_SESSION['registerLead'] : ['desemail'=>'']
-
-		]
-	
-	);//end setTpl
-
-});//END route
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -366,7 +428,7 @@ $app->post( '/7-passos-seguros-e-eficientes', function()
 	
 
 	
-	$_SESSION['registerLead'] = $_POST;
+	$_SESSION['registerLead1'] = $_POST;
 
 
 
@@ -451,6 +513,7 @@ $app->post( '/7-passos-seguros-e-eficientes', function()
 
 		'instatus'=>1,
 		'inlead'=>1,
+		'inpasswordchange'=>0,
 		'desname'=>null,
 		'desemail'=>$desemail,
 		'despassword'=>$despassword,
@@ -499,7 +562,7 @@ $app->post( '/7-passos-seguros-e-eficientes', function()
 	*/
 
 
-	if(isset($_SESSION['registerLead'])) unset($_SESSION['registerLead']);
+	if(isset($_SESSION['registerLead1'])) unset($_SESSION['registerLead1']);
 
 
 
@@ -534,7 +597,8 @@ $app->post( '/7-passos-seguros-e-eficientes', function()
 			
 			array(
 
-				"lead"=>$lead->getValues()
+				"lead"=>$lead->getValues(),
+				"desemail"=>Validate::setHash($lead->getdesemail())
 
 			),
 
@@ -568,6 +632,53 @@ $app->post( '/7-passos-seguros-e-eficientes', function()
 
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->get( '/7-passos-seguros-e-eficientes', function()
+{
+	
+
+	$page = new PageLead();
+
+	$page->setTpl(
+
+		"index",
+
+
+		[
+
+			'error'=>Lead::getError(),
+			'registerLead1'=>(isset($_SESSION['registerLead1'])) ? $_SESSION['registerLead1'] : ['desemail'=>'']
+
+		]
+	
+	);//end setTpl
+
+});//END route
+
+
+
+
+
+
 
 
 

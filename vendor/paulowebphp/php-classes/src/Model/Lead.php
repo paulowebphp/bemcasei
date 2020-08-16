@@ -115,6 +115,7 @@ class Lead extends Model
 	                :idlead,
 	                :instatus,
 	                :inlead,
+	                :inpasswordchange,
 	                :desname,
 	                :desemail,
 	                :despassword,
@@ -130,6 +131,7 @@ class Lead extends Model
 					':idlead'=>$this->getidlead(),
 					':instatus'=>$this->getinstatus(),
 					':inlead'=>$this->getinlead(),
+					':inpasswordchange'=>$this->getinpasswordchange(),
 					':desname'=>utf8_encode($this->getdesname()),
 					':desemail'=>$this->getdesemail(),
 					':despassword'=>Lead::getPasswordHash($this->getdespassword()),
@@ -176,6 +178,7 @@ class Lead extends Model
 	                :idlead,
 	                :instatus,
 	                :inlead,
+	                :inpasswordchange,
 	                :desname,
 	                :desemail,
 	                :despassword,
@@ -191,6 +194,7 @@ class Lead extends Model
 					':idlead'=>$this->getidlead(),
 					':instatus'=>$this->getinstatus(),
 					':inlead'=>$this->getinlead(),
+					':inpasswordchange'=>$this->getinpasswordchange(),
 					':desname'=>utf8_encode($this->getdesname()),
 					':desemail'=>$this->getdesemail(),
 					':despassword'=>Lead::getPasswordHash($this->getdespassword()),
@@ -396,6 +400,69 @@ class Lead extends Model
 
 
 
+	public function getLeadByEmail( $desemail )
+	{
+
+		
+		
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT *
+			FROM tb_leads
+			WHERE desemail = :desemail
+			ORDER BY dtregister DESC
+			LIMIT 1;
+
+			", 
+			
+			[
+
+				':desemail'=>$desemail
+
+			]
+		
+		);//end select
+
+
+		
+
+
+		if( count($results) > 0 )
+		{
+
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+				$results[0]['desname'] = utf8_encode($results[0]['desname']);
+					
+			}//end if
+
+
+			$this->setData($results[0]);
+			
+		}//end if
+
+	}//END method
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -438,7 +505,7 @@ class Lead extends Model
 	{	
 
 		
-		
+		$_SESSION['loginLead1Values'] = ["desemail"=>$login,"despassword"=>''];
 
 
 		$sql = new Sql();
@@ -508,7 +575,7 @@ class Lead extends Model
 			$lead->setData($data);
 
 
-
+			if(isset($_SESSION['loginLead1Values'])) unset($_SESSION['loginLead1Values']);
 			
 			$_SESSION[Lead::SESSION] = $lead->getValues();
 

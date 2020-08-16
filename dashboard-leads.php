@@ -220,6 +220,8 @@ $app->post( "/painel/mudar-senha", function()
 
 
 	$lead->setdespassword($_POST['new_pass']);
+	
+	if((int)$lead->getinpasswordchange() == 0) $lead->setinpasswordchange(1);
 
 	$lead->update();
 
