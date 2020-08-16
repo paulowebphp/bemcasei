@@ -9,7 +9,7 @@
             <div class="col-md-10 col-12 text-center">
                 
                 <div class="bottom2">
-                    <h1>Descubra como se Casar com Segurança Durante a Quarentena e conseguir ao mesmo tempo Realizar seu grande Sonho e Proteger seus Entes Queridos!</h1>
+                    <h1>Descubra como se Casar <u>com Segurança</u> Durante a Quarentena e conseguir ao mesmo tempo Realizar seu grande Sonho e Proteger seus Entes Queridos!</h1>
 
                 </div>
 
