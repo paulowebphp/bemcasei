@@ -1,7 +1,6 @@
 @font-face {
-	font-family: 'Poppins';
-	src: url("/res/fonts/Poppins/Poppins-Regular.ttf");
-	font-size: 1em;
+	font-family: 'OpenSans';
+	src: url("/res/fonts/Open_Sans/OpenSans-Regular.ttf");
 }
 @font-face {
 	font-family: 'TheHeartOfEverything';
@@ -410,12 +409,12 @@ footer .list-socials a:hover {
 section h2{
 	font-size: 1.6rem;
 	position: relative;
-	font-family: "Poppins";
+	font-family: "OpenSans";
 }
 section h3{
 	font-size: 1.5rem;
 	position: relative;
-	font-family: "Poppins";
+	font-family: "OpenSans";
 	color: #ec656d;
 }
 section h4{
@@ -579,7 +578,7 @@ label{
 	color: #fff;
 	background: #26a65b;
 	text-shadow: #767676 0.1em 0.1em 0.2em;
-	font-family: 'Poppins';
+	font-family: 'OpenSans';
 	border-top: none;
 	border-right: none;
 	border-bottom: 4px solid #3fc380;
@@ -699,19 +698,22 @@ label{
 /********************************* BANNER *****************************************/
 /********************************* BANNER *****************************************/
 #banner {
-	padding: 8% 0;
+	padding: 5% 0;
 	background:	#fff;
 	
 	background: url("/res/images/banner/banner3.jpg") no-repeat;
+	/*
+	background: linear-gradient(rgba(255, 255, 255, 0.3),rgba(255, 255, 255, 0.3)),url("/res/images/banner/banner3.jpg") no-repeat;
+	*/
 	background-size: cover;
 	background-position-y: center;
 	
 }
 #banner h1 {
-    font-family: 'Poppins';
+    font-family: 'OpenSans';
     color: #fff;
     font-size: 2.5rem;
-    text-shadow: 4px 4px 4px rgba(0, 0, 0, .95);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .95);
     
     font-weight: bolder;
 }
@@ -1198,7 +1200,7 @@ label{
 /********************** SITE FEATURES **************************/
 #site-features{
     width: 100%;
-    padding: 5% 10%;
+    padding: 5% 15%;
 }
 #site-features	img{
     width: 100%;
@@ -2931,7 +2933,7 @@ label{
   text-align:center;
 }
 #register #slides .slide .title .title-text {
-  font-family: 'Poppins';
+  font-family: 'OpenSans';
   font-size: 1.6rem;
   font-weight: 900;
   display: block;
