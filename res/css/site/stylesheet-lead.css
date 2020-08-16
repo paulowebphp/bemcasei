@@ -700,10 +700,11 @@ label{
 #banner {
 	padding: 5% 0;
 	background:	#fff;
-	background: url("/res/images/banner/banner3.jpg") no-repeat;
 	/*
-	background: linear-gradient(rgba(255, 255, 255, 0.3),rgba(255, 255, 255, 0.3)),url("/res/images/banner/banner3.jpg") no-repeat;
+	background: url("/res/images/banner/banner3.jpg") no-repeat;
 	*/
+	background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)),url("/res/images/banner/banner3.jpg") no-repeat;
+	
 	background-size: cover;
 	background-position-y: center;
 	
