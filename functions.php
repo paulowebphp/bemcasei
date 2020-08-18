@@ -1443,6 +1443,45 @@ function getUri($uri)
 
 
 
+function getRequestUri()
+{
+
+	$uri = explode('/', $_SERVER["REQUEST_URI"]);
+
+
+	if ( 
+
+		!isset($uri[1]) 
+		||
+		$uri[1] == ''
+
+	)
+	{
+		# code...
+		return 'index';
+
+	}//end if
+	else
+	{
+
+		return $uri[1];
+
+	}//end else	
+
+
+}//END function
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
