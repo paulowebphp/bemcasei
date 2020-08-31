@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
 <html lang="pt-br">
 
 
@@ -15,10 +15,10 @@
 
     <meta property="og:title" content="{function=" getSitePageConfig('pagetitle')"}">
     <meta property="og:description" content="{function=" getSitePageConfig('metadescription')"}">
-    <meta property="og:url" content='https://{function="getHttpHost()"}'>
+    <meta property="og:url" content='https://<?php echo getHttpHost(); ?>'>
     <meta property="og:site_name" content="Bem Casei">
     <meta property="og:type" content="website">
-    <meta property="og:image" content='https://{function="getHttpHost()"}/res/images/logo/logo-square.png'>
+    <meta property="og:image" content='https://<?php echo getHttpHost(); ?>/res/images/logo/logo-square.png'>
 
 
     <title>Central de Ajuda | Bem Casei</title>

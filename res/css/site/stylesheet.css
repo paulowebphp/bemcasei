@@ -391,6 +391,7 @@ label{font-size:1rem;}
 #site-search{width:100%;padding:5%;color:#666;background-color:#fff;font-size:1rem;min-height:780px;}
 .site-search-box{box-shadow:0 8px 12px 0 rgba(0, 0, 0, 0.16), 0 0 12px 0 rgba(0, 0, 0, 0.12);padding:1% 5%;margin-bottom:2%;}
 .card-details hr{width:20%;margin-top:0;margin-bottom:0;}
+#support h1{color:#ec656d;font-family:'TheHeartOfEverything';font-size:4rem;}
 #site-404{width:100%;padding:8% 5%;color:#666;background-color:#fff;font-size:1rem;min-height:780px;}
 #site-404 h3{font-weight:lighter;margin-bottom:5%;font-size:1.8rem;}
 #site-404 img{width:100%;}

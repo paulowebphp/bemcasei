@@ -1,4 +1,4 @@
-<section id="support" class="site">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section id="support" class="site">
     
     <div class="container">
 

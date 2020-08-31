@@ -1,4 +1,4 @@
-<footer class="text-center">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><footer class="text-center">
 
     <div class="container-fluid">
 
@@ -186,7 +186,7 @@
 
             <div class="caption">
 
-                <p>Bem Casei © {function="getYear()"} - CNPJ 34.700.513/0001-27<br><a href="/termos-uso">Termos de Uso</a> | <a href="/termos-lista">Termos da Lista de Presentes Virtuais</a> | <a href="/politica-privacidade">Política de Privacidade</a> | <a href="/central-ajuda">Dúvidas e Suporte</a></p>
+                <p>Bem Casei © <?php echo getYear(); ?> - CNPJ 34.700.513/0001-27<br><a href="/termos-uso">Termos de Uso</a> | <a href="/termos-lista">Termos da Lista de Presentes Virtuais</a> | <a href="/politica-privacidade">Política de Privacidade</a> | <a href="/central-ajuda">Dúvidas e Suporte</a></p>
 
 
 
