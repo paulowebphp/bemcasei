@@ -27,8 +27,12 @@
             <div class="col-md-8 col-12 text-center">
                 
                 <!--<h2>Precisa de ajuda?</h2>-->
-                <div class="purple">
-                    <h2>Teve dúvidas a respeito do site? Basta clicar no botão abaixo e falar conosco pelo WhatsApp!</h2>
+                <div class="purple bottom2">
+                    <h2>Teve dúvidas a respeito do site? Basta clicar no botão abaixo e falar conosco pelo WhatsApp!</h2>                   
+                </div>
+
+                <div class="purple bottom2">
+                    <h2>Atendemos de 10:00 às 22:00, todos os dias da semana.</h2>
                 </div>
                 <!--<p>Muitas dúvidas já estão resolvidas na Central de Ajuda. Visite-a  para obter sua resposta!<br><br>
                 <a href="#" class="btn-amarcasar4">Central de Ajuda</a>-->
