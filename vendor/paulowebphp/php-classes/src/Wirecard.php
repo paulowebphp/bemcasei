@@ -396,6 +396,7 @@ class Wirecard extends Model
 	  	$desdistrict, 
 	  	$descity, 
 	  	$desstate, 
+	  	$desholdername,
 	  	$descardcode_month,
 	  	$descardcode_year,
 	  	$descardcode_number,
@@ -435,7 +436,8 @@ class Wirecard extends Model
 
 
 			
-			/*echo "<pre>";
+			/*
+			echo "<pre>";
 			var_dump($desname);
 		var_dump($desemail);
 		var_dump($dtbirth);
@@ -451,7 +453,8 @@ class Wirecard extends Model
 	  	var_dump($descomplement);
 	  	var_dump($desdistrict); 
 	  	var_dump($descity); 
-	  	var_dump($desstate); 
+	  	var_dump($desstate);
+	  	var_dump($desholdername);
 	  	var_dump($descardcode_month);
 	  	var_dump($descardcode_year);
 	  	var_dump($descardcode_number);
@@ -459,7 +462,8 @@ class Wirecard extends Model
 	  	var_dump($hash);
 	  	var_dump($this->wirecard_access_token);
 		var_dump($this->wirecard_primary_receiver);
-			exit;*/
+			exit;
+			*/
 
 
 
@@ -507,7 +511,7 @@ class Wirecard extends Model
 				    ->setExpirationYear( $descardcode_year )
 				    ->setNumber( $descardcode_number )
 				    ->setCVC( $descardcode_cvc )
-				    ->setFullName( $desname )
+				    ->setFullName( $desholdername )
 				    ->setBirthDate( $dtbirth )
 				    ->setTaxDocument( $intypedoc, $desdocument )
 				    ->setPhone( $nrcountryarea, $nrddd, $nrphone )

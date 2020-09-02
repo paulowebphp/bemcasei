@@ -392,6 +392,7 @@ class Rule extends Model
 
 
 	const ERROR_REGISTER = 'Ocorreu um erro momentâneo, provavelmente devido à instabilidade na conexão de internet entre o nosso servidor e o seu dispositivo | Por favor, faça login na sua conta e você pode adquirir um plano na seção "Meu Plano" do seu Dashboard | Caso ainda assim o erro persista, entre em contato com o suporte';
+	
 	const VALIDATE_REGISTER = 'É necessário concluir seu registro no site antes de acessar essa página';
 
 

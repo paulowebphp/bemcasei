@@ -8,9 +8,9 @@ use \Core\Rule;
 use \Core\DB\Sql;
 use \Core\Model\Address;
 use \Core\Model\Cart;
-use \Core\Model\Payment;
-use \Moip\Moip;
-use \Moip\Auth\BasicAuth;
+//use \Core\Model\Payment;
+//use \Moip\Moip;
+//use \Moip\Auth\BasicAuth;
 
 
 
@@ -735,8 +735,8 @@ class Order extends Model
 		    INNER JOIN tb_fees f ON a.idpayment = f.idpayment
 		    WHERE a.iduser = :iduser
             AND h.initem = :initem
-            AND e.inpaymentstatus <> 6
-		    ORDER BY a.dtregister DESC
+			AND e.inpaymentstatus <> 6
+			ORDER BY a.dtregister DESC
 			LIMIT $start, $itensPerPage;
 
 

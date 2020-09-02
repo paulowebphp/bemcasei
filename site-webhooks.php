@@ -2,7 +2,7 @@
 
 use \Core\Mailer;
 use \Core\Rule;
-use \Core\Model\User;
+//use \Core\Model\User;
 use \Core\Model\Plan;
 use \Core\Model\Order;
 use \Core\Model\Payment;

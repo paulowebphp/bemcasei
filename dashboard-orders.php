@@ -2,7 +2,7 @@
 
 use Core\Maintenance;
 use Core\PageDashboard;
-use Core\Photo;
+//use Core\Photo;
 use Core\Rule;
 use Core\Validate;
 use Core\Wirecard;
@@ -10,11 +10,11 @@ use Core\Model\Account;
 use Core\Model\Bank;
 use Core\Model\Cart;
 use Core\Model\Consort;
-use Core\Model\Gift;
+//use Core\Model\Gift;
 use Core\Model\Order;
-use Core\Model\OrderStatus;
-use Core\Model\Plan;
-use Core\Model\Product;
+//use Core\Model\OrderStatus;
+//use Core\Model\Plan;
+//use Core\Model\Product;
 use Core\Model\Transfer;
 use Core\Model\User;
 
@@ -248,6 +248,16 @@ $app->get( "/dashboard/painel-financeiro", function()
 
 
 
+	if ( (int)$user->getinaccount() == 0 )
+	{
+		# code...
+		header('Location: /dashboard/cadastrar');
+		exit;
+		
+	}//end if
+
+
+
 	$account = new Account();
 
 	$account->get($user->getiduser());
@@ -267,6 +277,9 @@ $app->get( "/dashboard/painel-financeiro", function()
 
 
 	$order = new Order();
+
+
+
 
 	if( $search != '' )
 	{
@@ -301,6 +314,7 @@ $app->get( "/dashboard/painel-financeiro", function()
 	$order->setData($results['results']);
 
 
+	
 
 
 	$numOrders = $results['nrtotal'];

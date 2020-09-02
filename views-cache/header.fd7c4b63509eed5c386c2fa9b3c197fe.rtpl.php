@@ -16,8 +16,10 @@
     <link rel="stylesheet" media="screen" type="text/css" href="/res/colorpicker/css/colorpicker.css" />
     <link rel="stylesheet" type="text/css" href="/res/css/bootstrap.min.css">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" type="text/css" href="/res/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/res/css/font-awesome.min.css"> -->
+    
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="/res/css/dashboard/stylesheet.css">
     <link rel="stylesheet" type="text/css" href="/res/css/dashboard/stylesheet-mobile.css">
@@ -34,10 +36,7 @@
     </script>
 
 
-    <!-- Start of bemcasei Zendesk Widget script -->
-    <script id="ze-snippet"
-        src="https://static.zdassets.com/ekr/snippet.js?key=565637ed-1709-4f89-b406-1ce62941de4b"> </script>
-    <!-- End of bemcasei Zendesk Widget script -->
+    
 
 
     <!--BEM CASEI PIXEL-->

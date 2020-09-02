@@ -13,7 +13,7 @@ use \Core\Model\Product;
 use \Core\Model\ProductConfig;
 use \Core\Model\Address;
 use \Core\Model\Order;
-use \Core\Model\OrderStatus;
+//use \Core\Model\OrderStatus;
 use \Core\Model\Payment;
 use \Core\Model\Customer;
 use \Core\Model\Consort;

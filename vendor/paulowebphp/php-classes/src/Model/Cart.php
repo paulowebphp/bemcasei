@@ -271,7 +271,8 @@ class Cart extends Model
 				:idcart, 
 				:dessessionid, 
 				:iduser,
-				:incartstatus
+				:incartstatus,
+				:incartitem
 
 			)", 
 			
@@ -280,7 +281,8 @@ class Cart extends Model
 				':idcart'=>$this->getidcart(), 
 				':dessessionid'=>$this->getdessessionid(), 
 				':iduser'=>$this->getiduser(),
-				':incartstatus'=>$this->getincartstatus()
+				':incartstatus'=>$this->getincartstatus(),
+				':incartitem'=>$this->getincartitem()
 
 			]
 		

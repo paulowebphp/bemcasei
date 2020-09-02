@@ -14,6 +14,7 @@ require_once("functions.php");
 require_once("routes-ajax.php");
 require_once("dashboard.php");
 require_once("dashboard-persons.php");
+require_once("dashboard-accounts.php");
 require_once("dashboard-domains.php");
 require_once("dashboard-templates.php");
 require_once("dashboard-customstyle.php");
