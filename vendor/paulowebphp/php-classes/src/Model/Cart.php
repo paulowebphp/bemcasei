@@ -4,7 +4,7 @@ namespace Core\Model;
 
 use \Core\DB\Sql;
 use \Core\Model;
-use \Core\Mailer;
+//use \Core\Mailer;
 use \Core\Wirecard;
 use \Core\Model\User;
 use \Core\Model\Product;
@@ -34,6 +34,7 @@ class Cart extends Model
 		$uri = explode('/', $_SERVER["REQUEST_URI"]);
 		
 		$user->getFromUrl($uri[1]);
+
 		
 		$cart = new Cart();
 
@@ -46,17 +47,14 @@ class Cart extends Model
 			(int)$_SESSION[Cart::SESSION]["iduser"] === (int)$user->getiduser()
 			&&
 			(int)$_SESSION[Cart::SESSION]["incartstatus"] === 0
-
 			
 		)
 		{
-		
 			
 			# Recupera o carrinho que já existe
 			//$cart->get((int)$_SESSION[Cart::SESSION]["idcart"]);
 			$cart->getUserCart((int)$_SESSION[Cart::SESSION]["idcart"],(int)$_SESSION[Cart::SESSION]["iduser"]);
 
-			
 
 		}//end if
 		else
@@ -70,13 +68,40 @@ class Cart extends Model
 			if( !(int)$cart->getidcart() > 0 )
 			{
 
-				$data = [
+				if( in_array( $uri[1], ['dashboard','checkout'] ) )
+				{
 
-					'dessessionid'=>session_id(),
-					'iduser'=>$user->getiduser(),
-					'incartstatus'=>0
+					$data = [
 
-				];//end $data
+						'dessessionid'=>session_id(),
+						'iduser'=>$user->getiduser(),
+						'incartstatus'=>0,
+						'incartitem'=>0
+	
+					];//end $data
+
+				}//end if
+				else
+				{
+
+					$data = [
+
+						'dessessionid'=>session_id(),
+						'iduser'=>$user->getiduser(),
+						'incartstatus'=>0,
+						'incartitem'=>1
+	
+					];//end $data
+
+
+
+				}//end else
+
+
+
+				
+
+
 
 				$cart->setData($data);
 

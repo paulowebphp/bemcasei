@@ -452,37 +452,21 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			if(
-				
-				!isset($_POST['desname']) 
-				|| 
-				$_POST['desname'] === ''
-				
-			)
+			if( !isset($_POST['desname']) || $_POST['desname'] === '' )
 			{
-
 				Payment::setError(Rule::ERROR_CUSTOMER_NAME);
 				header('Location: /'.$desdomain.'/checkout');
 				exit;
-
 			}//end if
+
+
 
 			if( ( $desname = Validate::validateStringUcwords($_POST['desname'],true,false) ) === false )
 			{
-
 				Payment::setError(Rule::VALIDATE_CUSTOMER_NAME);
 				header('Location: /'.$desdomain.'/checkout');
 				exit;
-
 			}//end if
-
-
-
-
-
-
-
-
 
 
 

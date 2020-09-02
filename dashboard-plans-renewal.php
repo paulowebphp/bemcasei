@@ -1412,7 +1412,8 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		'dessessionid'=>session_id(),
 		'iduser'=>$user->getiduser(),
-		'incartstatus'=>0
+		'incartstatus'=>0,
+		'incartitem'=>0
 
 	];//end $data
 
@@ -1421,7 +1422,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 	$cart->update();
 
-
+	$cart->setToSession();
 
 
 
@@ -1468,9 +1469,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 	/*echo '<pre>';
-var_dump($wirecardCustomerData);
-var_dump($address);
-exit;*/
+	var_dump($wirecardCustomerData);
+	var_dump($address);
+	exit;*/
 
 
 	$customer = new Customer();

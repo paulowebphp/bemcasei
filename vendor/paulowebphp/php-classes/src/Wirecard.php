@@ -1501,7 +1501,7 @@ exit;*/
 				$holder = $moip->holders()->setFullname( $desholdername )
 				    ->setBirthDate( $dtholderbirth )
 				    ->setTaxDocument( $desholderdocument, $inholdertypedoc)
-				    ->setPhone($nrholderddd, $nrholderddd, $nrholdercountryarea)
+				    ->setPhone($nrholderddd, $nrholderphone, $nrholdercountryarea)
 				    ->setAddress('BILLING', 
 				    	$desholderaddress, 
 				    	$desholdernumber, 

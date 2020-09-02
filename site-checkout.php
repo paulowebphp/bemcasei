@@ -2983,7 +2983,7 @@ $app->post( "/checkout/:hash", function( $hash )
 
 	$cart->update();
 
-	
+	$cart->setToSession();
 
 
 		

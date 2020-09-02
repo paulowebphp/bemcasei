@@ -3754,7 +3754,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 	$cart->update();
 
-
+	$cart->setToSession();
 
 
 

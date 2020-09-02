@@ -240,7 +240,7 @@ $app->get( "/:desdomain/carrinho/:idproduct/continuar", function( $desdomain, $i
 
 
 
-		$product = new Product();
+		//$product = new Product();
 
 
 		$cart = Cart::getFromSession();

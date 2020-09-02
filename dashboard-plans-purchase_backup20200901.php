@@ -3744,7 +3744,8 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		'dessessionid'=>session_id(),
 		'iduser'=>$user->getiduser(),
-		'incartstatus'=>0
+		'incartstatus'=>0,
+		'incartitem'=>0
 
 	];//end data
 
@@ -3792,6 +3793,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 			$address->getdesdistrict(),
 			$address->getdescity(),
 			$address->getdesstatecode(),
+			$desholdername,
 			$descardcode_month,
 			(int)$descardcode_year,
 			$descardcode_number,
