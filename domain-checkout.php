@@ -35,7 +35,7 @@ use \Core\Model\CustomStyle;
 
 
 
-$app->get( "/:desdomain/presente/:idorder", function( $desdomain, $idorder )
+$app->get( "/:desdomain/presente/:hash", function( $desdomain, $hash )
 {
 
 	
@@ -111,7 +111,7 @@ $app->get( "/:desdomain/presente/:idorder", function( $desdomain, $idorder )
 		
 
 		
-		$idorder = Validate::getHash($idorder);
+		$idorder = Validate::getHash($hash);
 
 
 
@@ -1639,7 +1639,8 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 		  	$desholdercomplement,
 		  	$desholderdistrict,
 		  	$desholdercity,
-		  	$desholderstate,
+			$desholderstate,
+			$desholdername,
 		  	$descardcode_month,
 		  	$descardcode_year,
 		  	$descardcode_number,

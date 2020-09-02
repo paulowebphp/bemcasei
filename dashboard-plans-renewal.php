@@ -1457,6 +1457,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 		$address->getdesdistrict(),
 		$address->getdescity(),
 		$address->getdesstatecode(),
+		$desholdername,
 		$descardcode_month,
 		(int)$descardcode_year,
 		$descardcode_number,
@@ -1466,10 +1467,10 @@ $app->post( "/dashboard/renovar/checkout", function()
 	);//END createCustomer
 
 
-	echo '<pre>';
+	/*echo '<pre>';
 var_dump($wirecardCustomerData);
 var_dump($address);
-exit;
+exit;*/
 
 
 	$customer = new Customer();

@@ -5,7 +5,7 @@ use \Core\Page;
 use \Core\Rule;
 use \Core\Validate;
 use \Core\Wirecard;
-use \Core\Model\Account;
+//use \Core\Model\Account;
 use \Core\Model\Address;
 use \Core\Model\Cart;
 //use \Core\Model\Consort;
@@ -194,9 +194,11 @@ $app->post( "/criar-site", function()
 	)
 	{
 
-		User::setErrorRegister(Rule::VALIDATE_PLAN_PURCHASE_CODE);
-		header("Location: /planos");
-		exit;
+		//User::setErrorRegister(Rule::VALIDATE_PLAN_PURCHASE_CODE);
+		//header("Location: /planos");
+		//exit;
+
+		$inplancode = 0;
 
 
 	}//end if
@@ -206,7 +208,7 @@ $app->post( "/criar-site", function()
 	if ( ( $inplancode = Validate::validateInplancode($_POST['plano']) ) === false )
 	{
 
-		User::setErrorRegister(Rule::VALIDATE_PLAN_PURCHASE_CODE);
+		//User::setErrorRegister(Rule::VALIDATE_PLAN_PURCHASE_CODE);
 		header("Location: /planos");
 		exit;
 
@@ -360,6 +362,10 @@ $app->post( "/criar-site", function()
 		exit;
 
 	}//end if
+
+
+
+
 
 
 
@@ -2061,14 +2067,6 @@ $app->post( "/checkout/:hash", function( $hash )
 
 		$payment->setinpaymentmethod(0);
 		$payment->setnrinstallment(1);
-
-
-
-
-
-
-
-
 
 
 

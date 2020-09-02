@@ -367,10 +367,13 @@
     <script src="/res/js/owl.carousel.min.js"></script>
     <script src="/res/js/jquery.sticky.js"></script>
     
-    <!-- jQuery easing -->
+    {if="getTemplatePageConfig('card-payment-js') == 1"}
+    <script type="text/javascript" src="/res/js/jquery.payment.min.js"></script>
+    <script type="text/javascript" src="/res/js/card-payment.js"></script>
+    {/if}
     
     <!-- Main Script -->
-    <script src="/res/js/main.js"></script>
+    <script src="/res/js/main2.js"></script>
     
     <!-- Slider -->
     <script type="text/javascript" src="/res/js/bxslider.min.js"></script>

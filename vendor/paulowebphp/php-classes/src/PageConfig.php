@@ -325,7 +325,8 @@ class PageConfig extends Model
 			'index'=>[
 
 
-				'pagetitle'=>'Início | Bem Casei'
+				'pagetitle'=>'Início | Bem Casei',
+				'card-payment-js'=>0
 
 
 			],
@@ -333,149 +334,178 @@ class PageConfig extends Model
 
 			'meus-dados'=>[
 
-				'pagetitle'=>'Meus Dados | Bem Casei'
+				'pagetitle'=>'Meus Dados | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 
 
 			'meu-plano'=>[
 
-				'pagetitle'=>'Meu Plano | Bem Casei'
+				'pagetitle'=>'Meu Plano | Bem Casei',
+				'card-payment-js'=>1
 			],
 
 			'dominio'=>[
 
-				'pagetitle'=>'Domínio | Bem Casei'
+				'pagetitle'=>'Domínio | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'meu-template'=>[
 
-				'pagetitle'=>'Meu Template | Bem Casei'
+				'pagetitle'=>'Meu Template | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'personalizar-site'=>[
 
-				'pagetitle'=>'Personalizar Site | Bem Casei'
+				'pagetitle'=>'Personalizar Site | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'menu'=>[
 
-				'pagetitle'=>'Menu | Bem Casei'
+				'pagetitle'=>'Menu | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'pagina-inicial'=>[
 
-				'pagetitle'=>'Configurar Página Inicial | Bem Casei'
+				'pagetitle'=>'Configurar Página Inicial | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'presentes-virtuais'=>[
 
-				'pagetitle'=>'Presentes Virtuais | Bem Casei'
+				'pagetitle'=>'Presentes Virtuais | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'painel-financeiro'=>[
 
-				'pagetitle'=>'Painel Financeiro | Bem Casei'
+				'pagetitle'=>'Painel Financeiro | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'transferencias'=>[
 
-				'pagetitle'=>'Transferências | Bem Casei'
+				'pagetitle'=>'Transferências | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'conta-bancaria'=>[
 
-				'pagetitle'=>'Conta Bancária | Bem Casei'
+				'pagetitle'=>'Conta Bancária | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'meu-amor'=>[
 
-				'pagetitle'=>'Meu Amor | Bem Casei'
+				'pagetitle'=>'Meu Amor | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'meu-casamento'=>[
 
-				'pagetitle'=>'Meu Casamento | Bem Casei'
+				'pagetitle'=>'Meu Casamento | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'festa-de-casamento'=>[
 
-				'pagetitle'=>'Festa de Casamento | Bem Casei'
+				'pagetitle'=>'Festa de Casamento | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'padrinhos-madrinhas'=>[
 
-				'pagetitle'=>'Padrinhos e Madrinhas | Bem Casei'
+				'pagetitle'=>'Padrinhos e Madrinhas | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'guia-de-casamento'=>[
 
-				'pagetitle'=>'Guia de Casamento | Bem Casei'
+				'pagetitle'=>'Guia de Casamento | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'rsvp'=>[
 
-				'pagetitle'=>'RSVP | Bem Casei'
+				'pagetitle'=>'RSVP | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'mensagens'=>[
 
-				'pagetitle'=>'Mensagens | Bem Casei'
+				'pagetitle'=>'Mensagens | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'album'=>[
 
-				'pagetitle'=>'Album | Bem Casei'
+				'pagetitle'=>'Album | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'videos'=>[
 
-				'pagetitle'=>'Vídeos | Bem Casei'
+				'pagetitle'=>'Vídeos | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'eventos'=>[
 
-				'pagetitle'=>'Eventos | Bem Casei'
+				'pagetitle'=>'Eventos | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'fornecedores'=>[
 
-				'pagetitle'=>'Fornecedores | Bem Casei'
+				'pagetitle'=>'Fornecedores | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'listas-de-fora'=>[
 
-				'pagetitle'=>'Listas de Fora | Bem Casei'
+				'pagetitle'=>'Listas de Fora | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'social'=>[
 
-				'pagetitle'=>'Social | Bem Casei'
+				'pagetitle'=>'Social | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'tags-papelaria'=>[
 
-				'pagetitle'=>'Tags e Papelaria | Bem Casei'
+				'pagetitle'=>'Tags e Papelaria | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'termos-uso'=>[
 
-				'pagetitle'=>'Termos de Uso | Bem Casei'
+				'pagetitle'=>'Termos de Uso | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'termos-lista'=>[
 
-				'pagetitle'=>'Termos da Lista de Presentes Virtuais | Bem Casei'
+				'pagetitle'=>'Termos da Lista | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'politica-privacidade'=>[
 
-				'pagetitle'=>'Política de Privacidade | Bem Casei'
+				'pagetitle'=>'Política de Privacidade | Bem Casei',
+				'card-payment-js'=>0
 			],
 
 			'mudar-senha'=>[
 
-				'pagetitle'=>'Meus Dados | Bem Casei'
+				'pagetitle'=>'Meus Dados | Bem Casei',
+				'card-payment-js'=>0
 			]
 
 		];
@@ -553,67 +583,91 @@ class PageConfig extends Model
 			'index'=>[
 
 
-				'pagetitle'=>''
+				'pagetitle'=>'',
+				'card-payment-js'=>0
 
 
 			],
 
 			'casamento'=>[
 
-				'pagetitle'=>'Casamento | '
+				'pagetitle'=>'Casamento | ',
+				'card-payment-js'=>0
 
 			],
 
 			'festa-de-casamento'=>[
 
-				'pagetitle'=>'Festa de Casamento | '
+				'pagetitle'=>'Festa de Casamento | ',
+				'card-payment-js'=>0
 			],
 
 
 			'padrinhos-madrinhas'=>[
 
-				'pagetitle'=>'Padrinhos e Madrinhas | '
+				'pagetitle'=>'Padrinhos e Madrinhas | ',
+				'card-payment-js'=>0
 			],
 
 			'rsvp'=>[
 
-				'pagetitle'=>'RSVP | '
+				'pagetitle'=>'RSVP | ',
+				'card-payment-js'=>0
 			],
 
 			'mural-mensagens'=>[
 
-				'pagetitle'=>'Mural Mensagens | '
+				'pagetitle'=>'Mural Mensagens | ',
+				'card-payment-js'=>0
 			],
 
 			'loja'=>[
 
-				'pagetitle'=>'Loja | '
+				'pagetitle'=>'Loja | ',
+				'card-payment-js'=>0
 			],
 
 			'eventos'=>[
 
-				'pagetitle'=>'Eventos | '
+				'pagetitle'=>'Eventos | ',
+				'card-payment-js'=>0
 			],
 
 			'album'=>[
 
-				'pagetitle'=>'Album | '
+				'pagetitle'=>'Album | ',
+				'card-payment-js'=>0
 			],
 
-			'videoS'=>[
+			'videos'=>[
 
-				'pagetitle'=>'Vídeos | '
+				'pagetitle'=>'Vídeos | ',
+				'card-payment-js'=>0
 			],
 
 			'fornecedores'=>[
 
-				'pagetitle'=>'Fornecedores | '
+				'pagetitle'=>'Fornecedores | ',
+				'card-payment-js'=>0
 			],
 
 			'listas-de-fora'=>[
 
-				'pagetitle'=>'Listas de Fora | '
-			]
+				'pagetitle'=>'Listas de Fora | ',
+				'card-payment-js'=>0
+			],
+
+			'carrinho'=>[
+
+				'pagetitle'=>'Carrinho | ',
+				'card-payment-js'=>0
+			],
+
+			'checkout'=>[
+
+				'pagetitle'=>'Checkout | ',
+				'card-payment-js'=>1
+			],
 
 		];
 

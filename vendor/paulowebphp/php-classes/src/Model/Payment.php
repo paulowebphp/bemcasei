@@ -5,7 +5,7 @@ namespace Core\Model;
 use \Core\DB\Sql;
 use \Core\Rule;
 use \Core\Model;
-use \Core\Model\Payment;
+//use \Core\Model\Payment;
 use \Moip\Moip;
 use \Moip\Auth\OAuth;
 
