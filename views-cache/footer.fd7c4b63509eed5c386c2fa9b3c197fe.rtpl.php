@@ -117,7 +117,7 @@
 
 
 
-    <a href="https://wa.me/5531984050125?text=Quero%20falar%20com%20um%20consultor%20do%20Bem%20Casei" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;z-index:1000;" target="_blank">
+    <a href="https://api.whatsapp.com/send?phone=5531984050125&text=Quero%20falar%20com%20algu%C3%A9m%20da%20Equipe%20de%20Suporte%20do%20Bem%20Casei!" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;z-index:1000;" target="_blank">
       <i style="margin-top:16px" class="fa fa-whatsapp"></i>
   </a>
 
@@ -139,6 +139,11 @@
     <script type="text/javascript" src="/res/js/jscolor.js"></script>
 
     <script type="text/javascript" src="/res/js/bootstrap.min.js"></script>
+
+    <?php if( getDashPageConfig('card-payment-js') == 1 ){ ?>
+    <script type="text/javascript" src="/res/js/jquery.payment.min.js"></script>
+    <script type="text/javascript" src="/res/js/card-payment.js"></script>
+    <?php } ?>
     
     <script type="text/javascript" src="/res/js/main2.js"></script>
 

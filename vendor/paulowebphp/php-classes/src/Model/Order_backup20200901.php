@@ -729,11 +729,12 @@ class Order extends Model
 		    FROM tb_orders a
 		    INNER JOIN tb_users b ON a.iduser = b.iduser
 		    INNER JOIN tb_carts c ON a.idcart = c.idcart
+            INNER JOIN tb_cartsitems h ON a.idcart = h.idcart
 		    INNER JOIN tb_customers d ON a.idcustomer = d.idcustomer
 		    INNER JOIN tb_payments e ON a.idpayment = e.idpayment
 		    INNER JOIN tb_fees f ON a.idpayment = f.idpayment
 		    WHERE a.iduser = :iduser
-            AND c.incartitem = :initem
+            AND h.initem = :initem
 			AND e.inpaymentstatus <> 6
 			ORDER BY a.dtregister DESC
 			LIMIT $start, $itensPerPage;
@@ -853,11 +854,12 @@ class Order extends Model
 			SELECT SQL_CALC_FOUND_ROWS *
 		    FROM tb_orders a
 		    INNER JOIN tb_users b ON a.iduser = b.iduser
+		    INNER JOIN tb_cartsitems h ON a.idcart = h.idcart
 		    INNER JOIN tb_customers d ON a.idcustomer = d.idcustomer
 		    INNER JOIN tb_payments e ON a.idpayment = e.idpayment
 		    INNER JOIN tb_fees f ON a.idpayment = f.idpayment
 		    WHERE a.iduser = :iduser
-		    AND c.incartitem = :initem
+		    AND h.initem = :initem
 		    AND e.inpaymentstatus <> 6
 			AND d.desname LIKE :search 
 			ORDER BY a.dtregister DESC
@@ -1002,10 +1004,10 @@ class Order extends Model
 			SUM(a.vlprocessor) as sumvlprocessor
 		    FROM tb_orders a
 		    INNER JOIN tb_users b ON a.iduser = b.iduser
-            INNER JOIN tb_carts d ON a.idcart = d.idcart
+            INNER JOIN tb_cartsitems d ON a.idcart = d.idcart
 		    INNER JOIN tb_payments e ON a.idpayment = e.idpayment
 		    WHERE a.iduser = :iduser
-		    AND d.incartitem = :initem
+		    AND d.initem = :initem
             AND e.inpaymentstatus <> 6;
 
 
@@ -1090,10 +1092,10 @@ class Order extends Model
 			SUM(a.vlprocessor) as sumvlprocessor
 		    FROM tb_orders a
 		    INNER JOIN tb_users b ON a.iduser = b.iduser
-            INNER JOIN tb_carts d ON a.idcart = d.idcart
+            INNER JOIN tb_cartsitems d ON a.idcart = d.idcart
 		    INNER JOIN tb_payments e ON a.idpayment = e.idpayment
 		    WHERE a.iduser = :iduser
-		    AND d.incartitem = :initem
+		    AND d.initem = :initem
             AND e.inpaymentstatus NOT IN (6,7,8);
 
 
@@ -1186,10 +1188,10 @@ class Order extends Model
 		    FROM tb_orders a
 		    INNER JOIN tb_users b ON a.iduser = b.iduser
 		    INNER JOIN tb_carts c ON a.idcart = c.idcart
-            INNER JOIN tb_carts d ON a.idcart = d.idcart
+            INNER JOIN tb_cartsitems d ON a.idcart = d.idcart
 		    INNER JOIN tb_payments e ON a.idpayment = e.idpayment
 		    WHERE a.iduser = :iduser
-		    AND d.incartitem = :initem
+		    AND d.initem = :initem
 		    AND e.inrefunded = 0
 		    AND e.inpaymentstatus <> 6 AND e.inpaymentstatus = :inpaymentstatus;
             
