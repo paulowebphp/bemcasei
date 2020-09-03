@@ -1484,6 +1484,55 @@ $(document).on('change', '#state2', function(e){
 
 
 
+/******************** STATE2 ***************************************************/
+/******************** STATE2 ***************************************************/
+/******************** STATE2 ***************************************************/
+/******************** STATE2 ***************************************************/
+
+$(document).on('change', '#state3', function(e){
+
+	var idstate3 = $(this).val();
+
+
+
+	 $.ajax({
+
+        type:"GET",
+        data: "idstate="+idstate3,
+        url: "/address/state"
+
+    }).done( function( data ) {
+
+        var city3 = '';
+
+        console.log(data);
+
+        $.each($.parseJSON(data), function(key,value){
+
+            city3 += '<option value="'+ value.idcity+'">' + value.descity + '</option>';
+        });
+
+        $('#city3').html(city3);
+
+
+    }).fail(function(data){
+
+        console.error("Houve um erro no carregamento das cidades devido a uma lentidão na internet, tente novamente");
+
+    });
+
+
+
+});
+/******************** STATE2 ***************************************************/
+/******************** STATE2 ***************************************************/
+/******************** STATE2 ***************************************************/
+/******************** STATE2 ***************************************************/
+
+
+
+
+
 
 
 

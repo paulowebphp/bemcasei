@@ -145,7 +145,7 @@ $app->get( "/dashboard/comprar-plano/cadastrar", function()
 			'validate'=>$validate,
 			'error'=>Account::getError(),
 			'success'=>Account::getSuccess(),
-			'planPurchaseRegisterValues'=> (isset($_SESSION["planPurchaseRegisterValues"])) ? $_SESSION["planPurchaseRegisterValues"] : ['desdocument'=>'', 'nrddd'=>'', 'nrphone'=>'', 'dtbirth'=>'', 'zipcode'=>'', 'desaddress'=>'', 'desnumber'=>'', 'descomplement'=>'', 'desdistrict'=>'', 'desstate'=>'', 'descity'=>'']
+			'planPurchaseRegisterValues'=> (isset($_SESSION["planPurchaseRegisterValues"])) ? $_SESSION["planPurchaseRegisterValues"] : ['desdocument'=>'', 'nrddd'=>'', 'nrphone'=>'', 'dtbirth'=>'', 'deszipcode'=>'', 'desaddress'=>'', 'desnumber'=>'', 'descomplement'=>'', 'desdistrict'=>'', 'desstate'=>'', 'descity'=>'']
 
 
 		]
@@ -506,9 +506,9 @@ $app->post( "/dashboard/comprar-plano/cadastrar", function()
 	
 	if( 
 		
-		!isset($_POST['zipcode']) 
+		!isset($_POST['deszipcode']) 
 		|| 
-		$_POST['zipcode'] === ''
+		$_POST['deszipcode'] === ''
 	)
 	{
 
@@ -524,7 +524,7 @@ $app->post( "/dashboard/comprar-plano/cadastrar", function()
 
 
 
-	if( !$deszipcode = Validate::validateCEP($_POST['zipcode']) )
+	if( !$deszipcode = Validate::validateCEP($_POST['deszipcode']) )
 	{
 
 		Account::setError(Rule::VALIDATE_ZIPCODE);
@@ -1106,16 +1106,6 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 
 
 
-	if ( (int)$user->getinaccount() == 0 )
-	{
-		# code...
-		header("Location: /dashboard/comprar-plano/cadastrar?plano=".$inplancode);
-		exit;
-		
-	}//end if
-
-
-
 
 	/*$payment = new Payment();
 
@@ -1142,7 +1132,60 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 
 	$inplan = Plan::getPlanArray($inplancode);
 
-	//$address = new Address();
+	$address = new Address();
+
+	$address->get((int)$user->getiduser());
+
+
+
+
+	//$state = Address::listAllStates();
+	$state = Address::listAllStates();
+
+
+
+	$city = [];
+
+	if ( (int)$address->getidstate() > 0 ) 
+	{
+		# code...
+		$city = Address::listAllCitiesByState((int)$address->getidstate());
+
+	}//end if
+	else
+	{
+
+		$city = Address::listAllCitiesByState(1);
+
+		
+
+	}//end else
+
+
+
+
+	$city2 = [];
+	
+
+	if ( isset($_SESSION["planPurchaseValues"]) ) 
+	{
+		# code...
+		$city2 = Address::listAllCitiesByState($_SESSION["planPurchaseValues"]['desstate']);
+
+	}//end if
+	else
+	{
+
+		$city2 = Address::listAllCitiesByState(1);
+	
+
+	}//end else
+
+
+
+
+
+
 
 	//$lastAddressPlan = Address::getLastAddressPlan($user->getiduser());
 
@@ -1493,8 +1536,6 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 
 
 
-
-
 		}//end else
 
 
@@ -1503,9 +1544,8 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 
 
 
-
-
-
+	
+	
 
 
 
@@ -1517,6 +1557,10 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 
 		[
 			'user'=>$user->getValues(),
+			'address'=>$address->getValues(),
+			'state'=>$state,
+			'city'=>$city,
+			'city2'=>$city2,
 			//'payment'=>$payment->getValues(),
 			'inplan'=>$inplan,
 			'inplancode'=>$inplancode,
@@ -1527,7 +1571,7 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 			'validate'=>$validate,
 			'error'=>Payment::getError(),
 			'success'=>Payment::getSuccess(),
-			'planPurchaseValues'=> (isset($_SESSION["planPurchaseValues"])) ? $_SESSION["planPurchaseValues"] : ['desholderdocument'=>'', 'nrholderddd'=>'', 'nrholderphone'=>'', 'dtholderbirth'=>'', 'zipcode'=>'', 'desholderaddress'=>'', 'desholdernumber'=>'', 'desholdercomplement'=>'', 'desholderdistrict'=>'', 'desholderstate'=>'', 'desholdercity'=>'']
+			'planPurchaseValues'=> (isset($_SESSION["planPurchaseValues"])) ? $_SESSION["planPurchaseValues"] : ['desname'=>'','desemail'=>'','desdocument'=>'', 'nrddd'=>'', 'nrphone'=>'', 'dtbirth'=>'', 'deszipcode'=>'', 'desaddress'=>'', 'desnumber'=>'', 'descomplement'=>'', 'desdistrict'=>'', 'desstate'=>'', 'descity'=>'']
 
 
 		]
@@ -1632,26 +1676,25 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 	if ( 
 
-		isset($_POST['checkout-own-card'])
-		||
-		isset($_POST['checkout-boleto'])
-		||
 		isset($_POST['checkout-voucher'])
 
 	) 
 	{
 		# code...
-		$_SESSION['planPurchaseValues']['dtholderbirth'] = '';
-		$_SESSION['planPurchaseValues']['desholderaddress'] = '';
-		$_SESSION['planPurchaseValues']['desholderdocument'] = '';
-		$_SESSION['planPurchaseValues']['desholdernumber'] = '';
-		$_SESSION['planPurchaseValues']['desholdercomplement'] = '';
-		$_SESSION['planPurchaseValues']['desholderdistrict'] = '';
-		$_SESSION['planPurchaseValues']['desholderstate'] = '';
-		$_SESSION['planPurchaseValues']['desholdercity'] = '';
-		$_SESSION['planPurchaseValues']['nrholderddd'] = '';
-		$_SESSION['planPurchaseValues']['nrholderphone'] = '';
-		$_SESSION['planPurchaseValues']['zipcode'] = '';
+		$_SESSION['planPurchaseValues']['nrddd'] = '';
+		$_SESSION['planPurchaseValues']['nrphone'] = '';
+		$_SESSION['planPurchaseValues']['dtbirth'] = '';
+		$_SESSION['planPurchaseValues']['desname'] = '';
+
+
+		$_SESSION['planPurchaseValues']['desaddress'] = '';
+		$_SESSION['planPurchaseValues']['desdocument'] = '';
+		$_SESSION['planPurchaseValues']['desnumber'] = '';
+		$_SESSION['planPurchaseValues']['descomplement'] = '';
+		$_SESSION['planPurchaseValues']['desdistrict'] = '';
+		$_SESSION['planPurchaseValues']['desstate'] = '';
+		$_SESSION['planPurchaseValues']['descity'] = '';
+		$_SESSION['planPurchaseValues']['deszipcode'] = '';
 	
 
 	}//end if
@@ -1740,18 +1783,6 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 	}//end else if
 	
 
-
-
-
-	
-
-	if ( (int)$user->getinaccount() == 0 )
-	{
-		# code...
-		header("Location: /dashboard/comprar-plano/cadastrar?plano=".$inplancode);
-		exit;
-		
-	}//end if
 
 
 
@@ -2079,7 +2110,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 		$desholdercity = $address->getdescity();
 		$desholderstate = $address->getdesstate();*/
 
-
+		/*
 		$inholdertypedoc = null;
 		$desholderdocument = null;
 		$nrholderddd = null;
@@ -2099,6 +2130,705 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 		$descardcode_month = null;
 		$descardcode_year = null;
 		$descardcode_cvc = null;
+		*/
+
+
+
+
+
+		if(	!isset($_POST['desname']) || $_POST['desname'] == '' )
+		{
+
+			
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+		}//end if
+
+
+
+
+
+
+
+
+		if( ( $desname = Validate::validateStringUcwords($_POST['desname'], true, false) ) === false )
+		{
+
+			
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+		}//end if
+
+
+
+		
+
+
+
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['nrddd']) 
+			|| 
+			$_POST['nrddd'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_DDD);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_DDD);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+		if( !$nrddd = Validate::validateDDD($_POST['nrddd']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_DDD);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_DDD);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['nrphone']) 
+			|| 
+			$_POST['nrphone'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_PHONE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_PHONE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		
+
+
+
+
+
+
+
+		if( !$nrphone = Validate::validatePhone($_POST['nrphone']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_PHONE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_PHONE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['dtbirth']) 
+			|| 
+			$_POST['dtbirth'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_DATE_BIRTH);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_DATE_BIRTH);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		if( !$dtbirth = Validate::validateDate($_POST['dtbirth'], 0) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_DATE_PAST_TO_NOW);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_DATE_PAST_TO_NOW);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+		if( 
+		
+			!isset($_POST['deszipcode']) 
+			|| 
+			$_POST['deszipcode'] === ''
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_ZIPCODE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_ZIPCODE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+			
+		}//end if
+
+
+		if( !$deszipcode = Validate::validateCEP($_POST['deszipcode']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_ZIPCODE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_ZIPCODE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			!isset($_POST['desaddress']) 
+			|| 
+			$_POST['desaddress'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_ADDRESS);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_ADDRESS);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		if( !$desaddress = Validate::validateStringNumber($_POST['desaddress']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_ADDRESS);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_ADDRESS);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+		if(
+			
+			!isset($_POST['desnumber']) 
+			|| 
+			$_POST['desnumber'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_NUMBER);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_NUMBER);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		if( !$desnumber = Validate::validateNumber($_POST['desnumber']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_NUMBER);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_NUMBER);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['desdistrict']) 
+			|| 
+			$_POST['desdistrict'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_DISTRICT);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_DISTRICT);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		if( !$desdistrict = Validate::validateStringNumber($_POST['desdistrict']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_DISTRICT);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_DISTRICT);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+        
+
+
+
+        if(
+				
+			!isset($_POST['descity']) 
+			|| 
+			$_POST['descity'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_CITY);
+			header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+			exit;
+
+		}//end if
+
+
+
+		if ( ( $cityArray = Address::getCity($_POST['descity']) ) === false ) 
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_CITY);
+			header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+			exit;
+
+		}//end if
+
+		$descity = $cityArray['descity'];
+
+
+
+
+
+
+
+		if(
+				
+			!isset($_POST['desstate']) 
+			|| 
+			$_POST['desstate'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_STATE);
+			header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+			exit;
+
+		}//end if
+
+
+
+		if ( ( $stateArray = Address::getState($_POST['desstate']) ) === false ) 
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_STATE);
+			header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+			exit;
+
+		}//end if
+
+
+		
+		$desstate = $stateArray['desstatecode'];
+
+
+		
+		
+		$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
+
+		$intypedoc = 0;
+
+
+
 
 		$payment->setinpaymentmethod(0);
 		$payment->setnrinstallment(1);
@@ -2117,6 +2847,71 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 	)
 	{
+
+
+		if(	!isset($_POST['desname']) || $_POST['desname'] == '' )
+		{
+
+			
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+		}//end if
+
+
+
+
+
+
+
+
+		if( ( $desname = Validate::validateStringUcwords($_POST['desname'], true, false) ) === false )
+		{
+
+			
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+		}//end if
+
 
 
 
@@ -2158,7 +2953,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		}//end if
 
-		if( !$desholderdocument = Validate::validateDocument(0, $_POST['desholderdocument']) )
+		if( !$desdocument = Validate::validateDocument(0, $_POST['desholderdocument']) )
 		{
 
 			if ( $coupon == '')
@@ -2242,7 +3037,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-		if( !$nrholderddd = Validate::validateDDD($_POST['nrholderddd']) )
+		if( !$nrddd = Validate::validateDDD($_POST['nrholderddd']) )
 		{
 
 			if ( $coupon == '')
@@ -2327,7 +3122,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-		if( !$nrholderphone = Validate::validatePhone($_POST['nrholderphone']) )
+		if( !$nrphone = Validate::validatePhone($_POST['nrholderphone']) )
 		{
 
 			if ( $coupon == '')
@@ -2404,7 +3199,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		}//end if
 
-		if( !$dtholderbirth = Validate::validateDate($_POST['dtholderbirth'], 0) )
+		if( !$dtbirth = Validate::validateDate($_POST['dtholderbirth'], 0) )
 		{
 
 			if ( $coupon == '')
@@ -2444,9 +3239,9 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		if( 
 		
-			!isset($_POST['zipcode']) 
+			!isset($_POST['deszipcode']) 
 			|| 
-			$_POST['zipcode'] === ''
+			$_POST['deszipcode'] === ''
 		)
 		{
 
@@ -2477,7 +3272,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 		}//end if
 
 
-		if( !$desholderzipcode = Validate::validateCEP($_POST['zipcode']) )
+		if( !$deszipcode = Validate::validateCEP($_POST['deszipcode']) )
 		{
 
 			if ( $coupon == '')
@@ -2551,7 +3346,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		}//end if
 
-		if( !$desholderaddress = Validate::validateStringNumber($_POST['desholderaddress']) )
+		if( !$desaddress = Validate::validateStringNumber($_POST['desholderaddress']) )
 		{
 
 			if ( $coupon == '')
@@ -2628,7 +3423,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		}//end if
 
-		if( !$desholdernumber = Validate::validateNumber($_POST['desholdernumber']) )
+		if( !$desnumber = Validate::validateNumber($_POST['desholdernumber']) )
 		{
 
 			if ( $coupon == '')
@@ -2702,7 +3497,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		}//end if
 
-		if( !$desholderdistrict = Validate::validateStringNumber($_POST['desholderdistrict']) )
+		if( !$desdistrict = Validate::validateStringNumber($_POST['desholderdistrict']) )
 		{
 
 			if ( $coupon == '')
@@ -2848,7 +3643,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		}//end if
 
-		if( !$desholdername = Validate::validateCardName($_POST['desholdername']) )
+		if( !$desname = Validate::validateCardName($_POST['desholdername']) )
 		{
 
 			if ( $coupon == '')
@@ -3135,7 +3930,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		}//end if
 
-		$desholdercity = $cityArray['descity'];
+		$descity = $cityArray['descity'];
 
 
 
@@ -3171,7 +3966,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 		
-		$desholderstate = $stateArray['desstatecode'];
+		$desstate = $stateArray['desstatecode'];
 
 
 		
@@ -3185,9 +3980,9 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 		
-		$desholdercomplement = Validate::validateStringNumber($_POST['desholdercomplement'], false, true);
+		$descomplement = Validate::validateStringNumber($_POST['desholdercomplement'], false, true);
 
-		$inholdertypedoc = 0;
+		$intypedoc = 0;
 
 
 
@@ -3218,8 +4013,1147 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
+		if(	!isset($_POST['desname']) || $_POST['desname'] == '' )
+		{
+
+			
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
 
 
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+		}//end if
+
+
+
+
+
+
+
+
+		if( ( $desname = Validate::validateStringUcwords($_POST['desname'], true, false) ) === false )
+		{
+
+			
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+		}//end if
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['desdocument']) 
+			|| 
+			$_POST['desdocument'] === ''
+			
+		)
+		{
+
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_CPF);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_CPF);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+		}//end if
+
+		if( !$desdocument = Validate::validateDocument(0, $_POST['desdocument']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_CPF);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_CPF);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+		}//end if
+		
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['nrddd']) 
+			|| 
+			$_POST['nrddd'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_DDD);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_DDD);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+		if( !$nrddd = Validate::validateDDD($_POST['nrddd']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_DDD);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_DDD);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['nrphone']) 
+			|| 
+			$_POST['nrphone'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_PHONE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_PHONE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		
+
+
+
+
+
+
+
+		if( !$nrphone = Validate::validatePhone($_POST['nrphone']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_PHONE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_PHONE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['dtbirth']) 
+			|| 
+			$_POST['dtbirth'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_DATE_BIRTH);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_DATE_BIRTH);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		if( !$dtbirth = Validate::validateDate($_POST['dtbirth'], 0) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_DATE_PAST_TO_NOW);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_DATE_PAST_TO_NOW);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+		if( 
+		
+			!isset($_POST['deszipcode']) 
+			|| 
+			$_POST['deszipcode'] === ''
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_ZIPCODE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_ZIPCODE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+			
+		}//end if
+
+
+		if( !$deszipcode = Validate::validateCEP($_POST['deszipcode']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_ZIPCODE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_ZIPCODE);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			!isset($_POST['desaddress']) 
+			|| 
+			$_POST['desaddress'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_ADDRESS);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_ADDRESS);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		if( !$desaddress = Validate::validateStringNumber($_POST['desaddress']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_ADDRESS);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_ADDRESS);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+		if(
+			
+			!isset($_POST['desnumber']) 
+			|| 
+			$_POST['desnumber'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_NUMBER);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_NUMBER);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		if( !$desnumber = Validate::validateNumber($_POST['desnumber']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_NUMBER);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_NUMBER);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['desdistrict']) 
+			|| 
+			$_POST['desdistrict'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_DISTRICT);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_DISTRICT);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		if( !$desdistrict = Validate::validateStringNumber($_POST['desdistrict']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_DISTRICT);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_DISTRICT);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+		if(
+		
+			!isset($_POST['descardcode_number']) 
+			|| 
+			$_POST['descardcode_number'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_CARD_NUMBER);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_CARD_NUMBER);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		if( !$descardcode_number = Validate::validateCardNumber($_POST['descardcode_number']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_CARD_NUMBER);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_CARD_NUMBER);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['desholdername']) 
+			|| 
+			$_POST['desholdername'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_HOLDER_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_HOLDER_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		if( !$desholdername = Validate::validateCardName($_POST['desholdername']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_HOLDER_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_HOLDER_NAME);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['descardcode_month']) 
+			|| 
+			$_POST['descardcode_month'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_CARD_MONTH);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_CARD_MONTH);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		if( !$descardcode_month = Validate::validateMonth($_POST['descardcode_month']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_CARD_MONTH);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_CARD_MONTH);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['descardcode_year']) 
+			|| 
+			$_POST['descardcode_year'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_CARD_YEAR);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_CARD_YEAR);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		if( !$descardcode_year = Validate::validateYear($_POST['descardcode_year']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_CARD_YEAR);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_CARD_YEAR);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['descardcode_cvc']) 
+			|| 
+			$_POST['descardcode_cvc'] === ''
+			
+		)
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_CARD_CVC);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_CARD_CVC);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+		if( !$descardcode_cvc = Validate::validateCvc($_POST['descardcode_cvc']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_CARD_CVC);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_CARD_CVC);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+		
+
+
+
+		if(
+				
+			!isset($_POST['descity']) 
+			|| 
+			$_POST['descity'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_CITY);
+			header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+			exit;
+
+		}//end if
+
+
+
+		if ( ( $cityArray = Address::getCity($_POST['descity']) ) === false ) 
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_CITY);
+			header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+			exit;
+
+		}//end if
+
+		$descity = $cityArray['descity'];
+
+
+
+
+
+
+
+		if(
+				
+			!isset($_POST['desstate']) 
+			|| 
+			$_POST['desstate'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_STATE);
+			header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+			exit;
+
+		}//end if
+
+
+
+		if ( ( $stateArray = Address::getState($_POST['desstate']) ) === false ) 
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_STATE);
+			header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+			exit;
+
+		}//end if
+
+
+		
+		$desstate = $stateArray['desstatecode'];
+
+
+		
+
+
+
+
+		
+		$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
+
+		$intypedoc = 0;
+
+
+
+
+
+
+
+
+
+		/*
 		if(
 		
 			!isset($_POST['descardcode_number']) 
@@ -3572,6 +5506,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 		}//end if
+		*/
 
 
 
@@ -3596,6 +5531,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 		$_POST['desholderstate'] = $address->getdesstate();*/
 		
 
+		/*
 		$inholdertypedoc = $user->getintypedoc();
 		$desholderdocument = $user->getdesdocument();
 		$nrholderddd = $user->getnrddd();
@@ -3610,6 +5546,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 		$desholdercity = $address->getdescity();
 
 		$desholderstate = $address->getdesstatecode();
+		*/
 
 		//$desholdername = $_POST['desholdername'];
 		//$descardcode_number = $_POST['descardcode_number'];
@@ -3670,21 +5607,21 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 		$desholderstate = $address->getdesstate();*/
 
 
-		$inholdertypedoc = null;
-		$desholderdocument = null;
-		$nrholderddd = null;
-		$nrholderphone = null;
-		$dtholderbirth = null;
+		$intypedoc = null;
+		$desdocument = null;
+		$nrddd = null;
+		$nrphone = null;
+		$dtbirth = null;
 		
-		$desholderzipcode = null;
-		$desholderaddress = null;
-		$desholdernumber = null;
-		$desholdercomplement = null;
-		$desholderdistrict = null;
-		$desholdercity = null;
-		$desholderstate = null;
+		$deszipcode = null;
+		$desaddress = null;
+		$desnumber = null;
+		$descomplement = null;
+		$desdistrict = null;
+		$descity = null;
+		$desstate = null;
 
-		$desholdername = null;
+		$desname = null;
 		$descardcode_number = null;
 		$descardcode_month = null;
 		$descardcode_year = null;
@@ -3732,10 +5669,10 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 	exit;*/
 
 
+	$nrcountryarea = Rule::NR_COUNTRY_AREA;
+	$descountrycode = Rule::DESCOUNTRYCODE;
 
-
-
-	$desholderstate = $address->getdesstatecode();
+	//$desholderstate = $address->getdesstatecode();
 
 
 	$cart = new Cart();
@@ -3762,8 +5699,31 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 	//$account->get((int)$user->getiduser());
 
 
-
-
+	/*
+	echo '<pre>';
+	var_dump($desname);
+			var_dump($user->getdesemail());
+			var_dump($dtbirth);
+			var_dump($intypedoc);
+			var_dump($desdocument);
+			var_dump($payment->getinpaymentmethod());
+			var_dump($nrcountryarea);
+			var_dump($nrddd);
+			var_dump($nrphone);
+			var_dump($deszipcode);
+			var_dump($desaddress);
+			var_dump($desnumber);
+			var_dump($descomplement);
+			var_dump($desdistrict);
+			var_dump($descity);
+			var_dump($desstate);
+			var_dump($desholdername);
+			var_dump($descardcode_month);
+			var_dump($descardcode_year);
+			var_dump($descardcode_number);
+			var_dump($descardcode_cvc);
+			exit;
+			*/
 
 
 	
@@ -3777,22 +5737,22 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		$wirecardCustomerData = $wirecard->createCustomer(
 
-			$user->getdesperson(),
+			$desname,
 			$user->getdesemail(),
-			$user->getdtbirth(),
-			$user->getintypedoc(),
-			$user->getdesdocument(),
+			$dtbirth,
+			$intypedoc,
+			$desdocument,
 			$payment->getinpaymentmethod(),
-			$user->getnrcountryarea(),
-			$user->getnrddd(),
-			$user->getnrphone(),
-			$address->getdeszipcode(),
-			$address->getdesaddress(),
-			$address->getdesnumber(),
-			$address->getdescomplement(),
-			$address->getdesdistrict(),
-			$address->getdescity(),
-			$address->getdesstatecode(),
+			$nrcountryarea,
+			$nrddd,
+			$nrphone,
+			$deszipcode,
+			$desaddress,
+			$desnumber,
+			$descomplement,
+			$desdistrict,
+			$descity,
+			$desstate,
 			$desholdername,
 			$descardcode_month,
 			(int)$descardcode_year,
@@ -3837,26 +5797,26 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 			'iduser'=>$user->getiduser(),
 			'descustomercode'=>$wirecardCustomerData['descustomercode'],
-			'desname'=>$user->getdesperson(),
+			'desname'=>$desname,
 			'desemail'=>$user->getdesemail(),
-			'nrcountryarea'=>$user->getnrcountryarea(),
-			'nrddd'=>$user->getnrddd(),
-			'nrphone'=>$user->getnrphone(),
-			'intypedoc'=>$user->getintypedoc(),
-			'desdocument'=>$user->getdesdocument(),
-			'deszipcode'=>$address->getdeszipcode(),
-			'desaddress'=>$address->getdesaddress(),
-			'desnumber'=>$address->getdesnumber(),
-			'descomplement'=>$address->getdescomplement(),
-			'desdistrict'=>$address->getdesdistrict(),
-			'descity'=>$address->getdescity(),
-			'desstate'=>$address->getdesstatecode(),
-			'descountry'=>$address->getdescountrycode(),
+			'nrcountryarea'=>$nrcountryarea,
+			'nrddd'=>$nrddd,
+			'nrphone'=>$nrphone,
+			'intypedoc'=>$intypedoc,
+			'desdocument'=>$desdocument,
+			'deszipcode'=>$deszipcode,
+			'desaddress'=>$desaddress,
+			'desnumber'=>$desnumber,
+			'descomplement'=>$descomplement,
+			'desdistrict'=>$desdistrict,
+			'descity'=>$descity,
+			'desstate'=>$desstate,
+			'descountry'=>$descountrycode,
 			'descardcode'=>$wirecardCustomerData['descardcode'],
 			'desbrand'=>$wirecardCustomerData['desbrand'],
 			'infirst6'=>$wirecardCustomerData['infirst6'],
 			'inlast4'=>$wirecardCustomerData['inlast4'],
-			'dtbirth'=>$user->getdtbirth()
+			'dtbirth'=>$dtbirth
 
 		]);//end setData
 
@@ -3972,20 +5932,20 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 			$customer->getdescustomercode(),
 			$cart->getidcart(),
-			Rule::NR_COUNTRY_AREA,
-			$nrholderddd,
-			$nrholderphone,
-			$desholdername,
-			$dtholderbirth,
-			$inholdertypedoc,
-			$desholderdocument,
-			$desholderzipcode,
-			$desholderaddress,
-			$desholdernumber,
-			$desholdercomplement,
-			$desholderdistrict,
-			$desholdercity,
-			$desholderstate,
+			$nrcountryarea,
+			$nrddd,
+			$nrphone,
+			$desname,
+			$dtbirth,
+			$intypedoc,
+			$desdocument,
+			$deszipcode,
+			$desaddress,
+			$desnumber,
+			$descomplement,
+			$desdistrict,
+			$descity,
+			$desstate,
 			$payment->getinpaymentmethod(),
 			$payment->getnrinstallment(),
 			$descardcode_month,
@@ -4039,19 +5999,19 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 			'deslinecode'=>$wirecardPaymentData['deslinecode'],
 			'desprinthref'=>$wirecardPaymentData['desprinthref'],
 			'desholdername'=>$desholdername,
-			'nrholdercountryarea'=>Rule::NR_COUNTRY_AREA,
-			'nrholderddd'=>$nrholderddd,
-			'nrholderphone'=>$nrholderphone,
-			'inholdertypedoc'=>$inholdertypedoc,
-			'desholderdocument'=>$desholderdocument,
-			'desholderzipcode'=>$desholderzipcode,
-			'desholderaddress'=>$desholderaddress,
-			'desholdernumber'=>$desholdernumber,
-			'desholdercomplement'=>$desholdercomplement,
-			'desholderdistrict'=>$desholderdistrict,
-			'desholdercity'=>$desholdercity,
-			'desholderstate'=>$desholderstate,
-			'dtholderbirth'=>$dtholderbirth
+			'nrholdercountryarea'=>$nrcountryarea,
+			'nrholderddd'=>$nrddd,
+			'nrholderphone'=>$nrphone,
+			'inholdertypedoc'=>$intypedoc,
+			'desholderdocument'=>$desdocument,
+			'desholderzipcode'=>$deszipcode,
+			'desholderaddress'=>$desaddress,
+			'desholdernumber'=>$desnumber,
+			'desholdercomplement'=>$descomplement,
+			'desholderdistrict'=>$desdistrict,
+			'desholdercity'=>$descity,
+			'desholderstate'=>$desstate,
+			'dtholderbirth'=>$dtbirth
 
 		]);//end setData
 
@@ -4329,6 +6289,10 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 	//$user->setinstatus('1');
 	
 	//$user->setdtplanend($plan->getdtend());
+
+
+
+
 
 	
 

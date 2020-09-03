@@ -637,9 +637,31 @@ class Wirecard extends Model
 		    if( $uri[1] == 'dashboard' )
 		    {
 
-		    	Payment::setError(Rule::CUSTOMER_UNEXPECTED);
-				header('Location: /dashboard/meu-plano');
-				exit;
+				if( $uri[2] == 'comprar-plano' )
+				{
+
+					Plan::setError(Rule::CUSTOMER_UNEXPECTED);
+					header('Location: /dashboard/comprar-plano');
+					exit;
+
+				}//end if
+				elseif( $uri[2] == 'upgrade' )
+				{
+					
+					Plan::setError(Rule::CUSTOMER_UNEXPECTED);
+					header('Location: /dashboard/upgrade');
+					exit;
+
+				}//end elseif
+				elseif( $uri[2] == 'renovar' )
+				{
+
+					Plan::setError(Rule::CUSTOMER_UNEXPECTED);
+					header('Location: /dashboard/renovar');
+					exit;
+
+
+				}//end else
 
 		    }//end if
 		    else if( $uri[1] == 'checkout' )

@@ -1,6 +1,6 @@
 <?php
 
-use Core\Mailer;
+//use Core\Mailer;
 use Core\Maintenance;
 use Core\PageDashboard;
 use Core\Rule;
@@ -8,15 +8,15 @@ use Core\Validate;
 use Core\Wirecard;
 use Core\Model\Account;
 use Core\Model\Address;
-use Core\Model\Cart;
-use Core\Model\Consort;
-use Core\Model\Coupon;
-use Core\Model\Customer;
-use Core\Model\Fee;
-use Core\Model\Order;
-use Core\Model\Plan;
+//use Core\Model\Cart;
+//use Core\Model\Consort;
+//use Core\Model\Coupon;
+//use Core\Model\Customer;
+//use Core\Model\Fee;
+//use Core\Model\Order;
+//use Core\Model\Plan;
 use Core\Model\Payment;
-use Core\Model\PaymentStatus;
+//use Core\Model\PaymentStatus;
 use Core\Model\User;
 
 
@@ -97,18 +97,17 @@ $app->get( "/dashboard/cadastrar", function()
 
 
 	$state = Address::listAllStates();
-
 	$city = Address::listAllCitiesByState(1);
 	
 
-
+	
 
 
 	$page = new PageDashboard();
 
 	$page->setTpl(
 		
-		"account",
+		"accounts",
 
 		[
 			'user'=>$user->getValues(),
@@ -772,8 +771,26 @@ $app->post( "/dashboard/cadastrar", function()
 	}//end if
 
 
+
+
 	
 
+	if(
+		
+		!isset($_POST['interms']) 
+		|| 
+		$_POST['interms'] === ''
+		||
+		(int)$_POST['interms'] != 1
+		
+	)
+	{
+
+		Account::setError(Rule::ERROR_INTERMS);
+		header('Location: /dashboard/cadastrar');
+		exit;
+
+	}//end if
 
 
 
@@ -881,7 +898,7 @@ $app->post( "/dashboard/cadastrar", function()
 
 	
 
-	$account->save();
+	$account->update();
 
 
 	/*
@@ -896,9 +913,8 @@ $app->post( "/dashboard/cadastrar", function()
 
 
 
-
-
-
+	/*
+	
 	$address = new Address();
 
 	$address->get((int)$user->getiduser());
@@ -931,6 +947,8 @@ $app->post( "/dashboard/cadastrar", function()
 
 
 	$address->update();
+	
+	*/
 
 
 
@@ -952,24 +970,26 @@ $app->post( "/dashboard/cadastrar", function()
 
 
 
-	//$timezone = new DateTimeZone('America/Sao_Paulo');
-
-	//$dt_now = new DateTime("now");
-
-	//$dt_now->setTimezone($timezone);
+	$timezone = new DateTimeZone('America/Sao_Paulo');
+	$dt_now = new DateTime("now");
+	$dt_now->setTimezone($timezone);
 
 
 	
 
 
-	$user->setdesdocument($account->getdesdocument());
-	$user->setnrcountryarea($account->getnrcountryarea());
-	$user->setnrddd($account->getnrddd());
-	$user->setnrphone($account->getnrphone());
-	$user->setdtbirth($account->getdtbirth());
-	//$user->setdtterms($dt_now->format('Y-m-d H:i:s'));
-	//$user->setdesipterms($_SERVER['REMOTE_ADDR']);
-	//$user->setinterms($_POST['interms']);
+	//$user->setdesdocument($account->getdesdocument());
+	//$user->setnrcountryarea($account->getnrcountryarea());
+	//$user->setnrddd($account->getnrddd());
+	//$user->setnrphone($account->getnrphone());
+	//$user->setdtbirth($account->getdtbirth());
+
+	
+
+	$user->setdtterms($dt_now->format('Y-m-d H:i:s'));
+	$user->setdesipterms($_SERVER['REMOTE_ADDR']);
+	$user->setinterms($_POST['interms']);
+
 	$user->setinaccount(1);
 
 	

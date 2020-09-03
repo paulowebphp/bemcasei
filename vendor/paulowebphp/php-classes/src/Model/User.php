@@ -3083,41 +3083,19 @@ class User extends Model
 
 
 			
+		
 
+			*/
 
 
 			
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			$address = new Address();
 
 
-
-
 			$address->get((int)$this->getiduser());
-
-
 
 
 			$address->setData([
@@ -3141,14 +3119,14 @@ class User extends Model
 			]);//end setData
 
 
-
-
 			$address->update();
 
-*/
 
 
-			
+
+
+
+
 
 
 

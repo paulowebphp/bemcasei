@@ -1777,6 +1777,9 @@ label{
   margin: 0 auto;
   padding:4%;
 }
+.payment-warn h3{
+  font-size:1.5rem;
+}
 .payment-warn p{
   font-size: 1.2rem;
 }

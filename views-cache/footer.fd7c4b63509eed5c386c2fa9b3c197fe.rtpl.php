@@ -135,7 +135,7 @@
     <script type="text/javascript" src="/res/js/popper.min.js"></script>
 
     
-    <script type="text/javascript" src="/res/js/jquery.payment.min.js"></script>
+    
     <script type="text/javascript" src="/res/js/jscolor.js"></script>
 
     <script type="text/javascript" src="/res/js/bootstrap.min.js"></script>

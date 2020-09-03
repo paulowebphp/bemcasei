@@ -463,26 +463,6 @@
 
 
 		            <div class="col-md-7">
-		            
-
-		          			
-
-		            	<?php if( $invoucher == 0 ){ ?>
-						<div class="row">
-		    				
-		    				<ul class="nav domain-checkout-buttons">
-
-								<li id="options-payments1" class="nav-item options-button options-selected"><button>Cartão de Crédito Próprio</button></li>
-								<li id="options-payments2" class="nav-item options-button"><button>Boleto</button></li>
-								<li id="options-payments3" class="nav-item options-button"><button>Cartão de Crédito de Terceiro</button></li>
-								
-							</ul>
-
-		    			</div><!--row-->
-
-		            		
-
-
 
 
 
@@ -512,6 +492,34 @@
                             </div> 
                         </div>  
                     	<?php } ?>
+		            
+
+							  
+						
+
+
+
+		            	<?php if( $invoucher == 0 ){ ?>
+						<div class="row">
+		    				
+		    				<ul class="nav domain-checkout-buttons">
+
+								<li id="options-payments1" class="nav-item options-button options-selected"><button>Cartão de Crédito Próprio</button></li>
+								<li id="options-payments2" class="nav-item options-button"><button>Boleto</button></li>
+								<li id="options-payments3" class="nav-item options-button"><button>Cartão de Crédito de Terceiro</button></li>
+								
+							</ul>
+
+		    			</div><!--row-->
+
+		            		
+
+
+
+
+
+
+						
 		               
 
 
@@ -522,111 +530,461 @@
 
 
 
+						<div id="payment-inputs1" style="display:block;">
 
-		    			<div id="payment-inputs1" style="display:block;">
-    				
+		    				
+							<div class="row">
 
+								<div class="col-md-6">
 
-							<div class="row centralizer">
-								
-								<div class="col-md-8 col-12">
-
-									<div class="payment-block card-info">
+									<div class="payment-block">
+								                				
 										
+														
+											
+																			
 										<form id="checkout-form1" action="/dashboard/comprar-plano/checkout" class="checkout" method="post" name="checkout">
 
-
-					    					<input type="hidden" value="<?php echo htmlspecialchars( $inplancode, ENT_COMPAT, 'UTF-8', FALSE ); ?>" name="plano">
+			    							
+											<input type="hidden" value="<?php echo htmlspecialchars( $inplancode, ENT_COMPAT, 'UTF-8', FALSE ); ?>" name="plano">
 
 											<input type="hidden" name="cupom" value="<?php echo htmlspecialchars( $coupon, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 											<input type="hidden" name="checkout-own-card" value="checkout-own-card">
 
-											<div class='card-wrapper'></div>
 
 
-						          					
-											<div class="row2">
-												<input type="text" placeholder="Número do Cartão" name="descardcode_number" class="input-text cc-number">
-											</div>
+
+
 
 											<div class="row2">
-												<input type="text" placeholder="Nome como está no cartão" name="desholdername" class="input-text ">
+												<input type="text" placeholder="Nome do Titular do Cartão" name="desname" class="input-text" value="<?php echo htmlspecialchars( $user["desperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 											</div>
+
+
+											
+
+												
+											
+
+
+
+
 
 
 											<div class="row2 row">
 
-												<div class="col-6">
-													<input type="text" placeholder="Mês (XX)" name="descardcode_month" class="input-text ">
+												<div class="col-md-5">
+													<input type="text" placeholder="DDD" name="nrddd" class="input-text" value="<?php echo htmlspecialchars( $user["nrddd"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 												</div>
 
 
 
-												<div class="col-6">
-													<input type="text" placeholder="Ano (XXXX)" name="descardcode_year" class="input-text ">
+												<div class="col-md-7">
+													<input type="text" placeholder="Telefone" name="nrphone" class="input-text" value="<?php echo htmlspecialchars( $user["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 												</div>
 
 											</div>
 
 
+
+
+
+
+
+
+
+											<div class="birth-field-text row2 row">
+
+												<div class="birth-field-label col-4">
+													
+													<label for="payment_birth_1">Nascimento:</label>
+													
+												</div>
+
+
+
+												<div class="col-8">
+													<input type="date" placeholder="Nascimento" name="dtbirth" class="input-text" value="<?php echo htmlspecialchars( $user["dtbirth"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+													
+												</div>
+
+											</div>
+
+
+										</div><!--payment-block-->
+
+
+										<div class="payment-block">
+
+
+
+									
+											<div class="row2">
+												<input type="text" placeholder="CEP do Titular do Cartão" name="deszipcode" class="input-text" value="<?php echo htmlspecialchars( $address["deszipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+												<!--<input type="submit" Atualizar CEP" id="place_order" class="button alt" formaction="/checkout" formmethod="get">-->
+											</div>
 
 											<div class="row2">
-												<input type="text" placeholder="Código de Segurança" name="descardcode_cvc" class="input-text ">
+												<input type="text" placeholder="Logradouro, rua, avenida" name="desaddress" class="input-text" value="<?php echo htmlspecialchars( $address["desaddress"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 											</div>
+
+											<div class="row2">
+												<input type="text" placeholder="Número" name="desnumber" class="input-text" value="<?php echo htmlspecialchars( $address["desnumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+											</div>
+
+											<div class="row2">
+												<input type="text" placeholder="Complemento (opcional)" name="descomplement" class="input-text" value="<?php echo htmlspecialchars( $address["descomplement"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+							                </div>
+
+							                <div class="row2">
+												<input type="text" placeholder="Bairro" name="desdistrict" class="input-text" value="<?php echo htmlspecialchars( $address["desdistrict"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+											</div>
+
 
 
 
 											
 
 
-											<div class="flex">
-												<input type="submit" id="checkout1" name="checkout1" class="button4" value="Efetuar Pagamento">
-												<div class="load" id="load1"></div>
-											</div><!--payment-->
+											<div class="state-city">
+												
+												<label for="state">Estado</label>
+												<select id="state" form="checkout-form1" name="desstate">
+							                    	
+													<?php $counter1=-1;  if( isset($state) && ( is_array($state) || $state instanceof Traversable ) && sizeof($state) ) foreach( $state as $key1 => $value1 ){ $counter1++; ?> 
+														<option value="<?php echo htmlspecialchars( $value1["idstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idstate"] == $address["idstate"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+													<?php } ?>
+
+												</select>
+												
+
+												
+
+											</div>
 
 
-										</form>
+
+
+
+											<div class="state-city">
+												
+												<label for="city">Cidade</label>
+												<select id="city" form="checkout-form1" name="descity">
+							                    	<?php $counter1=-1;  if( isset($city) && ( is_array($city) || $city instanceof Traversable ) && sizeof($city) ) foreach( $city as $key1 => $value1 ){ $counter1++; ?>
+														<option value="<?php echo htmlspecialchars( $value1["idcity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idcity"] == $address["idcity"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+													<?php } ?>
+							                </select>
+
+											</div>
+
+										</div>
 
 									</div>
 
-								</div><!--payment-block-->
+									<div class="col-md-6">
+
+										<div class="row">
+											<div class="col-12">
+												<div class="payment-block">
+													<div class="row2">
+														<input type="text" placeholder="Seu CPF" name="desdocument" class="input-text" value="<?php echo htmlspecialchars( $user["desdocument"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+													</div>
+												</div>
+											</div>
+										</div>
+										
 
 
-							</div>
-
-		    			</div><!--payment-inputs-->
-
+									<div class="row">
+										<div class="col-12 payment-block card-info">
 
 
+											<div class='card-wrapper'></div>
+	
+																					
+											<div class="row2">
+												<input type="text" placeholder="Número do Cartão" name="descardcode_number" class="input-text cc-number">
+											</div>
+	
+											<div class="row2">
+												<input type="text" placeholder="Nome como está no cartão" name="desholdername" class="input-text ">
+											</div>
+	
+	
+											<div class="row2 row">
+	
+												<div class="col-6">
+													<input type="text" placeholder="Mês (XX)" name="descardcode_month" class="input-text ">
+														
+												</div>
+	
+	
+	
+												<div class="col-6">
+													<input type="text" placeholder="Ano (XXXX)" id="payment_cardyear_1" name="descardcode_year" class="input-text ">
+														
+												</div>
+	
+											</div>
+	
+	
+	
+											<div class="row2">
+												<input type="text" placeholder="Código de Segurança" name="descardcode_cvc" class="input-text ">
+											</div>		
+	
+	
+											<div class="flex">
+												<input type="submit" id="checkout1" name="checkout1" class="button4" value="Efetuar Pagamento">
+												<div class="load" id="load1"></div>
+											</div>
+	
+										</form>
+	
+										</div>
+									</div>
 
+								</div>
 
-
-
-
-
-
-
-
-
-		    			<div id="payment-inputs2" style="display:none;">
-
-		    				<div class="row">
-		    					<div class="col-12 payment-block">
-		    						<form id="checkout-form2" action="/dashboard/comprar-plano/checkout" class="flex" method="post" name="checkout">
-
-										<input type="hidden" value="<?php echo htmlspecialchars( $inplancode, ENT_COMPAT, 'UTF-8', FALSE ); ?>" name="plano">
-
-										<input type="hidden" name="cupom" value="<?php echo htmlspecialchars( $coupon, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-					    				
-										<input type="hidden" name="checkout-boleto" value="checkout-boleto">
-
-					    				<input type="submit" id="checkout2" name="checkout2" class="button4" value="Gerar Boleto">
-					    				<div class="load" id="load2"></div>
-									</form>
-		    					</div>
 		    				</div>
-		    			</div>
+
+						</div>
+
+
+
+
+
+
+
+
+		    			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						<div id="payment-inputs2" style="display:none;">
+
+		    				
+							<div class="row">
+
+								<div class="col-md-6">
+
+									<div class="payment-block">
+								                				
+										
+														
+											
+																			
+										<form id="checkout-form2" action="/dashboard/comprar-plano/checkout" method="post" name="checkout">
+
+			    							
+											<input type="hidden" value="<?php echo htmlspecialchars( $inplancode, ENT_COMPAT, 'UTF-8', FALSE ); ?>" name="plano">
+
+											<input type="hidden" name="cupom" value="<?php echo htmlspecialchars( $coupon, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+
+											<input type="hidden" name="checkout-boleto" value="checkout-boleto">
+
+
+
+
+
+
+											<div class="row2">
+												<input type="text" placeholder="Nome do Titular do Cartão" name="desname" class="input-text" value="<?php echo htmlspecialchars( $user["desperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+											</div>
+
+
+											
+
+												
+											
+
+
+
+
+
+
+											<div class="row2 row">
+
+												<div class="col-md-5">
+													<input type="text" placeholder="DDD" name="nrddd" class="input-text" value="<?php echo htmlspecialchars( $user["nrddd"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+												</div>
+
+
+
+												<div class="col-md-7">
+													<input type="text" placeholder="Telefone" name="nrphone" class="input-text" value="<?php echo htmlspecialchars( $user["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+												</div>
+
+											</div>
+
+
+
+
+
+
+
+
+
+											<div class="birth-field-text row2 row">
+
+												<div class="birth-field-label col-4">
+													
+													<label for="payment_birth_1">Nascimento:</label>
+													
+												</div>
+
+
+
+												<div class="col-8">
+													<input type="date" placeholder="Nascimento" name="dtbirth" class="input-text" value="<?php echo htmlspecialchars( $user["dtbirth"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+													
+												</div>
+
+											</div>
+
+
+										</div><!--payment-block-->
+
+
+										<div class="payment-block">
+
+
+
+									
+											<div class="row2">
+												<input type="text" placeholder="CEP do Titular do Cartão" name="zipcode" class="input-text" value="<?php echo htmlspecialchars( $address["deszipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+												<!--<input type="submit" Atualizar CEP" id="place_order" class="button alt" formaction="/checkout" formmethod="get">-->
+											</div>
+
+											<div class="row2">
+												<input type="text" placeholder="Logradouro, rua, avenida" name="desaddress" class="input-text" value="<?php echo htmlspecialchars( $address["desaddress"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+											</div>
+
+											<div class="row2">
+												<input type="text" placeholder="Número" name="desnumber" class="input-text" value="<?php echo htmlspecialchars( $address["desnumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+											</div>
+
+											<div class="row2">
+												<input type="text" placeholder="Complemento (opcional)" name="descomplement" class="input-text" value="<?php echo htmlspecialchars( $address["descomplement"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+							                </div>
+
+							                <div class="row2">
+												<input type="text" placeholder="Bairro" name="desdistrict" class="input-text" value="<?php echo htmlspecialchars( $address["desdistrict"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+											</div>
+
+
+
+
+											
+
+
+											<div class="state-city">
+												
+												<label for="state2">Estado</label>
+												<select id="state2" form="checkout-form1" name="desstate">
+							                    	
+													<?php $counter1=-1;  if( isset($state) && ( is_array($state) || $state instanceof Traversable ) && sizeof($state) ) foreach( $state as $key1 => $value1 ){ $counter1++; ?> 
+														<option value="<?php echo htmlspecialchars( $value1["idstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idstate"] == $address["idstate"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+													<?php } ?>
+
+												</select>
+												
+
+												
+
+											</div>
+
+
+
+
+
+											<div class="state-city">
+												
+												<label for="city2">Cidade</label>
+												<select id="city2" form="checkout-form1" name="descity">
+							                    	<?php $counter1=-1;  if( isset($city) && ( is_array($city) || $city instanceof Traversable ) && sizeof($city) ) foreach( $city as $key1 => $value1 ){ $counter1++; ?>
+														<option value="<?php echo htmlspecialchars( $value1["idcity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idcity"] == $address["idcity"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+													<?php } ?>
+							                </select>
+
+											</div>
+
+										</div>
+
+									</div>
+
+									<div class="col-md-6">
+
+										<div class="row">
+											<div class="col-12">
+												<div class="payment-block">
+													<div class="row2">
+														<input type="text" placeholder="Seu CPF" name="desdocument" class="input-text" value="<?php echo htmlspecialchars( $user["desdocument"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+													</div>
+												</div>
+											</div>
+										</div>
+										
+
+
+									<div class="row">
+										<div class="col-12 payment-block">
+	
+											<div class="flex">
+												<input type="submit" id="checkout2" name="checkout2" class="button4" value="Gerar Boleto">
+					    					<div class="load" id="load2"></div>
+											</div>
+	
+										</form>
+	
+										</div>
+									</div>
+
+								</div>
+
+		    				</div>
+
+						</div>
+
+
+
+
+
+
 
 
 
@@ -695,12 +1053,11 @@
 											<input type="hidden" name="checkout-third-part-card" value="checkout-third-part-card">
 
 
+
 											<div class="row2">
-												<input type="text" placeholder="CPF do Titular do Cartão" name="desholderdocument" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["desholderdocument"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+												<input type="text" placeholder="Nome do Titular do Cartão" name="desname" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["desname"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 											</div>
 
-												
-											
 
 
 
@@ -710,13 +1067,13 @@
 											<div class="row2 row">
 
 												<div class="col-md-5">
-													<input type="text" placeholder="DDD" name="nrholderddd" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["nrholderddd"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+													<input type="text" placeholder="DDD" name="nrddd" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["nrddd"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 												</div>
 
 
 
 												<div class="col-md-7">
-													<input type="text" placeholder="Telefone" name="nrholderphone" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["nrholderphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+													<input type="text" placeholder="Telefone" name="nrphone" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 												</div>
 
 											</div>
@@ -740,7 +1097,7 @@
 
 
 												<div class="col-8">
-													<input type="date" placeholder="Nascimento" name="dtholderbirth" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["dtholderbirth"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+													<input type="date" placeholder="Nascimento" name="dtbirth" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["dtbirth"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 													
 												</div>
 
@@ -756,24 +1113,24 @@
 
 									
 											<div class="row2">
-												<input type="text" placeholder="CEP do Titular do Cartão" name="zipcode" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["zipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-												<!--<input type="submit" Atualizar CEP" id="place_order" class="button alt" formaction="/checkout" formmethod="get">-->
+												<input type="text" placeholder="CEP do Titular do Cartão" name="deszipcode" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["deszipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+												
 											</div>
 
 											<div class="row2">
-												<input type="text" placeholder="Logradouro, rua, avenida" name="desholderaddress" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["desholderaddress"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+												<input type="text" placeholder="Logradouro, rua, avenida" name="desaddress" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["desaddress"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 											</div>
 
 											<div class="row2">
-												<input type="text" placeholder="Número" name="desholdernumber" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["desholdernumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+												<input type="text" placeholder="Número" name="desnumber" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["desnumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 											</div>
 
 											<div class="row2">
-												<input type="text" placeholder="Complemento (opcional)" name="desholdercomplement" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["desholdercomplement"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+												<input type="text" placeholder="Complemento (opcional)" name="descomplement" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["descomplement"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 							                </div>
 
 							                <div class="row2">
-												<input type="text" placeholder="Bairro" name="desholderdistrict" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["desholderdistrict"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+												<input type="text" placeholder="Bairro" name="desdistrict" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["desdistrict"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 											</div>
 
 
@@ -784,35 +1141,11 @@
 
 											<div class="state-city">
 												
-												<label for="state">Estado</label>
-												<select id="state" form="checkout-form3" name="desholderstate">
-							                    	<option value="1">Acre</option> 
-							                    	<option value="2">Alagoas</option> 
-							                    	<option value="3">Amazonas</option> 
-							                    	<option value="4">Amapá</option> 
-							                    	<option value="5">Bahia</option> 
-							                    	<option value="6">Ceará</option> 
-							                    	<option value="7">Distrito Federal</option> 
-							                    	<option value="8">Espírito Santo</option> 
-							                    	<option value="9">Goiás</option> 
-							                    	<option value="10">Maranhão</option> 
-							                    	<option value="11">Minas Gerais</option> 
-							                    	<option value="12">Mato Grosso do Sul</option> 
-							                    	<option value="13">Mato Grosso</option> 
-							                    	<option value="14">Pará</option> 
-							                    	<option value="15">Paraíba</option> 
-							                    	<option value="16">Pernambuco</option> 
-							                    	<option value="17">Piauí</option> 
-							                    	<option value="18">Paraná</option> 
-							                    	<option value="19">Rio de Janeiro</option> 
-							                    	<option value="20">Rio Grande do Norte</option> 
-							                    	<option value="21">Rondônia</option> 
-							                    	<option value="22">Roraima</option> 
-							                    	<option value="23">Rio Grande do Sul</option> 
-							                    	<option value="24">Santa Catarina</option> 
-							                    	<option value="25">Sergipe</option> 
-							                    	<option value="26">São Paulo</option> 
-							                    	<option value="27">Tocantins</option> 
+												<label for="state3">Estado</label>
+												<select id="state3" form="checkout-form3" name="desstate">
+							                    	<?php $counter1=-1;  if( isset($state) && ( is_array($state) || $state instanceof Traversable ) && sizeof($state) ) foreach( $state as $key1 => $value1 ){ $counter1++; ?> 
+														<option value="<?php echo htmlspecialchars( $value1["idstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idstate"] == $planPurchaseValues["desstate"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+													<?php } ?> 
 							                	</select>
 
 											</div>
@@ -823,30 +1156,11 @@
 
 											<div class="state-city">
 												
-												<label for="city">Cidade</label>
-												<select id="city" form="checkout-form3" name="desholdercity">
-							                    	<option value="79">Acrelândia</option> 
-							                    	<option value="80">Assis Brasil</option> 
-							                    	<option value="81">Brasiléia</option> 
-							                    	<option value="82">Bujari</option> 
-							                    	<option value="83">Capixaba</option> 
-							                    	<option value="84">Cruzeiro do Sul</option> 
-							                    	<option value="85">Epitaciolândia</option> 
-							                    	<option value="86">Feijó</option> 
-							                    	<option value="87">Jordão</option> 
-							                    	<option value="88">Mâncio Lima</option> 
-							                    	<option value="89">Manoel Urbano</option> 
-							                    	<option value="90">Marechal Thaumaturgo</option> 
-							                    	<option value="91">Plácido de Castro</option> 
-							                    	<option value="92">Porto Acre</option> 
-							                    	<option value="93">Porto Walter</option> 
-							                    	<option value="94">Rio Branco</option> 
-							                    	<option value="95">Rodrigues Alves</option> 
-							                    	<option value="96">Santa Rosa do Purus</option> 
-							                    	<option value="97">Sena Madureira</option> 
-							                    	<option value="98">Senador Guiomard</option> 
-							                    	<option value="99">Tarauacá</option> 
-							                    	<option value="100">Xapuri</option> 
+												<label for="city3">Cidade</label>
+												<select id="city3" form="checkout-form3" name="descity">
+							                    	<?php $counter1=-1;  if( isset($city2) && ( is_array($city2) || $city2 instanceof Traversable ) && sizeof($city2) ) foreach( $city2 as $key1 => $value1 ){ $counter1++; ?>
+														<option value="<?php echo htmlspecialchars( $value1["idcity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idcity"] == $planPurchaseValues["descity"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+													<?php } ?>
 							                </select>
 
 											</div>
@@ -858,57 +1172,76 @@
 									<div class="col-md-6">
 
 
-										<div class="col-12 payment-block card-info">
-
-
-											<div class='card-wrapper'></div>
-														          					
-											<div class="row2">
-												<input type="text" placeholder="Número do Cartão" name="descardcode_number" class="input-text cc-number">
+										<div class="row">
+											<div class="col-12">
+												<div class="payment-block">
+													<div class="row2">
+														<input type="text" placeholder="CPF do Titular do Cartão" name="desdocument" class="input-text" value="<?php echo htmlspecialchars( $planPurchaseValues["desdocument"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+													</div>
+												</div>
 											</div>
-
-											<div class="row2">
-												<input type="text" placeholder="Nome como está no cartão" name="desholdername" class="input-text ">
-											</div>
+										</div>
 
 
-											<div class="row2 row">
+										<div class="row">
+											<div class="col-12 payment-block card-info">
 
-												<div class="col-6">
-													<input type="text" placeholder="Mês (XX)" name="descardcode_month" class="input-text ">
-														
+
+												<div class='card-wrapper'></div>
+																						
+												<div class="row2">
+													<input type="text" placeholder="Número do Cartão" name="descardcode_number" class="input-text cc-number">
+												</div>
+
+												<div class="row2">
+													<input type="text" placeholder="Nome como está no cartão" name="desholdername" class="input-text ">
+												</div>
+
+
+												<div class="row2 row">
+
+													<div class="col-6">
+														<input type="text" placeholder="Mês (XX)" name="descardcode_month" class="input-text ">
+															
+													</div>
+
+
+
+													<div class="col-6">
+														<input type="text" placeholder="Ano (XXXX)" id="payment_cardyear_1" name="descardcode_year" class="input-text ">
+															
+													</div>
+
 												</div>
 
 
 
-												<div class="col-6">
-													<input type="text" placeholder="Ano (XXXX)" id="payment_cardyear_1" name="descardcode_year" class="input-text ">
-														
+												<div class="row2">
+													<input type="text" placeholder="Código de Segurança" name="descardcode_cvc" class="input-text ">
+												</div>		
+
+
+												<div class="flex">
+													<input type="submit" id="checkout3" name="checkout3" class="button4" value="Efetuar Pagamento">
+													<div class="load" id="load3"></div>
 												</div>
 
+												</form>
+
 											</div>
-
-
-
-											<div class="row2">
-												<input type="text" placeholder="Código de Segurança" name="descardcode_cvc" class="input-text ">
-											</div>		
-
-
-											<div class="flex">
-												<input type="submit" id="checkout3" name="checkout3" class="button4" value="Efetuar Pagamento">
-												<div class="load" id="load3"></div>
-											</div>
-
-										</form>
-
-									</div>
+										</div>
 
 								</div>
 
 		    				</div>
 
-		    			</div>
+						</div>
+						
+
+
+
+
+
 		    			<?php }else{ ?>
 		    			<div id="payment-inputs6" style="display:block;">
 

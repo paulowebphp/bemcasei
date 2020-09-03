@@ -343,6 +343,13 @@ class PageConfig extends Model
 			'meu-plano'=>[
 
 				'pagetitle'=>'Meu Plano | Bem Casei',
+				'card-payment-js'=>0
+			],
+
+
+			'comprar-plano'=>[
+
+				'pagetitle'=>'Meu Plano | Bem Casei',
 				'card-payment-js'=>1
 			],
 

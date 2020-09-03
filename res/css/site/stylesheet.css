@@ -298,6 +298,7 @@ label{font-size:1rem;}
 .blockquote3{font-size:0.9rem;margin-left:3%;}
 .introduction-links{padding-left:1%;}
 .introduction-links p{margin-top:4%;margin-bottom:4%;}
+.dash-input-row{margin:0 1% 5% 0!important;}
 #dash-login{width:100%;padding:10% 5%;color:#666;background-color:#fff;font-size:1rem;}
 #dash-login .dash-login-wrapper{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;}
 #dash-login .dash-login-box{width:50%;height:700px;padding:5%;box-shadow:10px 10px 30px 1px rgba(0,0,0,0.75);-webkit-box-shadow:10px 10px 30px 1px rgba(0,0,0,0.75);-moz-box-shadow:10px 10px 30px 1px rgba(0,0,0,0.75);display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;}

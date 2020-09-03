@@ -25,7 +25,7 @@ class Account extends Model
 
 
 
-	public function save()
+	public function update()
 	{
 
 		
@@ -38,7 +38,7 @@ class Account extends Model
 
 			$results = $sql->select("
 
-				CALL sp_accounts_save(
+				CALL sp_accounts_update(
 
 					:idaccount,
 					:iduser,
