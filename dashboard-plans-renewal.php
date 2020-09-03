@@ -2395,7 +2395,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 	# code...
-	$cart->setincartstatus('1');
+	$cart->setincartstatus(1);
 	$cart->update();
 	Cart::removeFromSession();
 
@@ -2440,7 +2440,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 		# code...
 		$userMailer = new Mailer(
 				
-			Rule::EMAIL_PLAN,
+			Rule::EMAIL_RENEWAL,
 
 			"plan", 
 			
@@ -2471,7 +2471,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		$userMailer = new Mailer(
 				
-			Rule::EMAIL_PLAN,
+			Rule::EMAIL_RENEWAL,
 
 			"plan-boleto", 
 			

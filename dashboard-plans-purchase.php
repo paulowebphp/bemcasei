@@ -5505,7 +5505,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 		# code...
 		$userMailer = new Mailer(
 				
-			Rule::EMAIL_PLAN,
+			Rule::EMAIL_PURCHASE,
 
 			"plan", 
 			
@@ -5536,7 +5536,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		$userMailer = new Mailer(
 				
-			Rule::EMAIL_PLAN,
+			Rule::EMAIL_PURCHASE,
 
 			"plan-boleto", 
 			

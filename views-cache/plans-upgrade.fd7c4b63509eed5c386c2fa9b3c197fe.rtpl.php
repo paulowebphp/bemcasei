@@ -1,4 +1,4 @@
-<section class="dashboard">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
 
     <div class="container-fluid">            
             
@@ -12,21 +12,21 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                {if="$user.inplancontext == 0"}
+                <?php if( $user["inplancontext"] == 0 ){ ?>
 
-                    {include="dashboard-menu-free"}
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
 
 
-                {elseif="!$validate"}
+                <?php }elseif( !$validate ){ ?>
 
-                    {include="dashboard-menu-expirated"}
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
                
 
-                {else}
+                <?php }else{ ?>
 
-                    {include="dashboard-menu"}
+                    <?php require $this->checkTemplate("dashboard-menu");?>
 
-                {/if}
+                <?php } ?>
                     
 
             </div><!--col-->
@@ -38,31 +38,31 @@
 
               
 
-              {if="$success != ''"}
+              <?php if( $success != '' ){ ?>
                   <div class="row">
                       <div class="col-12">
                           <div class="alert alert-success alert-dismissible fade show" role="alert">
-                              {$success}
+                              <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                               </button>
                           </div>
                       </div> 
                   </div>  
-              {/if}
+              <?php } ?>
 
-              {if="$error != ''"}
+              <?php if( $error != '' ){ ?>
                   <div class="row">
                       <div class="col-12">
                           <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                              {$error}
+                              <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                               </button>
                           </div>
                       </div> 
                   </div>  
-              {/if} 
+              <?php } ?> 
 
               <div class="row">
                 <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 planos plano-basico">
@@ -97,15 +97,15 @@
                     </tr>
                     <tr>
                       <td>
-                        {if="$validate.incontext == 1 "} 
+                        <?php if( $validate["incontext"] == 1  ){ ?> 
 
                           <span class="seu-plano-atual">Seu plano Atual</span> 
 
-                        {elseif="$validate.incontext == 2"} 
+                        <?php }elseif( $validate["incontext"] == 2 ){ ?> 
 
                           <span class="seu-plano-atual">Plano Indisponível</span>
 
-                        {/if}
+                        <?php } ?>
                       </td>
                     </tr>
                     
@@ -142,29 +142,29 @@
                     
                     
                       
-                      {if="$validate.incontext == 1 "}
+                      <?php if( $validate["incontext"] == 1  ){ ?>
                         <tr>
                           <td>Por Apenas</td>
                         </tr>
                         <tr>
-                          <td><span class="upgrade-price">R$ {function="formatPrice($inplan.0.vlprice)"}</span></td>
+                          <td><span class="upgrade-price">R$ <?php echo formatPrice($inplan["0"]["vlprice"]); ?></span></td>
                         </tr>
                         
                         <tr>  
                           <td>
                             <form action="/dashboard/upgrade/checkout" id="2">
-                                <input type="hidden" name="plano" value="2{$sufix}">
+                                <input type="hidden" name="plano" value="2<?php echo htmlspecialchars( $sufix, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                                 <button class="plan-upgrade-button" type="submit">Plano Classic</button>
                             </form>
                           </td>
                         </tr>
-                      {elseif="$validate.incontext == 2"}
+                      <?php }elseif( $validate["incontext"] == 2 ){ ?>
                         <tr>
                           <td>
                             <span class="seu-plano-atual">Seu Plano Atual</span>
                           </td>
                         </tr>
-                      {/if}
+                      <?php } ?>
                       
 
 
@@ -203,23 +203,23 @@
                       <td></td>
                     </tr>
                     
-                    {if="($validate.incontext == 1) or ($validate.incontext == 2)"}
+                    <?php if( ($validate["incontext"] == 1) or ($validate["incontext"] == 2) ){ ?>
                       <tr>
                         <td>Por Apenas</td>
                       </tr>
                       <tr>
-                        <td><span class="upgrade-price">R$ {function="formatPrice($inplan.1.vlprice)"}</span></td>
+                        <td><span class="upgrade-price">R$ <?php echo formatPrice($inplan["1"]["vlprice"]); ?></span></td>
                       </tr>
                         
                       <tr>
                         <td> 
                           <form action="/dashboard/upgrade/checkout"id="3">
-                              <input type="hidden" name="plano" value="3{$sufix}">
+                              <input type="hidden" name="plano" value="3<?php echo htmlspecialchars( $sufix, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                               <button class="plan-upgrade-button" type="submit">Plano Gold</button>
                           </form>
                         </td>
                       </tr>
-                    {/if} 
+                    <?php } ?> 
                       
                     
                   </tbody>

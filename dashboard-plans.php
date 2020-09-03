@@ -86,7 +86,8 @@ $app->get( "/dashboard/meu-plano", function()
 	}//end else*/
 
 
-
+	
+	
 
 	$page = new PageDashboard();
 

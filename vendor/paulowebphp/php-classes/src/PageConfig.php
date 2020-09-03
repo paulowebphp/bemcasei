@@ -359,6 +359,12 @@ class PageConfig extends Model
 				'card-payment-js'=>1
 			],
 
+			'upgrade'=>[
+
+				'pagetitle'=>'Meu Plano | Bem Casei',
+				'card-payment-js'=>1
+			],
+
 			'dominio'=>[
 
 				'pagetitle'=>'Domínio | Bem Casei',

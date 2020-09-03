@@ -1603,6 +1603,7 @@ public function getFirstPlan( $iduser )
 				[
 
 					// Precsa começar no indice 1. Verificar dashboard-plans-renewal.php
+					'0'=>['vlprice'=>'','inplancode'=>''],
 					'1'=>Plan::getPlanArray('3'.$sufix)
 				];
 

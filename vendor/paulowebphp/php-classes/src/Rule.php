@@ -268,6 +268,9 @@ class Rule extends Model
 	/*********************************EMAIL SUBJECTS ***************************************/
 
 	const EMAIL_PLAN = 'Compra de Plano';
+	const EMAIL_PURCHASE = 'Compra de Plano';
+	const EMAIL_RENEWAL = 'Você Renovou Seu Plano';
+	const EMAIL_UPGRADE = 'Você Fez Um Upgrade No Seu Plano';
 	const EMAIL_LEAD = 'Baixe o Seu E-book!';
 
 	const EMAIL_PLAN_AUTHORIZED = 'Compra de Plano Confirmada';
