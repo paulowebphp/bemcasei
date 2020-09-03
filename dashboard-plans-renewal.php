@@ -9,7 +9,7 @@ use Core\Mailer;
 use Core\Model\User;
 use Core\Model\Plan;
 use Core\Model\Payment;
-use Core\Model\PaymentStatus;
+//use Core\Model\PaymentStatus;
 use Core\Model\Address;
 use Core\Model\Customer;
 use Core\Model\Order;
@@ -22,255 +22,7 @@ use Core\Model\Fee;
 
 
 
-$app->get( "/dashboard/renovar/checkout", function()
-{
 
-	if( Maintenance::checkMaintenance() )
-	{	
-
-		$maintenance = new Maintenance();
-
-		$maintenance->getMaintenance();
-
-		User::setError($maintenance->getdesdescription());
-		header("Location: /login");
-		exit;
-		
-	}//end if
-
-
-
-
-
-	User::verifyLogin(false);
-
-	$user = User::getFromSession();
-
-
-
-
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-
-	if ( (int)$validate['incontext'] == 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-	
-
-	
-
-
-	//$plans = Plan::getPlansFullArray();
-
-
-
-
-
-
-
-	$lastplan = Plan::getLastPlan((int)$user->getiduser());
-	
-
-	if ( 
-
-
-		isset($_GET['plano'])
-		&&
-		Validate::validateInplancode($_GET['plano'])
-		&&
-		(int)$_GET['plano'] != 0
-
-
-	)
-	{
-
-		# code...
-		if (
-
-
-			!in_array((int)$lastplan['inpaymentstatus'], [0,1,2,3,4])
-			&&
-			(int)$lastplan['inpaymentmethod'] != 0
-
-		)
-		{
-			# code...
-
-			$plan = $_GET['plano'];
-
-
-		}//end if
-		else
-		{
-
-			Plan::setError(Rule::PLAN_WAIT_FOR_AUTHORIZATION);
-			header('Location: /dashboard/renovar');
-			exit;
-
-		}//end else
-
-
-
-	}//end if
-	else
-	{
-
-		Plan::setError(Rule::VALIDATE_PLAN_PURCHASE_CODE);
-		header('Location: /dashboard/renovar');
-		exit;
-
-	}//end else if
-
-	/*if ( 
-
-
-		isset($_GET['plano'])
-		&&
-		isset($plans[$_GET['plano']])
-		&&
-		(int)$_GET['plano'] != 0
-
-
-	)
-	{
-
-		if (
-
-			(int)$user->getinplancontext() != 0
-			
-
-		)
-		{
-			# code...
-			if (
-
-
-				!in_array((int)$lastplan['inpaymentstatus'], [0,1,2,3,4])
-
-			)
-			{
-				# code...
-
-				$plan = $_GET['plano'];
-
-
-			}//end if
-			else
-			{
-
-				Plan::setError("Aguarde a confirmação do pagamento pelo último plano | Previsão: até 2 dias corridos após o pagamento por cartão e até 4 dias úteis no caso de pagamento em Boleto");
-				header('Location: /dashboard/renovar');
-				exit;
-
-			}//end else
-			
-
-		}//end if
-		else
-		{
-
-			Plan::setError("Esta rota não é válida para usuários do Plano Free");
-			header('Location: /dashboard/renovar');
-			exit;
-
-
-		}//end else
-
-
-
-	}//end if
-	else
-	{
-
-		Plan::setError("Este código de plano não é válido");
-		header('Location: /dashboard/renovar');
-		exit;
-
-	}//end else if*/
-
-
-
-
-
-
-
-
-	/*$payment = new Payment();
-
-	if( !$payment->getdesholderaddress() ) $payment->setdesholderaddress('');
-	if( !$payment->getdesemail() ) $payment->setdesemail('');
-	if( !$payment->getdesholdernumber() ) $payment->setdesholdernumber('');
-	if( !$payment->getdesholdercomplement() ) $payment->setdesholdercomplement('');
-	if( !$payment->getdesholderdistrict() ) $payment->setdesholderdistrict('');
-	if( !$payment->getdesholdercity() ) $payment->setdesholdercity('');
-	if( !$payment->getdesholderstate() ) $payment->setdesholderstate('');
-	if( !$payment->getdesholderzipcode() ) $payment->setdesholderzipcode('');
-	if( !$payment->getinholdertypedoc() ) $payment->setinholdertypedoc('');
-	if( !$payment->getdesholderdocument() ) $payment->setdesholderdocument('');
-	if( !$payment->getdtholderbirth() ) $payment->setdtholderbirth('');
-	if( !$payment->getnrholderddd() ) $payment->setnrholderddd('');
-	if( !$payment->getnrholderphone() ) $payment->setnrholderphone('');
-	if( !$payment->getdesholdername() ) $payment->setdesholdername('');
-	if( !$payment->getdescardcode_number() ) $payment->setdescardcode_number('');
-	if( !$payment->getdescardcode_month() ) $payment->setdescardcode_month('');
-	if( !$payment->getdescardcode_year() ) $payment->setdescardcode_year('');
-	if( !$payment->getdescardcode_cvc() ) $payment->setdescardcode_cvc('');*/
-
-
-
-	$inplan = Plan::getPlanArray($plan);
-
-	//$address = new Address();
-
-	//$lastAddressPlan = Address::getLastAddressPlan($user->getiduser());
-
-
-
-
-
-	
-
-
-
-
-	$page = new PageDashboard();
-
-	$page->setTpl(
-		
-		"plans-renewal-checkout",
-
-		[
-			'user'=>$user->getValues(),
-			//'payment'=>$payment->getValues(),
-			'inplan'=>$inplan,
-			'validate'=>$validate,
-			'error'=>Payment::getError(),
-			'success'=>Payment::getError(),
-			'planRenewalValues'=> (isset($_SESSION["planRenewalValues"])) ? $_SESSION["planRenewalValues"] : ['desholderdocument'=>'', 'nrholderddd'=>'', 'nrholderphone'=>'', 'dtholderbirth'=>'', 'zipcode'=>'', 'desholderaddress'=>'', 'desholdernumber'=>'', 'desholdercomplement'=>'', 'desholderdistrict'=>'', 'desholderstate'=>'', 'desholdercity'=>'']
-
-		]
-	
-	);//end setTpl
-
-});//END route
 
 
 
@@ -325,34 +77,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 	$method = 'cartao-proprio';
 
 
-	if ( 
-
-		isset($_POST['checkout-own-card']) 
-		||
-		isset($_POST['checkout-boleto'])
-
-	) 
-	{
-		# code...
-		$_SESSION['planRenewalValues']['dtholderbirth'] = '';
-		$_SESSION['planRenewalValues']['desholderaddress'] = '';
-		$_SESSION['planRenewalValues']['desholderdocument'] = '';
-		$_SESSION['planRenewalValues']['desholdernumber'] = '';
-		$_SESSION['planRenewalValues']['desholdercomplement'] = '';
-		$_SESSION['planRenewalValues']['desholderdistrict'] = '';
-		$_SESSION['planRenewalValues']['desholderstate'] = '';
-		$_SESSION['planRenewalValues']['desholdercity'] = '';
-		$_SESSION['planRenewalValues']['nrholderddd'] = '';
-		$_SESSION['planRenewalValues']['nrholderphone'] = '';
-		$_SESSION['planRenewalValues']['zipcode'] = '';
 	
-
-	}//end if
-	
-
-
-
-
 
 
 	if( Maintenance::checkMaintenance() )
@@ -430,21 +155,13 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
-
-
-
 	$address = new Address();
 
 	$address->get((int)$user->getiduser());
 
 
-	
-
 
 	
-
-
-
 
 	$payment = new Payment();
 
@@ -452,7 +169,10 @@ $app->post( "/dashboard/renovar/checkout", function()
 	
 
 
-	
+
+
+
+
 	if( 
 
 		isset($_POST['checkout-boleto'])
@@ -492,7 +212,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 		$desholdercity = $address->getdescity();
 		$desholderstate = $address->getdesstate();*/
 
-
+		/*
 		$inholdertypedoc = null;
 		$desholderdocument = null;
 		$nrholderddd = null;
@@ -513,8 +233,435 @@ $app->post( "/dashboard/renovar/checkout", function()
 		$descardcode_year = null;
 		$descardcode_cvc = null;
 
-		$payment->setinpaymentmethod('0');
-		$payment->setnrinstallment('1');
+		*/
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+		if(	!isset($_POST['desname']) || $_POST['desname'] == '' )
+		{
+
+			Payment::setError(Rule::ERROR_NAME);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+
+
+
+
+
+
+
+		if( ( $desname = Validate::validateStringUcwords($_POST['desname'], true, false) ) === false )
+		{
+
+			
+			Payment::setError(Rule::VALIDATE_NAME);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+
+
+		
+
+
+
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['nrddd']) 
+			|| 
+			$_POST['nrddd'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_DDD);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+		if( !$nrddd = Validate::validateDDD($_POST['nrddd']) )
+		{
+
+			Payment::setError(Rule::VALIDATE_DDD);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['nrphone']) 
+			|| 
+			$_POST['nrphone'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_PHONE);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+		
+
+
+
+
+
+
+
+		if( !$nrphone = Validate::validatePhone($_POST['nrphone']) )
+		{
+
+			Payment::setError(Rule::VALIDATE_PHONE);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['dtbirth']) 
+			|| 
+			$_POST['dtbirth'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_DATE_BIRTH);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+		if( !$dtbirth = Validate::validateDate($_POST['dtbirth'], 0) )
+		{
+
+			Payment::setError(Rule::VALIDATE_DATE_PAST_TO_NOW);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+		if( 
+		
+			!isset($_POST['deszipcode']) 
+			|| 
+			$_POST['deszipcode'] === ''
+		)
+		{
+
+			Payment::setError(Rule::ERROR_ZIPCODE);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+			
+		}//end if
+
+
+		if( !$deszipcode = Validate::validateCEP($_POST['deszipcode']) )
+		{
+			Payment::setError(Rule::VALIDATE_ZIPCODE);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			!isset($_POST['desaddress']) 
+			|| 
+			$_POST['desaddress'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_ADDRESS);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+		if( !$desaddress = Validate::validateStringNumber($_POST['desaddress']) )
+		{
+
+			Payment::setError(Rule::VALIDATE_ADDRESS);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+		if(
+			
+			!isset($_POST['desnumber']) 
+			|| 
+			$_POST['desnumber'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_NUMBER);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+		if( !$desnumber = Validate::validateNumber($_POST['desnumber']) )
+		{
+
+			Payment::setError(Rule::VALIDATE_NUMBER);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['desdistrict']) 
+			|| 
+			$_POST['desdistrict'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_DISTRICT);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+		if( !$desdistrict = Validate::validateStringNumber($_POST['desdistrict']) )
+		{
+
+			Payment::setError(Rule::VALIDATE_DISTRICT);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+        
+
+
+
+        if(
+				
+			!isset($_POST['descity']) 
+			|| 
+			$_POST['descity'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_CITY);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+
+
+		if ( ( $cityArray = Address::getCity($_POST['descity']) ) === false ) 
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_CITY);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+		$descity = $cityArray['descity'];
+
+
+
+
+
+
+
+		if(
+				
+			!isset($_POST['desstate']) 
+			|| 
+			$_POST['desstate'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_STATE);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+
+
+		if ( ( $stateArray = Address::getState($_POST['desstate']) ) === false ) 
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_STATE);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+
+		
+		$desstate = $stateArray['desstatecode'];
+
+
+		
+		
+		$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
+
+		$intypedoc = 0;
+
+
+
+
+		$payment->setinpaymentmethod(0);
+		$payment->setnrinstallment(1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -536,17 +683,12 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
-		if(
-			
-			!isset($_POST['desholderdocument']) 
-			|| 
-			$_POST['desholderdocument'] === ''
-			
-		)
+		
+		if(	!isset($_POST['desname']) || $_POST['desname'] == '' )
 		{
 
 			
-			Payment::setError(Rule::ERROR_CPF);
+			Payment::setError(Rule::ERROR_NAME);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
@@ -559,8 +701,40 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
+		if( ( $desname = Validate::validateStringUcwords($_POST['desname'], true, false) ) === false )
+		{
 
-		if( !$desholderdocument = Validate::validateDocument(0, $_POST['desholderdocument']) )
+			
+			Payment::setError(Rule::VALIDATE_NAME);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['desholderdocument']) 
+			|| 
+			$_POST['desholderdocument'] === ''
+			
+		)
+		{
+
+
+			Payment::setError(Rule::ERROR_CPF);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+		}//end if
+
+		if( !$desdocument = Validate::validateDocument(0, $_POST['desholderdocument']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_CPF);
@@ -593,6 +767,8 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
 
 
@@ -601,14 +777,25 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
-		if( !$nrholderddd = Validate::validateDDD($_POST['nrholderddd']) )
+
+
+
+
+
+		if( !$nrddd = Validate::validateDDD($_POST['nrholderddd']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_DDD);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
+
+
+
+
 
 
 
@@ -632,8 +819,11 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
 
+		
 
 
 
@@ -641,15 +831,14 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
-
-
-
-		if( !$nrholderphone = Validate::validatePhone($_POST['nrholderphone']) )
+		if( !$nrphone = Validate::validatePhone($_POST['nrholderphone']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_PHONE);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
+
+
 
 		}//end if
 
@@ -679,20 +868,18 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
 
-
-
-
-
-
-
-		if( !$dtholderbirth = Validate::validateDate($_POST['dtholderbirth'], 0) )
+		if( !$dtbirth = Validate::validateDate($_POST['dtholderbirth'], 0) )
 		{
 
 			Payment::setError(Rule::VALIDATE_DATE_PAST_TO_NOW);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
+
+
 
 		}//end if
 
@@ -707,29 +894,29 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		if( 
 		
-			!isset($_POST['zipcode']) 
+			!isset($_POST['deszipcode']) 
 			|| 
-			$_POST['zipcode'] === ''
+			$_POST['deszipcode'] === ''
 		)
 		{
 
 			Payment::setError(Rule::ERROR_ZIPCODE);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
+
+
 			
 		}//end if
 
 
-
-
-
-
-		if( !$desholderzipcode = Validate::validateCEP($_POST['zipcode']) )
+		if( !$deszipcode = Validate::validateCEP($_POST['deszipcode']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_ZIPCODE);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
+
+
 
 		}//end if
 
@@ -755,21 +942,19 @@ $app->post( "/dashboard/renovar/checkout", function()
 			Payment::setError(Rule::ERROR_ADDRESS);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
+
+
+
 		}//end if
 
-
-
-
-
-
-
-
-		if( !$desholderaddress = Validate::validateStringNumber($_POST['desholderaddress']) )
+		if( !$desaddress = Validate::validateStringNumber($_POST['desholderaddress']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_ADDRESS);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
+
+
 
 		}//end if
 
@@ -799,21 +984,18 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
 
-
-
-
-
-
-
-
-		if( !$desholdernumber = Validate::validateNumber($_POST['desholdernumber']) )
+		if( !$desnumber = Validate::validateNumber($_POST['desholdernumber']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_NUMBER);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
+
+
 
 		}//end if
 
@@ -840,19 +1022,18 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
 
-
-
-
-
-
-		if( !$desholderdistrict = Validate::validateStringNumber($_POST['desholderdistrict']) )
+		if( !$desdistrict = Validate::validateStringNumber($_POST['desholderdistrict']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_DISTRICT);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
+
+
 
 		}//end if
 
@@ -876,13 +1057,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
-
-
-
-
-
-
 
 		if( !$descardcode_number = Validate::validateCardNumber($_POST['descardcode_number']) )
 		{
@@ -890,6 +1067,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 			Payment::setError(Rule::VALIDATE_CARD_NUMBER);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
+
 
 		}//end if
 
@@ -917,18 +1095,18 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
 
-
-
-
-
-		if( !$desholdername = Validate::validateCardName($_POST['desholdername']) )
+		if( !$desname = Validate::validateCardName($_POST['desholdername']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_HOLDER_NAME);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
+
+
 
 		}//end if
 
@@ -955,14 +1133,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
-
-
-
-
-
-
-
 
 		if( !$descardcode_month = Validate::validateMonth($_POST['descardcode_month']) )
 		{
@@ -970,6 +1143,8 @@ $app->post( "/dashboard/renovar/checkout", function()
 			Payment::setError(Rule::VALIDATE_CARD_MONTH);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
+
+
 
 		}//end if
 
@@ -991,17 +1166,13 @@ $app->post( "/dashboard/renovar/checkout", function()
 			
 		)
 		{
-
 			Payment::setError(Rule::ERROR_CARD_YEAR);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
-
-
-
-
-
 
 		if( !$descardcode_year = Validate::validateYear($_POST['descardcode_year']) )
 		{
@@ -1009,6 +1180,8 @@ $app->post( "/dashboard/renovar/checkout", function()
 			Payment::setError(Rule::VALIDATE_CARD_YEAR);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
+
+
 
 		}//end if
 
@@ -1033,13 +1206,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
-
-
-
-
-
-
 
 		if( !$descardcode_cvc = Validate::validateCvc($_POST['descardcode_cvc']) )
 		{
@@ -1048,15 +1217,19 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
 
 
 
 
 
+
+
+
+
 		
-
-
 
 
 
@@ -1070,8 +1243,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 		{
 
 			Payment::setError(Rule::ERROR_CITY);
-			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
-			exit;
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);			exit;
 
 		}//end if
 
@@ -1081,12 +1253,11 @@ $app->post( "/dashboard/renovar/checkout", function()
 		{
 			# code...
 			Payment::setError(Rule::VALIDATE_CITY);
-			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
-			exit;
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);			exit;
 
 		}//end if
 
-		$desholdercity = $cityArray['descity'];
+		$descity = $cityArray['descity'];
 
 
 
@@ -1104,8 +1275,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 		{
 
 			Payment::setError(Rule::ERROR_STATE);
-			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
-			exit;
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);			exit;
 
 		}//end if
 
@@ -1115,38 +1285,42 @@ $app->post( "/dashboard/renovar/checkout", function()
 		{
 			# code...
 			Payment::setError(Rule::VALIDATE_STATE);
-			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
-			exit;
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);			exit;
 
 		}//end if
 
+
 		
-		$desholderstate = $stateArray['desstatecode'];
-
-
-
+		$desstate = $stateArray['desstatecode'];
 
 
 		
 
 
 
+
+
+
+
+
+
 		
-		$desholdercomplement = Validate::validateStringNumber($_POST['desholdercomplement'], false, true);
+		$descomplement = Validate::validateStringNumber($_POST['desholdercomplement'], false, true);
 
-		//$inholdertypedoc = $_POST['inholdertypedoc'];
-		$inholdertypedoc = 0;
-
+		$intypedoc = 0;
 
 
 
 
 
 
-
-
-		$payment->setinpaymentmethod('1');
+		$payment->setinpaymentmethod(1);
 		$payment->setnrinstallment($_POST['installment']);
+
+
+
+
+
 
 
 
@@ -1170,6 +1344,372 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
+		
+
+		if(	!isset($_POST['desname']) || $_POST['desname'] == '' )
+		{
+			
+			Payment::setError(Rule::ERROR_NAME);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+
+
+
+
+
+
+
+		if( ( $desname = Validate::validateStringUcwords($_POST['desname'], true, false) ) === false )
+		{
+
+			
+			Payment::setError(Rule::VALIDATE_NAME);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['desdocument']) 
+			|| 
+			$_POST['desdocument'] === ''
+			
+		)
+		{
+
+
+			Payment::setError(Rule::ERROR_CPF);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+		}//end if
+
+		if( !$desdocument = Validate::validateDocument(0, $_POST['desdocument']) )
+		{
+
+			Payment::setError(Rule::VALIDATE_CPF);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
+		
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['nrddd']) 
+			|| 
+			$_POST['nrddd'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_DDD);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+		if( !$nrddd = Validate::validateDDD($_POST['nrddd']) )
+		{
+
+			Payment::setError(Rule::VALIDATE_DDD);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['nrphone']) 
+			|| 
+			$_POST['nrphone'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_PHONE);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+		
+
+
+
+
+
+
+
+		if( !$nrphone = Validate::validatePhone($_POST['nrphone']) )
+		{
+
+			Payment::setError(Rule::VALIDATE_PHONE);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['dtbirth']) 
+			|| 
+			$_POST['dtbirth'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_DATE_BIRTH);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+		if( !$dtbirth = Validate::validateDate($_POST['dtbirth'], 0) )
+		{
+
+			Payment::setError(Rule::VALIDATE_DATE_PAST_TO_NOW);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+		if( 
+		
+			!isset($_POST['deszipcode']) 
+			|| 
+			$_POST['deszipcode'] === ''
+		)
+		{
+
+			Payment::setError(Rule::ERROR_ZIPCODE);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+			
+		}//end if
+
+
+		if( !$deszipcode = Validate::validateCEP($_POST['deszipcode']) )
+		{
+
+			Payment::setError(Rule::VALIDATE_ZIPCODE);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			!isset($_POST['desaddress']) 
+			|| 
+			$_POST['desaddress'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_ADDRESS);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+		if( !$desaddress = Validate::validateStringNumber($_POST['desaddress']) )
+		{
+
+			Payment::setError(Rule::VALIDATE_ADDRESS);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+		if(
+			
+			!isset($_POST['desnumber']) 
+			|| 
+			$_POST['desnumber'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_NUMBER);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+		if( !$desnumber = Validate::validateNumber($_POST['desnumber']) )
+		{
+
+			Payment::setError(Rule::VALIDATE_NUMBER);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['desdistrict']) 
+			|| 
+			$_POST['desdistrict'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_DISTRICT);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+
+
+
+		if( !$desdistrict = Validate::validateStringNumber($_POST['desdistrict']) )
+		{
+
+			Payment::setError(Rule::VALIDATE_DISTRICT);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+
+		}//end if
+
+
+
+
+
+
+
+
 		if(
 		
 			!isset($_POST['descardcode_number']) 
@@ -1183,7 +1723,13 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
+
+
+
+
 
 		if( !$descardcode_number = Validate::validateCardNumber($_POST['descardcode_number']) )
 		{
@@ -1192,7 +1738,13 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
 		}//end if
+
+
+
+
+
 
 
 
@@ -1213,7 +1765,12 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
+
+
+
 
 		if( !$desholdername = Validate::validateCardName($_POST['desholdername']) )
 		{
@@ -1222,7 +1779,15 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
+
+
+
+
+
+
 
 
 
@@ -1241,6 +1806,8 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
 
 		if( !$descardcode_month = Validate::validateMonth($_POST['descardcode_month']) )
@@ -1250,7 +1817,11 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
+
+
 
 
 
@@ -1273,6 +1844,8 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
 
 		if( !$descardcode_year = Validate::validateYear($_POST['descardcode_year']) )
@@ -1282,10 +1855,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
-
-
-
 
 
 
@@ -1308,6 +1880,8 @@ $app->post( "/dashboard/renovar/checkout", function()
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
 
+
+
 		}//end if
 
 		if( !$descardcode_cvc = Validate::validateCvc($_POST['descardcode_cvc']) )
@@ -1316,7 +1890,96 @@ $app->post( "/dashboard/renovar/checkout", function()
 			Payment::setError(Rule::VALIDATE_CARD_CVC);
 			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
 			exit;
+
+
+
 		}//end if
+
+
+
+
+
+
+
+
+
+		
+
+
+
+		if(
+				
+			!isset($_POST['descity']) 
+			|| 
+			$_POST['descity'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_CITY);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);			exit;
+
+		}//end if
+
+
+
+		if ( ( $cityArray = Address::getCity($_POST['descity']) ) === false ) 
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_CITY);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);			exit;
+
+		}//end if
+
+		$descity = $cityArray['descity'];
+
+
+
+
+
+
+
+		if(
+				
+			!isset($_POST['desstate']) 
+			|| 
+			$_POST['desstate'] === ''
+			
+		)
+		{
+
+			Payment::setError(Rule::ERROR_STATE);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);			exit;
+
+		}//end if
+
+
+
+		if ( ( $stateArray = Address::getState($_POST['desstate']) ) === false ) 
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_STATE);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);			exit;
+
+		}//end if
+
+
+		
+		$desstate = $stateArray['desstatecode'];
+
+
+		
+
+
+
+
+		
+		$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
+
+		$intypedoc = 0;
+
+
+
 
 
 
@@ -1340,6 +2003,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 		$_POST['desholdercity'] = $address->getdescity();
 		$_POST['desholderstate'] = $address->getdesstate();*/
 		
+		/*
 
 		$inholdertypedoc = $user->getintypedoc();
 		$desholderdocument = $user->getdesdocument();
@@ -1356,13 +2020,16 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		$desholderstate = $address->getdesstate();
 
+
+		*/
+
 		//$desholdername = $_POST['desholdername'];
 		//$descardcode_number = $_POST['descardcode_number'];
 		//$descardcode_month = $_POST['descardcode_month'];
 		//$descardcode_year = $_POST['descardcode_year'];
 		//$descardcode_number = $_POST['descardcode_number'];
 
-		$payment->setinpaymentmethod('2');
+		$payment->setinpaymentmethod(2);
 		$payment->setnrinstallment($_POST['installment']);
 
 
@@ -1380,7 +2047,11 @@ $app->post( "/dashboard/renovar/checkout", function()
 	}//end else
 
 
-	
+	$nrcountryarea = Rule::NR_COUNTRY_AREA;
+	$descountrycode = Rule::DESCOUNTRYCODE;
+
+
+
 	/*
 	echo "<pre>";
 	var_dump($inholdertypedoc);
@@ -1442,22 +2113,22 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 	$wirecardCustomerData = $wirecard->createCustomer(
 
-		$user->getdesperson(),
+		$desname,
 		$user->getdesemail(),
-		$user->getdtbirth(),
-		$user->getintypedoc(),
-		$user->getdesdocument(),
+		$dtbirth,
+		$intypedoc,
+		$desdocument,
 		$payment->getinpaymentmethod(),
-		$user->getnrcountryarea(),
-		$user->getnrddd(),
-		$user->getnrphone(),
-		$address->getdeszipcode(),
-		$address->getdesaddress(),
-		$address->getdesnumber(),
-		$address->getdescomplement(),
-		$address->getdesdistrict(),
-		$address->getdescity(),
-		$address->getdesstatecode(),
+		$nrcountryarea,
+		$nrddd,
+		$nrphone,
+		$deszipcode,
+		$desaddress,
+		$desnumber,
+		$descomplement,
+		$desdistrict,
+		$descity,
+		$desstate,
 		$desholdername,
 		$descardcode_month,
 		(int)$descardcode_year,
@@ -1481,28 +2152,29 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		$customer->setData([
 
+
 			'iduser'=>$user->getiduser(),
 			'descustomercode'=>$wirecardCustomerData['descustomercode'],
-			'desname'=>$user->getdesperson(),
+			'desname'=>$desname,
 			'desemail'=>$user->getdesemail(),
-			'nrcountryarea'=>$user->getnrcountryarea(),
-			'nrddd'=>$user->getnrddd(),
-			'nrphone'=>$user->getnrphone(),
-			'intypedoc'=>$user->getintypedoc(),
-			'desdocument'=>$user->getdesdocument(),
-			'deszipcode'=>$address->getdeszipcode(),
-			'desaddress'=>$address->getdesaddress(),
-			'desnumber'=>$address->getdesnumber(),
-			'descomplement'=>$address->getdescomplement(),
-			'desdistrict'=>$address->getdesdistrict(),
-			'descity'=>$address->getdescity(),
-			'desstate'=>$address->getdesstatecode(),
-			'descountry'=>$address->getdescountrycode(),
+			'nrcountryarea'=>$nrcountryarea,
+			'nrddd'=>$nrddd,
+			'nrphone'=>$nrphone,
+			'intypedoc'=>$intypedoc,
+			'desdocument'=>$desdocument,
+			'deszipcode'=>$deszipcode,
+			'desaddress'=>$desaddress,
+			'desnumber'=>$desnumber,
+			'descomplement'=>$descomplement,
+			'desdistrict'=>$desdistrict,
+			'descity'=>$descity,
+			'desstate'=>$desstate,
+			'descountry'=>$descountrycode,
 			'descardcode'=>$wirecardCustomerData['descardcode'],
 			'desbrand'=>$wirecardCustomerData['desbrand'],
 			'infirst6'=>$wirecardCustomerData['infirst6'],
 			'inlast4'=>$wirecardCustomerData['inlast4'],
-			'dtbirth'=>$user->getdtbirth()
+			'dtbirth'=>$dtbirth
 
 		]);//end setData
 
@@ -1516,8 +2188,8 @@ $app->post( "/dashboard/renovar/checkout", function()
 	{
 
 		Payment::setError(Rule::GENERAL_ERROR);
-			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
-			exit;
+		header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+		exit;
 		
 	}//end catch
 
@@ -1584,20 +2256,20 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		$customer->getdescustomercode(),
 		$cart->getidcart(),
-		Rule::NR_COUNTRY_AREA,
-		$nrholderddd,
-		$nrholderphone,
-		$desholdername,
-		$dtholderbirth,
-		$inholdertypedoc,
-		$desholderdocument,
-		$desholderzipcode,
-		$desholderaddress,
-		$desholdernumber,
-		$desholdercomplement,
-		$desholderdistrict,
-		$desholdercity,
-		$desholderstate,
+		$nrcountryarea,
+		$nrddd,
+		$nrphone,
+		$desname,
+		$dtbirth,
+		$intypedoc,
+		$desdocument,
+		$deszipcode,
+		$desaddress,
+		$desnumber,
+		$descomplement,
+		$desdistrict,
+		$descity,
+		$desstate,
 		$payment->getinpaymentmethod(),
 		$payment->getnrinstallment(),
 		$descardcode_month,
@@ -1628,19 +2300,19 @@ $app->post( "/dashboard/renovar/checkout", function()
 			'deslinecode'=>$wirecardPaymentData['deslinecode'],
 			'desprinthref'=>$wirecardPaymentData['desprinthref'],
 			'desholdername'=>$desholdername,
-			'nrholdercountryarea'=>Rule::NR_COUNTRY_AREA,
-			'nrholderddd'=>$nrholderddd,
-			'nrholderphone'=>$nrholderphone,
-			'inholdertypedoc'=>$inholdertypedoc,
-			'desholderdocument'=>$desholderdocument,
-			'desholderzipcode'=>$desholderzipcode,
-			'desholderaddress'=>$desholderaddress,
-			'desholdernumber'=>$desholdernumber,
-			'desholdercomplement'=>$desholdercomplement,
-			'desholderdistrict'=>$desholderdistrict,
-			'desholdercity'=>$desholdercity,
-			'desholderstate'=>$desholderstate,
-			'dtholderbirth'=>$dtholderbirth
+			'nrholdercountryarea'=>$nrcountryarea,
+			'nrholderddd'=>$nrddd,
+			'nrholderphone'=>$nrphone,
+			'inholdertypedoc'=>$intypedoc,
+			'desholderdocument'=>$desdocument,
+			'desholderzipcode'=>$deszipcode,
+			'desholderaddress'=>$desaddress,
+			'desholdernumber'=>$desnumber,
+			'desholdercomplement'=>$descomplement,
+			'desholderdistrict'=>$desdistrict,
+			'desholdercity'=>$descity,
+			'desholderstate'=>$desstate,
+			'dtholderbirth'=>$dtbirth
 
 		]);//end setData
 
@@ -1840,7 +2512,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 	
 	//$user->update();
-	$user->setToSession();
+	//$user->setToSession();
 
 
 	if(isset($_SESSION['planRenewalValues'])) unset($_SESSION['planRenewalValues']);
@@ -1870,9 +2542,90 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
-	/*$app->post( "/dashboard/renovar/checkout", function()
-{
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->get( "/dashboard/renovar/checkout", function()
+{
 
 	if( Maintenance::checkMaintenance() )
 	{	
@@ -1896,15 +2649,22 @@ $app->post( "/dashboard/renovar/checkout", function()
 	$user = User::getFromSession();
 
 
-	if ( 
 
-		!User::validatePlanDashboard( $user )
-		&&
-		!(int)$user->getinplancontext() > 0
-	)
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
-		Album::setError(Rule::VALIDATE_PLAN);
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	if ( (int)$validate['incontext'] == 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
 		exit;
 
@@ -1915,102 +2675,81 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
-
-		
 	
-	if( 
-		
-		!isset($_POST['zipcode']) 
-		|| 
-		$_POST['zipcode'] === ''
-	)
-	{
-
-		Payment::setError("Informe o CEP.");
-		header('Location: /dashboard/renovar/checkout');
-		exit;
-		
-	}//end if
 
 	
 
 
+	//$plans = Plan::getPlansFullArray();
 
 
+	$plan = new Plan();
 
-
-
-
-
-
-
-
-
-
-	if(
-		!isset($_POST['desholderaddress']) 
-		|| 
-		$_POST['desholderaddress'] === ''
-		
-	)
-	{
-
-		Payment::setError("Informe o endereço.");
-		header('Location: /dashboard/renovar/checkout');
-		exit;
-
-	}//end if
-
-
-
-
-
+	$lastplan = $plan->getLastPlan((int)$user->getiduser());
+	
 
 
 
 
 	
 
-	if(
-		
-		!isset($_POST['desholdernumber']) 
-		|| 
-		$_POST['desholdernumber'] === ''
-		
+
+
+
+
+
+
+
+
+	if ( 
+
+
+		isset($_GET['plano'])
+		&&
+		Validate::validateInplancode($_GET['plano'])
+		&&
+		(int)$_GET['plano'] != 0
+
+
 	)
 	{
 
-		Payment::setError("Informe o número.");
-		header('Location: /dashboard/renovar/checkout');
-		exit;
+		# code...
+		if (
+
+
+			!in_array((int)$lastplan['inpaymentstatus'], [0,1,2,3,4])
+			&&
+			(int)$lastplan['inpaymentmethod'] != 0
+
+		)
+		{
+			# code...
+
+			$plan = $_GET['plano'];
+
+
+		}//end if
+		else
+		{
+
+			Plan::setError(Rule::PLAN_WAIT_FOR_AUTHORIZATION);
+			header('Location: /dashboard/renovar');
+			exit;
+
+		}//end else
+
+
 
 	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['desholderdistrict']) 
-		|| 
-		$_POST['desholderdistrict'] === ''
-		
-	)
+	else
 	{
 
-		Payment::setError("Informe o bairro.");
-		header('Location: /dashboard/renovar/checkout');
+		Plan::setError(Rule::VALIDATE_PLAN_PURCHASE_CODE);
+		header('Location: /dashboard/renovar');
 		exit;
 
-	}//end if
+	}//end else if
 
 
 
@@ -2019,350 +2758,34 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
+	/*$payment = new Payment();
 
+	if( !$payment->getdesholderaddress() ) $payment->setdesholderaddress('');
+	if( !$payment->getdesemail() ) $payment->setdesemail('');
+	if( !$payment->getdesholdernumber() ) $payment->setdesholdernumber('');
+	if( !$payment->getdesholdercomplement() ) $payment->setdesholdercomplement('');
+	if( !$payment->getdesholderdistrict() ) $payment->setdesholderdistrict('');
+	if( !$payment->getdesholdercity() ) $payment->setdesholdercity('');
+	if( !$payment->getdesholderstate() ) $payment->setdesholderstate('');
+	if( !$payment->getdesholderzipcode() ) $payment->setdesholderzipcode('');
+	if( !$payment->getinholdertypedoc() ) $payment->setinholdertypedoc('');
+	if( !$payment->getdesholderdocument() ) $payment->setdesholderdocument('');
+	if( !$payment->getdtholderbirth() ) $payment->setdtholderbirth('');
+	if( !$payment->getnrholderddd() ) $payment->setnrholderddd('');
+	if( !$payment->getnrholderphone() ) $payment->setnrholderphone('');
+	if( !$payment->getdesholdername() ) $payment->setdesholdername('');
+	if( !$payment->getdescardcode_number() ) $payment->setdescardcode_number('');
+	if( !$payment->getdescardcode_month() ) $payment->setdescardcode_month('');
+	if( !$payment->getdescardcode_year() ) $payment->setdescardcode_year('');
+	if( !$payment->getdescardcode_cvc() ) $payment->setdescardcode_cvc('');*/
 
 
 
-	if(
-		
-		!isset($_POST['desholdercity']) 
-		|| 
-		$_POST['desholdercity'] === ''
-		
-	)
-	{
+	$inplan = Plan::getPlanArray($plan);
 
-		Payment::setError("Informe a cidade.");
-		header('Location: /dashboard/renovar/checkout');
-		exit;
+	//$address = new Address();
 
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['desholderstate']) 
-		|| 
-		$_POST['desholderstate'] === ''
-		
-	)
-	{
-
-		Payment::setError("Informe o estado.");
-		header('Location: /dashboard/renovar/checkout');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['inholdertypedoc']) 
-		|| 
-		$_POST['inholdertypedoc'] === ''
-		
-	)
-	{
-
-		Payment::setError("Informe o Tipo de Documento.");
-		header('Location: /dashboard/renovar/checkout');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['desholderdocument']) 
-		|| 
-		$_POST['desholderdocument'] === ''
-		
-	)
-	{
-
-		Payment::setError("Informe o Número do Documento.");
-		header('Location: /dashboard/renovar/checkout');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-	if(
-		
-		!isset($_POST['dtholderbirth']) 
-		|| 
-		$_POST['dtholderbirth'] === ''
-		
-	)
-	{
-
-		Payment::setError("Informe o Nascimento.");
-		header('Location: /dashboard/renovar/checkout');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['nrholderphone']) 
-		|| 
-		$_POST['nrholderphone'] === ''
-		
-	)
-	{
-
-		Payment::setError("Informe o Telefone.");
-		header('Location: /dashboard/renovar/checkout');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['descardcode_number']) 
-		|| 
-		$_POST['descardcode_number'] === ''
-		
-	)
-	{
-
-		Payment::setError("Informe o Número do Cartão.");
-		header('Location: /dashboard/renovar/checkout');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['desholdername']) 
-		|| 
-		$_POST['desholdername'] === ''
-		
-	)
-	{
-
-		Payment::setError("Informe o Nome tal como está impresso no Cartão.");
-		header('Location: /dashboard/renovar/checkout');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['descardcode_month']) 
-		|| 
-		$_POST['descardcode_month'] === ''
-		
-	)
-	{
-
-		Payment::setError("Informe o Mês de Validade do Cartão.");
-		header('Location: /dashboard/renovar/checkout');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['descardcode_year']) 
-		|| 
-		$_POST['descardcode_year'] === ''
-		
-	)
-	{
-
-		Payment::setError("Informe o Ano de Validade do Cartão.");
-		header('Location: /dashboard/renovar/checkout');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['descardcode_cvc']) 
-		|| 
-		$_POST['descardcode_cvc'] === ''
-		
-	)
-	{
-
-		Payment::setError("Informe o Código de Segurança do Cartão.");
-		header('Location: /dashboard/renovar/checkout');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	$cart = new Cart();
-
-	$data = [
-
-		'dessessionid'=>session_id(),
-		'iduser'=>$user->getiduser(),
-		'incartstatus'=>0
-
-	];//end $data
-
-
-	$cart->setData($data);
-
-	$cart->update();
-
-
-
-
-
-	//$account = new Account();
-	//$account->get((int)$user->getiduser());
+	//$lastAddressPlan = Address::getLastAddressPlan($user->getiduser());
 
 
 
@@ -2373,295 +2796,151 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
-	
-	$wirecard = new Wirecard();
-
-	//$account = new Account();
-	//$account->get((int)$user->getiduser());
-
-	$wirecardCustomerData = $wirecard->createCustomer(
-
-			$user->getdesperson(),
-			$user->getdesemail(),
-			$user->getdtbirth(),
-			$user->getintypedoc(),
-			$user->getdesdocument(),
-			$user->getnrcountryarea(),
-			$user->getnrddd(),
-			$user->getnrphone(),
-			$address->getdeszipcode(),
-			$address->getdesaddress(),
-			$address->getdesnumber(),
-			$address->getdescomplement(),
-			$address->getdesdistrict(),
-			$address->getdescity(),
-			$address->getdesstate(),
-			$_POST['descardcode_month'],
-			(int)$_POST['descardcode_year'],
-			$_POST['descardcode_number'],
-			$_POST['descardcode_cvc']
-
-	);//END createCustomer
 
 
 
 
 
-	$customer = new Customer();
 
-	$customer->setData([
-
-		'iduser'=>$user->getiduser(),
-		'descustomercode'=>$wirecardCustomerData['descustomercode'],
-		'desname'=>$user->getdesperson(),
-		'desemail'=>$user->getdesemail(),
-		'nrcountryarea'=>$user->getnrcountryarea(),
-		'nrddd'=>$user->getnrddd(),
-		'nrphone'=>$user->getnrphone(),
-		'intypedoc'=>$user->getintypedoc(),
-		'desdocument'=>$user->getdesdocument(),
-		'deszipcode'=>$address->getdeszipcode(),
-		'desaddress'=>$address->getdesaddress(),
-		'desnumber'=>$address->getdesnumber(),
-		'descomplement'=>$address->getdescomplement(),
-		'desdistrict'=>$address->getdesdistrict(),
-		'descity'=>$address->getdescity(),
-		'desstate'=>$address->getdesstate(),
-		'descountry'=>$address->getdescountry(),
-		'descardcode'=>$wirecardCustomerData['descardcode'],
-		'desbrand'=>$wirecardCustomerData['desbrand'],
-		'infirst6'=>$wirecardCustomerData['infirst6'],
-		'inlast4'=>$wirecardCustomerData['inlast4'],
-		'dtbirth'=>$user->getdtbirth()
-
-	]);//end setData
+	$state = Address::listAllStates();
 
 
-	$customer->save();
 
 
 
 
 	
 
-	if($customer->getidcustomer() > 0)
+	$city = [];
+
+	if ( (int)$address->getidstate() > 0 ) 
+	{
+		# code...
+		$city = Address::listAllCitiesByState((int)$address->getidstate());
+
+	}//end if
+	else
 	{
 
-		$plan = new Plan();
-
-		$lastplan = $plan->getLastPlanPurchased($user->getiduser());
-
-		$inplan = Plan::getPlanArray($_POST['inplan']);
-
-		$inplanCode = $_POST['inplan'];
-
-
-
-
-		$dtbegin = new DateTime($lastplan['dtend'] ." + 1 day");
-
-		//$dtbegin->format('Y-m-d');
-
-		$dtend = new DateTime($dtbegin->format('Y-m-d') . ' +'. $inplan['inperiod'] .' month');
-
-
-
-		//$dtend->format('Y-m-d');
-
-
-
-		$plan->setData([
-
-			'iduser'=>$user->getiduser(),
-			'iddiscount'=>NULL,
-			'idcupom'=>NULL,
-			'incupom'=>0,
-			'indiscount'=>0,
-			'inplancode'=>$_POST['inplan'],
-			'inmigration'=>0,
-			'inperiod'=>$inplan['inperiod'],
-			'desplan'=>utf8_decode($inplan['desplan']),
-			'vlregularprice'=>$inplan['vlregularprice'],
-			'vlsaleprice'=>$inplan['vlsaleprice'],
-			'dtbegin'=>$dtbegin->format('Y-m-d'),
-			'dtend'=>$dtend->format('Y-m-d')
-
-		]);//end setData
-
-
-		$plan->save();
-
-
+		$city = Address::listAllCitiesByState(1);
 
 		
 
-
-		if( $plan->getidplan() > 0)
-		{
-
-
-			$_POST['desholderaddress'] = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"), $_POST['desholderaddress']);
+	}//end else
 
 
 
 
+	$city2 = [];
+	
 
-			$cart->addItem( $plan->getidplan(), 0);
-
-
-					
-
-
-			$wirecardPaymentData = $wirecard->payOrderPlan(
-
-				$customer->getdescustomercode(),
-				$cart->getidcart(),
-				Rule::NR_COUNTRY_AREA,
-				$_POST['nrholderddd'],
-				$_POST['nrholderphone'],
-				$_POST['desholdername'],
-				$_POST['dtholderbirth'],
-				$_POST['inholdertypedoc'],
-				$_POST['desholderdocument'],
-				$_POST['zipcode'],
-				$_POST['desholderaddress'],
-				$_POST['desholdernumber'],
-				$_POST['desholdercomplement'],
-				$_POST['desholderdistrict'],
-				$_POST['desholdercity'],
-				$_POST['desholderstate'],
-				$_POST['descardcode_month'],
-				$_POST['descardcode_year'],
-				$_POST['descardcode_number'],
-				$_POST['descardcode_cvc']
-
-
-			);//end payPlan
-
-
-
-
-			$payment = new Payment();	
-
-			$payment->setData([
-
-				'iduser'=>$user->getiduser(),
-				'despaymentcode'=>$wirecardPaymentData['despaymentcode'],
-				'inpaymentstatus'=>$wirecardPaymentData['inpaymentstatus'],
-				'desholdername'=>$_POST['desholdername'],
-				'nrholdercountryarea'=>Rule::NR_COUNTRY_AREA,
-				'nrholderddd'=>$_POST['nrholderddd'],
-				'nrholderphone'=>$_POST['nrholderphone'],
-				'inholdertypedoc'=>$_POST['inholdertypedoc'],
-				'desholderdocument'=>$_POST['desholderdocument'],
-				'desholderzipcode'=>$_POST['zipcode'],
-				'desholderaddress'=>$_POST['desholderaddress'],
-				'desholdernumber'=>$_POST['desholdernumber'],
-				'desholdercomplement'=>$_POST['desholdercomplement'],
-				'desholderdistrict'=>$_POST['desholderdistrict'],
-				'desholdercity'=>$_POST['desholdercity'],
-				'desholderstate'=>$_POST['desholderstate'],
-				'dtholderbirth'=>$_POST['dtholderbirth']
-
-			]);		
-
-			$payment->update();
-
-
-
-
-
-
-
-			if ( $payment->getidpayment() > 0)
-			{
-
-
-
-				$cart->setincartstatus('1');
-				$cart->update();
-				Cart::removeFromSession();
-
-
-
-
-
-				
-				$order = new Order();
-
-				$order->setData([
-
-					'iduser'=>$user->getiduser(),
-					'idcart'=>$cart->getidcart(),
-					'idcustomer'=>$customer->getidcustomer(),
-					'idpayment'=>$payment->getidpayment(),
-					'desordercode'=>$wirecardPaymentData['desordercode'],
-					'vltotal'=>$plan->getvlsaleprice()
-
-				]);//end setData
-
-				$order->update();
-
-				
-
-
-
-
-				if( $order->getidorder() > 0 )
-				{
-
-
-					$userMailer = new Mailer(
-								
-						$user->getdeslogin(), 
-						$user->getdesperson(), 
-						"Amar Casar - Renovação de Plano",
-						# template do e-mail em si na /views/email/ e não da administração
-						"plan-renewal", 
-						
-						array(
-
-							"user"=>$user->getValues(),
-							"plan"=>$plan->getValues()
-
-						)//end array
-					
-					);//end Mailer
-
-					
-					$userMailer->send();
-
-
-
-				
-					$user->setinplan($inplanCode);
-					$user->setdtplanend($plan->getdtend());
-
-
-					
-					$user->update();
-					$user->setToSession();
-
-
-					Payment::setSuccess('Renovação de Plano realizada');
-					
-					//User::loginAfterPlanPurchase($user->getdeslogin(), $user->getdespassword());
-
-					header("Location: /dashboard/meu-plano");
-					exit;
-
-				}//end if
-				
-
-			}//end if
-
-		}//end if
+	if ( isset($_SESSION["planRenewalValues"]) ) 
+	{
+		# code...
+		$city2 = Address::listAllCitiesByState($_SESSION["planRenewalValues"]['desstate']);
 
 	}//end if
+	else
+	{
+
+		$city2 = Address::listAllCitiesByState(1);
+	
+
+	}//end else
 
 
 
-});//END route*/
+
+
+	
+
+
+
+
+	$page = new PageDashboard();
+
+	$page->setTpl(
+		
+		"plans-renewal-checkout",
+
+		[
+			'user'=>$user->getValues(),
+			'address'=>$address->getValues(),
+			//'payment'=>$payment->getValues(),
+			'state'=>$state,
+			'city'=>$city,
+			'city2'=>$city2,
+			'inplan'=>$inplan,
+			'validate'=>$validate,
+			'error'=>Payment::getError(),
+			'success'=>Payment::getError(),
+			'planRenewalValues'=> (isset($_SESSION["planRenewalValues"])) ? $_SESSION["planRenewalValues"] : ['desname'=>'','desemail'=>'','desdocument'=>'', 'nrddd'=>'', 'nrphone'=>'', 'dtbirth'=>'', 'deszipcode'=>'', 'desaddress'=>'', 'desnumber'=>'', 'descomplement'=>'', 'desdistrict'=>'', 'desstate'=>'', 'descity'=>'']
+
+		]
+	
+	);//end setTpl
+
+
+
+
+
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -983,688 +983,6 @@ $app->post( "/dashboard/comprar-plano/cadastrar", function()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$app->get( "/dashboard/comprar-plano/checkout", function()
-{
-
-	if( Maintenance::checkMaintenance() )
-	{	
-
-		$maintenance = new Maintenance();
-
-		$maintenance->getMaintenance();
-
-		User::setError($maintenance->getdesdescription());
-		header("Location: /login");
-		exit;
-		
-	}//end if
-
-
-
-	
-
-
-
-	User::verifyLogin(false);
-
-	$user = User::getFromSession();
-
-	
-
-
-	$validate = User::validatePlanDashboard( $user );
-
-
-
-	if ( (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
-		exit;
-
-	}//end if
-
-
-	
-
-	
-
-
-	
-
-
-	//$plans = Plan::getPlansFullArray();
-
-
-
-
-	//$lastplan = Plan::getLastPlan((int)$user->getiduser());
-	
-	
-
-
-
-	if ( 
-
-		isset($_GET['plano'])
-		&&
-		Validate::validateInplancode($_GET['plano'])
-		&&
-		(int)$_GET['plano'] != 0
-		&&
-		!in_array((int)$_GET['plano'], [101,201,301])
-
-
-	)
-	{
-
-		$inplancode = $_GET['plano'];
-
-
-
-	}//end if
-	else
-	{
-
-		Plan::setError(Rule::VALIDATE_PLAN_PURCHASE_CODE);
-		header('Location: /dashboard/comprar-plano');
-		exit;
-
-	}//end else if
-
-
-
-
-
-	/*$payment = new Payment();
-
-	if( !$payment->getdesholderaddress() ) $payment->setdesholderaddress('');
-	if( !$payment->getdesemail() ) $payment->setdesemail('');
-	if( !$payment->getdesholdernumber() ) $payment->setdesholdernumber('');
-	if( !$payment->getdesholdercomplement() ) $payment->setdesholdercomplement('');
-	if( !$payment->getdesholderdistrict() ) $payment->setdesholderdistrict('');
-	if( !$payment->getdesholdercity() ) $payment->setdesholdercity('');
-	if( !$payment->getdesholderstate() ) $payment->setdesholderstate('');
-	if( !$payment->getdesholderzipcode() ) $payment->setdesholderzipcode('');
-	if( !$payment->getinholdertypedoc() ) $payment->setinholdertypedoc('');
-	if( !$payment->getdesholderdocument() ) $payment->setdesholderdocument('');
-	if( !$payment->getdtholderbirth() ) $payment->setdtholderbirth('');
-	if( !$payment->getnrholderddd() ) $payment->setnrholderddd('');
-	if( !$payment->getnrholderphone() ) $payment->setnrholderphone('');
-	if( !$payment->getdesholdername() ) $payment->setdesholdername('');
-	if( !$payment->getdescardcode_number() ) $payment->setdescardcode_number('');
-	if( !$payment->getdescardcode_month() ) $payment->setdescardcode_month('');
-	if( !$payment->getdescardcode_year() ) $payment->setdescardcode_year('');
-	if( !$payment->getdescardcode_cvc() ) $payment->setdescardcode_cvc('');*/
-
-
-
-	$inplan = Plan::getPlanArray($inplancode);
-
-	$address = new Address();
-
-	$address->get((int)$user->getiduser());
-
-
-
-
-	//$state = Address::listAllStates();
-	$state = Address::listAllStates();
-
-
-
-	$city = [];
-
-	if ( (int)$address->getidstate() > 0 ) 
-	{
-		# code...
-		$city = Address::listAllCitiesByState((int)$address->getidstate());
-
-	}//end if
-	else
-	{
-
-		$city = Address::listAllCitiesByState(1);
-
-		
-
-	}//end else
-
-
-
-
-	$city2 = [];
-	
-
-	if ( isset($_SESSION["planPurchaseValues"]) ) 
-	{
-		# code...
-		$city2 = Address::listAllCitiesByState($_SESSION["planPurchaseValues"]['desstate']);
-
-	}//end if
-	else
-	{
-
-		$city2 = Address::listAllCitiesByState(1);
-	
-
-	}//end else
-
-
-
-
-
-
-
-	//$lastAddressPlan = Address::getLastAddressPlan($user->getiduser());
-
-
-
-
-	/*$inplancode = new Plan();
-
-
-	if( (int)$user->getinplancontext() == 0 )
-	{
-
-		$inplancode->setinpaymentstatus('0');
-		$inplancode->setinpaymentmethod('0');
-
-	}//end if
-	else
-	{
-
-		$inplancodes = $inplancode->get((int)$user->getiduser());
-
-		$inplancode->setinpaymentstatus($inplancodes['results'][0]['inpaymentstatus']);
-		$inplancode->setinpaymentmethod($inplancodes['results'][0]['inpaymentmethod']);
-
-	}//end else*/
-
-
-
-	$coupon = '';
-	$action = 'aplicar';
-	$oldVlprice = '';
-
-	$invoucher = 0;
-
-
-	if ( 
-
-		isset($_GET['cupom'])
-		&&
-		isset($_GET['acao'])
-
-
-	)
-	{
-
-		if ( 
-
-
-			($coupon = Validate::validateCouponCode($_GET['cupom']))
-			&&
-			($action = Validate::validateCouponAction($_GET['acao']))
-
-
-		)
-		{
-			# code...
-
-			//$coupon = $_GET['cupom'];
-			//$action = $_GET['acao'];
-			
-			
-
-			if ( $couponExists = Coupon::checkCouponExists($coupon) ) 
-			{
-
-
-
-				$timezone = new DateTimeZone('America/Sao_Paulo');
-
-				$dtnow = new DateTime('now');
-
-				$dtnow->setTimezone($timezone);
-
-
-
-				$dtexpire = new DateTime($couponExists['dtexpire']);
-
-				//$dtexpire->setTimezone($timezone);
-
-				
-				
-				
-
-
-				if ( $dtexpire > $dtnow ) 
-				{
-					
-
-					# code...
-					if ( (int)$couponExists['inusage'] == 0 ) 
-					{
-
-						if ( $couponExists['vlpercentage'] == 0 )
-						{
-							# code...
-							//Aqui não pode ser voucher, pois o usage é ilimitado
-							//$invoucher = 1;
-
-							Payment::setError(Rule::CHECK_IS_VOUCHER);
-							header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
-							exit;
-
-						}//end if
-
-
-						$couponIsApplied = Coupon::checkAndApplyCoupon(
-
-							(int)$user->getiduser(),
-							(int)$couponExists['idcoupon']
-
-						);//end checkAndApplyCoupon
-
-
-						if ( 
-
-							$action == 'aplicar'
-							&&
-							(int)$couponIsApplied['instatus'] == 0							
-
-						) 
-						{
-							# code...
-
-							
-							$oldVlprice = $inplan['vlprice'];
-
-							$inplan['vlprice'] *= $couponExists['vlpercentage'];
-
-							$inplan['vlprice'] = number_format($inplan['vlprice'],2);
-
-							$action = 'desaplicar';
-
-						}//end if
-						elseif(
-
-							$action == 'aplicar'
-							&&
-							(int)$couponIsApplied['instatus'] == 1
-
-						)
-						{
-
-							
-							Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister']));
-							header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
-							exit;
-							
-
-						}//end elseif
-						elseif (
-
-							$action == 'desaplicar'
-							&&
-							(int)$couponIsApplied['instatus'] == 0
-
-						) 
-						{
-							# code...
-							Coupon::deleteCouponUser(
-
-								(int)$user->getiduser(), 
-								(int)$couponExists['idcoupon']
-
-							);//end deleteCouponUser
-
-							//$action = 'aplicar';
-
-							header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
-							exit;
-
-
-						}//end elseif
-						elseif (
-
-							$action == 'desaplicar'
-							&&
-							(int)$couponIsApplied['instatus'] == 1
-						)
-						{
-							# code...
-							Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister'])." e não pode desaplicá-lo");
-							header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
-							exit;
-
-
-						}//end elseif
-						
-
-
-					}//end if
-					else
-					{
-
-						if ( !Coupon::checkCouponIsApplied((int)$couponExists['idcoupon']) ) 
-						{
-
-							# code...
-							$couponIsApplied = Coupon::checkAndApplyCoupon(
-
-								(int)$user->getiduser(),
-								(int)$couponExists['idcoupon']
-
-							);//end checkAndApplyCoupon
-
-
-							if ( 
-
-								$action == 'aplicar'
-								&&
-								(int)$couponIsApplied['instatus'] == 0							
-
-							) 
-							{
-								# code...
-
-								if ( (int)$couponExists['vlpercentage'] == 0 )
-								{
-
-									$inplan['inperiod'] = Rule::VOUCHER_INPERIOD;
-									$inplan['desplan'] = Rule::PLAN_NAME_ADVANCED;
-									$inplan['inplancontext'] = Rule::VOUCHER_INPLANCONTEXT;
-									$inplan['inplancode'] = Rule::VOUCHER_INPLANCODE;
-									$inplan['desvlprice'] = Rule::VOUCHER_DESVLPRICE;
-									
-									$invoucher = 1;
-
-								}//end if
-
-								
-								$oldVlprice = $inplan['vlprice'];
-
-								$inplan['vlprice'] *= $couponExists['vlpercentage'];
-
-								$inplan['vlprice'] = number_format($inplan['vlprice'],2);
-
-								$action = 'desaplicar';
-
-							}//end if
-							elseif(
-
-								$action == 'aplicar'
-								&&
-								(int)$couponIsApplied['instatus'] == 1
-
-							)
-							{
-
-								
-								Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister']));
-								header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
-								exit;
-								
-
-							}//end elseif
-							elseif (
-
-								$action == 'desaplicar'
-								&&
-								(int)$couponIsApplied['instatus'] == 0
-
-							) 
-							{
-								# code...
-								Coupon::deleteCouponUser(
-
-									(int)$user->getiduser(), 
-									(int)$couponExists['idcoupon']
-
-								);//end deleteCouponUser
-
-								//$action = 'aplicar';
-
-								header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
-								exit;
-
-
-							}//end elseif
-							elseif (
-
-								$action == 'desaplicar'
-								&&
-								(int)$couponIsApplied['instatus'] == 1
-							)
-							{
-								# code...
-								Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister'])." e não pode desaplicá-lo");
-								header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
-								exit;
-
-
-							}//end elseif
-
-						}//end if
-						else
-						{
-
-							Payment::setError(Rule::CHECK_COUPON_IS_APPLIED);
-							header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
-							exit;
-
-						}//end else
-
-
-					}//end else
-
-
-				}//end if
-				else
-				{
-
-					
-				
-					Payment::setError("Este cupom expirou em ".$dtexpire->format('d/m/y'));
-					header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
-					exit;
-
-
-
-
-				}//end else
-				
-
-			}//end if
-			else
-			{
-
-				
-		
-				Payment::setError(Rule::VALIDATE_COUPON_EXISTS);
-				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
-				exit;
-
-
-
-			}//end else
-
-
-
-
-		}//end if
-		else
-		{
-
-
-			Payment::setError("O código não pode estar vazio e deve ter ".Rule::COUPON_LENGTH." digitos entre letras maiúsculas e números | Por favor, tente novamente");
-			header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
-			exit;
-
-
-
-		}//end else
-
-
-
-	}//end if
-
-
-
-	
-	
-
-
-
-	$page = new PageDashboard();
-
-	$page->setTpl(
-		
-		"plans-purchase-checkout",
-
-		[
-			'user'=>$user->getValues(),
-			'address'=>$address->getValues(),
-			'state'=>$state,
-			'city'=>$city,
-			'city2'=>$city2,
-			//'payment'=>$payment->getValues(),
-			'inplan'=>$inplan,
-			'inplancode'=>$inplancode,
-			'oldVlprice'=>$oldVlprice,
-			'coupon'=>$coupon,
-			'action'=>$action,
-			'invoucher'=>$invoucher,
-			'validate'=>$validate,
-			'error'=>Payment::getError(),
-			'success'=>Payment::getSuccess(),
-			'planPurchaseValues'=> (isset($_SESSION["planPurchaseValues"])) ? $_SESSION["planPurchaseValues"] : ['desname'=>'','desemail'=>'','desdocument'=>'', 'nrddd'=>'', 'nrphone'=>'', 'dtbirth'=>'', 'deszipcode'=>'', 'desaddress'=>'', 'desnumber'=>'', 'descomplement'=>'', 'desdistrict'=>'', 'desstate'=>'', 'descity'=>'']
-
-
-		]
-	
-	);//end setTpl
-
-});//END route
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $app->post( "/dashboard/comprar-plano/checkout", function()
 {
 
@@ -6314,6 +5632,733 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->get( "/dashboard/comprar-plano/checkout", function()
+{
+
+	if( Maintenance::checkMaintenance() )
+	{	
+
+		$maintenance = new Maintenance();
+
+		$maintenance->getMaintenance();
+
+		User::setError($maintenance->getdesdescription());
+		header("Location: /login");
+		exit;
+		
+	}//end if
+
+
+
+	
+
+
+
+	User::verifyLogin(false);
+
+	$user = User::getFromSession();
+
+	
+
+
+	$validate = User::validatePlanDashboard( $user );
+
+
+
+	if ( (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		Payment::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard/meu-plano');
+		exit;
+
+	}//end if
+
+
+	
+
+	
+
+
+	
+
+
+	//$plans = Plan::getPlansFullArray();
+
+
+
+
+	//$lastplan = Plan::getLastPlan((int)$user->getiduser());
+	
+	
+
+
+
+	if ( 
+
+		isset($_GET['plano'])
+		&&
+		Validate::validateInplancode($_GET['plano'])
+		&&
+		(int)$_GET['plano'] != 0
+		&&
+		!in_array((int)$_GET['plano'], [101,201,301])
+
+
+	)
+	{
+
+		$inplancode = $_GET['plano'];
+
+
+
+	}//end if
+	else
+	{
+
+		Plan::setError(Rule::VALIDATE_PLAN_PURCHASE_CODE);
+		header('Location: /dashboard/comprar-plano');
+		exit;
+
+	}//end else if
+
+
+
+
+
+	/*$payment = new Payment();
+
+	if( !$payment->getdesholderaddress() ) $payment->setdesholderaddress('');
+	if( !$payment->getdesemail() ) $payment->setdesemail('');
+	if( !$payment->getdesholdernumber() ) $payment->setdesholdernumber('');
+	if( !$payment->getdesholdercomplement() ) $payment->setdesholdercomplement('');
+	if( !$payment->getdesholderdistrict() ) $payment->setdesholderdistrict('');
+	if( !$payment->getdesholdercity() ) $payment->setdesholdercity('');
+	if( !$payment->getdesholderstate() ) $payment->setdesholderstate('');
+	if( !$payment->getdesholderzipcode() ) $payment->setdesholderzipcode('');
+	if( !$payment->getinholdertypedoc() ) $payment->setinholdertypedoc('');
+	if( !$payment->getdesholderdocument() ) $payment->setdesholderdocument('');
+	if( !$payment->getdtholderbirth() ) $payment->setdtholderbirth('');
+	if( !$payment->getnrholderddd() ) $payment->setnrholderddd('');
+	if( !$payment->getnrholderphone() ) $payment->setnrholderphone('');
+	if( !$payment->getdesholdername() ) $payment->setdesholdername('');
+	if( !$payment->getdescardcode_number() ) $payment->setdescardcode_number('');
+	if( !$payment->getdescardcode_month() ) $payment->setdescardcode_month('');
+	if( !$payment->getdescardcode_year() ) $payment->setdescardcode_year('');
+	if( !$payment->getdescardcode_cvc() ) $payment->setdescardcode_cvc('');*/
+
+
+
+	$inplan = Plan::getPlanArray($inplancode);
+
+	$address = new Address();
+
+	$address->get((int)$user->getiduser());
+
+
+
+
+	//$state = Address::listAllStates();
+	$state = Address::listAllStates();
+
+
+
+
+
+
+	
+
+	$city = [];
+
+	if ( (int)$address->getidstate() > 0 ) 
+	{
+		# code...
+		$city = Address::listAllCitiesByState((int)$address->getidstate());
+
+	}//end if
+	else
+	{
+
+		$city = Address::listAllCitiesByState(1);
+
+		
+
+	}//end else
+
+
+
+
+	$city2 = [];
+	
+
+	if ( isset($_SESSION["planPurchaseValues"]) ) 
+	{
+		# code...
+		$city2 = Address::listAllCitiesByState($_SESSION["planPurchaseValues"]['desstate']);
+
+	}//end if
+	else
+	{
+
+		$city2 = Address::listAllCitiesByState(1);
+	
+
+	}//end else
+
+
+
+
+
+
+
+	//$lastAddressPlan = Address::getLastAddressPlan($user->getiduser());
+
+
+
+
+	/*$inplancode = new Plan();
+
+
+	if( (int)$user->getinplancontext() == 0 )
+	{
+
+		$inplancode->setinpaymentstatus('0');
+		$inplancode->setinpaymentmethod('0');
+
+	}//end if
+	else
+	{
+
+		$inplancodes = $inplancode->get((int)$user->getiduser());
+
+		$inplancode->setinpaymentstatus($inplancodes['results'][0]['inpaymentstatus']);
+		$inplancode->setinpaymentmethod($inplancodes['results'][0]['inpaymentmethod']);
+
+	}//end else*/
+
+
+
+	$coupon = '';
+	$action = 'aplicar';
+	$oldVlprice = '';
+
+	$invoucher = 0;
+
+
+	if ( 
+
+		isset($_GET['cupom'])
+		&&
+		isset($_GET['acao'])
+
+
+	)
+	{
+
+		if ( 
+
+
+			($coupon = Validate::validateCouponCode($_GET['cupom']))
+			&&
+			($action = Validate::validateCouponAction($_GET['acao']))
+
+
+		)
+		{
+			# code...
+
+			//$coupon = $_GET['cupom'];
+			//$action = $_GET['acao'];
+			
+			
+
+			if ( $couponExists = Coupon::checkCouponExists($coupon) ) 
+			{
+
+
+
+				$timezone = new DateTimeZone('America/Sao_Paulo');
+
+				$dtnow = new DateTime('now');
+
+				$dtnow->setTimezone($timezone);
+
+
+
+				$dtexpire = new DateTime($couponExists['dtexpire']);
+
+				//$dtexpire->setTimezone($timezone);
+
+				
+				
+				
+
+
+				if ( $dtexpire > $dtnow ) 
+				{
+					
+
+					# code...
+					if ( (int)$couponExists['inusage'] == 0 ) 
+					{
+
+						if ( $couponExists['vlpercentage'] == 0 )
+						{
+							# code...
+							//Aqui não pode ser voucher, pois o usage é ilimitado
+							//$invoucher = 1;
+
+							Payment::setError(Rule::CHECK_IS_VOUCHER);
+							header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+							exit;
+
+						}//end if
+
+
+						$couponIsApplied = Coupon::checkAndApplyCoupon(
+
+							(int)$user->getiduser(),
+							(int)$couponExists['idcoupon']
+
+						);//end checkAndApplyCoupon
+
+
+						if ( 
+
+							$action == 'aplicar'
+							&&
+							(int)$couponIsApplied['instatus'] == 0							
+
+						) 
+						{
+							# code...
+
+							
+							$oldVlprice = $inplan['vlprice'];
+
+							$inplan['vlprice'] *= $couponExists['vlpercentage'];
+
+							$inplan['vlprice'] = number_format($inplan['vlprice'],2);
+
+							$action = 'desaplicar';
+
+						}//end if
+						elseif(
+
+							$action == 'aplicar'
+							&&
+							(int)$couponIsApplied['instatus'] == 1
+
+						)
+						{
+
+							
+							Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister']));
+							header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+							exit;
+							
+
+						}//end elseif
+						elseif (
+
+							$action == 'desaplicar'
+							&&
+							(int)$couponIsApplied['instatus'] == 0
+
+						) 
+						{
+							# code...
+							Coupon::deleteCouponUser(
+
+								(int)$user->getiduser(), 
+								(int)$couponExists['idcoupon']
+
+							);//end deleteCouponUser
+
+							//$action = 'aplicar';
+
+							header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+							exit;
+
+
+						}//end elseif
+						elseif (
+
+							$action == 'desaplicar'
+							&&
+							(int)$couponIsApplied['instatus'] == 1
+						)
+						{
+							# code...
+							Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister'])." e não pode desaplicá-lo");
+							header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+							exit;
+
+
+						}//end elseif
+						
+
+
+					}//end if
+					else
+					{
+
+						if ( !Coupon::checkCouponIsApplied((int)$couponExists['idcoupon']) ) 
+						{
+
+							# code...
+							$couponIsApplied = Coupon::checkAndApplyCoupon(
+
+								(int)$user->getiduser(),
+								(int)$couponExists['idcoupon']
+
+							);//end checkAndApplyCoupon
+
+
+							if ( 
+
+								$action == 'aplicar'
+								&&
+								(int)$couponIsApplied['instatus'] == 0							
+
+							) 
+							{
+								# code...
+
+								if ( (int)$couponExists['vlpercentage'] == 0 )
+								{
+
+									$inplan['inperiod'] = Rule::VOUCHER_INPERIOD;
+									$inplan['desplan'] = Rule::PLAN_NAME_ADVANCED;
+									$inplan['inplancontext'] = Rule::VOUCHER_INPLANCONTEXT;
+									$inplan['inplancode'] = Rule::VOUCHER_INPLANCODE;
+									$inplan['desvlprice'] = Rule::VOUCHER_DESVLPRICE;
+									
+									$invoucher = 1;
+
+								}//end if
+
+								
+								$oldVlprice = $inplan['vlprice'];
+
+								$inplan['vlprice'] *= $couponExists['vlpercentage'];
+
+								$inplan['vlprice'] = number_format($inplan['vlprice'],2);
+
+								$action = 'desaplicar';
+
+							}//end if
+							elseif(
+
+								$action == 'aplicar'
+								&&
+								(int)$couponIsApplied['instatus'] == 1
+
+							)
+							{
+
+								
+								Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister']));
+								header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+								exit;
+								
+
+							}//end elseif
+							elseif (
+
+								$action == 'desaplicar'
+								&&
+								(int)$couponIsApplied['instatus'] == 0
+
+							) 
+							{
+								# code...
+								Coupon::deleteCouponUser(
+
+									(int)$user->getiduser(), 
+									(int)$couponExists['idcoupon']
+
+								);//end deleteCouponUser
+
+								//$action = 'aplicar';
+
+								header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+								exit;
+
+
+							}//end elseif
+							elseif (
+
+								$action == 'desaplicar'
+								&&
+								(int)$couponIsApplied['instatus'] == 1
+							)
+							{
+								# code...
+								Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister'])." e não pode desaplicá-lo");
+								header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+								exit;
+
+
+							}//end elseif
+
+						}//end if
+						else
+						{
+
+							Payment::setError(Rule::CHECK_COUPON_IS_APPLIED);
+							header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+							exit;
+
+						}//end else
+
+
+					}//end else
+
+
+				}//end if
+				else
+				{
+
+					
+				
+					Payment::setError("Este cupom expirou em ".$dtexpire->format('d/m/y'));
+					header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+					exit;
+
+
+
+
+				}//end else
+				
+
+			}//end if
+			else
+			{
+
+				
+		
+				Payment::setError(Rule::VALIDATE_COUPON_EXISTS);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+
+			}//end else
+
+
+
+
+		}//end if
+		else
+		{
+
+
+			Payment::setError("O código não pode estar vazio e deve ter ".Rule::COUPON_LENGTH." digitos entre letras maiúsculas e números | Por favor, tente novamente");
+			header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+			exit;
+
+
+
+		}//end else
+
+
+
+	}//end if
+
+
+
+	
+	
+
+
+
+	$page = new PageDashboard();
+
+	$page->setTpl(
+		
+		"plans-purchase-checkout",
+
+		[
+			'user'=>$user->getValues(),
+			'address'=>$address->getValues(),
+			'state'=>$state,
+			'city'=>$city,
+			'city2'=>$city2,
+			//'payment'=>$payment->getValues(),
+			'inplan'=>$inplan,
+			'inplancode'=>$inplancode,
+			'oldVlprice'=>$oldVlprice,
+			'coupon'=>$coupon,
+			'action'=>$action,
+			'invoucher'=>$invoucher,
+			'validate'=>$validate,
+			'error'=>Payment::getError(),
+			'success'=>Payment::getSuccess(),
+			'planPurchaseValues'=> (isset($_SESSION["planPurchaseValues"])) ? $_SESSION["planPurchaseValues"] : ['desname'=>'','desemail'=>'','desdocument'=>'', 'nrddd'=>'', 'nrphone'=>'', 'dtbirth'=>'', 'deszipcode'=>'', 'desaddress'=>'', 'desnumber'=>'', 'descomplement'=>'', 'desdistrict'=>'', 'desstate'=>'', 'descity'=>'']
+
+
+		]
+	
+	);//end setTpl
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
