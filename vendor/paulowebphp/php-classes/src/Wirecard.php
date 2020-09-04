@@ -2858,16 +2858,25 @@ exit;*/
 
 
 
-			$firstTerm = substr($desdocument, 0, 3);
-			$secondTerm = substr($desdocument, 3, 3);
-			$thirdTerm = substr($desdocument, 6, 3);
-			$fourthTerm = substr($desdocument, 9, 2);
+			$wirecardDesdocumentFormat = $desdocument;
+
+			
+
+			if( (int)$intypedoc === 0 )
+			{
+
+				$firstTerm = substr($desdocument, 0, 3);
+				$secondTerm = substr($desdocument, 3, 3);
+				$thirdTerm = substr($desdocument, 6, 3);
+				$fourthTerm = substr($desdocument, 9, 2);
 
 
-			$wirecardDesdocumentFormat = $firstTerm . '.' . 
-			$secondTerm . '.' . 
-			$thirdTerm . '-' . 
-			$fourthTerm;
+				$wirecardDesdocumentFormat = $firstTerm . '.' . 
+				$secondTerm . '.' . 
+				$thirdTerm . '-' . 
+				$fourthTerm;
+
+			}//end if
 
 			$intypedoc = ((int)$intypedoc === 0)? 'CPF' : 'CNPJ';
 

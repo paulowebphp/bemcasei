@@ -42,6 +42,7 @@ class Account extends Model
 
 					:idaccount,
 					:iduser,
+					:instatus,
 					:desaccountcode,
 					:desaccesstoken,
 					:deschannelid,
@@ -68,6 +69,7 @@ class Account extends Model
 
 					':idaccount'=>$this->getidaccount(),
 					':iduser'=>$this->getiduser(),
+					':instatus'=>$this->getinstatus(),
 					':desaccountcode'=>$this->getdesaccountcode(),
 					':desaccesstoken'=>$this->getdesaccesstoken(),
 					':deschannelid'=>$this->getdeschannelid(),
@@ -113,6 +115,7 @@ class Account extends Model
 
 					:idaccount,
 					:iduser,
+					:instatus,
 					:desaccountcode,
 					:desaccesstoken,
 					:deschannelid,
@@ -139,6 +142,7 @@ class Account extends Model
 
 					':idaccount'=>$this->getidaccount(),
 					':iduser'=>$this->getiduser(),
+					':instatus'=>$this->getinstatus(),
 					':desaccountcode'=>$this->getdesaccountcode(),
 					':desaccesstoken'=>$this->getdesaccesstoken(),
 					':deschannelid'=>$this->getdeschannelid(),

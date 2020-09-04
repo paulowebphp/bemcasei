@@ -33,12 +33,23 @@ class Bank extends Model
 
 		$sql = new Sql();
 
-		$results = $sql->select("
+		
+
+
+
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+
+			$results = $sql->select("
 
 			CALL sp_banks_update(
 
 				:idbank,
 				:iduser,
+				:idaccount,
+				:desname,
+				:desdocument,
 				:desbankcode,
 				:desbanknumber,
 				:desagencynumber,
@@ -56,6 +67,9 @@ class Bank extends Model
 
 				':idbank'=>$this->getidbank(),
 				':iduser'=>$this->getiduser(),
+				':idaccount'=>$this->getidaccount(),
+				':desname'=>$this->getdesname(),
+				':desdocument'=>$this->getdesdocument(),
 				':desbankcode'=>$this->getdesbankcode(),
 				':desbanknumber'=>$this->getdesbanknumber(),
 				':desagencynumber'=>$this->getdesagencynumber(),
@@ -67,6 +81,68 @@ class Bank extends Model
 			]
 		
 		);//end select
+
+			
+			$results[0]['desname'] = utf8_encode($results[0]['desname']);
+			
+
+
+		}//end if
+		else
+		{
+
+
+			$results = $sql->select("
+
+				CALL sp_banks_update(
+
+					:idbank,
+					:iduser,
+					:idaccount,
+					:desname,
+					:desdocument,
+					:desbankcode,
+					:desbanknumber,
+					:desagencynumber,
+					:desagencycheck,
+					:desaccounttype,
+					:desaccountnumber,
+					:desaccountcheck
+
+
+					
+
+				)", 
+				
+				[
+
+					':idbank'=>$this->getidbank(),
+					':iduser'=>$this->getiduser(),
+					':idaccount'=>$this->getidaccount(),
+					':desname'=>$this->getdesname(),
+					':desdocument'=>$this->getdesdocument(),
+					':desbankcode'=>$this->getdesbankcode(),
+					':desbanknumber'=>$this->getdesbanknumber(),
+					':desagencynumber'=>$this->getdesagencynumber(),
+					':desagencycheck'=>$this->getdesagencycheck(),
+					':desaccounttype'=>$this->getdesaccounttype(),
+					':desaccountnumber'=>$this->getdesaccountnumber(),
+					':desaccountcheck'=>$this->getdesaccountcheck()
+
+				]
+			
+			);//end select
+
+			
+
+		}//end else
+
+
+
+
+
+
+		
 
 		
 

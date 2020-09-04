@@ -34,53 +34,126 @@ class Transfer extends Model
 
 		$sql = new Sql();
 
-		$results = $sql->select("
-
-
-			CALL sp_transfers_save(
-
-				:idtransfer,
-				:iduser,
-				:destransfercode,
-				:intransferstatus,
-				:destransferholdername,
-				:desbanknumber,
-				:desagencynumber,
-				:desagencycheck,
-				:desaccounttype,
-				:desaccountnumber,
-				:desaccountcheck,
-				:vlamount
 		
+		//$results[0]['desname'] = utf8_encode($results[0]['desname']);
 
-			)", 
+		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME )
+		{
+			# code...
+
+			$results = $sql->select("
+
+
+				CALL sp_transfers_save(
+
+					:idtransfer,
+					:iduser,
+					:idaccount,
+					:idbank,
+					:destransfercode,
+					:intransferstatus,
+					:desname,
+					:desbanknumber,
+					:desagencynumber,
+					:desagencycheck,
+					:desaccounttype,
+					:desaccountnumber,
+					:desaccountcheck,
+					:vlamount
 			
-			[
 
+				)", 
+			
+				[
+
+					
+					':idtransfer'=>$this->getidtransfer(),
+					':iduser'=>$this->getiduser(),
+					':idaccount'=>$this->getidaccount(),
+					':idbank'=>$this->getidbank(),
+					':destransfercode'=>$this->getdestransfercode(),
+					':intransferstatus'=>$this->getintransferstatus(),
+					':destransfername'=>$this->getdestransfername(),
+					':desdocument'=>$this->getdesdocument(),
+					':desbanknumber'=>$this->getdesbanknumber(),
+					':desagencynumber'=>$this->getdesagencynumber(),
+					':desagencycheck'=>$this->getdesagencycheck(),
+					':desaccounttype'=>$this->getdesaccounttype(),
+					':desaccountnumber'=>$this->getdesaccountnumber(),
+					':desaccountcheck'=>$this->getdesaccountcheck(),
+					':vlamount'=>$this->getvlamount()
+
+				]
+		
+			);//end select
+
+			
+			$results[0]['desname'] = utf8_encode($results[0]['desname']);
+			
+
+
+		}//end if
+		else
+		{
+
+
+			$results = $sql->select("
+
+
+				CALL sp_transfers_save(
+
+					:idtransfer,
+					:iduser,
+					:idaccount,
+					:idbank,
+					:destransfercode,
+					:intransferstatus,
+					:desname,
+					:desbanknumber,
+					:desagencynumber,
+					:desagencycheck,
+					:desaccounttype,
+					:desaccountnumber,
+					:desaccountcheck,
+					:vlamount
+			
+
+				)", 
 				
-				':idtransfer'=>$this->getidtransfer(),
-				':iduser'=>$this->getiduser(),
-				':destransfercode'=>$this->getdestransfercode(),
-				':intransferstatus'=>$this->getintransferstatus(),
-				':destransferholdername'=>$this->getdestransferholdername(),
-				':desbanknumber'=>$this->getdesbanknumber(),
-				':desagencynumber'=>$this->getdesagencynumber(),
-				':desagencycheck'=>$this->getdesagencycheck(),
-				':desaccounttype'=>$this->getdesaccounttype(),
-				':desaccountnumber'=>$this->getdesaccountnumber(),
-				':desaccountcheck'=>$this->getdesaccountcheck(),
-				':vlamount'=>$this->getvlamount()
+				[
 
-			]
-		
-		);//end select
+					
+					':idtransfer'=>$this->getidtransfer(),
+					':iduser'=>$this->getiduser(),
+					':idaccount'=>$this->getidaccount(),
+					':idbank'=>$this->getidbank(),
+					':destransfercode'=>$this->getdestransfercode(),
+					':intransferstatus'=>$this->getintransferstatus(),
+					':destransfername'=>$this->getdestransfername(),
+					':desdocument'=>$this->getdesdocument(),
+					':desbanknumber'=>$this->getdesbanknumber(),
+					':desagencynumber'=>$this->getdesagencynumber(),
+					':desagencycheck'=>$this->getdesagencycheck(),
+					':desaccounttype'=>$this->getdesaccounttype(),
+					':desaccountnumber'=>$this->getdesaccountnumber(),
+					':desaccountcheck'=>$this->getdesaccountcheck(),
+					':vlamount'=>$this->getvlamount()
+
+				]
+			
+			);//end select
+
+			
+
+		}//end else
 
 
-		//$results[0]['destransferholdername'] = utf8_encode($results[0]['destransferholdername']);
 
 
 
-		
+
+
+
 
 
 
@@ -136,7 +209,7 @@ class Transfer extends Model
 				:iduser,
 				:destransfercode,
 				:intransferstatus,
-				:destransferholdername,
+				:desname,
 				:desbanknumber,
 				:desagencynumber,
 				:desagencycheck,
@@ -155,7 +228,7 @@ class Transfer extends Model
 				':iduser'=>$this->getiduser(),
 				':destransfercode'=>$this->getdestransfercode(),
 				':intransferstatus'=>$this->getintransferstatus(),
-				':destransferholdername'=>utf8_decode($this->getdestransferholdername()),
+				':desname'=>utf8_decode($this->getdesname()),
 				':desbanknumber'=>$this->getdesbanknumber(),
 				':desagencynumber'=>$this->getdesagencynumber(),
 				':desagencycheck'=>$this->getdesagencycheck(),
@@ -169,7 +242,7 @@ class Transfer extends Model
 		);//end select
 
 
-		//$results[0]['destransferholdername'] = utf8_encode($results[0]['destransferholdername']);
+		//$results[0]['desname'] = utf8_encode($results[0]['desname']);
 
 
 
