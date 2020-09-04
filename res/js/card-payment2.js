@@ -255,12 +255,25 @@ $(document).on('click', '#options-payments5', function(){
 
 	$(this).addClass('options-selected');
 
+	
+
 	$('#options-payments4').removeClass('options-selected');
 	$('#nrinstallment').css('display','block');
 	$('#installment2').attr('form','checkout-form5');
 	//$('#checkout-method').val('cartao-terceiro');
 	$('#payment-inputs5').css('display','block');
 	$('#payment-inputs4').css('display','none');
+
+
+	let card = $("#installment2>option:selected").attr('data-interest');
+
+	let card2 = card.replace('.',',');
+ 
+	$('#interest').html('R$ '+ card2);
+	
+	
+	
+
 	$('#checkout').css('min-height', '1000px');
 
 });
@@ -311,7 +324,7 @@ $(document).on('click', '#options-payments5', function(){
 
 $(document).on('click', '#options-payments4', function(){
 
-
+	
 	$(this).addClass('options-selected');
 
 	$('#options-payments5').removeClass('options-selected');
@@ -320,6 +333,17 @@ $(document).on('click', '#options-payments4', function(){
 	//$('#checkout-method').val('cartao-terceiro');
 	$('#payment-inputs4').css('display','block');
 	$('#payment-inputs5').css('display','none');
+
+
+	let boleto = $("#interest").attr('data-boleto');
+	let boleto2 = boleto.replace('.',',');
+	$('#interest').html('R$ '+ boleto);
+
+	
+	
+
+
+
 	$('#checkout').css('min-height', '1000px');
 
 });

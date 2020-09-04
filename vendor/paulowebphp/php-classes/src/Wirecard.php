@@ -1374,8 +1374,6 @@ exit;*/
 			}//end else
 
 
-
-			
 			
 			//$ddd = substr($nrphone, 0, 2);
 			//$phone = substr($nrphone, 2, strlen($nrphone));
@@ -1383,7 +1381,7 @@ exit;*/
 			$customer = $moip->customers()->get($descustomercode);
 
 			
-
+			
 	
 			//$sku = Rule::PLAN_SKU_PREFIX.$plan['insellercategory'].$idplan;
 
@@ -1395,9 +1393,12 @@ exit;*/
 
 		
 	  	
-		 
+			
 
 			$order = $moip->orders()->setOwnId( uniqid() );
+
+
+			
 
 
 			$interest = 0;
@@ -1436,7 +1437,7 @@ exit;*/
 		    }//end foreach
 
 
-
+			
 
 
 
@@ -1493,7 +1494,9 @@ exit;*/
 			$vlmarketplace = $primary_handler;
 			$vlprocessor = $processor;
 		    
-
+			
+			
+			
 		   	
 	   	
  			$order = $order
@@ -1503,6 +1506,8 @@ exit;*/
 		        ->addReceiver($desaccountcode, 'SECONDARY', $secondary, 0, true)
 		        ->create();
 
+			
+				
 
 		    /*
 		    $order = $order
@@ -1513,7 +1518,7 @@ exit;*/
 		        ->create();
 		        */
 
-		     
+				
 
 		     
 	    
@@ -1809,8 +1814,13 @@ exit;*/
 			{
 				
 
-				$results[0]['desproduct'] = utf8_encode($results[0]['desproduct']);
-					
+				foreach( $results as &$row )
+				{
+					$row['desproduct'] = utf8_encode($row['desproduct']);
+
+				}//end foreach
+
+
 				
 			}//end if
 

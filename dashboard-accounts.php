@@ -97,8 +97,26 @@ $app->get( "/dashboard/cadastrar", function()
 
 
 	$state = Address::listAllStates();
-	$city = Address::listAllCitiesByState(1);
+
+
+
+	$city = [];
 	
+
+	if ( isset($_SESSION["planPurchaseRegisterValues"]) ) 
+	{
+		# code...
+		$city = Address::listAllCitiesByState($_SESSION["planPurchaseRegisterValues"]['desstate']);
+
+	}//end if
+	else
+	{
+
+		$city = Address::listAllCitiesByState(1);
+	
+
+	}//end else
+
 
 	
 

@@ -790,6 +790,9 @@ $app->post( "/dashboard/comprar-plano/cadastrar", function()
 	var_dump(Rule::DESCOUNTRYCODE);
 	exit;*/
 
+	$nrcountryarea = Rule::NR_COUNTRY_AREA;
+	$descountrycode = Rule::DESCOUNTRYCODE;
+
 
 
 	$wirecard = new Wirecard();
@@ -805,7 +808,7 @@ $app->post( "/dashboard/comprar-plano/cadastrar", function()
 		$user->getdesemail(),
 		$dtbirth,
 		$desdocument,
-		Rule::NR_COUNTRY_AREA,
+		$nrcountryarea,
 		(int)$nrddd,
 		(int)$nrphone,
 		$deszipcode,
@@ -843,7 +846,7 @@ $app->post( "/dashboard/comprar-plano/cadastrar", function()
 		'deschannelid'=>$wirecardAccountData['deschannelid'],
 		'desname'=>$user->getdesperson(),
 		'desemail'=>$user->getdesemail(),
-		'nrcountryarea'=>Rule::NR_COUNTRY_AREA,
+		'nrcountryarea'=>$nrcountryarea,
 		'nrddd'=>$nrddd,
 		'nrphone'=>$nrphone,
 		'intypedoc'=>$user->getintypedoc(),

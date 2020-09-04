@@ -296,7 +296,10 @@ $app->get( "/:desdomain/presente/:hash", function( $desdomain, $hash )
 
 
 $app->post( "/:desdomain/checkout", function( $desdomain )
-{
+{	
+
+
+	
 
 	
 	if( Maintenance::checkMaintenance() )
@@ -336,8 +339,12 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
+		
 		$_SESSION['domainCheckoutValues'] = $_POST;
 
+
+
+		
 
 		
 
@@ -522,9 +529,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 				
-				!isset($_POST['desholderdocument']) 
+				!isset($_POST['desdocument']) 
 				|| 
-				$_POST['desholderdocument'] === ''
+				$_POST['desdocument'] === ''
 				
 			)
 			{
@@ -535,7 +542,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( !$desholderdocument = Validate::validateDocument(0, $_POST['desholderdocument']) )
+			if( !$desdocument = Validate::validateDocument(0, $_POST['desdocument']) )
 			{
 
 				Payment::setError(Rule::VALIDATE_CPF);
@@ -557,9 +564,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 				
-				!isset($_POST['nrholderddd']) 
+				!isset($_POST['nrddd']) 
 				|| 
-				$_POST['nrholderddd'] === ''
+				$_POST['nrddd'] === ''
 				
 			)
 			{
@@ -575,7 +582,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			if( !$nrholderddd = Validate::validateDDD($_POST['nrholderddd']) )
+			if( !$nrddd = Validate::validateDDD($_POST['nrddd']) )
 			{
 
 				Payment::setError(Rule::VALIDATE_DDD);
@@ -591,9 +598,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 				
-				!isset($_POST['nrholderphone']) 
+				!isset($_POST['nrphone']) 
 				|| 
-				$_POST['nrholderphone'] === ''
+				$_POST['nrphone'] === ''
 				
 			)
 			{
@@ -607,7 +614,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 			
 
 
-			if( !$nrholderphone = Validate::validatePhone($_POST['nrholderphone']) )
+			if( !$nrphone = Validate::validatePhone($_POST['nrphone']) )
 			{
 
 				Payment::setError(Rule::VALIDATE_PHONE);
@@ -631,9 +638,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 				
-				!isset($_POST['dtholderbirth']) 
+				!isset($_POST['dtbirth']) 
 				|| 
-				$_POST['dtholderbirth'] === ''
+				$_POST['dtbirth'] === ''
 				
 			)
 			{
@@ -649,7 +656,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			if( !$dtholderbirth = Validate::validateDate($_POST['dtholderbirth'], 0) )
+			if( !$dtbirth = Validate::validateDate($_POST['dtbirth'], 0) )
 			{
 
 				Payment::setError(Rule::VALIDATE_DATE_PAST_TO_NOW);
@@ -669,9 +676,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if( 
 			
-				!isset($_POST['zipcode']) 
+				!isset($_POST['deszipcode']) 
 				|| 
-				$_POST['zipcode'] === ''
+				$_POST['deszipcode'] === ''
 			)
 			{
 
@@ -687,7 +694,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			if( !$desholderzipcode = Validate::validateCEP($_POST['zipcode']) )
+			if( !$deszipcode = Validate::validateCEP($_POST['deszipcode']) )
 			{
 
 				Payment::setError(Rule::VALIDATE_ZIPCODE);
@@ -708,9 +715,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 			if(
-				!isset($_POST['desholderaddress']) 
+				!isset($_POST['desaddress']) 
 				|| 
-				$_POST['desholderaddress'] === ''
+				$_POST['desaddress'] === ''
 				
 			)
 			{
@@ -721,7 +728,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( ( $desholderaddress = Validate::validateStringNumber($_POST['desholderaddress']) ) === false )
+			if( ( $desaddress = Validate::validateStringNumber($_POST['desaddress']) ) === false )
 			{
 
 				Payment::setError(Rule::VALIDATE_ADDRESS);
@@ -745,9 +752,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 				
-				!isset($_POST['desholdernumber']) 
+				!isset($_POST['desnumber']) 
 				|| 
-				$_POST['desholdernumber'] === ''
+				$_POST['desnumber'] === ''
 				
 			)
 			{
@@ -758,7 +765,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( !$desholdernumber = Validate::validateNumber($_POST['desholdernumber']) )
+			if( !$desnumber = Validate::validateNumber($_POST['desnumber']) )
 			{
 
 				Payment::setError(Rule::VALIDATE_NUMBER);
@@ -778,9 +785,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 				
-				!isset($_POST['desholderdistrict']) 
+				!isset($_POST['desdistrict']) 
 				|| 
-				$_POST['desholderdistrict'] === ''
+				$_POST['desdistrict'] === ''
 				
 			)
 			{
@@ -791,7 +798,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( ( $desholderdistrict = Validate::validateStringNumber($_POST['desholderdistrict']) ) === false )
+			if( ( $desdistrict = Validate::validateStringNumber($_POST['desdistrict']) ) === false )
 			{
 
 				Payment::setError(Rule::VALIDATE_DISTRICT);
@@ -814,9 +821,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 				
-				!isset($_POST['desholdercity']) 
+				!isset($_POST['descity']) 
 				|| 
-				$_POST['desholdercity'] === ''
+				$_POST['descity'] === ''
 				
 			)
 			{
@@ -829,7 +836,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			if ( ( $cityArray = Address::getCity($_POST['desholdercity']) ) === false ) 
+			if ( ( $cityArray = Address::getCity($_POST['descity']) ) === false ) 
 			{
 				# code...
 				Payment::setError(Rule::VALIDATE_CITY);
@@ -838,7 +845,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			$desholdercity = $cityArray['descity'];
+			$descity = $cityArray['descity'];
 
 
 
@@ -862,9 +869,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 					
-				!isset($_POST['desholderstate']) 
+				!isset($_POST['desstate']) 
 				|| 
-				$_POST['desholderstate'] === ''
+				$_POST['desstate'] === ''
 				
 			)
 			{
@@ -877,7 +884,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			if ( ( $stateArray = Address::getState($_POST['desholderstate']) ) === false ) 
+			if ( ( $stateArray = Address::getState($_POST['desstate']) ) === false ) 
 			{
 				# code...
 				Payment::setError(Rule::VALIDATE_STATE);
@@ -888,7 +895,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 			
-			$desholderstate = $stateArray['desstatecode'];
+			$desstate = $stateArray['desstatecode'];
 
 
 
@@ -901,8 +908,8 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			$desholdercomplement = Validate::validateStringNumber($_POST['desholdercomplement'], false, true);
-			$inholdertypedoc = 0;
+			$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
+			$intypedoc = 0;
 
 			
 
@@ -1028,9 +1035,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 				
-				!isset($_POST['desholderdocument']) 
+				!isset($_POST['desdocument']) 
 				|| 
-				$_POST['desholderdocument'] === ''
+				$_POST['desdocument'] === ''
 				
 			)
 			{
@@ -1041,7 +1048,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( !$desholderdocument = Validate::validateDocument(0, $_POST['desholderdocument']) )
+			if( !$desdocument = Validate::validateDocument(0, $_POST['desdocument']) )
 			{
 
 				Payment::setError(Rule::VALIDATE_CPF);
@@ -1063,9 +1070,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 				
-				!isset($_POST['nrholderddd']) 
+				!isset($_POST['nrddd']) 
 				|| 
-				$_POST['nrholderddd'] === ''
+				$_POST['nrddd'] === ''
 				
 			)
 			{
@@ -1081,7 +1088,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			if( !$nrholderddd = Validate::validateDDD($_POST['nrholderddd']) )
+			if( !$nrddd = Validate::validateDDD($_POST['nrddd']) )
 			{
 
 				Payment::setError(Rule::VALIDATE_DDD);
@@ -1100,9 +1107,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 				
-				!isset($_POST['nrholderphone']) 
+				!isset($_POST['nrphone']) 
 				|| 
-				$_POST['nrholderphone'] === ''
+				$_POST['nrphone'] === ''
 				
 			)
 			{
@@ -1124,7 +1131,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			if( !$nrholderphone = Validate::validatePhone($_POST['nrholderphone']) )
+			if( !$nrphone = Validate::validatePhone($_POST['nrphone']) )
 			{
 
 				Payment::setError(Rule::VALIDATE_PHONE);
@@ -1148,9 +1155,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 				
-				!isset($_POST['dtholderbirth']) 
+				!isset($_POST['dtbirth']) 
 				|| 
-				$_POST['dtholderbirth'] === ''
+				$_POST['dtbirth'] === ''
 				
 			)
 			{
@@ -1161,7 +1168,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( !$dtholderbirth = Validate::validateDate($_POST['dtholderbirth'], 0) )
+			if( !$dtbirth = Validate::validateDate($_POST['dtbirth'], 0) )
 			{
 
 				Payment::setError(Rule::VALIDATE_DATE_PAST_TO_NOW);
@@ -1181,9 +1188,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if( 
 			
-				!isset($_POST['zipcode']) 
+				!isset($_POST['deszipcode']) 
 				|| 
-				$_POST['zipcode'] === ''
+				$_POST['deszipcode'] === ''
 			)
 			{
 
@@ -1194,7 +1201,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 			}//end if
 
 
-			if( !$desholderzipcode = Validate::validateCEP($_POST['zipcode']) )
+			if( !$deszipcode = Validate::validateCEP($_POST['deszipcode']) )
 			{
 
 				Payment::setError(Rule::VALIDATE_ZIPCODE);
@@ -1214,9 +1221,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 			if(
-				!isset($_POST['desholderaddress']) 
+				!isset($_POST['desaddress']) 
 				|| 
-				$_POST['desholderaddress'] === ''
+				$_POST['desaddress'] === ''
 				
 			)
 			{
@@ -1227,7 +1234,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( ( $desholderaddress = Validate::validateStringNumber($_POST['desholderaddress']) ) === false )
+			if( ( $desaddress = Validate::validateStringNumber($_POST['desaddress']) ) === false )
 			{
 
 				Payment::setError(Rule::VALIDATE_ADDRESS);
@@ -1251,9 +1258,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 				
-				!isset($_POST['desholdernumber']) 
+				!isset($_POST['desnumber']) 
 				|| 
-				$_POST['desholdernumber'] === ''
+				$_POST['desnumber'] === ''
 				
 			)
 			{
@@ -1264,7 +1271,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( !$desholdernumber = Validate::validateNumber($_POST['desholdernumber']) )
+			if( !$desnumber = Validate::validateNumber($_POST['desnumber']) )
 			{
 
 				Payment::setError(Rule::VALIDATE_NUMBER);
@@ -1284,9 +1291,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 				
-				!isset($_POST['desholderdistrict']) 
+				!isset($_POST['desdistrict']) 
 				|| 
-				$_POST['desholderdistrict'] === ''
+				$_POST['desdistrict'] === ''
 				
 			)
 			{
@@ -1297,7 +1304,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			if( ( $desholderdistrict = Validate::validateStringNumber($_POST['desholderdistrict']) ) === false )
+			if( ( $desdistrict = Validate::validateStringNumber($_POST['desdistrict']) ) === false )
 			{
 
 				Payment::setError(Rule::VALIDATE_DISTRICT);
@@ -1482,9 +1489,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 				
-				!isset($_POST['desholdercity']) 
+				!isset($_POST['descity']) 
 				|| 
-				$_POST['desholdercity'] === ''
+				$_POST['descity'] === ''
 				
 			)
 			{
@@ -1497,7 +1504,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			if ( ( $cityArray = Address::getCity($_POST['desholdercity']) ) === false ) 
+			if ( ( $cityArray = Address::getCity($_POST['descity']) ) === false ) 
 			{
 				# code...
 				Payment::setError(Rule::VALIDATE_CITY);
@@ -1506,7 +1513,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			}//end if
 
-			$desholdercity = $cityArray['descity'];
+			$descity = $cityArray['descity'];
 
 
 
@@ -1518,9 +1525,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			if(
 					
-				!isset($_POST['desholderstate']) 
+				!isset($_POST['desstate']) 
 				|| 
-				$_POST['desholderstate'] === ''
+				$_POST['desstate'] === ''
 				
 			)
 			{
@@ -1533,7 +1540,7 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
-			if ( ( $stateArray = Address::getState($_POST['desholderstate']) ) === false ) 
+			if ( ( $stateArray = Address::getState($_POST['desstate']) ) === false ) 
 			{
 				# code...
 				Payment::setError(Rule::VALIDATE_STATE);
@@ -1544,14 +1551,14 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 			
-			$desholderstate = $stateArray['desstatecode'];
+			$desstate = $stateArray['desstatecode'];
 
 
 
 
 
-			$desholdercomplement = Validate::validateStringNumber($_POST['desholdercomplement'], false, true);
-			$inholdertypedoc = 0;
+			$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
+			$intypedoc = 0;
 
 			
 
@@ -1571,7 +1578,8 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 		}//end else
 
-
+			$nrcountryarea = Rule::NR_COUNTRY_AREA;
+			$descountrycode = Rule::DESCOUNTRYCODE;
 
 			/*echo "<pre>";
 			var_dump($desname);
@@ -1610,21 +1618,21 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 			$desname,
 			$desemail,
-			$dtholderbirth,
-			$inholdertypedoc,
-			$desholderdocument,
+			$dtbirth,
+			$intypedoc,
+			$desdocument,
 			$payment->getinpaymentmethod(),
-			Rule::NR_COUNTRY_AREA,
-			$nrholderddd,
-			$nrholderphone,
-		  	$desholderzipcode,
-			$desholderaddress,
-			$desholdernumber,
-		  	$desholdercomplement,
-		  	$desholderdistrict,
-		  	$desholdercity,
-			$desholderstate,
-			$desholdername,
+			$nrcountryarea,
+			$nrddd,
+			$nrphone,
+		  	$deszipcode,
+			$desaddress,
+			$desnumber,
+		  	$descomplement,
+		  	$desdistrict,
+		  	$descity,
+			$desstate,
+			$desname,
 		  	$descardcode_month,
 		  	$descardcode_year,
 		  	$descardcode_number,
@@ -1651,24 +1659,24 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 				'descustomercode'=>$wirecardCustomerData['descustomercode'],
 				'desname'=>$desname,
 				'desemail'=>$desemail,
-				'nrcountryarea'=>Rule::NR_COUNTRY_AREA,
-				'nrddd'=>$nrholderddd,
-				'nrphone'=>$nrholderphone,
-				'intypedoc'=>$inholdertypedoc,
-				'desdocument'=>$desholderdocument,
-			  	'deszipcode'=>$desholderzipcode,
-				'desaddress'=>$desholderaddress,
-				'desnumber'=>$desholdernumber,
-			  	'descomplement'=>$desholdercomplement,
-			  	'desdistrict'=>$desholderdistrict,
-			  	'descity'=>$desholdercity,
-			  	'desstate'=>$desholderstate,
-			  	'descountry'=>Rule::DESCOUNTRY,
+				'nrcountryarea'=>$nrcountryarea,
+				'nrddd'=>$nrddd,
+				'nrphone'=>$nrphone,
+				'intypedoc'=>$intypedoc,
+				'desdocument'=>$desdocument,
+			  	'deszipcode'=>$deszipcode,
+				'desaddress'=>$desaddress,
+				'desnumber'=>$desnumber,
+			  	'descomplement'=>$descomplement,
+			  	'desdistrict'=>$desdistrict,
+			  	'descity'=>$descity,
+			  	'desstate'=>$desstate,
+			  	'descountry'=>$descountrycode,
 				'descardcode'=>$wirecardCustomerData['descardcode'],
 				'desbrand'=>$wirecardCustomerData['desbrand'],
 				'infirst6'=>$wirecardCustomerData['infirst6'],
 				'inlast4'=>$wirecardCustomerData['inlast4'],
-				'dtbirth'=>$dtholderbirth
+				'dtbirth'=>$dtbirth
 
 			]);//end setData
 			
@@ -1714,20 +1722,20 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 			$account->getdesaccountcode(),
 			$customer->getdescustomercode(),
 			$cart->getidcart(),
-			Rule::NR_COUNTRY_AREA,
-			$nrholderddd,
-			$nrholderphone,
-			$desholdername,
-			$dtholderbirth,
-			$inholdertypedoc,
-			$desholderdocument,
-			$desholderzipcode,
-			$desholderaddress,
-			$desholdernumber,
-			$desholdercomplement,
-			$desholderdistrict,
-			$desholdercity,
-			$desholderstate,
+			$nrcountryarea,
+			$nrddd,
+			$nrphone,
+			$desname,
+			$dtbirth,
+			$intypedoc,
+			$desdocument,
+			$deszipcode,
+			$desaddress,
+			$desnumber,
+			$descomplement,
+			$desdistrict,
+			$descity,
+			$desstate,
 			$payment->getinpaymentmethod(),
 			$payment->getnrinstallment(),
 			$productconfig->getincharge(),
@@ -1757,20 +1765,20 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 				'nrinstallment'=>$payment->getnrinstallment(),
 				'deslinecode'=>$wirecardPaymentData['deslinecode'],
 				'desprinthref'=>$wirecardPaymentData['desprinthref'],
-				'desholdername'=>$desholdername,
-				'nrholdercountryarea'=>Rule::NR_COUNTRY_AREA,
-				'nrholderddd'=>$nrholderddd,
-				'nrholderphone'=>$nrholderphone,
-				'inholdertypedoc'=>$inholdertypedoc,
-				'desholderdocument'=>$desholderdocument,
-				'desholderzipcode'=>$desholderzipcode,
-				'desholderaddress'=>$desholderaddress,
-				'desholdernumber'=>$desholdernumber,
-				'desholdercomplement'=>$desholdercomplement,
-				'desholderdistrict'=>$desholderdistrict,
-				'desholdercity'=>$desholdercity,
-				'desholderstate'=>$desholderstate,
-				'dtholderbirth'=>$dtholderbirth
+				'desholdername'=>$desname,
+				'nrholdercountryarea'=>$nrcountryarea,
+				'nrholderddd'=>$nrddd,
+				'nrholderphone'=>$nrphone,
+				'inholdertypedoc'=>$intypedoc,
+				'desholderdocument'=>$desdocument,
+				'desholderzipcode'=>$deszipcode,
+				'desholderaddress'=>$desaddress,
+				'desholdernumber'=>$desnumber,
+				'desholdercomplement'=>$descomplement,
+				'desholderdistrict'=>$desdistrict,
+				'desholdercity'=>$descity,
+				'desholderstate'=>$desstate,
+				'dtholderbirth'=>$dtbirth
 
 
 			]);//end setData
@@ -1929,9 +1937,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 				),
 
-				$customer->getdesemail(),
+				$desemail,
 
-				$customer->getdesname()
+				$desname
 			
 			);//end Mailer
 
@@ -1988,9 +1996,9 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 				),
 
-				$customer->getdesemail(),
+				$desemail,
 
-				$customer->getdesname()
+				$desname
 			
 			);//end Mailer
 
@@ -2083,6 +2091,32 @@ $app->post( "/:desdomain/checkout", function( $desdomain )
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $app->get( "/:desdomain/checkout", function( $desdomain )
 {
 	
@@ -2121,7 +2155,7 @@ $app->get( "/:desdomain/checkout", function( $desdomain )
 	}//end if
 	elseif( User::checkDesdomain($desdomain) )
 	{
-
+		
 		
 		$user = new User();
 	
@@ -2182,11 +2216,28 @@ $app->get( "/:desdomain/checkout", function( $desdomain )
 
 		$state = Address::listAllStates();
 
-		$city = Address::listAllCitiesByState(1);
+		$city = [];
 
+		/**$_POST["domainCheckoutValues"] = NULL;
+		unset($_SESSION["domainCheckoutValues"]); */
 
+		if ( isset($_SESSION["domainCheckoutValues"]) ) 
+		{
+			# code...
+			$city = Address::listAllCitiesByState($_SESSION["domainCheckoutValues"]['desstate']);
 
+		}//end if
+		else
+		{
 
+			$city = Address::listAllCitiesByState(1);
+		
+
+		}//end else
+
+		
+
+		
 		$page = new PageDomain();
 
 		$page->setTpl(
@@ -2206,7 +2257,8 @@ $app->get( "/:desdomain/checkout", function( $desdomain )
 				'validate'=>$validate,
 				'error'=>Payment::getError(),
 				'success'=>Payment::getSuccess(),
-				'domainCheckoutValues'=> (isset($_SESSION["domainCheckoutValues"])) ? $_SESSION["domainCheckoutValues"] : ['desname'=>'', 'desemail'=>'', 'desholderdocument'=>'', 'nrholderddd'=>'', 'nrholderphone'=>'', 'dtholderbirth'=>'', 'zipcode'=>'', 'desholderaddress'=>'', 'desholdernumber'=>'', 'desholdercomplement'=>'', 'desholderdistrict'=>'', 'desholderstate'=>'', 'desholdercity'=>'']
+				'domainCheckoutValues'=> (isset($_SESSION["domainCheckoutValues"])) ? $_SESSION["domainCheckoutValues"] : ['desname'=>'','desemail'=>'','desdocument'=>'', 'nrddd'=>'', 'nrphone'=>'', 'dtbirth'=>'', 'deszipcode'=>'', 'desaddress'=>'', 'desnumber'=>'', 'descomplement'=>'', 'desdistrict'=>'', 'desstate'=>'', 'descity'=>'']
+
 				
 			]
 		

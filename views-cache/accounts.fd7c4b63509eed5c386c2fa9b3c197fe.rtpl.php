@@ -1,4 +1,4 @@
-<section class="dashboard">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
 
     <div class="container-fluid">            
             
@@ -12,21 +12,21 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                {if="$user.inplancontext == 0"}
+                <?php if( $user["inplancontext"] == 0 ){ ?>
 
-                    {include="dashboard-menu-free"}
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
 
 
-                {elseif="!$validate"}
+                <?php }elseif( !$validate ){ ?>
 
-                    {include="dashboard-menu-expirated"}
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
                
 
-                {else}
+                <?php }else{ ?>
 
-                    {include="dashboard-menu"}
+                    <?php require $this->checkTemplate("dashboard-menu");?>
 
-                {/if}
+                <?php } ?>
                     
 
             </div><!--col-->
@@ -69,31 +69,31 @@
 
                   
 
-                {if="$success != ''"}
+                <?php if( $success != '' ){ ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {$success}
+                            <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                     </div> 
                 </div>  
-                {/if}
+                <?php } ?>
 
-                {if="$error != ''"}
+                <?php if( $error != '' ){ ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            {$error}
+                            <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                     </div> 
                 </div>  
-                {/if}
+                <?php } ?>
 
 
 
@@ -112,21 +112,21 @@
 
                            <div class="dash-input-row">
 
-                                <input class="texst" type="text" placeholder="Nome" name="desname" class="form-control"  value="{$planPurchaseRegisterValues.desname}">
+                                <input class="texst" type="text" placeholder="Nome" name="desname" class="form-control"  value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["desname"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
 
 
                             <div class="dash-input-row">
 
-                                <input class="text" type="text" placeholder="E-mail" name="desemail" class="form-control"  value="{$planPurchaseRegisterValues.desemail}">
+                                <input class="text" type="text" placeholder="E-mail" name="desemail" class="form-control"  value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
 
 
                             <div class="dash-input-row">
 
-                                <input type="text" placeholder="CPF" name="desdocument" class="form-control" value="{$planPurchaseRegisterValues.desdocument}">
+                                <input type="text" placeholder="CPF" name="desdocument" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["desdocument"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
 
@@ -138,7 +138,7 @@
 
                                 <div class="col-md-3 col-4 width40">
 
-                                    <input type="text" placeholder="DDD" name="nrddd" class="form-control" value="{$planPurchaseRegisterValues.nrddd}">
+                                    <input type="text" placeholder="DDD" name="nrddd" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["nrddd"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                                 </div><!--col-->
 
@@ -146,7 +146,7 @@
 
                                 <div class="col-md-9 col-8 width60">
 
-                                    <input type="text" placeholder="Telefone" name="nrphone" class="form-control" value="{$planPurchaseRegisterValues.nrphone}">
+                                    <input type="text" placeholder="Telefone" name="nrphone" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                                 </div><!--col-->
 
@@ -170,7 +170,7 @@
 
                                 <div class="col-md-9 col-8 width70">
 
-                                    <input type="date" placeholder="Nascimento" name="dtbirth" class="form-control" value="{$planPurchaseRegisterValues.dtbirth}">
+                                    <input type="date" placeholder="Nascimento" name="dtbirth" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["dtbirth"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                                 </div><!--col-->
 
@@ -196,35 +196,35 @@
 
                             <div class="dash-input-row">
                     
-                                <input type="text" placeholder="CEP apenas com números" name="zipcode" class="form-control" value="{$planPurchaseRegisterValues.zipcode}">
+                                <input type="text" placeholder="CEP apenas com números" name="zipcode" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["zipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div>
 
 
                             <div class="dash-input-row">
                                 
-                                <input type="text" placeholder="Logradouro, rua, avenida" name="desaddress" class="form-control" value="{$planPurchaseRegisterValues.desaddress}">
+                                <input type="text" placeholder="Logradouro, rua, avenida" name="desaddress" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["desaddress"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                                 
                             </div>
 
 
                             <div class="dash-input-row">
                                 
-                                <input type="text" placeholder="Número" name="desnumber" class="form-control" value="{$planPurchaseRegisterValues.desnumber}">
+                                <input type="text" placeholder="Número" name="desnumber" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["desnumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                                 
                             </div>
 
 
                             <div class="dash-input-row">
                                 
-                                <input type="text" placeholder="Complemento (opcional)" name="descomplement" class="form-control" value="{$planPurchaseRegisterValues.descomplement}">
+                                <input type="text" placeholder="Complemento (opcional)" name="descomplement" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["descomplement"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                                 
                             </div>
 
 
                             <div class="dash-input-row">
                                 
-                                <input type="text" placeholder="Bairro" name="desdistrict" class="form-control" value="{$planPurchaseRegisterValues.desdistrict}">
+                                <input type="text" placeholder="Bairro" name="desdistrict" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["desdistrict"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                                 
                             </div>
 
@@ -241,9 +241,9 @@
                                     <select id="state" form="dash-form" name="desstate">
 
                                         
-                                        {loop="$state"} 
-                                            <option value="{$value.idstate}" {if="$value.idstate == $planPurchaseRegisterValues.desstate"}selected="selected"{/if}>{$value.desstate}</option>
-                                        {/loop} 
+                                        <?php $counter1=-1;  if( isset($state) && ( is_array($state) || $state instanceof Traversable ) && sizeof($state) ) foreach( $state as $key1 => $value1 ){ $counter1++; ?> 
+                                            <option value="<?php echo htmlspecialchars( $value1["idstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idstate"] == $planPurchaseRegisterValues["desstate"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+                                        <?php } ?> 
                                         
                                     </select>
 
@@ -263,9 +263,9 @@
                                 
                                     <select id="city" form="dash-form" name="descity">
 
-                                        {loop="$city"}
-                                            <option value="{$value.idcity}" {if="$value.idcity == $planPurchaseRegisterValues.descity"}selected="selected"{/if}>{$value.descity}</option>
-                                        {/loop}
+                                        <?php $counter1=-1;  if( isset($city) && ( is_array($city) || $city instanceof Traversable ) && sizeof($city) ) foreach( $city as $key1 => $value1 ){ $counter1++; ?>
+                                            <option value="<?php echo htmlspecialchars( $value1["idcity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idcity"] == $planPurchaseRegisterValues["descity"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+                                        <?php } ?>
 
                                     </select>
 
