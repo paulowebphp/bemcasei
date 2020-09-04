@@ -4,6 +4,7 @@ namespace Core\Model;
 
 use \Core\DB\Sql;
 use \Core\Model;
+use \Core\Rule;
 //use \Core\Mailer;
 use \Core\Wirecard;
 use \Core\Model\User;
@@ -1133,7 +1134,31 @@ class Cart extends Model
 		# Verifica o desphoto (gambiarra)
 		//return Product::checkList($rows);
 
-		return $results;
+
+		if( count($results) > 0 )
+		{
+			
+			
+
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+
+				foreach( $results as &$row )
+				{
+					$row['desproduct'] = utf8_encode($row['desproduct']);
+
+				}//end foreach
+
+
+				
+			}//end if
+
+			return $results;
+
+			
+		}//end if
+
 
 
 
