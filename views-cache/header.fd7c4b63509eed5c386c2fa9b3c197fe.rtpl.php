@@ -632,7 +632,7 @@
 
                                             </div><!--card-header-->
 
-                                            <div id="collapseTen" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['painel-financeiro','presentes-virtuais','lista-pronta','conta-bancaria','transferencias']) ){ ?> show<?php } ?>" aria-labelledby="headingTen" data-parent="#accordion6">
+                                            <div id="collapseTen" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['painel-financeiro','presentes-virtuais','lista-pronta','sua-carteira','conta-bancaria','transferencias']) ){ ?> show<?php } ?>" aria-labelledby="headingTen" data-parent="#accordion6">
                                                 
                                                 <div class="card-body card-body-text">
 

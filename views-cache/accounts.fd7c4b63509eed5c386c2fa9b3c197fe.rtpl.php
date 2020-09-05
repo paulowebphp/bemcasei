@@ -37,278 +37,914 @@
             <div class="col-md-9 col-12 dash-panel">
 
 
+         
+
+
 
 
 
                 <div class="row">
-                
+                    
                     <div class="col-12">
+
+                        <a href="/dashboard/sua-carteira">
+                            <div class="dash-title">
+                                <h1>Sua Carteira</h1>
+                            </div>
+                        </a>
+
+                    </div>
+
+                </div>
+
+        
+
+                <div class="row">
+
+                    <div class="col-9">
+                
+                        <div class="button-header">
+                
+                            <a href="/dashboard/painel-financeiro">
+                                <div class="button3 centralizer">
+                                    <i class="fa fa-angle-left"></i>
+                                </div>
+                            </a>
+                
+                        </div>
+                
+                    </div>
+                
+                    
+                
+                </div>
+            
+
+
+
+                <?php if( $success != '' ){ ?>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    <?php } ?>
+
+                    <?php if( $error != '' ){ ?>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    <?php } ?> 
+
+
+
+                
+
+
+
+
+                <div class="row card-dash">
+
+
+
+                    <div class="col-md-7">
                         
-                        <div class="payment-warn">
+
+
+                        <div class="row card-dash-row1">
+
+
+                                                       
+
+
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $account["desaccountcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+
+                                    <div class="card-dash-header4">
+                                        <hr>
+                                        <span>Conta</span>
+                                    </div>
+
+                                </div><!--card-dash-field2-->
+
+
+                            </div><!--col-->
+
+
+
+
+
+
+
                             
-                            <h3>Para abrir sua Loja de Presentes Virtuais preencha os dados abaixo.</h3>
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+                        <div class="row card-dash-row2">
+
+
+
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $account["desname"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+
+                                    <div class="card-dash-header4">
+                                        <hr>
+                                        <span>Nome</span>
+                                    </div>
+
+                                </div><!--card-dash-field2-->
+
+
+                            </div><!--col-->
+
+
+                            
+
+
+                            
+
+
+
+
+
+
+                       
+                            
+
+                            
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+                        
+
+                        <div class="row card-dash-row2">
+
+
+
+
+                            
+
+
+                            
+
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $account["desdocument"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        <?php if( $account["intypedoc"] == 0 ){ ?>
+                                        <span>CPF</span>
+                                        <?php }else{ ?>
+                                        <span>CNPJ</span>
+                                        <?php } ?>
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+                    
+
+
+                            
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+
+
+
+
+                        <div class="row card-dash-row2">
+
+
+
+
+
+
+
+
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $account["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        <span>E-mail</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+                       
+                            
+
+                            
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+
+
+                        <div class="row card-dash-row2">
+
+
+
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span>(<?php echo htmlspecialchars( $account["nrddd"], ENT_COMPAT, 'UTF-8', FALSE ); ?>) <?php echo htmlspecialchars( $account["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        <span>Telefone</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+                            <div class="col-md-4 col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    &nbsp;
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
 
                         </div>
 
 
-                        <div class="payment-warn">
-                            
-                            <h4 id="desdocument-warn">O CPF e o nome completo informado aqui devem ser os mesmos que constam na conta corrente ou poupança que irá receber os valores<br><small>(<a target="_blank" href="/termos-lista#bancos">Ver bancos aceitos</a>)</small></h4>
+
+
+
+
+                        <div class="row card-dash-row2">
+
+
+
+
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $account["desaddress"], ENT_COMPAT, 'UTF-8', FALSE ); ?>, <?php echo htmlspecialchars( $account["desnumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                        <?php echo htmlspecialchars( $account["desdistrict"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                        <?php echo htmlspecialchars( $account["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                        <?php echo htmlspecialchars( $account["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        <span>Endereço</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+                            <div class="col-md-4 col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    &nbsp;
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
 
                         </div>
+
+
 
 
                     </div><!--col-->
 
-                </div><!--row-->
 
 
-                
 
-                
+                    <div class="col-md-5">
 
-                  
 
-                <?php if( $success != '' ){ ?>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+
+                        <?php if( $bankExists ){ ?>
+
+
+                            
+
+                        <div class="row card-dash-row1">
+
+                            <div class="col-md-8 col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $bankName, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        <span>Banco</span>
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+                            <div class="col-md-4 col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $bank["desbanknumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        <span>Código</span>
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
                         </div>
-                    </div> 
-                </div>  
-                <?php } ?>
-
-                <?php if( $error != '' ){ ?>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    </div> 
-                </div>  
-                <?php } ?>
 
 
 
-
-
-
-
-                  <form id="dash-form" action="/dashboard/cadastrar" method="post">
-
-                    
-
-                    <div class="row">
-                        
-                        <div class="col-md-6 dash-column">
-                            
-
-                           <div class="dash-input-row">
-
-                                <input class="texst" type="text" placeholder="Nome" name="desname" class="form-control"  value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["desname"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-                            </div><!--dash-input-row-->
-
-
-                            <div class="dash-input-row">
-
-                                <input class="text" type="text" placeholder="E-mail" name="desemail" class="form-control"  value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-                            </div><!--dash-input-row-->
-
-
-                            <div class="dash-input-row">
-
-                                <input type="text" placeholder="CPF" name="desdocument" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["desdocument"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-                            </div><!--dash-input-row-->
-
-
-
-
-
-                            <div class="dash-input-row row">
-
-                                <div class="col-md-3 col-4 width40">
-
-                                    <input type="text" placeholder="DDD" name="nrddd" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["nrddd"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-                                </div><!--col-->
-
-
-
-                                <div class="col-md-9 col-8 width60">
-
-                                    <input type="text" placeholder="Telefone" name="nrphone" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-                                </div><!--col-->
-
-                            </div><!--row-->
-
-
-
-
-
-
-
-                            <div class="dash-input-row row">
-
-                                <div class="col-md-3 col-4 width30">
-                                    
-                                    <label for="payment_birth_1">Nascimento:</label>
-                                    
-                                </div><!--col-->
-
-
-
-                                <div class="col-md-9 col-8 width70">
-
-                                    <input type="date" placeholder="Nascimento" name="dtbirth" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["dtbirth"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-                                </div><!--col-->
-
-                            </div><!--row-->
+                        <div class="row card-dash-row1">
 
 
                             
                             
+                            <div class="col-md-6 col-12">
+
+                                <div class="card-dash-field2">
 
 
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $account["desdocument"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
 
+                                    <div class="card-dash-header4">
 
-
-                        </div><!--col-md-6-->
-
-
-
-
-
-                        <div class="col-md-6">
-                            
-                            
-
-                            <div class="dash-input-row">
-                    
-                                <input type="text" placeholder="CEP apenas com números" name="zipcode" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["zipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-                            </div>
-
-
-                            <div class="dash-input-row">
-                                
-                                <input type="text" placeholder="Logradouro, rua, avenida" name="desaddress" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["desaddress"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-                                
-                            </div>
-
-
-                            <div class="dash-input-row">
-                                
-                                <input type="text" placeholder="Número" name="desnumber" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["desnumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-                                
-                            </div>
-
-
-                            <div class="dash-input-row">
-                                
-                                <input type="text" placeholder="Complemento (opcional)" name="descomplement" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["descomplement"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-                                
-                            </div>
-
-
-                            <div class="dash-input-row">
-                                
-                                <input type="text" placeholder="Bairro" name="desdistrict" class="form-control" value="<?php echo htmlspecialchars( $planPurchaseRegisterValues["desdistrict"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-                                
-                            </div>
-
-                                
-
-
-
-                            <div class="dash-input-row">
-                                
-                                <div class="dash-state-city">
-                                
-                                    <label for="state">Estado</label>
-                                
-                                    <select id="state" form="dash-form" name="desstate">
-
-                                        
-                                        <?php $counter1=-1;  if( isset($state) && ( is_array($state) || $state instanceof Traversable ) && sizeof($state) ) foreach( $state as $key1 => $value1 ){ $counter1++; ?> 
-                                            <option value="<?php echo htmlspecialchars( $value1["idstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idstate"] == $planPurchaseRegisterValues["desstate"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
-                                        <?php } ?> 
-                                        
-                                    </select>
-
-                                </div><!--dash-state-city-->
-
-                            </div><!--dash-input-row-->
-
-
-
-
-
-                            <div class="dash-input-row">
-                                
-                                <div class="dash-state-city">
-
-                                    <label for="city">Cidade</label>
-                                
-                                    <select id="city" form="dash-form" name="descity">
-
-                                        <?php $counter1=-1;  if( isset($city) && ( is_array($city) || $city instanceof Traversable ) && sizeof($city) ) foreach( $city as $key1 => $value1 ){ $counter1++; ?>
-                                            <option value="<?php echo htmlspecialchars( $value1["idcity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idcity"] == $planPurchaseRegisterValues["descity"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+                                        <hr>
+                                        <?php if( $account["intypedoc"] == 0 ){ ?>
+                                        <span>CPF</span>
+                                        <?php }else{ ?>
+                                        <span>CNPJ</span>
                                         <?php } ?>
-
-                                    </select>
-
-                                </div><!--dash-state-city-->
-
-                            </div><!--dash-input-row-->
-
-                           
-                            
-                            
-                        </div><!--col-md-6-->
+                                    </div>
 
 
-                    </div><!--row-->
+                                </div><!--card-dash-field2-->
 
-
-
-
-
-                    <div class="row">
-
-                        <div class="col-md-12">
-
-                            <div class="body-footer">
-                    
-                                <input type="submit" value="Continuar" id="button1" name="button1">
                                 
-                            </div>
-
-
-                            <div class="dash-input-row buttons-wrapper1">
-                                    
-                                <input type="checkbox" class="input-text" id="interms-check" name="interms" value="1">
-                                <div id="interms-text" for="interms-check">Li e Concordo com os <a target="_blank" href="/termos-uso">Termos de Uso</a>, os <a target="_blank" href="/termos-lista">Termos da Lista de Presentes Virtuais</a> e a <a target="_blank" href="/politica-privacidade">Política de Privacidade</a>.</div>
-
-                            </div>                            
-                        </div><!--col-->
-
-                    </div><!--row-->
+                            </div><!--col-->
 
 
 
-                </form>
+
+
+
+
+                            <div class="col-md-6 col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <?php if( $bank["desaccounttype"] == 'CHECKING' ){ ?>
+                                        <span>Conta Corrente</span>
+                                        <?php }else{ ?>
+                                        <span>Conta Poupança</span>
+                                        <?php } ?>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        <span>Tipo</span>
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+                            
+
+
+
+                          
+
+                            
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+
+
+
+
+                        
+                        <div class="row card-dash-row1">
+
+
+
+
+
+                            
+
+
+                            
+                            <div class="col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $bank["desname"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+
+                                    <div class="card-dash-header4">
+                                        <hr>
+                                        <span>Titular</span>
+                                    </div>
+
+                                </div><!--card-dash-field2-->
+
+
+                            </div><!--col-->
+
+
+
+
+
+
+                            
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+
+
+                        <div class="row card-dash-row1">
+
+
+                            
+                            <div class="col-md-4 col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $bank["desagencynumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        <span>Agência</span>
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+                            <div class="col-md-8 col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $bank["desagencycheck"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        <span>Dígito</span>
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+                            
+                           
+
+
+
+                            
+
+
+
+
+
+
+                            
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+
+
+
+                        <div class="row card-dash-row1">
+
+
+                    
+
+
+
+
+                            <div class="col-md-4 col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $bank["desaccountnumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        <span>Conta</span>
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+                            <div class="col-md-8 col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $bank["desaccountcheck"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        <span>Dígito</span>
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+                           
+
+
+
+                            
+
+
+
+
+
+
+                            
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+
+
+
+                        <div class="row card-dash-row1">
+
+
+                
+
+
+                            <div class="col-md-6 col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="button-header">
+                                        <a href='/dashboard/conta-bancaria/editar/<?php echo setHash($bank["idbank"]); ?>'>
+                                            <div class="button4 centralizer">
+                                                <i class="fa fa-plus"></i><span>Editar</span>
+                                            </div>
+                                        </a>
+                                    </div>  
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+                            <div class="col-md-6 col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="button-header">
+                                        <a href='/dashboard/conta-bancaria/deletar/<?php echo setHash($bank["idbank"]); ?>'>
+                                            <div class="button5 centralizer">
+                                                <i class="fa fa-plus"></i><span>Deletar</span>
+                                            </div>
+                                        </a>
+                                    </div>  
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+                           
+
+
+
+                            
+
+
+
+
+
+
+                            
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+
+
+
+                        <?php }else{ ?>
+
+
+                        <div class="row card-dash-row1">
+
+
+
+
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="button-header">
+                                        <a href='/dashboard/conta-bancaria/adicionar/<?php echo setHash($user["iduser"]); ?>'>
+                                            <div class="button5 centralizer">
+                                                <i class="fa fa-plus"></i><p>Adiconar Conta Bancária</p>
+                                            </div>
+                                        </a>
+                                    </div>  
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+                           
+
+
+
+                            
+
+
+
+
+
+
+                            
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+                        <?php } ?>
+
+
+
+                        
+
+
+                    
+                    
+                    
+                    </div>
+
+
+
+
+
+
+
+
+                </div><!--row-->
+             
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+
+
+
+
 
 
 
@@ -323,5 +959,4 @@
     </div><!--container-->
 
 </section>
-
 

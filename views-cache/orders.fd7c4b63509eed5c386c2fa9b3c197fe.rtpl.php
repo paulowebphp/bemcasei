@@ -80,9 +80,9 @@
 
                         <div class="button-header">
 
-                            <a href="/dashboard/conta-bancaria">
+                            <a href="/dashboard/sua-carteira">
                                 <button>
-                                    Configurar Conta Bancária
+                                    Sua Carteira
                                 </button>
                             </a>
 

@@ -46,6 +46,7 @@ class Account extends Model
 					:desaccountcode,
 					:desaccesstoken,
 					:deschannelid,
+					:desaccount,
 					:desname,
 					:desemail,
 					:nrcountryarea,
@@ -73,6 +74,7 @@ class Account extends Model
 					':desaccountcode'=>$this->getdesaccountcode(),
 					':desaccesstoken'=>$this->getdesaccesstoken(),
 					':deschannelid'=>$this->getdeschannelid(),
+					':desaccount'=>utf8_decode($this->getdesaccount()),
 					':desname'=>utf8_decode($this->getdesname()),
 					':desemail'=>$this->getdesemail(),
 					':nrcountryarea'=>$this->getnrcountryarea(),
@@ -119,6 +121,7 @@ class Account extends Model
 					:desaccountcode,
 					:desaccesstoken,
 					:deschannelid,
+					:desaccount,
 					:desname,
 					:desemail,
 					:nrcountryarea,
@@ -146,6 +149,7 @@ class Account extends Model
 					':desaccountcode'=>$this->getdesaccountcode(),
 					':desaccesstoken'=>$this->getdesaccesstoken(),
 					':deschannelid'=>$this->getdeschannelid(),
+					':desaccount'=>$this->getdesaccount(),
 					':desname'=>$this->getdesname(),
 					':desemail'=>$this->getdesemail(),
 					':nrcountryarea'=>$this->getnrcountryarea(),
@@ -394,7 +398,60 @@ class Account extends Model
 	}//END save*/
 
 
+	/*** public function get( $iduser )
+	{
 
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT * 
+		    FROM tb_accounts a
+		    INNER JOIN tb_users d ON a.iduser = d.iduser
+		    WHERE a.iduser = :iduser
+		    ORDER BY a.dtregister desc
+		    LIMIT 1;
+
+			", 
+			
+			[
+
+				':iduser'=>$iduser
+
+			]
+		
+		);//end select
+
+		
+
+		if( count($results) > 0 )
+		{
+
+			//$results[0]['desname'] = utf8_encode($results[0]['desname']);
+			//$results[0]['desaddress'] = utf8_encode($results[0]['desaddress']);
+			//$results[0]['descity'] = utf8_encode($results[0]['descity']);
+			//$results[0]['descomplement'] = utf8_encode($results[0]['descomplement']);
+			//$results[0]['desdistrict'] = utf8_encode($results[0]['desdistrict']);
+			//$results[0]['descountry'] = utf8_encode($results[0]['descountry']);
+
+
+			foreach( $results as &$row )
+				{
+					$row['desname'] = utf8_encode($row['desname']);
+
+				}//end foreach
+
+			//$this->setData($results[0]);
+
+			return $results;
+
+			
+		}//end if
+		
+
+	}//END getAccount
+
+	 */
 
 
 
@@ -434,10 +491,9 @@ class Account extends Model
 
 			SELECT * 
 		    FROM tb_accounts a
-		    INNER JOIN tb_users d ON a.iduser = d.iduser
+			INNER JOIN tb_users d ON a.iduser = d.iduser
 		    WHERE a.iduser = :iduser
-		    ORDER BY a.dtregister desc
-		    LIMIT 1;
+		    ORDER BY a.dtregister desc;
 
 			", 
 			
@@ -447,28 +503,26 @@ class Account extends Model
 
 			]
 		
-		);//end select
-
+		);//end method
 		
 
 		if( count($results) > 0 )
 		{
 
-			//$results[0]['desname'] = utf8_encode($results[0]['desname']);
+			$results[0]['desname'] = utf8_encode($results[0]['desname']);
 			//$results[0]['desaddress'] = utf8_encode($results[0]['desaddress']);
 			//$results[0]['descity'] = utf8_encode($results[0]['descity']);
 			//$results[0]['descomplement'] = utf8_encode($results[0]['descomplement']);
 			//$results[0]['desdistrict'] = utf8_encode($results[0]['desdistrict']);
 			//$results[0]['descountry'] = utf8_encode($results[0]['descountry']);
 
-
 			$this->setData($results[0]);
-
 			
 		}//end if
-		
 
-	}//END getAccount
+
+
+	}//END Method
 
 
 
