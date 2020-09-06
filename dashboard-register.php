@@ -180,14 +180,6 @@ $app->get( "/dashboard/cadastrar", function()
 
 
 
-
-
-
-
-
-
-
-
 $app->post( "/dashboard/cadastrar", function()
 {
 
@@ -1038,6 +1030,13 @@ $app->post( "/dashboard/cadastrar", function()
 
 
 });//END route
+
+
+
+
+
+
+
 
 
 

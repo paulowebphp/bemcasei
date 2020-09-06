@@ -679,6 +679,67 @@ $(document).on('click', '#mailing-submit', function(e){
 
 
 
+/******************DASH REGISTER*************************************************/
+/******************DASH REGISTER*************************************************/
+/******************DASH REGISTER*************************************************/
+/******************DASH REGISTER*************************************************/
+/******************DASH REGISTER*************************************************/
+
+$(document).on('click', '#ModalDashRegisterButton', function(e){
+	
+	e.preventDefault();
+
+	
+	console.log('x');
+
+	let desname = document.querySelector('#desname');
+	let desemail = document.querySelector('#desemail');
+	let desdocument = document.querySelector('#desdocument');
+	let nrddd = document.querySelector('#nrddd');
+	let nrphone = document.querySelector('#nrphone');
+	let dtbirth = document.querySelector('#dtbirth');
+	let zipcode = document.querySelector('#zipcode');
+	let desaddress = document.querySelector('#desadress');
+	let desnumber = document.querySelector('#desnumber');
+	let descomplement = document.querySelector('#descomplement');
+	let desdistrict = document.querySelector('#desdistrict');
+	let state = document.querySelector('#state');
+	let city = document.querySelector('#city');
+
+
+	let valueState = state.selectedIndex;
+	let desstate = state[valueState].innerText;
+
+	let valueCity = city.selectedIndex;
+	let descity = city[valueCity].innerText;
+
+	console.log(desname.value);
+	console.log(desemail.value);
+	console.log(desdocument.value);
+	console.log(nrddd.value);
+	console.log(nrphone.value);
+	console.log(dtbirth.value);
+	console.log(zipcode.value);
+	console.log(desaddress.value);
+	console.log(desnumber.value);
+	console.log(descomplement.value);
+	console.log(desdistrict.value);
+	console.log(desstate);
+	console.log(descity);
+	
+
+	
+	/**$('#ModalDashRegister').modal('show'); */
+
+	
+	
+
+
+});
+/******************DASH REGISTER*************************************************/
+/******************DASH REGISTER*************************************************/
+/******************DASH REGISTER*************************************************/
+/******************DASH REGISTER*************************************************/
 
 
 
@@ -1386,7 +1447,7 @@ $(document).on('change', '#state', function(e){
 
         var city = '';
 
-        console.log(data);
+        /**console.log(data); */
 
         $.each($.parseJSON(data), function(key,value){
 
