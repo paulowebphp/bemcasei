@@ -492,8 +492,10 @@ class Account extends Model
 			SELECT * 
 		    FROM tb_accounts a
 			INNER JOIN tb_users d ON a.iduser = d.iduser
-		    WHERE a.iduser = :iduser
-		    ORDER BY a.dtregister desc;
+			WHERE a.iduser = :iduser
+			AND a.instatus = 1
+			ORDER BY a.dtregister DESC
+			LIMIT 1;
 
 			", 
 			
@@ -563,7 +565,7 @@ class Account extends Model
 			SELECT * 
 		    FROM tb_payments a
 		    INNER JOIN tb_users d ON c.iduser = d.iduser
-		    WHERE ipdayment = pipdayment;
+			WHERE ipdayment = pipdayment;
 
 			", 
 			

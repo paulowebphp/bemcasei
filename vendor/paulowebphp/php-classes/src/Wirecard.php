@@ -2907,7 +2907,7 @@ exit;*/
 
 		    //StatusCode 401
 		   	Bank::setError(Rule::BANK_UNAUTHORIZED);
-			header('Location: /dashboard/conta-bancaria');
+			header('Location: /dashboard/sua-carteira');
 			exit;
 
 
@@ -2920,7 +2920,7 @@ exit;*/
 
 		    //StatusCode entre 400 e 499 (exceto 401)
 		   	Bank::setError(Rule::BANK_VALIDATION);
-			header('Location: /dashboard/conta-bancaria');
+			header('Location: /dashboard/sua-carteira');
 			exit;
 
 
@@ -2933,7 +2933,7 @@ exit;*/
 
 		    //StatusCode >= 500
 		   	Bank::setError(Rule::BANK_UNEXPECTED);
-			header('Location: /dashboard/conta-bancaria');
+			header('Location: /dashboard/sua-carteira');
 			exit;
 
 
@@ -2997,6 +2997,45 @@ exit;*/
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public function updateBank(
 
 
@@ -3010,11 +3049,32 @@ exit;*/
 		$desdocument,
 		$intypedoc,
 		$desaccesstoken,
-		$desbankcode
+		$desbankcode,
+		$hash
 
 
 	)
 	{
+
+
+	/*
+	echo '<pre>';
+	var_dump($desbanknumber);
+	var_dump($desagencynumber);
+	var_dump($desagencycheck);
+	var_dump($desaccountnumber);
+	var_dump($desaccountcheck);
+	var_dump($desaccounttype);
+	var_dump($desname);
+	var_dump($desdocument);
+	var_dump($intypedoc);
+	var_dump($desaccesstoken,);
+	var_dump($desbankcode);
+	var_dump($hash);
+	var_dump('11');
+	exit;
+	*/
+
 
 
 		try 
@@ -3052,9 +3112,11 @@ exit;*/
 
 			$intypedoc = ((int)$intypedoc === 0)? 'CPF' : 'CNPJ';
 
+
 			
-			$bank_account = $moip->bankaccount()
-	        ->setBankNumber($desbanknumber)
+			$bank_account = $moip->bankaccount()->get($desbankcode);
+			
+			$bank_account->setBankNumber($desbanknumber)
 	        ->setAgencyNumber($desagencynumber)
 	        ->setAgencyCheckNumber($desagencycheck)
 	        ->setAccountNumber($desaccountnumber)
@@ -3063,6 +3125,7 @@ exit;*/
 	        ->setHolder($desname, $wirecardDesdocumentFormat, $intypedoc)
 	        ->update($desbankcode);
 
+			$bank_account->update();
 
 	        
 
@@ -3088,7 +3151,7 @@ exit;*/
 
 		    //StatusCode 401
 		   	Bank::setError(Rule::BANK_UNAUTHORIZED);
-			header('Location: /dashboard/conta-bancaria');
+			header('Location: /dashboard/conta-bancaria/'.$hash);
 			exit;
 
 
@@ -3101,7 +3164,7 @@ exit;*/
 
 		    //StatusCode entre 400 e 499 (exceto 401)
 		   	Bank::setError(Rule::BANK_VALIDATION);
-			header('Location: /dashboard/conta-bancaria');
+			header('Location: /dashboard/conta-bancaria/'.$hash);
 			exit;
 
 
@@ -3114,7 +3177,7 @@ exit;*/
 
 		    //StatusCode >= 500
 		   	Bank::setError(Rule::BANK_UNEXPECTED);
-			header('Location: /dashboard/conta-bancaria');
+			header('Location: /dashboard/conta-bancaria/'.$hash);
 			exit;
 
 

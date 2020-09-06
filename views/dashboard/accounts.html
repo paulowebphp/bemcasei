@@ -115,15 +115,20 @@
 
 
 
-                <div class="row card-dash">
+                <div class="row card-dash2">
 
+
+
+
+
+                    {if="$bankExists"}
 
 
                     <div class="col-md-7">
                         
 
 
-                        <div class="row card-dash-row1">
+                        <div class="row card-dash-row1 padding-header green1">
 
 
                                                        
@@ -135,15 +140,12 @@
                                 <div class="card-dash-field2">
 
 
-                                    <div class="card-dash-content">
-                                        <span>{$account.desaccountcode}</span>
+                                    <div class="card-dash-content2">
+                                        <span title="Sua Carteira">{$account.desaccountcode}</span>
                                     </div>
 
 
-                                    <div class="card-dash-header4">
-                                        <hr>
-                                        <span>Conta</span>
-                                    </div>
+                                    
 
                                 </div><!--card-dash-field2-->
 
@@ -167,7 +169,7 @@
 
 
 
-                        <div class="row card-dash-row2">
+                        <div class="row card-dash-row2 padding5">
 
 
 
@@ -219,7 +221,7 @@
 
                         
 
-                        <div class="row card-dash-row2">
+                        <div class="row card-dash-row2 padding5">
 
 
 
@@ -276,7 +278,7 @@
 
 
 
-                        <div class="row card-dash-row2">
+                        <div class="row card-dash-row2 padding5">
 
 
 
@@ -329,7 +331,7 @@
 
 
 
-                        <div class="row card-dash-row2">
+                        <div class="row card-dash-row2 padding5">
 
 
 
@@ -361,7 +363,7 @@
 
 
 
-                            <div class="col-md-4 col-12">
+                            <div class="col-md-4 col-12 padding5">
 
                                 <div class="card-dash-field2">
 
@@ -386,7 +388,7 @@
 
 
 
-                        <div class="row card-dash-row2">
+                        <div class="row card-dash-row2 padding5">
 
 
 
@@ -447,17 +449,34 @@
 
 
 
-
-                    <div class="col-md-5">
-
+                    <div class="col-md-5 col-12 color2">
 
 
-                        {if="$bankExists"}
+
+                        <div class="row card-dash-row1 padding-header">
+
+                            <div class="col-md-8 col-12">
+
+                                <div class="card-dash-field2">
 
 
-                            
+                                    <div class="card-dash-content4">
+                                        <span title="ID Conta Bancária">{$bank.desbankcode}</span>
+                                    </div>
 
-                        <div class="row card-dash-row1">
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+                        </div>
+
+                        
+                        <div class="row card-dash-row1 padding5">
 
                             <div class="col-md-8 col-12">
 
@@ -507,7 +526,7 @@
 
 
 
-                        <div class="row card-dash-row1">
+                        <div class="row card-dash-row1 padding5">
 
 
                             
@@ -518,7 +537,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span>{$account.desdocument}</span>
+                                        <span>{$bank.desdocument}</span>
                                     </div>
 
                                     <div class="card-dash-header4">
@@ -589,7 +608,7 @@
 
 
                         
-                        <div class="row card-dash-row1">
+                        <div class="row card-dash-row1 padding5">
 
 
 
@@ -637,7 +656,7 @@
 
 
 
-                        <div class="row card-dash-row1">
+                        <div class="row card-dash-row1 padding5">
 
 
                             
@@ -713,7 +732,7 @@
 
 
 
-                        <div class="row card-dash-row1">
+                        <div class="row card-dash-row1 padding5">
 
 
                     
@@ -788,54 +807,32 @@
 
 
 
-                        <div class="row card-dash-row1">
+                        <div class="row card-dash-row1 centralizer padding5">
 
 
                 
 
 
-                            <div class="col-md-6 col-12">
-
-                                <div class="card-dash-field2">
-
-
-                                    <div class="button-header">
-                                        <a href='/dashboard/conta-bancaria/editar/{function="setHash($bank.idbank)"}'>
-                                            <div class="button4 centralizer">
-                                                <i class="fa fa-plus"></i><span>Editar</span>
-                                            </div>
-                                        </a>
-                                    </div>  
-
-
-                                </div><!--card-dash-field2-->
-
-                                
-                            </div><!--col-->
+                            <div class="button-header">
+                                <a title="Editar" href='/dashboard/conta-bancaria/{function="setHash($bank.idbank)"}'>
+                                    <div class="button9 text-center">
+                                        <i class="fa fa-pencil"></i>
+                                    </div>
+                                </a>
+                            </div> 
 
 
 
-                            <div class="col-md-6 col-12">
-
-                                <div class="card-dash-field2">
-
-
-                                    <div class="button-header">
-                                        <a href='/dashboard/conta-bancaria/deletar/{function="setHash($bank.idbank)"}'>
-                                            <div class="button5 centralizer">
-                                                <i class="fa fa-plus"></i><span>Deletar</span>
-                                            </div>
-                                        </a>
-                                    </div>  
-
-
-                                </div><!--card-dash-field2-->
-
-                                
-                            </div><!--col-->
+                            <div class="button-header">
+                                <a title="Apagar" class="del-button" href='/dashboard/conta-bancaria/deletar/{function="setHash($bank.idbank)"}' onclick="return confirm('Deseja realmente excluir este ítem?')">
+                                    <div class="button5 text-center">
+                                        <i class="fa fa-trash"></i>
+                                    </div>
+                                </a>
+                            </div>  
                            
 
-
+        
 
                             
 
@@ -852,61 +849,7 @@
 
                         </div><!--row-->
 
-
-
-
-
-
-
-                        {else}
-
-
-                        <div class="row card-dash-row1">
-
-
-
-
-
-                            <div class="col-12">
-
-                                <div class="card-dash-field2">
-
-
-                                    <div class="button-header">
-                                        <a href='/dashboard/conta-bancaria/adicionar/{function="setHash($user.iduser)"}'>
-                                            <div class="button5 centralizer">
-                                                <i class="fa fa-plus"></i><p>Adiconar Conta Bancária</p>
-                                            </div>
-                                        </a>
-                                    </div>  
-
-
-                                </div><!--card-dash-field2-->
-
-                                
-                            </div><!--col-->
-                           
-
-
-
-                            
-
-
-
-
-
-
-                            
-
-
-
-
-
-                        </div><!--row-->
-
-
-
-                        {/if}
+                       
 
 
 
@@ -920,7 +863,387 @@
 
 
 
+                    {else}
 
+
+
+                    <div class="col-md-7">
+                        
+
+
+                        <div class="row card-dash-row1 padding-header grey1">
+
+
+                                                       
+
+
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content3">
+                                        <span title="Sua Carteira">{$account.desaccountcode}</span>
+                                    </div>
+
+
+                                   
+
+                                </div><!--card-dash-field2-->
+
+
+                            </div><!--col-->
+
+
+
+
+
+
+
+                            
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+                        <div class="row card-dash-row2 padding5">
+
+
+
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{$account.desname}</span>
+                                    </div>
+
+
+                                    <div class="card-dash-header4">
+                                        <hr>
+                                        <span>Nome</span>
+                                    </div>
+
+                                </div><!--card-dash-field2-->
+
+
+                            </div><!--col-->
+
+
+                            
+
+
+                            
+
+
+
+
+
+
+                       
+                            
+
+                            
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+                        
+
+                        <div class="row card-dash-row2 padding5">
+
+
+
+
+                            
+
+
+                            
+
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{$account.desdocument}</span>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        {if="$account.intypedoc == 0"}
+                                        <span>CPF</span>
+                                        {else}
+                                        <span>CNPJ</span>
+                                        {/if}
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+                    
+
+
+                            
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+
+
+
+
+                        <div class="row card-dash-row2 padding5">
+
+
+
+
+
+
+
+
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{$account.desemail}</span>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        <span>E-mail</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+                       
+                            
+
+                            
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+
+
+                        <div class="row card-dash-row2 padding5">
+
+
+
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span>({$account.nrddd}) {$account.nrphone}</span>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        <span>Telefone</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+                            <div class="col-md-4 col-12 padding5">
+
+                                <div class="card-dash-field2">
+
+
+                                    &nbsp;
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+                        <div class="row card-dash-row2 padding5">
+
+
+
+
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{$account.desaddress}, {$account.desnumber}
+                                        {$account.desdistrict}
+                                        {$account.descity}
+                                        {$account.desstate}</span>
+                                    </div>
+
+                                    <div class="card-dash-header4">
+
+                                        <hr>
+                                        <span>Endereço</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+                            <div class="col-md-4 col-12">
+
+                                <div class="card-dash-field2">
+
+
+                                    &nbsp;
+
+
+                                </div><!--card-dash-field2-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+                        </div>
+
+
+
+
+                    </div><!--col-->
+
+
+
+                    <div class="col-md-5 col-12 color1 centralizer">
+
+
+                        <div class="row card-dash-row1">
+
+
+
+
+
+                            <div class="col-12">
+                        
+                                <div class="card-dash-field2">
+                        
+                        
+                                    <a href='/dashboard/conta-bancaria/adicionar'>
+                                        <div class="button7 text-center">
+                                            <i class="fa fa-plus"></i>
+                                            <p>Adicionar Conta Bancária</p>
+                                        </div>
+                                        
+                                    </a>  
+                                    
+                        
+                                </div><!--card-dash-field2-->
+                        
+                                
+                            </div><!--col-->
+                           
+                        
+                        
+                        
+                            
+                        
+                        
+                        
+                        
+                        
+                        
+                            
+                        
+                        
+                        
+                        
+                        
+                        </div><!--row-->
+
+
+                    </div>
+
+
+
+                    {/if}
 
 
 

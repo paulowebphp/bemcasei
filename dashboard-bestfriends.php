@@ -546,7 +546,7 @@ $app->get( "/dashboard/padrinhos-madrinhas/:hash/deletar", function( $hash )
 	if ( !User::validatePlanDashboard( $user ) )
 	{
 		# code...
-		Album::setError(Rule::VALIDATE_PLAN);
+		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
 		exit;
 

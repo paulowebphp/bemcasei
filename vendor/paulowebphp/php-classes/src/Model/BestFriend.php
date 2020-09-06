@@ -711,9 +711,8 @@ class BestFriend extends Model
 			DELETE FROM tb_bestfriends
 			WHERE idbestfriend = :idbestfriend
 			ORDER BY 
-			inposition ASC,
-			desbestfriend ASC,
 			dtregister DESC
+			LIMIT 1;
 			
 			",
 			
@@ -725,6 +724,9 @@ class BestFriend extends Model
 		
 		);//end query
 
+
+		return true;
+		
 
 	}//END delete
 

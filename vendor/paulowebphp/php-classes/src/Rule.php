@@ -438,7 +438,7 @@ class Rule extends Model
 	const ERROR_CPF = 'Informe o CPF';
 	const VALIDATE_CPF = 'Informe um CPF válido';
 
-
+	const DOCUMENT_DIFERENCE = 'O CPF informado não é o mesmo utilizado na sua Carteira | Utilize uma Conta Bancária que esteja cadastrada no mesmo CPF usado para abrir a Carteira | Se por algum motivo não estiver podendo usar o seu CPF, entre em contato com o suporte na Central de Ajuda';
 
 
 
@@ -906,10 +906,10 @@ class Rule extends Model
 
 
 	const POPOVER_REGISTER_BANK_CONTENT = 'Para fazer uma transferência, é preciso antes cadastrar uma conta bancária';
+	const BANK_ALREADY_EXISTS = "Você não pode acessar esta página pois já tem um Banco Cadastrado | Se quiser, atualize a sua Conta Bancária ou delete a conta atual e crie outra";
 
 
-
-
+	const BANK_INACTIVE = "Esta Conta Bancária não está mais ativa para ser Editada";
 
 
 

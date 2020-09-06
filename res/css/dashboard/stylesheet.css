@@ -683,47 +683,45 @@ label{
 
 
 
-.button4{
-  border-radius: 50%;
-  width:80px;
-  width:80px;
+.button-header .button9{
+  border-radius: 8px;
   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);
-  padding: 25px;
-  color: #ec656d;
-  background: #fff;;
+  padding: 15px 45px;
+  color: #888;
+  background: #888;
   border:none;
+  margin: 10px;
 
   /*
   border: 1px solid #fff;
   background: #ffffff66;
   */
 }
-.button4 i{
-  font-size: 2rem;
-  color: #ec656d;
+.button9 i{
+  font-size: 1.5rem;
+  color: #f1f1f1;
   font-weight: normal;
 }
 
 
 
-.button5{
-  border-radius: 50%;
-  width:80px;
-  width:80px;
-  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);
-  padding: 25px;
-  color: #ec656d;
-  background: #fff;;
-  border:none;
+.button-header .button5{
+  border-radius: 8px;
 
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);
+  padding: 15px 45px;
+  color: #888;
+  background: #ec644b;;
+  border:none;
+  margin: 10px;
   /*
   border: 1px solid #fff;
   background: #ffffff66;
   */
 }
 .button5 i{
-  font-size: 2rem;
-  color: #ec656d;
+  font-size: 1.5rem;
+  color: #f1f1f1;
   font-weight: normal;
 }
 
@@ -761,10 +759,45 @@ label{
   */
 }
 
+.button7 i{
+  font-size:5rem;
+  color: #DDD;
+  font-weight: bolder;
+}
 
+.button7 p{
+  font-size:1rem;
+  font-style: italic;
+  color: #BBB;
+  font-weight: normal;
+}
 
+.color1{
 
+  background:#e4f1fe;
 
+}
+
+.color2{
+
+  background:#f9f9f9;
+
+}
+.padding5{
+  padding:0 20px;
+}
+.padding-header{
+  padding: 30px 20px 30px 20px;
+}
+.border1{
+  border: 1px solid #888;
+}
+.green1{
+  background:#c8f7c5;
+}
+.grey1{
+  background:#888;
+}
 /********************************************* SEARCH ************************************************/
 
 .search{
@@ -969,6 +1002,38 @@ label{
   text-decoration: none;
 }
 
+
+
+.card-dash2 {
+  margin: 0 auto;
+  width: 100%;
+  background-color: #fff;
+  position: relative;
+  border-radius:  4px;
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);
+  text-align: center;
+  margin-bottom: 5%;
+}
+.card-dash2.cancelled{
+  background-color: #ccc!important;
+  opacity: 0.5;
+
+}
+.card-dash2.reversed{
+  background-color: #ffc0cb77!important;
+}
+
+
+
+.card-dash2 a {
+  color: #29303b;
+  display: block;
+  font-size: 1rem;
+  background-color: transparent;
+  font-weight: 400;
+  text-decoration: none;
+}
+
 .card-photo {
   height: auto;
   display: block;
@@ -1078,8 +1143,21 @@ label{
 .card-dash-content{
   font-size: 1rem;
 }
-
-
+.card-dash-content2{
+  font-size: 2rem;
+  color: #888;
+  text-align:center;
+}
+.card-dash-content4{
+  font-size: 1.5rem;
+  color: #888;
+  text-align:left;
+}
+.card-dash-content3{
+  font-size: 2rem;
+  color: #f1f1f1;
+  text-align:center;
+}
 
 .card-dash-row1{
   margin-bottom: 5%;

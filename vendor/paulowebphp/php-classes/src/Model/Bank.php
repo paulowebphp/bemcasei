@@ -5,11 +5,12 @@ namespace Core\Model;
 
 use \Core\DB\Sql;
 use \Core\Model;
-use \Core\Model\Cart;
-use \Core\Model\Address;
-use \Core\Model\Payment;
-use \Moip\Moip;
-use \Moip\Auth\BasicAuth;
+use \Core\Rule;
+//use \Core\Model\Cart;
+//use \Core\Model\Address;
+//use \Core\Model\Payment;
+//use \Moip\Moip;
+//use \Moip\Auth\BasicAuth;
 
 
 
@@ -70,7 +71,7 @@ class Bank extends Model
 				':iduser'=>$this->getiduser(),
 				':idaccount'=>$this->getidaccount(),
 				':instatus'=>$this->getinstatus(),
-				':desname'=>$this->getdesname(),
+				':desname'=>utf8_decode($this->getdesname()),
 				':desdocument'=>$this->getdesdocument(),
 				':desbankcode'=>$this->getdesbankcode(),
 				':desbanknumber'=>$this->getdesbanknumber(),
@@ -187,7 +188,185 @@ class Bank extends Model
 			SELECT * 
 		    FROM tb_banks a
 		    INNER JOIN tb_users d ON a.iduser = d.iduser
-		    WHERE a.iduser = :iduser
+			WHERE a.iduser = :iduser
+			AND a.instatus = 1
+		    ORDER BY a.dtregister DESC
+		    LIMIT 1;
+
+			", 
+			
+			[
+
+				':iduser'=>$iduser
+
+			]
+		
+		);//end select
+
+		if(count($results) > 0)
+		{
+
+			$this->setData($results[0]);
+		}//end if
+
+
+	}//END get
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public function getBank( $idbank )
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT *
+			FROM tb_banks
+			WHERE idbank = :idbank
+			ORDER BY dtregister DESC
+			LIMIT 1;
+			
+
+			", 
+			
+			[
+
+				':idbank'=>$idbank
+
+			]
+		
+		);//end select
+
+
+
+
+		
+
+		if( count($results) > 0 )
+		{
+
+			if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
+			{
+				
+
+				$results[0]['desname'] = utf8_encode($results[0]['desname']);
+					
+				
+			}//end if
+
+
+			$this->setData($results[0]);
+			
+		}//end if
+
+	}//END getBestFriend
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public function getActiveBank( $iduser )
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+
+			SELECT * 
+		    FROM tb_banks a
+		    INNER JOIN tb_users d ON a.iduser = d.iduser
+			WHERE a.iduser = :iduser
+			AND a.instatus = 1
 		    ORDER BY a.dtregister DESC
 		    LIMIT 1;
 
@@ -218,7 +397,8 @@ class Bank extends Model
 
 
 
-	public static function chekBankExists( $iduser )
+
+	public static function checkActiveBankExists( $iduser )
 	{
 
 		$sql = new Sql();
@@ -228,7 +408,8 @@ class Bank extends Model
 			SELECT * 
 		    FROM tb_banks a
 		    INNER JOIN tb_users d ON a.iduser = d.iduser
-		    WHERE a.iduser = :iduser
+			WHERE a.iduser = :iduser
+			AND a.instatus = 1
 		    ORDER BY a.dtregister DESC
 		    LIMIT 1;
 
@@ -415,6 +596,51 @@ class Bank extends Model
 		];
 
 	}//END getBanksValues
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public function delete()
+	{
+
+		$sql = new Sql();
+
+		$sql->query("
+		
+			DELETE FROM tb_banks
+			WHERE idbank = :idbank
+			ORDER BY 
+			dtregister DESC
+			LIMIT 1;
+			
+			",
+			
+			[
+
+				':idbank'=>$this->getidbank()
+
+			]
+		
+		);//end query
+
+		return true;
+
+
+	}//END delete
 
 
 
