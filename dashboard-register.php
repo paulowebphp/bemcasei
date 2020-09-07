@@ -701,7 +701,33 @@ $app->post( "/dashboard/cadastrar", function()
 
 
 
-	
+	if(
+				
+		!isset($_POST['desstate']) 
+		|| 
+		$_POST['desstate'] === ''
+		||
+		$_POST['desstate'] == 0
+		
+	)
+	{
+
+		Account::setError(Rule::ERROR_STATE);
+		header('Location: /dashboard/cadastrar');
+		exit;
+
+	}//end if
+
+
+
+	if ( ( $desstate = Address::getState($_POST['desstate']) ) === false ) 
+	{
+		# code...
+		Account::setError(Rule::VALIDATE_STATE);
+		header('Location: /dashboard/cadastrar');
+		exit;
+
+	}//end if
 
 
 	
@@ -756,33 +782,7 @@ $app->post( "/dashboard/cadastrar", function()
 
 
 
-	if(
-				
-		!isset($_POST['desstate']) 
-		|| 
-		$_POST['desstate'] === ''
-		||
-		$_POST['desstate'] == 0
-		
-	)
-	{
-
-		Account::setError(Rule::ERROR_STATE);
-		header('Location: /dashboard/cadastrar');
-		exit;
-
-	}//end if
-
-
-
-	if ( ( $desstate = Address::getState($_POST['desstate']) ) === false ) 
-	{
-		# code...
-		Account::setError(Rule::VALIDATE_STATE);
-		header('Location: /dashboard/cadastrar');
-		exit;
-
-	}//end if
+	
 
 
 
@@ -808,11 +808,12 @@ $app->post( "/dashboard/cadastrar", function()
 
 
 
-
-
+	
 	$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
 	
-
+	$nrcountryarea = Rule::NR_COUNTRY_AREA;
+	$descountry = Rule::DESCOUNTRYCODE;
+	$intypedoc = 0;
 
 
 	/*
@@ -849,7 +850,7 @@ $app->post( "/dashboard/cadastrar", function()
 		$desemail,
 		$dtbirth,
 		$desdocument,
-		Rule::NR_COUNTRY_AREA,
+		$nrcountryarea,
 		(int)$nrddd,
 		(int)$nrphone,
 		$deszipcode,
@@ -859,7 +860,7 @@ $app->post( "/dashboard/cadastrar", function()
 		$desdistrict,		
 		$descity['descity'],
 		$desstate['desstatecode'],
-		Rule::DESCOUNTRYCODE
+		$descountry
 
 	);//END createAccount
 
@@ -888,15 +889,17 @@ $app->post( "/dashboard/cadastrar", function()
 
 		'idaccount'=>$account->getidaccount(),
 		'iduser'=>$user->getiduser(),
+		'instatus'=>1,
 		'desaccountcode'=>$wirecardAccountData['desaccountcode'],
 		'desaccesstoken'=>$wirecardAccountData['desaccesstoken'],
 		'deschannelid'=>$wirecardAccountData['deschannelid'],
+		'desaccount'=>NULL,
 		'desname'=>$desname,
 		'desemail'=>$desemail,
-		'nrcountryarea'=>Rule::NR_COUNTRY_AREA,
+		'nrcountryarea'=>$nrcountryarea,
 		'nrddd'=>$nrddd,
 		'nrphone'=>$nrphone,
-		'intypedoc'=>0,
+		'intypedoc'=>$intypedoc,
 		'desdocument'=>$desdocument,
 	  	'deszipcode' =>$deszipcode,
 		'desaddress'=>$desaddress,
@@ -905,8 +908,9 @@ $app->post( "/dashboard/cadastrar", function()
 	  	'desdistrict'=>$desdistrict,
 	  	'descity'=>$descity['descity'],
 	  	'desstate'=>$desstate['desstatecode'],
-	  	'descountry'=>Rule::DESCOUNTRYCODE,
-	  	'dtbirth'=>$dtbirth
+	  	'descountry'=>$descountry,
+		'dtbirth'=>$dtbirth
+		  
 
 	]);//end setData
 

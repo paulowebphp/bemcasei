@@ -109,8 +109,6 @@ class Wirecard extends Model
 	  	$desstate, 
 	  	$descountry,
 	  	$hash = ''
-
-
 	  	
 	)
 	{
@@ -3050,7 +3048,7 @@ exit;*/
 		$intypedoc,
 		$desaccesstoken,
 		$desbankcode,
-		$hash
+		$hash = ''
 
 
 	)
