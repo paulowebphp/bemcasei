@@ -186,7 +186,7 @@ $app->post( "/dashboard/cadastrar", function()
 	$_SESSION['planPurchaseRegisterValues'] = $_POST;
 
 
-
+	
 
 
 
@@ -718,6 +718,8 @@ $app->post( "/dashboard/cadastrar", function()
 		!isset($_POST['descity']) 
 		|| 
 		$_POST['descity'] === ''
+		||
+		$_POST['descity'] == 0
 		
 	)
 	{
@@ -759,6 +761,8 @@ $app->post( "/dashboard/cadastrar", function()
 		!isset($_POST['desstate']) 
 		|| 
 		$_POST['desstate'] === ''
+		||
+		$_POST['desstate'] == 0
 		
 	)
 	{

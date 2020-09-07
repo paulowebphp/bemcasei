@@ -2094,7 +2094,18 @@ label{
 }
 
 
-
+.payment-warn2{
+  color: #ec656d;
+  text-align: left;
+  margin: 0 auto;
+  padding:4%;
+}
+.payment-warn2 h3{
+  font-size:1.5rem;
+}
+.payment-warn2 p{
+  font-size: 1.2rem;
+}
 
 
 

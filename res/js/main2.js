@@ -713,7 +713,8 @@ $(document).on('click', '#ModalDashRegisterButton', function(e){
 	let valueCity = city.selectedIndex;
 	let descity = city[valueCity].innerText;
 
-	console.log(desname.value);
+	/**
+	 * console.log(desname.value);
 	console.log(desemail.value);
 	console.log(desdocument.value);
 	console.log(nrddd.value);
@@ -726,12 +727,74 @@ $(document).on('click', '#ModalDashRegisterButton', function(e){
 	console.log(desdistrict.value);
 	console.log(desstate);
 	console.log(descity);
+
+
+	html = '<h4>Nome: <span style="font-weight:lighter;">'+desname.value+'</span></h4>';
+	html += '<h4>E-mail: <span style="font-weight:lighter;">'+desemail.value+'</span></h4>';
+	html += '<h4>Telefone: <span style="font-weight:lighter;">('+nrddd.value+') '+nrphone.value+'</span></h4>';
+	html += '<h4>Nascimento: <span style="font-weight:lighter;">'+dtbirth.value+'</span></h4>';
+	html += '<h4>Logradouro: <span style="font-weight:lighter;">'+desaddress.value+'</span></h4>';
+	html += '<h4>Número: <span style="font-weight:lighter;">'+desnumber.value+'</span></h4>';
+	html += '<h4>Complemento: <span style="font-weight:lighter;">'+descomplement.value+'</span></h4>';
+	html += '<h4>Bairro: <span style="font-weight:lighter;">'+desname.value+'</span></h4>';
+	html += '<h4>Nome: <span style="font-weight:lighter;">'+desdistrict.value+'</span></h4>';
+	html += '<h4>CEP: <span style="font-weight:lighter;">'+zipcode.value+'</span></h4>';
+	html += '<h4>Cidade: <span style="font-weight:lighter;">'+descity+'</span></h4>';
+	html += '<h4>Estado: <span style="font-weight:lighter;">'+desstate+'</span></h4>';
+	 */
+
+
+	let html = '';
+
+	( desname.value == '' ) ? html += '<h4 title="Insira o Nome" style="color:#d91e18";>Insira o Nome</h4>' : html += '<h4>Nome: <span style="font-weight:lighter;">'+desname.value+'</span></h4>';
+
+	( desemail.value == '' ) ? html += '<h4 title="Insira o E-mail" style="color:#d91e18";>Insira o E-mail</h4>' : html += '<h4>E-mail: <span style="font-weight:lighter;">'+desemail.value+'</span></h4>';
+
+	( desdocument.value == '' ) ? html += '<h4 title="Insira o CPF" style="color:#d91e18";>Insira o CPF</h4>' : html += '<h4>CPF: <span style="font-weight:lighter;">'+desdocument.value+'</span></h4>';
+
+	( nrddd.value == '' || nrphone.value == '' ) ? html += '<h4 title="Insira o Telefone com DDD" style="color:#d91e18";>Insira o Telefone com DDD</h4>' : html += '<h4>Telefone: <span style="font-weight:lighter;">('+nrddd.value+') '+nrphone.value+'</span></h4>';
 	
 
-	
-	/**$('#ModalDashRegister').modal('show'); */
+	if ( dtbirth.value == '' ) 
+	{
+		html += '<h4 title="Insira o Nascimento" style="color:#d91e18";>Insira o Nascimento</h4>';
+	}//end if
+	else
+	{
+		let split = dtbirth.value.split('-');
 
+		let day = split[2];
+		let month = split[1];
+		let year = split[0];
+		date = day + '/' + month + '/' + year;
+
+		html += '<h4>Nascimento: <span style="font-weight:lighter;">'+date+'</span></h4>';
+
+	}//end else
+
+	( desaddress.value == '' ) ? html += '<h4 title="Insira o Logradouro" style="color:#d91e18;">Insira o Logradouro</h4>' : html += '<h4>Logradouro: <span style="font-weight:lighter;">'+desaddress.value+'</span></h4>';
+
+	( desnumber.value == '' ) ? html += '<h4 title="Insira o Número do Logradouro" style="color:#d91e18;">Insira o Número do Logradouro</h4>' : html += '<h4>Número: <span style="font-weight:lighter;">'+desnumber.value+'</span></h4>';
+
+	( descomplement.value == '' ) ? html += '<h4 title="Insira o Complemento (opcional)">Complemento: <span style="font-weight:lighter;">(opcional)</span></h4>' : html += '<h4>Complemento: <span style="font-weight:lighter;">'+descomplement.value+'</span></h4>';
+
+	( desdistrict.value == '' ) ? html += '<h4 title="Insira o Bairro" style="color:#d91e18;">Insira o Bairro</h4>' : html += '<h4>Bairro: <span style="font-weight:lighter;">'+desdistrict.value+'</span></h4>';
+
+	( zipcode.value == '' ) ? html += '<h4 title="Insira o CEP" style="color:#d91e18;">Insira o CEP</h4>' : html += '<h4>CEP: <span style="font-weight:lighter;">'+zipcode.value+'</span></h4>';
+
+	( descity == 'Insira uma Cidade...' ) ? html += '<h4 title="Selecione uma Cidade" style="color:#d91e18;">Selecione uma Cidade</h4>' : html += '<h4>Cidade: <span style="font-weight:lighter;">'+descity+'</span></h4>';
+
+	( desstate == 'Insira um Estado...' ) ? html += '<h4 title="Selecione um Estado" style="color:#d91e18;">Selecione um Estado</h4>' : html += '<h4>Estado: <span style="font-weight:lighter;">'+desstate+'</span></h4>';
 	
+		
+
+
+	$('#content1').html(html);
+	/**
+	console.log(html);
+
+	$('#ModalDashRegister').modal('show'); */
+
 	
 
 
@@ -744,6 +807,110 @@ $(document).on('click', '#ModalDashRegisterButton', function(e){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************DASH REGISTER CONFIRMATION*************************/
+/******************DASH REGISTER CONFIRMATION*************************/
+/******************DASH REGISTER CONFIRMATION*************************/
+/******************DASH REGISTER CONFIRMATION*************************/
+/******************DASH REGISTER CONFIRMATION*************************/
+/**
+	 *
+$(document).on('click', '#confirmation1', function(e){
+	
+	e.preventDefault();
+
+	
+	let desname = document.querySelector('#desname');
+	let desemail = document.querySelector('#desemail');
+	let desdocument = document.querySelector('#desdocument');
+	let nrddd = document.querySelector('#nrddd');
+	let nrphone = document.querySelector('#nrphone');
+	let dtbirth = document.querySelector('#dtbirth');
+	let zipcode = document.querySelector('#zipcode');
+	let desaddress = document.querySelector('#desadress');
+	let desnumber = document.querySelector('#desnumber');
+	let descomplement = document.querySelector('#descomplement');
+	let desdistrict = document.querySelector('#desdistrict');
+	let state = document.querySelector('#state');
+	let city = document.querySelector('#city');
+
+
+	let valueState = state.selectedIndex;
+	let desstate = state[valueState].innerText;
+
+	let valueCity = city.selectedIndex;
+	let descity = city[valueCity].innerText;
+
+	 console.log(desname.value);
+	console.log(desemail.value);
+	console.log(desdocument.value);
+	console.log(nrddd.value);
+	console.log(nrphone.value);
+	console.log(dtbirth.value);
+	console.log(zipcode.value);
+	console.log(desaddress.value);
+	console.log(desnumber.value);
+	console.log(descomplement.value);
+	console.log(desdistrict.value);
+	console.log(desstate);
+	console.log(descity);
+
+
+	console.log(html);
+
+	$('#ModalDashRegister').modal('show'); 
+
+	console.log('xxxxx');
+	console.log($("#dash-form").serialize());
+
+	$('#ModalDashRegister').modal('hide');
+
+	$.ajax({
+
+        type:"POST",
+        data: $("#dash-form").serialize(),
+        url: "/dashboard/cadastrar"
+
+    }).done( function( data ) {
+
+        console.log(data); 
+
+
+    }).fail(function(data){
+
+        console.error("Houve um erro no carregamento das cidades devido a uma lentidão na internet, tente novamente");
+
+    });
+
+	
+
+
+});*/
+/******************DASH REGISTER CONFIRMATION*************************/
+/******************DASH REGISTER CONFIRMATION*************************/
+/******************DASH REGISTER CONFIRMATION*************************/
+/******************DASH REGISTER CONFIRMATION*************************/
 
 
 
