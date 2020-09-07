@@ -1,4 +1,4 @@
-<section class="dashboard">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
 
     <div class="container-fluid">            
             
@@ -12,21 +12,21 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                {if="$user.inplancontext == 0"}
+                <?php if( $user["inplancontext"] == 0 ){ ?>
 
-                    {include="dashboard-menu-free"}
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
 
 
-                {elseif="!$validate"}
+                <?php }elseif( !$validate ){ ?>
 
-                    {include="dashboard-menu-expirated"}
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
                
 
-                {else}
+                <?php }else{ ?>
 
-                    {include="dashboard-menu"}
+                    <?php require $this->checkTemplate("dashboard-menu");?>
 
-                {/if}
+                <?php } ?>
                     
 
             </div><!--col-->
@@ -47,7 +47,7 @@
 
         
 
-                {if=" $maxBestFriends > $nrtotal "}
+                <?php if(  $maxBestFriends > $nrtotal  ){ ?>
 
                     <div class="row">
 
@@ -71,7 +71,7 @@
                     
                     </div>
                 
-                {else}
+                <?php }else{ ?>
 
                 <div class="row">
                     
@@ -85,37 +85,37 @@
 
                 </div>
 
-                {/if}
+                <?php } ?>
 
             
 
 
 
-                {if="$success != ''"}
+                <?php if( $success != '' ){ ?>
                     <div class="row">
                         <div class="col-12">
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {$success}
+                                <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                         </div> 
                     </div>  
-                {/if}
+                <?php } ?>
 
-                {if="$error != ''"}
+                <?php if( $error != '' ){ ?>
                     <div class="row">
                         <div class="col-12">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                {$error}
+                                <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                         </div> 
                     </div>  
-                {/if}
+                <?php } ?>
  
 
 
@@ -125,7 +125,7 @@
 
 
 
-                {loop="$bestfriend"}
+                <?php $counter1=-1;  if( isset($bestfriend) && ( is_array($bestfriend) || $bestfriend instanceof Traversable ) && sizeof($bestfriend) ) foreach( $bestfriend as $key1 => $value1 ){ $counter1++; ?>
                 <div class="row card-dash centralizer">
 
                         
@@ -135,7 +135,7 @@
 
 
                              <div class="card-dash-content">
-                                <span>{$value.inposition}</span>
+                                <span><?php echo htmlspecialchars( $value1["inposition"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                             </div>
 
 
@@ -156,7 +156,7 @@
 
 
                             <div class="card-dash-content">
-                                <span>{$value.desbestfriend}</span>
+                                <span><?php echo htmlspecialchars( $value1["desbestfriend"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                             </div>
 
 
@@ -181,7 +181,7 @@
 
 
                             <div class="card-dash-content">
-                                <span>{$value.desdescription}</span>
+                                <span><?php echo htmlspecialchars( $value1["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                             </div>
 
                             <div class="card-dash-header">
@@ -205,7 +205,7 @@
                         <div class="card-dash-field">
 
                             <div class="card-dash-content">
-                                <span>{if="$value.instatus == 1"}Visível{else}Não-visível{/if}</span>
+                                <span><?php if( $value1["instatus"] == 1 ){ ?>Visível<?php }else{ ?>Não-visível<?php } ?></span>
                             </div>
 
                             <div class="card-dash-header">
@@ -234,7 +234,7 @@
                             
                             <div class="card-photo">
                                 
-                                <img src="/uploads/bestfriends/{$value.desphoto}">
+                                <img src="/uploads/bestfriends/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div>
                         </div>
@@ -251,7 +251,7 @@
 
 
 
-                                <a href='/dashboard/padrinhos-madrinhas/{function="setHash($value.idbestfriend)"}'>
+                                <a href='/dashboard/padrinhos-madrinhas/<?php echo setHash($value1["idbestfriend"]); ?>'>
 
                                     <button>Editar</button>
 
@@ -259,7 +259,7 @@
                                 
 
 
-                                <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/padrinhos-madrinhas/{function="setHash($value.idbestfriend)"}/deletar'>
+                                <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/padrinhos-madrinhas/<?php echo setHash($value1["idbestfriend"]); ?>/deletar'>
 
                                     <button>Deletar</button>
 
@@ -279,7 +279,7 @@
 
        
                 </div>
-                {else}
+                <?php }else{ ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-info">
@@ -287,7 +287,7 @@
                         </div>
                     </div>
                 </div>
-                {/loop}
+                <?php } ?>
 
 
 

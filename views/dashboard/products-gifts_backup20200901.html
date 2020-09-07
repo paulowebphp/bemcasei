@@ -1,4 +1,4 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
+<section class="dashboard">
 
     <div class="container-fluid">            
             
@@ -12,21 +12,21 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( $user["inplancontext"] == 0 ){ ?>
+                {if="$user.inplancontext == 0"}
 
-                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+                    {include="dashboard-menu-free"}
 
 
-                <?php }elseif( !$validate ){ ?>
+                {elseif="!$validate"}
 
-                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+                    {include="dashboard-menu-expirated"}
                
 
-                <?php }else{ ?>
+                {else}
 
-                    <?php require $this->checkTemplate("dashboard-menu");?>
+                    {include="dashboard-menu"}
 
-                <?php } ?>
+                {/if}
                     
 
             </div><!--col-->
@@ -58,26 +58,25 @@
 
 
 
-                
                 <div class="row">
 
                     <div class="col-12">
-                
+
                         <div class="button-header">
-                
-                            <a title="Voltar para Presentes Virtuais" href="/dashboard/presentes-virtuais">
-                                <div class="button3 centralizer">
-                                    <i class="fa fa-arrow-left"></i>
-                                </div>
+
+                            <a href="/dashboard/presentes-virtuais">
+                                <button>
+                                    Voltar para Presentes Virtuais
+                                </button>
                             </a>
-                
+
                         </div>
-                
+
                     </div>
-                
-                    
-                
+
                 </div>
+
+                
 
         
 
@@ -85,31 +84,31 @@
 
 
 
-                <?php if( $success != '' ){ ?>
+                {if="$success != ''"}
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                    {$success}
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div> 
                         </div>  
-                    <?php } ?>
+                    {/if}
 
-                    <?php if( $error != '' ){ ?>
+                    {if="$error != ''"}
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                    {$error}
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div> 
                         </div>  
-                    <?php } ?>
+                    {/if}
 
 
 
@@ -118,7 +117,7 @@
 
 
 
-                <?php $counter1=-1;  if( isset($gift) && ( is_array($gift) || $gift instanceof Traversable ) && sizeof($gift) ) foreach( $gift as $key1 => $value1 ){ $counter1++; ?>
+                {loop="$gift"}
                 <div class="row card-dash centralizer">
 
                         
@@ -128,7 +127,7 @@
 
 
                              <div class="card-dash-content">
-                                <span><?php echo htmlspecialchars( $value1["desgift"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                <span>{$value.desgift}</span>
                             </div>
 
 
@@ -149,7 +148,7 @@
 
 
                             <div class="card-dash-content">
-                                <span><?php echo getCategoryName($value1["incategory"]); ?></span>
+                                <span>{function="getCategoryName($value.incategory)"}</span>
                             </div>
 
 
@@ -174,7 +173,7 @@
 
 
                             <div class="card-dash-content">
-                                <span>R$ <?php echo formatPrice($value1["vlprice"]); ?></span>
+                                <span>R$ {function="formatPrice($value.vlprice)"}</span>
                             </div>
 
                             <div class="card-dash-header">
@@ -204,7 +203,7 @@
                             
                             <div class="card-photo">
                                 
-                                <img src="/uploads/gifts/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <img src="/uploads/gifts/{$value.desphoto}">
 
                             </div>
                         </div>
@@ -221,7 +220,7 @@
 
 
 
-                                <a href='/dashboard/lista-pronta/adicionar?presente=<?php echo setHash($value1["idgift"]); ?>'>
+                                <a href='/dashboard/lista-pronta/adicionar?presente={function="setHash($value.idgift)"}'>
 
                                     <button>Adicionar</button>
 
@@ -229,7 +228,7 @@
                                 
 
 
-                                <a class="see-button" target="_blank" href="/uploads/gifts/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <a class="see-button" target="_blank" href="/uploads/gifts/{$value.desphoto}">
 
                                     <button>Ver Imagem</button>
 
@@ -249,7 +248,7 @@
 
        
                 </div>
-                <?php }else{ ?>
+                {else}
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-info">
@@ -257,7 +256,7 @@
                         </div>
                     </div>
                 </div>
-                <?php } ?>
+                {/loop}
 
 
 
@@ -292,7 +291,7 @@
                                             </button>
                                         </a>
                                         
-                                        <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                        <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="{$search}">
 
                                         <div class="input-group-btn">
 
@@ -321,10 +320,10 @@
                             <div class="pagination">
                                 
                                 <ul>
-                                    <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
-                                        <li><a href="<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>                             
+                                    {loop="$pages"}
+                                        <li><a href="{$value.href}">{$value.text}</a></li>                             
                                                                
-                                    <?php } ?>
+                                    {/loop}
                                 </ul>
 
                             </div>
