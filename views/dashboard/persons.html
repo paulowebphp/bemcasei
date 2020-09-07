@@ -248,6 +248,7 @@
                                 
                                     <select id="state" form="dash-form" name="desstate">
 
+                                        <option value="0">Insira um Estado...</option>
                                         {loop="$state"} 
                                             <option value="{$value.idstate}" {if="$value.idstate == $address.idstate"}selected="selected"{/if}>{$value.desstate}</option>
                                         {/loop}
@@ -271,6 +272,7 @@
                                 
                                     <select id="city" form="dash-form" name="descity">
 
+                                        <option value="0">Insira uma Cidade...</option>
                                         {loop="$city"}
                                             <option value="{$value.idcity}" {if="$value.idcity == $address.idcity"}selected="selected"{/if}>{$value.descity}</option>
                                         {/loop}

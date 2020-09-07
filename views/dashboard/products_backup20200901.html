@@ -34,8 +34,7 @@
 
 
 
-            <div class="col-md-9 col-12 dash-panel">
-
+            <div class="col-md-9 col-12">
 
 
 
@@ -46,41 +45,84 @@
                     
                     <div class="col-12">
 
-                        <a href="/dashboard/lista-pronta">
+                        <a href="/dashboard/presentes-virtuais">
                             <div class="dash-title">
-                                <h1>Lista Pronta</h1>
+                                <h1>Presentes Virtuais</h1>
                             </div>
                         </a>
 
                     </div>
 
-
                 </div>
-
-
-
-                <div class="row">
-                    
-                    <div class="col-12">
-                
-                        <div class="button-header">
-                
-                            <a title="Voltar" href="/dashboard/presentes-virtuais">
-                                <div class="button3 centralizer">
-                                    <i class="fa fa-arrow-left"></i>
-                                </div>
-                            </a>
-                
-                        </div>
-                
-                    </div>
-                </div>
-                
-                
 
         
 
-             
+                
+
+
+                <div class="row">
+
+                    <div class="col-12">
+
+                        <div class="button-header">
+
+                            <a href="/dashboard/presentes-virtuais/configurar">
+                                <button>
+                                    Configurar
+                                </button>
+                            </a>
+
+
+                            {if=" $maxProducts > $nrtotal "}
+
+                            <a href="/dashboard/presentes-virtuais/adicionar">
+                                <button>
+                                    Criar Presente
+                                </button>
+                            </a>
+
+
+                            <a href="/dashboard/lista-pronta">
+                                <button>
+                                    Adicionar da Lista Pronta
+                                </button>
+                            </a>
+
+                            {else}
+
+                            <button id="popover1" class="disabled-links pointer-none" data-toggle="popover" data-placement="bottom" title="{$popover1.0}" data-content="{$popover1.1}">
+                                Criar Presente
+                            </button>
+
+
+                            <button id="popover2" class="disabled-links pointer-none" data-toggle="popover" data-placement="bottom" title="{$popover1.0}" data-content="{$popover1.1}">
+                                Adicionar da Lista Pronta
+                            </button>
+
+                            {/if}
+
+
+                            
+                           
+                            {if="checkDesdomain()"}
+                            <a target="_blank" href="/{$user.desdomain}/loja">
+                                <button>
+                                    Ver Loja
+                                </button>
+                            </a>
+                            {/if}
+
+
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+            
 
 
 
@@ -117,17 +159,17 @@
 
 
 
-                {loop="$gift"}
+                {loop="$product"}
                 <div class="row card-dash centralizer">
 
                         
-                    <div class="col-md-2 col-12">
+                    <div class="col-md-4 col-12">
 
                         <div class="card-dash-field">
 
 
                              <div class="card-dash-content">
-                                <span>{$value.desgift}</span>
+                                <span>{$value.desproduct}</span>
                             </div>
 
 
@@ -191,9 +233,7 @@
                             
 
 
-
-                              
-                            
+   
 
                     
 
@@ -203,7 +243,7 @@
                             
                             <div class="card-photo">
                                 
-                                <img src="/uploads/gifts/{$value.desphoto}">
+                                <img src="/uploads/products/{$value.desphoto}">
 
                             </div>
                         </div>
@@ -220,17 +260,17 @@
 
 
 
-                                <a href='/dashboard/lista-pronta/adicionar?presente={function="setHash($value.idgift)"}'>
+                                <a href='/dashboard/presentes-virtuais/{function="setHash($value.idproduct)"}'>
 
-                                    <button>Adicionar</button>
+                                    <button>Editar</button>
 
                                 </a>
                                 
 
 
-                                <a class="see-button" target="_blank" href="/uploads/gifts/{$value.desphoto}">
+                                <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/presentes-virtuais/{function="setHash($value.idproduct)"}/deletar'>
 
-                                    <button>Ver Imagem</button>
+                                    <button>Deletar</button>
 
                                 </a>
 
@@ -252,7 +292,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-info">
-                            Nenhum ítem foi encontrado
+                            Nenhum presente foi encontrado
                         </div>
                     </div>
                 </div>
@@ -279,11 +319,11 @@
 
                             <div class="search">
 
-                                <form action="/dashboard/lista-pronta">
+                                <form action="/dashboard/presentes-virtuais">
 
                                     <div class="input-group input-group-sm">
 
-                                        <a href="/dashboard/lista-pronta">
+                                        <a href="/dashboard/presentes-virtuais">
                                             <button type="button" class="btn btn-default">
 
                                                 <i class="fa fa-undo"></i>
@@ -338,28 +378,9 @@
 
                     </div><!--row-->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                                        
+                            
+                
 
 
 

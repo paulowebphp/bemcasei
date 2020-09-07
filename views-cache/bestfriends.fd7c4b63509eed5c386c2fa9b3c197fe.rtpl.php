@@ -39,7 +39,15 @@
 
 
 
+                <div class="row">
+                    <div class="col-12">
 
+                        <div class="dash-title">
+                            <h1>Padrinhos e Madrinhas</h1>
+                        </div>
+
+                    </div>
+                </div>
 
 
 
@@ -47,38 +55,42 @@
 
         
 
+                
+
+
                 <?php if(  $maxBestFriends > $nrtotal  ){ ?>
 
-                    <div class="row">
+                <div class="row">
 
-                        <div class="col-9">
+                    <div class="col-12">
 
-                            <div class="dash-title">
-                                <h1>Padrinhos e Madrinhas</h1>
-                            </div>
-    
+                        <div class="button-header">
+
+                            <a href="/dashboard/padrinhos-madrinhas/adicionar">
+                                <button>
+                                    Criar Padrinho ou Madrinha
+                                </button>
+                            </a>
+                        
                         </div>
-                   
-                        <div class="col-3">
-                            <div class="button-header">
-                                <a title="Criar Padrinho ou Madrinha" href="/dashboard/padrinhos-madrinhas/adicionar">
-                                    <div class="button2 centralizer">
-                                        <i class="fa fa-plus"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    
+
                     </div>
-                
+
+                </div>
+
                 <?php }else{ ?>
 
                 <div class="row">
-                    
+
                     <div class="col-12">
 
-                        <div class="dash-title">
-                            <h1>Padrinhos e Madrinhas</h1>
+                        <div class="button-header">
+
+                            
+                            <button id="popover1" data-container="body" data-toggle="popover" data-placement="right" data-content='<?php echo htmlspecialchars( $popover1["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>' class="disabled pointer-none">
+                                Criar Padrinho ou Madrinha
+                            </button>
+                        
                         </div>
 
                     </div>

@@ -1102,6 +1102,7 @@ $app->get( "/dashboard/padrinhos-madrinhas", function()
 			'maxBestFriends'=>$maxBestFriends,
 			'nrtotal'=>$nrtotal,
 			'bestfriend'=>$bestfriend->getValues(),
+			'popover1'=>[0=>Rule::POPOVER_MAX_TITLE, 1=>Rule::POPOVER_MAX_CONTENT],
 			'validate'=>$validate,
 			'success'=>BestFriend::getSuccess(),
 			'error'=>BestFriend::getError()

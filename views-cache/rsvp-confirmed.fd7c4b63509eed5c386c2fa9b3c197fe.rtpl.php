@@ -1,4 +1,4 @@
-<section class="dashboard">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
 
     <div class="container-fluid">            
             
@@ -12,21 +12,21 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                {if="$user.inplancontext == 0"}
+                <?php if( $user["inplancontext"] == 0 ){ ?>
 
-                    {include="dashboard-menu-free"}
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
 
 
-                {elseif="!$validate"}
+                <?php }elseif( !$validate ){ ?>
 
-                    {include="dashboard-menu-expirated"}
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
                
 
-                {else}
+                <?php }else{ ?>
 
-                    {include="dashboard-menu"}
+                    <?php require $this->checkTemplate("dashboard-menu");?>
 
-                {/if}
+                <?php } ?>
                     
 
             </div><!--col-->
@@ -78,15 +78,15 @@
                         <div class="account-box-wrapper">
                             <div class="account-box">
                                 <div class="account-box-main">
-                                    <span>{$numConfirmed}</span>
+                                    <span><?php echo htmlspecialchars( $numConfirmed, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 </div>
 
                                 <div class="account-box-title">
-                                    {if="$numConfirmed == 1"}
+                                    <?php if( $numConfirmed == 1 ){ ?>
                                         <span>Confirmado</span>
-                                    {else}
+                                    <?php }else{ ?>
                                         <span>Confirmados</span>
-                                    {/if}
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -104,13 +104,13 @@
                     <div class="col-12">
 
                         <div class="button-header">
-                            {if=" $numConfirmed > 0 "}
+                            <?php if(  $numConfirmed > 0  ){ ?>
                                 <a href="/dashboard/rsvp/download">
                                     <button>
                                         Baixar Lista de Confirmados em CSV
                                     </button>
                                 </a>
-                            {/if}
+                            <?php } ?>
 
                             <a title="Voltar" href="/dashboard/rsvp">
                                 <div class="button3 centralizer">
@@ -128,31 +128,31 @@
 
 
 
-                {if="$success != ''"}
+                <?php if( $success != '' ){ ?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {$success}
+                                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div> 
                         </div>  
-                    {/if}
+                    <?php } ?>
 
-                    {if="$error != ''"}
+                    <?php if( $error != '' ){ ?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    {$error}
+                                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div> 
                         </div>  
-                    {/if}
+                    <?php } ?>
 
 
 
@@ -161,7 +161,7 @@
 
 
 
-                {loop="$rsvp"}
+                <?php $counter1=-1;  if( isset($rsvp) && ( is_array($rsvp) || $rsvp instanceof Traversable ) && sizeof($rsvp) ) foreach( $rsvp as $key1 => $value1 ){ $counter1++; ?>
                 <div class="row card-dash">
 
                     <div class="col-md-12 col-12">
@@ -179,7 +179,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span>{$value.desguest}</span>
+                                        <span><?php echo htmlspecialchars( $value1["desguest"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
 
@@ -205,7 +205,7 @@
     
     
                                         <div class="card-dash-content">
-                                            <span>{if="$value.nrphone == '' or $value.nrphone == null"}-{else}{$value.nrphone}{/if}</span>
+                                            <span><?php if( $value1["nrphone"] == '' or $value1["nrphone"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
                                         </div>
     
                                         <div class="card-dash-header">
@@ -235,7 +235,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span>{if="$value.desemail == '' or $value.desemail == null"}-{else}{$value.desemail}{/if}</span>
+                                        <span><?php if( $value1["desemail"] == '' or $value1["desemail"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -277,7 +277,7 @@
         
         
                                             <div class="card-dash-content">
-                                                <span>{$value.inadultsconfirmed}</span>
+                                                <span><?php echo htmlspecialchars( $value1["inadultsconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                             </div>
         
                                             <div class="card-dash-header">
@@ -301,7 +301,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span>{if="$value.desadultsaccompanies == '' or $value.desadultsaccompanies == null"}-{else}{$value.desadultsaccompanies}{/if}</span>
+                                        <span><?php if( $value1["desadultsaccompanies"] == '' or $value1["desadultsaccompanies"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["desadultsaccompanies"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -325,7 +325,7 @@
     
     
                                         <div class="card-dash-content">
-                                            <span>{if="$value.dtconfirmed == '' or $value.dtconfirmed == null"}-{else}{function="formatDate($value.dtconfirmed)"}{/if}</span>
+                                            <span><?php if( $value1["dtconfirmed"] == '' or $value1["dtconfirmed"] == null ){ ?>-<?php }else{ ?><?php echo formatDate($value1["dtconfirmed"]); ?><?php } ?></span>
                                         </div>
     
                                         <div class="card-dash-header">
@@ -355,7 +355,7 @@
 
 
 
-                        {if="$value.inchildrenconfigconfirmed == 1"}
+                        <?php if( $value1["inchildrenconfigconfirmed"] == 1 ){ ?>
                         <div class="row card-dash-row2">
 
 
@@ -366,7 +366,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span>{if="$value.inchildrenconfirmed > 0"}{$value.inchildrenconfirmed}{else}0{/if}</span>
+                                        <span><?php if( $value1["inchildrenconfirmed"] > 0 ){ ?><?php echo htmlspecialchars( $value1["inchildrenconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>0<?php } ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -396,7 +396,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span>{if="$value.inchildrenageconfirmed > 0"}{$value.inchildrenageconfirmed}{else}0{/if}</span>
+                                        <span><?php if( $value1["inchildrenageconfirmed"] > 0 ){ ?><?php echo htmlspecialchars( $value1["inchildrenageconfirmed"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>0<?php } ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -419,7 +419,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <span>{if="$value.deschildrenaccompanies == '' or $value.deschildrenaccompanies == null"}-{else}{$value.deschildrenaccompanies}{/if}</span>
+                                        <span><?php if( $value1["deschildrenaccompanies"] == '' or $value1["deschildrenaccompanies"] == null ){ ?>-<?php }else{ ?><?php echo htmlspecialchars( $value1["deschildrenaccompanies"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -448,7 +448,7 @@
 
 
                         </div><!--row-->
-                        {/if}
+                        <?php } ?>
 
 
 
@@ -466,7 +466,7 @@
 
 
                 </div><!--row-->
-                {else}
+                <?php }else{ ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-info">
@@ -474,7 +474,7 @@
                         </div>
                     </div>
                 </div>
-                {/loop}
+                <?php } ?>
 
 
 
@@ -509,7 +509,7 @@
                                             </button>
                                         </a>
                                         
-                                        <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="{$search}">
+                                        <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                                         <div class="input-group-btn">
 
@@ -538,10 +538,10 @@
                             <div class="pagination">
                                 
                                 <ul>
-                                    {loop="$pages"}
-                                        <li><a href="{$value.href}">{$value.text}</a></li>                             
+                                    <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
+                                        <li><a href="<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>                             
                                                                
-                                    {/loop}
+                                    <?php } ?>
                                 </ul>
 
                             </div>

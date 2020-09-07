@@ -1055,6 +1055,31 @@ $app->get( "/checkout/:hash", function( $hash )
 	}//end if
 	
 
+
+
+
+	$state = Address::listAllStates();
+
+
+
+	
+
+	$city = [];
+	
+
+	if ( isset($_SESSION["siteCheckoutValues"]) ) 
+	{
+		# code...
+		$city = Address::listAllCitiesByState($_SESSION["siteCheckoutValues"]['desholderstate']);
+
+	}//end if
+	else
+	{
+
+		$city = Address::listAllCitiesByState(1);
+	
+
+	}//end else
 	
 	
 
@@ -1074,6 +1099,8 @@ $app->get( "/checkout/:hash", function( $hash )
 			'inplan'=>$inplan,
 			'coupon'=>$coupon,
 			'action'=>$action,
+			'state'=>$state,
+			'city'=>$city,
 			'invoucher'=>$invoucher,
 			'error'=>Payment::getError(),
 			'siteCheckoutValues'=> (isset($_SESSION["siteCheckoutValues"])) ? $_SESSION["siteCheckoutValues"] : ['desname'=>'','desholderdocument'=>'', 'nrholderddd'=>'', 'nrholderphone'=>'', 'dtholderbirth'=>'', 'zipcode'=>'', 'desholderaddress'=>'', 'desholdernumber'=>'', 'desholdercomplement'=>'', 'desholderdistrict'=>'', 'desholderstate'=>'', 'desholdercity'=>'']

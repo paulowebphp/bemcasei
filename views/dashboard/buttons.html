@@ -1,0 +1,76 @@
+<div class="row">
+
+    <div class="col-9">
+
+        <div class="button-header">
+
+            <a title="Voltar" href="/dashboard/painel-financeiro">
+                <div class="button3 centralizer">
+                    <i class="fa fa-arrow-left"></i>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-3">
+        <div class="button-header">
+            <a href="/dashboard/sua-carteira">
+                <div class="button2 centralizer">
+                    <i class="fa fa-plus"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+{if=" $maxBestFriends > $nrtotal "}
+
+                <div class="row">
+                
+                    <div class="col-12">
+                        <div class="button-header">
+                            <a title="Criar Padrinho ou Madrinha" href="/dashboard/padrinhos-madrinhas/adicionar">
+                                <div class="button2 centralizer">
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                
+                </div>
+                
+                {else}
+
+                <div class="row">
+                
+                    <div class="col-12">
+                        <div class="button-header disabled">
+                            <div id="info" data-container="body" data-toggle="popover" data-placement="right" data-content='Você atingiu o limite permitido pro seu Plano' class="button2 centralizer">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+               
+                {/if}
+
+
+
+
+
+
+
+
+<a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/eventos/{function="setHash($value.idevent)"}/deletar'>
+
+    <button>Deletar</button>
+
+</a>

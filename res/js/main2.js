@@ -129,6 +129,16 @@ $("#search-info, .btn-close").on("click", function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
 /***********DESABILITANDO SUBMIT / DUPLICADAS****************************/
 /***********DESABILITANDO SUBMIT / DUPLICADAS****************************/
 /***********DESABILITANDO SUBMIT / DUPLICADAS****************************/
@@ -547,7 +557,7 @@ $(document).on('mouseleave', '#search-info', function(e){
 	$('[data-toggle="popover"]').popover('hide');
 });
 
-$(document).on('mouseleave', '#search-info', function(e){
+$(document).on('mouseleave', '#info', function(e){
 	$('[data-toggle="popover"]').popover('hide');
 });
 
@@ -782,12 +792,9 @@ $(document).on('click', '#ModalDashRegisterButton', function(e){
 
 	( zipcode.value == '' ) ? html += '<h4 title="Insira o CEP" style="color:#d91e18;">Insira o CEP</h4>' : html += '<h4>CEP: <span style="font-weight:lighter;">'+zipcode.value+'</span></h4>';
 
-	( descity == 'Insira uma Cidade...' ) ? html += '<h4 title="Selecione uma Cidade" style="color:#d91e18;">Selecione uma Cidade</h4>' : html += '<h4>Cidade: <span style="font-weight:lighter;">'+descity+'</span></h4>';
-
 	( desstate == 'Insira um Estado...' ) ? html += '<h4 title="Selecione um Estado" style="color:#d91e18;">Selecione um Estado</h4>' : html += '<h4>Estado: <span style="font-weight:lighter;">'+desstate+'</span></h4>';
-	
-		
 
+	( descity == 'Insira uma Cidade...' ) ? html += '<h4 title="Selecione uma Cidade" style="color:#d91e18;">Selecione uma Cidade</h4>' : html += '<h4>Cidade: <span style="font-weight:lighter;">'+descity+'</span></h4>';
 
 	$('#content1').html(html);
 	/**

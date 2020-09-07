@@ -573,7 +573,8 @@
 												
 												<label for="state">Estado</label>
 												<select id="state" form="checkout-form1" name="desstate">
-							                    	
+													
+													<option value="0">Insira um Estado...</option>
 													{loop="$state"} 
 														<option value="{$value.idstate}" {if="$value.idstate == $address.idstate"}selected="selected"{/if}>{$value.desstate}</option>
 													{/loop}
@@ -593,6 +594,8 @@
 												
 												<label for="city">Cidade</label>
 												<select id="city" form="checkout-form1" name="descity">
+
+													<option value="0">Insira uma Cidade...</option>
 							                    	{loop="$city"}
 														<option value="{$value.idcity}" {if="$value.idcity == $address.idcity"}selected="selected"{/if}>{$value.descity}</option>
 													{/loop}
@@ -835,7 +838,8 @@
 												
 												<label for="state2">Estado</label>
 												<select id="state2" form="checkout-form1" name="desstate">
-							                    	
+													
+													<option value="0">Insira um Estado...</option>
 													{loop="$state"} 
 														<option value="{$value.idstate}" {if="$value.idstate == $address.idstate"}selected="selected"{/if}>{$value.desstate}</option>
 													{/loop}
@@ -855,6 +859,8 @@
 												
 												<label for="city2">Cidade</label>
 												<select id="city2" form="checkout-form1" name="descity">
+
+													<option value="0">Insira uma Cidade...</option>
 							                    	{loop="$city"}
 														<option value="{$value.idcity}" {if="$value.idcity == $address.idcity"}selected="selected"{/if}>{$value.descity}</option>
 													{/loop}
@@ -1060,6 +1066,8 @@
 												
 												<label for="state3">Estado</label>
 												<select id="state3" form="checkout-form3" name="desstate">
+
+													<option value="0">Insira um Estado...</option>
 							                    	{loop="$state"} 
 														<option value="{$value.idstate}" {if="$value.idstate == $planUpgradeValues.desstate"}selected="selected"{/if}>{$value.desstate}</option>
 													{/loop} 
@@ -1075,6 +1083,8 @@
 												
 												<label for="city3">Cidade</label>
 												<select id="city3" form="checkout-form3" name="descity">
+
+													<option value="0">Insira uma Cidade...</option>
 							                    	{loop="$city2"}
 														<option value="{$value.idcity}" {if="$value.idcity == $planUpgradeValues.descity"}selected="selected"{/if}>{$value.descity}</option>
 													{/loop}

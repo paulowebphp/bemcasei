@@ -519,7 +519,9 @@ label{
 }
 
 
-
+.inline1{
+  display: inline-block!important;
+}
 
 
 
@@ -655,14 +657,14 @@ label{
 }
 /*********************************************PAGINATION************************************************/
 .button-header .button2{
-  position:absolute;
+  /*position:absolute;
   top:-20px;
-  right:25px;
+  right:25px;*/
+  position: relative;
 }
 
 .button2{
   border-radius: 50%;
-  width:80px;
   width:80px;
   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);
   padding: 25px;
@@ -2357,7 +2359,13 @@ label{
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.5);;
 }
-
+.disabled{
+  opacity: 0.6;
+}
+.link-disabled{
+  pointer-events: none !important;
+  cursor: default;
+}
 .comparison {
   margin-bottom: 5%;
 }

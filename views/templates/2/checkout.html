@@ -671,6 +671,8 @@
 										
 										<label for="state">Estado</label>
 										<select id="state" form="checkout-form5" name="desstate">
+
+											<option value="0">Insira um Estado...</option>
 					                    	{loop="$state"} 
 												<option value="{$value.idstate}" {if="$value.idstate == $domainCheckoutValues.desstate"}selected="selected"{/if}>{$value.desstate}</option>
 											{/loop}
@@ -686,6 +688,8 @@
 										
 										<label for="city">Cidade</label>
 										<select id="city" form="checkout-form5" name="descity">
+
+											<option value="0">Insira uma Cidade...</option>
 					                    	{loop="$city"}
 												<option value="{$value.idcity}" {if="$value.idcity == $domainCheckoutValues.descity"}selected="selected"{/if}>{$value.descity}</option>
 											{/loop}
@@ -952,6 +956,7 @@
 										<label for="state2">Estado</label>
 										<select id="state2" form="checkout-form4" name="desstate">
 											
+											<option value="0">Insira um Estado...</option>
 											{loop="$state"} 
 												<option value="{$value.idstate}" {if="$value.idstate == $domainCheckoutValues.desstate"}selected="selected"{/if}>{$value.desstate}</option>
 											{/loop}
@@ -971,6 +976,8 @@
 										
 										<label for="city2">Cidade</label>
 										<select id="city2" form="checkout-form4" name="descity">
+
+											<option value="0">Insira uma Cidade...</option>
 											{loop="$city"}
 												<option value="{$value.idcity}" {if="$value.idcity == $domainCheckoutValues.descity"}selected="selected"{/if}>{$value.descity}</option>
 											{/loop}
