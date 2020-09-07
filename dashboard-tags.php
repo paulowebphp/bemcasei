@@ -5,7 +5,7 @@ use Core\Rule;
 use Core\PageDashboard;
 use Core\Model\User;
 use Core\Model\Tag;
-use Core\Model\Plan;
+//use Core\Model\Plan;
 
 
 
@@ -45,7 +45,14 @@ $app->get( "/dashboard/tags-papelaria", function()
 	$validate = User::validatePlanDashboard( $user );
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 	$tag = new Tag();

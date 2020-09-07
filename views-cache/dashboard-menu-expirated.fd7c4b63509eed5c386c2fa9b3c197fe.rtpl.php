@@ -62,7 +62,7 @@
 
         <a href="/dashboard/central-ajuda" class="list-group-item list-group-item-action">Central de Ajuda</a>
         
-        <a href="/dashboard/change-password" class="list-group-item list-group-item-action">Alterar Senha</a>
+        <a href="/dashboard/mudar-senha" class="list-group-item list-group-item-action">Alterar Senha</a>
         
         
         <a href="/logout" class="list-group-item list-group-item-action">Sair</a>

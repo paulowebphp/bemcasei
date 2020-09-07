@@ -1,4 +1,4 @@
-<div class="list-group">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="list-group">
 
 
     <div class="menu-main-pages">
@@ -10,7 +10,6 @@
 
         <a href="/dashboard/meu-plano" class="list-group-item list-group-item-action">Meu Plano</a>
 
-        <a href="/dashboard/painel-financeiro" class="list-group-item list-group-item-action">Painel Financeiro</a>
 
     </div>
 
@@ -29,7 +28,7 @@
 
             </div><!--card-header-->
 
-            <div id="collapseFour" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['termos-uso','politica-privacidade','termos-lista'])"} show{/if}" aria-labelledby="headingFour" data-parent="#accordion2">
+            <div id="collapseFour" class="collapse<?php if( in_array(getUri($_SERVER['REQUEST_URI']) , ['termos-uso','politica-privacidade','termos-lista']) ){ ?> show<?php } ?>" aria-labelledby="headingFour" data-parent="#accordion2">
                 <div class="card-body card-body-text">
                 
                         <a href="/dashboard/termos-uso" class="list-group-item list-group-item-action">Termos de Uso</a>

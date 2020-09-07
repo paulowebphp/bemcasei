@@ -6,7 +6,7 @@ use Core\Rule;
 use Core\Validate;
 use Core\Model\User;
 use Core\Model\OuterList;
-use Core\Model\Plan;
+//use Core\Model\Plan;
 
 
 
@@ -52,7 +52,14 @@ $app->get( "/dashboard/listas-de-fora/adicionar", function()
 
 	}//end if
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 	$maxOuterLists = OuterList::maxOuterLists($validate['inplancode']);
@@ -178,6 +185,15 @@ $app->post( "/dashboard/listas-de-fora/adicionar", function()
 
 
 	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -485,7 +501,14 @@ $app->get( "/dashboard/listas-de-fora/:hash/deletar", function( $hash )
 	}//end if
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 	$idouterlist = Validate::getHash($hash);
@@ -561,7 +584,14 @@ $app->get( "/dashboard/listas-de-fora/:hash", function( $hash )
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -695,6 +725,14 @@ $app->post( "/dashboard/listas-de-fora/:hash", function( $hash )
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
 
 
 
@@ -732,7 +770,7 @@ $app->post( "/dashboard/listas-de-fora/:hash", function( $hash )
 
 	}//end if
 
-	if( ($instatus = Validate::validateStatus($_POST['instatus'])) === false )
+	if( ($instatus = Validate::validateBoolean($_POST['instatus'])) === false )
 	{	
 		
 		OuterList::setError("O status deve conter apenas 0 ou 1 e não pode ser formado apenas com caracteres especiais, tente novamente");
@@ -999,7 +1037,14 @@ $app->get( "/dashboard/listas-de-fora", function()
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 	

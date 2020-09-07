@@ -8,7 +8,7 @@ use Core\Validate;
 use Core\Model\User;
 use Core\Model\Event;
 use Core\Model\Address;
-use Core\Model\Plan;
+//use Core\Model\Plan;
 
 
 
@@ -49,6 +49,16 @@ $app->get( "/dashboard/eventos/adicionar", function()
 
 
 	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -176,7 +186,14 @@ $app->post( "/dashboard/eventos/adicionar", function()
 	}//end if
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -732,7 +749,18 @@ $app->get( "/dashboard/eventos/:hash/deletar", function( $hash )
 	if ( !User::validatePlanDashboard( $user ) )
 	{
 		# code...
-		Album::setError(Rule::VALIDATE_PLAN);
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
 		exit;
 
@@ -821,7 +849,14 @@ $app->get( "/dashboard/eventos/:hash", function( $hash )
 
 	}//end if
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -955,7 +990,14 @@ $app->post( "/dashboard/eventos/:hash", function( $hash )
 	}//end if
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 	$idevent = Validate::getHash($hash);
@@ -1495,7 +1537,14 @@ $app->get( "/dashboard/eventos", function()
 	}//end if
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 	
 

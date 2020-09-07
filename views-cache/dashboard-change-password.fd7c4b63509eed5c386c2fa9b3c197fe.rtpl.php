@@ -1,4 +1,4 @@
-<section class="dashboard">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
 
     <div class="container-fluid">            
             
@@ -12,26 +12,26 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                {if="$user.inplancontext == 0"}
+                <?php if( $user["inplancontext"] == 0 ){ ?>
 
-                    {include="dashboard-menu-free"}
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
 
                 
-                {elseif="$user.incheckout == 0"}
+                <?php }elseif( $user["incheckout"] == 0 ){ ?>
 
-                    {include="dashboard-menu-nocheckout"}
+                    <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
                
 
-                {elseif="!$validate"}
+                <?php }elseif( !$validate ){ ?>
 
-                    {include="dashboard-menu-expirated"}
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
                
 
-                {else}
+                <?php }else{ ?>
 
-                    {include="dashboard-menu"}
+                    <?php require $this->checkTemplate("dashboard-menu");?>
 
-                {/if}
+                <?php } ?>
                     
 
             </div><!--col-->
@@ -42,14 +42,16 @@
             <div class="col-md-9 col-12 dash-panel">
 
 
-                    
-                    <form method="post" action="/dashboard/dominio">
+                
+
+                <form action="/dashboard/mudar-senha" method="post">
+
 
                     <div class="row">
                         <div class="col-md-12">
                             
                             <div class="dash-title">
-                                <h1>Domínio</h1>
+                                <h1>Alterar Senha</h1>
                             </div><!--dash-title-->
 
                         </div><!--col-->
@@ -57,32 +59,32 @@
 
 
 
-
-                    {if="$success != ''"}
+                    <?php if( $success != '' ){ ?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {$success}
+                                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div> 
                         </div>  
-                    {/if}
+                    <?php } ?>
 
-                    {if="$error != ''"}
+                    <?php if( $error != '' ){ ?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    {$error}
+                                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                             </div> 
                         </div>  
-                    {/if}
+                    <?php } ?>
+
 
                     
 
@@ -91,25 +93,49 @@
                         <div class="col-md-6 dash-column">
 
 
-                    
                             <div class="dash-input-row">
 
-                                <label for="desdomain"><abbr title="Apenas letras minúsuclas, números, hífen e underline são aceitos" class="required">Domínio</abbr></label>
-                                <input type="text" class="form-control" id="desdomain" name="desdomain" placeholder="Digite seu domínio aqui" value="{$user.desdomain}">
+                                <label for="current_pass">Senha Atual</label>
+                                <input type="password" class="form-control" id="current_pass" name="current_pass">
 
                             </div><!--dash-input-row-->
 
 
-                                
+
+
+                            <div class="dash-input-row">
+
+                                <label for="new_pass">Nova Senha</label>
+                                <input type="password" class="form-control" id="new_pass" name="new_pass">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <label for="new_pass_confirm">Confirme a Nova Senha</label>
+                                <input type="password" class="form-control" id="new_pass_confirm" name="new_pass_confirm">
+
+                            </div><!--dash-input-row-->
+
+
+
+                        
 
                         </div><!--col-md-6-->
+
+
 
 
 
                         <div class="col-md-6">
                             
                             
-
+                            
                             &nbsp;
 
                             
@@ -156,3 +182,4 @@
     </div><!--container-->
 
 </section>
+

@@ -7,7 +7,7 @@ use Core\Validate;
 use Core\Model\User;
 use Core\Model\Rsvp;
 use Core\Model\RsvpConfig;
-use Core\Model\Plan;
+//use Core\Model\Plan;
 
 
 
@@ -50,6 +50,16 @@ $app->get("/dashboard/rsvp/download", function(){
 	$user = User::getFromSession();
 
 	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -113,6 +123,16 @@ $app->get( "/dashboard/rsvp/confirmados", function()
 	
 
 	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -284,7 +304,14 @@ $app->get( "/dashboard/rsvp/:hash/deletar", function( $hash )
 	}//end if
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -384,7 +411,14 @@ $app->get( "/dashboard/rsvp/configurar", function()
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 	
 
@@ -482,7 +516,14 @@ $app->post( "/dashboard/rsvp/configurar", function()
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -914,7 +955,14 @@ $app->get( "/dashboard/rsvp/enviar", function()
 
 	}//end if
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -1055,7 +1103,14 @@ $app->post( "/dashboard/rsvp/enviar", function()
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -1254,7 +1309,14 @@ $app->get( "/dashboard/rsvp/upload", function()
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -1393,7 +1455,14 @@ $app->post( "/dashboard/rsvp/upload", function()
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -1609,7 +1678,14 @@ $app->get( "/dashboard/rsvp/adicionar", function()
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -1755,7 +1831,14 @@ $app->post( "/dashboard/rsvp/adicionar", function()
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -2019,7 +2102,14 @@ $app->get( "/dashboard/rsvp/:hash", function( $hash )
 	}//end if
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -2139,7 +2229,14 @@ $app->post( "/dashboard/rsvp/:hash", function( $hash )
 
 	}//end if
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 	
 
 	$idrsvp = Validate::getHash($hash);
@@ -2390,6 +2487,19 @@ $app->get( "/dashboard/rsvp", function()
 		exit;
 
 	}//end if
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	
 
 	$search = (isset($_GET['buscar'])) ? $_GET['buscar'] : "";
 

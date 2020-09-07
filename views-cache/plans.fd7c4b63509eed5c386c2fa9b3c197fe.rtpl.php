@@ -16,17 +16,23 @@
 
                     <?php require $this->checkTemplate("dashboard-menu-free");?>
 
+                
+                <?php }elseif( $user["incheckout"] == 0 ){ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
+                
 
                 <?php }elseif( !$validate ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-               
+                
 
                 <?php }else{ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu");?>
 
                 <?php } ?>
+                  
                     
 
             </div><!--col-->

@@ -6,7 +6,7 @@ use Core\Rule;
 use Core\Validate;
 use Core\Model\User;
 use Core\Model\Stakeholder;
-use Core\Model\Plan;
+//use Core\Model\Plan;
 
 
 
@@ -50,7 +50,14 @@ $app->get( "/dashboard/fornecedores/adicionar", function()
 
 	}//end if
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 	$maxStakeholders = Stakeholder::maxStakeholders($validate['inplancode']);
 
@@ -172,7 +179,14 @@ $app->post( "/dashboard/fornecedores/adicionar", function()
 	}//end if
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -507,6 +521,16 @@ $app->get( "/dashboard/fornecedores/:hash/deletar", function( $hash )
 
 	}//end if
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
 
 	$idstakeholder = Validate::getHash($hash);
 
@@ -573,7 +597,14 @@ $app->get( "/dashboard/fornecedores/:hash", function( $hash )
 
 	}//end if
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -669,7 +700,14 @@ $app->post( "/dashboard/fornecedores/:hash", function( $hash )
 	}//end if
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 	$idstakeholder = Validate::getHash($hash);
 
@@ -990,6 +1028,17 @@ $app->get( "/dashboard/fornecedores", function()
 
 
 	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);

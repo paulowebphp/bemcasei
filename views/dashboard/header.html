@@ -249,300 +249,163 @@
 
 
                                 </div><!--list-group-->
+
+                            
                            
+
+                            {elseif="validatePlanCheckout()"}
+
+                                <div class="list-group">
+
+
+                                    <div class="menu-main-pages">
+                                        
+                                        <a href="/dashboard" class="list-group-item list-group-item-action">Início</a>
+                                
+                                
+                                        <a href="/dashboard/meus-dados" class="list-group-item list-group-item-action">Meus Dados</a>
+                                
+                                        <a href="/dashboard/meu-plano" class="list-group-item list-group-item-action">Meu Plano</a>
+                                
+                                
+                                    </div>
+                                
+                                
+                                
+                                
+                                    <div class="accordion" id="accordion2">
+                                
+                                
+                                
+                                        <div class="card">
+                                
+                                            <div data-toggle="collapse" data-target="#collapseFour" class="card-header btn collapsed" id="headingFour">
+                                
+                                                    <button>Termos de Serviço</button>
+                                
+                                            </div><!--card-header-->
+                                
+                                            <div id="collapseFour" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['termos-uso','politica-privacidade','termos-lista'])"} show{/if}" aria-labelledby="headingFour" data-parent="#accordion2">
+                                                <div class="card-body card-body-text">
+                                                
+                                                        <a href="/dashboard/termos-uso" class="list-group-item list-group-item-action">Termos de Uso</a>
+                                
+                                
+                                                        <a href="/dashboard/politica-privacidade" class="list-group-item list-group-item-action">Política de Privacidade</a>
+                                
+                                                        <a href="/dashboard/termos-lista" class="list-group-item list-group-item-action">Termos da Lista de Presentes Virtuais</a>
+                                        
+                                                </div><!--card-body-->
+                                
+                                            </div><!--collapseFour-->
+                                
+                                        </div><!--card-->
+                                
+                                
+                                
+                                
+                                
+                                
+                                    </div><!--accordion-->
+                                
+                                
+                                
+                                
+                                    
+                                
+                                
+                                    <div class="menu-main-pages">
+                                
+                                        <a href="/dashboard/central-ajuda" class="list-group-item list-group-item-action">Central de Ajuda</a>
+                                        
+                                        <a href="/dashboard/mudar-senha" class="list-group-item list-group-item-action">Alterar Senha</a>
+                                        
+                                        
+                                        <a href="/logout" class="list-group-item list-group-item-action">Sair</a>
+                                
+                                    </div>
+                                    
+                                
+                                
+                                
+                                </div><!--list-group-->
+
 
                             {elseif="validatePlanFree()"}
 
                                 <div class="list-group">
 
 
-
-
-
                                     <div class="menu-main-pages">
                                         
                                         <a href="/dashboard" class="list-group-item list-group-item-action">Início</a>
-
-                                        <a href="/dashboard/meus-dados" class="list-group-item list-group-item-action">Meus Dados</a>
-
-
-                                        <a href="/dashboard/meu-plano" class="list-group-item list-group-item-action">Meu Plano</a>
-
-                                    </div>
-
-
-
-
-
-
-                                    <div class="accordion" id="accordion4">
-
-
-
-
-
-
-                                        <div class="card">
-
-                                            <div data-toggle="collapse" data-target="#collapseSeven" class="card-header btn" id="headingSeven">
-
-                                                    <button>Configurações</button>  
-
-                                            </div><!--card-hader-->
-
-                                            <div id="collapseSeven" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['dominio','meu-template','personalizar-site','menu','pagina-inicial'])"} show{/if}" aria-labelledby="headingSeven" data-parent="#accordion4">
-
-                                                <div class="card-body card-body-text">
-
-                                                    <p>
-                                                        
-                                    
-                                                        <a href="/dashboard/dominio" class="list-group-item list-group-item-action">Domínio</a>
-
-                                                        <a href="/dashboard/meu-template" class="list-group-item list-group-item-action">Meu Template</a>
-
-                                                        <a href="/dashboard/personalizar-site" class="list-group-item list-group-item-action">Personalizar Site</a>
-
-                                                        <a href="/dashboard/menu" class="list-group-item list-group-item-action">Menu</a>
-
-                                                        <a href="/dashboard/pagina-inicial" class="list-group-item list-group-item-action">Página Inicial</a>
-
-                                                    </p>
-
-                                                </div><!--card-body-->
-
-                                            </div><!--collapseSeven-->
-
-                                        </div><!--card-->
-
-
-
-
-
-
-
-
-
-                                        <div class="card">
-
-                                            <div data-toggle="collapse" data-target="#collapseSix" class="card-header btn collapsed" id="headingSix">
-
-                                                    <button>Loja</button>
-
-                                            </div><!--card-header-->
-
-                                            <div id="collapseSix" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['painel-financeiro','presentes-virtuais','lista-pronta'])"} show{/if}" aria-labelledby="headingSix" data-parent="#accordion4">
-                                                <div class="card-body card-body-text">
-                                                
-
-                                                        <a href="/dashboard/presentes-virtuais" class="list-group-item list-group-item-action">Presentes Virtuais</a>
-
-                                                        <a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Painel Financeiro</a>
-                                                        
-
-
-                                        
-                                                </div><!--card-body-->
-
-                                            </div><!--collapseSix-->
-
-                                        </div><!--card-->
-
-
-
-
-
-
-
-
-
-
-                                        <div class="card">
-
-                                            <div data-toggle="collapse" data-target="#collapseEight" class="card-header btn collapsed" id="headingEight">
-
-
-                                                    <button>Meu Casamento</button>
-
-
-                                            </div><!--card-header-->
-
-                                            <div id="collapseEight" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['meu-casamento','meu-amor','festa-de-casamento','padrinhos-madrinhas'])"} show{/if}" aria-labelledby="headingEight" data-parent="#accordion4">
-
-                                                <div class="card-body card-body-text">
-
-                                                    <a href="/dashboard/meu-amor" class="list-group-item list-group-item-action">Meu Amor</a>
-                                                
-                                                    <a href="/dashboard/meu-casamento" class="list-group-item list-group-item-action">Casamento</a>         
-                                                    
-                                                    <a href="/dashboard/festa-de-casamento" class="list-group-item list-group-item-action">Festa</a>
-
-                                                    <a href="/dashboard/padrinhos-madrinhas" class="list-group-item list-group-item-action">Padrinhos e Madrinhas</a>
-
-                                                        
-                                                        
-                                                </div><!--card-body-->
-
-                                            </div><!--collapseEight-->
-
-                                        </div><!--card-->
-
-
-
-
-
-
-
-                                        <div class="card">
-
-                                            <div data-toggle="modal" data-target="#ExemploModalCentralizado" class="card-header btn collapsed disabled-links" id="heading-guide1">
-
-
-                                                    <button>Guia de Casamento</button>
-
-
-                                            </div><!--card-header-->
-
-                                            <div id="collapse-guide1" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['guia-de-casamento'])"} show{/if}" aria-labelledby="heading-guide1" data-parent="#accordion4">
-
-                                                <div class="card-body card-body-text">
-
-                                                        <a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Noivado</a>
-                                                        
-
-                                                        <a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Padrinhos, Madrinhas, Daminhas e Pajens</a>
-                                                        
-
-                                                        <a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Planejamento</a>
-
-
-                                                        <a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Eventos</a>
-                                                        
-                                                        <a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Listas de Presentes e Confirmação de Presença</a>
-
-
-                                                        <a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Cerimonial e Decoração</a>
-
-                                                        <a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Buffet</a>
-
-
-                                                        <a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Roupa, Cabelo e Maquiagem</a>
-
-
-                                                        <a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Fotos, Filmagens e DJ</a>
-
-
-
-                                                        <a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Ensaios</a>
-
-
-                                                        <a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Lua de Mel</a>
-
-
-                                                </div><!--card-body-->
-
-                                            </div><!--collapse-guide-->
-
-                                        </div><!--card-->
-                                   
-                                      
-
-
-
-
-                                    </div><!--accordion-->
-
-
-
-
-
-
-
-                                    
-                                    <div class="menu-main-pages">
-
-                                        
-
-                                        <a href="/dashboard/rsvp" class="list-group-item list-group-item-action">RSVP</a>
-                                    
-                                        <a href="/dashboard/mensagens" class="list-group-item list-group-item-action">Mensagens</a>
-
-                                         <a href="/dashboard/eventos" class="list-group-item list-group-item-action">Eventos</a>
-
-                                        <a href="/dashboard/album" class="list-group-item list-group-item-action">Album</a>
-                                        
-                                        <a href="/dashboard/videos" class="list-group-item list-group-item-action">Vídeos</a>
                                 
-
-                                        <a href="/dashboard/fornecedores" class="list-group-item list-group-item-action">Fornecedores</a>
-
-                                        <a href="/dashboard/listas-de-fora" class="list-group-item list-group-item-action">Listas de Fora</a>   
-                                        
-                                        <a href="/dashboard/social" class="list-group-item list-group-item-action">Redes Sociais</a>
-
-                                        
-                                        <a href="/dashboard/tags-papelaria" class="list-group-item list-group-item-action">Tags e Papelaria</a>
-        
-        
-                                        <!--<a data-toggle="modal" data-target="#ExemploModalCentralizado" class="list-group-item list-group-item-action disabled-links">Tags e Papelaria</a>  -->
-
-
-                                    </div><!--menu-main-pages-->
-
-
-
-                                    <div class="accordion" class="accordion5">
-
-
-
+                                
+                                        <a href="/dashboard/meus-dados" class="list-group-item list-group-item-action">Meus Dados</a>
+                                
+                                        <a href="/dashboard/meu-plano" class="list-group-item list-group-item-action">Meu Plano</a>
+                                
+                                
+                                    </div>
+                                
+                                
+                                
+                                
+                                    <div class="accordion" id="accordion2">
+                                
+                                
+                                
                                         <div class="card">
-
-                                            <div data-toggle="collapse" data-target="#collapseNine" class="card-header btn collapsed" id="headingNine">
-
+                                
+                                            <div data-toggle="collapse" data-target="#collapseFour" class="card-header btn collapsed" id="headingFour">
+                                
                                                     <button>Termos de Serviço</button>
-
+                                
                                             </div><!--card-header-->
-
-                                            <div id="collapseNine" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']), ['termos-uso','politica-privacidade','termos-lista'])"} show{/if}" aria-labelledby="headingNine" data-parent="#accordion5">
-
-
+                                
+                                            <div id="collapseFour" class="collapse{if="in_array(getUri($_SERVER['REQUEST_URI']) , ['termos-uso','politica-privacidade','termos-lista'])"} show{/if}" aria-labelledby="headingFour" data-parent="#accordion2">
                                                 <div class="card-body card-body-text">
                                                 
                                                         <a href="/dashboard/termos-uso" class="list-group-item list-group-item-action">Termos de Uso</a>
-
-
+                                
+                                
                                                         <a href="/dashboard/politica-privacidade" class="list-group-item list-group-item-action">Política de Privacidade</a>
-
+                                
                                                         <a href="/dashboard/termos-lista" class="list-group-item list-group-item-action">Termos da Lista de Presentes Virtuais</a>
                                         
                                                 </div><!--card-body-->
-
-                                            </div><!--collapseNine-->
-
+                                
+                                            </div><!--collapseFour-->
+                                
                                         </div><!--card-->
-
-
-
-
-
-
+                                
+                                
+                                
+                                
+                                
+                                
                                     </div><!--accordion-->
-
-
-
+                                
+                                
+                                
+                                
+                                    
+                                
+                                
                                     <div class="menu-main-pages">
-
+                                
                                         <a href="/dashboard/central-ajuda" class="list-group-item list-group-item-action">Central de Ajuda</a>
-                                          
+                                        
                                         <a href="/dashboard/mudar-senha" class="list-group-item list-group-item-action">Alterar Senha</a>
-                                          
+                                        
+                                        
                                         <a href="/logout" class="list-group-item list-group-item-action">Sair</a>
-
-                                    </div><!--menu-main-pages-->
-
-
-
-
+                                
+                                    </div>
+                                    
+                                
+                                
+                                
                                 </div><!--list-group-->
 
                             {else}

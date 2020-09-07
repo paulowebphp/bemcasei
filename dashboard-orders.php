@@ -66,6 +66,16 @@ $app->get( "/dashboard/painel-financeiro/detalhes/:hash", function( $hash )
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
 
 	if ( (int)$user->getinplancontext() == 0 )
 	{
@@ -237,6 +247,18 @@ $app->get( "/dashboard/painel-financeiro", function()
 
 
 
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
 	if ( (int)$user->getinplancontext() == 0 )
 	{
 		# code...
@@ -245,6 +267,7 @@ $app->get( "/dashboard/painel-financeiro", function()
 		exit;
 
 	}//end if
+	
 
 
 

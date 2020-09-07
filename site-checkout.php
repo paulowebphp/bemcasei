@@ -521,10 +521,12 @@ $app->post( "/criar-site", function()
 		'desdomain'=>NULL,
 		'inadmin'=>0,
 		'inseller'=>1,
-		'instatus'=>0,
+		'inregister'=>0,
+		'incheckout'=>0,
 		'inaccount'=>0,
 		'inplancontext'=>$inplancontext,
 		'inplan'=>$inplancode,
+		'instatus'=>1,
 		'inautostatus'=>1,
 		'interms'=>0,
 		'desipterms'=>NULL,
@@ -558,9 +560,6 @@ $app->post( "/criar-site", function()
 
 		$user->setRegisterEntities();
 
-			
-
-
 		$user->setinregister(1);
 
 		$user->update();
@@ -570,7 +569,7 @@ $app->post( "/criar-site", function()
 
 
 
-
+		
 
 
 
@@ -3549,7 +3548,10 @@ $app->post( "/checkout/:hash", function( $hash )
 
 	//$user->update();
 
+	$user->setincheckout(1);
+
 	$user->setToSession();
+	
 	$user->update();
 
 

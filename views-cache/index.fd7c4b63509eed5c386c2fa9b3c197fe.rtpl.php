@@ -16,6 +16,11 @@
 
                     <?php require $this->checkTemplate("dashboard-menu-free");?>
 
+                
+                <?php }elseif( $user["incheckout"] == 0 ){ ?>
+
+                    <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
+               
 
                 <?php }elseif( !$validate ){ ?>
 

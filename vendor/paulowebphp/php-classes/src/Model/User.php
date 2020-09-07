@@ -1208,9 +1208,11 @@ class User extends Model
 					:inadmin, 
 					:inseller, 
 					:inregister, 
+					:incheckout, 
 					:inaccount,
 					:inplancontext,
 					:inplan,
+					:instatus, 
 					:inautostatus, 
 					:interms,
 					:desipterms,
@@ -1237,9 +1239,11 @@ class User extends Model
 					":inadmin"=>$this->getinadmin(),
 					":inseller"=>$this->getinseller(),
 					":inregister"=>$this->getinregister(),
+					":incheckout"=>$this->getincheckout(),
 					":inaccount"=>$this->getinaccount(),
 					":inplancontext"=>$this->getinplancontext(),
 					":inplan"=>$this->getinplan(),
+					":instatus"=>$this->getinstatus(),
 					":inautostatus"=>$this->getinautostatus(),
 					":interms"=>$this->getinterms(),
 					":desipterms"=>$this->getdesipterms(),
@@ -1283,9 +1287,11 @@ class User extends Model
 					:inadmin, 
 					:inseller, 
 					:inregister, 
+					:incheckout, 
 					:inaccount, 
 					:inplancontext, 
 					:inplan, 
+					:instatus, 
 					:inautostatus, 
 					:interms,
 					:desipterms,
@@ -1312,9 +1318,11 @@ class User extends Model
 					":inadmin"=>$this->getinadmin(),
 					":inseller"=>$this->getinseller(),
 					":inregister"=>$this->getinregister(),
+					":incheckout"=>$this->getincheckout(),
 					":inaccount"=>$this->getinaccount(),
 					":inplancontext"=>$this->getinplancontext(),
 					":inplan"=>$this->getinplan(),
+					":instatus"=>$this->getinstatus(),
 					":inautostatus"=>$this->getinautostatus(),
 					":interms"=>$this->getinterms(),
 					":desipterms"=>$this->getdesipterms(),
@@ -4097,7 +4105,7 @@ class User extends Model
 
 
 
-	public static function validatePlan( $plans, $inplancontext, $inautostatus )
+	public static function validatePlan( $plans, $inplancontext, $incheckout, $instatus, $inautostatus )
 	{
 
 				
@@ -4115,6 +4123,7 @@ class User extends Model
 
 		
 		
+		
 
 		if( (int)$inautostatus == 0 )
 		{
@@ -4123,7 +4132,21 @@ class User extends Model
 
 
 		}//end if
+		elseif( (int)$instatus == 0 )
+		{
+
+			return false;
+
+
+		}//end if
 		elseif ( (int)$inplancontext == 0 ) 
+		{
+			# code...
+
+			return true;
+
+		}//end else
+		elseif ( (int)$incheckout == 0 ) 
 		{
 			# code...
 
@@ -4520,16 +4543,49 @@ class User extends Model
 		//$user = User::getFromSession();
 
 
+		$plans = [];
+
+
+		if( (int)$user->getinplancontext() != 0 )
+		{
+
+			$plan = new Plan();
+
+			$plans = $plan->get((int)$user->getiduser());
+
+		}//end if
+
+
+		return User::validatePlan( $plans, $user->getinplancontext(), $user->getincheckout(), $user->getinstatus(), $user->getinautostatus() );
 
 
 
-		/*echo '<pre>';
-var_dump('--------------------');
-var_dump($user);
-var_dump((int)$user->getinplancontext() != 0);
-exit;*/
-		
+	}//end validatePlanEnd
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*
+	public static function validatePlanDashboard( $user )
+	{
+
+		//backup
+		//$user = User::getFromSession();
 
 
 		$plans = [];
@@ -4550,6 +4606,8 @@ exit;*/
 
 
 	}//end validatePlanEnd
+
+	*/
 
 
 

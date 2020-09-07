@@ -5,9 +5,9 @@ use Core\PageDashboard;
 use Core\Rule;
 use Core\Validate;
 use Core\Model\User;
-use Core\Model\Wedding;
+//use Core\Model\Wedding;
 use Core\Model\CustomStyle;
-use Core\Model\Plan;
+//use Core\Model\Plan;
 
 
 
@@ -49,7 +49,14 @@ $app->get( "/dashboard/meu-template", function()
 	}//end if
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 	$customstyle = new CustomStyle();
 
@@ -167,7 +174,14 @@ $app->post( "/dashboard/meu-template", function()
 
 
 
-	
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
 
 	
 

@@ -818,7 +818,7 @@ $app->post( "/dashboard/comprar-plano/cadastrar", function()
 		$desdistrict,		
 		$descity['descity'],
 		$desstate['desstatecode'],
-		Rule::DESCOUNTRYCODE
+		$descountrycode
 
 	);//END createAccount
 
@@ -972,6 +972,21 @@ $app->post( "/dashboard/comprar-plano/cadastrar", function()
 
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5616,7 +5631,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 	
-
+	$user->setincheckout(1);
 	
 	$user->update();
 	$user->setToSession();

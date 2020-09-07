@@ -2,15 +2,15 @@
 
 use Core\Maintenance;
 use Core\PageDashboard;
-use Core\Photo;
-use Core\Rule;
-use Core\Wirecard;
+//use Core\Photo;
+//use Core\Rule;
+//use Core\Wirecard;
 use Core\Model\User;
 use Core\Model\Plan;
 use Core\Model\Payment;
-use Core\Model\Address;
-use Core\Model\Customer;
-use Core\Model\OrderPlan;
+//use Core\Model\Address;
+//use Core\Model\Customer;
+//use Core\Model\OrderPlan;
 
 
 

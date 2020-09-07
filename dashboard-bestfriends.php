@@ -7,7 +7,7 @@ use Core\Rule;
 use Core\Validate;
 use Core\Model\User;
 use Core\Model\BestFriend;
-use Core\Model\Plan;
+//use Core\Model\Plan;
 
 
 
@@ -52,7 +52,17 @@ $app->get( "/dashboard/padrinhos-madrinhas/adicionar", function()
 
 	}//end if
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
+
+
+	
 
 
 	$bestfriend = new BestFriend();
@@ -204,7 +214,14 @@ $app->post( "/dashboard/padrinhos-madrinhas/adicionar", function()
 	}//end if
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -553,7 +570,14 @@ $app->get( "/dashboard/padrinhos-madrinhas/:hash/deletar", function( $hash )
 	}//end if
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -646,7 +670,14 @@ $app->get( "/dashboard/padrinhos-madrinhas/:hash", function( $hash )
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
     
 
 
@@ -769,7 +800,14 @@ $app->post( "/dashboard/padrinhos-madrinhas/:hash", function( $hash )
 	}//end if
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -1059,6 +1097,16 @@ $app->get( "/dashboard/padrinhos-madrinhas", function()
 	
 
 	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);

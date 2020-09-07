@@ -13,7 +13,7 @@ use \Core\Model\ProductConfig;
 use \Core\Model\Consort;
 use \Core\Model\Lead;
 use \Core\Model\SocialMedia;
-use \Core\Model\Wedding;
+//use \Core\Model\Wedding;
 use \Core\Model\Template;
 use \Core\Model\Plan;
 use \Core\Model\PaymentStatus;
@@ -1520,7 +1520,7 @@ function validatePlan()
 	}//end if
 
 
-	return User::validatePlan( $plans, $user->getinplancontext(), $user->getinautostatus() );
+	return User::validatePlan( $plans, $user->getinplancontext(), $user->getincheckout(), $user->getinstatus(), $user->getinautostatus() );
 
 
 
@@ -1677,6 +1677,51 @@ function validatePlanFree()
 	
 
 }//end validatePlanFree
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function validatePlanCheckout()
+{
+
+	$user = User::getFromSession();
+
+
+	if( (int)$user->getincheckout() != 0 && (int)$user->getinplancontext() == 0 )
+	{
+		
+		return false;
+						
+		
+	}//end if
+	else
+	{
+		
+		return true;
+
+	}//end else
+
+
+	
+
+}//end validatePlanFree
+
+
+
+
+
+
+
 
 
 

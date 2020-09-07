@@ -7,8 +7,8 @@ use Core\Photo;
 use Core\Validate;
 use Core\Model\User;
 use Core\Model\Wedding;
-use Core\Model\CustomStyle;
-use Core\Model\Plan;
+//use Core\Model\CustomStyle;
+//use Core\Model\Plan;
 
 
 
@@ -57,7 +57,14 @@ $app->get( "/dashboard/meu-casamento", function()
 
 	}//end if
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 	$wedding = new Wedding();
@@ -148,7 +155,14 @@ $app->post( "/dashboard/meu-casamento", function()
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 	
 
 

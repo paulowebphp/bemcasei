@@ -3,9 +3,9 @@
 use Core\Maintenance;
 use Core\PageDashboard;
 //use Core\Photo;
-use Core\Wirecard;
+//use Core\Wirecard;
 use Core\Rule;
-use Core\Validate;
+//use Core\Validate;
 use Core\Model\User;
 //use Core\Model\Order;
 //use Core\Model\Product;
@@ -72,6 +72,16 @@ $app->get( "/dashboard/sua-carteira", function()
 
 
 	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);

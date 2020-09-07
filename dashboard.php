@@ -2,16 +2,16 @@
 
 use Core\PageDashboard;
 use Core\Maintenance;
-use Core\Rule;
-use Core\Wirecard;
+//use Core\Rule;
+//use Core\Wirecard;
 use Core\Model\User;
-use Core\Model\Order;
-use Core\Model\Cart;
-use Core\Model\Wedding;
+//use Core\Model\Order;
+//use Core\Model\Cart;
+//use Core\Model\Wedding;
 use Core\Model\Message;
 use Core\Model\Account;
 use Core\Model\Rsvp;
-use Core\Model\Plan;
+//use Core\Model\Plan;
 
 
 
@@ -121,7 +121,7 @@ $app->get( "/dashboard/mudar-senha", function()
 	$user = User::getFromSession();
 
 
-
+	
 
 	$validate = User::validatePlanDashboard( $user );
 
@@ -361,7 +361,6 @@ $app->get( "/dashboard", function()
 	
 
 
-
 	$validate = User::validatePlanDashboard( $user );
 
 
@@ -419,7 +418,7 @@ $app->get( "/dashboard", function()
 	}//end else*/
 
 	
-
+	
 
 
 

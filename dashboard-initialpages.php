@@ -6,7 +6,7 @@ use Core\Rule;
 use Core\Validate;
 use Core\Model\User;
 use Core\Model\InitialPage;
-use Core\Model\Plan;
+//use Core\Model\Plan;
 
 
 
@@ -60,7 +60,14 @@ $app->get( "/dashboard/pagina-inicial", function()
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 		
 	//$user->get((int)$user->getiduser());
@@ -163,7 +170,14 @@ $app->post( "/dashboard/pagina-inicial", function()
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -283,6 +297,10 @@ $app->post( "/dashboard/pagina-inicial", function()
 	exit;
 
 });//END route
+
+
+
+
 
 
 

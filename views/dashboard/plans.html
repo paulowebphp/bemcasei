@@ -16,17 +16,23 @@
 
                     {include="dashboard-menu-free"}
 
+                
+                {elseif="$user.incheckout == 0"}
+
+                    {include="dashboard-menu-nocheckout"}
+                
 
                 {elseif="!$validate"}
 
                     {include="dashboard-menu-expirated"}
-               
+                
 
                 {else}
 
                     {include="dashboard-menu"}
 
                 {/if}
+                  
                     
 
             </div><!--col-->

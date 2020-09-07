@@ -60,6 +60,16 @@ $app->get( "/dashboard/cadastrar", function()
 	$validate = User::validatePlanDashboard( $user );
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
 
 	if ( (int)$user->getinplancontext() == 0 )
 	{
@@ -246,6 +256,17 @@ $app->post( "/dashboard/cadastrar", function()
 	$user = User::getFromSession();
 
 	$validate = User::validatePlanDashboard( $user );
+
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
 
 
 

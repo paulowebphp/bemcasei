@@ -3,11 +3,11 @@
 use Core\Maintenance;
 use Core\PageDashboard;
 use Core\Rule;
-use Core\Photo;
+//use Core\Photo;
 use Core\Validate;
 use Core\Model\User;
 use Core\Model\Consort;
-use Core\Model\Plan;
+//use Core\Model\Plan;
 
 
 
@@ -42,7 +42,23 @@ $app->get( "/dashboard/meu-amor", function()
 	$user = User::getFromSession();
 
 
+
+	
+
+
+
+
 	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -113,6 +129,21 @@ $app->get( "/dashboard/meu-amor", function()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $app->post( "/dashboard/meu-amor", function()
 {
 
@@ -152,7 +183,14 @@ $app->post( "/dashboard/meu-amor", function()
 
 	}//end if
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 	if(
 		

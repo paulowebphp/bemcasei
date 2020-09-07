@@ -6,7 +6,7 @@ use Core\PageDashboard;
 use Core\Validate;
 use Core\Model\User;
 use Core\Model\Address;
-use Core\Model\Plan;
+//use Core\Model\Plan;
 
 
 
@@ -52,8 +52,9 @@ $app->get( "/dashboard/meus-dados", function()
 		header('Location: /dashboard');
 		exit;
 
-	}//end if*/
-
+	}//end if
+	
+	
 	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
@@ -62,9 +63,15 @@ $app->get( "/dashboard/meus-dados", function()
 		exit;
 
 	}//end if
+	
+	*/
+
+	
 
 
 
+	$validate = User::validatePlanDashboard( $user );
+	
 
 
 
@@ -187,6 +194,7 @@ $app->post( "/dashboard/meus-dados", function()
 
 
 
+	/*
 	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
@@ -195,10 +203,11 @@ $app->post( "/dashboard/meus-dados", function()
 		exit;
 
 	}//end if
+	*/
 
 
 
-
+	$validate = User::validatePlanDashboard( $user );
 
 
 

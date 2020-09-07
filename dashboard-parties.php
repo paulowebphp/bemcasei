@@ -7,7 +7,7 @@ use Core\Photo;
 use Core\Validate;
 use Core\Model\User;
 use Core\Model\Party;
-use Core\Model\Plan;
+//use Core\Model\Plan;
 
 
 
@@ -52,7 +52,14 @@ $app->get( "/dashboard/festa-de-casamento", function()
 	}//end if
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 
@@ -165,7 +172,14 @@ $app->post( "/dashboard/festa-de-casamento", function()
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
 
 
 	if(

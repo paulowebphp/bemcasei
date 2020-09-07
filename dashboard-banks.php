@@ -63,7 +63,24 @@ $app->get( "/dashboard/conta-bancaria/deletar/:hash", function( $hash )
 
 	}//end if
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
+
+
+	if ( (int)$user->getinplancontext() == 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
 
 
 	$idbank = Validate::getHash($hash);
@@ -199,7 +216,24 @@ $app->post( "/dashboard/conta-bancaria/adicionar", function()
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
+
+
+	if ( (int)$user->getinplancontext() == 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
 
 
 
@@ -690,7 +724,24 @@ $app->get( "/dashboard/conta-bancaria/adicionar", function()
 
 	
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
+
+
+	if ( (int)$user->getinplancontext() == 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
 
 	
 
@@ -866,7 +917,24 @@ $app->post( "/dashboard/conta-bancaria/:hash", function( $hash )
 
 
 
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
+
+
+	if ( (int)$user->getinplancontext() == 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
 
 
 
@@ -1429,7 +1497,24 @@ $app->get( "/dashboard/conta-bancaria/:hash", function( $hash )
 	}//end if
 
 	
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
 
+	}//end if
+
+
+	if ( (int)$user->getinplancontext() == 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
 
 
 

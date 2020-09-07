@@ -2,19 +2,19 @@
 
 use Core\Maintenance;
 use Core\PageDashboard;
-use Core\Photo;
+//use Core\Photo;
 use Core\Wirecard;
 use Core\Rule;
 use Core\Validate;
 use Core\Model\User;
 use Core\Model\Order;
-use Core\Model\Product;
-use Core\Model\Gift;
+//use Core\Model\Product;
+//use Core\Model\Gift;
 use Core\Model\Bank;
 use Core\Model\Transfer;
 use Core\Model\TransferStatus;
 use Core\Model\Account;
-use Core\Model\Plan;
+//use Core\Model\Plan;
 
 
 
@@ -50,7 +50,17 @@ $app->get( "/dashboard/transferencias/transferir-saldo", function()
 	$user = User::getFromSession();
 
 
-	
+	$validate = User::validatePlanDashboard( $user );
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
 
 
 
@@ -123,7 +133,7 @@ $app->get( "/dashboard/transferencias/transferir-saldo", function()
 		}//end else*/
 
 
-		$validate = User::validatePlanDashboard( $user );
+		
 
 
 		$page = new PageDashboard();
@@ -221,6 +231,20 @@ $app->post( "/dashboard/transferencias/transferir-saldo", function()
 	$user = User::getFromSession();
 
 
+	$validate = User::validatePlanDashboard( $user );
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
 	if ( (int)$user->getinplancontext() == 0 )
 	{
 		# code...
@@ -229,6 +253,8 @@ $app->post( "/dashboard/transferencias/transferir-saldo", function()
 		exit;
 
 	}//end if
+
+
 
 
 
@@ -435,6 +461,19 @@ $app->get( "/dashboard/transferencias", function()
 	$user = User::getFromSession();
 
 
+	$validate = User::validatePlanDashboard( $user );
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
 
 	if ( (int)$user->getinplancontext() == 0 )
 	{
@@ -484,9 +523,6 @@ $app->get( "/dashboard/transferencias", function()
 			$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
 
 		}//end else*/
-
-		$validate = User::validatePlanDashboard( $user );
-
 
 		
 

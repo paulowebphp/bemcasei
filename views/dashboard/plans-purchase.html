@@ -12,20 +12,26 @@
           <div class="col-md-3 col-12 dash-menu">
 
 
-              {if="!validatePlan()"}
+            {if="$user.inplancontext == 0"}
 
-                  {include="dashboard-menu-expirated"}
-             
+                {include="dashboard-menu-free"}
 
-              {elseif="validatePlanFree()"}
+            
+            {elseif="$user.incheckout == 0"}
 
-                  {include="dashboard-menu-free"}
+                {include="dashboard-menu-nocheckout"}
+            
 
-              {else}
+            {elseif="!$validate"}
 
-                  {include="dashboard-menu"}
+                {include="dashboard-menu-expirated"}
+            
 
-              {/if}
+            {else}
+
+                {include="dashboard-menu"}
+
+            {/if}
                   
 
           </div><!--col-->
