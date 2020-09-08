@@ -3,13 +3,13 @@
 namespace Core\Model;
 
 
-use \Core\Mailer;
+//use \Core\Mailer;
 use \Core\MailerPasswordRecovery;
-use \Core\Maintenance;
+//use \Core\Maintenance;
 use \Core\Model;
 use \Core\Rule;
 use \Core\DB\Sql;
-use \Core\Model\Account;
+//use \Core\Model\Account;
 use \Core\Model\Bank;
 use \Core\Model\Consort;
 use \Core\Model\CustomStyle;
@@ -1602,8 +1602,7 @@ class User extends Model
 
 		if ( $_SERVER['HTTP_HOST'] == Rule::CANONICAL_NAME  ) 
 		{
-			# code...
-
+			
 			$results = $sql->select("
 		
 				CALL sp_users_update(
@@ -1615,9 +1614,11 @@ class User extends Model
 					:inadmin, 
 					:inseller, 
 					:inregister,
+					:incheckout,
 					:inaccount,
 					:inplancontext,
 					:inplan,
+					:instatus, 
 					:inautostatus, 
 					:interms,
 					:desipterms,
@@ -1645,9 +1646,11 @@ class User extends Model
 					":inadmin"=>$this->getinadmin(),
 					":inseller"=>$this->getinseller(),
 					":inregister"=>$this->getinregister(),
+					":incheckout"=>$this->getincheckout(),
 					":inaccount"=>$this->getinaccount(),
 					":inplancontext"=>$this->getinplancontext(),
 					":inplan"=>$this->getinplan(),
+					":instatus"=>$this->getinstatus(),
 					":inautostatus"=>$this->getinautostatus(),
 					":interms"=>$this->getinterms(),
 					":desipterms"=>$this->getdesipterms(),
@@ -1667,6 +1670,11 @@ class User extends Model
 				)//end array
 			
 			);//end select
+
+
+
+			
+
 
 
 			$results[0]['desperson'] = utf8_encode($results[0]['desperson']);
@@ -1693,9 +1701,11 @@ class User extends Model
 					:inadmin, 
 					:inseller, 
 					:inregister,
+					:incheckout,
 					:inaccount,
 					:inplancontext,
 					:inplan,
+					:instatus, 
 					:inautostatus, 
 					:interms,
 					:desipterms,
@@ -1723,9 +1733,11 @@ class User extends Model
 					":inadmin"=>$this->getinadmin(),
 					":inseller"=>$this->getinseller(),
 					":inregister"=>$this->getinregister(),
+					":incheckout"=>$this->getincheckout(),
 					":inaccount"=>$this->getinaccount(),
 					":inplancontext"=>$this->getinplancontext(),
 					":inplan"=>$this->getinplan(),
+					":instatus"=>$this->getinstatus(),
 					":inautostatus"=>$this->getinautostatus(),
 					":interms"=>$this->getinterms(),
 					":desipterms"=>$this->getdesipterms(),

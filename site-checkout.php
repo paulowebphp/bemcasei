@@ -1999,6 +1999,46 @@ $app->post( "/checkout/:hash", function( $hash )
 
 
 
+		if( !isset($_POST['desholderstate']) || $_POST['desholderstate'] === '' )
+		{
+
+			if ( $coupon == '')
+			{
+				Payment::setError(Rule::ERROR_STATE);
+				header('Location: /checkout/'.$hash);
+				exit;
+			}//end if
+			else
+			{
+				Payment::setError(Rule::ERROR_STATE);
+				header('Location: /checkout/'.$hash.'?cupom='.$coupon.'&acao=aplicar');
+				exit;
+			}//end else
+
+		}//end if
+
+
+
+
+
+
+
+
+		if ( ( $stateArray = Address::getState($_POST['desholderstate']) ) === false ) 
+		{
+
+			Payment::setError(Rule::VALIDATE_STATE);
+			header('Location: /checkout/'.$hash.'?cupom='.$coupon.'&acao=aplicar');
+			exit;
+
+		}//end if
+		
+		$desholderstate = $stateArray['desstatecode'];
+
+
+
+
+
 
 
 		if( !isset($_POST['desholdercity']) || $_POST['desholdercity'] === '' )
@@ -2043,41 +2083,7 @@ $app->post( "/checkout/:hash", function( $hash )
 
 
 
-		if( !isset($_POST['desholderstate']) || $_POST['desholderstate'] === '' )
-		{
-
-			if ( $coupon == '')
-			{
-				Payment::setError(Rule::ERROR_STATE);
-				header('Location: /checkout/'.$hash);
-				exit;
-			}//end if
-			else
-			{
-				Payment::setError(Rule::ERROR_STATE);
-				header('Location: /checkout/'.$hash.'?cupom='.$coupon.'&acao=aplicar');
-				exit;
-			}//end else
-
-		}//end if
-
-
-
-
-
-
-
-
-		if ( ( $stateArray = Address::getState($_POST['desholderstate']) ) === false ) 
-		{
-
-			Payment::setError(Rule::VALIDATE_STATE);
-			header('Location: /checkout/'.$hash.'?cupom='.$coupon.'&acao=aplicar');
-			exit;
-
-		}//end if
 		
-		$desholderstate = $stateArray['desstatecode'];
 
 
 

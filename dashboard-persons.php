@@ -278,293 +278,412 @@ $app->post( "/dashboard/meus-dados", function()
 		exit;
 	}//end if
 
+	$descountry = Rule::DESCOUNTRY;
+	$descountrycode = Rule::DESCOUNTRYCODE;
+
+	$dtbirth = NULL;
+	$nrddd = NULL;
+	$nrphone = NULL;
+	$deszipcode = NULL;
+	$desaddress = NULL;
+	$desnumber = NULL;
+	$descomplement = NULL;
+	$desdistrict = NULL;
+	$idcity = NULL;
+	$descity = NULL;
+	$idstate = NULL;
+	$desstate = NULL;
+	$desstatecode = NULL;
 
 
+	/*
+	echo '<pre>';
+	var_dump($_POST);
+	var_dump($_POST['dtbirth'] != ''  );
+	var_dump(isset( $_POST['dtbirth'] ));
+	var_dump(empty($_POST['dtbirth'] != ''));
+	exit;
+	*/
 
 
+	if( 
 
-
-
-
-
-
+		!empty( $_POST['dtbirth'] )
+		||
+		$_POST['dtbirth'] != ''
+		||
+		!empty( $_POST['nrddd'] )
+		||
+		$_POST['nrddd'] != ''
+		||		
+		!empty( $_POST['nrphone'] )
+		||
+		$_POST['nrphone'] != ''
+		||
+		!empty( $_POST['deszipcode'] )
+		||
+		$_POST['deszipcode'] != ''
+		||
+		!empty( $_POST['desaddress'] )
+		||
+		$_POST['desaddress'] != ''
+		||
+		!empty( $_POST['desnumber'] )
+		||
+		$_POST['desnumber'] != ''
+		||
+		!empty( $_POST['descomplement'] )
+		||
+		$_POST['descomplement'] != ''
+		||
+		!empty( $_POST['desdistrict'] )
+		||
+		$_POST['desdistrict'] != ''
+		||
+		!empty( $_POST['desstate'] )
+		||
+		$_POST['desstate'] != 0
+		||
+		!empty( $_POST['descity'] )
+		||
+		$_POST['descity'] != 0
 	
 
 
+	 )
+	{
 
 
+		
 
 
-
-
-
-
-
-	if(
+		if(
+				
+			!isset($_POST['dtbirth']) 
+			|| 
+			$_POST['dtbirth'] === ''
 			
-		!isset($_POST['dtbirth']) 
-		|| 
-		$_POST['dtbirth'] === ''
-		
-	)
-	{
+		)
+		{
 
-		User::setError("Informe a data de nascimento");
-		header('Location: /dashboard/meus-dados');
-		exit;
+			User::setError("Informe a data de nascimento");
+			header('Location: /dashboard/meus-dados');
+			exit;
+
+		}//end if
+
+		if( !$dtbirth = Validate::validateUserMajority($_POST['dtbirth']) )
+		{
+
+			User::setError("É preciso ter 18 anos para utilizar o site");
+			header('Location: /dashboard/meus-dados');
+			exit;
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+		if( 
+			
+			!isset($_POST['nrddd']) 
+			|| 
+			$_POST['nrddd'] === ''
+		)
+		{
+
+			User::setError("Informe o DDD");
+			header('Location: /dashboard/meus-dados');
+			exit;
+			
+		}//end if
+
+
+
+
+
+		if( 
+			
+			!isset($_POST['nrphone']) 
+			|| 
+			$_POST['nrphone'] === ''
+		)
+		{
+
+			User::setError("Informe o Telefone");
+			header('Location: /dashboard/meus-dados');
+			exit;
+			
+		}//end if
+
+
+
+
+
+		if( !$nrddd = Validate::validateDDD($_POST['nrddd']) )
+		{
+
+			User::setError("Informe um DDD válido");
+			header('Location: /dashboard/meus-dados');
+			exit;
+
+		}//end if
+
+
+
+
+		if( !$nrphone = Validate::validatePhone($_POST['nrphone']) )
+		{
+
+			User::setError("Informe um telefone ou celular válido");
+			header('Location: /dashboard/meus-dados');
+			exit;
+
+		}//end if
+
+
+
+
+
+		if( 
+			
+			!isset($_POST['deszipcode']) 
+			|| 
+			$_POST['deszipcode'] === ''
+		)
+		{
+
+			User::setError("Informe o CEP");
+			header('Location: /dashboard/meus-dados');
+			exit;
+			
+		}//end if
+
+		if( !$deszipcode = Validate::validateCEP($_POST['deszipcode']) )
+		{
+
+			User::setError("Informe um CEP válido");
+			header('Location: /dashboard/meus-dados');
+			exit;
+
+		}//end if
+
+
+
+
+
+
+
+
+		if( 
+			
+			!isset($_POST['desaddress']) 
+			|| 
+			$_POST['desaddress'] === ''
+		)
+		{
+
+			User::setError("Informe o Endereço");
+			header('Location: /dashboard/meus-dados');
+			exit;
+			
+		}//end if
+
+		if( ( $desaddress = Validate::validateStringNumber($_POST['desaddress'], true, false) ) === false )
+		{
+
+			User::setError("O seu endereço não pode ser formado apenas com caracteres especiais, tente novamente");
+			header('Location: /dashboard/meus-dados');
+			exit;
+
+		}//end if
+
+
+
+
+
+
+
+
+		if( 
+			
+			!isset($_POST['desnumber']) 
+			|| 
+			$_POST['desnumber'] === ''
+		)
+		{
+
+			User::setError("Informe o Número");
+			header('Location: /dashboard/meus-dados');
+			exit;
+			
+		}//end if
+
+		if( !$desnumber = Validate::validateNumber($_POST['desnumber']) )
+		{
+
+			User::setError("Informe o seu nome apenas com números");
+			header('Location: /dashboard/meus-dados');
+			exit;
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if( 
+			
+			!isset($_POST['desdistrict']) 
+			|| 
+			$_POST['desdistrict'] === ''
+		)
+		{
+
+			User::setError("Informe o Bairro");
+			header('Location: /dashboard/meus-dados');
+			exit;
+			
+		}//end if
+
+		if( ( $desdistrict = Validate::validateStringNumber($_POST['desdistrict'], true, false) ) === false )
+		{
+
+			User::setError("O nome do bairro não pode ser formado apenas com caracteres especiais, tente novamente");
+			header('Location: /dashboard/meus-dados');
+			exit;
+
+		}//end if
+
+
+
+
+		
+
+
+
+		if( !isset($_POST['desholderstate']) || $_POST['desholderstate'] === '' )
+		{
+
+			User::setError(Rule::ERROR_STATE);
+			header('Location: /dashboard/meus-dados');
+			exit;
+
+		}//end if
+
+
+
+
+
+
+
+
+		if ( ( $stateArray = Address::getState($_POST['desholderstate']) ) === false ) 
+		{
+
+			User::setError(Rule::VALIDATE_STATE);
+			header('Location: /dashboard/meus-dados');
+			exit;
+
+		}//end if
+		
+		//$state = $stateArray['desstatecode'];
+
+
+		$idstate = $stateArray['idstate'];
+		$desstate = $stateArray['desstate'];
+		$desstatecode = $stateArray['desstatecode'];
+
+
+
+
+		if( !isset($_POST['desholdercity']) || $_POST['desholdercity'] === '' )
+		{
+
+			User::setError(Rule::ERROR_CITY);
+			header('Location: /dashboard/meus-dados');
+			exit;
+
+		}//end if
+
+
+
+
+
+
+
+
+		if( ( $cityArray = Address::getCity($_POST['desholdercity']) ) === false ) 
+		{
+
+			User::setError(Rule::VALIDATE_CITY);
+			header('Location: /dashboard/meus-dados');
+			exit;
+
+		}//end if
+
+		//$city = $cityArray['descity'];
+
+		$idcity = $cityArray['idcity'];
+		$descity = $cityArray['descity'];
+
+
+		
+
+
+
+		$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
+		
+		//$state = Address::getState($_POST['desstate']);
+
+		//$city = Address::getCity($_POST['descity']);
+
+
+		$user->setdtbirth( $dtbirth );
+		$user->setnrddd( $nrddd );
+		$user->setnrphone( $nrphone );
+
+		
+
 
 	}//end if
 
-	if( !$dtbirth = Validate::validateUserMajority($_POST['dtbirth']) )
-	{
-
-		User::setError("É preciso ter 18 anos para utilizar o site");
-		header('Location: /dashboard/meus-dados');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-	if( 
-		
-		!isset($_POST['nrddd']) 
-		|| 
-		$_POST['nrddd'] === ''
-	)
-	{
-
-		User::setError("Informe o DDD");
-		header('Location: /dashboard/meus-dados');
-		exit;
-		
-	}//end if
-
-
-
-
-
-	if( 
-		
-		!isset($_POST['nrphone']) 
-		|| 
-		$_POST['nrphone'] === ''
-	)
-	{
-
-		User::setError("Informe o Telefone");
-		header('Location: /dashboard/meus-dados');
-		exit;
-		
-	}//end if
-
-
-
-
-
-	if( !$nrddd = Validate::validateDDD($_POST['nrddd']) )
-	{
-
-		User::setError("Informe um DDD válido");
-		header('Location: /dashboard/meus-dados');
-		exit;
-
-	}//end if
-
-
-
-
-	if( !$nrphone = Validate::validatePhone($_POST['nrphone']) )
-	{
-
-		User::setError("Informe um telefone ou celular válido");
-		header('Location: /dashboard/meus-dados');
-		exit;
-
-	}//end if
-
-
-
-
-
-	if( 
-		
-		!isset($_POST['deszipcode']) 
-		|| 
-		$_POST['deszipcode'] === ''
-	)
-	{
-
-		User::setError("Informe o CEP");
-		header('Location: /dashboard/meus-dados');
-		exit;
-		
-	}//end if
-
-	if( !$deszipcode = Validate::validateCEP($_POST['deszipcode']) )
-	{
-
-		User::setError("Informe um CEP válido");
-		header('Location: /dashboard/meus-dados');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-	if( 
-		
-		!isset($_POST['desaddress']) 
-		|| 
-		$_POST['desaddress'] === ''
-	)
-	{
-
-		User::setError("Informe o Endereço");
-		header('Location: /dashboard/meus-dados');
-		exit;
-		
-	}//end if
-
-	if( ( $desaddress = Validate::validateStringNumber($_POST['desaddress'], true, false) ) === false )
-	{
-
-		User::setError("O seu endereço não pode ser formado apenas com caracteres especiais, tente novamente");
-		header('Location: /dashboard/meus-dados');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-	if( 
-		
-		!isset($_POST['desnumber']) 
-		|| 
-		$_POST['desnumber'] === ''
-	)
-	{
-
-		User::setError("Informe o Número");
-		header('Location: /dashboard/meus-dados');
-		exit;
-		
-	}//end if
-
-	if( !$desnumber = Validate::validateNumber($_POST['desnumber']) )
-	{
-
-		User::setError("Informe o seu nome apenas com números");
-		header('Location: /dashboard/meus-dados');
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-
-	if( 
-		
-		!isset($_POST['desdistrict']) 
-		|| 
-		$_POST['desdistrict'] === ''
-	)
-	{
-
-		User::setError("Informe o Bairro");
-		header('Location: /dashboard/meus-dados');
-		exit;
-		
-	}//end if
-
-	if( ( $desdistrict = Validate::validateStringNumber($_POST['desdistrict'], true, false) ) === false )
-	{
-
-		User::setError("O nome do bairro não pode ser formado apenas com caracteres especiais, tente novamente");
-		header('Location: /dashboard/meus-dados');
-		exit;
-
-	}//end if
-
-	/*if( 
-		
-		!isset($_POST['descity']) 
-		|| 
-		$_POST['descity'] === ''
-	)
-	{
-
-		User::setError("Informe a Cidade");
-		header('Location: /dashboard/meus-dados');
-		exit;
-		
-	}//end if
-
-	if( 
-		
-		!isset($_POST['desstate']) 
-		|| 
-		$_POST['desstate'] === ''
-	)
-	{
-
-		User::setError("Informe o Estado");
-		header('Location: /dashboard/meus-dados');
-		exit;
-		
-	}//end if*/
-
-
-
-
-	$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
 	
-	$city = Address::getCity($_POST['descity']);
-
-	$state = Address::getState($_POST['desstate']);
-
-	
-	/*$address->setdeszipcode( $_POST['deszipcode'] );
-	$address->setdesaddress( $_POST['desaddress'] );
-	$address->setdesnumber( $_POST['desnumber'] );
-	$address->setdescomplement( $_POST['descomplement'] );
-	$address->setdesdistrict( $_POST['desdistrict'] );
-	$address->setdescity( $_POST['descity'] );
-	$address->setdesstate( $_POST['desstate'] );*/
 
 
+	/*
+	echo '<pre>';
+	var_dump($idcity);
+	var_dump($descity);
+	var_dump($idstate);
+	var_dump($desstate);
+	var_dump($desstatecode);
+	exit;
+	*/
 
 
 
 	$address = new Address();
 
-
-
 	$address->get((int)$user->getiduser());
+
+
+
 
 	$address->setData([
 
@@ -575,13 +694,13 @@ $app->post( "/dashboard/meus-dados", function()
 		'desnumber'=>$desnumber,
 		'descomplement'=>$descomplement,
 		'desdistrict'=>$desdistrict,
-		'idcity'=>$city['idcity'],
-		'descity'=>Validate::validateString($city['descity']),
-		'idstate'=>$state['idstate'],
-		'desstate'=>Validate::validateString($state['desstate']),
-		'desstatecode'=>$state['desstatecode'],
-		'descountry'=>Rule::DESCOUNTRY,
-		'descountrycode'=>Rule::DESCOUNTRYCODE
+		'idcity'=>$idcity,
+		'descity'=>$descity,
+		'idstate'=>$idstate,
+		'desstate'=>$desstate	,
+		'desstatecode'=>$desstatecode,
+		'descountry'=>$descountry,
+		'descountrycode'=>$descountrycode
 
 	]);//end setData
 
@@ -589,13 +708,7 @@ $app->post( "/dashboard/meus-dados", function()
 	$address->update();
 
 
-
-
-
-
-	$user->setdtbirth( $dtbirth );
-	$user->setnrddd( $nrddd );
-	$user->setnrphone( $nrphone );
+	
 	//$user->setData($_POST);
 	$user->setdesperson( $desperson );
 	$user->setdesnick( $desnick );
