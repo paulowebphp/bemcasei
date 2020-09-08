@@ -894,7 +894,7 @@
 
 									
 											<div class="row2">
-												<input type="text" placeholder="CEP do Titular do Cartão" name="zipcode" class="input-text" value="{$address.deszipcode}">
+												<input type="text" placeholder="CEP do Titular do Cartão" name="deszipcode" class="input-text" value="{$address.deszipcode}">
 												<!--<input type="submit" Atualizar CEP" id="place_order" class="button alt" formaction="/checkout" formmethod="get">-->
 											</div>
 
@@ -923,7 +923,7 @@
 											<div class="state-city">
 												
 												<label for="state2">Estado</label>
-												<select id="state2" form="checkout-form1" name="desstate">
+												<select id="state2" form="checkout-form2" name="desstate">
 													
 													<option value="0">Insira um Estado...</option>
 													{loop="$state"} 
@@ -944,7 +944,7 @@
 											<div class="state-city">
 												
 												<label for="city2">Cidade</label>
-												<select id="city2" form="checkout-form1" name="descity">
+												<select id="city2" form="checkout-form2" name="descity">
 
 													<option value="0">Insira uma Cidade...</option>
 							                    	{loop="$city"}

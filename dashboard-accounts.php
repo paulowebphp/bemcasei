@@ -91,6 +91,16 @@ $app->get( "/dashboard/sua-carteira", function()
 	}//end if
 
 
+	if ( (int)$user->getinaccount() == 0 )
+	{
+		# code...
+		Account::setError(Rule::VALIDATE_ACCOUNT);
+		header('Location: /dashboard/cadastrar');
+		exit;
+
+	}//end if
+
+
 
 
 	$bankValues = Bank::getBanksValues();

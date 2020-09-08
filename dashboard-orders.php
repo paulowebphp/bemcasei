@@ -88,7 +88,14 @@ $app->get( "/dashboard/painel-financeiro/detalhes/:hash", function( $hash )
 
 
 
+	if ( (int)$user->getinaccount() == 0 )
+	{
+		# code...
+		Account::setError(Rule::VALIDATE_ACCOUNT);
+		header('Location: /dashboard/cadastrar');
+		exit;
 
+	}//end if
 
 
 
@@ -277,6 +284,17 @@ $app->get( "/dashboard/painel-financeiro", function()
 		header('Location: /dashboard/cadastrar');
 		exit;
 		
+	}//end if
+
+
+
+	if ( (int)$user->getinaccount() == 0 )
+	{
+		# code...
+		Account::setError(Rule::VALIDATE_ACCOUNT);
+		header('Location: /dashboard/cadastrar');
+		exit;
+
 	}//end if
 
 

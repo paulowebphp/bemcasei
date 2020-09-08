@@ -83,6 +83,16 @@ $app->get( "/dashboard/conta-bancaria/deletar/:hash", function( $hash )
 	}//end if
 
 
+	if ( (int)$user->getinaccount() == 0 )
+	{
+		# code...
+		Account::setError(Rule::VALIDATE_ACCOUNT);
+		header('Location: /dashboard/cadastrar');
+		exit;
+
+	}//end if
+
+
 	$idbank = Validate::getHash($hash);
 
 	if( $idbank == '' )
@@ -231,6 +241,16 @@ $app->post( "/dashboard/conta-bancaria/adicionar", function()
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	if ( (int)$user->getinaccount() == 0 )
+	{
+		# code...
+		Account::setError(Rule::VALIDATE_ACCOUNT);
+		header('Location: /dashboard/cadastrar');
 		exit;
 
 	}//end if
@@ -743,6 +763,16 @@ $app->get( "/dashboard/conta-bancaria/adicionar", function()
 
 	}//end if
 
+
+	if ( (int)$user->getinaccount() == 0 )
+	{
+		# code...
+		Account::setError(Rule::VALIDATE_ACCOUNT);
+		header('Location: /dashboard/cadastrar');
+		exit;
+
+	}//end if
+
 	
 
 
@@ -932,6 +962,16 @@ $app->post( "/dashboard/conta-bancaria/:hash", function( $hash )
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	if ( (int)$user->getinaccount() == 0 )
+	{
+		# code...
+		Account::setError(Rule::VALIDATE_ACCOUNT);
+		header('Location: /dashboard/cadastrar');
 		exit;
 
 	}//end if
@@ -1512,6 +1552,16 @@ $app->get( "/dashboard/conta-bancaria/:hash", function( $hash )
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	if ( (int)$user->getinaccount() == 0 )
+	{
+		# code...
+		Account::setError(Rule::VALIDATE_ACCOUNT);
+		header('Location: /dashboard/cadastrar');
 		exit;
 
 	}//end if

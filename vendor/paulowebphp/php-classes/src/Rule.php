@@ -382,6 +382,8 @@ class Rule extends Model
 
 	const VALIDATE_PLAN = 'Para ter acesso a esta página, você precisa ter um plano ativo | Vá no menu "Meu Plano" para adquirir um plano ou aguarde a confirmação do pagamento | Em caso de dúvida, contate o suporte';
 
+	const VALIDATE_ACCOUNT = 'Para ter acesso a esta página, você precisa antes configurar sua carteira | Para isso, insira seus dados e clique em Enviar | Em caso de dúvida, contate o suporte';
+
 
 	const VALIDATE_UPGRADE = 'Seu plano atual não permite fazer Upgrade | Vá no menu "Meu Plano" para adquirir ou renovar um plano';
 

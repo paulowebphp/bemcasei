@@ -700,7 +700,6 @@ $(document).on('click', '#ModalDashRegisterButton', function(e){
 	e.preventDefault();
 
 	
-	console.log('x');
 
 	let desname = document.querySelector('#desname');
 	let desemail = document.querySelector('#desemail');

@@ -4151,14 +4151,14 @@ class User extends Model
 
 
 		}//end if
-		elseif ( (int)$inplancontext == 0 ) 
+		elseif ( (int)$incheckout == 0 ) 
 		{
 			# code...
 
 			return true;
 
 		}//end else
-		elseif ( (int)$incheckout == 0 ) 
+		elseif ( (int)$inplancontext == 0 ) 
 		{
 			# code...
 

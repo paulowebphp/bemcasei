@@ -6,7 +6,7 @@ use Core\PageDashboard;
 use Core\Rule;
 use Core\Validate;
 use Core\Wirecard;
-use Core\Model\Account;
+//use Core\Model\Account;
 use Core\Model\Address;
 use Core\Model\Cart;
 use Core\Model\Consort;
@@ -18,981 +18,6 @@ use Core\Model\Plan;
 use Core\Model\Payment;
 use Core\Model\PaymentStatus;
 use Core\Model\User;
-
-
-
-
-
-
-$app->get( "/dashboard/comprar-plano/cadastrar", function()
-{
-
-	if( Maintenance::checkMaintenance() )
-	{	
-
-		$maintenance = new Maintenance();
-
-		$maintenance->getMaintenance();
-
-		User::setError($maintenance->getdesdescription());
-		header("Location: /login");
-		exit;
-		
-	}//end if
-
-
-
-
-
-
-
-
-	User::verifyLogin(false);
-
-	$user = User::getFromSession();
-
-	
-
-
-
-
-	$validate = User::validatePlanDashboard( $user );
-
-
-
-	if ( (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
-		exit;
-
-	}//end if
-
-
-
-
-	
-	
-
-
-
-	if ( 
-
-
-		isset($_GET['plano'])
-		&&
-		Validate::validateInplancode($_GET['plano'])
-		&&
-		(int)$_GET['plano'] != 0
-		&&
-		!in_array((int)$_GET['plano'], [101,201,301])
-
-
-	)
-	{
-
-		$inplancode = $_GET['plano'];
-
-
-
-	}//end if
-	else
-	{
-
-		Plan::setError(Rule::VALIDATE_PLAN_PURCHASE_CODE);
-		header('Location: /dashboard/comprar-plano');
-		exit;
-
-	}//end else if
-
-
-
-
-
-
-	if ( (int)$user->getinaccount() == 1 )
-	{
-		# code...
-		header("Location: /dashboard/comprar-plano/checkout?plano=".$inplancode);
-		exit;
-
-	}//end if
-
-
-
-
-	$state = Address::listAllStates();
-
-	$city = Address::listAllCitiesByState(1);
-	
-
-
-
-
-	$page = new PageDashboard();
-
-	$page->setTpl(
-		
-		"plans-purchase-account",
-
-		[
-			'user'=>$user->getValues(),
-			//'payment'=>$payment->getValues(),
-			'inplancode'=>$inplancode,
-			'city'=>$city,
-			'state'=>$state,
-			'validate'=>$validate,
-			'error'=>Account::getError(),
-			'success'=>Account::getSuccess(),
-			'planPurchaseRegisterValues'=> (isset($_SESSION["planPurchaseRegisterValues"])) ? $_SESSION["planPurchaseRegisterValues"] : ['desdocument'=>'', 'nrddd'=>'', 'nrphone'=>'', 'dtbirth'=>'', 'deszipcode'=>'', 'desaddress'=>'', 'desnumber'=>'', 'descomplement'=>'', 'desdistrict'=>'', 'desstate'=>'', 'descity'=>'']
-
-
-		]
-	
-	);//end setTpl
-
-});//END route
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$app->post( "/dashboard/comprar-plano/cadastrar", function()
-{
-
-	$_SESSION['planPurchaseRegisterValues'] = $_POST;
-
-
-
-
-
-
-	/*if ( 
-
-		isset($_POST['checkout-own-card'])
-		||
-		isset($_POST['checkout-boleto']) 
-
-	) 
-	{
-		# code...
-		$_SESSION['planPurchaseRegisterValues']['dtholderbirth'] = '';
-		$_SESSION['planPurchaseRegisterValues']['desholderaddress'] = '';
-		$_SESSION['planPurchaseRegisterValues']['desholderdocument'] = '';
-		$_SESSION['planPurchaseRegisterValues']['desholdernumber'] = '';
-		$_SESSION['planPurchaseRegisterValues']['desholdercomplement'] = '';
-		$_SESSION['planPurchaseRegisterValues']['desholderdistrict'] = '';
-		$_SESSION['planPurchaseRegisterValues']['desholderstate'] = '';
-		$_SESSION['planPurchaseRegisterValues']['desholdercity'] = '';
-		$_SESSION['planPurchaseRegisterValues']['nrholderddd'] = '';
-		$_SESSION['planPurchaseRegisterValues']['nrholderphone'] = '';
-		$_SESSION['planPurchaseRegisterValues']['zipcode'] = '';
-	
-
-	}//end if*/
-	
-
-
-
-
-
-
-
-	if( Maintenance::checkMaintenance() )
-	{	
-
-		$maintenance = new Maintenance();
-
-		$maintenance->getMaintenance();
-
-		User::setError($maintenance->getdesdescription());
-		header("Location: /login");
-		exit;
-		
-	}//end if
-
-
-
-
-
-
-
-
-	User::verifyLogin(false);
-
-	$user = User::getFromSession();
-
-	$validate = User::validatePlanDashboard( $user );
-
-
-
-	if ( (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
-		exit;
-
-	}//end if
-
-
-
-
-
-	
-
-
-
-
-
-	if ( 
-
-
-		isset($_POST['plano'])
-		&&
-		Validate::validateInplancode($_POST['plano'])
-		&&
-		(int)$_POST['plano'] != 0
-		&&
-		!in_array((int)$_POST['plano'], [101,201,301])
-
-
-	)
-	{
-
-		$inplancode = $_POST['plano'];
-
-
-
-	}//end if
-	else
-	{
-
-		Plan::setError(Rule::VALIDATE_PLAN_PURCHASE_CODE);
-		header('Location: /dashboard/comprar-plano');
-		exit;
-
-	}//end else if
-
-
-
-	
-
-
-
-	if ( (int)$user->getinaccount() == 1 )
-	{
-		# code...
-		header("Location: /dashboard/comprar-plano/checkout?plano=".$inplancode);
-		exit;
-		
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['desdocument']) 
-		|| 
-		$_POST['desdocument'] === ''
-		
-	)
-	{
-
-		Account::setError(Rule::ERROR_CPF);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-	if( !$desdocument = Validate::validateDocument($user->intypedoc(), $_POST['desdocument']) )
-	{
-
-		Account::setError(Rule::VALIDATE_CPF);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-
-
-	
-
-
-
-
-	if(
-		
-		!isset($_POST['dtbirth']) 
-		|| 
-		$_POST['dtbirth'] === ''
-		
-	)
-	{
-
-		Account::setError(Rule::ERROR_DATE_BIRTH);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-
-
-
-	if( !$dtbirth = Validate::validateUserMajority($_POST['dtbirth']) )
-	{
-
-		Account::setError(Rule::VALIDATE_DATE_MAJORITY);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-	
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['nrddd']) 
-		|| 
-		$_POST['nrddd'] === ''
-		
-	)
-	{
-
-		Account::setError(Rule::ERROR_DDD);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-
-
-
-	if( !$nrddd = Validate::validateDDD($_POST['nrddd']) )
-	{
-
-		Account::setError(Rule::VALIDATE_DDD);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['nrphone']) 
-		|| 
-		$_POST['nrphone'] === ''
-		
-	)
-	{
-
-		Account::setError(Rule::ERROR_PHONE);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-	if( !$nrphone = Validate::validatePhone($_POST['nrphone']) )
-	{
-
-		Account::setError(Rule::VALIDATE_PHONE);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	if( 
-		
-		!isset($_POST['deszipcode']) 
-		|| 
-		$_POST['deszipcode'] === ''
-	)
-	{
-
-		Account::setError(Rule::ERROR_ZIPCODE);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-		
-	}//end if
-
-
-
-
-
-
-
-	if( !$deszipcode = Validate::validateCEP($_POST['deszipcode']) )
-	{
-
-		Account::setError(Rule::VALIDATE_ZIPCODE);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-	
-
-
-
-
-
-
-
-
-
-
-	if(
-		!isset($_POST['desaddress']) 
-		|| 
-		$_POST['desaddress'] === ''
-		
-	)
-	{
-
-		Account::setError(Rule::ERROR_ADDRESS);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-
-
-
-	if( ( $desaddress = Validate::validateStringNumber($_POST['desaddress'])  ) === false )
-	{
-
-		Account::setError(Rule::VALIDATE_ADDRESS);
-		header('Location: dashboard/comprar-plano//checkout?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-	if(
-		
-		!isset($_POST['desnumber']) 
-		|| 
-		$_POST['desnumber'] === ''
-		
-	)
-	{
-
-		Account::setError(Rule::ERROR_NUMBER);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-
-
-
-	if( !$desnumber = Validate::validateNumber($_POST['desnumber']) )
-	{
-
-		Account::setError(Rule::VALIDATE_NUMBER);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-
-	if(
-		
-		!isset($_POST['desdistrict']) 
-		|| 
-		$_POST['desdistrict'] === ''
-		
-	)
-	{
-
-		Account::setError(Rule::ERROR_DISTRICT);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-
-
-
-	if( ( $desdistrict = Validate::validateStringNumber($_POST['desdistrict'])  ) === false )
-	{
-
-		Account::setError(Rule::VALIDATE_DISTRICT);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-	
-
-	
-	
-
-
-
-	if(
-		
-		!isset($_POST['interms']) 
-		|| 
-		$_POST['interms'] === ''
-		||
-		(int)$_POST['interms'] != 1
-		
-	)
-	{
-
-		Account::setError(Rule::ERROR_INTERMS);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-	
-
-
-	
-
-
-
-
-
-
-
-
-	if(
-				
-		!isset($_POST['descity']) 
-		|| 
-		$_POST['descity'] === ''
-		
-	)
-	{
-
-		Account::setError(Rule::ERROR_CITY);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-	if ( ( $descity = Address::getCity($_POST['descity']) ) === false ) 
-	{
-		# code...
-		Account::setError(Rule::VALIDATE_CITY);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	if(
-				
-		!isset($_POST['desstate']) 
-		|| 
-		$_POST['desstate'] === ''
-		
-	)
-	{
-
-		Account::setError(Rule::ERROR_STATE);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-
-	if ( ( $desstate = Address::getState($_POST['desstate']) ) === false ) 
-	{
-		# code...
-		Account::setError(Rule::VALIDATE_STATE);
-		header('Location: /dashboard/comprar-plano/cadastrar?plano='.$inplancode);
-		exit;
-
-	}//end if
-
-
-	
-
-
-
-
-
-
-	$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
-	
-
-
-
-
-	/*echo '<pre>';
-	var_dump($user->getdesperson());
-	var_dump($user->getdesemail());
-	var_dump($dtbirth);
-	var_dump($desdocument);
-	var_dump(Rule::NR_COUNTRY_AREA);
-	var_dump($nrddd);
-	var_dump($nrphone);
-	var_dump($deszipcode);
-	var_dump($desaddress);
-	var_dump($desnumber);
-	var_dump($descomplement);
-	var_dump($desdistrict);		
-	var_dump($descity['descity']);
-	var_dump($desstate['desstatecode']);
-	var_dump(Rule::DESCOUNTRYCODE);
-	exit;*/
-
-	$nrcountryarea = Rule::NR_COUNTRY_AREA;
-	$descountrycode = Rule::DESCOUNTRYCODE;
-
-
-
-	$wirecard = new Wirecard();
-
-	//$inplan = Wirecard::getPlan($user->getinplan());
-	
-
-
-
-	$wirecardAccountData = $wirecard->createAccount(
-
-		$user->getdesperson(),
-		$user->getdesemail(),
-		$dtbirth,
-		$desdocument,
-		$nrcountryarea,
-		(int)$nrddd,
-		(int)$nrphone,
-		$deszipcode,
-		$desaddress,
-		(int)$desnumber,
-		$descomplement,
-		$desdistrict,		
-		$descity['descity'],
-		$desstate['desstatecode'],
-		$descountrycode
-
-	);//END createAccount
-
-
-
-	
-
-
-	$account = new Account();
-
-
-	$account->get((int)$user->getiduser());
-
-
-	
-
-
-	$account->setData([
-
-
-		'idaccount'=>$account->getidaccount(),
-		'iduser'=>$user->getiduser(),
-		'desaccountcode'=>$wirecardAccountData['desaccountcode'],
-		'desaccesstoken'=>$wirecardAccountData['desaccesstoken'],
-		'deschannelid'=>$wirecardAccountData['deschannelid'],
-		'desname'=>$user->getdesperson(),
-		'desemail'=>$user->getdesemail(),
-		'nrcountryarea'=>$nrcountryarea,
-		'nrddd'=>$nrddd,
-		'nrphone'=>$nrphone,
-		'intypedoc'=>$user->getintypedoc(),
-		'desdocument'=>$desdocument,
-	  	'deszipcode' =>$deszipcode,
-		'desaddress'=>$desaddress,
-		'desnumber' =>$desnumber,
-	  	'descomplement'=>$descomplement,
-	  	'desdistrict'=>$desdistrict,
-	  	'descity'=>$descity['descity'],
-	  	'desstate'=>$desstate['desstatecode'],
-	  	'descountry'=>Rule::DESCOUNTRYCODE,
-	  	'dtbirth'=>$dtbirth
-
-	]);//end setData
-
-	
-
-	$account->save();
-
-
-
-
-
-
-
-
-
-
-
-
-	$address = new Address();
-
-	$address->get((int)$user->getiduser());
-
-
-
-	$address->setData([
-
-
-		'idaddress'=>$address->getidaddress(),
-		'iduser'=>$user->getiduser(),
-		'deszipcode'=>$account->getdeszipcode(),
-		'desaddress'=>$account->getdesaddress(),
-		'desnumber'=>$account->getdesnumber(),
-		'descomplement'=>$account->getdescomplement(),
-		'desdistrict'=>$account->getdesdistrict(),
-		'idcity'=>$descity['idcity'],
-		'descity'=>$descity['descity'],
-		'idstate'=>$desstate['idstate'],
-		'desstate'=>$desstate['desstate'],
-		'desstatecode'=>$desstate['desstatecode'],
-		'descountry'=>Rule::DESCOUNTRY,
-		'descountrycode'=>Rule::DESCOUNTRYCODE
-
-
-	]);//end setData
-
-
-
-	$address->update();
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-	$timezone = new DateTimeZone('America/Sao_Paulo');
-
-	$dt_now = new DateTime("now");
-
-	$dt_now->setTimezone($timezone);
-
-
-	
-
-
-	$user->setdesdocument($account->getdesdocument());
-	$user->setnrcountryarea($account->getnrcountryarea());
-	$user->setnrddd($account->getnrddd());
-	$user->setnrphone($account->getnrphone());
-	$user->setdtbirth($account->getdtbirth());
-	$user->setdtterms($dt_now->format('Y-m-d H:i:s'));
-	$user->setdesipterms($_SERVER['REMOTE_ADDR']);
-	$user->setinterms($_POST['interms']);
-	$user->setinaccount(1);
-
-	
-
-
-	$user->update();
-	$user->setToSession();
-
-
-
-
-
-
-
-
-
-	
-
-	if(isset($_SESSION['planPurchaseRegisterValues'])) unset($_SESSION['planPurchaseRegisterValues']);
-
-	
-	
-	//User::loginAfterPlanPurchase($user->getdeslogin(), $user->getdespassword());
-
-	header("Location: /dashboard/comprar-plano/checkout?plano=".$inplancode);
-	exit;
-	
-
-
-
-});//END route
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1070,7 +95,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-	if ( (int)$user->getinplancontext() != 0 )
+	if ( (int)$user->getinplancontext() != 0 && (int)$user->getincheckout() != 0 )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
@@ -1162,8 +187,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 	$invoucher = 0;
 
 
-
-
+	
 
 	if ( 
 
@@ -1174,6 +198,8 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 	)
 	{
+
+
 
 		if ( ($coupon = Validate::validateCouponCode($_POST['cupom'])) )
 		{
@@ -1384,7 +410,6 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 	
 
 	
- 
 
 
 
@@ -3346,7 +2371,8 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 	)
 	{
 
-
+		
+ 
 
 
 		if(	!isset($_POST['desname']) || $_POST['desname'] == '' )
@@ -3380,6 +2406,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
+		
 
 
 
@@ -3415,7 +2442,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-
+		
 
 
 
@@ -3486,7 +2513,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-
+		
 
 
 
@@ -3572,7 +2599,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-
+		
 
 
 
@@ -3659,7 +2686,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-
+		
 
 
 
@@ -3732,7 +2759,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-
+		
 
 
 
@@ -3807,7 +2834,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-
+		
 
 
 
@@ -3882,8 +2909,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-
-
+		
 
 
 
@@ -3956,6 +2982,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
+		
 
 
 
@@ -4031,8 +3058,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-
-
+		
 
 
 		if(
@@ -4103,6 +3129,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
+		
 
 
 
@@ -4176,8 +3203,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-
-
+		
 
 
 
@@ -4251,7 +3277,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-
+		
 
 
 
@@ -4325,6 +3351,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
+		
 
 
 
@@ -4396,10 +3423,14 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
+		
 
 
-
-
+		/*echo '<pre>';
+		var_dump($_POST);
+		var_dump('XssX223');
+		var_dump(Address::getCity($_POST['descity']));
+		exit;*/
 
 
 		
@@ -4431,6 +3462,8 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 			exit;
 
 		}//end if
+
+
 
 		$descity = $cityArray['descity'];
 
@@ -4981,6 +4014,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 	}//end else
 
 
+	
 
 	/*echo "<pre>";
 	var_dump($inholdertypedoc);
@@ -5752,7 +4786,7 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 
 
 
-	if ( (int)$user->getinplancontext() != 0 )
+	if ( (int)$user->getinplancontext() != 0 && (int)$user->getincheckout() != 0 )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
@@ -6256,8 +5290,56 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 
 
 	
+
+
+	$state = Address::listAllStates();
+
+
+
+
+
+
 	
 
+	$city = [];
+
+	if ( (int)$address->getidstate() > 0 ) 
+	{
+		# code...
+		$city = Address::listAllCitiesByState((int)$address->getidstate());
+
+	}//end if
+	else
+	{
+
+		$city = Address::listAllCitiesByState(1);
+
+		
+
+	}//end else
+
+
+
+
+	$city2 = [];
+	
+
+	if ( isset($_SESSION["planPurchaseValues"]) ) 
+	{
+		# code...
+		$city2 = Address::listAllCitiesByState($_SESSION["planPurchaseValues"]['desstate']);
+
+	}//end if
+	else
+	{
+
+		$city2 = Address::listAllCitiesByState(1);
+	
+
+	}//end else
+
+	
+	
 
 
 	$page = new PageDashboard();
@@ -6446,7 +5528,11 @@ $app->get( "/dashboard/comprar-plano", function()
 
 
 
-	if ( (int)$user->getinplancontext() != 0 )
+	
+
+
+
+	if ( (int)$user->getinplancontext() != 0 && (int)$user->getincheckout() != 0 )
 	{
 		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);

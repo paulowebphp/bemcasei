@@ -102,7 +102,7 @@
                 </div>
                
 
-                <?php }elseif( $user["inplancontext"] == 0 ){ ?>
+                <?php }elseif( $user["inplancontext"] == 0 or $user["incheckout"] == 0 ){ ?>
 
                 <div class="row">
 

@@ -12,26 +12,26 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( $user["inplancontext"] == 0 ){ ?>
+            <?php if( $user["inplancontext"] == 0 ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+                <?php require $this->checkTemplate("dashboard-menu-free");?>
 
-                
-                <?php }elseif( $user["incheckout"] == 0 ){ ?>
+            
+            <?php }elseif( $user["incheckout"] == 0 ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
-               
+                <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
+            
 
-                <?php }elseif( !$validate ){ ?>
+            <?php }elseif( !$validate ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-               
+                <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+            
 
-                <?php }else{ ?>
+            <?php }else{ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu");?>
+                <?php require $this->checkTemplate("dashboard-menu");?>
 
-                <?php } ?>
+            <?php } ?>
                     
 
             </div><!--col-->
@@ -48,13 +48,24 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
                 <div class="row">
                     
                     <div class="col-12">
 
-                        <a href="/dashboard/eventos">
+                        <a href="/dashboard/fornecedores">
                             <div class="dash-title">
-                                <h1>Eventos</h1>
+                                <h1>Fornecedores</h1>
                             </div>
                         </a>
 
@@ -64,7 +75,7 @@
 
         
 
-                <?php if(  $maxEvents > $nrtotal  ){ ?>
+                <?php if(  $maxStakeholders > $nrtotal  ){ ?>
 
                 <div class="row">
 
@@ -73,9 +84,9 @@
 
                         <div class="button-header">
 
-                            <a href="/dashboard/eventos/adicionar">
+                            <a href="/dashboard/fornecedores/adicionar">
                                 <button>
-                                    Criar Evento
+                                    Criar Fornecedor
                                 </button>
                             </a>
                      
@@ -97,7 +108,7 @@
                         <div class="button-header">
 
                             <button id="popover1" class="disabled-links pointer-none" data-toggle="popover" data-placement="bottom" title="<?php echo htmlspecialchars( $popover1["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-content="<?php echo htmlspecialchars( $popover1["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-                                Criar Evento
+                                Criar Fornecedor
                             </button>
                         
                 
@@ -137,7 +148,7 @@
                                 </div>
                             </div> 
                         </div>  
-                    <?php } ?> 
+                    <?php } ?>
 
 
 
@@ -146,40 +157,15 @@
 
 
 
-                <?php $counter1=-1;  if( isset($event) && ( is_array($event) || $event instanceof Traversable ) && sizeof($event) ) foreach( $event as $key1 => $value1 ){ $counter1++; ?>
+                <?php $counter1=-1;  if( isset($stakeholder) && ( is_array($stakeholder) || $stakeholder instanceof Traversable ) && sizeof($stakeholder) ) foreach( $stakeholder as $key1 => $value1 ){ $counter1++; ?>
                 <div class="row card-dash">
 
-
-
-                    <div class="col-md-7 col-12">
+                    <div class="col-md-10 col-12">
                         
 
 
                         <div class="row card-dash-row1">
                             
-
-
-
-                            <div class="col-md-2 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php echo formatDate($value1["dtevent"]); ?></span>
-                                    </div>
-
-
-                                    <div class="card-dash-header">
-                                        <hr>
-                                        <span>Data</span>
-                                    </div>
-
-                                </div><!--card-dash-field-->
-
-
-                            </div><!--col-->
-
 
 
 
@@ -189,13 +175,13 @@
 
 
                                     <div class="card-dash-content">
-                                        <span><?php echo formatTime($value1["tmevent"]); ?></span>
+                                        <span><?php echo htmlspecialchars( $value1["inposition"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
 
                                     <div class="card-dash-header">
                                         <hr>
-                                        <span>Horário</span>
+                                        <span>Posição</span>
                                     </div>
 
                                 </div><!--card-dash-field-->
@@ -209,13 +195,13 @@
 
 
 
-                            <div class="col-md-4 col-12">
+                            <div class="col-md-2 col-12">
 
                                 <div class="card-dash-field">
 
 
                                     <div class="card-dash-content">
-                                        <span><?php echo htmlspecialchars( $value1["desevent"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                        <span><?php echo htmlspecialchars( $value1["desstakeholder"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -236,7 +222,38 @@
 
 
 
-                            <div class="col-md-3 col-12">
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $value1["descategory"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Categoria</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+                            <div class="col-md-2 col-12">
 
                                 <div class="card-dash-field">
 
@@ -263,6 +280,31 @@
 
 
 
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $value1["dessite"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Site</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
 
 
 
@@ -272,11 +314,7 @@
 
 
                                     <div class="card-dash-content">
-                                        <?php if( $value1["instatus"] == 0 ){ ?>
-                                            <span>Não-visível</span>
-                                        <?php }elseif( $value1["instatus"] == 1 ){ ?>
-                                            <span>Visível</span>
-                                        <?php } ?>
+                                        <span><?php if( $value1["instatus"] == 1 ){ ?>Visível<?php }else{ ?>Não-visível<?php } ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -297,21 +335,12 @@
 
 
 
-                            
-
-
-
-
-
                         </div><!--row-->
 
 
 
 
                         <div class="row card-dash-row2">
-
-
-
                             
                             
 
@@ -321,16 +350,13 @@
 
 
                                     <div class="card-dash-content">
-                                        <span><?php echo htmlspecialchars( $value1["desaddress"], ENT_COMPAT, 'UTF-8', FALSE ); ?>, <?php echo htmlspecialchars( $value1["desnumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                        <?php echo htmlspecialchars( $value1["desdistrict"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                        <?php echo htmlspecialchars( $value1["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                        <?php echo htmlspecialchars( $value1["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                        <span><?php echo htmlspecialchars( $value1["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
 
                                         <hr>
-                                        <span>Endereço</span>
+                                        <span>Descrição</span>
                                         
                                     </div>
 
@@ -339,6 +365,9 @@
 
                                 
                             </div><!--col-->
+
+
+                            
 
 
 
@@ -351,13 +380,13 @@
 
 
                                     <div class="card-dash-content">
-                                        <span><?php echo htmlspecialchars( $value1["desdirections"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                        <span><?php echo htmlspecialchars( $value1["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
 
                                         <hr>
-                                        <span>Pontos de Referência</span>
+                                        <span>E-mail</span>
                                         
                                     </div>
 
@@ -370,7 +399,6 @@
 
 
 
-                    
 
 
 
@@ -386,48 +414,13 @@
 
 
 
-
-
-
-
-                    <div class="col-md-3 col-12 card-dash-row3">
-                        
-
-                        <div class="card-dash-field">
-
-
-                            <div class="card-photo">
-                                
-                                <img src="/uploads/events/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-                            </div>
-
-
-                           
-                        </div><!--card-buttons-wrappe-->
-
-
-
-
-                    </div><!--col-->
-
-
-
-
-
-
-
-
-
-
-
                     <div class="col-md-2 col-12 card-dash-row3">
                         
 
                         <div class="card-dash-field">
 
 
-                            <a href='/dashboard/eventos/<?php echo setHash($value1["idevent"]); ?>'>
+                            <a href='/dashboard/fornecedores/<?php echo setHash($value1["idstakeholder"]); ?>'>
 
                                 <button>Editar</button>
 
@@ -435,7 +428,7 @@
                             
 
 
-                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/eventos/<?php echo setHash($value1["idevent"]); ?>/deletar'>
+                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/fornecedores/<?php echo setHash($value1["idstakeholder"]); ?>/deletar'>
 
                                 <button>Deletar</button>
 
@@ -458,7 +451,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-info">
-                            Nenhuma imagem foi encontrada
+                            Nenhum fornecedor foi encontrado
                         </div>
                     </div>
                 </div>
@@ -485,11 +478,11 @@
 
                             <div class="search">
 
-                                <form action="/dashboard/eventos">
+                                <form action="/dashboard/fornecedores">
 
                                     <div class="input-group input-group-sm">
 
-                                        <a href="/dashboard/eventos">
+                                        <a href="/dashboard/fornecedores">
                                             <button type="button" class="btn btn-default">
 
                                                 <i class="fa fa-undo"></i>
@@ -506,8 +499,6 @@
                                                 <i class="fa fa-search"></i>
 
                                             </button>
-
-
 
                                         </div><!--input-group-btn--->
 
@@ -545,6 +536,22 @@
                         
 
                     </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

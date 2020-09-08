@@ -74,6 +74,15 @@ $app->get( "/dashboard/transferencias/transferir-saldo", function()
 	}//end if
 
 
+	if ( (int)$user->getinaccount() == 0 )
+	{
+		# code...
+		Account::setError(Rule::VALIDATE_ACCOUNT);
+		header('Location: /dashboard/cadastrar');
+		exit;
+
+	}//end if
+
 
 	$bank = new Bank();
 
@@ -256,7 +265,14 @@ $app->post( "/dashboard/transferencias/transferir-saldo", function()
 
 
 
+	if ( (int)$user->getinaccount() == 0 )
+	{
+		# code...
+		Account::setError(Rule::VALIDATE_ACCOUNT);
+		header('Location: /dashboard/cadastrar');
+		exit;
 
+	}//end if
 
 
 
@@ -480,6 +496,16 @@ $app->get( "/dashboard/transferencias", function()
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	if ( (int)$user->getinaccount() == 0 )
+	{
+		# code...
+		Account::setError(Rule::VALIDATE_ACCOUNT);
+		header('Location: /dashboard/cadastrar');
 		exit;
 
 	}//end if
