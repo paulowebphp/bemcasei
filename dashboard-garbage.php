@@ -60,7 +60,7 @@ $app->get( "/dashboard/:param1", function( $param1 )
     $user = User::getFromSession();
     
     
-
+	$validate = User::validatePlanDashboard( $user );
 
 	
 	if( Maintenance::checkMaintenance() )
@@ -98,7 +98,15 @@ $app->get( "/dashboard/:param1", function( $param1 )
 		$page->setTpl(
 
 				
-			"404"
+			"404",
+
+			[
+
+				'user'=>$user->getValues(),
+				'validate'=>$validate
+
+
+			]
 		
 		);//end setTpl
 
@@ -200,7 +208,7 @@ $app->get( "/dashboard/:param1/:param2", function( $param1, $param2 )
 
     $user = User::getFromSession();
     
-    
+    $validate = User::validatePlanDashboard( $user );
 
 
 	
@@ -239,7 +247,15 @@ $app->get( "/dashboard/:param1/:param2", function( $param1, $param2 )
 		$page->setTpl(
 
 				
-			"404"
+			"404",
+
+			[
+
+				'user'=>$user->getValues(),
+				'validate'=>$validate
+
+
+			]
 		
 		);//end setTpl
 
@@ -325,7 +341,7 @@ $app->get( "/dashboard/:param1/:param2/:param3", function( $param1, $param2, $pa
     $user = User::getFromSession();
     
     
-
+	$validate = User::validatePlanDashboard( $user );
 
 	
 	if( Maintenance::checkMaintenance() )
@@ -363,7 +379,15 @@ $app->get( "/dashboard/:param1/:param2/:param3", function( $param1, $param2, $pa
 		$page->setTpl(
 
 				
-			"404"
+			"404",
+
+			[
+
+				'user'=>$user->getValues(),
+				'validate'=>$validate
+
+
+			]
 		
 		);//end setTpl
 
@@ -448,7 +472,7 @@ $app->get( "/dashboard/:param1/:param2/:param3/:param4", function( $param1, $par
 
     $user = User::getFromSession();
     
-    
+    $validate = User::validatePlanDashboard( $user );
 
 
 	
@@ -487,7 +511,15 @@ $app->get( "/dashboard/:param1/:param2/:param3/:param4", function( $param1, $par
 		$page->setTpl(
 
 				
-			"404"
+			"404",
+
+			[
+
+				'user'=>$user->getValues(),
+				'validate'=>$validate
+
+
+			]
 		
 		);//end setTpl
 
@@ -590,7 +622,7 @@ $app->get( "/dashboard/:param1/:param2/:param3/:param4/:param5", function( $para
     $user = User::getFromSession();
     
     
-
+	$validate = User::validatePlanDashboard( $user );
 
 	
 	if( Maintenance::checkMaintenance() )
@@ -628,7 +660,15 @@ $app->get( "/dashboard/:param1/:param2/:param3/:param4/:param5", function( $para
 		$page->setTpl(
 
 				
-			"404"
+			"404",
+
+			[
+
+				'user'=>$user->getValues(),
+				'validate'=>$validate
+
+
+			]
 		
 		);//end setTpl
 
@@ -728,7 +768,7 @@ $app->get( "/dashboard/:param1/:param2/:param3/:param4/:param5/:param6", functio
 
     $user = User::getFromSession();
     
-    
+    $validate = User::validatePlanDashboard( $user );
 
 
 	
@@ -767,7 +807,15 @@ $app->get( "/dashboard/:param1/:param2/:param3/:param4/:param5/:param6", functio
 		$page->setTpl(
 
 				
-			"404"
+			"404",
+
+			[
+
+				'user'=>$user->getValues(),
+				'validate'=>$validate
+
+
+			]
 		
 		);//end setTpl
 
@@ -863,7 +911,7 @@ $app->get( "/dashboard/:param1/:param2/:param3/:param4/:param5/:param6/:param7",
     $user = User::getFromSession();
     
     
-
+	$validate = User::validatePlanDashboard( $user );
 
 	
 	if( Maintenance::checkMaintenance() )
@@ -901,7 +949,15 @@ $app->get( "/dashboard/:param1/:param2/:param3/:param4/:param5/:param6/:param7",
 		$page->setTpl(
 
 				
-			"404"
+			"404",
+
+			[
+
+				'user'=>$user->getValues(),
+				'validate'=>$validate
+
+
+			]
 		
 		);//end setTpl
 
