@@ -577,7 +577,7 @@ $app->post( "/dashboard/meus-dados", function()
 
 
 
-		if( !isset($_POST['desholderstate']) || $_POST['desholderstate'] === '' )
+		if( !isset($_POST['desstate']) || $_POST['desstate'] === '' )
 		{
 
 			User::setError(Rule::ERROR_STATE);
@@ -593,7 +593,7 @@ $app->post( "/dashboard/meus-dados", function()
 
 
 
-		if ( ( $stateArray = Address::getState($_POST['desholderstate']) ) === false ) 
+		if ( ( $stateArray = Address::getState($_POST['desstate']) ) === false ) 
 		{
 
 			User::setError(Rule::VALIDATE_STATE);
@@ -612,7 +612,7 @@ $app->post( "/dashboard/meus-dados", function()
 
 
 
-		if( !isset($_POST['desholdercity']) || $_POST['desholdercity'] === '' )
+		if( !isset($_POST['descity']) || $_POST['descity'] === '' )
 		{
 
 			User::setError(Rule::ERROR_CITY);
@@ -628,7 +628,7 @@ $app->post( "/dashboard/meus-dados", function()
 
 
 
-		if( ( $cityArray = Address::getCity($_POST['desholdercity']) ) === false ) 
+		if( ( $cityArray = Address::getCity($_POST['descity']) ) === false ) 
 		{
 
 			User::setError(Rule::VALIDATE_CITY);
@@ -653,7 +653,7 @@ $app->post( "/dashboard/meus-dados", function()
 
 		//$city = Address::getCity($_POST['descity']);
 
-
+		$user->setnrcountryarea(Rule::NR_COUNTRY_AREA);
 		$user->setdtbirth( $dtbirth );
 		$user->setnrddd( $nrddd );
 		$user->setnrphone( $nrphone );

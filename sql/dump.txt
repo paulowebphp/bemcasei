@@ -47,7 +47,7 @@ mysqldump -u root -p --routines db_amarcasarv3 > ../../../bemcasei/sql/db_amarca
 
 
 
-
+amarca35_user
 
 SELECT COUNT(*) AS intTable
 FROM information_schema.TABLES

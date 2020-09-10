@@ -220,7 +220,7 @@ $app->get( "/dashboard/painel-financeiro/detalhes/:hash", function( $hash )
 
 
 $app->get( "/dashboard/painel-financeiro", function()
-{
+{  
 
 
 	
