@@ -3368,11 +3368,6 @@ $app->post( "/checkout/:hash", function( $hash )
 
 
 
-
-
-
-
-
 	try 
 	{
 

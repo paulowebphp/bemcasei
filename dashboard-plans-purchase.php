@@ -562,6 +562,105 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if(
+			
+			!isset($_POST['desdocument']) 
+			|| 
+			$_POST['desdocument'] === ''
+			
+		)
+		{
+
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::ERROR_CPF);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::ERROR_CPF);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+
+		}//end if
+
+		if( !$desdocument = Validate::validateDocument(0, $_POST['desdocument']) )
+		{
+
+			if ( $coupon == '')
+			{
+				# code...
+				
+				Payment::setError(Rule::VALIDATE_CPF);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode);
+				exit;
+
+
+			}//end if
+			else
+			{
+
+
+			
+				Payment::setError(Rule::VALIDATE_CPF);
+				header('Location: /dashboard/comprar-plano/checkout?plano='.$inplancode.'&cupom='.$coupon.'&acao=aplicar');
+				exit;
+
+
+			}//end else
+
+		}//end if
+
+
+
+
+
+
+
+
+
+
+
 		
 
 
@@ -1182,7 +1281,11 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 		$desstate = $stateArray['desstatecode'];
 
 
-		
+		$desholdername = null;
+		$descardcode_number = null;
+		$descardcode_month = null;
+		$descardcode_year = null;
+		$descardcode_cvc = null;
 		
 		$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
 
@@ -1208,6 +1311,10 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 	)
 	{
+
+
+
+
 
 
 		if(	!isset($_POST['desname']) || $_POST['desname'] == '' )
@@ -1281,9 +1388,9 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		if(
 			
-			!isset($_POST['desholderdocument']) 
+			!isset($_POST['desdocument']) 
 			|| 
-			$_POST['desholderdocument'] === ''
+			$_POST['desdocument'] === ''
 			
 		)
 		{
@@ -1314,7 +1421,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		}//end if
 
-		if( !$desdocument = Validate::validateDocument(0, $_POST['desholderdocument']) )
+		if( !$desdocument = Validate::validateDocument(0, $_POST['desdocument']) )
 		{
 
 			if ( $coupon == '')
@@ -1354,9 +1461,9 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		if(
 			
-			!isset($_POST['nrholderddd']) 
+			!isset($_POST['nrdddd']) 
 			|| 
-			$_POST['nrholderddd'] === ''
+			$_POST['nrdddd'] === ''
 			
 		)
 		{
@@ -1398,7 +1505,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-		if( !$nrddd = Validate::validateDDD($_POST['nrholderddd']) )
+		if( !$nrddd = Validate::validateDDD($_POST['nrdddd']) )
 		{
 
 			if ( $coupon == '')
@@ -1442,9 +1549,9 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		if(
 			
-			!isset($_POST['nrholderphone']) 
+			!isset($_POST['nrphone']) 
 			|| 
-			$_POST['nrholderphone'] === ''
+			$_POST['nrphone'] === ''
 			
 		)
 		{
@@ -1483,7 +1590,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-		if( !$nrphone = Validate::validatePhone($_POST['nrholderphone']) )
+		if( !$nrphone = Validate::validatePhone($_POST['nrphone']) )
 		{
 
 			if ( $coupon == '')
@@ -1527,9 +1634,9 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		if(
 			
-			!isset($_POST['dtholderbirth']) 
+			!isset($_POST['dtbirth']) 
 			|| 
-			$_POST['dtholderbirth'] === ''
+			$_POST['dtbirth'] === ''
 			
 		)
 		{
@@ -1560,7 +1667,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		}//end if
 
-		if( !$dtbirth = Validate::validateDate($_POST['dtholderbirth'], 0) )
+		if( !$dtbirth = Validate::validateDate($_POST['dtbirth'], 0) )
 		{
 
 			if ( $coupon == '')
@@ -1674,9 +1781,9 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 		if(
-			!isset($_POST['desholderaddress']) 
+			!isset($_POST['desaddress']) 
 			|| 
-			$_POST['desholderaddress'] === ''
+			$_POST['desaddress'] === ''
 			
 		)
 		{
@@ -1707,7 +1814,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		}//end if
 
-		if( !$desaddress = Validate::validateStringNumber($_POST['desholderaddress']) )
+		if( !$desaddress = Validate::validateStringNumber($_POST['desaddress']) )
 		{
 
 			if ( $coupon == '')
@@ -1751,9 +1858,9 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		if(
 			
-			!isset($_POST['desholdernumber']) 
+			!isset($_POST['desnumber']) 
 			|| 
-			$_POST['desholdernumber'] === ''
+			$_POST['desnumber'] === ''
 			
 		)
 		{
@@ -1784,7 +1891,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		}//end if
 
-		if( !$desnumber = Validate::validateNumber($_POST['desholdernumber']) )
+		if( !$desnumber = Validate::validateNumber($_POST['desnumber']) )
 		{
 
 			if ( $coupon == '')
@@ -1825,9 +1932,9 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		if(
 			
-			!isset($_POST['desholderdistrict']) 
+			!isset($_POST['desdistrict']) 
 			|| 
-			$_POST['desholderdistrict'] === ''
+			$_POST['desdistrict'] === ''
 			
 		)
 		{
@@ -1858,7 +1965,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		}//end if
 
-		if( !$desdistrict = Validate::validateStringNumber($_POST['desholderdistrict']) )
+		if( !$desdistrict = Validate::validateStringNumber($_POST['desdistrict']) )
 		{
 
 			if ( $coupon == '')
@@ -2004,7 +2111,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		}//end if
 
-		if( !$desname = Validate::validateCardName($_POST['desholdername']) )
+		if( !$desholdername = Validate::validateCardName($_POST['desholdername']) )
 		{
 
 			if ( $coupon == '')
@@ -2267,9 +2374,9 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		if(
 				
-			!isset($_POST['desholdercity']) 
+			!isset($_POST['descity']) 
 			|| 
-			$_POST['desholdercity'] === ''
+			$_POST['descity'] === ''
 			
 		)
 		{
@@ -2282,7 +2389,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-		if ( ( $cityArray = Address::getCity($_POST['desholdercity']) ) === false ) 
+		if ( ( $cityArray = Address::getCity($_POST['descity']) ) === false ) 
 		{
 			# code...
 			Payment::setError(Rule::VALIDATE_CITY);
@@ -2301,9 +2408,9 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 		if(
 				
-			!isset($_POST['desholderstate']) 
+			!isset($_POST['desstate']) 
 			|| 
-			$_POST['desholderstate'] === ''
+			$_POST['desstate'] === ''
 			
 		)
 		{
@@ -2316,7 +2423,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-		if ( ( $stateArray = Address::getState($_POST['desholderstate']) ) === false ) 
+		if ( ( $stateArray = Address::getState($_POST['desstate']) ) === false ) 
 		{
 			# code...
 			Payment::setError(Rule::VALIDATE_STATE);
@@ -2341,7 +2448,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 		
-		$descomplement = Validate::validateStringNumber($_POST['desholdercomplement'], false, true);
+		$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
 
 		$intypedoc = 0;
 

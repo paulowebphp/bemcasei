@@ -671,6 +671,8 @@
 										
 										<label for="state">Estado</label>
 										<select id="state" form="checkout-form5" name="desstate">
+
+											<option value="0">Insira um Estado...</option>
 					                    	<?php $counter1=-1;  if( isset($state) && ( is_array($state) || $state instanceof Traversable ) && sizeof($state) ) foreach( $state as $key1 => $value1 ){ $counter1++; ?> 
 												<option value="<?php echo htmlspecialchars( $value1["idstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idstate"] == $domainCheckoutValues["desstate"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
 											<?php } ?>
@@ -686,6 +688,8 @@
 										
 										<label for="city">Cidade</label>
 										<select id="city" form="checkout-form5" name="descity">
+
+											<option value="0">Insira uma Cidade...</option>
 					                    	<?php $counter1=-1;  if( isset($city) && ( is_array($city) || $city instanceof Traversable ) && sizeof($city) ) foreach( $city as $key1 => $value1 ){ $counter1++; ?>
 												<option value="<?php echo htmlspecialchars( $value1["idcity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idcity"] == $domainCheckoutValues["descity"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
 											<?php } ?>
@@ -952,6 +956,7 @@
 										<label for="state2">Estado</label>
 										<select id="state2" form="checkout-form4" name="desstate">
 											
+											<option value="0">Insira um Estado...</option>
 											<?php $counter1=-1;  if( isset($state) && ( is_array($state) || $state instanceof Traversable ) && sizeof($state) ) foreach( $state as $key1 => $value1 ){ $counter1++; ?> 
 												<option value="<?php echo htmlspecialchars( $value1["idstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idstate"] == $domainCheckoutValues["desstate"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
 											<?php } ?>
@@ -971,6 +976,8 @@
 										
 										<label for="city2">Cidade</label>
 										<select id="city2" form="checkout-form4" name="descity">
+
+											<option value="0">Insira uma Cidade...</option>
 											<?php $counter1=-1;  if( isset($city) && ( is_array($city) || $city instanceof Traversable ) && sizeof($city) ) foreach( $city as $key1 => $value1 ){ $counter1++; ?>
 												<option value="<?php echo htmlspecialchars( $value1["idcity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idcity"] == $domainCheckoutValues["descity"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
 											<?php } ?>
