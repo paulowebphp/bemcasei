@@ -20,19 +20,19 @@
                 <?php }elseif( $user["incheckout"] == 0 ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
-               
+                
 
                 <?php }elseif( !$validate ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-               
+                
 
                 <?php }else{ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu");?>
 
                 <?php } ?>
-
+                  
             </div><!--col-->
 
 
@@ -41,19 +41,19 @@
             <div class="col-md-9 col-12 dash-panel">
 
 
-                
-                <form method="post" action="/dashboard/meu-amor" enctype="multipart/form-data">
+                 
+
+               <form method="post" action="/dashboard/listas-de-fora/adicionar">
 
                     <div class="row">
                         <div class="col-md-12">
                             
                             <div class="dash-title">
-                                <h1>Meu Amor</h1>
+                                <h1>Criar Lista de Fora</h1>
                             </div><!--dash-title-->
 
                         </div><!--col-->
                     </div><!--row-->
-
 
 
 
@@ -87,48 +87,148 @@
 
 
 
+                    
+
                     <div class="row">
                         
                         <div class="col-md-6 dash-column">
 
 
-                            <div class="dash-input-row">
-
-                                <label for="desconsort">Nome</label>
-                                <input type="text" class="form-control" id="desconsort" name="desconsort" value="<?php echo htmlspecialchars( $consort["desconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-                            </div><!--dash-input-row-->
 
 
 
+                            <div class="dash-input-row input-date">
+                                
+                                <div class="input-group mb-3">
 
-                            <div class="dash-input-row">
+                                  <div class="input-group-prepend">
 
-                                <label for="desconsortemail">E-mail (opcional)</label>
-                                <input type="text" class="form-control" id="desconsortemail" name="desconsortemail" value="<?php echo htmlspecialchars( $consort["desconsortemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                    <label class="input-group-text" for="instatus">Visível</label>
 
-                            </div><!--dash-input-row-->
+                                  </div><!--input-group-prepend-->
 
+                                  <select id="instatus" name="instatus" class="custom-select">
 
+                                    <option value="0">Não</option>
+                                    <option value="1" selected>Sim</option>
 
-
-
-
-
-
-                            <div class="dash-input-row">
-
-                                <input type="hidden" class="form-control" id="idconsort" name="idconsort" value="<?php echo htmlspecialchars( $consort["idconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-                            </div><!--dash-input-row-->
-
-
-
-
+                                  </select>
 
                                 
+                                </div><!--mb-3-->
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+                            <div class="dash-input-row input-inposition">
+
+                                <label for="inposition">Posição</label>
+                                <input type="text" class="form-control" id="inposition" name="inposition">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+                        
+
+
+                            <div class="dash-input-row input-date">
+
+
+                                <label for="desouterlist">Título da Sua Lista</label>
+                                <input type="text" class="form-control" id="desouterlist" name="desouterlist">
+
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+
+                                <label for="nrphone">Telefone <br><small><i>(Da própria loja ou do vendedor responsável pela lista)</i></small></label>
+                                <input type="text" class="form-control" id="nrphone" name="nrphone">
+
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+
+                                <label for="dessite">Site <br><small><i>(Coloque aqui o site da sua lista | Exemplo: https://www.loja.com.br/sua-lista ou https://sua-lista.loja.com.br)</i></small></label>
+                                <input type="text" class="form-control" id="dessite" name="dessite">
+
+
+                            </div><!--dash-input-row-->
+
+
+   
+
+
+
+                            
+
+
+
+                           
+
+                            <div class="dash-input-row">
+
+
+                                <label for="deslocation">Endereço <br><small><i>(Coloque aqui o endereço físico da loja onde você fez sua lista, caso haja)</i></small></label>
+                                <input type="text" class="form-control" id="deslocation" name="deslocation">
+
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <div>
+                                    <label for="desdescription">Descrição</label>
+                                </div>
+                                
+                                <textarea rows="10" cols="90" maxlength="500" id="desdescription" name="desdescription"></textarea>
+
+                            </div><!--dash-input-row-->
+
+
+
+
+                                    
 
                         </div><!--col-md-6-->
+
+
 
 
 
@@ -153,17 +253,27 @@
 
                     <div class="row">
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
 
                             <div class="dash-input-row input-footer">
                                 
                                 <button type="submit" class="btn btn-primary">Salvar</button>
 
-                                <a href="/dashboard" class="btn btn-danger">Voltar</a>
+                                <a href="/dashboard/listas-de-fora" class="btn btn-danger">Voltar</a>
 
                             </div><!--dash-input-row-->
                             
                         </div><!--col-->
+
+
+
+                        <div class="col-md-6">
+
+                            &nbsp;
+                            
+                        </div><!--col-->
+
+
 
                     </div><!--row-->
 

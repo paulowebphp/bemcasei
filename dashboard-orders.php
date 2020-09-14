@@ -259,7 +259,7 @@ $app->get( "/dashboard/painel-financeiro", function()
 	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
 	{
 		# code...
-		User::setError(Rule::VALIDATE_PLAN);
+		//User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
 		exit;
 

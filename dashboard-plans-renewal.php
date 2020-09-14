@@ -74,9 +74,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
-	$method = 'cartao-proprio';
+	//$method = 'cartao-proprio';
 
-
+	
 	
 
 
@@ -129,7 +129,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
-
+	/*
 	if ( 
 
 
@@ -149,6 +149,95 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 	}//end if
+	*/
+
+	$plan = new Plan();
+
+	$lastplan0 = $plan->getLastPlan((int)$user->getiduser());
+
+	
+
+
+	if ( 
+
+
+		isset($_POST['inplancode'])
+		&&
+		Validate::validateInplancode($_POST['inplancode'])
+		&&
+		(int)$_POST['inplancode'] != 0
+
+
+	)
+	{
+
+		
+
+		if (
+
+
+			in_array((int)$lastplan0['inpaymentstatus'], [5,9])
+
+
+		)
+		{
+
+			$planRenewalCodeValidate = false;
+
+			$planRenewalArray = Plan::getPlanArrayRenewal( $lastplan0['incontext'] );
+
+			
+
+			foreach ($planRenewalArray as $row) 
+			{
+
+				if($row['inplancode'] == $_POST['inplancode'])
+				{
+
+					$planRenewalCodeValidate = true;
+
+				}//end if
+
+			}//end foreach
+
+			if($planRenewalCodeValidate)
+			{
+
+				$inplancode = $_POST['inplancode'];
+
+			}//end if
+			else
+			{
+
+				Plan::setError('O código e plano que você está tentando usar não é válido');
+				header('Location: /dashboard/renovar');
+				exit;
+
+			}//end else
+
+
+		}//end if
+		else
+		{
+
+			Plan::setError(Rule::PLAN_WAIT_FOR_AUTHORIZATION);
+			header('Location: /dashboard/renovar');
+			exit;
+
+		}//end else
+
+
+
+	}//end if
+	else
+	{
+
+		Plan::setError(Rule::VALIDATE_PLAN_PURCHASE_CODE);
+		header('Location: /dashboard/renovar');
+		exit;
+
+	}//end else if
+
 
 
 
@@ -281,7 +370,31 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 		
-		
+		if(
+			
+			!isset($_POST['desdocument']) 
+			|| 
+			$_POST['desdocument'] === ''
+			
+		)
+		{
+
+
+			Payment::setError(Rule::ERROR_CPF);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+		}//end if
+
+		if( !$desdocument = Validate::validateDocument(0, $_POST['desdocument']) )
+		{
+
+			Payment::setError(Rule::VALIDATE_CPF);
+			header('Location: /dashboard/renovar/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
 
 
 
@@ -636,6 +749,13 @@ $app->post( "/dashboard/renovar/checkout", function()
 		$desstate = $stateArray['desstatecode'];
 
 
+
+		$desholdername = null;
+		$descardcode_number = null;
+		$descardcode_month = null;
+		$descardcode_year = null;
+		$descardcode_cvc = null;
+
 		
 		
 		$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
@@ -719,9 +839,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		if(
 			
-			!isset($_POST['desholderdocument']) 
+			!isset($_POST['desdocument']) 
 			|| 
-			$_POST['desholderdocument'] === ''
+			$_POST['desdocument'] === ''
 			
 		)
 		{
@@ -734,7 +854,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		}//end if
 
-		if( !$desdocument = Validate::validateDocument(0, $_POST['desholderdocument']) )
+		if( !$desdocument = Validate::validateDocument(0, $_POST['desdocument']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_CPF);
@@ -756,9 +876,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		if(
 			
-			!isset($_POST['nrholderddd']) 
+			!isset($_POST['nrddd']) 
 			|| 
-			$_POST['nrholderddd'] === ''
+			$_POST['nrddd'] === ''
 			
 		)
 		{
@@ -782,7 +902,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
-		if( !$nrddd = Validate::validateDDD($_POST['nrholderddd']) )
+		if( !$nrddd = Validate::validateDDD($_POST['nrddd']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_DDD);
@@ -808,9 +928,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		if(
 			
-			!isset($_POST['nrholderphone']) 
+			!isset($_POST['nrphone']) 
 			|| 
-			$_POST['nrholderphone'] === ''
+			$_POST['nrphone'] === ''
 			
 		)
 		{
@@ -831,7 +951,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
-		if( !$nrphone = Validate::validatePhone($_POST['nrholderphone']) )
+		if( !$nrphone = Validate::validatePhone($_POST['nrphone']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_PHONE);
@@ -857,9 +977,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		if(
 			
-			!isset($_POST['dtholderbirth']) 
+			!isset($_POST['dtbirth']) 
 			|| 
-			$_POST['dtholderbirth'] === ''
+			$_POST['dtbirth'] === ''
 			
 		)
 		{
@@ -872,7 +992,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		}//end if
 
-		if( !$dtbirth = Validate::validateDate($_POST['dtholderbirth'], 0) )
+		if( !$dtbirth = Validate::validateDate($_POST['dtbirth'], 0) )
 		{
 
 			Payment::setError(Rule::VALIDATE_DATE_PAST_TO_NOW);
@@ -932,9 +1052,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 		if(
-			!isset($_POST['desholderaddress']) 
+			!isset($_POST['desaddress']) 
 			|| 
-			$_POST['desholderaddress'] === ''
+			$_POST['desaddress'] === ''
 			
 		)
 		{
@@ -947,7 +1067,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		}//end if
 
-		if( !$desaddress = Validate::validateStringNumber($_POST['desholderaddress']) )
+		if( !$desaddress = Validate::validateStringNumber($_POST['desaddress']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_ADDRESS);
@@ -973,9 +1093,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		if(
 			
-			!isset($_POST['desholdernumber']) 
+			!isset($_POST['desnumber']) 
 			|| 
-			$_POST['desholdernumber'] === ''
+			$_POST['desnumber'] === ''
 			
 		)
 		{
@@ -988,7 +1108,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		}//end if
 
-		if( !$desnumber = Validate::validateNumber($_POST['desholdernumber']) )
+		if( !$desnumber = Validate::validateNumber($_POST['desnumber']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_NUMBER);
@@ -1011,9 +1131,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		if(
 			
-			!isset($_POST['desholderdistrict']) 
+			!isset($_POST['desdistrict']) 
 			|| 
-			$_POST['desholderdistrict'] === ''
+			$_POST['desdistrict'] === ''
 			
 		)
 		{
@@ -1026,7 +1146,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		}//end if
 
-		if( !$desdistrict = Validate::validateStringNumber($_POST['desholderdistrict']) )
+		if( !$desdistrict = Validate::validateStringNumber($_POST['desdistrict']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_DISTRICT);
@@ -1099,7 +1219,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		}//end if
 
-		if( !$desname = Validate::validateCardName($_POST['desholdername']) )
+		if( !$desholdername = Validate::validateCardName($_POST['desholdername']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_HOLDER_NAME);
@@ -1235,9 +1355,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		if(
 				
-			!isset($_POST['desholdercity']) 
+			!isset($_POST['descity']) 
 			|| 
-			$_POST['desholdercity'] === ''
+			$_POST['descity'] === ''
 			
 		)
 		{
@@ -1249,7 +1369,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
-		if ( ( $cityArray = Address::getCity($_POST['desholdercity']) ) === false ) 
+		if ( ( $cityArray = Address::getCity($_POST['descity']) ) === false ) 
 		{
 			# code...
 			Payment::setError(Rule::VALIDATE_CITY);
@@ -1267,9 +1387,9 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		if(
 				
-			!isset($_POST['desholderstate']) 
+			!isset($_POST['desstate']) 
 			|| 
-			$_POST['desholderstate'] === ''
+			$_POST['desstate'] === ''
 			
 		)
 		{
@@ -1281,7 +1401,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 
-		if ( ( $stateArray = Address::getState($_POST['desholderstate']) ) === false ) 
+		if ( ( $stateArray = Address::getState($_POST['desstate']) ) === false ) 
 		{
 			# code...
 			Payment::setError(Rule::VALIDATE_STATE);
@@ -1305,7 +1425,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 
 		
-		$descomplement = Validate::validateStringNumber($_POST['desholdercomplement'], false, true);
+		$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
 
 		$intypedoc = 0;
 
@@ -2198,7 +2318,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 	
 
-	$plan = new Plan();
+	//$plan = new Plan();
 
 	$lastplan = $plan->getLastPlanPurchased($user->getiduser());
 
@@ -2433,14 +2553,20 @@ $app->post( "/dashboard/renovar/checkout", function()
 	$consort = new Consort();
 
 	$consort->get((int)$user->getiduser());
+	
+	$email_renewal = utf8_decode(Rule::EMAIL_RENEWAL);
+
 
 
 	if ( (int)$payment->getinpaymentmethod() != 0 )
 	{
-		# code...
+
+		
+
+
 		$userMailer = new Mailer(
 				
-			Rule::EMAIL_RENEWAL,
+			$email_renewal,
 
 			"plan", 
 			
@@ -2471,7 +2597,7 @@ $app->post( "/dashboard/renovar/checkout", function()
 
 		$userMailer = new Mailer(
 				
-			Rule::EMAIL_RENEWAL,
+			$email_renewal,
 
 			"plan-boleto", 
 			
@@ -2673,7 +2799,7 @@ $app->get( "/dashboard/renovar/checkout", function()
 
 
 
-
+	
 
 	
 
@@ -2693,14 +2819,95 @@ $app->get( "/dashboard/renovar/checkout", function()
 
 	
 
+	
+
+
+	
+
+	if ( 
+
+
+		isset($_GET['plano'])
+		&&
+		Validate::validateInplancode($_GET['plano'])
+		&&
+		(int)$_GET['plano'] != 0
+
+
+	)
+	{
+
+		
+
+		if (
+
+
+			in_array((int)$lastplan['inpaymentstatus'], [5,9])
+
+
+		)
+		{
+
+			$planRenewalCodeValidate = false;
+
+			$planRenewalArray = Plan::getPlanArrayRenewal( $lastplan['incontext'] );
+
+
+			foreach ($planRenewalArray as $row) 
+			{
+
+				if($row['inplancode'] == $_GET['plano'])
+				{
+
+					$planRenewalCodeValidate = true;
+
+				}//end if
+
+			}//end foreach
+
+			if($planRenewalCodeValidate)
+			{
+
+				$plan = $_GET['plano'];
+
+			}//end if
+			else
+			{
+
+				Plan::setError('O código e plano que você está tentando usar não é válido');
+				header('Location: /dashboard/renovar');
+				exit;
+
+			}//end else
+
+
+		}//end if
+		else
+		{
+
+			Plan::setError(Rule::PLAN_WAIT_FOR_AUTHORIZATION);
+			header('Location: /dashboard/renovar');
+			exit;
+
+		}//end else
+
+
+
+	}//end if
+	else
+	{
+
+		Plan::setError(Rule::VALIDATE_PLAN_PURCHASE_CODE);
+		header('Location: /dashboard/renovar');
+		exit;
+
+	}//end else if
 
 
 
 
 
-
-
-
+	/*
 	if ( 
 
 
@@ -2750,6 +2957,7 @@ $app->get( "/dashboard/renovar/checkout", function()
 		exit;
 
 	}//end else if
+	*/
 
 
 
@@ -2787,8 +2995,7 @@ $app->get( "/dashboard/renovar/checkout", function()
 
 	//$lastAddressPlan = Address::getLastAddressPlan($user->getiduser());
 
-
-
+	
 
 	$address = new Address();
 
@@ -2828,7 +3035,7 @@ $app->get( "/dashboard/renovar/checkout", function()
 
 	}//end else
 
-
+	
 
 
 	$city2 = [];

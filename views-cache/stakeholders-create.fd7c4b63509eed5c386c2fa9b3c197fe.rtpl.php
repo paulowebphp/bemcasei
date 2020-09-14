@@ -12,26 +12,26 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( $user["inplancontext"] == 0 ){ ?>
+            <?php if( $user["inplancontext"] == 0 ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+                <?php require $this->checkTemplate("dashboard-menu-free");?>
 
-                
-                <?php }elseif( $user["incheckout"] == 0 ){ ?>
+            
+            <?php }elseif( $user["incheckout"] == 0 ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
-               
+                <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
+            
 
-                <?php }elseif( !$validate ){ ?>
+            <?php }elseif( !$validate ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-               
+                <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+            
 
-                <?php }else{ ?>
+            <?php }else{ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu");?>
+                <?php require $this->checkTemplate("dashboard-menu");?>
 
-                <?php } ?>
+            <?php } ?>
                     
 
             </div><!--col-->
@@ -42,22 +42,7 @@
             <div class="col-md-9 col-12 dash-panel">
 
 
-                
-
-               <form method="post" action="/dashboard/padrinhos-madrinhas/adicionar" enctype="multipart/form-data">
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            
-                            <div class="dash-title">
-                                <h1>Criar Padrinho ou Madrinha</h1>
-                            </div><!--dash-title-->
-
-                        </div><!--col-->
-                    </div><!--row-->
-
-
-                    <?php if( $success != '' ){ ?>
+                <?php if( $success != '' ){ ?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -83,6 +68,17 @@
                         </div>  
                     <?php } ?>
 
+               <form method="post" action="/dashboard/fornecedores/adicionar">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <div class="dash-title">
+                                <h1>Criar Fornecedor</h1>
+                            </div><!--dash-title-->
+
+                        </div><!--col-->
+                    </div><!--row-->
 
                     <div class="row">
                         
@@ -118,8 +114,6 @@
 
 
 
-
-
                             <div class="dash-input-row input-inposition">
 
                                 <label for="inposition">Posição</label>
@@ -134,11 +128,40 @@
                         
 
 
+                            <div class="dash-input-row input-date">
+
+
+                                <label for="desstakeholder">Fornecedor</label>
+                                <input type="text" class="form-control" id="desstakeholder" name="desstakeholder">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
                             <div class="dash-input-row">
 
 
-                                <label for="desbestfriend">Nome</label>
-                                <input type="text" class="form-control" id="desbestfriend" name="desbestfriend">
+                                <label for="descategory">Categoria</label>
+                                <input type="text" class="form-control" id="descategory" name="descategory">
+
+
+                            </div><!--dash-input-row-->
+
+
+   
+
+
+
+
+
+                            <div class="dash-input-row">
+
+
+                                <label for="nrphone">Telefone</label>
+                                <input type="text" class="form-control" id="nrphone" name="nrphone">
 
 
                             </div><!--dash-input-row-->
@@ -148,7 +171,16 @@
 
 
 
-                           
+
+                            <div class="dash-input-row">
+
+                                 <label for="dessite">Site</label>
+                                <input type="text" class="form-control" id="dessite" name="dessite">
+
+                            </div><!--dash-input-row-->
+
+
+
 
 
 
@@ -157,57 +189,56 @@
 
                             <div class="dash-input-row">
 
+                                <label for="desemail">E-mail</label>
+                                <input type="email" class="form-control" id="desemail" name="desemail">
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+
+                                <label for="deslocation">Local</label>
+                                <input type="text" class="form-control" id="deslocation" name="deslocation">
+
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+                           <div class="dash-input-row">
+
                                 <div>
                                     <label for="desdescription">Descrição</label>
-                                    <!--<input type="text" class="form-control" id="desdescription" name="desdescription" placeholder="Digite o nome aqui" ">-->
+                                    <!--<input type="text" class="form-control" id="desdescription" name="desdescription" ">-->
                                 </div>
                                 
                                 <textarea rows="10" cols="90" maxlength="500" id="desdescription" name="desdescription"></textarea>
 
                             </div><!--dash-input-row-->
 
-
-
-
-
-
-
-
-
-
-
-
-                            <div class="dash-input-row input-photo">
-
                             
-                                    <div class="input-group mb-3">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                                      </div>
-                                      <div class="custom-file">
-                                        <input type="file" name="file" class="custom-file-input" id="file" aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="file"></label>
 
-                                      </div>
-                                    </div>
-                                    <div class="input-rows">
-                                        <img class="img-responsive" id="image-preview" src="/uploads/bestfriends/0.jpg" alt="">
-                                    </div>
+
+
+
+
+
+
                                     
 
-                                
-                            </div><!--dash-input-row-->
-
-
-                            
-
-
-
-
-
-                                
-
                         </div><!--col-md-6-->
+
+
+
 
 
 
@@ -217,7 +248,8 @@
                             
                             
                             
-                            &nbsp;
+                           &nbsp;
+
 
                             
                             
@@ -238,7 +270,7 @@
                                 
                                 <button type="submit" class="btn btn-primary">Salvar</button>
 
-                                <a href="/dashboard/padrinhos-madrinhas" class="btn btn-danger">Voltar</a>
+                                <a href="/dashboard/fornecedores" class="btn btn-danger">Voltar</a>
 
                             </div><!--dash-input-row-->
                             

@@ -175,6 +175,29 @@ $app->get( "/criar-site", function()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $app->post( "/criar-site", function()
 {
 
@@ -631,6 +654,28 @@ $app->post( "/criar-site", function()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $app->get( "/checkout/:hash", function( $hash )
 {
 	
@@ -1061,7 +1106,6 @@ $app->get( "/checkout/:hash", function( $hash )
 
 
 
-	
 
 	$city = [];
 	
@@ -2092,6 +2136,7 @@ $app->post( "/checkout/:hash", function( $hash )
 		$desholdercomplement = Validate::validateStringNumber($_POST['desholdercomplement'], false, true);
 		$inholdertypedoc = 0;
 
+		$desholdername = null;
 		$descardcode_number = null;
 		$descardcode_month = null;
 		$descardcode_year = null;

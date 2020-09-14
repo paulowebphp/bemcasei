@@ -12,21 +12,26 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( $user["inplancontext"] == 0 ){ ?>
+              <?php if( $user["inplancontext"] == 0 ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+                <?php require $this->checkTemplate("dashboard-menu-free");?>
 
+            
+            <?php }elseif( $user["incheckout"] == 0 ){ ?>
 
-                <?php }elseif( !$validate ){ ?>
+                <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
+            
 
-                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-               
+            <?php }elseif( !$validate ){ ?>
 
-                <?php }else{ ?>
+                <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+            
 
-                    <?php require $this->checkTemplate("dashboard-menu");?>
+            <?php }else{ ?>
 
-                <?php } ?>
+                <?php require $this->checkTemplate("dashboard-menu");?>
+
+            <?php } ?>
                     
 
             </div><!--col-->
@@ -72,7 +77,7 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="description_rsw">Perfeito para quem quer um site com as funcionalidades básicas, mas com funcionalidades importantes como:</td>
+                      <td class="description_rsw">Perfeito para quem quer um site com as funcionalidades básicas, mas importantes como:</td>
                     </tr>
                     <tr>
                       <td><i class="fa fa-check" style="color:green"></i> Presentes virtuais</td>
@@ -81,13 +86,13 @@
                       <td><i class="fa fa-check" style="color:green"></i> Confirmação de presença</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-times" style="color:red"></i> Músicas de fundo</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Até 3 Padrinhos e Madrinhas</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-times" style="color:red"></i> Introdução animada</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Até 3 Fornecedores</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-times" style="color:red"></i> Domínio personalizado</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Até 6 Eventos</td>
                     </tr>
                     <tr>
                       <td></td>
@@ -128,13 +133,13 @@
                       <td><i class="fa fa-check" style="color:green"></i> Confirmação de presença</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-check" style="color:green"></i> Músicas de fundo</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Até 8 Padrinhos e Madrinhas</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-times" style="color:red"></i> Introdução animada</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Até 10 Fornecedores</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-times" style="color:red"></i> Domínio personalizado</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Até 20 Eventos</td>
                     </tr>
                     <tr>
                       <td></td>
@@ -191,13 +196,13 @@
                       <td><i class="fa fa-check" style="color:green"></i> Confirmação de presença</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-check" style="color:green"></i> Músicas de fundo</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Padrinhos e Madrinhas Ilimitados</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-check" style="color:green"></i> Introdução animada</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Forencedores Ilimitados</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-check" style="color:green"></i> Domínio personalizado</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Eventos Ilimitados</td>
                     </tr>
                     <tr>
                       <td></td>

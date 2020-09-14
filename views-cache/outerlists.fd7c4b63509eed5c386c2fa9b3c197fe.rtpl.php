@@ -20,20 +20,19 @@
                 <?php }elseif( $user["incheckout"] == 0 ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
-               
+                
 
                 <?php }elseif( !$validate ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-               
+                
 
                 <?php }else{ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu");?>
 
                 <?php } ?>
-                    
-
+                  
             </div><!--col-->
 
 
@@ -47,13 +46,14 @@
 
 
 
+
                 <div class="row">
                     
                     <div class="col-12">
 
-                        <a href="/dashboard/album">
+                        <a href="/dashboard/listas-de-fora">
                             <div class="dash-title">
-                                <h1>Album</h1>
+                                <h1>Listas de Fora</h1>
                             </div>
                         </a>
 
@@ -61,13 +61,9 @@
 
                 </div>
 
-
-
-                
-
         
 
-                <?php if(  $maxalbuns > $nrtotal  ){ ?>
+                <?php if(  $maxouterlists > $nrtotal  ){ ?>
 
                 <div class="row">
 
@@ -76,9 +72,9 @@
 
                         <div class="button-header">
 
-                            <a href="/dashboard/album/adicionar">
+                            <a href="/dashboard/listas-de-fora/adicionar">
                                 <button>
-                                    Adicionar Imagem
+                                    Criar Lista de Fora
                                 </button>
                             </a>
                      
@@ -100,7 +96,7 @@
                         <div class="button-header">
 
                             <button id="popover1" class="disabled-links pointer-none" data-toggle="popover" data-placement="bottom" title="<?php echo htmlspecialchars( $popover1["0"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-content="<?php echo htmlspecialchars( $popover1["1"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-                                Adicionar Imagem
+                                Criar Lista de Fora
                             </button>
                      
                             
@@ -115,43 +111,45 @@
 
             
 
+
+
                 <?php if( $success != '' ){ ?>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        </div> 
-                    </div>  
-                <?php } ?>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    <?php } ?>
 
-                <?php if( $error != '' ){ ?>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        </div> 
-                    </div>  
-                <?php } ?>
-
-               
+                    <?php if( $error != '' ){ ?>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div>  
+                    <?php } ?>
 
 
 
+                
 
-                <?php $counter1=-1;  if( isset($album) && ( is_array($album) || $album instanceof Traversable ) && sizeof($album) ) foreach( $album as $key1 => $value1 ){ $counter1++; ?>
+
+
+
+                <?php $counter1=-1;  if( isset($outerlist) && ( is_array($outerlist) || $outerlist instanceof Traversable ) && sizeof($outerlist) ) foreach( $outerlist as $key1 => $value1 ){ $counter1++; ?>
                 <div class="row card-dash">
 
-
-
-                    <div class="col-md-7 col-12">
+                    <div class="col-md-10 col-12">
                         
 
 
@@ -160,7 +158,7 @@
 
 
 
-                            <div class="col-md-2 col-12">
+                            <div class="col-md-1 col-12">
 
                                 <div class="card-dash-field">
 
@@ -186,19 +184,19 @@
 
 
 
-                            <div class="col-md-6 col-12">
+                            <div class="col-md-3 col-12">
 
                                 <div class="card-dash-field">
 
 
                                     <div class="card-dash-content">
-                                        <span><?php echo htmlspecialchars( $value1["desalbum"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                        <span><?php echo htmlspecialchars( $value1["desouterlist"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
 
                                         <hr>
-                                        <span>Título</span>
+                                        <span>Loja</span>
                                         
                                     </div>
 
@@ -216,17 +214,71 @@
 
 
 
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $value1["nrphone"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Telefone</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
                             <div class="col-md-4 col-12">
 
                                 <div class="card-dash-field">
 
 
                                     <div class="card-dash-content">
-                                        <?php if( $value1["instatus"] == 0 ){ ?>
-                                            <span>Não-visível</span>
-                                        <?php }elseif( $value1["instatus"] == 1 ){ ?>
-                                            <span>Visível</span>
-                                        <?php } ?>
+                                        <span><?php echo htmlspecialchars( $value1["dessite"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Site</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php if( $value1["instatus"] == 1 ){ ?>Visível<?php }else{ ?>Não-visível<?php } ?></span>
                                     </div>
 
                                     <div class="card-dash-header">
@@ -247,28 +299,16 @@
 
 
 
-                            
-
-
-
-
-
                         </div><!--row-->
 
 
 
 
                         <div class="row card-dash-row2">
-
-
-
-
-
-                            
                             
                             
 
-                            <div class="col-12">
+                            <div class="col-md-8 col-12">
 
                                 <div class="card-dash-field">
 
@@ -291,9 +331,38 @@
                             </div><!--col-->
 
 
+                            
 
 
-                    
+
+
+
+
+                            <div class="col-md-4 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $value1["deslocation"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Local</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
 
 
 
@@ -309,48 +378,13 @@
 
 
 
-
-
-
-
-                    <div class="col-md-3 col-12 card-dash-row3">
-                        
-
-                        <div class="card-dash-field">
-
-
-                            <div class="card-photo">
-                                
-                                <img src="/uploads/albuns/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-                            </div>
-
-
-                           
-                        </div><!--card-buttons-wrappe-->
-
-
-
-
-                    </div><!--col-->
-
-
-
-
-
-
-
-
-
-
-
                     <div class="col-md-2 col-12 card-dash-row3">
                         
 
                         <div class="card-dash-field">
 
 
-                            <a href='/dashboard/album/<?php echo setHash($value1["idalbum"]); ?>'>
+                            <a href='/dashboard/listas-de-fora/<?php echo setHash($value1["idouterlist"]); ?>'>
 
                                 <button>Editar</button>
 
@@ -358,7 +392,7 @@
                             
 
 
-                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/album/<?php echo setHash($value1["idalbum"]); ?>/deletar'>
+                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/listas-de-fora/<?php echo setHash($value1["idouterlist"]); ?>/deletar'>
 
                                 <button>Deletar</button>
 
@@ -381,7 +415,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-info">
-                            Nenhuma imagem foi encontrada
+                            Nenhuma lista de fora foi encontrada
                         </div>
                     </div>
                 </div>
@@ -408,11 +442,11 @@
 
                             <div class="search">
 
-                                <form action="/dashboard/album">
+                                <form action="/dashboard/listas-de-fora">
 
                                     <div class="input-group input-group-sm">
 
-                                        <a href="/dashboard/album">
+                                        <a href="/dashboard/listas-de-fora">
                                             <button type="button" class="btn btn-default">
 
                                                 <i class="fa fa-undo"></i>
@@ -466,10 +500,6 @@
                         
 
                     </div><!--row-->
-
-
-
-
 
 
 

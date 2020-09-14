@@ -46,7 +46,7 @@ $app->get( "/dashboard/meu-plano", function()
 	$validate = User::validatePlanDashboard( $user );
 
 
-
+	
 	
 	
 

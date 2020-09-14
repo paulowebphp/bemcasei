@@ -12,21 +12,26 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( $user["inplancontext"] == 0 ){ ?>
+			<?php if( $user["inplancontext"] == 0 ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+                <?php require $this->checkTemplate("dashboard-menu-free");?>
 
+            
+            <?php }elseif( $user["incheckout"] == 0 ){ ?>
 
-                <?php }elseif( !$validate ){ ?>
+                <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
+            
 
-                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-               
+            <?php }elseif( !$validate ){ ?>
 
-                <?php }else{ ?>
+                <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+            
 
-                    <?php require $this->checkTemplate("dashboard-menu");?>
+            <?php }else{ ?>
 
-                <?php } ?>
+                <?php require $this->checkTemplate("dashboard-menu");?>
+
+            <?php } ?>
                     
 
             </div><!--col-->
@@ -573,7 +578,8 @@
 												
 												<label for="state">Estado</label>
 												<select id="state" form="checkout-form1" name="desstate">
-							                    	
+													
+													<option value="0">Insira um Estado...</option>
 													<?php $counter1=-1;  if( isset($state) && ( is_array($state) || $state instanceof Traversable ) && sizeof($state) ) foreach( $state as $key1 => $value1 ){ $counter1++; ?> 
 														<option value="<?php echo htmlspecialchars( $value1["idstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idstate"] == $address["idstate"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
 													<?php } ?>
@@ -593,6 +599,8 @@
 												
 												<label for="city">Cidade</label>
 												<select id="city" form="checkout-form1" name="descity">
+
+													<option value="0">Insira uma Cidade...</option>
 							                    	<?php $counter1=-1;  if( isset($city) && ( is_array($city) || $city instanceof Traversable ) && sizeof($city) ) foreach( $city as $key1 => $value1 ){ $counter1++; ?>
 														<option value="<?php echo htmlspecialchars( $value1["idcity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idcity"] == $address["idcity"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
 													<?php } ?>
@@ -805,7 +813,7 @@
 
 									
 											<div class="row2">
-												<input type="text" placeholder="CEP do Titular do Cartão" name="zipcode" class="input-text" value="<?php echo htmlspecialchars( $address["deszipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+												<input type="text" placeholder="CEP do Titular do Cartão" name="deszipcode" class="input-text" value="<?php echo htmlspecialchars( $address["deszipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 												<!--<input type="submit" Atualizar CEP" id="place_order" class="button alt" formaction="/checkout" formmethod="get">-->
 											</div>
 
@@ -834,8 +842,9 @@
 											<div class="state-city">
 												
 												<label for="state2">Estado</label>
-												<select id="state2" form="checkout-form1" name="desstate">
-							                    	
+												<select id="state2" form="checkout-form2" name="desstate">
+													
+													<option value="0">Insira um Estado...</option>
 													<?php $counter1=-1;  if( isset($state) && ( is_array($state) || $state instanceof Traversable ) && sizeof($state) ) foreach( $state as $key1 => $value1 ){ $counter1++; ?> 
 														<option value="<?php echo htmlspecialchars( $value1["idstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idstate"] == $address["idstate"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
 													<?php } ?>
@@ -854,7 +863,9 @@
 											<div class="state-city">
 												
 												<label for="city2">Cidade</label>
-												<select id="city2" form="checkout-form1" name="descity">
+												<select id="city2" form="checkout-form2" name="descity">
+
+													<option value="0">Insira uma Cidade...</option>
 							                    	<?php $counter1=-1;  if( isset($city) && ( is_array($city) || $city instanceof Traversable ) && sizeof($city) ) foreach( $city as $key1 => $value1 ){ $counter1++; ?>
 														<option value="<?php echo htmlspecialchars( $value1["idcity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idcity"] == $address["idcity"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
 													<?php } ?>
@@ -1060,6 +1071,8 @@
 												
 												<label for="state3">Estado</label>
 												<select id="state3" form="checkout-form3" name="desstate">
+
+													<option value="0">Insira um Estado...</option>
 							                    	<?php $counter1=-1;  if( isset($state) && ( is_array($state) || $state instanceof Traversable ) && sizeof($state) ) foreach( $state as $key1 => $value1 ){ $counter1++; ?> 
 														<option value="<?php echo htmlspecialchars( $value1["idstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idstate"] == $planUpgradeValues["desstate"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
 													<?php } ?> 
@@ -1075,6 +1088,8 @@
 												
 												<label for="city3">Cidade</label>
 												<select id="city3" form="checkout-form3" name="descity">
+
+													<option value="0">Insira uma Cidade...</option>
 							                    	<?php $counter1=-1;  if( isset($city2) && ( is_array($city2) || $city2 instanceof Traversable ) && sizeof($city2) ) foreach( $city2 as $key1 => $value1 ){ $counter1++; ?>
 														<option value="<?php echo htmlspecialchars( $value1["idcity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( $value1["idcity"] == $planUpgradeValues["descity"] ){ ?>selected="selected"<?php } ?>><?php echo htmlspecialchars( $value1["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
 													<?php } ?>

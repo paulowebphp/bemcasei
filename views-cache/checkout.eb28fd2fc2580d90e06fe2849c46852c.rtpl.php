@@ -666,7 +666,7 @@
 									<div class="state-city">
 										
 										<label for="state2">Estado</label>
-										<select id="state2" form="checkout-form1" name="desholderstate">
+										<select id="state2" form="checkout-form2" name="desholderstate">
 											
 											<option value="0">Insira um Estado...</option>
 											<?php $counter1=-1;  if( isset($state) && ( is_array($state) || $state instanceof Traversable ) && sizeof($state) ) foreach( $state as $key1 => $value1 ){ $counter1++; ?> 
@@ -687,7 +687,7 @@
 									<div class="state-city">
 										
 										<label for="city2">Cidade</label>
-										<select id="city2" form="checkout-form1" name="desholdercity">
+										<select id="city2" form="checkout-form2" name="desholdercity">
 
 											<option value="0">Insira uma Cidade...</option>
 											<?php $counter1=-1;  if( isset($city) && ( is_array($city) || $city instanceof Traversable ) && sizeof($city) ) foreach( $city as $key1 => $value1 ){ $counter1++; ?>

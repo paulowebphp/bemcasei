@@ -12,21 +12,26 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( $user["inplancontext"] == 0 ){ ?>
+            <?php if( $user["inplancontext"] == 0 ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+                <?php require $this->checkTemplate("dashboard-menu-free");?>
 
+            
+            <?php }elseif( $user["incheckout"] == 0 ){ ?>
 
-                <?php }elseif( !$validate ){ ?>
+                <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
+            
 
-                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-               
+            <?php }elseif( !$validate ){ ?>
 
-                <?php }else{ ?>
+                <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+            
 
-                    <?php require $this->checkTemplate("dashboard-menu");?>
+            <?php }else{ ?>
 
-                <?php } ?>
+                <?php require $this->checkTemplate("dashboard-menu");?>
+
+            <?php } ?>
                     
 
             </div><!--col-->
@@ -65,7 +70,7 @@
                 
                         <div class="button-header">
                 
-                            <a title="Voltar para Presentes Virtuais" href="/dashboard/presentes-virtuais">
+                            <a title="Voltar" href="/dashboard/presentes-virtuais">
                                 <div class="button3 centralizer">
                                     <i class="fa fa-arrow-left"></i>
                                 </div>

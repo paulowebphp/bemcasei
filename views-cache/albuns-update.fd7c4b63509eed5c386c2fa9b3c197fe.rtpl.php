@@ -44,18 +44,17 @@
 
                 
 
-               <form method="post" action="/dashboard/padrinhos-madrinhas/adicionar" enctype="multipart/form-data">
+               <form method="post" action='/dashboard/album/<?php echo setHash($album["idalbum"]); ?>' enctype="multipart/form-data">
 
                     <div class="row">
                         <div class="col-md-12">
                             
                             <div class="dash-title">
-                                <h1>Criar Padrinho ou Madrinha</h1>
+                                <h1>Editar</h1>
                             </div><!--dash-title-->
 
                         </div><!--col-->
                     </div><!--row-->
-
 
                     <?php if( $success != '' ){ ?>
                         <div class="row">
@@ -83,10 +82,11 @@
                         </div>  
                     <?php } ?>
 
-
                     <div class="row">
                         
                         <div class="col-md-6 dash-column">
+
+
 
 
 
@@ -102,8 +102,8 @@
 
                                   <select id="instatus" name="instatus" class="custom-select">
 
-                                    <option value="0">Não</option>
-                                    <option value="1" selected>Sim</option>
+                                    <option value="0" <?php if( $album["instatus"] == '0' ){ ?>selected<?php } ?>>Não</option>
+                                    <option value="1" <?php if( $album["instatus"] == '1' ){ ?>selected<?php } ?>>Sim</option>
 
                                   </select>
 
@@ -119,11 +119,10 @@
 
 
 
-
                             <div class="dash-input-row input-inposition">
 
                                 <label for="inposition">Posição</label>
-                                <input type="text" class="form-control" id="inposition" name="inposition">
+                                <input type="text" class="form-control" id="inposition" name="inposition" value="<?php echo htmlspecialchars( $album["inposition"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
 
@@ -137,18 +136,15 @@
                             <div class="dash-input-row">
 
 
-                                <label for="desbestfriend">Nome</label>
-                                <input type="text" class="form-control" id="desbestfriend" name="desbestfriend">
+                                <label for="desalbum">Titulo</label>
+                                <input type="text" class="form-control" id="desalbum" name="desalbum" value="<?php echo htmlspecialchars( $album["desalbum"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
                             </div><!--dash-input-row-->
 
 
 
-
-
-
-                           
+   
 
 
 
@@ -159,16 +155,24 @@
 
                                 <div>
                                     <label for="desdescription">Descrição</label>
-                                    <!--<input type="text" class="form-control" id="desdescription" name="desdescription" placeholder="Digite o nome aqui" ">-->
+                                    <!--<input type="text" class="form-control" id="desdescription" name="desdescription" ">-->
                                 </div>
                                 
-                                <textarea rows="10" cols="90" maxlength="500" id="desdescription" name="desdescription"></textarea>
+                                <textarea rows="10" cols="90" maxlength="500" id="desdescription" name="desdescription"><?php echo htmlspecialchars( $album["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
 
                             </div><!--dash-input-row-->
 
 
+                           
 
 
+                            <div class="dash-input-row">
+
+
+                                <input type="hidden" class="form-control" id="idalbum" name="idalbum" value='<?php echo setHash($album["idalbum"]); ?>'>
+
+
+                            </div><!--dash-input-row-->
 
 
 
@@ -186,14 +190,13 @@
                                       </div>
                                       <div class="custom-file">
                                         <input type="file" name="file" class="custom-file-input" id="file" aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="file"></label>
+                                        <label class="custom-file-label" for="file">Selecionar imagem</label>
 
                                       </div>
                                     </div>
                                     <div class="input-rows">
-                                        <img class="img-responsive" id="image-preview" src="/uploads/bestfriends/0.jpg" alt="">
+                                        <img class="img-responsive" id="image-preview" src="/uploads/albuns/<?php echo htmlspecialchars( $album["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="">
                                     </div>
-                                    
 
                                 
                             </div><!--dash-input-row-->
@@ -238,7 +241,7 @@
                                 
                                 <button type="submit" class="btn btn-primary">Salvar</button>
 
-                                <a href="/dashboard/padrinhos-madrinhas" class="btn btn-danger">Voltar</a>
+                                <a href="/dashboard/album" class="btn btn-danger">Voltar</a>
 
                             </div><!--dash-input-row-->
                             

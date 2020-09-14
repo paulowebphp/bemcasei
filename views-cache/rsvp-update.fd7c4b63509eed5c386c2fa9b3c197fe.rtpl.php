@@ -12,26 +12,27 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( $user["inplancontext"] == 0 ){ ?>
+            <?php if( $user["inplancontext"] == 0 ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+                <?php require $this->checkTemplate("dashboard-menu-free");?>
 
-                
-                <?php }elseif( $user["incheckout"] == 0 ){ ?>
+            
+            <?php }elseif( $user["incheckout"] == 0 ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
-               
+                <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
+            
 
-                <?php }elseif( !$validate ){ ?>
+            <?php }elseif( !$validate ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-               
+                <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+            
 
-                <?php }else{ ?>
+            <?php }else{ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu");?>
+                <?php require $this->checkTemplate("dashboard-menu");?>
 
-                <?php } ?>
+            <?php } ?>
+                    
 
             </div><!--col-->
 
@@ -42,19 +43,18 @@
 
 
                 
-                <form method="post" action="/dashboard/meu-amor" enctype="multipart/form-data">
+
+               <form method="post" action='/dashboard/rsvp/<?php echo setHash($rsvp["idrsvp"]); ?>'>
 
                     <div class="row">
                         <div class="col-md-12">
                             
                             <div class="dash-title">
-                                <h1>Meu Amor</h1>
+                                <h1>Editar</h1>
                             </div><!--dash-title-->
 
                         </div><!--col-->
                     </div><!--row-->
-
-
 
 
 
@@ -86,6 +86,8 @@
 
 
 
+                    
+
 
                     <div class="row">
                         
@@ -94,36 +96,58 @@
 
                             <div class="dash-input-row">
 
-                                <label for="desconsort">Nome</label>
-                                <input type="text" class="form-control" id="desconsort" name="desconsort" value="<?php echo htmlspecialchars( $consort["desconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <label for="desguest">Convidado</label>
+                                <input type="text" class="form-control" id="desguest" name="desguest" value="<?php echo htmlspecialchars( $rsvp["desguest"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
+
+
+
+
+
+                        
+                            <label for="inmaxadults">Quantidade Máxima de Adultos<br><small>(Esta opção é válida apenas para este convidado)</small></label>
+
+                            <div class="dash-input-row input-inposition">
+
+
+                                
+                                <input type="text" class="form-control" id="inmaxadults" name="inmaxadults" value="<?php echo htmlspecialchars( $rsvp["inmaxadults"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+
+
+                            </div><!--dash-input-row-->
+
+
+
+
+
+
+
+
+
+                            <?php if( $rsvpconfig["inchildren"] == 1 ){ ?>
+                            <label for="inmaxchildren">Quantidade Máxima de Crianças<br><small>(Esta opção é válida apenas para este convidado)</small></label>
+
+                            <div class="dash-input-row input-inposition">
+
+
+                                
+                                <input type="text" class="form-control" id="inmaxchildren" name="inmaxchildren" value="<?php echo htmlspecialchars( $rsvp["inmaxchildren"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+
+
+                            </div><!--dash-input-row-->
+                            <?php } ?>
 
 
 
 
                             <div class="dash-input-row">
 
-                                <label for="desconsortemail">E-mail (opcional)</label>
-                                <input type="text" class="form-control" id="desconsortemail" name="desconsortemail" value="<?php echo htmlspecialchars( $consort["desconsortemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+
+                                <input type="hidden" class="form-control" id="idrsvp" name="idrsvp" value='<?php echo setHash($rsvp["idrsvp"]); ?>'>
+
 
                             </div><!--dash-input-row-->
-
-
-
-
-
-
-
-
-                            <div class="dash-input-row">
-
-                                <input type="hidden" class="form-control" id="idconsort" name="idconsort" value="<?php echo htmlspecialchars( $consort["idconsort"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
-                            </div><!--dash-input-row-->
-
-
-
 
 
                                 
@@ -153,17 +177,27 @@
 
                     <div class="row">
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
 
                             <div class="dash-input-row input-footer">
                                 
                                 <button type="submit" class="btn btn-primary">Salvar</button>
 
-                                <a href="/dashboard" class="btn btn-danger">Voltar</a>
+                                <a href="/dashboard/rsvp" class="btn btn-danger">Voltar</a>
 
                             </div><!--dash-input-row-->
                             
                         </div><!--col-->
+
+
+
+                        <div class="col-md-6">
+
+                            &nbsp;
+                            
+                        </div><!--col-->
+
+
 
                     </div><!--row-->
 

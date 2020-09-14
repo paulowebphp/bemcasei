@@ -12,28 +12,27 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-            <?php if( $user["inplancontext"] == 0 ){ ?>
+                <?php if( $user["inplancontext"] == 0 ){ ?>
 
-                <?php require $this->checkTemplate("dashboard-menu-free");?>
+                    <?php require $this->checkTemplate("dashboard-menu-free");?>
 
-            
-            <?php }elseif( $user["incheckout"] == 0 ){ ?>
+                
+                <?php }elseif( $user["incheckout"] == 0 ){ ?>
 
-                <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
-            
+                    <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
+                
 
-            <?php }elseif( !$validate ){ ?>
+                <?php }elseif( !$validate ){ ?>
 
-                <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-            
+                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+                
 
-            <?php }else{ ?>
+                <?php }else{ ?>
 
-                <?php require $this->checkTemplate("dashboard-menu");?>
+                    <?php require $this->checkTemplate("dashboard-menu");?>
 
-            <?php } ?>
-                    
-
+                <?php } ?>
+                  
             </div><!--col-->
 
 
@@ -42,19 +41,20 @@
             <div class="col-md-9 col-12 dash-panel">
 
 
-               
+                
 
-                <form method="post" action="/dashboard/meu-casamento" enctype="multipart/form-data">
+                <form method="post" action="/dashboard/festa-de-casamento" enctype="multipart/form-data">
 
                     <div class="row">
                         <div class="col-md-12">
                             
                             <div class="dash-title">
-                                <h1>Casamento</h1>
+                                <h1>Festa de Casamento</h1>
                             </div><!--dash-title-->
 
                         </div><!--col-->
                     </div><!--row-->
+
 
 
 
@@ -87,6 +87,7 @@
 
 
 
+
                     
 
                     <div class="row">
@@ -94,14 +95,14 @@
                         <div class="col-md-6 dash-column">
 
 
-
+                         
 
 
 
                             <div class="dash-input-row input-date">
 
-                                <label for="dtwedding">Data do Casamento</label>
-                                <input type="date" class="form-control" id="dtwedding" name="dtwedding" value="<?php echo htmlspecialchars( $wedding["dtwedding"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <label for="dtparty">Data da Festa</label>
+                                <input type="date" class="form-control" id="dtparty" name="dtparty" value="<?php echo htmlspecialchars( $party["dtparty"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
 
@@ -111,18 +112,12 @@
 
 
 
-
-
-
                             <div class="dash-input-row input-date">
 
-                                <label for="tmwedding">Horário do Casamento</label>
-                                <input type="time" class="form-control" id="tmwedding" name="tmwedding" value="<?php echo htmlspecialchars( $wedding["tmwedding"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <label for="tmparty">Horário da Festa</label>
+                                <input type="time" class="form-control" id="tmparty" name="tmparty" value="<?php echo htmlspecialchars( $party["tmparty"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
-
-
-
 
 
 
@@ -131,12 +126,11 @@
 
                             <div class="dash-input-row">
 
-
                                 <label for="descostume">Traje</label>
-                                <input type="text" class="form-control" id="descostume" name="descostume" value="<?php echo htmlspecialchars( $wedding["descostume"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-
+                                <input type="text" class="form-control" id="descostume" name="descostume" value="<?php echo htmlspecialchars( $party["descostume"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
+
 
 
 
@@ -147,13 +141,24 @@
                             <div class="dash-input-row">
 
                                 <div>
-                                    <label for="desdescription">História do Casal</label>
-                                    <!--<input type="text" class="form-control" id="desdescription" name="desdescription" value="<?php echo htmlspecialchars( $wedding["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">-->
+                                    <label for="desdescription">Descrição</label>
+                                    <!--<input type="text" class="form-control" id="desdescription" name="desdescription" value="<?php echo htmlspecialchars( $party["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">-->
                                 </div>
                                 
-                                <textarea rows="10" cols="90" maxlength="500" id="desdescription" name="desdescription"><?php echo htmlspecialchars( $wedding["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
+                                <textarea rows="10" cols="90" maxlength="500" id="desdescription" name="desdescription"><?php echo htmlspecialchars( $party["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
 
                             </div><!--dash-input-row-->
+
+
+                            
+
+
+
+
+
+
+                            
+
 
 
 
@@ -164,9 +169,11 @@
 
                             <div class="dash-input-row">
 
-                                <input type="hidden" class="form-control" id="idwedding" name="idwedding" value="<?php echo htmlspecialchars( $wedding["idwedding"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <input type="hidden" class="form-control" id="idparty" name="idparty" value="<?php echo htmlspecialchars( $party["idparty"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
+
+
 
 
 
@@ -190,7 +197,7 @@
                                       </div>
                                     </div>
                                     <div class="input-rows">
-                                        <img class="img-responsive" id="image-preview" src="/uploads/weddings/<?php echo htmlspecialchars( $wedding["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="">
+                                        <img class="img-responsive" id="image-preview" src="/uploads/parties/<?php echo htmlspecialchars( $party["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="">
                                     </div>
 
                                 
@@ -199,11 +206,14 @@
 
 
 
-
-
-
-
-
+                            <!--   <label for="file">Foto</label>
+                                <input type="file" class="form-control" id="file" name="file">
+                                <div class="box box-widget">
+                                    <div class="box-body">
+                                        <img class="img-responsive" id="image-preview" src="/uploads/images/<?php echo htmlspecialchars( $party["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Foto">
+                                    </div>
+                                </div>
+                            -->
 
 
                                 
@@ -215,12 +225,6 @@
 
 
                         <div class="col-md-6">
-
-
-
-
-
-
                             
                             
                             
@@ -228,7 +232,7 @@
 
 
                                 <label for="desaddress">Logradouro</label>
-                                <input type="text" class="form-control" id="desaddress" name="desaddress" value="<?php echo htmlspecialchars( $wedding["desaddress"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <input type="text" class="form-control" id="desaddress" name="desaddress" value="<?php echo htmlspecialchars( $party["desaddress"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
                             </div><!--dash-input-row-->
@@ -241,7 +245,7 @@
                             <div class="dash-input-row">
 
                                 <label for="desnumber">Número</label>
-                                <input type="text" class="form-control" id="desnumber" name="desnumber" value="<?php echo htmlspecialchars( $wedding["desnumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <input type="text" class="form-control" id="desnumber" name="desnumber" value="<?php echo htmlspecialchars( $party["desnumber"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
 
@@ -255,7 +259,7 @@
                             <div class="dash-input-row">
 
                                 <label for="desdistrict">Bairro (opcional)</label>
-                                <input type="text" class="form-control" id="desdistrict" name="desdistrict" value="<?php echo htmlspecialchars( $wedding["desdistrict"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <input type="text" class="form-control" id="desdistrict" name="desdistrict" value="<?php echo htmlspecialchars( $party["desdistrict"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
 
@@ -268,7 +272,7 @@
                             <div class="dash-input-row">
 
                                 <label for="descity">Cidade</label>
-                                <input type="text" class="form-control" id="descity" name="descity" value="<?php echo htmlspecialchars( $wedding["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <input type="text" class="form-control" id="descity" name="descity" value="<?php echo htmlspecialchars( $party["descity"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
 
@@ -279,7 +283,7 @@
                             <div class="dash-input-row">
 
                                 <label for="desstate">Estado</label>
-                                <input type="text" class="form-control" id="desstate" name="desstate" value="<?php echo htmlspecialchars( $wedding["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <input type="text" class="form-control" id="desstate" name="desstate" value="<?php echo htmlspecialchars( $party["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
 
@@ -292,7 +296,7 @@
                             <div class="dash-input-row">
 
                                 <label for="descountry">País (opcional)</label>
-                                <input type="text" class="form-control" id="descountry" name="descountry" value="<?php echo htmlspecialchars( $wedding["descountry"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                <input type="text" class="form-control" id="descountry" name="descountry" value="<?php echo htmlspecialchars( $party["descountry"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
 
@@ -308,15 +312,12 @@
 
                                 <div>
                                     <label for="desdirections">Pontos de Referência</label>
-                                    <!--<input type="text" class="form-control" id="desdirections" name="desdirections" value="<?php echo htmlspecialchars( $wedding["desdirections"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">-->
+                                    <!--<input type="text" class="form-control" id="desdirections" name="desdirections" value="<?php echo htmlspecialchars( $party["desdirections"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">-->
                                 </div>
                                 
-                                <textarea rows="4" cols="90" maxlength="500" id="desdirections" name="desdirections"><?php echo htmlspecialchars( $wedding["desdirections"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
+                                <textarea rows="4" cols="90" maxlength="500" id="desdirections" name="desdirections"><?php echo htmlspecialchars( $party["desdirections"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
 
                             </div><!--dash-input-row-->
-
-
-
 
 
                             

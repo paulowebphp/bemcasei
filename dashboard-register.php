@@ -25,159 +25,6 @@ use Core\Model\User;
 
 
 
-$app->get( "/dashboard/cadastrar", function()
-{
-
-	if( Maintenance::checkMaintenance() )
-	{	
-
-		$maintenance = new Maintenance();
-
-		$maintenance->getMaintenance();
-
-		User::setError($maintenance->getdesdescription());
-		header("Location: /login");
-		exit;
-		
-	}//end if
-
-
-
-
-
-
-
-
-	User::verifyLogin(false);
-
-	$user = User::getFromSession();
-
-	
-
-
-
-
-	$validate = User::validatePlanDashboard( $user );
-
-
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-
-
-	if ( (int)$user->getinplancontext() == 0 )
-	{
-		# code...
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
-		exit;
-
-	}//end if
-
-
-
-
-	
-	
-
-
-
-	
-
-
-
-
-
-
-	if ( (int)$user->getinaccount() == 1 )
-	{
-		# code...
-		header("Location: /dashboard");
-		exit;
-
-	}//end if
-
-
-
-
-	$state = Address::listAllStates();
-
-
-
-	$city = [];
-	
-
-	if ( isset($_SESSION["planPurchaseRegisterValues"]) ) 
-	{
-		# code...
-		$city = Address::listAllCitiesByState($_SESSION["planPurchaseRegisterValues"]['desstate']);
-
-	}//end if
-	else
-	{
-
-		$city = Address::listAllCitiesByState(1);
-	
-
-	}//end else
-
-
-	
-
-
-	$page = new PageDashboard();
-
-	$page->setTpl(
-		
-		"register",
-
-		[
-			'user'=>$user->getValues(),
-			//'payment'=>$payment->getValues(),
-			'city'=>$city,
-			'state'=>$state,
-			'validate'=>$validate,
-			'error'=>Account::getError(),
-			'success'=>Account::getSuccess(),
-			'planPurchaseRegisterValues'=> (isset($_SESSION["planPurchaseRegisterValues"])) ? $_SESSION["planPurchaseRegisterValues"] : ['desname'=>'','desemail'=>'','desdocument'=>'', 'nrddd'=>'', 'nrphone'=>'', 'dtbirth'=>'', 'zipcode'=>'', 'desaddress'=>'', 'desnumber'=>'', 'descomplement'=>'', 'desdistrict'=>'', 'desstate'=>'', 'descity'=>'']
-
-
-		]
-	
-	);//end setTpl
-
-});//END route
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1059,6 +906,195 @@ $app->post( "/dashboard/cadastrar", function()
 
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->get( "/dashboard/cadastrar", function()
+{
+
+	if( Maintenance::checkMaintenance() )
+	{	
+
+		$maintenance = new Maintenance();
+
+		$maintenance->getMaintenance();
+
+		User::setError($maintenance->getdesdescription());
+		header("Location: /login");
+		exit;
+		
+	}//end if
+
+
+
+
+
+
+
+
+	User::verifyLogin(false);
+
+	$user = User::getFromSession();
+
+	
+
+
+
+
+	$validate = User::validatePlanDashboard( $user );
+
+
+	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+	if ( (int)$user->getinplancontext() == 0 )
+	{
+		# code...
+		Payment::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard/meu-plano');
+		exit;
+
+	}//end if
+
+
+
+
+	
+	
+
+
+
+	
+
+
+
+
+
+
+	if ( (int)$user->getinaccount() == 1 )
+	{
+		# code...
+		header("Location: /dashboard");
+		exit;
+
+	}//end if
+
+
+
+
+	$state = Address::listAllStates();
+
+
+
+	$city = [];
+	
+
+	if ( isset($_SESSION["planPurchaseRegisterValues"]) ) 
+	{
+		# code...
+		$city = Address::listAllCitiesByState($_SESSION["planPurchaseRegisterValues"]['desstate']);
+
+	}//end if
+	else
+	{
+
+		$city = Address::listAllCitiesByState(1);
+	
+
+	}//end else
+
+
+	
+
+
+	$page = new PageDashboard();
+
+	$page->setTpl(
+		
+		"register",
+
+		[
+			'user'=>$user->getValues(),
+			//'payment'=>$payment->getValues(),
+			'city'=>$city,
+			'state'=>$state,
+			'validate'=>$validate,
+			'error'=>Account::getError(),
+			'success'=>Account::getSuccess(),
+			'planPurchaseRegisterValues'=> (isset($_SESSION["planPurchaseRegisterValues"])) ? $_SESSION["planPurchaseRegisterValues"] : ['desname'=>'','desemail'=>'','desdocument'=>'', 'nrddd'=>'', 'nrphone'=>'', 'dtbirth'=>'', 'zipcode'=>'', 'desaddress'=>'', 'desnumber'=>'', 'descomplement'=>'', 'desdistrict'=>'', 'desstate'=>'', 'descity'=>'']
+
+
+		]
+	
+	);//end setTpl
+
+});//END route
+
+
+
+
 
 
 

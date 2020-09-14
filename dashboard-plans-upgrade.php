@@ -42,7 +42,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 	$_SESSION['planUpgradeValues'] = $_POST;
 
 	
-
+	
 
 
 	if( Maintenance::checkMaintenance() )
@@ -138,6 +138,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 
+	/*
 	$sufix = substr($validate['inplancode'], 1, 2);
 
 	$inplanUpgrade = Plan::getPlanArrayUpgrade($validate['incontext'], $sufix);
@@ -183,6 +184,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 		exit;
 
 	}//end if
+	*/
 
 	
 
@@ -208,15 +210,49 @@ $app->post( "/dashboard/upgrade/checkout", function()
 		if (
 
 
-			!in_array((int)$lastplan['inpaymentstatus'], [0,1,2,3,4])
-			&&
-			(int)$lastplan['inpaymentmethod'] != 0
+			in_array((int)$lastplan['inpaymentstatus'], [5,9])
 
 		)
 		{
 			# code...
 
-			$plan = $_POST['inplancode'];
+			$planUpgradeCodeValidate = false;
+
+			$sufix = substr($validate['inplancode'], 1, 2);
+
+			$inplanUpgrade = Plan::getPlanArrayUpgrade($lastplan['incontext'], $sufix);
+
+
+			
+
+			foreach ($inplanUpgrade as $row) 
+			{
+
+				if($row['inplancode'] == $_POST['inplancode'])
+				{
+
+					$planUpgradeCodeValidate = true;
+
+				}//end if
+
+			}//end foreach
+
+			if($planUpgradeCodeValidate)
+			{
+
+				$plan = $_POST['inplancode'];
+
+			}//end if
+			else
+			{
+
+				Plan::setError('O código de plano que você está tentando usar não é válido');
+				header('Location: /dashboard/upgrade');
+				exit;
+
+			}//end else
+
+			
 
 
 		}//end if
@@ -260,7 +296,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 	
-
+	
 
 	
 	if( 
@@ -359,7 +395,31 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		
 		
+		if(
+			
+			!isset($_POST['desdocument']) 
+			|| 
+			$_POST['desdocument'] === ''
+			
+		)
+		{
 
+
+			Payment::setError(Rule::ERROR_CPF);
+			header('Location: /dashboard/upgrade/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+
+		}//end if
+
+		if( !$desdocument = Validate::validateDocument(0, $_POST['desdocument']) )
+		{
+
+			Payment::setError(Rule::VALIDATE_CPF);
+			header('Location: /dashboard/upgrade/checkout?plano='.$_POST['inplancode']);
+			exit;
+
+		}//end if
 
 
 
@@ -712,7 +772,11 @@ $app->post( "/dashboard/upgrade/checkout", function()
 		
 		$desstate = $stateArray['desstatecode'];
 
-
+		$desholdername = null;
+		$descardcode_number = null;
+		$descardcode_month = null;
+		$descardcode_year = null;
+		$descardcode_cvc = null;
 		
 		
 		$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
@@ -745,7 +809,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 
-
+		
 
 
 		if(	!isset($_POST['desname']) || $_POST['desname'] == '' )
@@ -783,9 +847,9 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		if(
 			
-			!isset($_POST['desholderdocument']) 
+			!isset($_POST['desdocument']) 
 			|| 
-			$_POST['desholderdocument'] === ''
+			$_POST['desdocument'] === ''
 			
 		)
 		{
@@ -798,7 +862,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		}//end if
 
-		if( !$desdocument = Validate::validateDocument(0, $_POST['desholderdocument']) )
+		if( !$desdocument = Validate::validateDocument(0, $_POST['desdocument']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_CPF);
@@ -820,9 +884,9 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		if(
 			
-			!isset($_POST['nrholderddd']) 
+			!isset($_POST['nrddd']) 
 			|| 
-			$_POST['nrholderddd'] === ''
+			$_POST['nrddd'] === ''
 			
 		)
 		{
@@ -846,7 +910,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 
-		if( !$nrddd = Validate::validateDDD($_POST['nrholderddd']) )
+		if( !$nrddd = Validate::validateDDD($_POST['nrddd']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_DDD);
@@ -872,9 +936,9 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		if(
 			
-			!isset($_POST['nrholderphone']) 
+			!isset($_POST['nrphone']) 
 			|| 
-			$_POST['nrholderphone'] === ''
+			$_POST['nrphone'] === ''
 			
 		)
 		{
@@ -895,7 +959,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 
-		if( !$nrphone = Validate::validatePhone($_POST['nrholderphone']) )
+		if( !$nrphone = Validate::validatePhone($_POST['nrphone']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_PHONE);
@@ -921,9 +985,9 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		if(
 			
-			!isset($_POST['dtholderbirth']) 
+			!isset($_POST['dtbirth']) 
 			|| 
-			$_POST['dtholderbirth'] === ''
+			$_POST['dtbirth'] === ''
 			
 		)
 		{
@@ -936,7 +1000,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		}//end if
 
-		if( !$dtbirth = Validate::validateDate($_POST['dtholderbirth'], 0) )
+		if( !$dtbirth = Validate::validateDate($_POST['dtbirth'], 0) )
 		{
 
 			Payment::setError(Rule::VALIDATE_DATE_PAST_TO_NOW);
@@ -996,9 +1060,9 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 		if(
-			!isset($_POST['desholderaddress']) 
+			!isset($_POST['desaddress']) 
 			|| 
-			$_POST['desholderaddress'] === ''
+			$_POST['desaddress'] === ''
 			
 		)
 		{
@@ -1011,7 +1075,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		}//end if
 
-		if( !$desaddress = Validate::validateStringNumber($_POST['desholderaddress']) )
+		if( !$desaddress = Validate::validateStringNumber($_POST['desaddress']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_ADDRESS);
@@ -1037,9 +1101,9 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		if(
 			
-			!isset($_POST['desholdernumber']) 
+			!isset($_POST['desnumber']) 
 			|| 
-			$_POST['desholdernumber'] === ''
+			$_POST['desnumber'] === ''
 			
 		)
 		{
@@ -1052,7 +1116,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		}//end if
 
-		if( !$desnumber = Validate::validateNumber($_POST['desholdernumber']) )
+		if( !$desnumber = Validate::validateNumber($_POST['desnumber']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_NUMBER);
@@ -1075,9 +1139,9 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		if(
 			
-			!isset($_POST['desholderdistrict']) 
+			!isset($_POST['desdistrict']) 
 			|| 
-			$_POST['desholderdistrict'] === ''
+			$_POST['desdistrict'] === ''
 			
 		)
 		{
@@ -1090,7 +1154,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		}//end if
 
-		if( !$desdistrict = Validate::validateStringNumber($_POST['desholderdistrict']) )
+		if( !$desdistrict = Validate::validateStringNumber($_POST['desdistrict']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_DISTRICT);
@@ -1163,7 +1227,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		}//end if
 
-		if( !$desname = Validate::validateCardName($_POST['desholdername']) )
+		if( !$desholdername = Validate::validateCardName($_POST['desholdername']) )
 		{
 
 			Payment::setError(Rule::VALIDATE_HOLDER_NAME);
@@ -1299,9 +1363,9 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		if(
 				
-			!isset($_POST['desholdercity']) 
+			!isset($_POST['descity']) 
 			|| 
-			$_POST['desholdercity'] === ''
+			$_POST['descity'] === ''
 			
 		)
 		{
@@ -1313,7 +1377,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 
-		if ( ( $cityArray = Address::getCity($_POST['desholdercity']) ) === false ) 
+		if ( ( $cityArray = Address::getCity($_POST['descity']) ) === false ) 
 		{
 			# code...
 			Payment::setError(Rule::VALIDATE_CITY);
@@ -1331,9 +1395,9 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		if(
 				
-			!isset($_POST['desholderstate']) 
+			!isset($_POST['desstate']) 
 			|| 
-			$_POST['desholderstate'] === ''
+			$_POST['desstate'] === ''
 			
 		)
 		{
@@ -1345,7 +1409,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 
-		if ( ( $stateArray = Address::getState($_POST['desholderstate']) ) === false ) 
+		if ( ( $stateArray = Address::getState($_POST['desstate']) ) === false ) 
 		{
 			# code...
 			Payment::setError(Rule::VALIDATE_STATE);
@@ -1369,7 +1433,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 
 		
-		$descomplement = Validate::validateStringNumber($_POST['desholdercomplement'], false, true);
+		$descomplement = Validate::validateStringNumber($_POST['descomplement'], false, true);
 
 		$intypedoc = 0;
 
@@ -2461,13 +2525,15 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 	$consort->get((int)$user->getiduser());
 
+	$email_upgrade = utf8_decode(Rule::EMAIL_UPGRADE);
+
 
 	if ( (int)$payment->getinpaymentmethod() != 0 )
 	{
 		# code...
 		$userMailer = new Mailer(
 				
-			Rule::EMAIL_UPGRADE,
+			$email_upgrade,
 
 			"plan", 
 			
@@ -2498,7 +2564,7 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 		$userMailer = new Mailer(
 				
-			Rule::EMAIL_UPGRADE,
+			$email_upgrade,
 
 			"plan-boleto", 
 			
@@ -2669,7 +2735,7 @@ $app->get( "/dashboard/upgrade/checkout", function()
 	}//end if
 
 
-
+	
 
 
 	//$plans = Plan::getPlansFullArray();
@@ -2683,14 +2749,20 @@ $app->get( "/dashboard/upgrade/checkout", function()
 
 
 
+	
+
+
+	
+
+	
+	/*
 	$sufix = substr($validate['inplancode'], 1, 2);
 
 	$inplanUpgrade = Plan::getPlanArrayUpgrade($validate['incontext'], $sufix);
 
 
-	
 
-	
+
 	$counter = 0;
 
 	foreach ($inplanUpgrade as $row ) 
@@ -2718,7 +2790,7 @@ $app->get( "/dashboard/upgrade/checkout", function()
 		exit;
 
 	}//end if
-
+	*/
 
 
 	
@@ -2740,15 +2812,52 @@ $app->get( "/dashboard/upgrade/checkout", function()
 		if (
 
 
-			!in_array((int)$lastplan['inpaymentstatus'], [0,1,2,3,4])
-			&&
-			(int)$lastplan['inpaymentmethod'] != 0
+			in_array((int)$lastplan['inpaymentstatus'], [5,9])
+
 
 		)
 		{
-			# code...
+			
+			$planUpgradeCodeValidate = false;
 
-			$plan = $_GET['plano'];
+			$sufix = substr($validate['inplancode'], 1, 2);
+
+			$inplanUpgrade = Plan::getPlanArrayUpgrade($lastplan['incontext'], $sufix);
+
+			foreach ($inplanUpgrade as $row ) 
+			{
+				# code...
+				
+				if ( (int)$_GET['plano'] == (int)$row['inplancode'] ) 
+				{
+					# code...
+					$planUpgradeCodeValidate = true;
+					break;
+
+				}//end if
+
+
+			}//ennd foreach
+
+
+
+			if ( $planUpgradeCodeValidate)
+			{
+
+
+				$plan = $_GET['plano'];
+				
+
+			}//end if
+			else
+			{
+
+				Plan::setError(Rule::VALIDATE_PLAN_PURCHASE_CODE);
+				header('Location: /dashboard/upgrade');
+				exit;
+			}//end else
+
+			
 
 
 		}//end if
@@ -2869,7 +2978,6 @@ $app->get( "/dashboard/upgrade/checkout", function()
 	
 
 	}//end else
-
 
 
 
