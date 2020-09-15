@@ -474,10 +474,9 @@ class Order extends Model
 
 			SELECT SQL_CALC_FOUND_ROWS *
 		    FROM tb_orders a
-		    INNER JOIN tb_ordersstatus b ON a.idstatus = b.idstatus
 		    INNER JOIN tb_carts c ON a.idcart = c.idcart
 		    INNER JOIN tb_users d ON a.iduser = d.iduser
-		    INNER JOIN tb_payments f ON a.idorder = f.idorder
+		    INNER JOIN tb_payments e ON a.idpayment = e.idpayment
 		    INNER JOIN tb_fees f ON a.idpayment = f.idpayment
 		    WHERE a.iduser = :iduser
 		    AND e.inpaymentstatus <> 6;

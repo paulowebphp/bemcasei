@@ -12,26 +12,27 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-            <?php if( $user["inplancontext"] == 0 ){ ?>
+            <?php if( !$validate ){ ?>
 
-                <?php require $this->checkTemplate("dashboard-menu-free");?>
+				<?php if( $user["incheckout"] == 0 or $user["inaccount"] == 0 ){ ?>
 
-            
-            <?php }elseif( $user["incheckout"] == 0 ){ ?>
+					<?php require $this->checkTemplate("dashboard-menu-noorders");?>
 
-                <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
-            
+				<?php }else{ ?>
 
-            <?php }elseif( !$validate ){ ?>
+					<?php require $this->checkTemplate("dashboard-menu-expirated");?>
 
-                <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-            
+				<?php } ?>
 
-            <?php }else{ ?>
+			<?php }elseif( $validate["incontext"] == 0 ){ ?>
 
-                <?php require $this->checkTemplate("dashboard-menu");?>
+				<?php require $this->checkTemplate("dashboard-menu-free");?>
 
-            <?php } ?>
+			<?php }else{ ?>
+
+				<?php require $this->checkTemplate("dashboard-menu");?>
+
+			<?php } ?>
                 
 
             </div><!--col-->

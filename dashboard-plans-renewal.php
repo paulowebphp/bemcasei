@@ -2652,13 +2652,15 @@ $app->post( "/dashboard/renovar/checkout", function()
 	//$plan->updateLastPlanDtEnd($lastplan['idplan'], $user->getiduser(), $plan->getdtbegin());
 
 
-	//$user->setinplan($plan->getinplancode());
+	$user->setinplan($plan->getinplancode());
 	//$user->setdtplanend($plan->getdtend());
 
 
 	
-	//$user->update();
-	//$user->setToSession();
+	$user->update();
+	$user->setToSession();
+
+
 
 
 	if(isset($_SESSION['planRenewalValues'])) unset($_SESSION['planRenewalValues']);

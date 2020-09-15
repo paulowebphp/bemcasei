@@ -79,7 +79,7 @@ $app->get( "/dashboard/conta-bancaria/deletar/:hash", function( $hash )
 	{
 
 
-		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		if ( (int)$user->getinplancontext() != 0  && (int)$user->getincheckout() == 0 )
 		{
 			# code...
 			User::setError(Rule::VALIDATE_PLAN);
@@ -87,7 +87,6 @@ $app->get( "/dashboard/conta-bancaria/deletar/:hash", function( $hash )
 			exit;
 
 		}//end if
-
 
 		if ( (int)$user->getinplancontext() == 0 )
 		{
@@ -97,8 +96,6 @@ $app->get( "/dashboard/conta-bancaria/deletar/:hash", function( $hash )
 			exit;
 
 		}//end if
-
-		
 
 
 
@@ -264,7 +261,7 @@ $app->post( "/dashboard/conta-bancaria/adicionar", function()
 	{
 
 
-		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		if ( (int)$user->getinplancontext() != 0  && (int)$user->getincheckout() == 0 )
 		{
 			# code...
 			User::setError(Rule::VALIDATE_PLAN);
@@ -272,7 +269,6 @@ $app->post( "/dashboard/conta-bancaria/adicionar", function()
 			exit;
 
 		}//end if
-
 
 		if ( (int)$user->getinplancontext() == 0 )
 		{
@@ -282,8 +278,6 @@ $app->post( "/dashboard/conta-bancaria/adicionar", function()
 			exit;
 
 		}//end if
-
-		
 
 
 
@@ -806,7 +800,7 @@ $app->get( "/dashboard/conta-bancaria/adicionar", function()
 	{
 
 
-		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		if ( (int)$user->getinplancontext() != 0  && (int)$user->getincheckout() == 0 )
 		{
 			# code...
 			User::setError(Rule::VALIDATE_PLAN);
@@ -814,7 +808,6 @@ $app->get( "/dashboard/conta-bancaria/adicionar", function()
 			exit;
 
 		}//end if
-
 
 		if ( (int)$user->getinplancontext() == 0 )
 		{
@@ -824,8 +817,6 @@ $app->get( "/dashboard/conta-bancaria/adicionar", function()
 			exit;
 
 		}//end if
-
-		
 
 
 
@@ -1028,7 +1019,7 @@ $app->post( "/dashboard/conta-bancaria/:hash", function( $hash )
 	{
 
 
-		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		if ( (int)$user->getinplancontext() != 0  && (int)$user->getincheckout() == 0 )
 		{
 			# code...
 			User::setError(Rule::VALIDATE_PLAN);
@@ -1036,7 +1027,6 @@ $app->post( "/dashboard/conta-bancaria/:hash", function( $hash )
 			exit;
 
 		}//end if
-
 
 		if ( (int)$user->getinplancontext() == 0 )
 		{
@@ -1046,8 +1036,6 @@ $app->post( "/dashboard/conta-bancaria/:hash", function( $hash )
 			exit;
 
 		}//end if
-
-		
 
 
 
@@ -1639,7 +1627,7 @@ $app->get( "/dashboard/conta-bancaria/:hash", function( $hash )
 	{
 
 
-		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		if ( (int)$user->getinplancontext() != 0  && (int)$user->getincheckout() == 0 )
 		{
 			# code...
 			User::setError(Rule::VALIDATE_PLAN);
@@ -1647,7 +1635,6 @@ $app->get( "/dashboard/conta-bancaria/:hash", function( $hash )
 			exit;
 
 		}//end if
-
 
 		if ( (int)$user->getinplancontext() == 0 )
 		{
@@ -1657,8 +1644,6 @@ $app->get( "/dashboard/conta-bancaria/:hash", function( $hash )
 			exit;
 
 		}//end if
-
-		
 
 
 

@@ -4740,7 +4740,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 	
 
-
+/*
 	if ( (int)$invoucher == 1 )
 	{
 
@@ -4759,7 +4759,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 		
 	}//end else
 	
-	/*
+	
 	else
 	{
 
@@ -4778,8 +4778,12 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 	//$user->setdtplanend($plan->getdtend());
 
 
+	$user->setinplancontext($inplan['inplancontext']);
+	//$inplancontext = substr($plan->getinplancode(), 0, 1);
 
 
+	$user->setinplan((int)$plan->getinplancode());
+	//$user->setinplancontext((int)$inplancontext);
 
 	
 	$user->setincheckout(1);

@@ -19,75 +19,6 @@ use Core\Model\Rsvp;
 
 
 
-/*$app->get( "/dashboard/orders", function()
-{
-
-	User::verifyLogin(false);
-
-	$user = User::getFromSession();
-
-	$page = new PageDashboard();
-
-	$page->setTpl(
-		
-
-	 
-		"dashboard-orders", 
-		
-		[
-
-			'orders'=>$user->getOrders()
-
-		]
-	
-	);//end setTpl
-
-});//END route
-
-
-
-
-
-
-
-$app->get( "/dashboard/orders/:idorder", function( $idorder )
-{
-
-	User::verifyLogin(false);
-
-	$order = new Order();
-
-	$order->get((int)$idorder);
-
-	$cart = new Cart();
-
-	$cart->get((int)$order->getidcart());
-
-	$cart->getCalculateTotal();
-
-	$page = new PageDashboard();
-
-	$page->setTpl(
-		
-
-	 
-		"dashboard-orders-detail", 
-		
-		[
-			
-			'order'=>$order->getValues(),
-			'cart'=>$cart->getValues(),
-			'products'=>$cart->getProducts()
-
-		]
-	
-	);//end setTpl
-
-});//END route
-*/
-
-
-
 
 
 
@@ -360,12 +291,18 @@ $app->get( "/dashboard", function()
 
 	
 
-
 	$validate = User::validatePlanDashboard( $user );
 
 
 	
-
+	/*
+	echo '<pre>';
+	var_dump($user);
+	echo '************************************************************<br><br><br>';
+	var_dump($validate);
+	exit;
+	*/
+	
 
 	$message = new Message();
 

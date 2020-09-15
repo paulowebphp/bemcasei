@@ -2618,13 +2618,13 @@ $app->post( "/dashboard/upgrade/checkout", function()
 
 	
 
-	//$user->setinplancontext($inplan['inplancontext']);
-	//$user->setinplan($plan->getinplancode());
+	$user->setinplancontext($inplan['inplancontext']);
+	$user->setinplan($plan->getinplancode());
 	//$user->setdtplanend($plan->getdtend());
 
 	
-	//$user->update();
-	//$user->setToSession();
+	$user->update();
+	$user->setToSession();
 
 
 	if(isset($_SESSION['planUpgradeValues'])) unset($_SESSION['planUpgradeValues']);

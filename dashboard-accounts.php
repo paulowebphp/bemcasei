@@ -93,7 +93,7 @@ $app->get( "/dashboard/sua-carteira", function()
 	{
 
 
-		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		if ( (int)$user->getinplancontext() != 0  && (int)$user->getincheckout() == 0 )
 		{
 			# code...
 			User::setError(Rule::VALIDATE_PLAN);

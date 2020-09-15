@@ -84,7 +84,7 @@ $app->get( "/dashboard/painel-financeiro/detalhes/:hash", function( $hash )
 	{
 
 
-		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		if ( (int)$user->getinplancontext() != 0  && (int)$user->getincheckout() == 0 )
 		{
 			# code...
 			User::setError(Rule::VALIDATE_PLAN);
@@ -111,12 +111,11 @@ $app->get( "/dashboard/painel-financeiro/detalhes/:hash", function( $hash )
 	if ( (int)$user->getinaccount() == 0 )
 	{
 		# code...
-		Account::setError(Rule::VALIDATE_ACCOUNT);
+		//Account::setError(Rule::VALIDATE_ACCOUNT);
 		header('Location: /dashboard/cadastrar');
 		exit;
 
 	}//end if
-
 
 
 
@@ -276,6 +275,15 @@ $app->get( "/dashboard/painel-financeiro", function()
 
 	$validate = User::validatePlanDashboard( $user );
 
+	/*
+	echo '<pre>';
+	var_dump((int)$user->getinplancontext() != 0  && (int)$user->getincheckout() == 0);
+	var_dump((int)$user->getinplancontext() == 0);
+	var_dump((int)$user->getinaccount() == 0);
+	exit;
+	*/
+
+	
 
 	if($validate)
 	{	
@@ -295,7 +303,7 @@ $app->get( "/dashboard/painel-financeiro", function()
 	{
 
 
-		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		if ( (int)$user->getinplancontext() != 0  && (int)$user->getincheckout() == 0 )
 		{
 			# code...
 			User::setError(Rule::VALIDATE_PLAN);
@@ -322,7 +330,7 @@ $app->get( "/dashboard/painel-financeiro", function()
 	if ( (int)$user->getinaccount() == 0 )
 	{
 		# code...
-		Account::setError(Rule::VALIDATE_ACCOUNT);
+		//Account::setError(Rule::VALIDATE_ACCOUNT);
 		header('Location: /dashboard/cadastrar');
 		exit;
 
@@ -553,6 +561,11 @@ $app->get( "/dashboard/painel-financeiro", function()
 	);//end setTpl
 
 });//END route
+
+
+
+
+
 
 
 

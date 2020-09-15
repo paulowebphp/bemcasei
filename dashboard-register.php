@@ -115,8 +115,8 @@ $app->post( "/dashboard/cadastrar", function()
 		if( (int)$validate['incontext'] == 0 )
 		{
 
-			Payment::setError(Rule::VALIDATE_PLAN);
-			header('Location: /dashboard/meu-plano');
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
 			exit;
 
 		}//end if
@@ -127,7 +127,7 @@ $app->post( "/dashboard/cadastrar", function()
 	{
 
 
-		if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+		if ( (int)$user->getinplancontext() != 0  && (int)$user->getincheckout() == 0 )
 		{
 			# code...
 			User::setError(Rule::VALIDATE_PLAN);
@@ -135,8 +135,6 @@ $app->post( "/dashboard/cadastrar", function()
 			exit;
 
 		}//end if
-
-
 
 		if ( (int)$user->getinplancontext() == 0 )
 		{
@@ -148,17 +146,18 @@ $app->post( "/dashboard/cadastrar", function()
 		}//end if
 
 
+
 	}//end if
 
 
-	
 
 	if ( (int)$user->getinaccount() == 1 )
 	{
 		# code...
-		header("Location: /dashboard");
+		//Order::setError(Rule::VALIDATE_ACCOUNT);
+		header('Location: /dashboard/painel-financeiro');
 		exit;
-		
+
 	}//end if
 
 
@@ -1031,8 +1030,8 @@ $app->get( "/dashboard/cadastrar", function()
 		if( (int)$validate['incontext'] == 0 )
 		{
 
-			Payment::setError(Rule::VALIDATE_PLAN);
-			header('Location: /dashboard/meu-plano');
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
 			exit;
 
 		}//end if
@@ -1043,7 +1042,7 @@ $app->get( "/dashboard/cadastrar", function()
 	{
 
 
-		if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+		if ( (int)$user->getinplancontext() != 0  && (int)$user->getincheckout() == 0 )
 		{
 			# code...
 			User::setError(Rule::VALIDATE_PLAN);
@@ -1051,8 +1050,6 @@ $app->get( "/dashboard/cadastrar", function()
 			exit;
 
 		}//end if
-
-
 
 		if ( (int)$user->getinplancontext() == 0 )
 		{
@@ -1064,17 +1061,18 @@ $app->get( "/dashboard/cadastrar", function()
 		}//end if
 
 
+
 	}//end if
 
 
-	
 
 	if ( (int)$user->getinaccount() == 1 )
 	{
 		# code...
-		header("Location: /dashboard");
+		//Order::setError(Rule::VALIDATE_ACCOUNT);
+		header('Location: /dashboard/painel-financeiro');
 		exit;
-		
+
 	}//end if
 
 

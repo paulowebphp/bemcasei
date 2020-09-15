@@ -47,7 +47,13 @@ $app->get( "/dashboard/meu-plano", function()
 	$validate = User::validatePlanDashboard( $user );
 
 
-	
+	/*
+	echo '<pre>';
+	var_dump($user);
+	echo '************************************************************<br><br><br>';
+	var_dump($validate);
+	exit;
+	*/
 	
 
 	$plan = new Plan();

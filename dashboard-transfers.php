@@ -73,7 +73,7 @@ $app->get( "/dashboard/transferencias/transferir-saldo", function()
 	{
 
 
-		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		if ( (int)$user->getinplancontext() != 0  && (int)$user->getincheckout() == 0 )
 		{
 			# code...
 			User::setError(Rule::VALIDATE_PLAN);
@@ -92,7 +92,9 @@ $app->get( "/dashboard/transferencias/transferir-saldo", function()
 		}//end if
 
 
+
 	}//end if
+
 
 
 	if ( (int)$user->getinaccount() == 0 )
@@ -285,7 +287,7 @@ $app->post( "/dashboard/transferencias/transferir-saldo", function()
 	{
 
 
-		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		if ( (int)$user->getinplancontext() != 0  && (int)$user->getincheckout() == 0 )
 		{
 			# code...
 			User::setError(Rule::VALIDATE_PLAN);
@@ -304,7 +306,9 @@ $app->post( "/dashboard/transferencias/transferir-saldo", function()
 		}//end if
 
 
+
 	}//end if
+
 
 
 	if ( (int)$user->getinaccount() == 0 )
@@ -545,7 +549,7 @@ $app->get( "/dashboard/transferencias", function()
 	{
 
 
-		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		if ( (int)$user->getinplancontext() != 0  && (int)$user->getincheckout() == 0 )
 		{
 			# code...
 			User::setError(Rule::VALIDATE_PLAN);
@@ -564,7 +568,9 @@ $app->get( "/dashboard/transferencias", function()
 		}//end if
 
 
+
 	}//end if
+
 
 
 	if ( (int)$user->getinaccount() == 0 )
