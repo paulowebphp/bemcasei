@@ -95,9 +95,25 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 
-	if ( (int)$user->getinplancontext() != 0 && (int)$user->getincheckout() != 0 )
+	if($validate)
+	{	
+
+		if( (int)$validate['incontext'] != 0 )
+		{
+
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
+
+	}//end if
+	
+
+
+	if ( (int)$user->getincheckout() != 0 )
 	{
-		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard/meu-plano');
 		exit;
@@ -4893,9 +4909,25 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 
 
 
-	if ( (int)$user->getinplancontext() != 0 && (int)$user->getincheckout() != 0 )
+	if($validate)
+	{	
+
+		if( (int)$validate['incontext'] != 0 )
+		{
+
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
+
+	}//end if
+	
+
+
+	if ( (int)$user->getincheckout() != 0 )
 	{
-		# code...
 		Payment::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard/meu-plano');
 		exit;
@@ -4987,51 +5019,7 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 
 
 	//$state = Address::listAllStates();
-	$state = Address::listAllStates();
-
-
-
-
-
-
 	
-
-	$city = [];
-
-	if ( (int)$address->getidstate() > 0 ) 
-	{
-		# code...
-		$city = Address::listAllCitiesByState((int)$address->getidstate());
-
-	}//end if
-	else
-	{
-
-		$city = Address::listAllCitiesByState(1);
-
-		
-
-	}//end else
-
-
-
-
-	$city2 = [];
-	
-
-	if ( isset($_SESSION["planPurchaseValues"]) ) 
-	{
-		# code...
-		$city2 = Address::listAllCitiesByState($_SESSION["planPurchaseValues"]['desstate']);
-
-	}//end if
-	else
-	{
-
-		$city2 = Address::listAllCitiesByState(1);
-	
-
-	}//end else
 
 
 
@@ -5428,6 +5416,9 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 
 
 
+
+
+
 	$city2 = [];
 	
 
@@ -5635,10 +5626,34 @@ $app->get( "/dashboard/comprar-plano", function()
 
 
 
-	
+	if($validate)
+	{	
+
+		if( (int)$validate['incontext'] == 0 )
+		{
+
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
+
+	}//end if
 	
 
 
+	if ( (int)$user->getincheckout() != 0 )
+	{
+		Payment::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard/meu-plano');
+		exit;
+
+	}//end if
+
+
+
+	/*
 	if ( (int)$user->getinplancontext() != 0 && (int)$user->getincheckout() != 0 )
 	{
 		# code...
@@ -5647,6 +5662,7 @@ $app->get( "/dashboard/comprar-plano", function()
 		exit;
 
 	}//end if
+	*/
 
 
 

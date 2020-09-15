@@ -11,30 +11,29 @@
 
             <div class="col-md-3 col-12 dash-menu">
 
+                <?php if( !$validate ){ ?>
 
-                <?php if( $user["inplancontext"] == 0 ){ ?>
+                    <?php if( $user["incheckout"] == 0 or $user["inaccount"] == 0 ){ ?>
+
+                        <?php require $this->checkTemplate("dashboard-menu-noorders");?>
+
+                    <?php }else{ ?>
+
+                        <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+
+                    <?php } ?>
+
+                <?php }elseif( $validate["incontext"] == 0 ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-free");?>
-
-                
-                <?php }elseif( $user["incheckout"] == 0 ){ ?>
-
-                    <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
-                
-
-                <?php }elseif( !$validate ){ ?>
-
-                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-                
 
                 <?php }else{ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu");?>
 
                 <?php } ?>
-                  
-                    
 
+                
             </div><!--col-->
 
 
@@ -102,7 +101,7 @@
                 </div>
                
 
-                <?php }elseif( $user["inplancontext"] == 0 or $user["incheckout"] == 0 ){ ?>
+                <?php }elseif( $validate["incontext"] == 0 or $validate["incheckout"] == 0 ){ ?>
 
                 <div class="row">
 
@@ -287,7 +286,7 @@
 
 
 
-                <?php $counter1=-1;  if( isset($regular_plan) && ( is_array($regular_plan) || $regular_plan instanceof Traversable ) && sizeof($regular_plan) ) foreach( $regular_plan as $key1 => $value1 ){ $counter1++; ?>
+                <?php $counter1=-1;  if( isset($planArray) && ( is_array($planArray) || $planArray instanceof Traversable ) && sizeof($planArray) ) foreach( $planArray as $key1 => $value1 ){ $counter1++; ?>
                 <div class='row card-dash <?php echo getPaymentStatusClass($value1["inpaymentstatus"], $value1["inrefunded"]); ?>'>
 
                     <div class="col-12">
@@ -605,345 +604,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <?php if( $free_plan ){ ?>
-                <div class="row card-dash">
-
-                    <div class="col-12">
-                        
-
-
-                        <div class="row card-dash-row1">
-
-
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php echo formatDate($free_plan["dtregister"]); ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Data da Compra</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-                            
-
-
-
-                                               
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php echo htmlspecialchars( $free_plan["desplan"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Plano</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-
-
-
-
-
-
-                            
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span>
-                                            R$ <?php echo formatPrice($free_plan["vlprice"]); ?>
-                                        </span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Valor</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span>Autorizado</span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Status</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-                        </div><!--row-->
-
-
-
-
-                        <div class="row card-dash-row2">
-
-
-
-
-                             
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span>
-                                            <?php echo htmlspecialchars( $free_plan["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> dias
-                                        </span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Período</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-                            
-                            
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php echo formatDate($free_plan["dtbegin"]); ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Data Inicial</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-                            
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php echo formatDate($free_plan["dtend"]); ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Data Final</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    &nbsp;
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-                            
-
-
-
-
-
-
-
-                        </div><!--row-->
-
-
-
-
-                    </div><!--col-->
-
-
-
-
-
-                    </div><!--col-->
-
-
-
-
-
-                </div><!--row-->
-                <?php } ?>
-
+                
 
 
 

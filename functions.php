@@ -1499,6 +1499,68 @@ function validatePlanEnd( $dtplanend )
 
 
 
+
+
+
+
+
+
+
+
+function validatePlan()
+{
+
+
+	$user = User::getFromSession();
+
+	$plan = new Plan();
+
+	$plan_handler = $plan->get((int)$user->getiduser());
+
+	$planArray = [];
+
+
+	if( (int)$plan_handler['nrtotal'] > 0 )
+	{
+
+		$planArray = $plan_handler['results'];
+
+	}//end if
+
+
+	return User::validatePlan( $planArray );
+
+
+
+}//end function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//backup20200901
+/*
 function validatePlan()
 {
 
@@ -1526,6 +1588,83 @@ function validatePlan()
 
 }//end validatePlanEnd
 
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function validatePlanFree()
+{
+
+	$user = User::getFromSession();
+
+
+	if( (int)$user->getinplancontext() != 0 )
+	{
+		
+		return false;
+						
+		
+	}//end if
+	else
+	{
+		
+		return true;
+
+	}//end else
+
+
+	
+
+}//end validatePlanFree
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function validatePlanCheckout()
+{
+
+	$user = User::getFromSession();
+
+
+	if( (int)$user->getincheckout() != 0 && (int)$user->getinplancontext() == 0 )
+	{
+		
+		return false;
+						
+		
+	}//end if
+	else
+	{
+		
+		return true;
+
+	}//end else
+
+
+	
+
+}//end validatePlanFree
 
 
 
@@ -1647,78 +1786,6 @@ function getMaintenanceDescription()
 	return User::validatePlan( $inpaymentstatus, $inpaymentmethod, $inplancontext, $dtplanend );
 
 }//end validatePlanEnd*/
-
-
-
-
-
-
-function validatePlanFree()
-{
-
-	$user = User::getFromSession();
-
-
-	if( (int)$user->getinplancontext() != 0 )
-	{
-		
-		return false;
-						
-		
-	}//end if
-	else
-	{
-		
-		return true;
-
-	}//end else
-
-
-	
-
-}//end validatePlanFree
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function validatePlanCheckout()
-{
-
-	$user = User::getFromSession();
-
-
-	if( (int)$user->getincheckout() != 0 && (int)$user->getinplancontext() == 0 )
-	{
-		
-		return false;
-						
-		
-	}//end if
-	else
-	{
-		
-		return true;
-
-	}//end else
-
-
-	
-
-}//end validatePlanFree
-
-
-
-
 
 
 

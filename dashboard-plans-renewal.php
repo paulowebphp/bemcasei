@@ -112,11 +112,40 @@ $app->post( "/dashboard/renovar/checkout", function()
 	}//end if
 
 
+	/*
 	if ( (int)$validate['incontext'] == 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
+		exit;
+
+	}//end if
+	*/
+
+
+
+	if($validate)
+	{	
+
+		if( (int)$validate['incontext'] == 0 )
+		{
+
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
+
+	}//end if
+	
+
+
+	if ( (int)$user->getincheckout() == 0 )
+	{
+		Payment::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard/meu-plano');
 		exit;
 
 	}//end if
@@ -2787,11 +2816,40 @@ $app->get( "/dashboard/renovar/checkout", function()
 	}//end if
 
 
+	/*
 	if ( (int)$validate['incontext'] == 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
+		exit;
+
+	}//end if
+	*/
+
+
+
+	if($validate)
+	{	
+
+		if( (int)$validate['incontext'] == 0 )
+		{
+
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
+
+	}//end if
+	
+
+
+	if ( (int)$user->getincheckout() == 0 )
+	{
+		Payment::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard/meu-plano');
 		exit;
 
 	}//end if
@@ -3197,6 +3255,7 @@ $app->get( "/dashboard/renovar", function()
 	}//end if
 
 
+	/*
 	if ( (int)$validate['incontext'] == 0 )
 	{
 		# code...
@@ -3205,6 +3264,44 @@ $app->get( "/dashboard/renovar", function()
 		exit;
 
 	}//end if
+	*/
+
+
+
+	if($validate)
+	{	
+
+		if( (int)$validate['incontext'] == 0 )
+		{
+
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
+
+	}//end if
+	
+
+
+	if ( (int)$user->getincheckout() == 0 )
+	{
+		Payment::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard/meu-plano');
+		exit;
+
+	}//end if
+
+
+
+
+
+
+
+
+
+
 
 
 	   

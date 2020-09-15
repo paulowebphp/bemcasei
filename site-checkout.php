@@ -77,91 +77,6 @@ $app->get( "/planos", function()
 
 
 
-$app->get( "/criar-site", function()
-{
-
-
-
-	
-	/*if ( isset($_GET['plano']) )
-	{
-
-		$plan = $_GET['plano'];
-
-	}//end if
-	else if( !isset($_GET['plano']) )
-	{
-
-		header('Location: /planos');
-		exit;
-
-	}//end else if*/
-
-
-
-
-	if ( 
-
-
-		!isset($_GET['plano'])
-		||
-		$_GET['plano'] == ''
-
-	)
-	{
-
-		/*User::setErrorRegister(Rule::VALIDATE_PLAN_PURCHASE_CODE);
-		header("Location: /planos");
-		exit;*/
-
-		$inplancode = 0;
-
-
-	}//end if
-	elseif ( ( $inplancode = Validate::validateInplancode($_GET['plano']) ) === false )
-	{
-
-		//User::setErrorRegister(Rule::VALIDATE_PLAN_PURCHASE_CODE);
-		header("Location: /planos");
-		exit;
-
-
-	}//end if
-
-
-
-
-	
-
-
-	$page = new Page();
-
-	$page->setTpl(
-		
-		"register",
-
-		[
-			'inplancode'=>$inplancode,
-			'errorRegister'=>User::getErrorRegister(),
-			'registerValues'=>(isset($_SESSION['registerValues'])) ? $_SESSION['registerValues'] : ['name'=>'', 'email'=>'']
-
-		]
-	
-	);//end setTpl
-
-});//END route
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -579,7 +494,7 @@ $app->post( "/criar-site", function()
 	if( (int)$user->getiduser() > 0)
 	{
 
-
+		
 
 		$user->setRegisterEntities();
 
@@ -676,483 +591,116 @@ $app->post( "/criar-site", function()
 
 
 
-$app->get( "/checkout/:hash", function( $hash )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->get( "/criar-site", function()
 {
-	
-	
-	
-
-	$iduser = Validate::getHash($hash);
-
-
-	if ( $iduser == '' )
-	{
-		# code...
-		//Payment::setError(Rule::VALIDATE_ID_HASH);
-		//header('Location: /checkout/'.$hash);
-		header('Location: /planos');
-		exit;
-
-
-	}//end if
-
-
-	$user = new User();
-
-	//$user->getFromHash($hash);
-
-
-	$user->get((int)$iduser);
-
-
-
-
-
-	if ((int)$user->getinplancontext() == 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN_FREE);
-		header('Location: /login');
-		exit;
-		
-	}//end if
-	
-
-
-	/*
-
-
-	$method = 'cartao-proprio';
-
-
-
-	if ( isset($_GET['metodo']) )
-	{
-		# code...
-		
-
-		if ( Validate::validateCheckoutMethod($_GET['metodo']) ) 
-		{
-			# code...
-			$method = $_GET['metodo'];
-
-		}//end if
-		else
-		{
-
-			Payment::setError("Método de pagamento inválido");
-
-			header('Location: /checkout/'.$hash);
-			exit;
-
-
-		}//en else
-
-	}//end if*/
-
-
-
-
-
-	
-	
-	//$wirecard = new Wirecard();
-
-	$inplan = Plan::getPlanArray( $user->getinplan() );
-
-
-	
-
-	$coupon = '';
-	$action = 'aplicar';
-	$oldVlprice = '';
-
-
-	$invoucher = 0;
 
 
 	if ( 
 
-		isset($_GET['cupom'])
-		&&
-		isset($_GET['acao'])
 
+		!isset($_GET['plano'])
+		||
+		$_GET['plano'] == ''
 
 	)
 	{
 
-		if ( 
-
-
-			($coupon = Validate::validateCouponCode($_GET['cupom']))
-			&&
-			($action = Validate::validateCouponAction($_GET['acao']))
-
-
-		)
-		{
-			# code...
-
-			//$coupon = $_GET['cupom'];
-			//$action = $_GET['acao'];
-			
-			
-
-			if ( $couponExists = Coupon::checkCouponExists($coupon) ) 
-			{
-
-
-
-				$timezone = new DateTimeZone('America/Sao_Paulo');
-
-				$dtnow = new DateTime('now');
-
-				$dtnow->setTimezone($timezone);
-
-
-
-				$dtexpire = new DateTime($couponExists['dtexpire']);
-
-				//$dtexpire->setTimezone($timezone);
-
-				
-				
-				
-
-
-				if ( $dtexpire > $dtnow ) 
-				{
-					
-
-					# code...
-					if ( (int)$couponExists['inusage'] == 0 ) 
-					{
-
-						if ( $couponExists['vlpercentage'] == 0 )
-						{
-							# code...
-							//Aqui não pode ser voucher, pois o usage é ilimitado
-							//$invoucher = 1;
-
-							Payment::setError(Rule::CHECK_IS_VOUCHER);
-							header('Location: /checkout/'.$hash);
-							exit;
-
-						}//end if
-
-
-						$couponIsApplied = Coupon::checkAndApplyCoupon(
-
-							(int)$user->getiduser(),
-							(int)$couponExists['idcoupon']
-
-						);//end checkAndApplyCoupon
-
-
-						if ( 
-
-							$action == 'aplicar'
-							&&
-							(int)$couponIsApplied['instatus'] == 0							
-
-						) 
-						{
-							# code...
-
-
-							
-							$oldVlprice = $inplan['vlprice'];
-
-							$inplan['vlprice'] *= $couponExists['vlpercentage'];
-
-							$inplan['vlprice'] = number_format($inplan['vlprice'],2);
-
-							$action = 'desaplicar';
-
-
-						}//end if
-						elseif(
-
-							$action == 'aplicar'
-							&&
-							(int)$couponIsApplied['instatus'] == 1
-
-						)
-						{
-
-							
-							Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister']));
-							header('Location: /checkout/'.$hash);
-							exit;
-							
-
-						}//end elseif
-						elseif (
-
-							$action == 'desaplicar'
-							&&
-							(int)$couponIsApplied['instatus'] == 0
-
-						) 
-						{
-							# code...
-							Coupon::deleteCouponUser(
-
-								(int)$user->getiduser(), 
-								(int)$couponExists['idcoupon']
-
-							);//end deleteCouponUser
-
-							//$action = 'aplicar';
-
-							header('Location: /checkout/'.$hash);
-							exit;
-
-
-						}//end elseif
-						elseif (
-
-							$action == 'desaplicar'
-							&&
-							(int)$couponIsApplied['instatus'] == 1
-						)
-						{
-							# code...
-							Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister'])." e não pode desaplicá-lo");
-							header('Location: /checkout/'.$hash);
-							exit;
-
-
-						}//end elseif
-						
-
-
-					}//end if
-					else
-					{
-
-						if ( !Coupon::checkCouponIsApplied((int)$couponExists['idcoupon']) ) 
-						{
-
-							# code...
-							$couponIsApplied = Coupon::checkAndApplyCoupon(
-
-								(int)$user->getiduser(),
-								(int)$couponExists['idcoupon']
-
-							);//end checkAndApplyCoupon
-
-
-							if ( 
-
-								$action == 'aplicar'
-								&&
-								(int)$couponIsApplied['instatus'] == 0							
-
-							) 
-							{
-								# code...
-
-								//VOUCHER
-								if ( (int)$couponExists['vlpercentage'] == 0 )
-								{
-
-									$inplan['inperiod'] = Rule::VOUCHER_INPERIOD;
-									$inplan['desplan'] = Rule::PLAN_NAME_ADVANCED;
-									$inplan['inplancontext'] = Rule::VOUCHER_INPLANCONTEXT;
-									$inplan['inplancode'] = Rule::VOUCHER_INPLANCODE;
-									$inplan['desvlprice'] = Rule::VOUCHER_DESVLPRICE;
-									
-									$invoucher = 1;
-
-								}//end if
-								
-								$oldVlprice = $inplan['vlprice'];
-
-								$inplan['vlprice'] *= $couponExists['vlpercentage'];
-
-								$inplan['vlprice'] = number_format($inplan['vlprice'],2);
-
-
-
-								$action = 'desaplicar';
-
-							}//end if
-							elseif(
-
-								$action == 'aplicar'
-								&&
-								(int)$couponIsApplied['instatus'] == 1
-
-							)
-							{
-
-								
-								Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister']));
-								header('Location: /checkout/'.$hash);
-								exit;
-								
-
-							}//end elseif
-							elseif (
-
-								$action == 'desaplicar'
-								&&
-								(int)$couponIsApplied['instatus'] == 0
-
-							) 
-							{
-								# code...
-								Coupon::deleteCouponUser(
-
-									(int)$user->getiduser(), 
-									(int)$couponExists['idcoupon']
-
-								);//end deleteCouponUser
-
-								//$action = 'aplicar';
-
-								header('Location: /checkout/'.$hash);
-								exit;
-
-
-							}//end elseif
-							elseif (
-
-								$action == 'desaplicar'
-								&&
-								(int)$couponIsApplied['instatus'] == 1
-							)
-							{
-								# code...
-								Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister'])." e não pode desaplicá-lo");
-								header('Location: /checkout/'.$hash);
-								exit;
-
-
-							}//end elseif
-
-						}//end if
-						else
-						{
-
-							Payment::setError(Rule::CHECK_COUPON_IS_APPLIED);
-							header('Location: /checkout/'.$hash);
-							exit;
-
-						}//end else
-
-
-					}//end else
-
-
-				}//end if
-				else
-				{
-
-					
-				
-					Payment::setError("Este cupom expirou em ".$dtexpire->format('d/m/y'));
-					header('Location: /checkout/'.$hash);
-					exit;
-
-
-
-
-				}//end else
-				
-
-			}//end if
-			else
-			{
-
-				
-		
-				Payment::setError(Rule::VALIDATE_COUPON_EXISTS);
-				header('Location: /checkout/'.$hash);
-				exit;
-
-
-
-			}//end else
-
-
-
-
-		}//end if
-		else
-		{
-
-
-			Payment::setError("O código não pode estar vazio e deve ter ".Rule::COUPON_LENGTH." digitos entre letras maiúsculas e números | Por favor, tente novamente");
-			header('Location: /checkout/'.$hash);
-			exit;
-
-
-
-
-
-		}//end else
-
+		/*User::setErrorRegister(Rule::VALIDATE_PLAN_PURCHASE_CODE);
+		header("Location: /planos");
+		exit;*/
+
+		$inplancode = 0;
 
 
 	}//end if
-	
-
-
-
-
-	$state = Address::listAllStates();
-
-
-
-
-	$city = [];
-	
-
-	if ( isset($_SESSION["siteCheckoutValues"]) ) 
+	elseif ( ( $inplancode = Validate::validateInplancode($_GET['plano']) ) === false )
 	{
-		# code...
-		$city = Address::listAllCitiesByState($_SESSION["siteCheckoutValues"]['desholderstate']);
+
+		//User::setErrorRegister(Rule::VALIDATE_PLAN_PURCHASE_CODE);
+		header("Location: /planos");
+		exit;
+
 
 	}//end if
-	else
-	{
 
-		$city = Address::listAllCitiesByState(1);
-	
 
-	}//end else
-	
-	
+
 
 	
-	
-	
+
+
 	$page = new Page();
 
 	$page->setTpl(
 		
-		"checkout", 
-		
+		"register",
+
 		[
-			'user'=>$user->getValues(),
-			'hash'=>$hash,
-			'oldVlprice'=>$oldVlprice,
-			'inplan'=>$inplan,
-			'coupon'=>$coupon,
-			'action'=>$action,
-			'state'=>$state,
-			'city'=>$city,
-			'invoucher'=>$invoucher,
-			'error'=>Payment::getError(),
-			'siteCheckoutValues'=> (isset($_SESSION["siteCheckoutValues"])) ? $_SESSION["siteCheckoutValues"] : ['desname'=>'','desholderdocument'=>'', 'nrholderddd'=>'', 'nrholderphone'=>'', 'dtholderbirth'=>'', 'zipcode'=>'', 'desholderaddress'=>'', 'desholdernumber'=>'', 'desholdercomplement'=>'', 'desholderdistrict'=>'', 'desholderstate'=>'', 'desholdercity'=>'']
-			
+			'inplancode'=>$inplancode,
+			'errorRegister'=>User::getErrorRegister(),
+			'registerValues'=>(isset($_SESSION['registerValues'])) ? $_SESSION['registerValues'] : ['name'=>'', 'email'=>'']
+
 		]
 	
 	);//end setTpl
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3037,9 +2585,8 @@ $app->post( "/checkout/:hash", function( $hash )
 	}//end else
 
 
-	
-
-
+	$nrcountryarea = Rule::NR_COUNTRY_AREA;
+	$descountry = Rule::DESCOUNTRY;
 
 	
 	$cart = new Cart();
@@ -3052,8 +2599,6 @@ $app->post( "/checkout/:hash", function( $hash )
 		'incartitem'=>0
 
 	];//end $data
-
-
 
 
 	$cart->setData($data);
@@ -3072,6 +2617,7 @@ $app->post( "/checkout/:hash", function( $hash )
 
 
 	/*
+
 	echo '<pre>';
 	var_dump($_POST);
 	var_dump($desname);
@@ -3097,6 +2643,7 @@ $app->post( "/checkout/:hash", function( $hash )
 	var_dump($descardcode_cvc);
 	var_dump($hash);
 	exit;
+
 	*/
 	
 
@@ -3114,7 +2661,7 @@ $app->post( "/checkout/:hash", function( $hash )
 				$inholdertypedoc,
 				$desholderdocument,
 				$payment->getinpaymentmethod(),
-				Rule::NR_COUNTRY_AREA,
+				$nrcountryarea,
 				$nrholderddd,
 				$nrholderphone,
 				$desholderzipcode,
@@ -3175,7 +2722,7 @@ $app->post( "/checkout/:hash", function( $hash )
 			'descustomercode'=>$wirecardCustomerData['descustomercode'],
 			'desname'=>$desname,
 			'desemail'=>$user->getdesemail(),
-			'nrcountryarea'=>Rule::NR_COUNTRY_AREA,
+			'nrcountryarea'=>$nrcountryarea,
 			'nrddd'=>$nrholderddd,
 			'nrphone'=>$nrholderphone,
 			'intypedoc'=>$inholdertypedoc,
@@ -3187,7 +2734,7 @@ $app->post( "/checkout/:hash", function( $hash )
 			'desdistrict'=>$desholderdistrict,
 			'descity'=>$desholdercity,
 			'desstate'=>$desholderstate,
-			'descountry'=>Rule::DESCOUNTRY,
+			'descountry'=>$descountry,
 			'descardcode'=>$wirecardCustomerData['descardcode'],
 			'desbrand'=>$wirecardCustomerData['desbrand'],
 			'infirst6'=>$wirecardCustomerData['infirst6'],
@@ -3702,6 +3249,590 @@ $app->post( "/checkout/:hash", function( $hash )
 
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->get( "/checkout/:hash", function( $hash )
+{
+	
+	
+	
+
+	$iduser = Validate::getHash($hash);
+
+
+	if ( $iduser == '' )
+	{
+		# code...
+		//Payment::setError(Rule::VALIDATE_ID_HASH);
+		//header('Location: /checkout/'.$hash);
+		header('Location: /planos');
+		exit;
+
+
+	}//end if
+
+
+	$user = new User();
+
+	//$user->getFromHash($hash);
+
+
+	$user->get((int)$iduser);
+
+
+
+
+
+	if ((int)$user->getinplancontext() == 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN_FREE);
+		header('Location: /login');
+		exit;
+		
+	}//end if
+	
+
+
+	/*
+
+
+	$method = 'cartao-proprio';
+
+
+
+	if ( isset($_GET['metodo']) )
+	{
+		# code...
+		
+
+		if ( Validate::validateCheckoutMethod($_GET['metodo']) ) 
+		{
+			# code...
+			$method = $_GET['metodo'];
+
+		}//end if
+		else
+		{
+
+			Payment::setError("Método de pagamento inválido");
+
+			header('Location: /checkout/'.$hash);
+			exit;
+
+
+		}//en else
+
+	}//end if*/
+
+
+
+
+
+	
+	
+	//$wirecard = new Wirecard();
+
+	$inplan = Plan::getPlanArray( $user->getinplan() );
+
+
+	
+
+	$coupon = '';
+	$action = 'aplicar';
+	$oldVlprice = '';
+
+
+	$invoucher = 0;
+
+
+	if ( 
+
+		isset($_GET['cupom'])
+		&&
+		isset($_GET['acao'])
+
+
+	)
+	{
+
+		if ( 
+
+
+			($coupon = Validate::validateCouponCode($_GET['cupom']))
+			&&
+			($action = Validate::validateCouponAction($_GET['acao']))
+
+
+		)
+		{
+			# code...
+
+			//$coupon = $_GET['cupom'];
+			//$action = $_GET['acao'];
+			
+			
+
+			if ( $couponExists = Coupon::checkCouponExists($coupon) ) 
+			{
+
+
+
+				$timezone = new DateTimeZone('America/Sao_Paulo');
+
+				$dtnow = new DateTime('now');
+
+				$dtnow->setTimezone($timezone);
+
+
+
+				$dtexpire = new DateTime($couponExists['dtexpire']);
+
+				//$dtexpire->setTimezone($timezone);
+
+				
+				
+				
+
+
+				if ( $dtexpire > $dtnow ) 
+				{
+					
+
+					# code...
+					if ( (int)$couponExists['inusage'] == 0 ) 
+					{
+
+						if ( $couponExists['vlpercentage'] == 0 )
+						{
+							# code...
+							//Aqui não pode ser voucher, pois o usage é ilimitado
+							//$invoucher = 1;
+
+							Payment::setError(Rule::CHECK_IS_VOUCHER);
+							header('Location: /checkout/'.$hash);
+							exit;
+
+						}//end if
+
+
+						$couponIsApplied = Coupon::checkAndApplyCoupon(
+
+							(int)$user->getiduser(),
+							(int)$couponExists['idcoupon']
+
+						);//end checkAndApplyCoupon
+
+
+						if ( 
+
+							$action == 'aplicar'
+							&&
+							(int)$couponIsApplied['instatus'] == 0							
+
+						) 
+						{
+							# code...
+
+
+							
+							$oldVlprice = $inplan['vlprice'];
+
+							$inplan['vlprice'] *= $couponExists['vlpercentage'];
+
+							$inplan['vlprice'] = number_format($inplan['vlprice'],2);
+
+							$action = 'desaplicar';
+
+
+						}//end if
+						elseif(
+
+							$action == 'aplicar'
+							&&
+							(int)$couponIsApplied['instatus'] == 1
+
+						)
+						{
+
+							
+							Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister']));
+							header('Location: /checkout/'.$hash);
+							exit;
+							
+
+						}//end elseif
+						elseif (
+
+							$action == 'desaplicar'
+							&&
+							(int)$couponIsApplied['instatus'] == 0
+
+						) 
+						{
+							# code...
+							Coupon::deleteCouponUser(
+
+								(int)$user->getiduser(), 
+								(int)$couponExists['idcoupon']
+
+							);//end deleteCouponUser
+
+							//$action = 'aplicar';
+
+							header('Location: /checkout/'.$hash);
+							exit;
+
+
+						}//end elseif
+						elseif (
+
+							$action == 'desaplicar'
+							&&
+							(int)$couponIsApplied['instatus'] == 1
+						)
+						{
+							# code...
+							Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister'])." e não pode desaplicá-lo");
+							header('Location: /checkout/'.$hash);
+							exit;
+
+
+						}//end elseif
+						
+
+
+					}//end if
+					else
+					{
+
+						if ( !Coupon::checkCouponIsApplied((int)$couponExists['idcoupon']) ) 
+						{
+
+							# code...
+							$couponIsApplied = Coupon::checkAndApplyCoupon(
+
+								(int)$user->getiduser(),
+								(int)$couponExists['idcoupon']
+
+							);//end checkAndApplyCoupon
+
+
+							if ( 
+
+								$action == 'aplicar'
+								&&
+								(int)$couponIsApplied['instatus'] == 0							
+
+							) 
+							{
+								# code...
+
+								//VOUCHER
+								if ( (int)$couponExists['vlpercentage'] == 0 )
+								{
+
+									$inplan['inperiod'] = Rule::VOUCHER_INPERIOD;
+									$inplan['desplan'] = Rule::PLAN_NAME_ADVANCED;
+									$inplan['inplancontext'] = Rule::VOUCHER_INPLANCONTEXT;
+									$inplan['inplancode'] = Rule::VOUCHER_INPLANCODE;
+									$inplan['desvlprice'] = Rule::VOUCHER_DESVLPRICE;
+									
+									$invoucher = 1;
+
+								}//end if
+								
+								$oldVlprice = $inplan['vlprice'];
+
+								$inplan['vlprice'] *= $couponExists['vlpercentage'];
+
+								$inplan['vlprice'] = number_format($inplan['vlprice'],2);
+
+
+
+								$action = 'desaplicar';
+
+							}//end if
+							elseif(
+
+								$action == 'aplicar'
+								&&
+								(int)$couponIsApplied['instatus'] == 1
+
+							)
+							{
+
+								
+								Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister']));
+								header('Location: /checkout/'.$hash);
+								exit;
+								
+
+							}//end elseif
+							elseif (
+
+								$action == 'desaplicar'
+								&&
+								(int)$couponIsApplied['instatus'] == 0
+
+							) 
+							{
+								# code...
+								Coupon::deleteCouponUser(
+
+									(int)$user->getiduser(), 
+									(int)$couponExists['idcoupon']
+
+								);//end deleteCouponUser
+
+								//$action = 'aplicar';
+
+								header('Location: /checkout/'.$hash);
+								exit;
+
+
+							}//end elseif
+							elseif (
+
+								$action == 'desaplicar'
+								&&
+								(int)$couponIsApplied['instatus'] == 1
+							)
+							{
+								# code...
+								Payment::setError("Olá, ".$user->getdesperson().", sentimos muito, mas você já aplicou este cupom em: ".formatDate($couponIsApplied['dtregister'])." e não pode desaplicá-lo");
+								header('Location: /checkout/'.$hash);
+								exit;
+
+
+							}//end elseif
+
+						}//end if
+						else
+						{
+
+							Payment::setError(Rule::CHECK_COUPON_IS_APPLIED);
+							header('Location: /checkout/'.$hash);
+							exit;
+
+						}//end else
+
+
+					}//end else
+
+
+				}//end if
+				else
+				{
+
+					
+				
+					Payment::setError("Este cupom expirou em ".$dtexpire->format('d/m/y'));
+					header('Location: /checkout/'.$hash);
+					exit;
+
+
+
+
+				}//end else
+				
+
+			}//end if
+			else
+			{
+
+				
+		
+				Payment::setError(Rule::VALIDATE_COUPON_EXISTS);
+				header('Location: /checkout/'.$hash);
+				exit;
+
+
+
+			}//end else
+
+
+
+
+		}//end if
+		else
+		{
+
+
+			Payment::setError("O código não pode estar vazio e deve ter ".Rule::COUPON_LENGTH." digitos entre letras maiúsculas e números | Por favor, tente novamente");
+			header('Location: /checkout/'.$hash);
+			exit;
+
+
+
+
+
+		}//end else
+
+
+
+	}//end if
+	
+
+
+
+
+	$state = Address::listAllStates();
+
+
+
+
+	$city = [];
+	
+
+	if ( isset($_SESSION["siteCheckoutValues"]) ) 
+	{
+		# code...
+		$city = Address::listAllCitiesByState($_SESSION["siteCheckoutValues"]['desholderstate']);
+
+	}//end if
+	else
+	{
+
+		$city = Address::listAllCitiesByState(1);
+	
+
+	}//end else
+	
+	
+
+	
+	
+	
+	$page = new Page();
+
+	$page->setTpl(
+		
+		"checkout", 
+		
+		[
+			'user'=>$user->getValues(),
+			'hash'=>$hash,
+			'oldVlprice'=>$oldVlprice,
+			'inplan'=>$inplan,
+			'coupon'=>$coupon,
+			'action'=>$action,
+			'state'=>$state,
+			'city'=>$city,
+			'invoucher'=>$invoucher,
+			'error'=>Payment::getError(),
+			'siteCheckoutValues'=> (isset($_SESSION["siteCheckoutValues"])) ? $_SESSION["siteCheckoutValues"] : ['desname'=>'','desholderdocument'=>'', 'nrholderddd'=>'', 'nrholderphone'=>'', 'dtholderbirth'=>'', 'zipcode'=>'', 'desholderaddress'=>'', 'desholdernumber'=>'', 'desholdercomplement'=>'', 'desholderdistrict'=>'', 'desholderstate'=>'', 'desholdercity'=>'']
+			
+		]
+	
+	);//end setTpl
+
+});//END route
+
+
+
+
+
+
+
+
+
+
 
 
 

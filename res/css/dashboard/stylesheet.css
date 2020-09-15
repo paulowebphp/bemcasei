@@ -985,7 +985,7 @@ label{
   padding: 4% 2%;
 }
 .card-dash.cancelled{
-  background-color: #ccc!important;
+  background-color: #efefef!important;
   opacity: 0.5;
 
 }

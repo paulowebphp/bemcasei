@@ -28,6 +28,9 @@ use \Core\Model\Wedding;
 class User extends Model
 {
 
+
+
+
 	const SESSION = "bemcasei-user";
 
 	# CHAVE DE ENCRIPTAÇÃO TEM QUE TER 16 CARACTERES
@@ -87,7 +90,7 @@ class User extends Model
 		}//end else
 
 
-	}//END getFromSession
+	}//END Method
 
 
 
@@ -119,7 +122,7 @@ class User extends Model
 
 		return $user;
 
-	}//END getFromSession*/
+	}//END Method*/
 
 
 
@@ -178,7 +181,7 @@ class User extends Model
 
 		}//end else
 
-	}//END checkLogin
+	}//END Method
 
 
 
@@ -231,7 +234,7 @@ class User extends Model
 			
 		}
 
-	}//END login
+	}//END Method
 	*/
 
 
@@ -295,7 +298,7 @@ class User extends Model
 		}//end if
 
 
-	}//END getFromHash
+	}//END Method
 
 
 
@@ -424,7 +427,7 @@ class User extends Model
 		}//end else
 
 
-	}//END login
+	}//END Method
 
 
 
@@ -455,7 +458,8 @@ class User extends Model
 
 
 
-	/*public static function login( $login, $password )
+	/*
+	public static function login( $login, $password )
 	{	
 
 		
@@ -562,7 +566,8 @@ class User extends Model
 		}//end else
 
 
-	}//END login*/
+	}//END Method
+	*/
 
 
 
@@ -603,7 +608,8 @@ class User extends Model
 
 
 
-	/*public static function login( $login, $password )
+	/*
+	public static function login( $login, $password )
 	{	
 
 
@@ -700,7 +706,8 @@ class User extends Model
 		}//end else
 
 
-	}//END login*/
+	}//END Method
+	*/
 
 
 
@@ -793,7 +800,7 @@ class User extends Model
 			
 		}//end else
 
-	}//END login
+	}//END Method
 
 
 
@@ -863,7 +870,7 @@ class User extends Model
 
 		
 
-	}//END getCEP
+	}//END Method
 
 
 
@@ -951,7 +958,7 @@ class User extends Model
 			
 		}//end else
 
-	}//END login*/
+	}//END Method*/
 
 
 
@@ -970,7 +977,7 @@ class User extends Model
 
 		}#END if verifyLogin
 
-	}//END loginAfterPlanPurchase
+	}//END Method
 	*/
 
 
@@ -1010,7 +1017,7 @@ class User extends Model
 
 		
 
-	}//END verifyLogin
+	}//END Method
 
 
 
@@ -1025,7 +1032,7 @@ class User extends Model
 	{
 		$_SESSION[User::SESSION] = NULL;
 		
-	}//END logout
+	}//END Method
 
 
 
@@ -1039,7 +1046,7 @@ class User extends Model
 
 		$_SESSION[User::SESSION] = $this->getValues();
 
-	}//END setToSession
+	}//END Method
 
 
 
@@ -1062,7 +1069,7 @@ class User extends Model
 
 		");//end select
 		
-	}//END listAll
+	}//END Method
 
 
 
@@ -1158,7 +1165,7 @@ class User extends Model
 
 		}//end if
 
-	}//END save*/
+	}//END Method*/
 
 
 
@@ -1364,7 +1371,7 @@ class User extends Model
 
 		}//end if
 
-	}//END save
+	}//END Method
 
 
 
@@ -1440,7 +1447,7 @@ class User extends Model
 
 		}//end if
 
-	}//END get
+	}//END Method
 
 
 
@@ -1464,7 +1471,7 @@ class User extends Model
 
 		$this->setData($results[0]);
 
-	}//END get
+	}//END Method
 	*/
 
 
@@ -1561,7 +1568,7 @@ class User extends Model
 
 
 
-	}//END update*/
+	}//END Method*/
 
 
 
@@ -1777,7 +1784,7 @@ class User extends Model
 
 
 
-	}//END update
+	}//END Method
 
 
 
@@ -1808,7 +1815,7 @@ class User extends Model
 		
 		);//end query
 
-	}//END delete
+	}//END Method
 
 
 
@@ -2009,7 +2016,7 @@ class User extends Model
 
 		}//end else
 
-	}//END getForgot
+	}//END Method
 
 
 
@@ -2134,7 +2141,7 @@ class User extends Model
 
 		}//end else
 
-	}//END getForgot*/
+	}//END Method*/
 
 
 
@@ -2228,7 +2235,7 @@ class User extends Model
 
 		}#end else
 
-	}//END getForgot
+	}//END Method
 	*/
 
 
@@ -2346,7 +2353,7 @@ class User extends Model
 
 	    }//end else
 
-	}//END validForgotDecrypt
+	}//END Method
 
 
 
@@ -2375,7 +2382,7 @@ class User extends Model
 		
 		);//end query
 
-	}//END setForgotUsed
+	}//END Method
 
 
 
@@ -2407,7 +2414,7 @@ class User extends Model
 		
 		);//end query
 
-	}//END setPassword
+	}//END Method
 
 
 
@@ -2481,42 +2488,8 @@ class User extends Model
 
 
 
-			
-
-
-			/*$plan = new Plan();
-			$plan->getFreePlan((int)$this->getiduser());
-	
-
-			$inplan = Plan::getPlanArray(0);
-
-
-				
-
-			$plan->setData([
-
-				'idplan'=>$plan->getidplan(),
-				'iduser'=>$this->getiduser(),
-				'inplancode'=>$inplan['inplancode'],
-				'inmigration'=>0,
-				'inperiod'=>$inplan['inperiod'],
-				'desplan'=>$inplan['desplan'],
-				'vlprice'=>$inplan['vlprice'],
-				'dtbegin'=>$this->getdtplanbegin(),
-				'dtend'=>$this->getdtplanend()
-
-
-			]);//end setData
-
 
 			
-			
-		
-		
-			$plan->save();*/
-
-
-
 			if( (int)$this->getinplancontext() == 0 )
 			{
 
@@ -2539,10 +2512,17 @@ class User extends Model
 
 
 
+
+
+
+
+
+
+
+
 				$plan = new Plan();
 
 				$plan->getFreePlan((int)$this->getiduser());
-
 
 				$plan->setData([
 
@@ -2558,7 +2538,6 @@ class User extends Model
 
 
 				]);//end setData
-
 				
 				$plan->save();
 
@@ -2568,9 +2547,225 @@ class User extends Model
 				//$this->setdtplanbegin($dt_now->format('Y-m-d'));
 				//$this->setdtplanend($dt_free->format('Y-m-d'));
 
-		
+
+
+
+
+
+
+
+
+
+
+
+
+				$cart = new Cart();
+
+				$data = [
+
+					'dessessionid'=>session_id(),
+					'iduser'=>$this->getiduser(),
+					'incartstatus'=>0,
+					'incartitem'=>0
+
+				];//end $data
+
+				$cart->setData($data);
+
+				$cart->update();
+
+
+				
+
+
+
+
+
+
+
+				$customer = new Customer();
+
+				$customer->getLast((int)$this->getiduser());
+
+				$customer->setData([
+
+					'idcustomer'=>$customer->getidcustomer(),
+					'iduser'=>$this->getiduser(),
+					'descustomercode'=>null,
+					'desname'=>null,
+					'desemail'=>null,
+					'nrcountryarea'=>null,
+					'nrddd'=>null,
+					'nrphone'=>null,
+					'intypedoc'=>null,
+					'desdocument'=>null,
+					'deszipcode'=>null,
+					'desaddress'=>null,
+					'desnumber'=>null,
+					'descomplement'=>null,
+					'desdistrict'=>null,
+					'descity'=>null,
+					'desstate'=>null,
+					'descountry'=>null,
+					'descardcode'=>null,
+					'desbrand'=>null,
+					'infirst6'=>null,
+					'inlast4'=>null,
+					'dtbirth'=>null
+
+
+				]);
+
+				$customer->save();
+
+
+				
+
+
+
+			
+
+
+
+
+
+
+				$cart->addItem( $plan->getidplan(), 0);
+
+
+
+
+
+
+
+
+
+
+
+
+				$payment = new Payment();
+
+				$payment->getLast((int)$this->getiduser());
+
+				$payment->setData([
+						
+					'idpayment'=>$payment->getidpayment(),
+					'iduser'=>$this->getiduser(),
+					'despaymentcode'=>null,
+					'inpaymentmethod'=>null,
+					'nrinstallment'=>null,
+					'inpaymentstatus'=>PaymentStatus::SETTLED,
+					'incharge'=>null,
+					'inrefunded'=>null,
+					'deslinecode'=>null,
+					'desprinthref'=>null,
+					'desholdername'=>null,
+					'nrholdercountryarea'=>null,
+					'nrholderddd'=>null,
+					'nrholderphone'=>null,
+					'inholdertypedoc'=>null,
+					'desholderdocument'=>null,
+					'desholderzipcode'=>null,
+					'desholderaddress'=>null,
+					'desholdernumber'=>null,
+					'desholdercomplement'=>null,
+					'desholderdistrict'=>null,
+					'desholdercity'=>null,
+					'desholderstate'=>null,
+					'dtholderbirth'=>null
+
+
+
+				]);//end setData
+
+				$payment->update();
+
+
+
+
+
+				
+
+
+
+				
+
+
+
+
+
+
+
+				$fee = new Fee();
+				
+				$fee->getLast((int)$this->getiduser());
+
+				$fee->setData([
+
+					'idfee'=>$fee->getidfee(),
+					'iduser'=>$this->getiduser(),
+					'idpayment'=>$payment->getidpayment(),
+					'vlmktpercentage'=>null,
+					'vlmktfixed'=>null,
+					'vlpropercentage'=>null,
+					'vlprofixed'=>null,
+					'vlantecipation'=>null,
+					'nrantecipationperiod'=>null
+					
+
+				]);//end setData
+
+				$fee->save();
+
+
+
+
+
+
+
+				$cart->setincartstatus(1);
+				$cart->update();
+				//Cart::removeFromSession();
+
+
+
+
+				
+
+
+
+
+
+
+				$order = new Order();
+
+				$order->getLast((int)$this->getiduser());
+
+				$order->setData([
+
+					'idorder'=>$order->getidorder(),
+					'iduser'=>$this->getiduser(),
+					'idcart'=>$cart->getidcart(),
+					'idcustomer'=>$customer->getidcustomer(),
+					'idpayment'=>$payment->getidpayment(),
+					'idfee'=>$fee->getidfee(),
+					'desordercode'=>null,
+					'vltotal'=>$plan->getvlprice(),
+					'vlseller'=>$plan->getvlprice(),
+					'vlmarketplace'=>$plan->getvlprice(),
+					'vlprocessor'=>$plan->getvlprice()
+
+				]);//end setData
+
+				$order->save();
+
+
+
+			
 
 			}//end if
+			
+			
 
 			
 
@@ -2585,10 +2780,6 @@ class User extends Model
 			$customstyle = new CustomStyle();
 
 			$customstyle->get((int)$this->getiduser());
-
-
-
-
 
 			$customstyle->setData([
 
@@ -2621,10 +2812,6 @@ class User extends Model
 
 			]);//end setData
 
-			
-
-		
-
 			$customstyle->update();
 
 
@@ -2642,8 +2829,6 @@ class User extends Model
 
 			$consort->get((int)$this->getiduser());
 
-
-
 			$consort->setData([
 
 				'idconsort'=>$consort->getidconsort(),
@@ -2654,10 +2839,7 @@ class User extends Model
 				'desextension'=>Rule::DEFAULT_PHOTO_EXTENSION
 
 			]);//end setData
-
-
-
-		
+	
 
 			$consort->update();
 			
@@ -2696,8 +2878,6 @@ class User extends Model
 
 			$wedding->get((int)$this->getiduser());
 
-
-
 			$wedding->setData([
 
 				'idwedding'=>$wedding->getidwedding(),
@@ -2718,9 +2898,6 @@ class User extends Model
 				
 
 			]);//end setData
-
-
-
 		
 			$wedding->update();
 
@@ -2753,8 +2930,6 @@ class User extends Model
 
 			$party->get((int)$this->getiduser());
 
-
-
 			$party->setData([
 
 				'idparty'=>$party->getidparty(),
@@ -2775,8 +2950,6 @@ class User extends Model
 				
 
 			]);//end setData
-		
-			
 
 			$party->update();
 
@@ -2799,9 +2972,6 @@ class User extends Model
 
 			$initialpage->get((int)$this->getiduser());
 
-
-
-
 			$initialpage->setData([
 
 				'idinitialpage'=>$initialpage->getidinitialpage(),				
@@ -2811,10 +2981,6 @@ class User extends Model
 				'inalbum'=>0
 
 			]);//end setData
-			
-
-		
-
 
 			$initialpage->update();
 
@@ -2830,9 +2996,6 @@ class User extends Model
 			$menu = new Menu();
 
 			$menu->get((int)$this->getiduser());
-
-
-
 
 			$menu->setData([
 
@@ -2852,7 +3015,6 @@ class User extends Model
 
 			]);//end setData
 				
-
 			$menu->update();
 
 
@@ -2868,12 +3030,7 @@ class User extends Model
 
 			$productconfig = new ProductConfig();
 
-
 			$productconfig->get((int)$this->getiduser());
-
-	
-
-
 
 			$productconfig->setData([
 
@@ -2883,10 +3040,6 @@ class User extends Model
 
 
 			]);//end setData
-
-
-
-
 
 			$productconfig->update();
 
@@ -2905,14 +3058,7 @@ class User extends Model
 
 			$rsvpconfig = new RsvpConfig();
 
-
-
-
 			$rsvpconfig->get((int)$this->getiduser());
-
-			
-
-
 
 			$desadultsdescription = 'Lembramos que nosso casamento é um evento apenas para adultos e, portanto, os convidados não deverão levar menores de '.Rule::MIN_ADULTS_AGE.' anos de idade';
 
@@ -2932,10 +3078,6 @@ class User extends Model
 
 			]);//end setData
 
-
-
-
-
 			$rsvpconfig->update();
 
 
@@ -2949,13 +3091,7 @@ class User extends Model
 
 			$socialmedia = new SocialMedia();
 
-
-
-
 			$socialmedia->get((int)$this->getiduser());
-
-
-
 
 			$socialmedia->setData([
 
@@ -2980,9 +3116,6 @@ class User extends Model
 				'destwitterlink3'=>''
 
 			]);//end setData
-
-
-
 
 
 			$socialmedia->update();
@@ -3021,8 +3154,6 @@ class User extends Model
 			$testimonial->get((int)$this->getiduser());
 
 
-
-
 			$testimonial->setData([
 
 				'idtestimonial'=>$testimonial->getidtestimonial(),
@@ -3035,9 +3166,6 @@ class User extends Model
 				'desdescription'=>''
 
 			]);//end setData
-
-
-
 
 
 			$testimonial->update();
@@ -3058,15 +3186,11 @@ class User extends Model
 
 
 
-			/*$account = new Account();
-
-
-
+			/*
+			
+			$account = new Account();
 
 			$account->get((int)$this->getiduser());
-
-
-
 
 			$account->setData([
 
@@ -3094,16 +3218,7 @@ class User extends Model
 
 			]);//end setData
 
-
-
 			$account->save();
-
-
-
-
-
-			
-		
 
 			*/
 
@@ -3114,9 +3229,7 @@ class User extends Model
 
 			$address = new Address();
 
-
 			$address->get((int)$this->getiduser());
-
 
 			$address->setData([
 
@@ -3137,7 +3250,6 @@ class User extends Model
 
 
 			]);//end setData
-
 
 			$address->update();
 
@@ -3163,13 +3275,7 @@ class User extends Model
 
 			$bank = new Bank();
 
-
-
-
 			$bank->get((int)$this->getiduser());
-
-
-
 
 			$bank->setData([
 
@@ -3185,264 +3291,7 @@ class User extends Model
 
 			]);//setData
 
-
-
-
 			$bank->update();
-
-
-
-			
-
-
-			
-
-
-
-		/*
-
-
-			$cart = new Cart();
-
-			$data = [
-
-				'dessessionid'=>session_id(),
-				'iduser'=>$this->getiduser(),
-				'incartstatus'=>0
-
-			];//end $data
-
-
-			$cart->setData($data);
-
-			$cart->update();
-
-
-			
-
-
-
-
-
-
-
-			$customer = new Customer();
-
-
-			$customer->getLast((int)$this->getiduser());
-
-
-
-			$customer->setData([
-
-				'idcustomer'=>$customer->getidcustomer(),
-				'iduser'=>$this->getiduser(),
-				'descustomercode'=>null,
-				'desname'=>null,
-				'desemail'=>null,
-				'nrcountryarea'=>null,
-				'nrddd'=>null,
-				'nrphone'=>null,
-				'intypedoc'=>null,
-				'desdocument'=>null,
-				'deszipcode'=>null,
-				'desaddress'=>null,
-				'desnumber'=>null,
-				'descomplement'=>null,
-				'desdistrict'=>null,
-				'descity'=>null,
-				'desstate'=>null,
-				'descountry'=>null,
-				'descardcode'=>null,
-				'desbrand'=>null,
-				'infirst6'=>null,
-				'inlast4'=>null,
-				'dtbirth'=>null
-
-
-			]);
-
-
-
-			$customer->save();
-
-
-			
-
-
-			
-
-
-
-
-
-
-
-
-
-
-		
-
-
-
-
-
-
-			$cart->addItem( $plan->getidplan(), 0);
-
-
-
-
-
-
-
-
-
-
-
-
-			$payment = new Payment();
-
-
-
-
-			$payment->getLast((int)$this->getiduser());
-
-
-
-
-			$payment->setData([
-					
-				'idpayment'=>$payment->getidpayment(),
-				'iduser'=>$this->getiduser(),
-				'despaymentcode'=>null,
-				'inpaymentmethod'=>null,
-				'nrinstallment'=>null,
-				'inpaymentstatus'=>null,
-				'incharge'=>null,
-				'inrefunded'=>null,
-				'deslinecode'=>null,
-				'desprinthref'=>null,
-				'desholdername'=>null,
-				'nrholdercountryarea'=>null,
-				'nrholderddd'=>null,
-				'nrholderphone'=>null,
-				'inholdertypedoc'=>null,
-				'desholderdocument'=>null,
-				'desholderzipcode'=>null,
-				'desholderaddress'=>null,
-				'desholdernumber'=>null,
-				'desholdercomplement'=>null,
-				'desholderdistrict'=>null,
-				'desholdercity'=>null,
-				'desholderstate'=>null,
-				'dtholderbirth'=>null
-
-
-
-			]);//end setData
-
-
-
-
-			$payment->update();
-
-
-
-
-
-			
-
-
-
-			
-
-
-
-
-
-
-
-			$fee = new Fee();
-
-			
-			$fee->getLast((int)$this->getiduser());
-
-
-
-
-			$fee->setData([
-
-				'idfee'=>$fee->getidfee(),
-				'iduser'=>$this->getiduser(),
-				'idpayment'=>$payment->getidpayment(),
-				'vlmktpercentage'=>null,
-				'vlmktfixed'=>null,
-				'vlpropercentage'=>null,
-				'vlprofixed'=>null,
-				'vlantecipation'=>null,
-				'nrantecipationperiod'=>null
-				
-
-			]);//end setData
-
-			
-
-			$fee->save();
-
-
-
-
-
-
-
-			$cart->setincartstatus('1');
-			$cart->update();
-			//Cart::removeFromSession();
-
-
-
-
-			
-
-
-
-
-
-
-			$order = new Order();
-
-
-			$order->getLast((int)$this->getiduser());
-
-
-			
-		
-
-
-			$order->setData([
-
-				'idorder'=>$order->getidorder(),
-				'iduser'=>$this->getiduser(),
-				'idcart'=>$cart->getidcart(),
-				'idcustomer'=>$customer->getidcustomer(),
-				'idpayment'=>$payment->getidpayment(),
-				'idfee'=>$fee->getidfee(),
-				'desordercode'=>null,
-				'vltotal'=>$plan->getvlprice(),
-				'vlseller'=>$plan->getvlprice(),
-				'vlmarketplace'=>$plan->getvlprice(),
-				'vlprocessor'=>$plan->getvlprice()
-
-			]);//end setData
-
-
-			
-
-
-			$order->save();
-		*/
-
 
 
 
@@ -3507,7 +3356,7 @@ class User extends Model
 
 
 
-	}//END setRegisterEntities
+	}//END Method
 
 
 
@@ -3546,7 +3395,7 @@ class User extends Model
 
 		$_SESSION[User::ERROR] = $msg;
 
-	}//END setError
+	}//END Method
 
 
 
@@ -3564,7 +3413,7 @@ class User extends Model
 
 		return $msg;
 
-	}//END getError
+	}//END Method
 
 
 
@@ -3577,7 +3426,7 @@ class User extends Model
 	{
 		$_SESSION[User::ERROR] = NULL;
 
-	}//END clearError
+	}//END Method
 	
 
 
@@ -3591,7 +3440,7 @@ class User extends Model
 
 		$_SESSION[User::SUCCESS] = $msg;
 
-	}//END setSuccess
+	}//END Method
 
 
 
@@ -3611,7 +3460,7 @@ class User extends Model
 
 		return $msg;
 
-	}//END getSuccess
+	}//END Method
 
 
 
@@ -3624,7 +3473,7 @@ class User extends Model
 	{
 		$_SESSION[User::SUCCESS] = NULL;
 
-	}//END clearSuccess
+	}//END Method
 
 
 
@@ -3639,7 +3488,7 @@ class User extends Model
 	{
 		$_SESSION[User::ERROR_REGISTER] = $msg;
 		
-	}//END setErrorRegister
+	}//END Method
 
 
 
@@ -3656,7 +3505,7 @@ class User extends Model
 
 		return $msg;
 
-	}//END getErrorRegister
+	}//END Method
 
 
 
@@ -3669,7 +3518,7 @@ class User extends Model
 	{
 		$_SESSION[User::ERROR_REGISTER] = NULL;
 		
-	}//END clearErrorRegister
+	}//END Method
 
 
 
@@ -3704,7 +3553,7 @@ class User extends Model
 		
 		return ( count($results) > 0 );
 
-	}//END checkLoginExists*/
+	}//END Method*/
 
 
 
@@ -3754,7 +3603,7 @@ class User extends Model
 			return false;
 		}//end else*/
 
-	}//END checkLoginExists
+	}//END Method
 
 
 
@@ -3806,7 +3655,7 @@ class User extends Model
 		
 
 
-	}//END getFromUrl
+	}//END Method
 
 
 
@@ -3845,7 +3694,7 @@ class User extends Model
 		return ( count($results) > 0 );
 
 		
-	}//END getFromUrl
+	}//END Method
 
 
 
@@ -3891,7 +3740,7 @@ class User extends Model
 
 
 
-	}//END getFromUrl*/
+	}//END Method*/
 
 
 
@@ -3946,7 +3795,7 @@ class User extends Model
 		
 
 
-	}//validatePlanEnd*/
+	}//Method*/
 
 
 
@@ -4075,7 +3924,7 @@ class User extends Model
 		
 
 
-	}//validatePlanEnd*/
+	}//Method*/
 
 
 
@@ -4117,7 +3966,186 @@ class User extends Model
 
 
 
-	public static function validatePlan( $plans, $inplancontext, $incheckout, $instatus, $inautostatus )
+	public static function validatePlan( $planArray )
+	{
+
+				
+			
+		//$timezone = new DateTimeZone('America/Sao_Paulo');
+
+		$dt_now = new \DateTime('now');
+
+		//$dt_now->setTimezone($timezone);
+
+		//$dt_plan_end = new \DateTime($dtplanend);
+
+		//$dtplanend->setTimezone($timezone);
+
+
+		
+		
+		
+
+		if( (int)$planArray != 0 )
+		{
+
+			foreach ( $planArray as $row ) 
+			{
+				# code...
+				
+					
+
+				//Pagamento com Cartão
+				
+				if (
+
+					in_array((int)$row['inpaymentmethod'], [1,2,3])
+
+				)
+				{
+					if( 
+
+						(int)$row['inpaymentstatus'] == 1
+						||
+						(int)$row['inpaymentstatus'] == 2
+						||
+						(int)$row['inpaymentstatus'] == 3
+						||
+						(int)$row['inpaymentstatus'] == 4
+						||
+						(int)$row['inpaymentstatus'] == 5
+						||
+						(int)$row['inpaymentstatus'] == 9
+
+					)
+					{
+
+						$dtend = new \DateTime($row['dtend']);
+
+						if ( $dtend < $dt_now ) break;
+
+						return $row;
+
+					}//end if
+					
+
+				}//end if
+				elseif( (int)$row['inpaymentmethod'] == 0 )
+				{
+
+					//Pagamento em Boleto
+					if( 
+		
+						(int)$row['inpaymentstatus'] == 5
+						||
+						(int)$row['inpaymentstatus'] == 9
+
+					)
+					{
+
+						$dtend = new \DateTime($row['dtend']);
+
+						if ( $dtend < $dt_now  ) break;
+
+						return $row;
+
+					}//end if
+
+				}//end else
+
+
+			}//end foreach
+
+
+			return false;
+
+
+		}//end if
+		else
+		{
+
+			
+			return false;
+			
+
+
+		}//end else
+
+			
+			
+
+
+	}//END Method
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//backup20200901
+	/*
+	public static function validatePlan( 
+		
+		$plans, 
+		$inplancontext, 
+		$incheckout, 
+		$instatus, 
+		$inautostatus 
+	
+	)
 	{
 
 				
@@ -4247,12 +4275,162 @@ class User extends Model
 			
 
 
-	}//validatePlanEnd
+	}//END Method
+
+	
+	
+	*/
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static function validatePlanDashboard( $user )
+	{
+
+		//backup
+		//$user = User::getFromSession();
+
+		$plan = new Plan();
+
+		$plan_handler = $plan->get((int)$user->getiduser());
+
+		$planArray = [];
+
+		if( (int)$plan_handler['nrtotal'] > 0 )
+		{
+
+			$planArray = $plan_handler['results'];
+
+		}//end if
+
+
+
+		return User::validatePlan( $planArray );
+
+
+
+	}//END Method
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//BACKUP
+	/*
+	 public static function validatePlanDashboard( $user )
+	{
+
+		//backup
+		//$user = User::getFromSession();
+
+
+		$plans = [];
+
+
+		if( (int)$user->getinplancontext() != 0 )
+		{
+
+			$plan = new Plan();
+
+			$plans = $plan->get((int)$user->getiduser());
+
+		}//end if
+
+
+		return User::validatePlan( $plans, $user->getinplancontext(), $user->getincheckout(), $user->getinstatus(), $user->getinautostatus() );
+
+
+
+	}//END Method
+	 */
 
 
 
@@ -4378,7 +4556,7 @@ class User extends Model
 			
 
 
-	}//validatePlanEnd
+	}//Method
 	*/
 
 
@@ -4524,57 +4702,9 @@ class User extends Model
 			
 
 
-	}//validatePlanEnd
+	}//Method
 	*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	public static function validatePlanDashboard( $user )
-	{
-
-		//backup
-		//$user = User::getFromSession();
-
-
-		$plans = [];
-
-
-		if( (int)$user->getinplancontext() != 0 )
-		{
-
-			$plan = new Plan();
-
-			$plans = $plan->get((int)$user->getiduser());
-
-		}//end if
-
-
-		return User::validatePlan( $plans, $user->getinplancontext(), $user->getincheckout(), $user->getinstatus(), $user->getinautostatus() );
-
-
-
-	}//end validatePlanEnd
 
 
 
@@ -4619,7 +4749,7 @@ class User extends Model
 
 
 
-	}//end validatePlanEnd
+	}//end Method
 
 	*/
 
@@ -4677,7 +4807,7 @@ class User extends Model
 
 
 
-	}//end validatePlanEnd
+	}//end Method
 	*/
 
 
@@ -4730,7 +4860,7 @@ class User extends Model
 		}//end else
 
 
-	}//validatePlanEnd*/
+	}//Method*/
 
 
 
@@ -4784,7 +4914,7 @@ class User extends Model
 
 		return $template;
 		
-	}//END getTemplate
+	}//END Method
 
 
 
@@ -4844,7 +4974,7 @@ class User extends Model
 		
 		return ( count($results) > 0 );
 
-	}//END checkDomainExists
+	}//END Method
 
 
 
@@ -4874,7 +5004,7 @@ class User extends Model
 		
 		);//end password_hash
 
-	}//END getPasswordHash
+	}//END Method
 
 
 
@@ -4933,7 +5063,7 @@ class User extends Model
 
 		}//end if
 
-	}//END getOrders
+	}//END Method
 
 
 
@@ -4998,7 +5128,7 @@ class User extends Model
 
 
 
-	}//END getPage
+	}//END Method
 
 
 
@@ -5069,7 +5199,7 @@ class User extends Model
 		];//end return
 
 
-	}//END getPageSearch
+	}//END Method
 
 
 
@@ -5189,7 +5319,7 @@ class User extends Model
 
 			
 
-	}//END getPageSearch
+	}//END Method
 
 
 
@@ -5325,7 +5455,7 @@ class User extends Model
 
 			
 
-	}//END getPageSearch
+	}//END Method
 
 
 
@@ -5333,7 +5463,16 @@ class User extends Model
 
 
 
-}//END class User
+
+
+
+
+
+
+
+
+
+}//END Class
 
 
 

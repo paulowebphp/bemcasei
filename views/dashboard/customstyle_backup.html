@@ -12,12 +12,19 @@
             <div class="col-md-3 dash-menu">
 
 
-                {if="!validatePlan($plan.inpaymentstatus, $plan.inpaymentmethod, $user.inplancontext, $user.dtplanend)"}
+                {if="!$validate"}
 
-                    {include="dashboard-menu-expirated"}
-               
+                    {if="$user.incheckout == 0 or $user.inaccount == 0"}
 
-                {elseif="validatePlanFree($user.inplancontext)"}
+                        {include="dashboard-menu-noorders"}
+
+                    {else}
+
+                        {include="dashboard-menu-expirated"}
+
+                    {/if}
+
+                {elseif="$validate.incontext == 0"}
 
                     {include="dashboard-menu-free"}
 

@@ -43,29 +43,46 @@ $app->get( "/dashboard/meu-plano", function()
 	$user = User::getFromSession();
 
 
+	//$validate = User::validatePlanDashboard( $user );
 	$validate = User::validatePlanDashboard( $user );
 
 
 	
 	
-	
 
 	$plan = new Plan();
+
+
 	   
-	$regular_plan = $plan->getRegularPlan((int)$user->getiduser());
+	//$regular_plan = $plan->getRegularPlan((int)$user->getiduser());
 
 	
 
 	//$results = $plan->getWithLimit((int)$user->getiduser(),(int)$user->getinplan());
 	
-	$free_plan = $plan->getFreePlan((int)$user->getiduser());
+	//$free_plan = $plan->getFreePlan((int)$user->getiduser());
 	
 	//$numplans = $results['nrtotal'];
 
 	//if(isset($free_plan['results'])) $free_plan = $free_plan['results'];
 
+	$plan_handler = $plan->get((int)$user->getiduser());
+
+	$planArray = $plan_handler['results'];
+	
+	
+	
 
 
+/*
+	echo '<pre>';
+	var_dump($validate);
+	echo 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br>';
+	var_dump($planArray);
+	exit;
+	 
+*/	 
+	
 	
 
 	
@@ -97,8 +114,9 @@ $app->get( "/dashboard/meu-plano", function()
 		
 		[
 			'user'=>$user->getValues(),
-			'regular_plan'=>$regular_plan['results'],
-			'free_plan'=>$free_plan,
+			//'regular_plan'=>$regular_plan['results'],
+			'planArray'=>$planArray,
+			//'free_plan'=>$free_plan,
 			'validate'=>$validate,
 			'error'=>Payment::getError(),
 			'success'=>Payment::getSuccess()

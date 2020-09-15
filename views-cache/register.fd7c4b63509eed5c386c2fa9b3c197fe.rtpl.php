@@ -12,20 +12,19 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-            <?php if( $user["inplancontext"] == 0 ){ ?>
+            <?php if( !$validate ){ ?>
+
+                <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+
+
+            <?php }elseif( $validate["incontext"] == 0 ){ ?>
 
                 <?php require $this->checkTemplate("dashboard-menu-free");?>
 
             
-            <?php }elseif( $user["incheckout"] == 0 ){ ?>
+            <?php }elseif( $validate["incheckout"] == 0 ){ ?>
 
                 <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
-            
-
-            <?php }elseif( !$validate ){ ?>
-
-                <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-            
 
             <?php }else{ ?>
 

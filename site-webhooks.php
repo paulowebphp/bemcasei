@@ -116,16 +116,26 @@ $app->post( '/aa0dd51316ba/webhook', function()
 				in_array( (int)$instatus, [7,8] )
 			)
 			{
-				# code...
+
 
 				Payment::updateFromNotification( (int)$results['idpayment'], (int)$instatus );
 
+				/*
+				$plan = Plan::getPlan((int)$results['iditem']);
 
+				$user = new User();
 
+				$user->get((int)$results['iduser']);
+
+				$user->setinplancontext($plan['incontext']);
+				
+				$user->update();
+				*/
 
 				if ( (int)$results['initem'] == 1 )
 				{
-					//pagamentos em cartão
+
+					//pagamentos de presentes
 					if (
 
 
@@ -280,7 +290,10 @@ $app->post( '/aa0dd51316ba/webhook', function()
 				else
 				{
 
-					//pagamentos em boleto
+					//pagamentos de planos
+
+
+
 					if (
 
 						(int)$instatus == 5
@@ -537,6 +550,14 @@ $app->post( '/aa0dd51316ba/webhook', function()
 
 
 });//END route
+
+
+
+
+
+
+
+
 
 
 
@@ -1077,6 +1098,22 @@ $app->post( '/8b03e8b1ef87/webhook', function()
 
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

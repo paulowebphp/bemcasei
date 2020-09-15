@@ -2,7 +2,7 @@
 
 namespace Core\Model;
 
-use \Core\DB\Sql;
+//use \Core\DB\Sql;
 use \Core\Model;
 
 

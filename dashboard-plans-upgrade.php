@@ -85,15 +85,39 @@ $app->post( "/dashboard/upgrade/checkout", function()
 	}//end if
 
 
-
-
-
-
-
-	if ( !in_array((int)$validate['incontext'], [1,2]) )
+	/*
+	if ( (int)$validate['incontext'] == 0 )
 	{
 		# code...
-		Payment::setError(Rule::VALIDATE_UPGRADE);
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+	*/
+
+
+
+	if($validate)
+	{	
+
+		if( !in_array((int)$validate['incontext'], [1,2]) )
+		{
+
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
+
+	}//end if
+	
+
+
+	if ( (int)$user->getincheckout() == 0 )
+	{
+		Payment::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard/meu-plano');
 		exit;
 
@@ -2720,15 +2744,39 @@ $app->get( "/dashboard/upgrade/checkout", function()
 	}//end if
 
 
-
-
-
-
-
-	if ( !in_array((int)$validate['incontext'], [1,2]) )
+	/*
+	if ( (int)$validate['incontext'] == 0 )
 	{
 		# code...
-		Payment::setError(Rule::VALIDATE_UPGRADE);
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+	*/
+
+
+
+	if($validate)
+	{	
+
+		if( !in_array((int)$validate['incontext'], [1,2]) )
+		{
+
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
+
+	}//end if
+	
+
+
+	if ( (int)$user->getincheckout() == 0 )
+	{
+		Payment::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard/meu-plano');
 		exit;
 
@@ -3105,11 +3153,48 @@ $app->get( "/dashboard/upgrade", function()
 	}//end if
 
 
+	/*
+	if ( (int)$validate['incontext'] == 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+	*/
+
+
+
+	if($validate)
+	{	
+
+		if( !in_array((int)$validate['incontext'], [1,2]) )
+		{
+
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
+
+	}//end if
+	
+
+
+	if ( (int)$user->getincheckout() == 0 )
+	{
+		Payment::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard/meu-plano');
+		exit;
+
+	}//end if
 
 
 
 
-
+	/*
 	if ( !in_array((int)$validate['incontext'], [1,2]) )
 	{
 		# code...
@@ -3118,6 +3203,10 @@ $app->get( "/dashboard/upgrade", function()
 		exit;
 
 	}//end if
+	*/
+
+
+	
 
 
 

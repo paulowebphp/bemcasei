@@ -11,29 +11,30 @@
 
             <div class="col-md-3 col-12 dash-menu">
 
-                {if="!$validate"}
 
-                    {if="$user.incheckout == 0 or $user.inaccount == 0"}
-
-                        {include="dashboard-menu-noorders"}
-
-                    {else}
-
-                        {include="dashboard-menu-expirated"}
-
-                    {/if}
-
-                {elseif="$validate.incontext == 0"}
+                {if="$user.inplancontext == 0"}
 
                     {include="dashboard-menu-free"}
+
+                
+                {elseif="$user.incheckout == 0"}
+
+                    {include="dashboard-menu-nocheckout"}
+                
+
+                {elseif="!$validate"}
+
+                    {include="dashboard-menu-expirated"}
+                
 
                 {else}
 
                     {include="dashboard-menu"}
 
                 {/if}
+                  
+                    
 
-                
             </div><!--col-->
 
 
@@ -101,7 +102,7 @@
                 </div>
                
 
-                {elseif="$validate.incontext == 0 or $validate.incheckout == 0"}
+                {elseif="$user.inplancontext == 0 or $user.incheckout == 0"}
 
                 <div class="row">
 
@@ -286,7 +287,7 @@
 
 
 
-                {loop="$planArray"}
+                {loop="$regular_plan"}
                 <div class='row card-dash {function="getPaymentStatusClass($value.inpaymentstatus, $value.inrefunded)"}'>
 
                     <div class="col-12">
@@ -604,7 +605,345 @@
 
 
 
-                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {if="$free_plan"}
+                <div class="row card-dash">
+
+                    <div class="col-12">
+                        
+
+
+                        <div class="row card-dash-row1">
+
+
+
+
+
+
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{function="formatDate($free_plan.dtregister)"}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Data da Compra</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+                            
+
+
+
+                                               
+
+
+
+
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{$free_plan.desplan}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Plano</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+
+
+
+
+
+                            
+
+
+
+
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>
+                                            R$ {function="formatPrice($free_plan.vlprice)"}
+                                        </span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Valor</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>Autorizado</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Status</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+                        <div class="row card-dash-row2">
+
+
+
+
+                             
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>
+                                            {$free_plan.inperiod} dias
+                                        </span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Período</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+                            
+                            
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{function="formatDate($free_plan.dtbegin)"}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Data Inicial</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+                            
+
+
+
+
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{function="formatDate($free_plan.dtend)"}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Data Final</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    &nbsp;
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+                            
+
+
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+                    </div><!--col-->
+
+
+
+
+
+                    </div><!--col-->
+
+
+
+
+
+                </div><!--row-->
+                {/if}
+
 
 
 
