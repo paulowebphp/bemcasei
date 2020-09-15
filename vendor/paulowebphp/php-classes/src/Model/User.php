@@ -4168,6 +4168,8 @@ class User extends Model
 		else
 		{
 
+			
+
 			foreach ( $plans['results'] as $row ) 
 			{
 				# code...

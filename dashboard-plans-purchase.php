@@ -5636,7 +5636,7 @@ $app->get( "/dashboard/comprar-plano", function()
 
 
 	
-
+	
 
 
 	if ( (int)$user->getinplancontext() != 0 && (int)$user->getincheckout() != 0 )
