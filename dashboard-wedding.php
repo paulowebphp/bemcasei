@@ -15,109 +15,6 @@ use Core\Model\Wedding;
 
 
 
-$app->get( "/dashboard/meu-casamento", function()
-{
-	
-	User::verifyLogin(false);
-
-	$user = User::getFromSession();
-
-
-
-	if( Maintenance::checkMaintenance() )
-	{	
-
-		$maintenance = new Maintenance();
-
-		$maintenance->getMaintenance();
-
-		User::setError($maintenance->getdesdescription());
-		header("Location: /login");
-		exit;
-		
-	}//end if
-
-
-
-
-
-
-
-
-
-	
-
-
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-
-	$wedding = new Wedding();
-
-	$wedding->get((int)$user->getiduser());
-
-
-
-
-
-
-		
-	$page = new PageDashboard();
-
-	$page->setTpl(
-		
-
-
-		"wedding", 
-		
-		[
-			'user'=>$user->getValues(),
-			'wedding'=>$wedding->getValues(),
-			'validate'=>$validate,
-			'success'=>Wedding::getSuccess(),
-			'error'=>Wedding::getError()
-			
-
-		]
-	
-	);//end setTpl
-
-});//END route
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 $app->post( "/dashboard/meu-casamento", function()
@@ -155,14 +52,7 @@ $app->post( "/dashboard/meu-casamento", function()
 
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 	
 
 
@@ -512,6 +402,131 @@ $app->post( "/dashboard/meu-casamento", function()
 
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->get( "/dashboard/meu-casamento", function()
+{
+	
+	User::verifyLogin(false);
+
+	$user = User::getFromSession();
+
+
+
+	if( Maintenance::checkMaintenance() )
+	{	
+
+		$maintenance = new Maintenance();
+
+		$maintenance->getMaintenance();
+
+		User::setError($maintenance->getdesdescription());
+		header("Location: /login");
+		exit;
+		
+	}//end if
+
+
+
+
+
+
+
+
+
+	
+
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+	
+
+
+	$wedding = new Wedding();
+
+	$wedding->get((int)$user->getiduser());
+
+
+
+
+
+
+		
+	$page = new PageDashboard();
+
+	$page->setTpl(
+		
+
+
+		"wedding", 
+		
+		[
+			'user'=>$user->getValues(),
+			'wedding'=>$wedding->getValues(),
+			'validate'=>$validate,
+			'success'=>Wedding::getSuccess(),
+			'error'=>Wedding::getError()
+			
+
+		]
+	
+	);//end setTpl
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

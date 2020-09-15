@@ -10,6 +10,7 @@ use Core\Model\Account;
 use Core\Model\Bank;
 use Core\Model\Cart;
 use Core\Model\Consort;
+use Core\Model\Payment;
 //use Core\Model\Gift;
 use Core\Model\Order;
 //use Core\Model\OrderStatus;
@@ -65,24 +66,43 @@ $app->get( "/dashboard/painel-financeiro/detalhes/:hash", function( $hash )
 	$validate = User::validatePlanDashboard( $user );
 
 
+	if($validate)
+	{	
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+		if( (int)$validate['incontext'] == 0 )
+		{
+
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
 
 	}//end if
-
-
-
-	if ( (int)$user->getinplancontext() == 0 )
+	else
 	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+
+
+		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		{
+			# code...
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
+		if ( (int)$user->getinplancontext() == 0 )
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
+
 
 	}//end if
 
@@ -96,6 +116,9 @@ $app->get( "/dashboard/painel-financeiro/detalhes/:hash", function( $hash )
 		exit;
 
 	}//end if
+
+
+
 
 
 
@@ -250,40 +273,48 @@ $app->get( "/dashboard/painel-financeiro", function()
 
 
 
+
 	$validate = User::validatePlanDashboard( $user );
 
 
+	if($validate)
+	{	
 
+		if( (int)$validate['incontext'] == 0 )
+		{
 
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		//User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+		}//end if
+
 
 	}//end if
-
-
-	if ( (int)$user->getinplancontext() == 0 )
+	else
 	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-	
 
 
+		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		{
+			# code...
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
 
-	if ( (int)$user->getinaccount() == 0 )
-	{
-		# code...
-		header('Location: /dashboard/cadastrar');
-		exit;
-		
+		}//end if
+
+		if ( (int)$user->getinplancontext() == 0 )
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
+
+
 	}//end if
 
 
@@ -296,6 +327,9 @@ $app->get( "/dashboard/painel-financeiro", function()
 		exit;
 
 	}//end if
+
+
+
 
 
 

@@ -20,118 +20,6 @@ use Core\Model\User;
 
 
 
-
-$app->get( "/dashboard/dominio", function()
-{
-
-	if( Maintenance::checkMaintenance() )
-	{	
-
-		$maintenance = new Maintenance();
-
-		$maintenance->getMaintenance();
-
-		User::setError($maintenance->getdesdescription());
-		header("Location: /login");
-		exit;
-		
-	}//end if
-
-
-
-
-
-
-
-	User::verifyLogin(false);
-
-	$user = User::getFromSession();
-
-		
-	//$user->get((int)$user->getiduser());
-
-
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-	/*$plan = new Plan();
-
-
-	if( (int)$user->getinplancontext() == 0 )
-	{
-
-		$plan->setinpaymentstatus('0');
-		$plan->setinpaymentmethod('0');
-
-	}//end if
-	else
-	{
-
-		$plans = $plan->get((int)$user->getiduser());
-
-		$plan->setinpaymentstatus($plans['results'][0]['inpaymentstatus']);
-		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
-
-	}//end else*/
-
-
-
-
-	$page = new PageDashboard();
-
-	$page->setTpl(
-		
-		"domain", 
-		
-		[
-			'user'=>$user->getValues(),
-			'validate'=>$validate,
-			'success'=>User::getSuccess(),
-			'error'=>User::getError()
-
-		]
-	
-	);//end setTpl
-
-});//END route
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $app->post( "/dashboard/dominio", function()
 {
 
@@ -171,14 +59,10 @@ $app->post( "/dashboard/dominio", function()
 	
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	
 
-	}//end if
+
+	
 
 
 	if( 
@@ -271,6 +155,150 @@ $app->post( "/dashboard/dominio", function()
 
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->get( "/dashboard/dominio", function()
+{
+
+	if( Maintenance::checkMaintenance() )
+	{	
+
+		$maintenance = new Maintenance();
+
+		$maintenance->getMaintenance();
+
+		User::setError($maintenance->getdesdescription());
+		header("Location: /login");
+		exit;
+		
+	}//end if
+
+
+
+
+
+
+
+	User::verifyLogin(false);
+
+	$user = User::getFromSession();
+
+		
+	//$user->get((int)$user->getiduser());
+
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+	
+
+
+
+
+	/*$plan = new Plan();
+
+
+	if( (int)$user->getinplancontext() == 0 )
+	{
+
+		$plan->setinpaymentstatus('0');
+		$plan->setinpaymentmethod('0');
+
+	}//end if
+	else
+	{
+
+		$plans = $plan->get((int)$user->getiduser());
+
+		$plan->setinpaymentstatus($plans['results'][0]['inpaymentstatus']);
+		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
+
+	}//end else*/
+
+
+
+
+	$page = new PageDashboard();
+
+	$page->setTpl(
+		
+		"domain", 
+		
+		[
+			'user'=>$user->getValues(),
+			'validate'=>$validate,
+			'success'=>User::getSuccess(),
+			'error'=>User::getError()
+
+		]
+	
+	);//end setTpl
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

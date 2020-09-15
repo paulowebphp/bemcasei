@@ -16,123 +16,6 @@ use Core\Model\SocialMedia;
 
 
 
-$app->get( "/dashboard/social", function()
-{
-
-	if( Maintenance::checkMaintenance() )
-	{	
-
-		$maintenance = new Maintenance();
-
-		$maintenance->getMaintenance();
-
-		User::setError($maintenance->getdesdescription());
-		header("Location: /login");
-		exit;
-		
-	}//end if
-
-
-
-
-
-
-
-	User::verifyLogin(false);
-
-	$user = User::getFromSession();
-
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-		
-	//$user->get((int)$user->getiduser());
-
-
-	$consort = new Consort();
-
-	$consort->get((int)$user->getiduser());
-
-
-
-	$socialmedia = new SocialMedia();
-
-	$socialmedia->get((int)$user->getiduser());
-
-
-	
-
-	/*$plan = new Plan();
-
-
-	if( (int)$user->getinplancontext() == 0 )
-	{
-
-		$plan->setinpaymentstatus('0');
-		$plan->setinpaymentmethod('0');
-
-	}//end if
-	else
-	{
-
-		$plans = $plan->get((int)$user->getiduser());
-
-		$plan->setinpaymentstatus($plans['results'][0]['inpaymentstatus']);
-		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
-
-	}//end else*/
-
-	
-
-
-	$page = new PageDashboard();
-
-	$page->setTpl(
-		
-		"socialmedias", 
-		
-		[
-			
-			'consort'=>$consort->getValues(),
-			'user'=>$user->getValues(),
-			'socialmedia'=>$socialmedia->getValues(),
-			'validate'=>$validate,
-			'success'=>SocialMedia::getSuccess(),
-			'error'=>SocialMedia::getError()
-
-		]
-	
-	);//end setTpl
-
-});//END route
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 $app->post( "/dashboard/social", function()
@@ -173,14 +56,7 @@ $app->post( "/dashboard/social", function()
 
 	}//end if
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 
 	$consort = new Consort();
@@ -256,6 +132,138 @@ $app->post( "/dashboard/social", function()
 	exit;
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->get( "/dashboard/social", function()
+{
+
+	if( Maintenance::checkMaintenance() )
+	{	
+
+		$maintenance = new Maintenance();
+
+		$maintenance->getMaintenance();
+
+		User::setError($maintenance->getdesdescription());
+		header("Location: /login");
+		exit;
+		
+	}//end if
+
+
+
+
+
+
+
+	User::verifyLogin(false);
+
+	$user = User::getFromSession();
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	
+
+		
+	//$user->get((int)$user->getiduser());
+
+
+	$consort = new Consort();
+
+	$consort->get((int)$user->getiduser());
+
+
+
+	$socialmedia = new SocialMedia();
+
+	$socialmedia->get((int)$user->getiduser());
+
+
+	
+
+	/*$plan = new Plan();
+
+
+	if( (int)$user->getinplancontext() == 0 )
+	{
+
+		$plan->setinpaymentstatus('0');
+		$plan->setinpaymentmethod('0');
+
+	}//end if
+	else
+	{
+
+		$plans = $plan->get((int)$user->getiduser());
+
+		$plan->setinpaymentstatus($plans['results'][0]['inpaymentstatus']);
+		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
+
+	}//end else*/
+
+	
+
+
+	$page = new PageDashboard();
+
+	$page->setTpl(
+		
+		"socialmedias", 
+		
+		[
+			
+			'consort'=>$consort->getValues(),
+			'user'=>$user->getValues(),
+			'socialmedia'=>$socialmedia->getValues(),
+			'validate'=>$validate,
+			'success'=>SocialMedia::getSuccess(),
+			'error'=>SocialMedia::getError()
+
+		]
+	
+	);//end setTpl
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

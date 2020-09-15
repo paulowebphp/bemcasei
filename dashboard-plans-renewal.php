@@ -142,15 +142,6 @@ $app->post( "/dashboard/renovar/checkout", function()
 	
 
 
-	if ( (int)$user->getincheckout() == 0 )
-	{
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
-		exit;
-
-	}//end if
-
-
 
 
 
@@ -2846,15 +2837,6 @@ $app->get( "/dashboard/renovar/checkout", function()
 	
 
 
-	if ( (int)$user->getincheckout() == 0 )
-	{
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
-		exit;
-
-	}//end if
-
-
 
 
 	
@@ -3285,15 +3267,6 @@ $app->get( "/dashboard/renovar", function()
 	
 
 
-	if ( (int)$user->getincheckout() == 0 )
-	{
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
-		exit;
-
-	}//end if
-
-
 
 
 
@@ -3336,6 +3309,20 @@ $app->get( "/dashboard/renovar", function()
 	);//end setTpl
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

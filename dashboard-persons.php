@@ -207,7 +207,7 @@ $app->post( "/dashboard/meus-dados", function()
 
 
 
-	$validate = User::validatePlanDashboard( $user );
+	//$validate = User::validatePlanDashboard( $user );
 
 
 

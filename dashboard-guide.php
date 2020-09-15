@@ -49,21 +49,23 @@ $app->get( "/dashboard/guia-de-casamento/noivado", function()
 
 	}//end if
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
 
-	}//end if
 
-	if ( (int)$user->getinplancontext() == 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+
+
+
+	if($validate)
+	{	
+
+		if( (int)$validate['incontext'] == 0 )
+		{
+
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
 
 	}//end if
 
@@ -142,22 +144,18 @@ $app->get( "/dashboard/guia-de-casamento/padrinhos-madrinhas", function()
 
 	}//end if
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	if($validate)
+	{	
 
-	}//end if
+		if( (int)$validate['incontext'] == 0 )
+		{
 
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
 
-	if ( (int)$user->getinplancontext() == 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+		}//end if
+
 
 	}//end if
 
@@ -249,22 +247,18 @@ $app->get( "/dashboard/guia-de-casamento/planejamento", function()
 
 	}//end if
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	if($validate)
+	{	
 
-	}//end if
+		if( (int)$validate['incontext'] == 0 )
+		{
 
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
 
-	if ( (int)$user->getinplancontext() == 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+		}//end if
+
 
 	}//end if
 
@@ -351,22 +345,18 @@ $app->get( "/dashboard/guia-de-casamento/eventos", function()
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	if($validate)
+	{	
 
-	}//end if
+		if( (int)$validate['incontext'] == 0 )
+		{
 
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
 
-	if ( (int)$user->getinplancontext() == 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+		}//end if
+
 
 	}//end if
 
@@ -451,22 +441,18 @@ $app->get( "/dashboard/guia-de-casamento/listas", function()
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	if($validate)
+	{	
 
-	}//end if
+		if( (int)$validate['incontext'] == 0 )
+		{
 
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
 
-	if ( (int)$user->getinplancontext() == 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+		}//end if
+
 
 	}//end if
 
@@ -563,22 +549,18 @@ $app->get( "/dashboard/guia-de-casamento/cerimonial", function()
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	if($validate)
+	{	
 
-	}//end if
+		if( (int)$validate['incontext'] == 0 )
+		{
 
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
 
-	if ( (int)$user->getinplancontext() == 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+		}//end if
+
 
 	}//end if
 
@@ -667,22 +649,18 @@ $app->get( "/dashboard/guia-de-casamento/buffet", function()
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	if($validate)
+	{	
 
-	}//end if
+		if( (int)$validate['incontext'] == 0 )
+		{
 
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
 
-	if ( (int)$user->getinplancontext() == 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+		}//end if
+
 
 	}//end if
 
@@ -782,22 +760,18 @@ $app->get( "/dashboard/guia-de-casamento/roupa", function()
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	if($validate)
+	{	
 
-	}//end if
+		if( (int)$validate['incontext'] == 0 )
+		{
 
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
 
-	if ( (int)$user->getinplancontext() == 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+		}//end if
+
 
 	}//end if
 
@@ -882,22 +856,18 @@ $app->get( "/dashboard/guia-de-casamento/fotos", function()
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	if($validate)
+	{	
 
-	}//end if
+		if( (int)$validate['incontext'] == 0 )
+		{
 
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
 
-	if ( (int)$user->getinplancontext() == 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+		}//end if
+
 
 	}//end if
 
@@ -995,22 +965,18 @@ $app->get( "/dashboard/guia-de-casamento/ensaios", function()
 
 	}//end if
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	if($validate)
+	{	
 
-	}//end if
+		if( (int)$validate['incontext'] == 0 )
+		{
 
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
 
-	if ( (int)$user->getinplancontext() == 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+		}//end if
+
 
 	}//end if
 
@@ -1102,23 +1068,18 @@ $app->get( "/dashboard/guia-de-casamento/lua-de-mel", function()
 
 	}//end if
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	if($validate)
+	{	
 
-	}//end if
+		if( (int)$validate['incontext'] == 0 )
+		{
 
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
 
+		}//end if
 
-	if ( (int)$user->getincheckout() == 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
 
 	}//end if
 

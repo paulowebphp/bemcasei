@@ -42,10 +42,7 @@ $app->get( "/dashboard/tags-papelaria", function()
 
 	
 
-	$validate = User::validatePlanDashboard( $user );
-
-
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
@@ -53,6 +50,9 @@ $app->get( "/dashboard/tags-papelaria", function()
 		exit;
 
 	}//end if
+
+
+	
 
 
 	$tag = new Tag();
@@ -63,74 +63,120 @@ $app->get( "/dashboard/tags-papelaria", function()
 
 	
 
-	/*$plan = new Plan();
+	if($validate)
+	{	
 
 
-	if( (int)$user->getinplancontext() == 0 )
-	{
 
-		$plan->setinpaymentstatus('0');
-		$plan->setinpaymentmethod('0');
+
+		if ( (int)$validate['incontext'] > 0 )
+		{
+			# code...
+			$page = new PageDashboard();
+		
+			$page->setTpl(
+				
+
+				"tags", 
+				
+				[
+					'user'=>$user->getValues(),
+					'tag'=>$tag->getValues(),
+					'validate'=>$validate,
+					'success'=>Tag::getSuccess(),
+					'error'=>Tag::getError()
+
+				]
+			
+			);//end setTpl
+
+
+		}//end if
+		else
+		{
+
+
+			$page = new PageDashboard();
+		
+			$page->setTpl(
+				
+
+				"tags-free",
+				
+				[
+					'user'=>$user->getValues(),
+					'tag'=>$tag->getValues(),
+					'validate'=>$validate,
+					'success'=>Tag::getSuccess(),
+					'error'=>Tag::getError()
+
+				]
+			
+			);//end setTpl
+
+
+		}//end else
+
 
 	}//end if
 	else
 	{
 
-		$plans = $plan->get((int)$user->getiduser());
 
-		$plan->setinpaymentstatus($plans['results'][0]['inpaymentstatus']);
-		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
-
-	}//end else*/
-
-
-	if ( (int)$user->getinplancontext() > 0 )
-	{
-		# code...
-		$page = new PageDashboard();
-	
-		$page->setTpl(
-			
-
-			"tags", 
-			
-			[
-				'user'=>$user->getValues(),
-				'tag'=>$tag->getValues(),
-				'validate'=>$validate,
-				'success'=>Tag::getSuccess(),
-				'error'=>Tag::getError()
-
-			]
+		if ( (int)$user->getinplancontext() > 0 )
+		{
+			# code...
+			$page = new PageDashboard();
 		
-		);//end setTpl
+			$page->setTpl(
+				
+
+				"tags", 
+				
+				[
+					'user'=>$user->getValues(),
+					'tag'=>$tag->getValues(),
+					'validate'=>$validate,
+					'success'=>Tag::getSuccess(),
+					'error'=>Tag::getError()
+
+				]
+			
+			);//end setTpl
+
+
+		}//end if
+		else
+		{
+
+
+			$page = new PageDashboard();
+		
+			$page->setTpl(
+				
+
+				"tags-free",
+				
+				[
+					'user'=>$user->getValues(),
+					'tag'=>$tag->getValues(),
+					'validate'=>$validate,
+					'success'=>Tag::getSuccess(),
+					'error'=>Tag::getError()
+
+				]
+			
+			);//end setTpl
+
+
+		}//end else
+
 
 
 	}//end if
-	else
-	{
 
 
-		$page = new PageDashboard();
 	
-		$page->setTpl(
-			
-
-			"tags-free",
-			
-			[
-				'user'=>$user->getValues(),
-				'tag'=>$tag->getValues(),
-				'validate'=>$validate,
-				'success'=>Tag::getSuccess(),
-				'error'=>Tag::getError()
-
-			]
-		
-		);//end setTpl
-
-
-	}//end else
 
 
 	

@@ -56,14 +56,7 @@ $app->get( "/dashboard/personalizar-site/resetar", function()
 
 	}//end if
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 	
 
@@ -196,14 +189,7 @@ $app->post( "/dashboard/personalizar-site", function()
 
 	}//end if
 	
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 	
 	if( 
 		
@@ -1107,14 +1093,7 @@ $app->get( "/dashboard/personalizar-site", function()
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 	$customstyle = new CustomStyle();
 
@@ -1147,7 +1126,7 @@ $app->get( "/dashboard/personalizar-site", function()
 		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
 
 	}//end else
-*/
+	*/
 
 
 

@@ -13,6 +13,11 @@ use Core\Model\Message;
 
 
 
+
+
+
+
+
 $app->get( "/dashboard/mensagens/:hash/aprovar", function( $hash )
 {
 	
@@ -51,14 +56,7 @@ $app->get( "/dashboard/mensagens/:hash/aprovar", function( $hash )
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 
 
@@ -171,14 +169,7 @@ $app->get( "/dashboard/mensagens/:hash/moderar", function( $hash )
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 
 
@@ -289,14 +280,7 @@ $app->get( "/dashboard/mensagens/:hash/deletar", function( $hash )
 
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 
 
@@ -398,14 +382,7 @@ $app->get( "/dashboard/mensagens", function()
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 	
 

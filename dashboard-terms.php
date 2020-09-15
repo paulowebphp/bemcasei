@@ -41,25 +41,7 @@ $app->get( "/dashboard/termos-uso", function()
 	$validate = User::validatePlanDashboard( $user );
 
 
-	/*$plan = new Plan();
-
-
-	if( (int)$user->getinplancontext() == 0 )
-	{
-
-		$plan->setinpaymentstatus('0');
-		$plan->setinpaymentmethod('0');
-
-	}//end if
-	else
-	{
-
-		$plans = $plan->get((int)$user->getiduser());
-
-		$plan->setinpaymentstatus($plans['results'][0]['inpaymentstatus']);
-		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
-
-	}//end else*/
+	
 
 
 
@@ -134,25 +116,7 @@ $app->get( "/dashboard/termos-lista", function()
 
 
 
-	/*$plan = new Plan();
-
-
-	if( (int)$user->getinplancontext() == 0 )
-	{
-
-		$plan->setinpaymentstatus('0');
-		$plan->setinpaymentmethod('0');
-
-	}//end if
-	else
-	{
-
-		$plans = $plan->get((int)$user->getiduser());
-
-		$plan->setinpaymentstatus($plans['results'][0]['inpaymentstatus']);
-		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
-
-	}//end else*/
+	
 
 
 
@@ -229,25 +193,7 @@ $app->get( "/dashboard/politica-privacidade", function()
 	$validate = User::validatePlanDashboard( $user );
 
 
-	/*$plan = new Plan();
-
-
-	if( (int)$user->getinplancontext() == 0 )
-	{
-
-		$plan->setinpaymentstatus('0');
-		$plan->setinpaymentmethod('0');
-
-	}//end if
-	else
-	{
-
-		$plans = $plan->get((int)$user->getiduser());
-
-		$plan->setinpaymentstatus($plans['results'][0]['inpaymentstatus']);
-		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
-
-	}//end else*/
+	
 
 
 

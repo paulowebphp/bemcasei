@@ -8,6 +8,7 @@ use Core\Rule;
 use Core\Validate;
 use Core\Model\User;
 use Core\Model\Order;
+use Core\Model\Payment;
 //use Core\Model\Product;
 //use Core\Model\Gift;
 use Core\Model\Bank;
@@ -53,23 +54,43 @@ $app->get( "/dashboard/transferencias/transferir-saldo", function()
 	$validate = User::validatePlanDashboard( $user );
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+
+	if($validate)
+	{	
+
+		if( (int)$validate['incontext'] == 0 )
+		{
+
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
 
 	}//end if
-
-
-
-	if ( (int)$user->getinplancontext() == 0 )
+	else
 	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+
+
+		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		{
+			# code...
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
+		if ( (int)$user->getinplancontext() == 0 )
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
 
 	}//end if
 
@@ -82,6 +103,9 @@ $app->get( "/dashboard/transferencias/transferir-saldo", function()
 		exit;
 
 	}//end if
+
+
+
 
 
 	$bank = new Bank();
@@ -243,26 +267,44 @@ $app->post( "/dashboard/transferencias/transferir-saldo", function()
 	$validate = User::validatePlanDashboard( $user );
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	if($validate)
+	{	
+
+		if( (int)$validate['incontext'] == 0 )
+		{
+
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
 
 	}//end if
-
-
-
-	if ( (int)$user->getinplancontext() == 0 )
+	else
 	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+
+
+		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		{
+			# code...
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
+		if ( (int)$user->getinplancontext() == 0 )
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
 
 	}//end if
-
 
 
 	if ( (int)$user->getinaccount() == 0 )
@@ -273,6 +315,11 @@ $app->post( "/dashboard/transferencias/transferir-saldo", function()
 		exit;
 
 	}//end if
+
+
+
+
+
 
 
 
@@ -480,23 +527,42 @@ $app->get( "/dashboard/transferencias", function()
 	$validate = User::validatePlanDashboard( $user );
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	if($validate)
+	{	
+
+		if( (int)$validate['incontext'] == 0 )
+		{
+
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
 
 	}//end if
-
-
-
-	if ( (int)$user->getinplancontext() == 0 )
+	else
 	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+
+
+		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		{
+			# code...
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
+		if ( (int)$user->getinplancontext() == 0 )
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
 
 	}//end if
 

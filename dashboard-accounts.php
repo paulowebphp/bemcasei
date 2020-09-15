@@ -11,6 +11,7 @@ use Core\Model\User;
 //use Core\Model\Product;
 //use Core\Model\Gift;
 use Core\Model\Bank;
+use Core\Model\Payment;
 //use Core\Model\Transfer;
 //use Core\Model\TransferStatus;
 use Core\Model\Account;
@@ -71,24 +72,49 @@ $app->get( "/dashboard/sua-carteira", function()
 
 
 
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	$validate = User::validatePlanDashboard( $user );
+
+
+	if($validate)
+	{	
+
+		if( (int)$validate['incontext'] == 0 )
+		{
+
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
+
+	}//end if
+	else
 	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+
+
+		if ( (int)$user->getinplancontext() == 0  || (int)$user->getincheckout() == 0 )
+		{
+			# code...
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
+		if ( (int)$user->getinplancontext() == 0 )
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
+
 
 	}//end if
 
-
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
 
 
 	if ( (int)$user->getinaccount() == 0 )
@@ -99,6 +125,24 @@ $app->get( "/dashboard/sua-carteira", function()
 		exit;
 
 	}//end if
+
+
+	
+	
+
+
+
+	/*if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if*/
+
+
+	
 
 
 

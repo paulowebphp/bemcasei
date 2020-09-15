@@ -50,14 +50,7 @@ $app->get( "/dashboard/fornecedores/adicionar", function()
 
 	}//end if
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 	$maxStakeholders = Stakeholder::maxStakeholders($validate['inplancode']);
 
@@ -179,14 +172,7 @@ $app->post( "/dashboard/fornecedores/adicionar", function()
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 
 
@@ -521,14 +507,7 @@ $app->get( "/dashboard/fornecedores/:hash/deletar", function( $hash )
 
 	}//end if
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 
 
@@ -597,14 +576,7 @@ $app->get( "/dashboard/fornecedores/:hash", function( $hash )
 
 	}//end if
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 
 
@@ -700,14 +672,7 @@ $app->post( "/dashboard/fornecedores/:hash", function( $hash )
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 	$idstakeholder = Validate::getHash($hash);
 
@@ -1038,14 +1003,7 @@ $app->get( "/dashboard/fornecedores", function()
 
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 	$search = (isset($_GET['buscar'])) ? $_GET['buscar'] : "";
 

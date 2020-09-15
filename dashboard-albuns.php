@@ -50,14 +50,17 @@ $app->get( "/dashboard/album/adicionar", function()
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	/*if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
 	{
 		# code...
 		User::setError(Rule::VALIDATE_PLAN);
 		header('Location: /dashboard');
 		exit;
 
-	}//end if
+	}//end if*/
+
+	
+	
 
     /**$album = new Event();
     
@@ -174,14 +177,12 @@ $app->post( "/dashboard/album/adicionar", function()
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	
 
-	}//end if
+
+
+
+
 
 
 
@@ -531,14 +532,11 @@ $app->get( "/dashboard/album/:hash/deletar", function( $hash )
 
 	}//end if
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	
 
-	}//end if
+
+
+
 
 
 	$idalbum = Validate::getHash($hash);
@@ -630,14 +628,7 @@ $app->get( "/dashboard/album/:hash", function( $hash )
 
 	}//end if
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 	$idalbum = Validate::getHash($hash);
 
@@ -743,14 +734,7 @@ $app->post( "/dashboard/album/:hash", function( $hash )
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 
 
@@ -1036,14 +1020,7 @@ $app->get( "/dashboard/album", function()
 
 	}//end if
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 	
 

@@ -115,13 +115,8 @@ $app->post( "/dashboard/upgrade/checkout", function()
 	
 
 
-	if ( (int)$user->getincheckout() == 0 )
-	{
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
-		exit;
+	
 
-	}//end if
 
 
 
@@ -2774,15 +2769,6 @@ $app->get( "/dashboard/upgrade/checkout", function()
 	
 
 
-	if ( (int)$user->getincheckout() == 0 )
-	{
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
-		exit;
-
-	}//end if
-
-
 	
 
 
@@ -3181,15 +3167,6 @@ $app->get( "/dashboard/upgrade", function()
 
 	}//end if
 	
-
-
-	if ( (int)$user->getincheckout() == 0 )
-	{
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
-		exit;
-
-	}//end if
 
 
 

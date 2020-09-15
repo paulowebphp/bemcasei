@@ -102,47 +102,56 @@ $app->post( "/dashboard/cadastrar", function()
 
 	$user = User::getFromSession();
 
+
+
+
 	$validate = User::validatePlanDashboard( $user );
 
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	if($validate)
+	{	
+
+		if( (int)$validate['incontext'] == 0 )
+		{
+
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
+
+	}//end if
+	else
 	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+
+
+		if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+		{
+			# code...
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
+
+
+		if ( (int)$user->getinplancontext() == 0 )
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
 
 	}//end if
 
 
-
-	if ( (int)$user->getinplancontext() == 0 )
-	{
-		# code...
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
-		exit;
-
-	}//end if
-
-
-
-
-
 	
-
-
-
-
-
-	
-
-
-
-	
-
-
 
 	if ( (int)$user->getinaccount() == 1 )
 	{
@@ -152,6 +161,24 @@ $app->post( "/dashboard/cadastrar", function()
 		
 	}//end if
 
+
+
+
+	
+
+
+
+
+
+	
+
+
+
+	
+
+
+
+	
 
 
 
@@ -998,47 +1025,56 @@ $app->get( "/dashboard/cadastrar", function()
 	$validate = User::validatePlanDashboard( $user );
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+	if($validate)
+	{	
+
+		if( (int)$validate['incontext'] == 0 )
+		{
+
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
+
+	}//end if
+	else
 	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+
+
+		if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
+		{
+			# code...
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
+
+
+		if ( (int)$user->getinplancontext() == 0 )
+		{
+			# code...
+			Payment::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard/meu-plano');
+			exit;
+
+		}//end if
+
 
 	}//end if
 
 
-
-	if ( (int)$user->getinplancontext() == 0 )
-	{
-		# code...
-		Payment::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard/meu-plano');
-		exit;
-
-	}//end if
-
-
-
-
 	
-	
-
-
-
-	
-
-
-
-
-
 
 	if ( (int)$user->getinaccount() == 1 )
 	{
 		# code...
 		header("Location: /dashboard");
 		exit;
-
+		
 	}//end if
 
 

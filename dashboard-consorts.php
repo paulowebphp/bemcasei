@@ -13,137 +13,6 @@ use Core\Model\Consort;
 
 
 
-
-$app->get( "/dashboard/meu-amor", function()
-{
-	
-	if( Maintenance::checkMaintenance() )
-	{	
-
-		$maintenance = new Maintenance();
-
-		$maintenance->getMaintenance();
-
-		User::setError($maintenance->getdesdescription());
-		header("Location: /login");
-		exit;
-		
-	}//end if
-
-
-
-
-
-
-
-
-	User::verifyLogin(false);
-
-	$user = User::getFromSession();
-
-
-
-	
-
-
-
-
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-
-
-
-	$consort = new Consort();
-
-	$consort->get((int)$user->getiduser());
-
-
-
-
-	/*$plan = new Plan();
-
-
-	if( (int)$user->getinplancontext() == 0 )
-	{
-
-		$plan->setinpaymentstatus('0');
-		$plan->setinpaymentmethod('0');
-
-	}//end if
-	else
-	{
-
-		$plans = $plan->get((int)$user->getiduser());
-
-		$plan->setinpaymentstatus($plans['results'][0]['inpaymentstatus']);
-		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
-
-	}//end else*/
-
-
-
-		
-	$page = new PageDashboard();
-
-	$page->setTpl(
-		
-
-
-		"consorts", 
-		
-		[
-			'user'=>$user->getValues(),
-			'consort'=>$consort->getValues(),
-			'validate'=>$validate,
-			'success'=>Consort::getSuccess(),
-			'error'=>Consort::getError()
-			
-
-		]
-	
-	);//end setTpl
-
-});//END route
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $app->post( "/dashboard/meu-amor", function()
 {
 
@@ -183,14 +52,12 @@ $app->post( "/dashboard/meu-amor", function()
 
 	}//end if
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	
 
-	}//end if
+
+
+
+	
 
 	if(
 		
@@ -274,6 +141,169 @@ $app->post( "/dashboard/meu-amor", function()
 
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->get( "/dashboard/meu-amor", function()
+{
+	
+	if( Maintenance::checkMaintenance() )
+	{	
+
+		$maintenance = new Maintenance();
+
+		$maintenance->getMaintenance();
+
+		User::setError($maintenance->getdesdescription());
+		header("Location: /login");
+		exit;
+		
+	}//end if
+
+
+
+
+
+
+
+
+	User::verifyLogin(false);
+
+	$user = User::getFromSession();
+
+
+
+	
+
+
+
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	
+
+
+
+
+	$consort = new Consort();
+
+	$consort->get((int)$user->getiduser());
+
+
+
+
+	/*$plan = new Plan();
+
+
+	if( (int)$user->getinplancontext() == 0 )
+	{
+
+		$plan->setinpaymentstatus('0');
+		$plan->setinpaymentmethod('0');
+
+	}//end if
+	else
+	{
+
+		$plans = $plan->get((int)$user->getiduser());
+
+		$plan->setinpaymentstatus($plans['results'][0]['inpaymentstatus']);
+		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
+
+	}//end else*/
+
+
+
+		
+	$page = new PageDashboard();
+
+	$page->setTpl(
+		
+
+
+		"consorts", 
+		
+		[
+			'user'=>$user->getValues(),
+			'consort'=>$consort->getValues(),
+			'validate'=>$validate,
+			'success'=>Consort::getSuccess(),
+			'error'=>Consort::getError()
+			
+
+		]
+	
+	);//end setTpl
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

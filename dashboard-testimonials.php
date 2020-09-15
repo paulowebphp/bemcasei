@@ -16,106 +16,6 @@ use Core\Model\Testimonial;
 
 
 
-$app->get( "/dashboard/testemunho", function()
-{
-
-	if( Maintenance::checkMaintenance() )
-	{	
-
-		$maintenance = new Maintenance();
-
-		$maintenance->getMaintenance();
-
-		User::setError($maintenance->getdesdescription());
-		header("Location: /login");
-		exit;
-		
-	}//end if
-
-
-
-
-
-
-
-
-	User::verifyLogin(false);
-
-	$user = User::getFromSession();
-
-
-
-
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-
-
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-
-
-	$testimonial = new Testimonial();
-
-
-	$testimonial->get((int)$user->getiduser());
-
-
-
-
-	
-
-
-	$page = new PageDashboard();
-
-	$page->setTpl(
-		
-		"testimonial", 
-		
-		[
-			'testimonial'=>$testimonial->getValues(),
-			'user'=>$user->getValues(),
-			'validate'=>$validate,
-			'success'=>Testimonial::getSuccess(),
-			'error'=>Testimonial::getError()
-
-		]
-	
-	);//end setTpl
-
-});//END route
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -169,14 +69,27 @@ $app->post( "/dashboard/testemunho", function()
 	}//end if
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
+	if($validate)
+	{	
+
+		if( 
+			
+			(int)$validate['incontext'] == 0
+
+		)
+		{
+
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
 
 	}//end if
+
+
+	
 
 
 
@@ -290,6 +203,119 @@ $app->post( "/dashboard/testemunho", function()
 	exit;
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->get( "/dashboard/testemunho", function()
+{
+
+	if( Maintenance::checkMaintenance() )
+	{	
+
+		$maintenance = new Maintenance();
+
+		$maintenance->getMaintenance();
+
+		User::setError($maintenance->getdesdescription());
+		header("Location: /login");
+		exit;
+		
+	}//end if
+
+
+
+
+
+
+
+
+	User::verifyLogin(false);
+
+	$user = User::getFromSession();
+
+
+
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+	if($validate)
+	{	
+
+		if( 
+			
+			(int)$validate['incontext'] == 0
+
+		)
+		{
+
+			User::setError(Rule::VALIDATE_PLAN);
+			header('Location: /dashboard');
+			exit;
+
+		}//end if
+
+
+	}//end if
+	
+
+
+
+	$testimonial = new Testimonial();
+
+
+	$testimonial->get((int)$user->getiduser());
+
+
+
+
+	
+
+
+	$page = new PageDashboard();
+
+	$page->setTpl(
+		
+		"testimonial", 
+		
+		[
+			'testimonial'=>$testimonial->getValues(),
+			'user'=>$user->getValues(),
+			'validate'=>$validate,
+			'success'=>Testimonial::getSuccess(),
+			'error'=>Testimonial::getError()
+
+		]
+	
+	);//end setTpl
+
+});//END route
+
+
+
+
 
 
 

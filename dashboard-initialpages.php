@@ -20,117 +20,6 @@ use Core\Model\InitialPage;
 
 
 
-$app->get( "/dashboard/pagina-inicial", function()
-{
-
-	if( Maintenance::checkMaintenance() )
-	{	
-
-		$maintenance = new Maintenance();
-
-		$maintenance->getMaintenance();
-
-		User::setError($maintenance->getdesdescription());
-		header("Location: /login");
-		exit;
-		
-	}//end if
-
-
-
-
-
-
-	User::verifyLogin(false);
-
-	$user = User::getFromSession();
-
-
-
-
-
-	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-
-
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
-
-		
-	//$user->get((int)$user->getiduser());
-
-	$initialpage = new InitialPage();
-
-	$initialpage->get((int)$user->getiduser());
-
-
-
-
-	/*$plan = new Plan();
-
-
-	if( (int)$user->getinplancontext() == 0 )
-	{
-
-		$plan->setinpaymentstatus('0');
-		$plan->setinpaymentmethod('0');
-
-	}//end if
-	else
-	{
-
-		$plans = $plan->get((int)$user->getiduser());
-
-		$plan->setinpaymentstatus($plans['results'][0]['inpaymentstatus']);
-		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
-
-	}//end else*/
-
-
-
-
-
-	$page = new PageDashboard();
-
-	$page->setTpl(
-		
-		"initialpages", 
-		
-		[	
-			'user'=>$user->getValues(),
-			'initialpage'=>$initialpage->getValues(),
-			'validate'=>$validate,
-			'success'=>InitialPage::getSuccess(),
-			'error'=>InitialPage::getError()
-
-		]
-	
-	);//end setTpl
-
-});//END route
-
-
-
-
-
-
-
-
-
-
 $app->post( "/dashboard/pagina-inicial", function()
 {
 
@@ -170,14 +59,7 @@ $app->post( "/dashboard/pagina-inicial", function()
 
 
 
-	if ( (int)$user->getincheckout() == 0 && (int)$user->getinplancontext() != 0 )
-	{
-		# code...
-		User::setError(Rule::VALIDATE_PLAN);
-		header('Location: /dashboard');
-		exit;
-
-	}//end if
+	
 
 
 
@@ -297,6 +179,154 @@ $app->post( "/dashboard/pagina-inicial", function()
 	exit;
 
 });//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$app->get( "/dashboard/pagina-inicial", function()
+{
+
+	if( Maintenance::checkMaintenance() )
+	{	
+
+		$maintenance = new Maintenance();
+
+		$maintenance->getMaintenance();
+
+		User::setError($maintenance->getdesdescription());
+		header("Location: /login");
+		exit;
+		
+	}//end if
+
+
+
+
+
+
+	User::verifyLogin(false);
+
+	$user = User::getFromSession();
+
+
+
+
+
+	if ( ( $validate = User::validatePlanDashboard( $user ) ) === false )
+	{
+		# code...
+		User::setError(Rule::VALIDATE_PLAN);
+		header('Location: /dashboard');
+		exit;
+
+	}//end if
+
+
+
+	
+
+		
+	//$user->get((int)$user->getiduser());
+
+	$initialpage = new InitialPage();
+
+	$initialpage->get((int)$user->getiduser());
+
+
+
+
+	/*$plan = new Plan();
+
+
+	if( (int)$user->getinplancontext() == 0 )
+	{
+
+		$plan->setinpaymentstatus('0');
+		$plan->setinpaymentmethod('0');
+
+	}//end if
+	else
+	{
+
+		$plans = $plan->get((int)$user->getiduser());
+
+		$plan->setinpaymentstatus($plans['results'][0]['inpaymentstatus']);
+		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
+
+	}//end else*/
+
+
+
+
+
+	$page = new PageDashboard();
+
+	$page->setTpl(
+		
+		"initialpages", 
+		
+		[	
+			'user'=>$user->getValues(),
+			'initialpage'=>$initialpage->getValues(),
+			'validate'=>$validate,
+			'success'=>InitialPage::getSuccess(),
+			'error'=>InitialPage::getError()
+
+		]
+	
+	);//end setTpl
+
+});//END route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
