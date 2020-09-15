@@ -237,8 +237,22 @@
     
 </style>
 
+<?php if( !$validate ){ ?>
+<section class="domain">
+    <div class="container-fluid">
 
-<?php if( $user["inplancontext"] == 0 ){ ?>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info alert-domain" role="alert">
+                    <h1>Confirmação de Presença Desabilitada</h1>
+                </div><!--alert-->
+            </div><!--col-->
+        </div><!--row-->
+    </div>
+</section>
+
+
+<?php }elseif( $validate["incontext"] == 0 ){ ?>
 <section class="domain">
     <div class="container-fluid">
 
@@ -252,19 +266,7 @@
     </div>
 </section>
 
-<?php }elseif( !$validate ){ ?>
-<section class="domain">
-    <div class="container-fluid">
 
-        <div class="row">
-            <div class="col-12">
-                <div class="alert alert-info alert-domain" role="alert">
-                    <h1>Confirmação de Presença Desabilitada</h1>
-                </div><!--alert-->
-            </div><!--col-->
-        </div><!--row-->
-    </div>
-</section>
 
 <?php }else{ ?>
 

@@ -251,7 +251,9 @@
     </div>
 </section>
 
-<?php }elseif( $validate["incontext"] == 0 ){ ?>
+
+
+<?php }elseif( $user["inplancontext"] == 0 ){ ?>
 <section class="domain">
     <div class="container-fluid">
 
@@ -264,7 +266,6 @@
         </div><!--row-->
     </div>
 </section>
-
 
 <?php }elseif( $user["inaccount"] == 0 ){ ?>
 <section class="domain">
@@ -307,7 +308,7 @@
                     <a href="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/loja">
                         
                         <h3>
-                            Presentes Virtuais
+                            <?php echo htmlspecialchars( $category_name, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                         </h3>
 
                     </a>
@@ -337,7 +338,7 @@
                         
                         <div class="sort-by">
                     
-                            <form action="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/loja">
+                            <form action="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/loja/<?php echo htmlspecialchars( $category, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
                                 <select id="sort-by" name="ordenar" class="custom-select">
@@ -410,9 +411,9 @@
 
 
         <?php if( $success != '' ){ ?>
-        <div class="row text-center centralizer">
-            <div class="col-md-8 col-12">
-                <div class="alert alert-success alert-dismissible fade show alert2" role="alert">
+        <div class="row">
+            <div class="col-md-8 col-12 text-center centralizer">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -424,9 +425,9 @@
 
 
         <?php if( $error != '' ){ ?>
-        <div class="row text-center centralizer">
-            <div class="col-md-8 col-12">
-                <div id="error" class="alert alert-danger alert-dismissible fade show alert2" role="alert">
+        <div class="row">
+            <div class="col-md-8 col-12 text-center centralizer">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -463,7 +464,7 @@
 
                     <?php $counter1=-1;  if( isset($product) && ( is_array($product) || $product instanceof Traversable ) && sizeof($product) ) foreach( $product as $key1 => $value1 ){ $counter1++; ?>
 
-                    
+
                     <?php if( !checkItem($value1["idproduct"]) ){ ?>
 
                     <div class="card1 card-store">
@@ -557,6 +558,7 @@
                                     
 
 
+                                    
                                     <div class="card-add-continue">
                                         
                                         <form action="/<?php echo htmlspecialchars( $user["desdomain"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/carrinho/<?php echo htmlspecialchars( $value1["idproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/continuar">
@@ -564,6 +566,7 @@
 
                                             <input type="hidden" name="orderby" value="<?php echo htmlspecialchars( $orderby, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                                             <input type="hidden" name="currentPage" value="<?php echo htmlspecialchars( $currentPage, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                            <input type="hidden" name="category" value="<?php echo htmlspecialchars( $category, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                                             <button type="submit">Adicionar e Continuar Comprando</button>
 
                                         </form>
@@ -699,6 +702,7 @@
 
                                             <input type="hidden" name="orderby" value="<?php echo htmlspecialchars( $orderby, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                                             <input type="hidden" name="currentPage" value="<?php echo htmlspecialchars( $currentPage, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                            <input type="hidden" name="category" value="<?php echo htmlspecialchars( $category, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                                             <button type="submit">Adicionar e Continuar Comprando</button>
 
                                         </form>
@@ -730,6 +734,7 @@
                     </div><!--card1-->
 
                     <?php } ?>
+
                                 
                     <?php } ?>
 
@@ -767,9 +772,9 @@
         </div><!--row-->
 
 
-        
 
 
+       
 
 
 

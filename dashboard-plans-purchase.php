@@ -112,21 +112,7 @@ $app->post( "/dashboard/comprar-plano/checkout", function()
 
 
 	}//end if
-	else
-	{
-
-
-		if( (int)$user->getinplancontext() != 0 )
-		{
-			Payment::setError(Rule::VALIDATE_PLAN);
-			header('Location: /dashboard/meu-plano');
-			exit;
-
-		}//end if
-
-
-
-	}//end if
+	
 
 
 
@@ -4931,21 +4917,7 @@ $app->get( "/dashboard/comprar-plano/checkout", function()
 
 
 	}//end if
-	else
-	{
-
-
-		if( (int)$user->getinplancontext() != 0 )
-		{
-			Payment::setError(Rule::VALIDATE_PLAN);
-			header('Location: /dashboard/meu-plano');
-			exit;
-
-		}//end if
-
-
-
-	}//end if
+	
 	
 
 
@@ -5639,6 +5611,7 @@ $app->get( "/dashboard/comprar-plano", function()
 
 
 
+	
 	$validate = User::validatePlanDashboard( $user );
 
 
@@ -5657,21 +5630,7 @@ $app->get( "/dashboard/comprar-plano", function()
 
 
 	}//end if
-	else
-	{
-
-
-		if( (int)$user->getinplancontext() != 0 )
-		{
-			Payment::setError(Rule::VALIDATE_PLAN);
-			header('Location: /dashboard/meu-plano');
-			exit;
-
-		}//end if
-
-
-
-	}//end if
+	
 
 
 
