@@ -44,109 +44,109 @@
 
 
                 {if="$success != ''"}
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {$success}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            </div> 
-                        </div>  
-                    {/if}
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {$success}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                {/if}
 
-                    {if="$error != ''"}
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    {$error}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            </div> 
-                        </div>  
-                    {/if} 
+                {if="$error != ''"}
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {$error}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                {/if}
 
 
-                    <div class="row">
+                <div class="row">
+                    
+                    <div class="col-md-12 dash-column">
+
+                        <div class="dash-plans-title">
+                            <h1>Renovação</h1>
+                        </div>
+
+
+                        <div id="plans">
+
+
+                            <div id="renewal-box">
+
+                                <div class="plan">
+
+                                <h2 class="plan-title"><strong>{$inplan.1.desplan}</strong></h2> 
+                                
+                                <h3 class="plan-subtitle">Por Apenas</h3> 
+                                
+                                
+
+                                <div class="pricing">
+
+                                    <div class="currency">
+
+                                    <strong>6x</strong>
+                                    <span class="plan-coin">R$</span>
+
+                                    </div><!--currency-->
+                                    
+                                    <span id="plan2-vlinteger" class="price">{function="getValuePartial($inplan.1.vlprice/6,1)"}</span>
+                                    <span id="plan2-vldecimal">,{function="getValuePartial($inplan.1.vlprice/6,0)"}</span> 
+
+                                </div><!--pricing-->
+
+
+
+                                <p>ou</p>
+                                <p class="plan-description"><span id="plan2-vlprice">R$ {function="formatPrice($inplan.1.vlprice)"}</span> pelo período de:</p>
+
+
+
+
+                                <select id="plan2" form="2" name="plano">
+                                    {loop="$inplan"}
+                                        <option  value="{$value.inplancode}" data-inplancode="{$value.inplancode}" data-vlprice="{$value.vlprice}" data-vlinstallment='{function="roundValue($value.vlprice/6)"}' data-vlinteger='{function="getValuePartial($value.vlprice/6,1)"}' data-vldecimal='{function="getValuePartial($value.vlprice/6,0)"}'{if="$value.inperiod == '3'"} selected="selected" {/if}>{$value.inperiod} {$value.desperiod} - R$ {function="formatPrice($value.vlprice)"}</option> 
+                                    {/loop}
+                                        
+                                </select>
+
+                                <form action="/dashboard/renovar/checkout" id="2">
+                                    <button type="submit" class="plan-box-button">Comece já</button>
+                                </form>
+
+
+
+                            </div><!--plan-->
+
+                            </div><!--col-->
+                            
+                            
+
+
+
+
+
+                        </div><!--row-->
+                                    
+
+
                         
-                        <div class="col-md-12 dash-column">
-
-                            <div class="dash-plans-title">
-                                <h1>Renovação</h1>
-                            </div>
+                        
+                    </div><!--col-md-6-->
 
 
-                            <div id="plans">
-
-
-                                <div id="renewal-box">
-
-                                  <div class="plan">
-
-                                    <h2 class="plan-title"><strong>{$inplan.1.desplan}</strong></h2> 
-                                  
-                                    <h3 class="plan-subtitle">Por Apenas</h3> 
-                                    
-                                    
-
-                                    <div class="pricing">
-
-                                      <div class="currency">
-
-                                        <strong>6x</strong>
-                                        <span class="plan-coin">R$</span>
-
-                                      </div><!--currency-->
-                                        
-                                      <span id="plan2-vlinteger" class="price">{function="getValuePartial($inplan.1.vlprice/6,1)"}</span>
-                                      <span id="plan2-vldecimal">,{function="getValuePartial($inplan.1.vlprice/6,0)"}</span> 
-
-                                    </div><!--pricing-->
-
-
-
-                                    <p>ou</p>
-                                    <p class="plan-description"><span id="plan2-vlprice">R$ {function="formatPrice($inplan.1.vlprice)"}</span> pelo período de:</p>
-
-
-
-
-                                    <select id="plan2" form="2" name="plano">
-                                        {loop="$inplan"}
-                                            <option  value="{$value.inplancode}" data-inplancode="{$value.inplancode}" data-vlprice="{$value.vlprice}" data-vlinstallment='{function="roundValue($value.vlprice/6)"}' data-vlinteger='{function="getValuePartial($value.vlprice/6,1)"}' data-vldecimal='{function="getValuePartial($value.vlprice/6,0)"}'{if="$value.inperiod == '3'"} selected="selected" {/if}>{$value.inperiod} {$value.desperiod} - R$ {function="formatPrice($value.vlprice)"}</option> 
-                                        {/loop}
-                                            
-                                    </select>
-
-                                    <form action="/dashboard/renovar/checkout" id="2">
-                                        <button type="submit" class="plan-box-button">Comece já</button>
-                                    </form>
-
-
-
-                                </div><!--plan-->
-
-                              </div><!--col-->
-                              
-                              
-
-
-
-
-
-                            </div><!--row-->
-                                        
-
-
-                            
-                            
-                        </div><!--col-md-6-->
-
-
-                    </div><!--row-->
+                </div><!--row-->
 
 
 

@@ -76,8 +76,8 @@
                   
 
                 {if="$success != ''"}
-                <div class="row">
-                    <div class="col-12">
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {$success}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -89,8 +89,8 @@
                 {/if}
 
                 {if="$error != ''"}
-                <div class="row">
-                    <div class="col-12">
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {$error}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -107,16 +107,16 @@
 
 
 
-                  <form id="dash-form" action="/dashboard/cadastrar" method="post">
+                <form id="dash-form" action="/dashboard/cadastrar" method="post">
 
-                    
+                
 
                     <div class="row">
                         
                         <div class="col-md-6 dash-column">
                             
 
-                           <div class="dash-input-row">
+                            <div class="dash-input-row">
 
                                 <input class="texst" type="text" placeholder="Nome" name="desname" id="desname" class="form-control"  value="{$planPurchaseRegisterValues.desname}">
 
@@ -280,7 +280,7 @@
 
                             </div><!--dash-input-row-->
 
-                           
+                            
                             
                             
                         </div><!--col-md-6-->
@@ -304,7 +304,7 @@
                                 
                                 <button type="button" id="ModalDashRegisterButton" class="btn btn-primary" data-toggle="modal" data-target="#ModalDashRegister">
                                     Enviar
-                                  </button>
+                                    </button>
                             
                             </div>
 
@@ -332,32 +332,32 @@
 
 
 
-                  <!-- Modal -->
-                <div class="modal fade" id="ModalDashRegister" tabindex="-1" role="dialog" aria-labelledby="ModalDashRegisterTitle" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="payment-warn">
-                                <h3>Confirme Seus Dados</h3>
+                    <!-- Modal -->
+                    <div class="modal fade" id="ModalDashRegister" tabindex="-1" role="dialog" aria-labelledby="ModalDashRegisterTitle" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="payment-warn">
+                                    <h3>Confirme Seus Dados</h3>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <div class="modal-body">
+                                <div id="content1" class="payment-warn2"></div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Corrigir</button>
+                            <button type="submit" id="confirmation1" class="btn btn-primary">Confirmar</button>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <div id="content1" class="payment-warn2"></div>
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Corrigir</button>
-                        <button type="submit" id="confirmation1" class="btn btn-primary">Confirmar</button>
                         </div>
                     </div>
-                    </div>
-                </div>
 
 
 
-            </form>
+                </form>
 
 
             </div><!--col-->
