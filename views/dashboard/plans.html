@@ -257,7 +257,17 @@
                                         <td class="text-center">{function="getPaymentStatus($value.inpaymentstatus)"}</td>
                                         <td class="text-center">
                                             {if="$value.inmigration != 2"}
-                                                {if="$value.inperiod > 1"} {$value.inperiod} meses {else} {$value.inperiod} mês {/if}
+
+                                                {if="$value.inpaymentmethod == 4"} 
+                                                
+                                                    {$value.inperiod} dias
+
+                                                {else}
+                                                    
+                                                    {if="$value.inperiod > 1"} {$value.inperiod} meses {else} {$value.inperiod} mês {/if}
+
+                                                {/if}
+
                                             {else}
                                                 Upgrade
                                             {/if}

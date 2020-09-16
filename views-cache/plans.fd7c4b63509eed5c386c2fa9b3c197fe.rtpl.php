@@ -257,7 +257,17 @@
                                         <td class="text-center"><?php echo getPaymentStatus($value1["inpaymentstatus"]); ?></td>
                                         <td class="text-center">
                                             <?php if( $value1["inmigration"] != 2 ){ ?>
-                                                <?php if( $value1["inperiod"] > 1 ){ ?> <?php echo htmlspecialchars( $value1["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> meses <?php }else{ ?> <?php echo htmlspecialchars( $value1["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> mês <?php } ?>
+
+                                                <?php if( $value1["inpaymentmethod"] == 4 ){ ?> 
+                                                
+                                                    <?php echo htmlspecialchars( $value1["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> dias
+
+                                                <?php }else{ ?>
+                                                    
+                                                    <?php if( $value1["inperiod"] > 1 ){ ?> <?php echo htmlspecialchars( $value1["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> meses <?php }else{ ?> <?php echo htmlspecialchars( $value1["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> mês <?php } ?>
+
+                                                <?php } ?>
+
                                             <?php }else{ ?>
                                                 Upgrade
                                             <?php } ?>
