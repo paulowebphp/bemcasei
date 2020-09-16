@@ -45,29 +45,29 @@
               
 
               <?php if( $success != '' ){ ?>
-                  <div class="row">
-                      <div class="col-12">
-                          <div class="alert alert-success alert-dismissible fade show" role="alert">
-                              <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                              </button>
-                          </div>
-                      </div> 
-                  </div>  
+              <div class="row centralizer">
+                  <div class="col-md-8 col-12">
+                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                          <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                  </div> 
+              </div>  
               <?php } ?>
 
               <?php if( $error != '' ){ ?>
-                  <div class="row">
-                      <div class="col-12">
-                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                              <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                              </button>
-                          </div>
-                      </div> 
-                  </div>  
+              <div class="row centralizer">
+                  <div class="col-md-8 col-12">
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                  </div> 
+              </div>  
               <?php } ?> 
 
               <div class="row">
@@ -87,13 +87,13 @@
                       <td><i class="fa fa-check" style="color:green"></i> Confirmação de presença</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-check" style="color:green"></i> Até 3 Padrinhos e Madrinhas</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Até <strong><?php echo getRule('MAX_BESTFRIENDS_BASIC'); ?></strong> Padrinhos e Madrinhas</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-check" style="color:green"></i> Até 3 Fornecedores</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Até <strong><?php echo getRule('MAX_STAKEHOLDERS_BASIC'); ?></strong> Fornecedores</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-check" style="color:green"></i> Até 6 Eventos</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Até <strong><?php echo getRule('MAX_EVENTS_BASIC'); ?></strong> Eventos</td>
                     </tr>
                     <tr>
                       <td></td>
@@ -134,13 +134,13 @@
                       <td><i class="fa fa-check" style="color:green"></i> Confirmação de presença</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-check" style="color:green"></i> Até 8 Padrinhos e Madrinhas</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Até <strong><?php echo getRule('MAX_BESTFRIENDS_INTERMEDIATE'); ?></strong> Padrinhos e Madrinhas</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-check" style="color:green"></i> Até 10 Fornecedores</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Até <strong><?php echo getRule('MAX_STAKEHOLDERS_INTERMEDIATE'); ?></strong> Fornecedores</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-check" style="color:green"></i> Até 20 Eventos</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Até <strong><?php echo getRule('MAX_EVENTS_INTERMEDIATE'); ?></strong> Eventos</td>
                     </tr>
                     <tr>
                       <td></td>
@@ -197,13 +197,13 @@
                       <td><i class="fa fa-check" style="color:green"></i> Confirmação de presença</td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-check" style="color:green"></i> Padrinhos e Madrinhas Ilimitados</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Padrinhos e Madrinhas <strong>Ilimitados</strong></td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-check" style="color:green"></i> Forencedores Ilimitados</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Forencedores <strong>Ilimitados</strong></td>
                     </tr>
                     <tr>
-                      <td><i class="fa fa-check" style="color:green"></i> Eventos Ilimitados</td>
+                      <td><i class="fa fa-check" style="color:green"></i> Eventos <strong>Ilimitados</strong></td>
                     </tr>
                     <tr>
                       <td></td>

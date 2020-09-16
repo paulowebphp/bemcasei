@@ -295,13 +295,7 @@ $app->get( "/dashboard", function()
 
 
 	
-	/*
-	echo '<pre>';
-	var_dump($user);
-	echo '************************************************************<br><br><br>';
-	var_dump($validate);
-	exit;
-	*/
+	
 	
 
 	$message = new Message();
@@ -329,9 +323,13 @@ $app->get( "/dashboard", function()
 
 
 	
-
-	
-	
+	/*
+	echo '<pre>';
+	var_dump($user);
+	echo '************************************************************<br><br><br>';
+	var_dump($validate);
+	exit;
+	*/
 
 
 

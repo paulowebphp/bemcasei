@@ -250,11 +250,11 @@
                                 </thead>
                                 <tbody>
                                     <?php $counter1=-1;  if( isset($planArray) && ( is_array($planArray) || $planArray instanceof Traversable ) && sizeof($planArray) ) foreach( $planArray as $key1 => $value1 ){ $counter1++; ?>
-                                    <tr class='<?php echo getPaymentStatusClass($value1["inpaymentstatus"], $value1["inrefunded"]); ?>'>
+                                    <tr <?php if( $value1["inpaymentstatus"] == 6 ){ ?>class="cancelled"<?php } ?>>
                                         <th class="text-center" scope="row"><?php echo formatDate($value1["dtregister"]); ?></th>
                                         <td class="text-center"><?php echo htmlspecialchars( $value1["desplan"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                                         <td class="text-center">R$ <?php echo formatPrice($value1["vlprice"]); ?></td>
-                                        <td class="text-center"><?php echo getPaymentStatus($value1["inpaymentstatus"]); ?></td>
+                                        <td class='text-center <?php echo getPaymentStatusClass($value1["inpaymentstatus"], $value1["inrefunded"]); ?>'><?php echo getPaymentStatus($value1["inpaymentstatus"]); ?></td>
                                         <td class="text-center">
                                             <?php if( $value1["inmigration"] != 2 ){ ?>
 

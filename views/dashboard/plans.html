@@ -250,11 +250,11 @@
                                 </thead>
                                 <tbody>
                                     {loop="$planArray"}
-                                    <tr class='{function="getPaymentStatusClass($value.inpaymentstatus, $value.inrefunded)"}'>
+                                    <tr {if="$value.inpaymentstatus == 6"}class="cancelled"{/if}>
                                         <th class="text-center" scope="row">{function="formatDate($value.dtregister)"}</th>
                                         <td class="text-center">{$value.desplan}</td>
                                         <td class="text-center">R$ {function="formatPrice($value.vlprice)"}</td>
-                                        <td class="text-center">{function="getPaymentStatus($value.inpaymentstatus)"}</td>
+                                        <td class='text-center {function="getPaymentStatusClass($value.inpaymentstatus, $value.inrefunded)"}'>{function="getPaymentStatus($value.inpaymentstatus)"}</td>
                                         <td class="text-center">
                                             {if="$value.inmigration != 2"}
 

@@ -2047,6 +2047,36 @@ function getPaymentStatusClass( $inpaymentstatus, $inrefunded )
 
 	switch ( (int)$inpaymentstatus ) 
 	{
+
+		case 8:
+		case (int)$inpaymentstatus == 7 && (int)$inrefunded == 0:
+			return 'reversed';
+
+
+
+	}//end switch
+
+}//END function
+
+
+
+
+
+
+
+
+
+
+
+
+
+//BACKUP
+/*
+function getPaymentStatusClass( $inpaymentstatus, $inrefunded )
+{
+
+	switch ( (int)$inpaymentstatus ) 
+	{
 		case 6:
 			# code...
 			return 'cancelled';
@@ -2063,7 +2093,8 @@ function getPaymentStatusClass( $inpaymentstatus, $inrefunded )
 
 	}//end switch
 
-}//END getPaymentStatusClass
+}//END function
+ */
 
 
 

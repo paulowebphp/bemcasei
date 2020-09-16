@@ -984,13 +984,12 @@ label{
   margin-bottom: 5%;
   padding: 4% 2%;
 }
-.card-dash.cancelled{
-  background-color: #efefef!important;
+.cancelled{
   opacity: 0.5;
 
 }
-.card-dash.reversed{
-  background-color: #ffc0cb77!important;
+.reversed{
+  color: red!important;
 }
 
 
