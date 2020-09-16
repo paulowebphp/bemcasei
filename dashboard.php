@@ -328,31 +328,7 @@ $app->get( "/dashboard", function()
 	
 
 
-	//$wirecard = new Wirecard();
-
-	//$balances = $wirecard->getBalances($account->getdesaccesstoken());
-
-
-
-	/*$plan = new Plan();
-
-
-	if( (int)$user->getinplancontext() == 0 )
-	{
-
-		$plan->setinpaymentstatus('0');
-		$plan->setinpaymentmethod('0');
-
-	}//end if
-	else
-	{
-
-		$plans = $plan->get((int)$user->getiduser());
-
-		$plan->setinpaymentstatus($plans['results'][0]['inpaymentstatus']);
-		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
-
-	}//end else*/
+	
 
 	
 	

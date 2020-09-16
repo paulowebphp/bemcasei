@@ -4001,7 +4001,7 @@ class User extends Model
 				
 				if (
 
-					in_array((int)$row['inpaymentmethod'], [1,2,3])
+					in_array((int)$row['inpaymentmethod'], [1,2,3,4])
 
 				)
 				{
@@ -4346,6 +4346,9 @@ class User extends Model
 
 		$planArray = [];
 
+
+		
+
 		if( (int)$plan_handler['nrtotal'] > 0 )
 		{
 
@@ -4353,7 +4356,7 @@ class User extends Model
 
 		}//end if
 
-
+		
 
 		return User::validatePlan( $planArray );
 
