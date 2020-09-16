@@ -12,15 +12,21 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( $user["inplancontext"] == 0 ){ ?>
+                <?php if( !$validate ){ ?>
+
+                    <?php if( $user["incheckout"] == 0 or $user["inaccount"] == 0 ){ ?>
+
+                        <?php require $this->checkTemplate("dashboard-menu-noorders");?>
+
+                    <?php }else{ ?>
+
+                        <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+
+                    <?php } ?>
+
+                <?php }elseif( $validate["incontext"] == 0 ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-free");?>
-
-
-                <?php }elseif( !$validate ){ ?>
-
-                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-               
 
                 <?php }else{ ?>
 
@@ -65,8 +71,8 @@
 
 
                 <?php if( $success != '' ){ ?>
-                <div class="row">
-                    <div class="col-12">
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -78,8 +84,8 @@
                 <?php } ?>
 
                 <?php if( $error != '' ){ ?>
-                <div class="row">
-                    <div class="col-12">
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -95,97 +101,53 @@
 
 
 
+
+
+
                 <div class="row">
-                    
-                    <div class="col-md-10 col-12">
-                        
-                        <div class="table-header row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="width:30px;" class="text-center" scope="col">#</th>
+                                        <th class="text-center" scope="col" colspan="2">Presente</th>
+                                        <th class="text-center" scope="col">Valor</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $counter1=-1;  if( isset($product) && ( is_array($product) || $product instanceof Traversable ) && sizeof($product) ) foreach( $product as $key1 => $value1 ){ $counter1++; ?>
+                                    <tr>
+                                        <th class="text-center" scope="row"><?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>.</th>
+                                        <td class="text-center" colspan="2"><?php echo htmlspecialchars( $value1["desproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                                        <td class="text-center">R$ <?php echo formatPrice(getInterest($value1["vltotal"],'1','1',$order["incharge"])); ?></td>
+                                    </tr>
+                                    <?php } ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th class="text-center" scope="col">&nbsp;</th>
+                                        <th class="text-center" scope="col">&nbsp;</th>
+                                        <th class="text-right" scope="col">Total</th>
+                                        <th class="text-center" scope="col">R$ <?php echo formatPrice(getInterest($cart["vlprice"],'1','1',$order["incharge"])); ?></th>
+                                    </tr>
+                                    <?php if( $order["nrinstallment"] == 1 ){ ?>
+                                    <tr>
+                                        <th class="text-center" scope="col">&nbsp;</th>
+                                        <th class="text-right" scope="col">Parcelado em <?php echo htmlspecialchars( $order["nrinstallment"], ENT_COMPAT, 'UTF-8', FALSE ); ?> vezes de R$ <?php echo formatPrice($order["vltotal"]/$order["nrinstallment"]); ?></th>
+                                        <th class="text-right" scope="col">Total Parcelado</th>
+                                        <th class="text-center" scope="col">R$ <?php echo formatPrice($order["vltotal"]); ?></th>
 
-                            
-                            <div class="col-1">
-                                
-                                <span>#</span>
-                                                                
-                            </div>
-
-
-                            <div class="col-7">
-                                
-                                <span>Presente</span>
-                                                                
-                            </div> 
-
-
-                            <div class="col-4">
-                                
-                                <span>Valor</span>
-                                                                
-                            </div> 
-
-
-                            
-                            
-
-                        </div><!--body-row-->
-
-
-
-
-
-                        <?php $counter1=-1;  if( isset($product) && ( is_array($product) || $product instanceof Traversable ) && sizeof($product) ) foreach( $product as $key1 => $value1 ){ $counter1++; ?>
-                        <div class="table-row row">
-
-                             <div class="col-1">
-                                
-                                <span><?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>.</span>
-                                                                
-                            </div>
+                                    </tr>
+                                    <?php } ?>
 
 
-                            <div class="col-7">
-                                
-                                <span><?php echo htmlspecialchars( $value1["desproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
-                                                                
-                            </div> 
-
-
-                            <div class="col-4">
-                                
-                                <span>R$ <?php echo formatPrice(getInterest($value1["vltotal"],'1','1',$order["incharge"])); ?></span>
-                                                                
-                            </div> 
-
-                            
-
-                        </div><!--body-row-->
-                        <?php } ?>
-
-
-
-
-                        <div class="table-totals row">
-
-                            
-
-
-                            
-
-
-                            <div class="col-9 text-right">
-                                
-                                <span>Total</span>
-                                                                
-                            </div> 
-
-
-                            <div class="col-3 text-center">
-                                
-                                <span>R$ <?php echo formatPrice(getInterest($cart["vlprice"],'1','1',$order["incharge"])); ?></span>
-                                                              
-                            </div> 
-                            
-
-                        </div><!--tabe-totals-->
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
 
 
@@ -193,41 +155,13 @@
 
 
 
-                        <?php if( $order["nrinstallment"] > 1 ){ ?>
-                        <div class="table-footer row">
-
-                             
-
-                            <div class="col-md-6 col-5 text-center">
-                                
-                                <span>Parcelado em <?php echo htmlspecialchars( $order["nrinstallment"], ENT_COMPAT, 'UTF-8', FALSE ); ?> vezes de R$ <?php echo formatPrice($order["vltotal"]/$order["nrinstallment"]); ?></span>
-                                                                
-                            </div> 
-
-
-                            <div class="col-md-3 col-4 text-right">
-                                
-                                <span>Total Parcelado</span>
-                                                                
-                            </div> 
-
-
-                            <div class="col-md-3 col-3 bold text-center">
-                                
-                                <span>R$ <?php echo formatPrice($order["vltotal"]); ?></span>
-                                                              
-                            </div> 
-                            
-
-                        </div><!--tabe-totals-->
-                        <?php } ?>
 
 
 
 
-                    </div><!--col-10-->
 
-                </div><!--row-->
+
+
 
 
 

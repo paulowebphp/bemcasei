@@ -43,16 +43,16 @@
             <div class="col-md-9 col-12 dash-panel">
 
 
-               
+                
 
-               <form method="post" action="/dashboard/presentes-virtuais/adicionar" enctype="multipart/form-data">
+               <form method="post"  enctype="multipart/form-data" action='/dashboard/presentes-virtuais/<?php echo setHash($product["idproduct"]); ?>'>
 
 
                     <div class="row">
                         <div class="col-md-12">
                             
                             <div class="dash-title">
-                                <h1>Criar Presente</h1>
+                                <h1>Editar</h1>
                             </div><!--dash-title-->
 
                         </div><!--col-->
@@ -88,7 +88,6 @@
 
 
 
-
                     
 
                     <div class="row">
@@ -102,7 +101,7 @@
                             <div class="dash-input-row input-date">
 
                                 <label for="desproduct">Nome do Presente</label>
-                                <input type="text" class="form-control" id="desproduct" name="desproduct">
+                                <input type="text" class="form-control" id="desproduct" name="desproduct" value="<?php echo htmlspecialchars( $product["desproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div><!--dash-input-row-->
 
@@ -134,13 +133,13 @@
 
                                   <select id="incategory" name="incategory" class="custom-select">
 
-                                    <option value="11">Bar e Adega</option>
-                                    <option value="12">Cama, Mesa e Banho</option>
-                                    <option value="13">Cozinha</option>
-                                    <option value="14">Eletrodomésticos</option>
-                                    <option value="15">Eletrônicos</option>
-                                    <option value="16">Lua de Mel</option>
-                                    <option value="17">Móveis</option>
+                                    <option value="11" <?php if( $product["incategory"] == '11' ){ ?>selected<?php } ?>>Bar e Adega</option>
+                                    <option value="12" <?php if( $product["incategory"] == '12' ){ ?>selected<?php } ?>>Cama, Mesa e Banho</option>
+                                    <option value="13" <?php if( $product["incategory"] == '13' ){ ?>selected<?php } ?>>Cozinha</option>
+                                    <option value="14" <?php if( $product["incategory"] == '14' ){ ?>selected<?php } ?>>Eletrodomésticos</option>
+                                    <option value="15" <?php if( $product["incategory"] == '15' ){ ?>selected<?php } ?>>Eletrônicos</option>
+                                    <option value="16" <?php if( $product["incategory"] == '16' ){ ?>selected<?php } ?>>Lua de Mel</option>
+                                    <option value="17" <?php if( $product["incategory"] == '17' ){ ?>selected<?php } ?>>Móveis</option>
 
                                   </select>
 
@@ -156,11 +155,22 @@
 
 
                                 <label for="vlprice">Valor</label>
-                                <input type="number" min="100.00" max="2000.00" step="0.01" class="form-control" id="vlprice" name="vlprice">
+                                <input type="number" min="100.00" max="2000.00" step="0.01" class="form-control" id="vlprice" name="vlprice" value="<?php echo htmlspecialchars( $product["vlprice"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
 
                             </div><!--dash-input-row-->
 
+
+
+
+
+
+
+                            <div class="dash-input-row">
+
+                                <input type="hidden" class="form-control" id="idproduct" name="idproduct" value='<?php echo setHash($product["idproduct"]); ?>'>
+
+                            </div><!--dash-input-row-->
 
 
 
@@ -185,7 +195,7 @@
                                       </div>
                                     </div>
                                     <div class="input-rows">
-                                        <img class="img-responsive" id="image-preview" src="/uploads/products/0.jpg" alt="">
+                                        <img class="img-responsive" id="image-preview" src="/uploads/products/<?php echo htmlspecialchars( $product["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="">
                                     </div>
 
                                 

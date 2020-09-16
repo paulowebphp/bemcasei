@@ -76,37 +76,25 @@ $app->get( "/dashboard/meu-plano", function()
 
 	$planArray = $plan_handler['results'];
 	
+	$nrtotal = $plan_handler['nrtotal'];
 	
 	
 
 
-/*
+	/*
 	echo '<pre>';
 	var_dump($validate);
 	echo 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br>';
 	var_dump($planArray);
+	echo 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br>';
+	var_dump($nrtotal);
 	exit;
-	 
-*/	 
-	
-	
+	*/
 
 	
+	
 
-	/*if( (int)$user->getinplancontext() == 0 )
-	{
 
-		$plan->setinpaymentstatus('0');
-		$plan->setinpaymentmethod('0');
-
-	}//end if
-	else
-	{
-
-		$plan->setinpaymentstatus($regular_plan[0]['inpaymentstatus']);
-		$plan->setinpaymentmethod($regular_plan[0]['inpaymentmethod']);
-
-	}//end else*/
 
 
 	
@@ -122,6 +110,7 @@ $app->get( "/dashboard/meu-plano", function()
 			'user'=>$user->getValues(),
 			//'regular_plan'=>$regular_plan['results'],
 			'planArray'=>$planArray,
+			'nrtotal'=>$nrtotal,
 			//'free_plan'=>$free_plan,
 			'validate'=>$validate,
 			'error'=>Payment::getError(),

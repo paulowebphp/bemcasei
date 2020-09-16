@@ -2637,11 +2637,13 @@ class User extends Model
 
 
 
-
-
-
-
-
+				/**Payment Method
+				 * 0 - Boleto
+				 * 1 - Own Card
+				 * 2 - Third Part Card
+				 * 3 - Voucher
+				 * 4 - Free Plan
+				 */
 
 				$payment = new Payment();
 
@@ -2652,7 +2654,7 @@ class User extends Model
 					'idpayment'=>$payment->getidpayment(),
 					'iduser'=>$this->getiduser(),
 					'despaymentcode'=>null,
-					'inpaymentmethod'=>null,
+					'inpaymentmethod'=>4,
 					'nrinstallment'=>null,
 					'inpaymentstatus'=>PaymentStatus::SETTLED,
 					'incharge'=>null,

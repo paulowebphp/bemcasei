@@ -120,29 +120,29 @@
 
 
                 <?php if( $success != '' ){ ?>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        </div> 
-                    </div>  
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
                 <?php } ?>
 
                 <?php if( $error != '' ){ ?>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        </div> 
-                    </div>  
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
                 <?php } ?>
 
 
@@ -715,178 +715,51 @@
 
 
 
-                
 
 
 
 
-                <?php $counter1=-1;  if( isset($order) && ( is_array($order) || $order instanceof Traversable ) && sizeof($order) ) foreach( $order as $key1 => $value1 ){ $counter1++; ?>
-                <div class="row card-dash centralizer">
 
 
-                    <div class="col-md-2 col-12">
+                <?php if( $numOrders > 0 ){ ?>
 
-                        <div class="card-dash-field">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" scope="col">Data</th>
+                                        <th class="text-center" scope="col">Presentado Por</th>
+                                        <th class="text-center" scope="col">Status</th>
+                                        <th class="text-center" scope="col">Valor Total</th>
+                                        <th class="text-center" scope="col">Valor Recebido</th>
+                                        <th class="text-center" scope="col"><span title="Forma de Pagamento">#</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $counter1=-1;  if( isset($order) && ( is_array($order) || $order instanceof Traversable ) && sizeof($order) ) foreach( $order as $key1 => $value1 ){ $counter1++; ?>
+                                    <tr class='<?php echo getPaymentStatusClass($value1["inpaymentstatus"], $value1["inrefunded"]); ?>'>
+                                        <th class="text-center" scope="row"><?php echo formatDate($value1["dtregister"]); ?></th>
+                                        <td class="text-center"><?php echo htmlspecialchars( $value1["desname"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                                        <td class="text-center"><?php echo getPaymentStatus($value1["inpaymentstatus"]); ?></td>
+                                        <td class="text-center">R$ <?php echo formatPrice($value1["vltotal"]); ?></td>
+                                        <td class="text-center">R$ <?php echo formatPrice($value1["vlseller"]); ?></td>
+                                        <td class="text-center">
+                                            <a href='/dashboard/painel-financeiro/detalhes/<?php echo setHash($value1["idorder"]); ?>'>
 
-
-                             <div class="card-dash-content">
-                                <span><?php echo formatDate($value1["dtregister"]); ?></span>
-                            </div>
-
-
-                            <div class="card-dash-header">
-                                <hr>
-                                <span>Data</span>
-                            </div>
-
+                                                <button class="button11">Detalhes</button>
+            
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
                         </div>
-
-
                     </div>
-
-
-
-
-                        
-                    <div class="col-md-3 col-12">
-
-                        <div class="card-dash-field">
-
-
-                             <div class="card-dash-content">
-                                <span><?php echo htmlspecialchars( $value1["desname"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
-                            </div>
-
-
-                            <div class="card-dash-header">
-                                <hr>
-                                <span>Quem presenteou</span>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                        
-                            
-                    <div class="col-md-1 col-12">
-
-                        <div class="card-dash-field">
-
-
-                            <div class="card-dash-content">
-                                <span><?php echo getPaymentStatus($value1["inpaymentstatus"]); ?></span>
-                            </div>
-
-
-                            <div class="card-dash-header">
-                                <hr>
-                                <span>Status</span>
-                                
-                            </div>
-
-
-                        </div>
-
-                        
-                    </div>
-
-
-
-
-
-
-
-                    <div class="col-md-2 col-12">
-
-                        <div class="card-dash-field">
-
-
-                            <div class="card-dash-content">
-                                <span>R$ <?php echo formatPrice($value1["vltotal"]); ?></span>
-                            </div>
-
-
-                            <div class="card-dash-header">
-                                <hr>
-                                <span>Valor Total</span>
-                                
-                            </div>
-
-
-                        </div>
-
-                        
-                    </div>
-
-
-
-
-
-
-
-
-
-
-
-                             
-                            
-
-
-                    <div class="col-md-2 col-12">
-
-                        <div class="card-dash-field">
-
-
-                            <div class="card-dash-content current">
-                                <span>R$ <?php echo formatPrice($value1["vlseller"]); ?></span>
-                            </div>
-
-                            <div class="card-dash-header">
-
-                                <hr>
-                                <span>Valor Recebido</span>
-                                
-                            </div>
-
-
-                        </div>
-
-                        
-                    </div>
-                            
-
-
-
-
-                    <div class="col-md-2 col-12">
-                        
-                        <div class="card-dash-field">
-
-
-
-
-                                <a href='/dashboard/painel-financeiro/detalhes/<?php echo setHash($value1["idorder"]); ?>'>
-
-                                    <button>Detalhes</button>
-
-                                </a>
-                                
-
-
-                                                           
-                            </div><!--card-buttons-wrappe-->
-
-                    </div>
-
-
-
-
-
-
-
-       
                 </div>
+
                 <?php }elseif( !$order and $search != '' ){ ?>
                 <div class="row">
                     <div class="col-12">
@@ -903,6 +776,7 @@
                         </div>
                     </div>
                 </div>
+
                 <?php } ?>
 
 

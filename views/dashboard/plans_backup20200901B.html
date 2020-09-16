@@ -1,0 +1,577 @@
+<section class="dashboard">
+
+    <div class="container-fluid">            
+            
+
+            
+        <div class="row">
+
+                
+
+
+            <div class="col-md-3 col-12 dash-menu">
+
+                {if="!$validate"}
+
+                    {if="$user.incheckout == 0 or $user.inaccount == 0"}
+
+                        {include="dashboard-menu-noorders"}
+
+                    {else}
+
+                        {include="dashboard-menu-expirated"}
+
+                    {/if}
+
+                {elseif="$validate.incontext == 0"}
+
+                    {include="dashboard-menu-free"}
+
+                {else}
+
+                    {include="dashboard-menu"}
+
+                {/if}
+
+                
+            </div><!--col-->
+
+
+
+
+            <div class="col-md-9 col-12">
+
+
+
+
+
+
+                {if="expirationDate($validate.dtend)"}
+                <div class="row">
+                    
+                    <div class="col-12">
+
+                        <div class="dash-title">
+                            <h1>Meu Plano</h1>
+
+                            
+
+                                <div class="expiration-info">
+                                    <span>Olá, <strong>{$user.desnick}</strong>, seu plano atual termina em {function="formatDate($validate.dtend)"}</span>
+                                </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                {/if}
+
+
+
+
+
+
+
+
+        
+
+
+
+
+                {if="!$validate"}
+
+                <div class="row">
+
+                    <div class="col-12">
+
+
+                        <div class="button-header">
+
+                            <a href="/dashboard/comprar-plano">
+                                <button>
+                                    Comprar um plano
+                                </button>
+                            </a>
+                     
+                        </div>
+
+                    </div>
+
+                </div>
+               
+
+                {elseif="$validate.incontext == 0 or $validate.incheckout == 0"}
+
+                <div class="row">
+
+                    <div class="col-12">
+
+
+                        <div class="button-header">
+
+                            <a href="/dashboard/comprar-plano">
+                                <button>
+                                    Comprar um plano
+                                </button>
+                            </a>
+                     
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {elseif="$validate.incontext != '3' and $validate.incontext != '0'"}
+
+                <div class="row">
+
+                    <div class="col-12">
+
+
+                        <div class="button-header">
+
+                            <a href="/dashboard/renovar">
+                                <button>
+                                    Fazer Renovação
+                                </button>
+                            </a>
+
+                            <a href="/dashboard/upgrade">
+                                <button>
+                                    Fazer Upgrade
+                                </button>
+                            </a>
+                     
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                {else}
+
+                <div class="row">
+
+                    <div class="col-12">
+
+
+                        <div class="button-header">
+
+                            <a href="/dashboard/renovar">
+                                <button>
+                                    Fazer Renovação
+                                </button>
+                            </a>
+
+                                                 
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                {/if}
+
+
+
+
+
+
+
+            
+
+
+
+                {if="$success != ''"}
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {$success}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                {/if}
+
+                {if="$error != ''"}
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {$error}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                {/if}
+
+
+
+
+
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {loop="$planArray"}
+                <div class='row card-dash {function="getPaymentStatusClass($value.inpaymentstatus, $value.inrefunded)"}'>
+
+                    <div class="col-12">
+                        
+
+
+                        <div class="row card-dash-row1">
+
+
+
+
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{function="formatDate($value.dtregister)"}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Data da Compra</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+                            
+
+
+
+                                                    
+
+
+
+
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{$value.desplan}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Plano</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+
+
+
+
+
+                            
+
+
+
+
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>
+                                            R$ {function="formatPrice($value.vlprice)"}
+                                        </span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Valor</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{function="getPaymentStatus($value.inpaymentstatus)"}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Status</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+                        <div class="row card-dash-row2">
+
+
+
+                            
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>
+
+                                            {if="$value.inmigration != 2"}
+                                                {if="$value.inperiod > 1"} {$value.inperiod} meses {else} {$value.inperiod} mês {/if}
+                                            {else}
+                                                Upgrade
+                                            {/if}
+
+                                        </span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Período</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+                            
+                            
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{function="formatDate($value.dtbegin)"}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Data Inicial</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+                            
+
+
+
+
+
+
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{function="formatDate($value.dtend)"}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Data Final</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+
+
+
+
+                            {if="checkBoletoPrintHref($value.inpaymentmethod,$value.inpaymentstatus)"}
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <a title="O boleto abrirá dentro do site da Wirecard, mas fique tranquilo! A página é criptografada com HTTPS e totalmente segura, com a garantia de uma dos maiores processadores de pagamento do país" target="_blank" href="{$value.desprinthref}">
+                                            <span>Reimprimir Boleto na Wirecard</span>
+                                        </a>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span><i class="fa fa-lock"></i> Link Seguro</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+                            {else}
+                            <div class="col-md-3 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    &nbsp;
+
+
+                                </div><!--card-dash-field-->
+
+                                
+                            </div><!--col-->
+                            {/if}
+
+
+
+
+
+
+
+                        </div><!--row-->
+
+
+
+
+                    </div><!--col-->
+
+
+
+
+
+
+                    
+
+
+
+
+
+
+                </div><!--row-->
+                {/loop}
+
+
+
+
+
+                
+
+
+
+
+                
+
+
+
+
+
+                                                        
+                            
+                
+
+
+
+            </div><!--col-->
+        
+
+
+
+      
+        </div><!--row-->
+    
+    </div><!--container-->
+
+</section>
+

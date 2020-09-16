@@ -1,4 +1,4 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><section class="dashboard">
+<section class="dashboard">
 
     <div class="container-fluid">            
             
@@ -12,27 +12,27 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-            <?php if( !$validate ){ ?>
+            {if="!$validate"}
 
-				<?php if( $user["incheckout"] == 0 or $user["inaccount"] == 0 ){ ?>
+				{if="$user.incheckout == 0 or $user.inaccount == 0"}
 
-					<?php require $this->checkTemplate("dashboard-menu-noorders");?>
+					{include="dashboard-menu-noorders"}
 
-				<?php }else{ ?>
+				{else}
 
-					<?php require $this->checkTemplate("dashboard-menu-expirated");?>
+					{include="dashboard-menu-expirated"}
 
-				<?php } ?>
+				{/if}
 
-			<?php }elseif( $validate["incontext"] == 0 ){ ?>
+			{elseif="$validate.incontext == 0"}
 
-				<?php require $this->checkTemplate("dashboard-menu-free");?>
+				{include="dashboard-menu-free"}
 
-			<?php }else{ ?>
+			{else}
 
-				<?php require $this->checkTemplate("dashboard-menu");?>
+				{include="dashboard-menu"}
 
-			<?php } ?>
+			{/if}
                     
 
             </div><!--col-->
@@ -90,31 +90,31 @@
 
 
 
-                <?php if( $success != '' ){ ?>
+                {if="$success != ''"}
                 <div class="row centralizer">
                     <div class="col-md-8 col-12">
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                            {$success}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                     </div> 
                 </div>  
-                <?php } ?>
+                {/if}
 
-                <?php if( $error != '' ){ ?>
+                {if="$error != ''"}
                 <div class="row centralizer">
                     <div class="col-md-8 col-12">
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                            {$error}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                     </div> 
                 </div>  
-                <?php } ?>
+                {/if}
 
 
 
@@ -123,6 +123,146 @@
 
 
 
+                {loop="$gift"}
+                <div class="row card-dash centralizer">
+
+                        
+                    <div class="col-md-2 col-12">
+
+                        <div class="card-dash-field">
+
+
+                             <div class="card-dash-content">
+                                <span>{$value.desgift}</span>
+                            </div>
+
+
+                            <div class="card-dash-header">
+                                <hr>
+                                <span>Nome</span>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                        
+                            
+                    <div class="col-md-2 col-12">
+
+                        <div class="card-dash-field">
+
+
+                            <div class="card-dash-content">
+                                <span>{function="getCategoryName($value.incategory)"}</span>
+                            </div>
+
+
+                            <div class="card-dash-header">
+                                <hr>
+                                <span>Categoria</span>
+                                
+                            </div>
+
+
+                        </div>
+
+                        
+                    </div>
+                             
+                            
+
+
+                    <div class="col-md-2 col-12">
+
+                        <div class="card-dash-field">
+
+
+                            <div class="card-dash-content">
+                                <span>R$ {function="formatPrice($value.vlprice)"}</span>
+                            </div>
+
+                            <div class="card-dash-header">
+
+                                <hr>
+                                <span>Valor</span>
+                                
+                            </div>
+
+
+                        </div>
+
+                        
+                    </div>
+                            
+
+
+
+                              
+                            
+
+                    
+
+                    <div class="col-md-2 col-12">
+
+                        <div class="card-dash-field">
+                            
+                            <div class="card-photo">
+                                
+                                <img src="/uploads/gifts/{$value.desphoto}">
+
+                            </div>
+                        </div>
+                        
+
+
+                    </div>
+
+
+                    <div class="col-md-2 col-12">
+                        
+                        <div class="card-dash-field">
+
+
+
+
+                                <a href='/dashboard/lista-pronta/adicionar?presente={function="setHash($value.idgift)"}'>
+
+                                    <button>Adicionar</button>
+
+                                </a>
+                                
+
+
+                                <a class="see-button" target="_blank" href="/uploads/gifts/{$value.desphoto}">
+
+                                    <button>Ver Imagem</button>
+
+                                </a>
+
+
+                               
+                            </div><!--card-buttons-wrappe-->
+
+                    </div>
+
+
+
+
+
+
+
+       
+                </div>
+                {else}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            Nenhum ítem foi encontrado
+                        </div>
+                    </div>
+                </div>
+                {/loop}
 
 
 
@@ -136,7 +276,10 @@
 
 
 
-                <?php if( $nrtotal > 0 ){ ?>
+
+
+
+                {if="$nrtotal > 0"}
 
                 <div class="row">
                     <div class="col-12">
@@ -153,52 +296,34 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $counter1=-1;  if( isset($gift) && ( is_array($gift) || $gift instanceof Traversable ) && sizeof($gift) ) foreach( $gift as $key1 => $value1 ){ $counter1++; ?>
-                                    <tr>
-                                        <td class="text-center"><?php echo htmlspecialchars( $value1["desgift"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-                                        <td class="text-center"><?php echo getCategoryName($value1["incategory"]); ?></td>
-                                        <td class="text-center">R$ <?php echo formatPrice($value1["vlprice"]); ?></td>
+                                    {loop="$gift"}
+                                    <tras>
+                                        <td class="text-center">{$value.desgift}</td>
+                                        <td class="text-center">{function="getCategoryName($value.incategory)"}</td>
+                                        <td class="text-center">R$ {function="formatPrice($value.vlprice)"}</td>
+                                        <td class="text-center"><div class="card-photo"><img src="/uploads/gifts/{$value.desphoto}"></div></td>
                                         <td class="text-center">
-                                            <div data-toggle="modal" data-target='#modal<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>' class="table-photo"><img src="/uploads/gifts/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></div>
-                                            <div class="modal fade" id='modal<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>' tabindex="-1" role="dialog" aria-labelledby='<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>Title' aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="modal-photo">
-                                                            <img src="/uploads/gifts/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">
-                                            <a href='/dashboard/lista-pronta/adicionar?presente=<?php echo setHash($value1["idgift"]); ?>'>
+                                            <a href='/dashboard/lista-pronta/adicionar?presente={function="setHash($value.idgift)"}'>
 
                                                 <button class="button11">Adicionar</button>
             
                                             </a>
                                         </td>
                                         <td>
-                                            <button data-toggle="modal" data-target='#modal<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>' class="button11" >Ver Imagem</button>
+                                            <a target="_blank" href="/uploads/gifts/{$value.desphoto}">
+
+                                                <button class="button11">Ver Imagem</button>
+            
+                                            </a>
                                         </td>
-                                        
                                     </tr>
-                                    <?php } ?>
+                                    {/loop}
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-                <?php }else{ ?>
+                {else}
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-info">
@@ -207,7 +332,7 @@
                     </div>
                 </div>
 
-                <?php } ?>
+                {/if}
 
 
 
@@ -242,7 +367,7 @@
                                         </button>
                                     </a>
                                     
-                                    <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="<?php echo htmlspecialchars( $search, ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                    <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="{$search}">
 
                                     <div class="input-group-btn">
 
@@ -271,10 +396,10 @@
                         <div class="pagination">
                             
                             <ul>
-                                <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
-                                    <li><a href="<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>                             
+                                {loop="$pages"}
+                                    <li><a href="{$value.href}">{$value.text}</a></li>                             
                                                             
-                                <?php } ?>
+                                {/loop}
                             </ul>
 
                         </div>

@@ -43,17 +43,7 @@
             <div class="col-md-9 col-12 dash-panel">
 
 
-                <div class="row centralizer">
-                    <div class="col-md-8 col-12">
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            Bla bla bla bla bla blab laBla bla bla bla bla blab laBla bla bla bla bla blab laBla bla bla bla bla blab laBla bla bla bla bla blab laBla bla bla bla bla blab la
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    </div> 
-                </div>
-
+                
                 
                 <?php if( $success != '' ){ ?>
                 <div class="row centralizer">

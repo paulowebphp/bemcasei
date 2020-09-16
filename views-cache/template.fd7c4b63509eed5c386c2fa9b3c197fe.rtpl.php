@@ -12,21 +12,27 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( $user["inplancontext"] == 0 ){ ?>
+            <?php if( !$validate ){ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-free");?>
+				<?php if( $user["incheckout"] == 0 or $user["inaccount"] == 0 ){ ?>
 
+					<?php require $this->checkTemplate("dashboard-menu-noorders");?>
 
-                <?php }elseif( !$validate ){ ?>
+				<?php }else{ ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-               
+					<?php require $this->checkTemplate("dashboard-menu-expirated");?>
 
-                <?php }else{ ?>
+				<?php } ?>
 
-                    <?php require $this->checkTemplate("dashboard-menu");?>
+			<?php }elseif( $validate["incontext"] == 0 ){ ?>
 
-                <?php } ?>
+				<?php require $this->checkTemplate("dashboard-menu-free");?>
+
+			<?php }else{ ?>
+
+				<?php require $this->checkTemplate("dashboard-menu");?>
+
+			<?php } ?>
                     
 
             </div><!--col-->
@@ -63,8 +69,8 @@
 
 
                     <?php if( $success != '' ){ ?>
-                    <div class="row">
-                        <div class="col-12">
+                    <div class="row centralizer">
+                        <div class="col-md-8 col-12">
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -76,8 +82,8 @@
                     <?php } ?>
 
                     <?php if( $error != '' ){ ?>
-                    <div class="row">
-                        <div class="col-12">
+                    <div class="row centralizer">
+                        <div class="col-md-8 col-12">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">

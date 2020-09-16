@@ -181,59 +181,35 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             
 
 
 
                 <?php if( $success != '' ){ ?>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            </div> 
-                        </div>  
-                    <?php } ?>
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                <?php } ?>
 
-                    <?php if( $error != '' ){ ?>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            </div> 
-                        </div>  
-                    <?php } ?>
+                <?php if( $error != '' ){ ?>
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                <?php } ?>
 
 
 
@@ -254,353 +230,77 @@
 
 
 
+                <?php if( $nrtotal > 0 ){ ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <?php $counter1=-1;  if( isset($planArray) && ( is_array($planArray) || $planArray instanceof Traversable ) && sizeof($planArray) ) foreach( $planArray as $key1 => $value1 ){ $counter1++; ?>
-                <div class='row card-dash <?php echo getPaymentStatusClass($value1["inpaymentstatus"], $value1["inrefunded"]); ?>'>
-
+                <div class="row">
                     <div class="col-12">
-                        
-
-
-                        <div class="row card-dash-row1">
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php echo formatDate($value1["dtregister"]); ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Data da Compra</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-                            
-
-
-
-                                                    
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php echo htmlspecialchars( $value1["desplan"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Plano</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-
-
-
-
-
-
-                            
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span>
-                                            R$ <?php echo formatPrice($value1["vlprice"]); ?>
-                                        </span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Valor</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php echo getPaymentStatus($value1["inpaymentstatus"]); ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Status</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-                        </div><!--row-->
-
-
-
-
-                        <div class="row card-dash-row2">
-
-
-
-                            
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span>
-
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Data da Compra</th>
+                                        <th scope="col">Plano</th>
+                                        <th scope="col">Valor</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Período</th>
+                                        <th scope="col">Data Inicial</th>
+                                        <th scope="col">Data Final</th>
+                                        <th scope="col"><span title="Forma de Pagamento">#</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $counter1=-1;  if( isset($planArray) && ( is_array($planArray) || $planArray instanceof Traversable ) && sizeof($planArray) ) foreach( $planArray as $key1 => $value1 ){ $counter1++; ?>
+                                    <tr class='<?php echo getPaymentStatusClass($value1["inpaymentstatus"], $value1["inrefunded"]); ?>'>
+                                        <th scope="row"><?php echo formatDate($value1["dtregister"]); ?></th>
+                                        <td><?php echo htmlspecialchars( $value1["desplan"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                                        <td>R$ <?php echo formatPrice($value1["vlprice"]); ?></td>
+                                        <td><?php echo getPaymentStatus($value1["inpaymentstatus"]); ?></td>
+                                        <td>
                                             <?php if( $value1["inmigration"] != 2 ){ ?>
                                                 <?php if( $value1["inperiod"] > 1 ){ ?> <?php echo htmlspecialchars( $value1["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> meses <?php }else{ ?> <?php echo htmlspecialchars( $value1["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> mês <?php } ?>
                                             <?php }else{ ?>
                                                 Upgrade
                                             <?php } ?>
+                                        </td>
+                                        <td><?php echo formatDate($value1["dtbegin"]); ?></td>
+                                        <td><?php echo formatDate($value1["dtend"]); ?></td>
+                                        <td>
+                                            <?php if( $value1["inpaymentmethod"] == 1 or $value1["inpaymentmethod"] == 2 ){ ?>
+                                                <span><i title="Cartão de Crédito" class="fa fa-credit-card"></i></span>
+                                            <?php }elseif( $value1["inpaymentmethod"] == 0 ){ ?>
+                                                <span><i title="Boleto" class="fa fa-barcode"></i></span>
+                                            <?php }elseif( $value1["inpaymentmethod"] == 3 ){ ?>
+                                                <span><i title="Voucher" class="fa fa-tag"></i></span>
+                                                <?php }elseif( $value1["inpaymentmethod"] == 4 ){ ?>
+                                            <span><i title="Plano Free" class="fa fa-bookmark"></i></span>
+                                            <?php } ?>
+
+                                            <?php if( checkBoletoPrintHref($value1["inpaymentmethod"],$value1["inpaymentstatus"]) ){ ?>  
+                                                <a title="Reimprimir Boleto | O boleto abrirá dentro do site da Wirecard | Página totalmente segura, criptografada com HTTPS e com a garantia de uma dos maiores processadores de pagamento do país" target="_blank" href="<?php echo htmlspecialchars( $value1["desprinthref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                                    <span><i class="fa fa-external-link"></i></span>
+                                                </a>
+                                            <?php }else{ ?>
+                                                <span>&nbsp;</span>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
-                                        </span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Período</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-                            
-                            
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php echo formatDate($value1["dtbegin"]); ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Data Inicial</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-                            
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span><?php echo formatDate($value1["dtend"]); ?></span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Data Final</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-                            <?php if( checkBoletoPrintHref($value1["inpaymentmethod"],$value1["inpaymentstatus"]) ){ ?>
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <a title="O boleto abrirá dentro do site da Wirecard, mas fique tranquilo! A página é criptografada com HTTPS e totalmente segura, com a garantia de uma dos maiores processadores de pagamento do país" target="_blank" href="<?php echo htmlspecialchars( $value1["desprinthref"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-                                            <span>Reimprimir Boleto na Wirecard</span>
-                                        </a>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span><i class="fa fa-lock"></i> Link Seguro</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-                            <?php }else{ ?>
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    &nbsp;
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-                            <?php } ?>
-
-
-
-
-
-
-
-                        </div><!--row-->
-
-
-
-
-                    </div><!--col-->
-
-
-
-
-
-
-                    
-
-
-
-
-
-
-                </div><!--row-->
                 <?php } ?>
 
 
+                
 
 
 
-
-
+                
+                
+                
 
 
 

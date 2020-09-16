@@ -1507,55 +1507,6 @@ function validatePlanEnd( $dtplanend )
 
 
 
-function validatePlan()
-{
-
-
-	$user = User::getFromSession();
-
-	$plan = new Plan();
-
-	$plan_handler = $plan->get((int)$user->getiduser());
-
-	$planArray = [];
-
-
-	if( (int)$plan_handler['nrtotal'] > 0 )
-	{
-
-		$planArray = $plan_handler['results'];
-
-	}//end if
-
-
-	return User::validatePlan( $planArray );
-
-
-
-}//end function
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1603,6 +1554,20 @@ function validatePlan()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 function validatePlanFree()
 {
 
@@ -1622,11 +1587,163 @@ function validatePlanFree()
 		return true;
 
 	}//end else
-
-
 	
 
-}//end validatePlanFree
+}//end function
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function validatePlan()
+{
+
+
+	$user = User::getFromSession();
+
+	$plan = new Plan();
+
+	$plan_handler = $plan->get((int)$user->getiduser());
+
+	$planArray = [];
+
+
+	if( (int)$plan_handler['nrtotal'] > 0 )
+	{
+
+		$planArray = $plan_handler['results'];
+
+	}//end if
+
+
+	return User::validatePlan( $planArray );
+
+
+}//end function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function validatePlanFree()
+{
+
+	$user = User::getFromSession();
+
+	$plan = new Plan();
+
+	$plan_handler = $plan->get((int)$user->getiduser());
+
+	$planArray = [];
+
+
+	if( (int)$plan_handler['nrtotal'] > 0 )
+	{
+
+		$planArray = $plan_handler['results'];
+
+	}//end if
+
+	if( $planArray == [] )
+	{
+
+		return false;
+
+	}//end if
+
+
+
+
+	if ( ( $validate = User::validatePlan( $planArray ) ) === false )
+	{
+		# code...
+		return false;
+
+	}//end if
+	else
+	{
+		if( $validate['incontext'] == 0 )
+		{
+
+			return true;
+
+		}//end if
+		else
+		{
+			return false;
+
+		}//end else
+
+	}//end else
+	
+
+}//end function
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1647,7 +1764,7 @@ function validatePlanCheckout()
 	$user = User::getFromSession();
 
 
-	if( (int)$user->getincheckout() != 0 && (int)$user->getinplancontext() == 0 )
+	if( (int)$user->getinplancontext() == 0 && (int)$user->getincheckout() != 0 )
 	{
 		
 		return false;
@@ -1662,9 +1779,7 @@ function validatePlanCheckout()
 	}//end else
 
 
-	
-
-}//end validatePlanFree
+}//end function
 
 
 

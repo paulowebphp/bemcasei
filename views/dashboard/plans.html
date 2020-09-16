@@ -230,324 +230,77 @@
 
 
 
+                {if="$nrtotal > 0"}
 
-
-
-                {loop="$planArray"}
-                <div class='row card-dash {function="getPaymentStatusClass($value.inpaymentstatus, $value.inrefunded)"}'>
-
+                <div class="row">
                     <div class="col-12">
-                        
-
-
-                        <div class="row card-dash-row1">
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span>{function="formatDate($value.dtregister)"}</span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Data da Compra</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-                            
-
-
-
-                                                    
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span>{$value.desplan}</span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Plano</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-
-
-
-
-
-
-                            
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span>
-                                            R$ {function="formatPrice($value.vlprice)"}
-                                        </span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Valor</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span>{function="getPaymentStatus($value.inpaymentstatus)"}</span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Status</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-
-
-                        </div><!--row-->
-
-
-
-
-                        <div class="row card-dash-row2">
-
-
-
-                            
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span>
-
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" scope="col">Data da Compra</th>
+                                        <th class="text-center" scope="col">Plano</th>
+                                        <th class="text-center" scope="col">Valor</th>
+                                        <th class="text-center" scope="col">Status</th>
+                                        <th class="text-center" scope="col">Período</th>
+                                        <th class="text-center" scope="col">Data Inicial</th>
+                                        <th class="text-center" scope="col">Data Final</th>
+                                        <th class="text-center" scope="col"><span title="Forma de Pagamento">#</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {loop="$planArray"}
+                                    <tr class='{function="getPaymentStatusClass($value.inpaymentstatus, $value.inrefunded)"}'>
+                                        <th class="text-center" scope="row">{function="formatDate($value.dtregister)"}</th>
+                                        <td class="text-center">{$value.desplan}</td>
+                                        <td class="text-center">R$ {function="formatPrice($value.vlprice)"}</td>
+                                        <td class="text-center">{function="getPaymentStatus($value.inpaymentstatus)"}</td>
+                                        <td class="text-center">
                                             {if="$value.inmigration != 2"}
                                                 {if="$value.inperiod > 1"} {$value.inperiod} meses {else} {$value.inperiod} mês {/if}
                                             {else}
                                                 Upgrade
                                             {/if}
-
-                                        </span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Período</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-                            
-                            
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span>{function="formatDate($value.dtbegin)"}</span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Data Inicial</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-                            
-
-
-
-
-
-
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <span>{function="formatDate($value.dtend)"}</span>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span>Data Final</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-
-
-
-
-                            {if="checkBoletoPrintHref($value.inpaymentmethod,$value.inpaymentstatus)"}
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    <div class="card-dash-content">
-                                        <a title="O boleto abrirá dentro do site da Wirecard, mas fique tranquilo! A página é criptografada com HTTPS e totalmente segura, com a garantia de uma dos maiores processadores de pagamento do país" target="_blank" href="{$value.desprinthref}">
-                                            <span>Reimprimir Boleto na Wirecard</span>
-                                        </a>
-                                    </div>
-
-                                    <div class="card-dash-header">
-
-                                        <hr>
-                                        <span><i class="fa fa-lock"></i> Link Seguro</span>
-                                        
-                                    </div>
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-                            {else}
-                            <div class="col-md-3 col-12">
-
-                                <div class="card-dash-field">
-
-
-                                    &nbsp;
-
-
-                                </div><!--card-dash-field-->
-
-                                
-                            </div><!--col-->
-                            {/if}
-
-
-
-
-
-
-
-                        </div><!--row-->
-
-
-
-
-                    </div><!--col-->
-
-
-
-
-
-
-                    
-
-
-
-
-
-
-                </div><!--row-->
-                {/loop}
-
-
-
-
-
-
-
+                                        </td>
+                                        <td class="text-center">{function="formatDate($value.dtbegin)"}</td>
+                                        <td class="text-center">{function="formatDate($value.dtend)"}</td>
+                                        <td class="text-center">
+                                            {if="$value.inpaymentmethod == 1 or $value.inpaymentmethod == 2"}
+                                                <span><i title="Cartão de Crédito" class="fa fa-credit-card"></i></span>
+                                            {elseif="$value.inpaymentmethod == 0"}
+                                                <span><i title="Boleto" class="fa fa-barcode"></i></span>
+                                            {elseif="$value.inpaymentmethod == 3"}
+                                                <span><i title="Voucher" class="fa fa-tag"></i></span>
+                                                {elseif="$value.inpaymentmethod == 4"}
+                                            <span><i title="Plano Free" class="fa fa-bookmark"></i></span>
+                                            {/if}
+
+                                            {if="checkBoletoPrintHref($value.inpaymentmethod,$value.inpaymentstatus)"}  
+                                                <a title="Reimprimir Boleto | O boleto abrirá dentro do site da Wirecard | Página totalmente segura, criptografada com HTTPS e com a garantia de uma dos maiores processadores de pagamento do país" target="_blank" href="{$value.desprinthref}">
+                                                    <span><i class="fa fa-external-link"></i></span>
+                                                </a>
+                                            {else}
+                                                <span>&nbsp;</span>
+                                            {/if}
+                                        </td>
+                                    </tr>
+                                    {/loop}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                {/if}
+
+
+                
+
+
+
+                
+                
+                
 
 
 

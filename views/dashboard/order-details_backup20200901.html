@@ -101,6 +101,154 @@
 
 
 
+                <div class="row">
+                    
+                    <div class="col-md-10 col-12">
+                        
+                        <div class="table-header row">
+
+                            
+                            <div class="col-1">
+                                
+                                <span>#</span>
+                                                                
+                            </div>
+
+
+                            <div class="col-7">
+                                
+                                <span>Presente</span>
+                                                                
+                            </div> 
+
+
+                            <div class="col-4">
+                                
+                                <span>Valor</span>
+                                                                
+                            </div> 
+
+
+                            
+                            
+
+                        </div><!--body-row-->
+
+
+
+
+
+                        {loop="$product"}
+                        <div class="table-row row">
+
+                             <div class="col-1">
+                                
+                                <span>{$counter+1}.</span>
+                                                                
+                            </div>
+
+
+                            <div class="col-7">
+                                
+                                <span>{$value.desproduct}</span>
+                                                                
+                            </div> 
+
+
+                            <div class="col-4">
+                                
+                                <span>R$ {function="formatPrice(getInterest($value.vltotal,'1','1',$order.incharge))"}</span>
+                                                                
+                            </div> 
+
+                            
+
+                        </div><!--body-row-->
+                        {/loop}
+
+
+
+
+                        <div class="table-totals row">
+
+                            
+
+
+                            
+
+
+                            <div class="col-9 text-right">
+                                
+                                <span>Total</span>
+                                                                
+                            </div> 
+
+
+                            <div class="col-3 text-center">
+                                
+                                <span>R$ {function="formatPrice(getInterest($cart.vlprice,'1','1',$order.incharge))"}</span>
+                                                              
+                            </div> 
+                            
+
+                        </div><!--tabe-totals-->
+
+
+
+
+
+
+
+                        {if="$order.nrinstallment > 1"}
+                        <div class="table-footer row">
+
+                             
+
+                            <div class="col-md-6 col-5 text-center">
+                                
+                                <span>Parcelado em {$order.nrinstallment} vezes de R$ {function="formatPrice($order.vltotal/$order.nrinstallment)"}</span>
+                                                                
+                            </div> 
+
+
+                            <div class="col-md-3 col-4 text-right">
+                                
+                                <span>Total Parcelado</span>
+                                                                
+                            </div> 
+
+
+                            <div class="col-md-3 col-3 bold text-center">
+                                
+                                <span>R$ {function="formatPrice($order.vltotal)"}</span>
+                                                              
+                            </div> 
+                            
+
+                        </div><!--tabe-totals-->
+                        {/if}
+
+
+
+
+                    </div><!--col-10-->
+
+                </div><!--row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -110,8 +258,8 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th style="width:30px;" class="text-center" scope="col">#</th>
-                                        <th class="text-center" scope="col" colspan="2">Presente</th>
+                                        <th class="text-center" scope="col">#</th>
+                                        <th class="text-center" scope="col">Presente</th>
                                         <th class="text-center" scope="col">Valor</th>
                                         
                                     </tr>
@@ -120,24 +268,21 @@
                                     {loop="$product"}
                                     <tr>
                                         <th class="text-center" scope="row">{$counter+1}.</th>
-                                        <td class="text-center" colspan="2">{$value.desproduct}</td>
+                                        <td class="text-center">{$value.desproduct}</td>
                                         <td class="text-center">R$ {function="formatPrice(getInterest($value.vltotal,'1','1',$order.incharge))"}</td>
                                     </tr>
                                     {/loop}
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th class="text-center" scope="col">&nbsp;</th>
-                                        <th class="text-center" scope="col">&nbsp;</th>
-                                        <th class="text-right" scope="col">Total</th>
+                                        <th class="text-right" scope="col" colspan="2">Total</th>
                                         <th class="text-center" scope="col">R$ {function="formatPrice(getInterest($cart.vlprice,'1','1',$order.incharge))"}</th>
                                     </tr>
-                                    {if="$order.nrinstallment == 1"}
+                                    {if="$order.nrinstallment > 1"}
                                     <tr>
-                                        <th class="text-center" scope="col">&nbsp;</th>
                                         <th class="text-right" scope="col">Parcelado em {$order.nrinstallment} vezes de R$ {function="formatPrice($order.vltotal/$order.nrinstallment)"}</th>
                                         <th class="text-right" scope="col">Total Parcelado</th>
-                                        <th class="text-center" scope="col">R$ {function="formatPrice($order.vltotal)"}</th>
+                                        <th class="text-right" scope="col">R$ {function="formatPrice($order.vltotal)"}</th>
 
                                     </tr>
                                     {/if}

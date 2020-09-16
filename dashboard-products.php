@@ -1000,7 +1000,7 @@ $app->get( "/dashboard/lista-pronta", function()
 
 
 
-	$product = new Product();
+	//$product = new Product();
 
 	//$numProducts = $product->getNumProducts((int)$user->getiduser());
 	//$maxProducts = $product->maxProducts((int)$user->getinplancontext());
@@ -1043,6 +1043,9 @@ $app->get( "/dashboard/lista-pronta", function()
 
 	
 	$gift->setData($results['results']);
+
+
+	$nrtotal = $results['nrtotal'];
 
 	$pages = [];	
     
@@ -1116,26 +1119,7 @@ $app->get( "/dashboard/lista-pronta", function()
 
 
 
-	/*$plan = new Plan();
-
-
-	if( (int)$user->getinplancontext() == 0 )
-	{
-
-		$plan->setinpaymentstatus('0');
-		$plan->setinpaymentmethod('0');
-
-	}//end if
-	else
-	{
-
-		$plans = $plan->get((int)$user->getiduser());
-
-		$plan->setinpaymentstatus($plans['results'][0]['inpaymentstatus']);
-		$plan->setinpaymentmethod($plans['results'][0]['inpaymentmethod']);
-
-	}//end else*/
-
+	
 
 
 
@@ -1155,6 +1139,7 @@ $app->get( "/dashboard/lista-pronta", function()
 			'search'=>$search,
 			'pages'=>$pages,
 			'gift'=>$gift->getValues(),
+			'nrtotal'=>$nrtotal,
 			'validate'=>$validate,
 			'success'=>Product::getSuccess(),
 			'error'=>Product::getError()

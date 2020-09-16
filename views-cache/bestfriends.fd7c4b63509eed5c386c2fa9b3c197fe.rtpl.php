@@ -12,20 +12,21 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( $user["inplancontext"] == 0 ){ ?>
+                <?php if( !$validate ){ ?>
+
+                    <?php if( $user["incheckout"] == 0 or $user["inaccount"] == 0 ){ ?>
+
+                        <?php require $this->checkTemplate("dashboard-menu-noorders");?>
+
+                    <?php }else{ ?>
+
+                        <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+
+                    <?php } ?>
+
+                <?php }elseif( $validate["incontext"] == 0 ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-free");?>
-
-                
-                <?php }elseif( $user["incheckout"] == 0 ){ ?>
-
-                    <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
-               
-
-                <?php }elseif( !$validate ){ ?>
-
-                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-               
 
                 <?php }else{ ?>
 
@@ -109,198 +110,276 @@
 
 
                 <?php if( $success != '' ){ ?>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        </div> 
-                    </div>  
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
                 <?php } ?>
 
                 <?php if( $error != '' ){ ?>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        </div> 
-                    </div>  
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
                 <?php } ?>
  
 
 
 
-                
+
+
 
 
 
 
                 <?php $counter1=-1;  if( isset($bestfriend) && ( is_array($bestfriend) || $bestfriend instanceof Traversable ) && sizeof($bestfriend) ) foreach( $bestfriend as $key1 => $value1 ){ $counter1++; ?>
-                <div class="row card-dash centralizer">
+                <div class="row card-dash">
 
+
+
+                    <div class="col-md-7 col-12">
                         
-                    <div class="col-md-2 col-12">
-
-                        <div class="card-dash-field">
 
 
-                             <div class="card-dash-content">
-                                <span><?php echo htmlspecialchars( $value1["inposition"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
-                            </div>
-
-
-                            <div class="card-dash-header">
-                                <hr>
-                                <span>Posição</span>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                        
+                        <div class="row card-dash-row1">
                             
-                    <div class="col-md-2 col-12">
-
-                        <div class="card-dash-field">
 
 
-                            <div class="card-dash-content">
-                                <span><?php echo htmlspecialchars( $value1["desbestfriend"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
-                            </div>
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
 
 
-                            <div class="card-dash-header">
-                                <hr>
-                                <span>Nome</span>
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $value1["inposition"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+
+                                    <div class="card-dash-header">
+                                        <hr>
+                                        <span>Posição</span>
+                                    </div>
+
+                                </div><!--card-dash-field-->
+
+
+                            </div><!--col-->
+                        
+
+
+
+
+
+
+                            <div class="col-md-6 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $value1["desbestfriend"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Nome</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
                                 
-                            </div>
+                            </div><!--col-->
 
 
-                        </div>
-
-                        
-                    </div>
-                             
-                            
 
 
-                    <div class="col-md-2 col-12">
-
-                        <div class="card-dash-field">
 
 
-                            <div class="card-dash-content">
-                                <span><?php echo htmlspecialchars( $value1["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
-                            </div>
 
-                            <div class="card-dash-header">
 
-                                <hr>
-                                <span>Descrição</span>
+
+                            <div class="col-md-4 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <?php if( $value1["instatus"] == 0 ){ ?>
+                                            <span>Não-visível</span>
+                                        <?php }elseif( $value1["instatus"] == 1 ){ ?>
+                                            <span>Visível</span>
+                                        <?php } ?>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Status</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
                                 
-                            </div>
+                            </div><!--col-->
 
 
-                        </div>
 
-                        
-                    </div>
+
+
+
                             
 
 
 
-                     <div class="col-md-2 col-12">
 
-                        <div class="card-dash-field">
 
-                            <div class="card-dash-content">
-                                <span><?php if( $value1["instatus"] == 1 ){ ?>Visível<?php }else{ ?>Não-visível<?php } ?></span>
-                            </div>
+                        </div><!--row-->
 
-                            <div class="card-dash-header">
 
-                                <hr>
-                                <span>Status</span>
+
+
+                        <div class="row card-dash-row2">
+
+
+
+
+
+                            
+                            
+                            
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span><?php echo htmlspecialchars( $value1["desdescription"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Descrição</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
                                 
-                            </div>
+                            </div><!--col-->
 
 
-                        </div>
 
-                        
-                    </div>
-                           
-
-
-              
-                            
 
                     
 
-                    <div class="col-md-2 col-12">
+
+
+                        </div><!--row-->
+
+
+
+
+                    </div><!--col-->
+
+
+
+
+
+
+
+
+
+
+                    <div class="col-md-3 col-12 card-dash-row3">
+                        
 
                         <div class="card-dash-field">
-                            
+
+
                             <div class="card-photo">
                                 
                                 <img src="/uploads/bestfriends/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
                             </div>
-                        </div>
+
+
+                           
+                        </div><!--card-buttons-wrappe-->
+
+
+
+
+                    </div><!--col-->
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="col-md-2 col-12 card-dash-row3">
                         
 
-
-                    </div>
-
-
-                    <div class="col-md-2 col-12">
-                        
                         <div class="card-dash-field">
 
 
+                            <a href='/dashboard/padrinhos-madrinhas/<?php echo setHash($value1["idbestfriend"]); ?>'>
+
+                                <button>Editar</button>
+
+                            </a>
+                            
 
 
-                                <a href='/dashboard/padrinhos-madrinhas/<?php echo setHash($value1["idbestfriend"]); ?>'>
+                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/padrinhos-madrinhas/<?php echo setHash($value1["idbestfriend"]); ?>/deletar'>
 
-                                    <button>Editar</button>
+                                <button>Deletar</button>
 
-                                </a>
-                                
-
-
-                                <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/padrinhos-madrinhas/<?php echo setHash($value1["idbestfriend"]); ?>/deletar'>
-
-                                    <button>Deletar</button>
-
-                                </a>
+                            </a>
 
 
-                               
-                            </div><!--card-buttons-wrappe-->
-
-                    </div>
+                           
+                        </div><!--card-buttons-wrappe-->
 
 
 
 
+                    </div><!--col-->
 
 
 
-       
-                </div>
+
+                </div><!--row-->
                 <?php }else{ ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-info">
-                            Nenhum padrinho ou madrinha foi encontrado
+                            Nenhuma Padrinho ou Madrinha foi encontrada
                         </div>
                     </div>
                 </div>

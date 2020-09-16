@@ -165,134 +165,81 @@
 
 
 
-                {loop="$product"}
-                <div class="row card-dash centralizer">
-
-                        
-                    <div class="col-md-4 col-12">
-
-                        <div class="card-dash-field">
+  
 
 
-                             <div class="card-dash-content">
-                                <span>{$value.desproduct}</span>
-                            </div>
 
 
-                            <div class="card-dash-header">
-                                <hr>
-                                <span>Nome</span>
-                            </div>
 
+
+
+
+
+                {if="$nrtotal > 0"}
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" scope="col">Nome</th>
+                                        <th class="text-center" scope="col">Categoria</th>
+                                        <th class="text-center" scope="col">Valor</th>
+                                        <th class="text-center" scope="col">Imagem</th>
+                                        <th class="text-center" scope="col"></th>
+                                        <th class="text-center" scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {loop="$product"}
+                                    <tr>
+                                        <td class="text-center">{$value.desproduct}</td>
+                                        <td class="text-center">{function="getCategoryName($value.incategory)"}</td>
+                                        <td class="text-center">R$ {function="formatPrice($value.vlprice)"}</td>
+                                        <td class="text-center">
+                                            <div data-toggle="modal" data-target='#modal{$counter+1}' class="table-photo"><img src="/uploads/products/{$value.desphoto}"></div>
+                                            <div class="modal fade" id='modal{$counter+1}' tabindex="-1" role="dialog" aria-labelledby='{$counter+1}Title' aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="modal-photo">
+                                                            <img src="/uploads/products/{$value.desphoto}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href='/dashboard/presentes-virtuais/{function="setHash($value.idproduct)"}'>
+
+                                                <button class="button11">Editar</button>
+            
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/presentes-virtuais/{function="setHash($value.idproduct)"}/deletar'>
+            
+                                                <button class="button12" >Deletar</button>
+            
+                                            </a>
+                                        </td>
+                                        
+                                    </tr>
+                                    {/loop}
+                                </tbody>
+                            </table>
                         </div>
-
-
                     </div>
-                        
-                            
-                    <div class="col-md-2 col-12">
-
-                        <div class="card-dash-field">
-
-
-                            <div class="card-dash-content">
-                                <span>{function="getCategoryName($value.incategory)"}</span>
-                            </div>
-
-
-                            <div class="card-dash-header">
-                                <hr>
-                                <span>Categoria</span>
-                                
-                            </div>
-
-
-                        </div>
-
-                        
-                    </div>
-                             
-                            
-
-
-                    <div class="col-md-2 col-12">
-
-                        <div class="card-dash-field">
-
-
-                            <div class="card-dash-content">
-                                <span>R$ {function="formatPrice($value.vlprice)"}</span>
-                            </div>
-
-                            <div class="card-dash-header">
-
-                                <hr>
-                                <span>Valor</span>
-                                
-                            </div>
-
-
-                        </div>
-
-                        
-                    </div>
-                            
-
-
-   
-
-                    
-
-                    <div class="col-md-2 col-12">
-
-                        <div class="card-dash-field">
-                            
-                            <div class="card-photo">
-                                
-                                <img src="/uploads/products/{$value.desphoto}">
-
-                            </div>
-                        </div>
-                        
-
-
-                    </div>
-
-
-                    <div class="col-md-2 col-12">
-                        
-                        <div class="card-dash-field">
-
-
-
-
-                                <a href='/dashboard/presentes-virtuais/{function="setHash($value.idproduct)"}'>
-
-                                    <button>Editar</button>
-
-                                </a>
-                                
-
-
-                                <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/presentes-virtuais/{function="setHash($value.idproduct)"}/deletar'>
-
-                                    <button>Deletar</button>
-
-                                </a>
-
-
-                               
-                            </div><!--card-buttons-wrappe-->
-
-                    </div>
-
-
-
-
-
-
-
-       
                 </div>
                 {else}
                 <div class="row">
@@ -302,7 +249,8 @@
                         </div>
                     </div>
                 </div>
-                {/loop}
+
+                {/if}
 
 
 
@@ -397,6 +345,8 @@
 
       
         </div><!--row-->
+
+        
     
     </div><!--container-->
 

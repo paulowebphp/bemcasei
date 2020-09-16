@@ -1040,19 +1040,39 @@ label{
   height: auto;
   display: block;
   position: relative;
-  background: #29303b;
+  background: none;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.10), 0 0 12px 0 rgba(0, 0, 0, 0.06);
 }
 .card-photo img {
-
   width: 100%;
   border-radius: 4px;
   vertical-align: middle;
   height: auto;
   -ms-interpolation-mode: bicubic;
-  
+}
+
+.table-photo {
+  height: auto;
+  display: block;
+  position: relative;
+  background: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+.table-photo img {
+  width: 80px;
+  border-radius: 4px;
+  vertical-align: middle;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+}
+.modal-photo img {
+  width: 80%;
+  border-radius: 4px;
+  vertical-align: middle;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
 }
 
 
@@ -1069,6 +1089,26 @@ label{
 .del-button button{
   background-color: #ec656d;
   color: #fff;
+}
+
+
+.button11{
+  padding: 10px 10px;
+  background-color: transparent;
+  border: 1px solid #ec656d;
+  border-radius: 10px;
+  color: #ec656d;
+  width:100px;
+}
+
+.button12{
+  padding: 10px 12px;
+  background-color: #ec656d;
+  color: #fff;
+  border: 1px solid #ec656d;
+  border-radius: 10px;
+  width:100px;
+  margin-bottom: 10px;
 }
 
 .message-approve button{

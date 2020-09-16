@@ -138,170 +138,248 @@
 
 
 
-                
+
+
 
 
 
 
                 {loop="$bestfriend"}
-                <div class="row card-dash centralizer">
+                <div class="row card-dash">
 
+
+
+                    <div class="col-md-7 col-12">
                         
-                    <div class="col-md-2 col-12">
-
-                        <div class="card-dash-field">
 
 
-                             <div class="card-dash-content">
-                                <span>{$value.inposition}</span>
-                            </div>
-
-
-                            <div class="card-dash-header">
-                                <hr>
-                                <span>Posição</span>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                        
+                        <div class="row card-dash-row1">
                             
-                    <div class="col-md-2 col-12">
-
-                        <div class="card-dash-field">
 
 
-                            <div class="card-dash-content">
-                                <span>{$value.desbestfriend}</span>
-                            </div>
+
+                            <div class="col-md-2 col-12">
+
+                                <div class="card-dash-field">
 
 
-                            <div class="card-dash-header">
-                                <hr>
-                                <span>Nome</span>
+                                    <div class="card-dash-content">
+                                        <span>{$value.inposition}</span>
+                                    </div>
+
+
+                                    <div class="card-dash-header">
+                                        <hr>
+                                        <span>Posição</span>
+                                    </div>
+
+                                </div><!--card-dash-field-->
+
+
+                            </div><!--col-->
+                        
+
+
+
+
+
+
+                            <div class="col-md-6 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{$value.desbestfriend}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Nome</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
                                 
-                            </div>
+                            </div><!--col-->
 
 
-                        </div>
-
-                        
-                    </div>
-                             
-                            
 
 
-                    <div class="col-md-2 col-12">
-
-                        <div class="card-dash-field">
 
 
-                            <div class="card-dash-content">
-                                <span>{$value.desdescription}</span>
-                            </div>
 
-                            <div class="card-dash-header">
 
-                                <hr>
-                                <span>Descrição</span>
+
+                            <div class="col-md-4 col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        {if="$value.instatus == 0"}
+                                            <span>Não-visível</span>
+                                        {elseif="$value.instatus == 1"}
+                                            <span>Visível</span>
+                                        {/if}
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Status</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
                                 
-                            </div>
+                            </div><!--col-->
 
 
-                        </div>
 
-                        
-                    </div>
+
+
+
                             
 
 
 
-                     <div class="col-md-2 col-12">
 
-                        <div class="card-dash-field">
 
-                            <div class="card-dash-content">
-                                <span>{if="$value.instatus == 1"}Visível{else}Não-visível{/if}</span>
-                            </div>
+                        </div><!--row-->
 
-                            <div class="card-dash-header">
 
-                                <hr>
-                                <span>Status</span>
+
+
+                        <div class="row card-dash-row2">
+
+
+
+
+
+                            
+                            
+                            
+
+                            <div class="col-12">
+
+                                <div class="card-dash-field">
+
+
+                                    <div class="card-dash-content">
+                                        <span>{$value.desdescription}</span>
+                                    </div>
+
+                                    <div class="card-dash-header">
+
+                                        <hr>
+                                        <span>Descrição</span>
+                                        
+                                    </div>
+
+
+                                </div><!--card-dash-field-->
+
                                 
-                            </div>
+                            </div><!--col-->
 
 
-                        </div>
 
-                        
-                    </div>
-                           
-
-
-              
-                            
 
                     
 
-                    <div class="col-md-2 col-12">
+
+
+                        </div><!--row-->
+
+
+
+
+                    </div><!--col-->
+
+
+
+
+
+
+
+
+
+
+                    <div class="col-md-3 col-12 card-dash-row3">
+                        
 
                         <div class="card-dash-field">
-                            
+
+
                             <div class="card-photo">
                                 
                                 <img src="/uploads/bestfriends/{$value.desphoto}">
 
                             </div>
-                        </div>
+
+
+                           
+                        </div><!--card-buttons-wrappe-->
+
+
+
+
+                    </div><!--col-->
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="col-md-2 col-12 card-dash-row3">
                         
 
-
-                    </div>
-
-
-                    <div class="col-md-2 col-12">
-                        
                         <div class="card-dash-field">
 
 
+                            <a href='/dashboard/padrinhos-madrinhas/{function="setHash($value.idbestfriend)"}'>
+
+                                <button>Editar</button>
+
+                            </a>
+                            
 
 
-                                <a href='/dashboard/padrinhos-madrinhas/{function="setHash($value.idbestfriend)"}'>
+                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/padrinhos-madrinhas/{function="setHash($value.idbestfriend)"}/deletar'>
 
-                                    <button>Editar</button>
+                                <button>Deletar</button>
 
-                                </a>
-                                
-
-
-                                <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/padrinhos-madrinhas/{function="setHash($value.idbestfriend)"}/deletar'>
-
-                                    <button>Deletar</button>
-
-                                </a>
+                            </a>
 
 
-                               
-                            </div><!--card-buttons-wrappe-->
-
-                    </div>
+                           
+                        </div><!--card-buttons-wrappe-->
 
 
 
 
+                    </div><!--col-->
 
 
 
-       
-                </div>
+
+                </div><!--row-->
                 {else}
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-info">
-                            Nenhum padrinho ou madrinha foi encontrado
+                            Nenhuma Padrinho ou Madrinha foi encontrada
                         </div>
                     </div>
                 </div>
