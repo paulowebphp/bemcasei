@@ -12,15 +12,21 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( $user["inplancontext"] == 0 ){ ?>
+                <?php if( !$validate ){ ?>
+
+                    <?php if( $user["incheckout"] == 0 or $user["inaccount"] == 0 ){ ?>
+
+                        <?php require $this->checkTemplate("dashboard-menu-noorders");?>
+
+                    <?php }else{ ?>
+
+                        <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+
+                    <?php } ?>
+
+                <?php }elseif( $validate["incontext"] == 0 ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-free");?>
-
-
-                <?php }elseif( !$validate ){ ?>
-
-                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-               
 
                 <?php }else{ ?>
 
@@ -38,30 +44,30 @@
 
 
                 <?php if( $success != '' ){ ?>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        </div> 
-                    </div>  
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
                 <?php } ?>
 
                 <?php if( $error != '' ){ ?>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        </div> 
-                    </div>  
-                <?php } ?> 
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                <?php } ?>
 
                 <form id="dash-form" method="post" action="/dashboard/pagina-inicial">
 

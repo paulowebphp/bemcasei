@@ -238,33 +238,33 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Data da Compra</th>
-                                        <th scope="col">Plano</th>
-                                        <th scope="col">Valor</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Período</th>
-                                        <th scope="col">Data Inicial</th>
-                                        <th scope="col">Data Final</th>
-                                        <th scope="col"><span title="Forma de Pagamento">#</span></th>
+                                        <th class="text-center" scope="col">Data da Compra</th>
+                                        <th class="text-center" scope="col">Plano</th>
+                                        <th class="text-center" scope="col">Valor</th>
+                                        <th class="text-center" scope="col">Status</th>
+                                        <th class="text-center" scope="col">Período</th>
+                                        <th class="text-center" scope="col">Data Inicial</th>
+                                        <th class="text-center" scope="col">Data Final</th>
+                                        <th class="text-center" scope="col"><span title="Forma de Pagamento">#</span></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $counter1=-1;  if( isset($planArray) && ( is_array($planArray) || $planArray instanceof Traversable ) && sizeof($planArray) ) foreach( $planArray as $key1 => $value1 ){ $counter1++; ?>
                                     <tr class='<?php echo getPaymentStatusClass($value1["inpaymentstatus"], $value1["inrefunded"]); ?>'>
-                                        <th scope="row"><?php echo formatDate($value1["dtregister"]); ?></th>
-                                        <td><?php echo htmlspecialchars( $value1["desplan"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-                                        <td>R$ <?php echo formatPrice($value1["vlprice"]); ?></td>
-                                        <td><?php echo getPaymentStatus($value1["inpaymentstatus"]); ?></td>
-                                        <td>
+                                        <th class="text-center" scope="row"><?php echo formatDate($value1["dtregister"]); ?></th>
+                                        <td class="text-center"><?php echo htmlspecialchars( $value1["desplan"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                                        <td class="text-center">R$ <?php echo formatPrice($value1["vlprice"]); ?></td>
+                                        <td class="text-center"><?php echo getPaymentStatus($value1["inpaymentstatus"]); ?></td>
+                                        <td class="text-center">
                                             <?php if( $value1["inmigration"] != 2 ){ ?>
                                                 <?php if( $value1["inperiod"] > 1 ){ ?> <?php echo htmlspecialchars( $value1["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> meses <?php }else{ ?> <?php echo htmlspecialchars( $value1["inperiod"], ENT_COMPAT, 'UTF-8', FALSE ); ?> mês <?php } ?>
                                             <?php }else{ ?>
                                                 Upgrade
                                             <?php } ?>
                                         </td>
-                                        <td><?php echo formatDate($value1["dtbegin"]); ?></td>
-                                        <td><?php echo formatDate($value1["dtend"]); ?></td>
-                                        <td>
+                                        <td class="text-center"><?php echo formatDate($value1["dtbegin"]); ?></td>
+                                        <td class="text-center"><?php echo formatDate($value1["dtend"]); ?></td>
+                                        <td class="text-center">
                                             <?php if( $value1["inpaymentmethod"] == 1 or $value1["inpaymentmethod"] == 2 ){ ?>
                                                 <span><i title="Cartão de Crédito" class="fa fa-credit-card"></i></span>
                                             <?php }elseif( $value1["inpaymentmethod"] == 0 ){ ?>

@@ -597,7 +597,26 @@ body span{
 .body-footer i{
   color: #171F26;
 }
-
+.modal-photo img {
+  width: 80%;
+  border-radius: 4px;
+  vertical-align: middle;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+}
+.modal1{
+  margin: 0 auto;
+  max-width:60%!important;
+}
+.pointer1{
+  cursor: pointer;
+  padding:10px;
+}
+.button13{
+  background:none;
+  padding: 0 5px;
+  border:none;
+}
 .sort-by select{
   color: #171F26;
 }

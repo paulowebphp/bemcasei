@@ -1321,12 +1321,40 @@
 
                             <div class="body-footer buttons-wrapper">
                                 
-                                <a target="_blank" href="/res/images/template/photo/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
-                                
-                                    <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>Ver</span>
+                                <button class="pointer1">
+                                    <i data-toggle="modal" data-target='#modal<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>' class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>Ver</span>
+                                </button>
 
-                                </a>
 
+                            </div>
+
+
+
+
+
+
+
+
+
+
+                            <div class="modal fade" id='modal<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>' tabindex="-1" role="dialog" aria-labelledby='<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>Title' aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal1" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="modal-photo">
+                                            <img src="/res/images/template/photo/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                                </div>
                             </div>
 
 
