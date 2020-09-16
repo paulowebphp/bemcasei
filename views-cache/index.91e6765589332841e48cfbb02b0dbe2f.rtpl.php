@@ -1421,7 +1421,9 @@
 
                             <div class="body-footer buttons-wrapper">
                                 
-                                <i data-toggle="modal" data-target='#modal<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>' class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>Ver</span>
+                                <button data-toggle="modal" data-target='#modal<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>' class="button13 pointer1">
+                                    <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>Ver</span>
+                                </button>
 
 
                             </div>

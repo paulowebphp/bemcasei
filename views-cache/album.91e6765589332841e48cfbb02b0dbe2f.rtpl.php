@@ -288,11 +288,18 @@
 
                             <div class="body-footer buttons-wrapper">
                                 
-                                <i data-toggle="modal" data-target='#modal<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>'  class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>Ver</span>
+                                <button data-toggle="modal" data-target='#modal<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>' class="button13 pointer1">
+                                    <i class="fa fa-eye"></i>&nbsp;&nbsp;&nbsp;<span>Ver</span>
+                                </button>
+
 
                             </div>
 
 
+
+
+
+                            
                             <div class="modal fade" id='modal<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>' tabindex="-1" role="dialog" aria-labelledby='<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>Title' aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal1" role="document">
                                 <div class="modal-content">

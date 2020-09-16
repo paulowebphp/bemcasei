@@ -423,15 +423,15 @@
 
                             <a href='/dashboard/fornecedores/<?php echo setHash($value1["idstakeholder"]); ?>'>
 
-                                <button>Editar</button>
+                                <button class="button1">Editar</button>
 
                             </a>
                             
 
 
-                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/fornecedores/<?php echo setHash($value1["idstakeholder"]); ?>/deletar'>
+                            <a onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/fornecedores/<?php echo setHash($value1["idstakeholder"]); ?>/deletar'>
 
-                                <button>Deletar</button>
+                                <button class="del-button">Deletar</button>
 
                             </a>
 

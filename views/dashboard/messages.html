@@ -319,25 +319,27 @@
 
                         <div class="card-dash-field">
 
+                            
+
 
                             {if="$value.instatus == 0"}
-                                <a class="message-approve" href='/dashboard/mensagens/{function="setHash($value.idmessage)"}/aprovar'>
+                                <a href='/dashboard/mensagens/{function="setHash($value.idmessage)"}/aprovar'>
 
-                                    <button>Aprovar</button>
+                                    <button class="message-approve">Aprovar</button>
 
                                 </a>
                             {elseif="$value.instatus == 1"}
-                                <a class="message-moderate" href='/dashboard/mensagens/{function="setHash($value.idmessage)"}/moderar'>
+                                <a href='/dashboard/mensagens/{function="setHash($value.idmessage)"}/moderar'>
 
-                                    <button>Moderar</button>
+                                    <button class="message-moderate">Moderar</button>
 
                                 </a>
                             {/if}
 
 
-                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/mensagens/{function="setHash($value.idmessage)"}/deletar'>
+                            <a onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/mensagens/{function="setHash($value.idmessage)"}/deletar'>
 
-                                <button>Deletar</button>
+                                <button class="del-button">Deletar</button>
 
                             </a>
 

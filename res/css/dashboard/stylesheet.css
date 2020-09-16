@@ -1076,7 +1076,8 @@ label{
 }
 
 
-.card-dash button{
+
+.button1{
   padding: 8% 12%;
   background-color: transparent;
   border: 1px solid #ec656d;
@@ -1086,9 +1087,36 @@ label{
   width: 100%;
 }
 
-.del-button button{
+
+.message-approve{
+  padding: 8% 12%;
+  background-color: transparent;
+  border: 1px solid green;
+  border-radius: 20px;
+  color: green;
+  margin-bottom: 8%;
+  width: 100%;
+}
+
+.message-moderate{
+  padding: 8% 12%;
+  background-color: transparent;
+  border: 1px solid blue;
+  border-radius: 20px;
+  color: blue;
+  margin-bottom: 8%;
+  width: 100%;
+}
+
+
+.del-button{
   background-color: #ec656d;
   color: #fff;
+  padding: 8% 12%;
+  border: 1px solid #ec656d;
+  border-radius: 20px;
+  margin-bottom: 8%;
+  width: 100%;
 }
 
 
@@ -1111,23 +1139,7 @@ label{
   margin-bottom: 10px;
 }
 
-.message-approve button{
-  color: green;
-  border-color: green;
-}
-.message-approve{
-  color: green;
-  border-color: green;
-}
 
-.message-moderate button{
-  color: blue;
-  border-color: blue;
-}
-.message-moderate{
-  color: blue;
-  border-color: blue;
-}
 .see-button button{
   background-color: transparent;
   color: #ec656d;

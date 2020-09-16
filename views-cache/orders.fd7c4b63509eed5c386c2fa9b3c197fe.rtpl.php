@@ -734,12 +734,12 @@
                                         <th class="text-center" scope="col">Status</th>
                                         <th class="text-center" scope="col">Valor Total</th>
                                         <th class="text-center" scope="col">Valor Recebido</th>
-                                        <th class="text-center" scope="col"><span title="Forma de Pagamento">#</span></th>
+                                        <th class="text-center" scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $counter1=-1;  if( isset($order) && ( is_array($order) || $order instanceof Traversable ) && sizeof($order) ) foreach( $order as $key1 => $value1 ){ $counter1++; ?>
-                                    <tr class='<?php echo getPaymentStatusClass($value1["inpaymentstatus"], $value1["inrefunded"]); ?>'>
+                                    <tr>
                                         <th class="text-center" scope="row"><?php echo formatDate($value1["dtregister"]); ?></th>
                                         <td class="text-center"><?php echo htmlspecialchars( $value1["desname"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                                         <td class="text-center"><?php echo getPaymentStatus($value1["inpaymentstatus"]); ?></td>

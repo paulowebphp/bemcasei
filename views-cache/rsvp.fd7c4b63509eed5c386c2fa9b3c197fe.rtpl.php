@@ -577,15 +577,15 @@
                             <?php if( $value1["inconfirmed"] == 0 ){ ?>
                                 <a href='/dashboard/rsvp/<?php echo setHash($value1["idrsvp"]); ?>'>
 
-                                    <button>Editar</button>
+                                    <button class="button1">Editar</button>
 
                                 </a>
                             <?php } ?>
 
 
-                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/rsvp/<?php echo setHash($value1["idrsvp"]); ?>/deletar'>
+                            <a onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/rsvp/<?php echo setHash($value1["idrsvp"]); ?>/deletar'>
 
-                                <button>Deletar</button>
+                                <button class="del-button">Deletar</button>
 
                             </a>
 

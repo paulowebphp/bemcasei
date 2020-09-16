@@ -317,10 +317,35 @@
                         <div class="card-dash-field">
 
 
-                            <div class="card-photo">
-                                
-                                <img src="/uploads/bestfriends/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
 
+
+                            <div data-toggle="modal" data-target='#modal<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>' class="card-photo">
+                                <img src="/uploads/bestfriends/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                            </div>
+
+                            
+
+
+
+
+                            <div class="modal fade" id='modal<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>' tabindex="-1" role="dialog" aria-labelledby='<?php echo htmlspecialchars( $counter1+1, ENT_COMPAT, 'UTF-8', FALSE ); ?>Title' aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="modal-photo">
+                                            <img src="/uploads/bestfriends/<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                                </div>
                             </div>
 
 
@@ -348,20 +373,20 @@
                         <div class="card-dash-field">
 
 
+
                             <a href='/dashboard/padrinhos-madrinhas/<?php echo setHash($value1["idbestfriend"]); ?>'>
 
-                                <button>Editar</button>
+                                <button class="button1">Editar</button>
 
                             </a>
                             
 
 
-                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/padrinhos-madrinhas/<?php echo setHash($value1["idbestfriend"]); ?>/deletar'>
+                            <a onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/padrinhos-madrinhas/<?php echo setHash($value1["idbestfriend"]); ?>/deletar'>
 
-                                <button>Deletar</button>
+                                <button class="del-button">Deletar</button>
 
                             </a>
-
 
                            
                         </div><!--card-buttons-wrappe-->

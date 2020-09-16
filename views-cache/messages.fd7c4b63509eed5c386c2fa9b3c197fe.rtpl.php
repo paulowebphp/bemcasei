@@ -12,20 +12,21 @@
             <div class="col-md-3 col-12 dash-menu">
 
 
-                <?php if( $user["inplancontext"] == 0 ){ ?>
+                <?php if( !$validate ){ ?>
+
+                    <?php if( $user["incheckout"] == 0 or $user["inaccount"] == 0 ){ ?>
+
+                        <?php require $this->checkTemplate("dashboard-menu-noorders");?>
+
+                    <?php }else{ ?>
+
+                        <?php require $this->checkTemplate("dashboard-menu-expirated");?>
+
+                    <?php } ?>
+
+                <?php }elseif( $validate["incontext"] == 0 ){ ?>
 
                     <?php require $this->checkTemplate("dashboard-menu-free");?>
-
-                
-                <?php }elseif( $user["incheckout"] == 0 ){ ?>
-
-                    <?php require $this->checkTemplate("dashboard-menu-nocheckout");?>
-                
-
-                <?php }elseif( !$validate ){ ?>
-
-                    <?php require $this->checkTemplate("dashboard-menu-expirated");?>
-                
 
                 <?php }else{ ?>
 
@@ -63,30 +64,30 @@
 
 
                 <?php if( $success != '' ){ ?>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            </div> 
-                        </div>  
-                    <?php } ?>
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php echo htmlspecialchars( $success, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                <?php } ?>
 
-                    <?php if( $error != '' ){ ?>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            </div> 
-                        </div>  
-                    <?php } ?>
+                <?php if( $error != '' ){ ?>
+                <div class="row centralizer">
+                    <div class="col-md-8 col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div> 
+                </div>  
+                <?php } ?>
 
 
 
@@ -318,25 +319,27 @@
 
                         <div class="card-dash-field">
 
+                            
+
 
                             <?php if( $value1["instatus"] == 0 ){ ?>
-                                <a class="message-approve" href='/dashboard/mensagens/<?php echo setHash($value1["idmessage"]); ?>/aprovar'>
+                                <a href='/dashboard/mensagens/<?php echo setHash($value1["idmessage"]); ?>/aprovar'>
 
-                                    <button>Aprovar</button>
+                                    <button class="message-approve">Aprovar</button>
 
                                 </a>
                             <?php }elseif( $value1["instatus"] == 1 ){ ?>
-                                <a class="message-moderate" href='/dashboard/mensagens/<?php echo setHash($value1["idmessage"]); ?>/moderar'>
+                                <a href='/dashboard/mensagens/<?php echo setHash($value1["idmessage"]); ?>/moderar'>
 
-                                    <button>Moderar</button>
+                                    <button class="message-moderate">Moderar</button>
 
                                 </a>
                             <?php } ?>
 
 
-                            <a class="del-button" onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/mensagens/<?php echo setHash($value1["idmessage"]); ?>/deletar'>
+                            <a onclick="return confirm('Deseja realmente excluir este ítem?')"  href='/dashboard/mensagens/<?php echo setHash($value1["idmessage"]); ?>/deletar'>
 
-                                <button>Deletar</button>
+                                <button class="del-button">Deletar</button>
 
                             </a>
 
